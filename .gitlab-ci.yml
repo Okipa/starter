@@ -252,7 +252,7 @@ production:
     refs:
       - tags
 
-# todo : set notification hook from this rocket chat example
+# todo : set a notification hook from this rocket chat example
 .notify: &notify |
   apk add --update curl && rm -rf /var/cache/apk/*
   curl https://<rocket-chat-url>/hooks/<rocket-chat-channel-id> \
