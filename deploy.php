@@ -18,7 +18,7 @@ $servers = [
         'private_identity' => '~/.ssh/id_rsa',
     ],
     'production' => [
-        'host'             => '<project-prod-host>', // todo : set project prod host
+        'host'             => '<project-production-host>', // todo : set project production host
         'branch'           => 'master',
         'deploy_path'      => '/var/www/prod/web/site',
         'user'             => 'prod',

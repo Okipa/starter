@@ -230,11 +230,11 @@ preprod:
     refs:
       - develop
 
-prod:
+production:
   stage: deploy
   image: php:7.3-cli # todo : set php version
   variables:
-    URL: <project-prod-url> # todo : set project prod url
+    URL: <project-production-url> # todo : set project production url
   dependencies:
     - composer:nodev
     - yarn:nodev
@@ -252,7 +252,7 @@ prod:
     refs:
       - tags
 
-# todo : set hook from rocket chat example
+# todo : set notification hook from this rocket chat example
 .notify: &notify |
   apk add --update curl && rm -rf /var/cache/apk/*
   curl https://<rocket-chat-url>/hooks/<rocket-chat-channel-id> \

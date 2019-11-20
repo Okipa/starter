@@ -52,7 +52,7 @@ class SimplePageStoreRequest extends Request
     public function withValidator($validator)
     {
         $customValidator = Validator::make([
-            'full_url' => $this->url ? route('news.article.show', $this->url) : null,
+            'full_url' => $this->url ? route('simplePage.show', $this->url) : null,
         ], [
             'full_url' => ['required', 'string', 'url'],
         ]);

@@ -5,6 +5,7 @@ namespace App\Exceptions;
 use Exception;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Illuminate\Validation\ValidationException;
+use Sentry\State\Scope;
 use Symfony\Component\HttpKernel\Exception\HttpExceptionInterface;
 
 class Handler extends ExceptionHandler
@@ -37,10 +38,27 @@ class Handler extends ExceptionHandler
      */
     public function report(Exception $exception)
     {
+        $this->sentryReport($exception);
+        parent::report($exception);
+    }
+
+    /**
+     * Report exception on Sentry.
+     *
+     * @param \Exception $exception
+     */
+    public function sentryReport(Exception $exception): void
+    {
         if (app()->bound('sentry') && $this->shouldReport($exception)) {
+            /** @var \App\Models\User $user */
+            $user = auth()->user();
+            if ($user) {
+                app('sentry')->configureScope(function (Scope $scope) use ($user) : void {
+                    $scope->setUser($user->toArray());
+                });
+            }
             app('sentry')->captureException($exception);
         }
-        parent::report($exception);
     }
 
     /**
