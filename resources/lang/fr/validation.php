@@ -149,6 +149,9 @@ return [
         'remember'                  => 'Se souvenir de moi',
         'first_name'                => 'Prénom',
         'last_name'                 => 'NOM',
+        'name'                      => 'Nom',
+        'created_at'                => 'Date créa.',
+        'updated_at'                => 'Date édit.',
         'title'                     => 'Titre',
         'url'                       => 'URL',
         'slug'                      => 'Identifiant unique',
@@ -170,5 +173,8 @@ return [
         'meta_title'                => 'Meta Title',
         'meta_description'          => 'Meta Description',
         'meta_keywords'             => 'Meta Keywords',
+        'thumb'                     => 'Aperçu',
+        'media'                     => 'Média',
+        'downloadable'              => 'Téléchargeable',
     ],
 ];

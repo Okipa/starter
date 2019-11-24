@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\HomePage;
+use App\Services\Seo\SeoService;
 use Faker\Factory;
 use Illuminate\Database\Seeder;
 
@@ -14,11 +15,14 @@ class HomePageTableSeeder extends Seeder
     public function run()
     {
         $faker = Factory::create(config('app.faker_locale'));
+        /** @var \App\Models\HomePage $homePage */
         $homePage = (new HomePage)->create([
-            'title'            => 'Accueil',
-            'description'      => $faker->text(),
+            'title'       => 'Accueil',
+            'description' => $faker->text(),
         ]);
-        $homePage->setMeta('meta_title', 'Accueil');
-        $homePage->setMeta('meta_description', $faker->text(150));
+        (new SeoService)->saveMetaTags($homePage, [
+            'meta_title'       => 'Accueil',
+            'meta_description' => $faker->text(150),
+        ]);
     }
 }

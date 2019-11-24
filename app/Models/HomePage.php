@@ -23,6 +23,8 @@ class HomePage extends Model
         'description',
     ];
 
+    // relationships ***************************************************************************************************
+
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */

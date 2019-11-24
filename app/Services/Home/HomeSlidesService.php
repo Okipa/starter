@@ -35,7 +35,7 @@ class HomeSlidesService extends Service implements HomeSlidesServiceInterface
                 ]),
             ];
         });
-        $table->column('illustration')->html(function (HomeSlide $homeSlide) {
+        $table->column('thumb')->html(function (HomeSlide $homeSlide) {
             return view('components.admin.table.image', ['image' => $homeSlide->getFirstMedia('illustrations')]);
         });
         $table->column('title')->stringLimit(50);

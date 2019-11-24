@@ -31,7 +31,7 @@ class ArticlesService extends Service implements ArticlesServiceInterface
                 ]),
             ];
         });
-        $table->column('illustration')->html(function (NewsArticle $newsArticle) {
+        $table->column('thumb')->html(function (NewsArticle $newsArticle) {
             return view('components.admin.table.image', ['image' => $newsArticle->getFirstMedia('illustrations')]);
         });
         $table->column('title')->stringLimit(50)->sortable()->searchable();

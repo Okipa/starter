@@ -72,6 +72,14 @@ return [
         'update'  => 'page/mettre-a-jour/{simplePage}',
         'destroy' => 'page/supprimer/{simplePage}',
     ],
+    'libraryMedia' => [
+        'index'   => 'media',
+        'create'  => 'media/creer',
+        'store'   => 'media/enregistrer',
+        'edit'    => 'media/editer/{libraryMedia}',
+        'update'  => 'media/mettre-a-jour/{libraryMedia}',
+        'destroy' => 'media/supprimer/{libraryMedia}',
+    ],
     // admin ***********************************************************************************************************
     'settings'     => [
         'index'  => 'parametres',

@@ -6,6 +6,7 @@ use App\Services\Service;
 use Artesaos\SEOTools\Facades\SEOTools;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
+use Illuminate\Support\Arr;
 
 class SeoService extends Service implements SeoServiceInterface
 {
@@ -21,19 +22,28 @@ class SeoService extends Service implements SeoServiceInterface
     }
 
     /**
-     * @param \Illuminate\Http\Request $request
      * @param \Illuminate\Database\Eloquent\Model $model
+     * @param \Illuminate\Http\Request $request
      */
-    public function saveMetaTagsFromRequest(Request $request, Model $model): void
+    public function saveMetaTagsFromRequest(Model $model, Request $request): void
+    {
+        $this->saveMetaTags($model, $request->only('meta_title', 'meta_description'));
+    }
+
+    /**
+     * @param \Illuminate\Database\Eloquent\Model $model
+     * @param array $metaTags
+     */
+    public function saveMetaTags(Model $model, array $metaTags): void
     {
         if (method_exists($model, 'syncMeta')) {
             $model->syncMeta([]);
         }
-        if (method_exists($model, 'setMeta') && $request->has('meta_title')) {
-            $model->setMeta('meta_title', $request->meta_title);
+        if (method_exists($model, 'setMeta') && Arr::has($metaTags, 'meta_title')) {
+            $model->setMeta('meta_title', $metaTags['meta_title']);
         }
-        if (method_exists($model, 'setMeta') && $request->has('meta_description')) {
-            $model->setMeta('meta_description', $request->meta_description);
+        if (method_exists($model, 'setMeta') && Arr::has($metaTags, 'meta_description')) {
+            $model->setMeta('meta_description', $metaTags['meta_description']);
         }
     }
 
