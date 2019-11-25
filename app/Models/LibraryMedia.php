@@ -35,7 +35,31 @@ class LibraryMedia extends Model implements HasMedia
      */
     public function registerMediaCollections()
     {
-        $this->addMediaCollection('medias')->singleFile();
+        $this->addMediaCollection('medias')->acceptsMimeTypes([
+            // image
+            'image/jpeg',
+            'image/png',
+            // audio
+            'audio/wav',
+            'audio/wave',
+            'audio/x-wav',
+            'audio/mpeg',
+            'audio/mpg',
+            'audio/mpeg3',
+            'audio/mp3',
+            'audio/x-flac',
+            'audio/ogg',
+            'audio/webm',
+            'audio/3gpp2',
+            'audio/aiff',
+            'audio/x-aiff',
+            'audio/x-flac',
+            // video
+            'video/webm',
+            'video/ogg',
+            'video/mp4',
+            'video/mpeg'
+        ])->singleFile();
     }
 
     /**

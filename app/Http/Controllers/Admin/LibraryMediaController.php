@@ -29,7 +29,7 @@ class LibraryMediaController extends Controller
     public function create()
     {
         $libraryMedia = null;
-        SEOTools::setTitle(__('admin.title.parent.create', ['entity' => __('entities.libraryMedia')]));
+        SEOTools::setTitle(__('admin.title.orphan.create', ['entity' => __('entities.libraryMedia')]));
 
         return view('templates.admin.libraryMedia.edit', compact('libraryMedia'));
     }
