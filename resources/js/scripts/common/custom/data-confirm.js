@@ -1,14 +1,7 @@
 let confirmationGiven;
 const askConfirmation = (event, message, actionOnceConfirmed) => {
     confirmationGiven = false;
-    bsSwal.fire({
-        title: app.notifications.title.confirm,
-        html: message,
-        type: 'warning',
-        showCancelButton: true,
-        confirmButtonText: app.static.action.confirm,
-        cancelButtonText: app.static.action.cancel
-    }).then((result) => {
+    notify.warning(message).then((result) => {
         if (result.value) {
             confirmationGiven = true;
             actionOnceConfirmed();

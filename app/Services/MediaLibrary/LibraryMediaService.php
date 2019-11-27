@@ -3,7 +3,6 @@
 namespace App\Services\MediaLibrary;
 
 use App\Models\LibraryMedia;
-use App\Models\NewsArticle;
 use App\Services\Service;
 use Okipa\LaravelTable\Table;
 
@@ -27,18 +26,26 @@ class LibraryMediaService extends Service implements LibraryMediaServiceInterfac
             return [
                 'data-confirm' => __('notifications.message.crud.orphan.destroyConfirm', [
                     'entity' => __('entities.libraryMedia'),
-                    'name'   => $libraryMedia->getFirstMedia('medias')->name,
+                    'name'   => $libraryMedia->name,
                 ]),
             ];
         });
         $table->column('thumb')->html(function (LibraryMedia $libraryMedia) {
-            return view('components.admin.table.image', ['image' => $libraryMedia->getFirstMedia('medias')]);
+            return view('components.admin.table.library-media.thumb', compact('libraryMedia'));
         });
-        $table->column('name')->sortable()->value(function (LibraryMedia $libraryMedia) {
+        $table->column('name')->sortable(true)->value(function (LibraryMedia $libraryMedia) {
             return $libraryMedia->name;
         });
+        $table->column('downloadable')->html(function (LibraryMedia $libraryMedia) {
+            return $libraryMedia->downloadable
+                ? '<i class="fas fa-check text-success"></i>'
+                : '<i class="fas fa-times text-danger"></i>';
+        })->sortable();
+        $table->column()->title(__('library-media.clipboardCopy'))->html(function(LibraryMedia $libraryMedia){
+            return view('components.admin.table.library-media.copy-clipboard-buttons', compact('libraryMedia'));
+        });
         $table->column('created_at')->dateTimeFormat('d/m/Y H:i')->sortable();
-        $table->column('updated_at')->dateTimeFormat('d/m/Y H:i')->sortable(true);
+        $table->column('updated_at')->dateTimeFormat('d/m/Y H:i')->sortable();
 
         return $table;
     }

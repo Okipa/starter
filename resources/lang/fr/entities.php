@@ -16,6 +16,6 @@ return [
     'slides'       => 'Slides',
     'categories'   => 'Catégories',
     'articles'     => 'Articles',
-    'libraryMedia' => 'Librarie média',
+    'libraryMedia' => 'Bibliothèque médias',
 
 ];

@@ -9,22 +9,17 @@ window.reorganizables = ($reorganizableContainer, sortableItemsSelector, reorgan
             _.each(reorganizedList, (item) => {
                 orderedIds.push($(item).find('.id').text());
             });
-            const Toast = bsSwal.mixin({
-                toast: true,
-                timer: 10000,
-                position: 'top-right'
-            });
             axios.post(reorganizingRoute, {ordered_ids: orderedIds}).then((response) => {
                 _.each(reorganizedList, (item, key) => {
                     $(item).find('.position').text(key + 1);
                 });
-                Toast.fire({
+                notify.toast.fire({
                     type: 'success',
                     title: response.data.message
                 });
             }).catch((error) => {
                 if (error.response) {
-                    Toast.fire({
+                    notify.toast.fire({
                         type: 'error',
                         title: error.response.data.message
                     });

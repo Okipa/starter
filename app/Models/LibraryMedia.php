@@ -25,6 +25,7 @@ class LibraryMedia extends Model implements HasMedia
         'name',
         'downloadable',
     ];
+
     // media ***********************************************************************************************************
 
     /**
@@ -43,8 +44,8 @@ class LibraryMedia extends Model implements HasMedia
             'audio/wav',
             'audio/wave',
             'audio/x-wav',
-            'audio/mpeg',
             'audio/mpg',
+            'audio/mpeg',
             'audio/mpeg3',
             'audio/mp3',
             'audio/x-flac',
@@ -76,6 +77,7 @@ class LibraryMedia extends Model implements HasMedia
             ->fit(Manipulations::FIT_CROP, 40, 40)
             ->keepOriginalImageFormat();
     }
+
     // relationships ***************************************************************************************************
 
 }

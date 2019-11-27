@@ -3,7 +3,7 @@ window.listenToLoadOnClickEvent = (loadOnClickElements) => {
         const $this = $(loadOnClickElement);
         $this.on('click', (e) => {
             setTimeout(() => {
-                bsSwal.loading();
+                notify.loading();
             }, 0);
         });
     });

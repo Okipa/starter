@@ -3,6 +3,7 @@
 namespace App\Http\Requests\News;
 
 use App\Http\Requests\Request;
+use App\Models\LibraryMedia;
 
 class LibraryMediaUpdateRequest extends Request
 {
@@ -18,7 +19,7 @@ class LibraryMediaUpdateRequest extends Request
     public function rules()
     {
         return [
-            'media'        => ['required', 'file'],
+            'media'        => (new LibraryMedia)->validationConstraints('medias'),
             'name'         => ['required', 'string', 'max:255'],
             'downloadable' => ['required', 'boolean'],
         ];

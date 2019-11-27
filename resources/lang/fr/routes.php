@@ -73,12 +73,13 @@ return [
         'destroy' => 'page/supprimer/{simplePage}',
     ],
     'libraryMedia' => [
-        'index'   => 'media',
-        'create'  => 'media/creer',
-        'store'   => 'media/enregistrer',
-        'edit'    => 'media/editer/{libraryMedia}',
-        'update'  => 'media/mettre-a-jour/{libraryMedia}',
-        'destroy' => 'media/supprimer/{libraryMedia}',
+        'index'            => 'media',
+        'create'           => 'media/creer',
+        'store'            => 'media/enregistrer',
+        'edit'             => 'media/editer/{libraryMedia}',
+        'update'           => 'media/mettre-a-jour/{libraryMedia}',
+        'destroy'          => 'media/supprimer/{libraryMedia}',
+        'clipboardContent' => 'media/presse-papier/contenu/{libraryMedia}/{type}',
     ],
     // admin ***********************************************************************************************************
     'settings'     => [

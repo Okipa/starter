@@ -8,6 +8,10 @@ use App\Http\Requests\News\LibraryMediaUpdateRequest;
 use App\Models\LibraryMedia;
 use App\Services\MediaLibrary\LibraryMediaService;
 use Artesaos\SEOTools\Facades\SEOTools;
+use Exception;
+use Illuminate\Support\Str;
+use JavaScript;
+use Log;
 
 class LibraryMediaController extends Controller
 {
@@ -19,8 +23,16 @@ class LibraryMediaController extends Controller
     {
         $table = (new LibraryMediaService)->table();
         SEOTools::setTitle(__('admin.title.orphan.index', ['entity' => __('entities.libraryMedia')]));
+        JavaScript::put([
+            'libraryMedia' => [
+                'clipboardCopy' => [
+                    'route' => route('libraryMedia.clipboardContent', ['__ID__', '__TYPE__']),
+                ],
+            ],
+        ]);
+        $js = mix('/js/library-media/index.js');
 
-        return view('templates.admin.libraryMedia.index', compact('table'));
+        return view('templates.admin.libraryMedia.index', compact('table', 'js'));
     }
 
     /**
@@ -46,8 +58,13 @@ class LibraryMediaController extends Controller
     {
         /** @var LibraryMedia $libraryMedia */
         $libraryMedia = (new LibraryMedia)->create($request->validated());
-        if ($request->file('media')) {
-            $libraryMedia->addMediaFromRequest('media')->toMediaCollection('medias');
+        $uploadedMediaFile = $request->file('media');
+        if ($uploadedMediaFile) {
+            $fileName = Str::slug($request->name) . '.' . $uploadedMediaFile->getClientOriginalExtension();
+            $libraryMedia->addMedia($uploadedMediaFile->getRealPath())
+                ->setName($request->name)
+                ->setFileName($fileName)
+                ->toMediaCollection('medias');
         }
 
         return redirect()->route('libraryMedia.index')
@@ -109,5 +126,30 @@ class LibraryMediaController extends Controller
             'entity' => __('entities.libraryMedia'),
             'name'   => $name,
         ]));
+    }
+
+    /**
+     * @param \App\Models\LibraryMedia $libraryMedia
+     * @param string $type
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function clipboardContent(LibraryMedia $libraryMedia, string $type)
+    {
+        try {
+            $clipboardContent = view(
+                'components.admin.table.library-media.' . $type . '-clipboard-content',
+                compact('libraryMedia')
+            )->toHtml();
+            $message = __('notifications.message.libraryMedia.clipboardCopy.success', [
+                'type' => strtoupper($type),
+                'name' => $libraryMedia->name,
+            ]);
+        } catch (Exception $exception) {
+            Log::error($exception);
+            $message = __('notifications.message.exception.support');
+        }
+
+        return response()->json(compact('clipboardContent', 'message'));
     }
 }

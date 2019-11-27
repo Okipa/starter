@@ -3,6 +3,7 @@
 namespace App\Http\Requests\LibraryMedia;
 
 use App\Http\Requests\Request;
+use App\Models\LibraryMedia;
 
 class LibraryMediaStoreRequest extends Request
 {
@@ -18,7 +19,7 @@ class LibraryMediaStoreRequest extends Request
     public function rules()
     {
         return [
-            'media'        => ['required', 'file'],
+            'media'        => array_merge(['required'], (new LibraryMedia)->validationConstraints('medias')),
             'name'         => ['required', 'string', 'max:255'],
             'downloadable' => ['required', 'boolean'],
         ];

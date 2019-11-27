@@ -24,6 +24,7 @@ mix
     // js **************************************************************************************************************
     // admin
     .js('resources/js/admin/home/slides/index.js', 'public/js/home/slides')
+    .js('resources/js/admin/library-media/index.js', 'public/js/library-media')
     // front
     //
     // base

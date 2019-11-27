@@ -1,4 +1,4 @@
-window.bsSwal = swal.mixin({
+window.notify = swal.mixin({
     customClass: {
         confirmButton: 'btn btn-outline-primary mx-2',
         cancelButton: 'btn btn-outline-danger mx-2'
@@ -7,8 +7,13 @@ window.bsSwal = swal.mixin({
     buttonsStyling: false
 });
 
-bsSwal.loading = (title = app.notifications.title.loading, html = app.templates.loading) => {
-    bsSwal.fire({
+notify.toast = notify.mixin({
+    toast: true,
+    position: 'top-end'
+});
+
+notify.loading = (html = app.templates.loading, title = app.notifications.title.loading) => {
+    return notify.fire({
         title: title,
         html: html,
         type: 'info',
@@ -18,6 +23,17 @@ bsSwal.loading = (title = app.notifications.title.loading, html = app.templates.
     });
 };
 
+notify.warning = (html, title = app.notifications.title.confirm) => {
+    return notify.fire({
+        title: title,
+        html: html,
+        type: 'warning',
+        showCancelButton: true,
+        confirmButtonText: app.static.action.confirm,
+        cancelButtonText: app.static.action.cancel
+    });
+};
+
 if (app.swalConfig) {
-    bsSwal.fire(app.swalConfig);
+    notify.fire(app.swalConfig);
 }

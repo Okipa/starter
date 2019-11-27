@@ -6,8 +6,6 @@ use App\Http\Requests\Request;
 
 class DownloadFileRequest extends Request
 {
-    protected $safetyChecks = ['remember' => 'boolean'];
-
     /**
      * Get the validation rules that apply to the request.
      *

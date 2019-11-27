@@ -20,3 +20,6 @@ Route::put(LaravelLocalization::transRoute('routes.libraryMedia.update'), [
 Route::delete(LaravelLocalization::transRoute('routes.libraryMedia.destroy'), [
     LibraryMediaController::class, 'destroy'
 ])->name('libraryMedia.destroy');
+Route::get(LaravelLocalization::transRoute('routes.libraryMedia.clipboardContent'), [
+    LibraryMediaController::class, 'clipboardContent'
+])->name('libraryMedia.clipboardContent');

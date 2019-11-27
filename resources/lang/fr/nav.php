@@ -21,7 +21,7 @@ return [
         'home'         => 'Accueil',
         'news'         => 'Actualités',
         'simplePages'  => 'Pages simples',
-        'libraryMedia' => 'Librairie média',
+        'libraryMedia' => 'Bibliothèque médias',
         'users'        => 'Utilisateurs',
         'adminZone'    => 'Administration',
         'settings'     => 'Paramètres',
