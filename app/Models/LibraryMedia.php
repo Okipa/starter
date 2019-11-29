@@ -26,14 +26,7 @@ class LibraryMedia extends Model implements HasMedia
         'name',
         'downloadable',
     ];
-//    /**
-//     * The attributes that should be cast to native types.
-//     *
-//     * @var array
-//     */
-//    protected $casts = [
-//        'downloadable' => 'boolean',
-//    ];
+
     // media ***********************************************************************************************************
 
     /**

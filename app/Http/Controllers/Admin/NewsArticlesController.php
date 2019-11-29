@@ -53,7 +53,7 @@ class NewsArticlesController extends Controller
     {
         $request->merge(['title' => ucfirst(strtolower($request->title))]);
         /** @var  NewsArticle $article */
-        $article = (new NewsArticle)->create($request->all());
+        $article = (new NewsArticle)->create($request->validated());
         if ($request->file('illustration')) {
             $article->addMediaFromRequest('illustration')->toMediaCollection('illustrations');
         }
@@ -96,7 +96,7 @@ class NewsArticlesController extends Controller
     public function update(NewsArticle $article, ArticleUpdateRequest $request)
     {
         $request->merge(['title' => ucfirst(strtolower($request->title))]);
-        $article->update($request->all());
+        $article->update($request->validated());
         if ($request->file('illustration')) {
             $article->addMediaFromRequest('illustration')->toMediaCollection('illustrations');
         }

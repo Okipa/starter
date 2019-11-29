@@ -47,7 +47,7 @@ class NewsCategoriesController extends Controller
      */
     public function store(CategoryStoreRequest $request)
     {
-        $category = (new NewsCategory)->create($request->all());
+        $category = (new NewsCategory)->create($request->validated());
 
         return redirect()->route('news.categories')
             ->with('toast_success', __('notifications.message.crud.parent.created', [
@@ -81,7 +81,7 @@ class NewsCategoriesController extends Controller
      */
     public function update(NewsCategory $category, CategoryUpdateRequest $request)
     {
-        $category->update($request->all());
+        $category->update($request->validated());
 
         return back()->with('toast_success', __('notifications.message.crud.parent.updated', [
             'parent' => __('entities.news'),

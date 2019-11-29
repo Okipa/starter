@@ -32,6 +32,7 @@ class Settings extends Model implements HasMedia
         'instagram',
         'google_tag_manager',
     ];
+
     // media ***********************************************************************************************************
 
     /**

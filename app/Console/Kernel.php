@@ -49,7 +49,6 @@ class Kernel extends ConsoleKernel
     protected function shouldRun(): bool
     {
         $shouldRun = ! $this->onScheduledDailyMaintenance();
-
         // $shouldRun = $shouldRun ?: // other condition;
 
         return $shouldRun;

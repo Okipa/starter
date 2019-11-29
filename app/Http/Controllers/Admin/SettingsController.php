@@ -29,7 +29,7 @@ class SettingsController extends Controller
     {
         /** @var  Settings $settings */
         $settings = (new Settings)->firstOrFail();
-        $settings->update($request->all());
+        $settings->update($request->validated());
         if ($request->remove_icon) {
             $settings->clearMediaCollection('icon');
         } elseif ($request->file('icon')) {

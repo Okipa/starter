@@ -49,7 +49,7 @@ class UsersController extends Controller
     public function store(UserStoreRequest $request)
     {
         $request->merge(['password' => Hash::make($request->password)]);
-        $user = (new User)->create($request->all());
+        $user = (new User)->create($request->validated());
         (new UsersService)->manageAvatarFromRequest($request, $user);
 
         return redirect()->route('users')->with('toast_success', __('notifications.message.crud.orphan.created', [
@@ -85,7 +85,7 @@ class UsersController extends Controller
         if ($request->new_password) {
             $request->merge(['password' => Hash::make($request->new_password)]);
         }
-        $user->update($request->all());
+        $user->update($request->validated());
         (new UsersService)->manageAvatarFromRequest($request, $user);
 
         return back()->with('toast_success', $user->id === Auth::id()
