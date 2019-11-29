@@ -12,7 +12,7 @@ use Okipa\LaravelTable\Table;
 interface UsersServiceInterface extends ServiceInterface
 {
     /**
-     * Get the users table list.
+     * Configure the model table list.
      *
      * @return \Okipa\LaravelTable\Table
      * @throws \ErrorException

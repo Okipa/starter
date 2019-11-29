@@ -9,7 +9,7 @@ use Okipa\LaravelTable\Table;
 class PagesService extends Service implements PagesServiceInterface
 {
     /**
-     * * Configure the simple pages table list.
+     * Configure the model table list.
      *
      * @return \Okipa\LaravelTable\Table
      * @throws \ErrorException

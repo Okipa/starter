@@ -45,7 +45,7 @@ class SimplePagesController extends Controller
     public function store(SimplePageStoreRequest $request)
     {
         $simplePage = (new SimplePage)->create($request->validated());
-        (new SeoService)->saveMetaTagsFromRequest($request, $simplePage);
+        (new SeoService)->saveMetaTagsFromRequest($simplePage, $request);
         cache()->forever(Str::camel($simplePage->slug), $simplePage->fresh());
 
         return redirect()->route('simplePages')->with('toast_success', __('notifications.message.crud.orphan.created', [
@@ -80,7 +80,7 @@ class SimplePagesController extends Controller
     {
         cache()->forget(Str::camel($simplePage->slug));
         $simplePage->update($request->except('slug'));
-        (new SeoService)->saveMetaTagsFromRequest($request, $simplePage);
+        (new SeoService)->saveMetaTagsFromRequest($simplePage, $request);
         cache()->forever(Str::camel($simplePage->slug), $simplePage->fresh());
 
         return back()->with('toast_success', __('notifications.message.crud.orphan.updated', [

@@ -58,7 +58,7 @@ class NewsArticlesController extends Controller
             $article->addMediaFromRequest('illustration')->toMediaCollection('illustrations');
         }
         $article->categories()->sync($request->category_ids);
-        (new SeoService)->saveMetaTagsFromRequest($request, $article);
+        (new SeoService)->saveMetaTagsFromRequest($article, $request);
 
         return redirect()->route('news.articles')
             ->with('toast_success', __('notifications.message.crud.parent.created', [
@@ -101,7 +101,7 @@ class NewsArticlesController extends Controller
             $article->addMediaFromRequest('illustration')->toMediaCollection('illustrations');
         }
         $article->categories()->sync($request->category_ids);
-        (new SeoService)->saveMetaTagsFromRequest($request, $article);
+        (new SeoService)->saveMetaTagsFromRequest($article, $request);
 
         return back()->with('toast_success', __('notifications.message.crud.parent.updated', [
             'parent' => __('entities.news'),

@@ -9,7 +9,8 @@ window.notify = swal.mixin({
 
 notify.toast = notify.mixin({
     toast: true,
-    position: 'top-end'
+    position: 'top-end',
+    timer: 10000
 });
 
 notify.loading = (html = app.templates.loading, title = app.notifications.title.loading) => {

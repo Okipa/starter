@@ -50,7 +50,7 @@ class Handler extends ExceptionHandler
     public function sentryReport(Exception $exception): void
     {
         if (app()->bound('sentry') && $this->shouldReport($exception)) {
-            /** @var \App\Models\User $user */
+            /** @var \App\Models\User|null $user */
             $user = auth()->user();
             if ($user) {
                 app('sentry')->configureScope(function (Scope $scope) use ($user) : void {

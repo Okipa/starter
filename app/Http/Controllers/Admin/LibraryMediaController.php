@@ -137,11 +137,13 @@ class LibraryMediaController extends Controller
     public function clipboardContent(LibraryMedia $libraryMedia, string $type)
     {
         try {
-            $clipboardContent = view(
-                'components.admin.table.library-media.' . $type . '-clipboard-content',
-                compact('libraryMedia')
-            )->toHtml();
-            $message = __('notifications.message.libraryMedia.clipboardCopy.success', [
+            $clipboardContent = $type === 'url'
+                ? $libraryMedia->getFirstMedia('medias')->getFullUrl()
+                : trim(view(
+                    'components.admin.table.library-media.html-clipboard-content',
+                    compact('libraryMedia')
+                )->toHtml());
+            $message = __('library-media.notifications.clipboardCopy.success', [
                 'type' => strtoupper($type),
                 'name' => $libraryMedia->name,
             ]);

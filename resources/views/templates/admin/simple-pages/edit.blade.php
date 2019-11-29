@@ -35,7 +35,7 @@
                 @endif
                 {{ bsText()->name('url')
                     ->model($simplePage)
-                    ->prepend(route('simplePage.show', ['url' => null]) . '/')
+                    ->prepend(route('simplePage.show', ['url' => '']) . '/')
                     ->componentClasses(['lowercase'])
                     ->componentHtmlAttributes(['data-autofill-from' => '#text-title'])
                     ->containerHtmlAttributes(['required']) }}

@@ -1,31 +1,33 @@
 @if($media = $libraryMedia->getFirstMedia('medias'))
-    @php
-        $imageType = Str::contains($media->mime_type, 'image') || Str::contains($media->mime_type, 'pdf');
-        $videoType = Str::contains($media->mime_type, 'video');
-        $audioType = Str::contains($media->mime_type, 'audio');
-        $downloadable = $libraryMedia->downloadable || (! $imageType || ! $videoType || ! $audioType);
-    @endphp
-    @if($downloadable)
-        <a class="d-flex" href="{{ route('download.file', ['path' => $media->getPath()]) }}"
-           title="{{ $libraryMedia->name }}">
-            @if(Str::contains($media->mime_type, 'image') || Str::contains($media->mime_type, 'pdf'))
-                {!! config('library-media.icons.image') !!}
-            @elseif(Str::contains($media->mime_type, 'video'))
-                {!! config('library-media.icons.video') !!}
-            @elseif(Str::contains($media->mime_type, 'audio'))
-                {!! config('library-media.icons.audio') !!}
-            @else
-                {!! config('library-media.icons.file') !!}
-            @endif
-            @lang('library-media.download', ['name' => $libraryMedia->name])
-        </a>
-    @else
-        @if(Str::contains($media->mime_type, 'image') || Str::contains($media->mime_type, 'pdf'))
-            {{ image()->src($media->getUrl()) }}
-        @elseif(Str::contains($media->mime_type, 'video'))
-            {{ video()->src($media->getUrl()) }}
-        @elseif(Str::contains($media->mime_type, 'audio'))
-            {{ audio()->src($media->getUrl()) }}
-        @endif
-    @endif
+@if($libraryMedia->downloadable)
+{{-- display --}}
+<div class="my-3">
+@if($libraryMedia->type === 'image')
+    <img src="{{ $media->getUrl() }}" alt="{{ $libraryMedia->name }}">
+@elseif($libraryMedia->type === 'pdf')
+    <a href="{{ $media->getUrl() }}" title="{{ __('library-media.actions.preview', ['name' => $libraryMedia->name]) }}" data-lity>
+        <img src="{{ $media->getUrl('thumb') }}" alt="{{ $libraryMedia->name }}">
+        <span class="mt-1 d-block small"><i class="fas fa-search fa-fw"></i>{{ $libraryMedia->name }}</span>
+    </a>
+@elseif($libraryMedia->type === 'audio')
+    <audio controls preload="1">
+        <source src="/storage/14/test.mp3?v=1574955679">
+        Your browser does not support the audio tag.
+    </audio>
+@elseif($libraryMedia->type === 'video')
+    <video controls preload="1">
+        <source src="{{ $media->getUrl() }}">
+        Your browser does not support the video tag.
+    </video>
+@endif
+</div>
+@else
+{{-- download --}}
+<div class="my-3">
+    <a href="{{ route('download.file', ['path' => $media->getPath()]) }}" title="{{ __('library-media.actions.download', ['name' => $libraryMedia->name]) }}">
+        {!! $libraryMedia->icon !!}
+        <span class="mt-1 d-block small"><i class="fas fa-download fa-fw"></i>{{ $libraryMedia->name }}</span>
+    </a>
+</div>
+@endif
 @endif

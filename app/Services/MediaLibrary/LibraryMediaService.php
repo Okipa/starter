@@ -29,23 +29,37 @@ class LibraryMediaService extends Service implements LibraryMediaServiceInterfac
                     'name'   => $libraryMedia->name,
                 ]),
             ];
+        })->query(function ($query) {
+            $query->select('library_media.*');
+            $query->addSelect('media.mime_type');
+            $query->join('media', 'media.model_id', '=', 'library_media.id');
+            $query->where('model_type', 'App\Models\LibraryMedia');
         });
         $table->column('thumb')->html(function (LibraryMedia $libraryMedia) {
             return view('components.admin.table.library-media.thumb', compact('libraryMedia'));
         });
         $table->column('name')->sortable(true)->value(function (LibraryMedia $libraryMedia) {
             return $libraryMedia->name;
-        });
+        })->searchable();
+        $table->column('mime_type')
+            ->title(__('library-media.labels.mime_type'))
+            ->html(function (LibraryMedia $libraryMedia) {
+                return '<a class="new-window" href="https://slick.pl/kb/htaccess/complete-list-mime-types">'
+                    . $libraryMedia->getFirstMedia('medias')->mime_type
+                    . '</a>';
+            })
+            ->sortable()
+            ->searchable('media');
         $table->column('downloadable')->html(function (LibraryMedia $libraryMedia) {
             return $libraryMedia->downloadable
                 ? '<i class="fas fa-check text-success"></i>'
                 : '<i class="fas fa-times text-danger"></i>';
         })->sortable();
-        $table->column()->title(__('library-media.clipboardCopy'))->html(function(LibraryMedia $libraryMedia){
+        $table->column()->title(__('library-media.labels.clipboardCopy'))->html(function (LibraryMedia $libraryMedia) {
             return view('components.admin.table.library-media.copy-clipboard-buttons', compact('libraryMedia'));
         });
-        $table->column('created_at')->dateTimeFormat('d/m/Y H:i')->sortable();
         $table->column('updated_at')->dateTimeFormat('d/m/Y H:i')->sortable();
+        $table->column('created_at')->dateTimeFormat('d/m/Y H:i')->sortable();
 
         return $table;
     }

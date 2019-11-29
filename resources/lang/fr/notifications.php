@@ -66,11 +66,6 @@ return [
             'success' => 'La liste a été réorganisée.',
         ],
         'loading'        => 'Merci de patienter quelques instants...',
-        'libraryMedia'   => [
-            'clipboardCopy' => [
-                'success' => ':type du média « :name » copié dans le presse-papier.',
-            ],
-        ],
     ],
 
 ];

@@ -3,13 +3,9 @@
     <h1>
         <i class="fas fa-photo-video fa-fw"></i>
         @if($libraryMedia)
-            @lang('admin.title.orphan.edit', [
-                'entity' => __('entities.libraryMedia'), 'detail' => $libraryMedia->name,
-            ])
+            @lang('admin.title.orphan.edit', ['entity' => __('entities.libraryMedia'), 'detail' => $libraryMedia->name])
         @else
-            @lang('admin.title.orphan.create', [
-                'entity' => __('entities.libraryMedia'),
-            ])
+            @lang('admin.title.orphan.create', ['entity' => __('entities.libraryMedia')])
         @endif
     </h1>
     <hr>
@@ -29,14 +25,11 @@
             </div>
             <div class="card-body">
                 <h3>@lang('admin.section.media')</h3>
-                @php($mediaFile = optional($libraryMedia)->getFirstMedia('medias'))
                 {{ bsFile()->name('media')
-                    ->value(optional($mediaFile)->file_name)
-                    ->uploadedFile(function() use ($mediaFile) {
-                        return $mediaFile
-                            ? image()->src($mediaFile->getUrl('thumb'))
-                                ->linkUrl($mediaFile->getUrl())
-                                ->containerClasses(['mb-2'])
+                    ->value(optional(optional($libraryMedia)->getFirstMedia('medias'))->file_name)
+                    ->uploadedFile(function() use($libraryMedia) {
+                        return $libraryMedia
+                            ? '<div class="mb-2">' . view('components.admin.table.library-media.thumb', compact('libraryMedia')) . '</div>'
                             : null;
                     })
                     ->showRemoveCheckbox(false)

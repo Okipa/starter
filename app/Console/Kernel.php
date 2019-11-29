@@ -49,6 +49,7 @@ class Kernel extends ConsoleKernel
     protected function shouldRun(): bool
     {
         $shouldRun = ! $this->onScheduledDailyMaintenance();
+
         // $shouldRun = $shouldRun ?: // other condition;
 
         return $shouldRun;
@@ -76,7 +77,10 @@ class Kernel extends ConsoleKernel
     {
         $segments = explode(':', $time);
 
-        return Carbon::now($this->scheduleTimezone())->startOfDay()->hours($segments[0])->minutes($segments[1]);
+        return Carbon::now($this->scheduleTimezone())
+            ->startOfDay()
+            ->hours((int) $segments[0])
+            ->minutes((int) $segments[1]);
     }
 
     /**

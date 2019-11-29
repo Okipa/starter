@@ -1,17 +1,15 @@
 @if($media = $libraryMedia->getFirstMedia('medias'))
-    @if(Str::contains($media->mime_type, 'image') || Str::contains($media->mime_type, 'pdf'))
-        {{ image()->src($media->getUrl('thumb'))->linkUrl($media->getUrl()) }}
-    @elseif(Str::contains($media->mime_type, 'video'))
-        <a href="{{ $media->getUrl() }}" title="{{ $media->name }}" data-lity>
-            {!! config('library-media.icons.video') !!}
+    @if(in_array($libraryMedia->type, ['image', 'pdf']))
+        <a href="{{ $media->getUrl() }}" title="{{ __('library-media.actions.preview', ['name' => $libraryMedia->name]) }}" data-lity>
+            <img src="{{ $media->getUrl('thumb') }}" alt="{{ $libraryMedia->name }}">
         </a>
-    @elseif(Str::contains($media->mime_type, 'audio'))
-        <a href="{{ $media->getUrl() }}" title="{{ $media->name }}" data-lity>
-            {!! config('library-media.icons.audio') !!}
+    @elseif(in_array($libraryMedia->type, ['video', 'audio']))
+        <a href="{{ $media->getUrl() }}" title="{{ __('library-media.actions.preview', ['name' => $libraryMedia->name]) }}" data-lity>
+            {!! $libraryMedia->icon !!}
         </a>
     @else
-        <a href="{{ $media->getUrl() }}" title="{{ $media->name }}" data-lity>
-            {!! config('library-media.icons.file') !!}
+        <a href="{{ route('download.file', ['path' => $media->getPath()]) }}" title="{{ __('library-media.actions.download', ['name' => $libraryMedia->name]) }}">
+            {!! $libraryMedia->icon !!}
         </a>
     @endif
 @endif

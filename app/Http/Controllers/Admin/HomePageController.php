@@ -37,7 +37,7 @@ class HomePageController extends Controller
         /** @var \App\Models\HomePage $homePage */
         $homePage = (new HomePage)->firstOrFail();
         $homePage->update($request->validated());
-        (new SeoService)->saveMetaTagsFromRequest($request, $homePage);
+        (new SeoService)->saveMetaTagsFromRequest($homePage, $request);
 
         return back()->with('toast_success', __('notifications.message.crud.name.updated', [
             'entity' => __('entities.home'),

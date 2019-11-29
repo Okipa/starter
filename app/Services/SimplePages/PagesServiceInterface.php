@@ -7,7 +7,7 @@ use App\Services\ServiceInterface;
 interface PagesServiceInterface extends ServiceInterface
 {
     /**
-     * * Configure the simple pages table list.
+     * Configure the model table list.
      *
      * @return \Okipa\LaravelTable\Table
      * @throws \ErrorException
