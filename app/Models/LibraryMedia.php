@@ -26,8 +26,14 @@ class LibraryMedia extends Model implements HasMedia
         'name',
         'downloadable',
     ];
-
-    // media ***********************************************************************************************************
+    /**
+     * The attributes that should be cast to native types.
+     *
+     * @var array
+     */
+    protected $casts = [
+        'downloadable' => 'boolean',
+    ];
 
     /**
      * Register the media collections.
@@ -102,10 +108,6 @@ class LibraryMedia extends Model implements HasMedia
             ->keepOriginalImageFormat();
     }
 
-    // relationships ***************************************************************************************************
-
-    // attributes ******************************************************************************************************
-
     /**
      * @return string
      */
@@ -136,8 +138,8 @@ class LibraryMedia extends Model implements HasMedia
     /**
      * @return bool
      */
-    public function getDownloadableAttribute(): bool
+    public function getCanBeDisplayedAttribute(): bool
     {
-        return $this->type === 'file' ? true : ($this->downloadable ?? false);
+        return $this->type !== 'file';
     }
 }

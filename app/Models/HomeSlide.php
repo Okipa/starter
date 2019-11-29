@@ -2,12 +2,11 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
-use Spatie\MediaLibrary\HasMedia\HasMedia;
-use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
 use Spatie\EloquentSortable\Sortable;
 use Spatie\EloquentSortable\SortableTrait;
 use Spatie\Image\Manipulations;
+use Spatie\MediaLibrary\HasMedia\HasMedia;
+use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
 use Spatie\MediaLibrary\Models\Media;
 
 class HomeSlide extends Model implements HasMedia, Sortable
@@ -36,8 +35,15 @@ class HomeSlide extends Model implements HasMedia, Sortable
         'position',
         'active',
     ];
-
-    // media ***********************************************************************************************************
+    /**
+     * The attributes that should be cast to native types.
+     *
+     * @var array
+     */
+    protected $casts = [
+        'position' => 'integer',
+        'active'   => 'boolean',
+    ];
 
     /**
      * Register the media collections.
@@ -71,8 +77,6 @@ class HomeSlide extends Model implements HasMedia, Sortable
             ->fit(Manipulations::FIT_CROP, 40, 40)
             ->keepOriginalImageFormat();
     }
-
-    // relationships ***************************************************************************************************
 
     public function homePage()
     {

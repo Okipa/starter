@@ -36,7 +36,35 @@
                     ->containerHtmlAttributes(['required'])
                     ->legend((new \App\Models\LibraryMedia)->constraintsLegend('medias')) }}
                 {{ bsText()->name('name')->model($libraryMedia)->containerHtmlAttributes(['required']) }}
-                {{ bsToggle()->name('downloadable')->model($libraryMedia)->containerClasses(['form-group', 'mt-4']) }}
+                @if(! $libraryMedia || optional($libraryMedia)->canBeDisplayed)
+                    {{ bsToggle()->name('downloadable')
+                        ->checked(optional($libraryMedia)->downloadable ?? false)
+                        ->containerClasses(['form-group', 'mt-4']) }}
+                @endif
+                @if($libraryMedia)
+                    {{ bsText()->name('url')
+                        ->label(__('library-media.labels.url'))
+                        ->prepend(false)
+                        ->value($libraryMedia->getFirstMedia('medias')->getFullUrl())
+                        ->containerClasses(['mb-1'])
+                        ->componentHtmlAttributes(['disabled']) }}
+                    <div class="form-group">
+                        <button type="button" class="btn btn-outline-primary clipboard-copy" data-library-media-id="{{ $libraryMedia->id }}" data-type="url">
+                            <i class="fas fa-link fa-fw"></i> @lang('library-media.labels.clipboardCopy')
+                        </button>
+                    </div>
+                    {{ bsTextarea()->name('html')
+                        ->label(__('library-media.labels.html'))
+                        ->prepend(false)
+                        ->value(trim(view('components.admin.table.library-media.html-clipboard-content', compact('libraryMedia'))->toHtml()))
+                        ->containerClasses(['mb-1'])
+                        ->componentHtmlAttributes(['rows' => 6, 'disabled']) }}
+                    <div class="form-group">
+                        <button type="button" class="btn btn-outline-primary clipboard-copy" data-library-media-id="{{ $libraryMedia->id }}" data-type="html">
+                            <i class="fas fa-link fa-fw"></i> @lang('library-media.labels.clipboardCopy')
+                        </button>
+                    </div>
+                @endif
                 <div class="d-flex pt-4">
                     {{ bsCancel()->route('libraryMedia.index')->containerClasses(['mr-2']) }}
                     @if($libraryMedia){{ bsUpdate() }}@else{{ bsCreate() }}@endif

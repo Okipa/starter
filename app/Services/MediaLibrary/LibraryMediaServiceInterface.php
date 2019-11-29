@@ -15,4 +15,9 @@ interface LibraryMediaServiceInterface extends ServiceInterface
      * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
     public function table(): Table;
+
+    /**
+     * Inject javascript in the current view.
+     */
+    public function injectJavascriptInView(): void;
 }

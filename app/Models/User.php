@@ -2,14 +2,14 @@
 
 namespace App\Models;
 
-use Spatie\Image\Manipulations;
-use App\Notifications\VerifyEmail;
 use App\Notifications\ResetPassword;
-use Spatie\MediaLibrary\Models\Media;
-use Illuminate\Notifications\Notifiable;
-use Spatie\MediaLibrary\HasMedia\HasMedia;
+use App\Notifications\VerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
+use Spatie\Image\Manipulations;
+use Spatie\MediaLibrary\HasMedia\HasMedia;
 use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
+use Spatie\MediaLibrary\Models\Media;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail; // todo : uncomment if this feature is needed
 class User extends Authenticatable implements
@@ -39,17 +39,6 @@ class User extends Authenticatable implements
         'password',
         'remember_token',
     ];
-    /**
-     * The accessors to append to the model's array form.
-     *
-     * @var array
-     */
-    protected $appends = [
-        'name',
-        'initials',
-    ];
-
-    // media ***********************************************************************************************************
 
     /**
      * Register the media collections.
@@ -84,10 +73,6 @@ class User extends Authenticatable implements
             ->keepOriginalImageFormat();
     }
 
-    // relationships ***************************************************************************************************
-
-    // custom attributes ***********************************************************************************************
-
     /**
      * @return string
      */
@@ -106,8 +91,6 @@ class User extends Authenticatable implements
 
         return substr($cleanedFirstName, 0, 1) . substr($cleanedLastName, 0, 1);
     }
-
-    // actions *********************************************************************************************************
 
     /**
      * Send the password reset notification.

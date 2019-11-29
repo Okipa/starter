@@ -3,9 +3,9 @@
 namespace App\Models;
 
 use Plank\Metable\Metable;
+use Spatie\Image\Manipulations;
 use Spatie\MediaLibrary\HasMedia\HasMedia;
 use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
-use Spatie\Image\Manipulations;
 use Spatie\MediaLibrary\Models\Media;
 
 class NewsArticle extends Model implements HasMedia
@@ -35,11 +35,10 @@ class NewsArticle extends Model implements HasMedia
      *
      * @var array
      */
-    protected $dates = [
-        'published_at',
+    protected $casts = [
+        'active'       => 'boolean',
+        'published_at' => 'datetime',
     ];
-
-    // media ***********************************************************************************************************
 
     /**
      * Register the media collections.
@@ -76,8 +75,6 @@ class NewsArticle extends Model implements HasMedia
             ->fit(Manipulations::FIT_CROP, 40, 40)
             ->keepOriginalImageFormat();
     }
-
-    // relationships ***************************************************************************************************
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany

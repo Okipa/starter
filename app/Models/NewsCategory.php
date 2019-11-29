@@ -19,8 +19,6 @@ class NewsCategory extends Model
         'title',
     ];
 
-    // relationships ***************************************************************************************************
-
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */

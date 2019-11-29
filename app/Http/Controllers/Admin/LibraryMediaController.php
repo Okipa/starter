@@ -23,13 +23,7 @@ class LibraryMediaController extends Controller
     {
         $table = (new LibraryMediaService)->table();
         SEOTools::setTitle(__('admin.title.orphan.index', ['entity' => __('entities.libraryMedia')]));
-        JavaScript::put([
-            'libraryMedia' => [
-                'clipboardCopy' => [
-                    'route' => route('libraryMedia.clipboardContent', ['__ID__', '__TYPE__']),
-                ],
-            ],
-        ]);
+        (new LibraryMediaService)->injectJavascriptInView();
         $js = mix('/js/library-media/index.js');
 
         return view('templates.admin.libraryMedia.index', compact('table', 'js'));
@@ -78,6 +72,7 @@ class LibraryMediaController extends Controller
      * @param \App\Models\LibraryMedia $libraryMedia
      *
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @throws \Exception
      */
     public function edit(LibraryMedia $libraryMedia)
     {
@@ -85,8 +80,10 @@ class LibraryMediaController extends Controller
             'entity' => __('entities.libraryMedia'),
             'detail' => $libraryMedia->title,
         ]));
+        (new LibraryMediaService)->injectJavascriptInView();
+        $js = mix('/js/library-media/edit.js');
 
-        return view('templates.admin.libraryMedia.edit', compact('libraryMedia'));
+        return view('templates.admin.libraryMedia.edit', compact('libraryMedia', 'js'));
     }
 
     /**

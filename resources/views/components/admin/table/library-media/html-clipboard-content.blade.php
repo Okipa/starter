@@ -1,5 +1,5 @@
 @if($media = $libraryMedia->getFirstMedia('medias'))
-@if($libraryMedia->downloadable)
+@if($libraryMedia->canBeDisplayed && ! $libraryMedia->downloadable)
 {{-- display --}}
 <div class="my-3">
 @if($libraryMedia->type === 'image')

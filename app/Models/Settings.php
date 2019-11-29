@@ -3,9 +3,9 @@
 namespace App\Models;
 
 use Spatie\Image\Manipulations;
-use Spatie\MediaLibrary\Models\Media;
 use Spatie\MediaLibrary\HasMedia\HasMedia;
 use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
+use Spatie\MediaLibrary\Models\Media;
 
 class Settings extends Model implements HasMedia
 {
@@ -32,8 +32,6 @@ class Settings extends Model implements HasMedia
         'instagram',
         'google_tag_manager',
     ];
-
-    // media ***********************************************************************************************************
 
     /**
      * Register the media collections.
