@@ -1,7 +1,3 @@
-@php
-    $route = request()->route()->getName();
-    $user = auth()->user();
-@endphp
 <nav id="navbar" class="navbar navbar-expand-md navbar-dark bg-dark w-100 fixed-top">
     <a class="navbar-brand d-flex align-items-center pl-3 pr-3" href="{{ route('admin') }}">
         @if($icon = $settings->getFirstMedia('icon'))

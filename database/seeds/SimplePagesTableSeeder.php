@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\SimplePage;
+use App\Services\Seo\SeoService;
 use Faker\Factory;
 use Illuminate\Database\Seeder;
 
@@ -42,8 +43,9 @@ Ordered list :
 
 [Link](http://www.google.com).
 EOT;
-        $this->createSimplePage('CGU et mentions légales', 'terms-of-service');
-        $this->createSimplePage('Charte de respect de la vie privée - RGPD', 'rgpd');
+        $this->createSimplePage('Contact', 'contact-page');
+        $this->createSimplePage('CGU et mentions légales', 'terms-of-service-page');
+        $this->createSimplePage('Charte de respect de la vie privée - RGPD', 'rgpd-page');
     }
 
     /**
@@ -59,7 +61,9 @@ EOT;
             'description' => $this->fakeText,
             'active'      => true,
         ]);
-        $simplePage->setMeta('meta_title', $title);
-        $simplePage->setMeta('meta_description', $this->faker->text(150));
+        (new SeoService)->saveMetaTags($simplePage, [
+            'meta_title' => $title,
+            'meta_description' => $this->faker->text(150)
+        ]);
     }
 }

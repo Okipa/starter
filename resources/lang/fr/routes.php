@@ -32,8 +32,8 @@ return [
     'home'         => [
         'page'   => [
             'index'  => '/',
-            'edit'   => 'accueil/editer',
-            'update' => 'accueil/mettre-a-jour',
+            'edit'   => 'accueil/page/editer',
+            'update' => 'accueil/page/mettre-a-jour',
         ],
         'slides' => [
             'index'   => 'accueil/slides',
@@ -61,6 +61,13 @@ return [
             'update'  => 'news/article/mettre-a-jour/{article}',
             'destroy' => 'news/article/supprimer/{article}',
             'show'    => 'news/article/{url}',
+        ],
+    ],
+    'contact'      => [
+        'page' => [
+            'edit'   => 'contact/page/editer',
+            'update' => 'contact/page/mettre-a-jour',
+            'show'   => 'contact',
         ],
     ],
     'simplePages'  => [

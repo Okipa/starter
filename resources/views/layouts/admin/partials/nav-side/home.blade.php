@@ -1,6 +1,6 @@
 @php
-    $homePageActive = in_array($route, ['home.page.edit']);
-    $homeSlidesActive = in_array($route, ['home.slides', 'home.slide.create', 'home.slide.edit']);
+    $homePageActive = in_array(request()->route()->getName(), ['home.page.edit']);
+    $homeSlidesActive = in_array(request()->route()->getName(), ['home.slides', 'home.slide.create', 'home.slide.edit']);
     $subMenuActive = $homePageActive || $homeSlidesActive;
 @endphp
 <li class="nav-item">

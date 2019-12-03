@@ -7,7 +7,7 @@
         ])
     </li>
     {{-- top menu --}}
-    <li {{ classTag('nav-item', $route === 'user.profile' ? 'active' : null) }}>
+    <li {{ classTag('nav-item', request()->route()->getName() === 'user.profile' ? 'active' : null) }}>
         <div class="dropdown">
             <a href=""
                class="dropdown-toggle nav-link"
@@ -16,12 +16,12 @@
                aria-expanded="false">
                 <i class="fas fa-user-check fa-fw text-success"></i>
                 <span class="d-none d-sm-inline-block">
-                    {{ $user->name }}
+                    {{ auth()->user()->name }}
                 </span>
             </a>
             <div {{ classTag('dropdown-menu', 'dropdown-menu-right') }}>
                 <a href="{{ route('user.profile.edit') }}"
-                   {{ classTag('dropdown-item', 'load-on-click', $route === 'user.profile' ? 'active' : null) }}
+                   {{ classTag('dropdown-item', 'load-on-click', request()->route()->getName() === 'user.profile' ? 'active' : null) }}
                    title="{{ __('nav.admin.profile') }}">
                     <i class="fas fa-user-circle fa-fw"></i>
                     @lang('nav.admin.profile')

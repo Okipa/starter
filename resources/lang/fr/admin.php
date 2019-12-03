@@ -32,6 +32,7 @@ return [
         'media'       => 'Media',
         'information' => 'Informations',
         'content'     => 'Contenu',
+        'language'    => 'Langue',
     ],
 
 ];

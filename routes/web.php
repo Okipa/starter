@@ -23,6 +23,7 @@ Route::prefix(LaravelLocalization::setLocale())
             require('web/admin/dashboard.php');
             require('web/admin/home.php');
             require('web/admin/news.php');
+            require('web/admin/contact.php');
             require('web/admin/simplePages.php');
             require('web/admin/libraryMedia.php');
             // sensitive data

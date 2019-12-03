@@ -6,6 +6,7 @@ return [
     'dashboard'    => 'Tableau de bord',
     'home'         => 'Accueil',
     'news'         => 'Actualités',
+    'contact'      => 'Contact',
     'simplePages'  => 'Pages simples',
     'users'        => 'Utilisateurs',
     'profile'      => 'Mon profil',

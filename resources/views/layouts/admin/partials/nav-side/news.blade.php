@@ -1,6 +1,6 @@
 @php
-    $newsCategoriesActive = in_array($route, ['news.categories', 'news.category.create', 'news.category.edit']);
-    $newsArticlesActive = in_array($route, ['news.articles', 'news.article.create', 'news.article.edit']);
+    $newsCategoriesActive = in_array(request()->route()->getName(), ['news.categories', 'news.category.create', 'news.category.edit']);
+    $newsArticlesActive = in_array(request()->route()->getName(), ['news.articles', 'news.article.create', 'news.article.edit']);
     $subMenuActive = $newsArticlesActive || $newsCategoriesActive;
 @endphp
 <li class="nav-item">

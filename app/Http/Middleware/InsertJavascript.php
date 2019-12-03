@@ -19,7 +19,7 @@ class InsertJavascript
      */
     public function handle($request, Closure $next)
     {
-        $termsOfService = cache('termsOfService');
+        $termsOfServicePage = cache('termsOfServicePage');
         JavaScript::put([
             'locale'        => app()->getLocale(),
             'notifications' => __('notifications'),
@@ -31,8 +31,8 @@ class InsertJavascript
             'static'        => __('static'),
             'routes'        => [
                 'page' => [
-                    'termsOfService' => $termsOfService
-                        ? route('simplePage.show', $termsOfService->url)
+                    'termsOfService' => $termsOfServicePage
+                        ? route('simplePage.show', $termsOfServicePage->url)
                         : null,
                 ],
             ],

@@ -3,8 +3,9 @@
 return [
 
     'front' => [
-        'home' => 'Accueil',
-        'news' => 'Actualités',
+        'home'    => 'Accueil',
+        'news'    => 'Actualités',
+        'contact' => 'Contact',
     ],
 
     'admin' => [
@@ -21,6 +22,7 @@ return [
         'dashboard'    => 'Tableau de bord',
         'home'         => 'Accueil',
         'news'         => 'Actualités',
+        'contact'      => 'Contact',
         'simplePages'  => 'Pages simples',
         'libraryMedia' => 'Bibliothèque médias',
         'users'        => 'Utilisateurs',

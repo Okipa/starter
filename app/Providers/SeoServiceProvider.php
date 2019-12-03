@@ -2,8 +2,6 @@
 
 namespace App\Providers;
 
-use App\Services\Seo\SeoService;
-use Artesaos\SEOTools\Facades\SEOTools;
 use Illuminate\Support\Arr;
 use Illuminate\Support\ServiceProvider;
 use LaravelLocalization;

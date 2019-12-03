@@ -5,18 +5,18 @@
                 <i class="fas fa-copyright fa-fw"></i>
                 {{ config('app.name') }}
             </span>
-            @if($termsOfService)
+            @if($termsOfServicePage)
                 <a class="text-body"
-                   href="{{ route('simplePage.show', $termsOfService->url) }}"
-                   title="{{ $termsOfService->title }}">
-                    {{ $termsOfService->title }}
+                   href="{{ route('simplePage.show', $termsOfServicePage->url) }}"
+                   title="{{ $termsOfServicePage->title }}">
+                    {{ $termsOfServicePage->title }}
                 </a>
             @endif
-            @if($rgpd)
+            @if($rgpdPage)
                 <a class="text-body"
-                   href="{{ route('simplePage.show', $rgpd->url) }}"
-                   title="{{ $rgpd->title }}">
-                    {{ $rgpd->title }}
+                   href="{{ route('simplePage.show', $rgpdPage->url) }}"
+                   title="{{ $rgpdPage->title }}">
+                    {{ $rgpdPage->title }}
                 </a>
             @endif
             <div>
