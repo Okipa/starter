@@ -1,4 +1,4 @@
-@if(multilingual())
+@if(count(LaravelLocalization::getSupportedLocales()) > 1)
     <div {{ classTag('dropdown', isset($containerClasses) ? $containerClasses : null) }}>
         <a href=""
            {{ classTag('dropdown-toggle', isset($dropdownLabelClass) ? $dropdownLabelClass : null) }}

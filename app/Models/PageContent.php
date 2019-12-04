@@ -56,6 +56,6 @@ class PageContent extends Model
      */
     public function getMeta(string $key, $default = null)
     {
-        $this->traitGetMeta($key . '_' . LaravelLocalization::getCurrentLocale(), $default);
+        return $this->traitGetMeta($key . '_' . LaravelLocalization::getCurrentLocale(), $default);
     }
 }

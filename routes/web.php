@@ -7,7 +7,7 @@ Route::namespace('Utils')->group(function () {
 });
 // localized routes ****************************************************************************************************
 Route::prefix(LaravelLocalization::setLocale())
-    ->middleware(['localeSessionRedirect', 'localizationRedirect', 'localeViewPath'])
+//    ->middleware(['localeSessionRedirect', 'localizationRedirect', 'localeViewPath'])
     ->group(function () {
         // auth ********************************************************************************************************
         require('web/auth/login.php');

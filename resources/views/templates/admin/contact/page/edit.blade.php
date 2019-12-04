@@ -17,12 +17,16 @@
             </div>
             <div class="card-body">
                 <h3>@lang('admin.section.content')</h3>
-                {{ bsText()->name('title')->model($contactPageContent)->containerHtmlAttributes(['required']) }}
+                {{ bsText()->name('title')
+                    ->locales($supportedLocales)
+                    ->value(optional($contactPageContent)->getMeta('title'))
+                    ->containerHtmlAttributes(['required', 'multilingual']) }}
                 {{ bsTextarea()->name('description')
-                    ->model($contactPageContent)
+                    ->locales($supportedLocales)
+                    ->value(optional($contactPageContent)->getMeta('title'))
                     ->prepend(false)
                     ->componentClasses(['editor'])
-                    ->containerHtmlAttributes(['required']) }}
+                    ->containerHtmlAttributes(['required', 'multilingual']) }}
                 @include('components.admin.seo.meta-tags', ['model' => $contactPageContent])
                 <div class="d-flex pt-4">
                     {{ bsUpdate() }}

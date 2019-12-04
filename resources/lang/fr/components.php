@@ -5,8 +5,9 @@ return [
         'label' => 'Langues',
     ],
     'notice'   => [
-        'title'    => 'Notice formulaire :',
-        'required' => 'Champs obligatoires.',
+        'title'        => 'Notice formulaire :',
+        'required'     => 'Champs obligatoires.',
+        'multilingual' => 'Champs multilingues.',
     ],
     'table'    => [
         'link' => 'Lien',

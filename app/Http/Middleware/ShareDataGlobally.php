@@ -7,6 +7,7 @@ use App\Models\SimplePage;
 use Closure;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
+use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 class ShareDataGlobally
 {
@@ -25,6 +26,9 @@ class ShareDataGlobally
         $sharedData = [
             'settings' => cache()->rememberForever('settings', function () {
                 return (new Settings)->with(['media'])->first();
+            }),
+            'supportedLocales' => cache()->rememberForever('supportedLocales', function () {
+                return array_keys(LaravelLocalization::getLocalesOrder());
             }),
         ];
         // cache dynamic items

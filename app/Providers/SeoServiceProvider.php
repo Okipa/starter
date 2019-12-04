@@ -17,13 +17,14 @@ class SeoServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        if (multilingual()) {
+        $severalLanguages = count(LaravelLocalization::getSupportedLocales()) > 1;
+        if ($severalLanguages) {
             foreach (array_keys(LaravelLocalization::getLocalesOrder()) as $localCode) {
                 SEO::metatags()->addAlternateLanguage($localCode, LaravelLocalization::getLocalizedURL($localCode));
             }
         }
         SEO::opengraph()->addProperty('locale', LaravelLocalization::getCurrentLocaleRegional());
-        if (multilingual()) {
+        if ($severalLanguages) {
             SEO::opengraph()->addProperty(
                 'locale:alternate',
                 implode(',', Arr::pluck(LaravelLocalization::getLocalesOrder(), 'regional'))

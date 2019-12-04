@@ -1,14 +1,53 @@
 .form-group {
 
-    &[required] {
+    &[required], &[multilingual] {
         position: relative;
+    }
+
+    &[required] {
 
         &:before {
             content: '*';
             position: absolute;
-            left: -0.8rem;
+            left: -.8rem;
             top: 0;
             color: $danger;
+            z-index: $zindex-dropdown;
+            font-size: 1rem;
+        }
+    }
+
+    &[multilingual] {
+
+        &:before {
+            content: '*';
+            position: absolute;
+            left: -.8rem;
+            top: 0;
+            color: $success;
+            z-index: $zindex-dropdown;
+            font-size: 1rem;
+        }
+    }
+
+    &[required][multilingual] {
+
+        &:before {
+            content: '*';
+            position: absolute;
+            left: -.8rem;
+            top: 0;
+            color: $danger;
+            z-index: $zindex-dropdown;
+            font-size: 1rem;
+        }
+
+        &:after {
+            content: '*';
+            position: absolute;
+            left: -.8rem;
+            top: .35rem;
+            color: $success;
             z-index: $zindex-dropdown;
             font-size: 1rem;
         }

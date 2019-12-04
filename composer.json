@@ -13,7 +13,7 @@
         "laravel/telescope": "^2.0",
         "laravel/tinker": "^1.0",
         "mcamara/laravel-localization": "^1.4",
-        "okipa/laravel-bootstrap-components": "^1.0",
+        "okipa/laravel-bootstrap-components": "dev-multilingual",
         "okipa/laravel-failed-jobs-notifier": "^1.0",
         "okipa/laravel-medialibrary-ext": "^7.11.0",
         "okipa/laravel-request-sanitizer": "^1.1",
@@ -55,9 +55,6 @@
         "classmap": [
             "database/seeds",
             "database/factories"
-        ],
-        "files": [
-            "app/Helpers/helpers.php"
         ]
     },
     "autoload-dev": {
