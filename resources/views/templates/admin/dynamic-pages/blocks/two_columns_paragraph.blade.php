@@ -4,7 +4,7 @@
     <h1>
         <i class="fas fa-file-alt fa-fw"></i>
         @if ($dynamicPageBlock)
-            @lang('admin.title.orphan.edit', ['entity' => __('dynamic-pages.entities.dynamicPageBlocks'), 'detail' => __(config('dynamic-pages.blocks.paragraph.name')) ])
+            @lang('admin.title.orphan.edit', ['entity' => __('dynamic-pages.entities.dynamicPageBlocks'), 'detail' => __(config('dynamic-pages.blocks.two_columns_paragraph.name')) ])
         @else
             @lang('admin.title.orphan.create', ['entity' => __('dynamic-pages.entities.dynamicPageBlocks') ])
         @endif
@@ -17,7 +17,7 @@
            </h2>
        </div>
        <div class="card-body">
-           <form action="{{ $dynamicPageBlock ? route('dynamicPageBlock.paragraph.update', [ $dynamicPage, $dynamicPageBlock ]) : route('dynamicPageBlock.paragraph.store', $dynamicPage) }}" method="POST">
+           <form action="{{ $dynamicPageBlock ? route('dynamicPageBlock.two_columns_paragraph.update', [ $dynamicPage, $dynamicPageBlock ]) : route('dynamicPageBlock.two_columns_paragraph.store', $dynamicPage) }}" method="POST">
                @csrf
 
                @if ($dynamicPageBlock)
@@ -27,9 +27,15 @@
                @include('components.common.form.notice')
 
                {{ bsTextarea()
-                   ->name('content')
+                   ->name('content_left')
                    ->model($dynamicPageBlock ? $dynamicPageBlock->blockable : null)
-                   ->label('dynamic-pages.validation.attributes.paragraph.content')
+                   ->label('dynamic-pages.validation.attributes.two_columns_paragraph.content_left')
+                   ->containerHtmlAttributes([ 'required' ]) }}
+
+               {{ bsTextarea()
+                   ->name('content_right')
+                   ->model($dynamicPageBlock ? $dynamicPageBlock->blockable : null)
+                   ->label('dynamic-pages.validation.attributes.two_columns_paragraph.content_right')
                    ->containerHtmlAttributes([ 'required' ]) }}
 
                <div class="d-flex pt-4">
