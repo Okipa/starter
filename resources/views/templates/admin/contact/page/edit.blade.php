@@ -18,15 +18,18 @@
             <div class="card-body">
                 <h3>@lang('admin.section.content')</h3>
                 {{ bsText()->name('title')
-                    ->locales($supportedLocales)
-                    ->value(optional($contactPageContent)->getMeta('title'))
-                    ->containerHtmlAttributes(['required', 'multilingual']) }}
+                    ->locales(supportedLocaleKeys())
+                    ->value(function($locale) use ($contactPageContent) {
+                        return optional($contactPageContent)->getMeta('title', null, $locale);
+                    })
+                    ->containerHtmlAttributes(['required']) }}
                 {{ bsTextarea()->name('description')
-                    ->locales($supportedLocales)
-                    ->value(optional($contactPageContent)->getMeta('title'))
+                    ->locales(supportedLocaleKeys())
+                    ->value(function($locale) use ($contactPageContent) {
+                        return optional($contactPageContent)->getMeta('description', null, $locale);
+                    })
                     ->prepend(false)
-                    ->componentClasses(['editor'])
-                    ->containerHtmlAttributes(['required', 'multilingual']) }}
+                    ->componentClasses(['editor']) }}
                 @include('components.admin.seo.meta-tags', ['model' => $contactPageContent])
                 <div class="d-flex pt-4">
                     {{ bsUpdate() }}

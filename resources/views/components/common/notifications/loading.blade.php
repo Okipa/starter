@@ -3,6 +3,6 @@
 </div>
 <div class="mt-3">
     <p>
-        @lang('notifications.message.loading')
+        @lang('Loading ...')
     </p>
 </div>

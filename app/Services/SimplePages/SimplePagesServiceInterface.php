@@ -3,14 +3,16 @@
 namespace App\Services\SimplePages;
 
 use App\Services\ServiceInterface;
+use ErrorException;
+use Okipa\LaravelTable\Table;
 
-interface PagesServiceInterface extends ServiceInterface
+interface SimplePagesServiceInterface extends ServiceInterface
 {
     /**
      * Configure the model table list.
      *
-     * @return \Okipa\LaravelTable\Table
-     * @throws \ErrorException
+     * @return Table
+     * @throws ErrorException
      */
     public function table();
 }

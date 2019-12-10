@@ -1,9 +1,9 @@
 @extends('layouts.admin.auth')
 @section('content')
     @include('components.common.language.selector', [
-        'containerClasses'        => 'text-right',
-        'dropdownLabelClass'    => ['btn', 'btn-link'],
-        'dropdownMenuClass'     => 'dropdown-menu-right'
+        'containerClasses' => ['text-right'],
+        'dropdownLabelClasses' => ['btn', 'btn-link'],
+        'dropdownMenuClasses' => ['dropdown-menu-right']
     ])
     @if($icon = $settings->getFirstMedia('icon'))
         <div class="mx-auto mb-4">
@@ -12,7 +12,7 @@
     @endif
     <h1 class="h3 mb-3 font-weight-normal">
         <i class="fas fa-sign-in-alt fa-fw"></i>
-        @lang('auth.title.verifyEmail')
+        @lang('Email address verification')
     </h1>
     <div>
         @lang('auth.label.beforeResendingVerificationLink')

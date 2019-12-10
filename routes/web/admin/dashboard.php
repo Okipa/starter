@@ -2,7 +2,4 @@
 
 use App\Http\Controllers\Admin\DashboardController;
 
-Route::get(LaravelLocalization::transRoute('routes.dashboard.index'), [
-    DashboardController::class,
-    'index',
-])->name('dashboard');
+Route::get(Lang::uri('dashboard'), [DashboardController::class, 'index'])->name('dashboard.index');

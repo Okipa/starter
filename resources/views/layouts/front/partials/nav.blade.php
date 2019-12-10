@@ -20,6 +20,9 @@
                 @include('layouts.front.partials.nav.home')
                 @include('layouts.front.partials.nav.news')
             </ul>
+            <ul class="navbar-nav">
+                @include('layouts.front.partials.nav.language')
+            </ul>
         </div>
     </div>
 </nav>

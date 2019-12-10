@@ -1,9 +1,9 @@
 @extends('layouts.admin.auth')
 @section('content')
     @include('components.common.language.selector', [
-        'containerClasses'    => 'text-right',
-        'dropdownClass'     => 'dropdown-menu-right',
-        'labelClass'        => ['btn', 'btn-link']
+        'containerClasses' => ['text-right'],
+        'dropdownClass' => ['dropdown-menu-right'],
+        'labelClass' => ['btn', 'btn-link']
     ])
     @if($icon = $settings->getFirstMedia('icon'))
         <div class="mx-auto mb-4">
@@ -12,7 +12,7 @@
     @endif
     <h1 class="h3 mb-3 font-weight-normal">
         <i class="fas fa-sync fa-fw"></i>
-        @lang('auth.title.resetPassword')
+        @lang('Define a new password')
     </h1>
     <form method="POST" class="w-100" action="{{ route('password.reset') }}">
         @csrf
@@ -24,8 +24,8 @@
                 . __('static.legend.password.recommendation'))
             ->containerHtmlAttributes(['required']) }}
         {{ bsPassword()->name('password_confirmation')->containerHtmlAttributes(['required']) }}
-        {{ bsValidate()->label(__('auth.label.resetPassword'))
+        {{ bsValidate()->label(__('Save my new password'))
             ->componentClasses(['btn', 'btn-block', 'btn-primary', 'load-on-click']) }}
     </form>
-    {{ bsBack()->url(route('login')) }}
+    {{ bsBack()->route('login') }}
 @endsection

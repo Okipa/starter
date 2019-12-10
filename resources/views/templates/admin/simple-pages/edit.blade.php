@@ -24,7 +24,10 @@
             </div>
             <div class="card-body">
                 <h3>@lang('admin.section.page')</h3>
-                {{ bsText()->name('title')->model($simplePage)->containerHtmlAttributes(['required']) }}
+                {{ bsText()->name('title')
+                    ->locales(supportedLocaleKeys())
+                    ->model($simplePage)
+                    ->containerHtmlAttributes(['required']) }}
                 @if(! $simplePage)
                     {{ bsText()->name('slug')
                         ->model($simplePage)
@@ -34,12 +37,17 @@
                         ->containerHtmlAttributes(['required'])}}
                 @endif
                 {{ bsText()->name('url')
+                    ->locales(supportedLocaleKeys())
                     ->model($simplePage)
-                    ->prepend(route('simplePage.show', ['url' => '']) . '/')
+                    ->prepend(route('simplePage.show', '/') . '/')
                     ->componentClasses(['lowercase'])
                     ->componentHtmlAttributes(['data-autofill-from' => '#text-title'])
                     ->containerHtmlAttributes(['required']) }}
-                {{ bsTextarea()->name('description')->model($simplePage)->prepend(false)->componentClasses(['editor']) }}
+                {{ bsTextarea()->name('description')
+                    ->locales(supportedLocaleKeys())
+                    ->model($simplePage)
+                    ->prepend(false)
+                    ->componentClasses(['editor']) }}
                 <h3 class="pt-4">@lang('admin.section.publication')</h3>
                 {{ bsToggle()->name('active')->model($simplePage) }}
                 @include('components.admin.seo.meta-tags', ['model' => $simplePage])

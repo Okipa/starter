@@ -4,6 +4,11 @@
         <div class="row">
             <div class="text-center">
                 <div class="mx-auto mb-4">
+                    @include('components.common.language.selector', [
+                        'containerClasses' => ['text-right'],
+                        'dropdownLabelClasses' => ['btn', 'btn-link'],
+                        'dropdownMenuClasses' => ['dropdown-menu-right']
+                    ])
                     @if($icon = $settings->getFirstMedia('icon'))
                         {{ $icon('auth') }}
                     @endif

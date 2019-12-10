@@ -5,6 +5,10 @@ return [
     // form components *************************************************************************************************
     'form' => [
 
+        'multilingual' => [
+            'resolver' => \App\LaravelBootstrapComponents\Form\MultilingualResolver::class
+        ],
+
         'text' => [
             'view' => 'bootstrap-components.form.input',
             'prepend' => '<i class="fas fa-font"></i>',
@@ -23,7 +27,6 @@ return [
                 'displaySuccess' => false,
                 'displayFailure' => true,
             ],
-            'locales' => [],
         ],
 
         'number' => [
@@ -248,7 +251,6 @@ return [
                 'displaySuccess' => false,
                 'displayFailure' => true,
             ],
-            'locales' => [],
         ],
 
         'select' => [
@@ -451,7 +453,5 @@ return [
                 'component' => ['controls', 'preload' => true],
             ],
         ],
-
     ],
-
 ];

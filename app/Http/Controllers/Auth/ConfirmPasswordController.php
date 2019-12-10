@@ -20,6 +20,7 @@ class ConfirmPasswordController extends Controller
     |
     */
     use ConfirmsPasswords;
+
     /**
      * Where to redirect users when the intended url fails.
      *
@@ -30,11 +31,11 @@ class ConfirmPasswordController extends Controller
     /**
      * Display the password confirmation view.
      *
-     * @return \Illuminate\View\View
+     * @return View
      */
     public function showConfirmForm(): View
     {
-        SEOTools::setTitle(__('auth.title.confirmPassword'));
+        SEOTools::setTitle(__('Password verification'));
 
         return view('templates.auth.password.confirm');
     }

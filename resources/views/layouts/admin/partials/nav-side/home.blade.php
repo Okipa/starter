@@ -4,7 +4,7 @@
     $subMenuActive = $homePageActive || $homeSlidesActive;
 @endphp
 <li class="nav-item">
-    <a{{ classTag('nav-link', $subMenuActive ? 'active' : null) }}
+    <a class="nav-link {{ $subMenuActive ? 'active' : null }}"
        href="#homeMenu"
        title="@lang('nav.admin.home')"
        data-toggle="collapse"
@@ -15,10 +15,10 @@
         @lang('nav.admin.home')
         <i class="fas fa-caret-down fa-fw"></i>
     </a>
-    <ul id="homeMenu" {{ classTag(['collapse', 'list-unstyled', $subMenuActive ? 'show' : null]) }}>
+    <ul id="homeMenu" class="collapse list-unstyled {{ $subMenuActive ? 'show' : null }}">
         {{-- page --}}
         <li class="nav-item">
-            <a{{ classTag(['nav-link', 'load-on-click', $homePageActive ? 'active' : null]) }}
+            <a class="nav-link load-on-click {{ $homePageActive ? 'active' : null }}"
                href="{{ route('home.page.edit') }}"
                title="@lang('nav.admin.articles')">
                 <i class="fas fa-desktop fa-fw"></i>
@@ -27,10 +27,10 @@
         </li>
         {{-- slides --}}
         <li class="nav-item">
-            <a{{ classTag(['nav-link', 'load-on-click', $homeSlidesActive ? 'active' : null]) }}
+            <a class="nav-link load-on-click {{$homeSlidesActive ? 'active' : null }}"
                href="{{ route('home.slides') }}"
                title="@lang('nav.admin.categories')">
-            <i class="fas fa-images fa-fw"></i>
+                <i class="fas fa-images fa-fw"></i>
                 @lang('nav.admin.slides')
             </a>
         </li>

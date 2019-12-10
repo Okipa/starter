@@ -17,12 +17,18 @@ class HomePageTableSeeder extends Seeder
         $faker = Factory::create(config('app.faker_locale'));
         /** @var \App\Models\HomePage $homePage */
         $homePage = (new HomePage)->create([
-            'title'       => 'Accueil',
+            'title' => 'Accueil',
             'description' => $faker->text(),
         ]);
-        (new SeoService)->saveMetaTags($homePage, [
-            'meta_title'       => 'Accueil',
-            'meta_description' => $faker->text(150),
+        (new SeoService)->saveSeoTags($homePage, [
+            'meta_title' => [
+                'fr' => 'Accueil',
+                'en' => 'Home'
+            ],
+            'meta_description' => [
+                'fr' => $faker->text(150),
+                'en' => $faker->text(150),
+            ],
         ]);
     }
 }

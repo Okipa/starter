@@ -2,53 +2,56 @@
 
 namespace App\Services\Seo;
 
+use App\Models\Metable;
 use App\Services\Service;
 use Artesaos\SEOTools\Facades\SEOTools;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
-use Illuminate\Support\Arr;
 
 class SeoService extends Service implements SeoServiceInterface
 {
+    protected $seoTags = ['meta_title', 'meta_description'];
+
     /**
      * @return array
      */
     public function metaTagsRules(): array
     {
         return [
-            'meta_title'       => ['required', 'string', 'max:255'],
+            'meta_title' => ['required', 'string', 'max:255'],
             'meta_description' => ['string', 'max:255'],
         ];
     }
 
     /**
-     * @param \Illuminate\Database\Eloquent\Model $model
-     * @param \Illuminate\Http\Request $request
+     * @param Metable $model
+     * @param Request $request
      */
-    public function saveMetaTagsFromRequest(Model $model, Request $request): void
+    public function saveSeoTagsFromRequest(Metable $model, Request $request): void
     {
-        $this->saveMetaTags($model, $request->only('meta_title', 'meta_description'));
+        $model->saveMetaFromRequest($request, $this->seoTags);
     }
 
     /**
-     * @param \Illuminate\Database\Eloquent\Model $model
-     * @param array $metaTags
+     * @param Model $model
+     * @param array $values
      */
-    public function saveMetaTags(Model $model, array $metaTags): void
+    public function saveSeoTags(Model $model, array $values): void
     {
-        if (method_exists($model, 'syncMeta')) {
-            $model->syncMeta([]);
-        }
-        if (method_exists($model, 'setMeta') && Arr::has($metaTags, 'meta_title')) {
-            $model->setMeta('meta_title', $metaTags['meta_title']);
-        }
-        if (method_exists($model, 'setMeta') && Arr::has($metaTags, 'meta_description')) {
-            $model->setMeta('meta_description', $metaTags['meta_description']);
+//        $model->setMeta
+
+        foreach ($this->seoTags as $tag) {
+            if (method_exists($model, 'removeMeta') && method_exists($model, 'hasMeta') && $model->hasMeta($tag)) {
+                $model->removeMeta($tag);
+            }
+            if (method_exists($model, 'setMeta') && ! empty(data_get($values, $tag))) {
+                $model->setMeta($tag, data_get($values, $tag));
+            }
         }
     }
 
     /**
-     * @param \Illuminate\Database\Eloquent\Model $model
+     * @param Model $model
      */
     public function displayMetaTagsFromModel(Model $model): void
     {

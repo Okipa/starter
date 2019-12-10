@@ -3,7 +3,7 @@
         @if($icon = $settings->getFirstMedia('icon'))
             {{ $icon('admin-header') }}
         @endif
-        <span {{ classTag($icon ? 'pl-2' : null) }}>{{ config('app.name') }}</span>
+        <span class="{{ $icon ? 'pl-2' : null }}">{{ config('app.name') }}</span>
     </a>
     <button class="navbar-toggler navbar-toggler-right collapsed"
             type="button"

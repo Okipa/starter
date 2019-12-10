@@ -4,16 +4,18 @@ namespace App\Services\SimplePages;
 
 use App\Models\SimplePage;
 use App\Services\Service;
+use ErrorException;
+use Illuminate\Contracts\Container\BindingResolutionException;
 use Okipa\LaravelTable\Table;
 
-class PagesService extends Service implements PagesServiceInterface
+class SimpleSimplePagesService extends Service implements SimplePagesServiceInterface
 {
     /**
      * Configure the model table list.
      *
-     * @return \Okipa\LaravelTable\Table
-     * @throws \ErrorException
-     * @throws \Illuminate\Contracts\Container\BindingResolutionException
+     * @return Table
+     * @throws ErrorException
+     * @throws BindingResolutionException
      */
     public function table(): Table
     {

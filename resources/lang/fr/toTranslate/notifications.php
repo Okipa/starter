@@ -2,27 +2,10 @@
 
 return [
 
-    'title' => [
-        'success' => 'Succès',
-        'error'   => 'Erreur',
-        'confirm' => 'Confirmation demandée',
-        'loading' => 'Chargement en cours',
-    ],
-
     'message' => [
-        'login'          => [
-            'success'  => 'Bienvenue :name.',
-            'failed'   => 'Les informations d\'identification fournies ne correspondent pas à nos enregistrements.',
-            'throttle' => 'Trop de tentatives de connexion détectées. Veuillez rééssayer dans :seconds secondes.',
-        ],
         'auth'           => [
-            'accountCreated'        => 'Bienvenue sur votre nouveau compte, :name.',
             'verificationEmailSent' => 'Un nouveau lien de vérification a été envoyé à l\'adresse :email.',
             'emailVerified'         => 'Votre compte a été vérifié.',
-        ],
-        'logout'         => [
-            'confirmation' => 'Êtes-vous sûr de vouloir vous déconnecter ?',
-            'success'      => 'Vous avez été déconnecté.',
         ],
         'passwords'      => [
             'reset' => 'Votre mot de passe a été réinitialisé.',

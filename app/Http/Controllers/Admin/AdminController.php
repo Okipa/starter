@@ -3,11 +3,12 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Http\RedirectResponse;
 
 class AdminController extends Controller
 {
     /**
-     * @return \Illuminate\Http\RedirectResponse
+     * @return RedirectResponse
      */
     public function index()
     {
@@ -16,6 +17,6 @@ class AdminController extends Controller
             session()->flash('alert.config', session()->pull('alert.config'));
         }
 
-        return redirect()->route('dashboard');
+        return redirect()->route('dashboard.index');
     }
 }

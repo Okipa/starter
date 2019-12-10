@@ -4,13 +4,15 @@ namespace App\Http\Controllers\Utils;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Utils\DownloadFileRequest;
+use Illuminate\Http\RedirectResponse;
+use Symfony\Component\HttpFoundation\BinaryFileResponse;
 
 class DownloadController extends Controller
 {
     /**
-     * @param \App\Http\Requests\Utils\DownloadFileRequest $request
+     * @param DownloadFileRequest $request
      *
-     * @return \Illuminate\Http\RedirectResponse|\Symfony\Component\HttpFoundation\BinaryFileResponse
+     * @return RedirectResponse|BinaryFileResponse
      */
     public function file(DownloadFileRequest $request)
     {
@@ -19,7 +21,7 @@ class DownloadController extends Controller
         }
         alert()->html(__('notifications.message.downloadFile.doesNotExist', [
             'file' => $request->path,
-        ]), 'error', __('notifications.title.error'))->showConfirmButton();
+        ]), 'error', __('Error'))->showConfirmButton();
 
         return redirect()->route('home');
     }

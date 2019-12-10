@@ -4,9 +4,11 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Artesaos\SEOTools\Facades\SEOTools;
+use Illuminate\Contracts\View\Factory;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 use Illuminate\Validation\ValidationException;
+use Illuminate\View\View;
 
 class LoginController extends Controller
 {
@@ -27,11 +29,11 @@ class LoginController extends Controller
     /**
      * Show the application's login form.
      *
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @return Factory|View
      */
     public function showLoginForm()
     {
-        SEOTools::setTitle(__('auth.title.signIn'));
+        SEOTools::setTitle(__('Sign in area'));
 
         return view('templates.auth.login');
     }
@@ -51,7 +53,7 @@ class LoginController extends Controller
      */
     protected function loggedOut()
     {
-        alert()->toast(__('notifications.message.logout.success'), 'success');
+        alert()->toast(__('You have been logged out.'), 'success');
 
         return;
     }
@@ -60,12 +62,13 @@ class LoginController extends Controller
      * Get the failed login response instance.
      *
      * @return void
-     * @throws \Illuminate\Validation\ValidationException
+     * @throws ValidationException
      */
     protected function sendFailedLoginResponse()
     {
-        throw ValidationException::withMessages([$this->username() => [trans('notifications.message.login.failed')]])
-            ->redirectTo(route('login'));
+        throw ValidationException::withMessages([
+            $this->username() => [__('The provided credentials do not match our records.')]
+        ])->redirectTo(route('login'));
     }
 
     /**
@@ -75,7 +78,7 @@ class LoginController extends Controller
      */
     protected function authenticated()
     {
-        alert()->toast(__('notifications.message.login.success', [
+        alert()->toast(__('Welcome :name.', [
             'name' => auth()->user()->name,
         ]), 'success');
 
@@ -85,16 +88,16 @@ class LoginController extends Controller
     /**
      * Redirect the user after determining they are locked out.
      *
-     * @param \Illuminate\Http\Request $request
+     * @param Request $request
      *
      * @return void
-     * @throws \Illuminate\Validation\ValidationException
+     * @throws ValidationException
      */
     protected function sendLockoutResponse(Request $request)
     {
         $seconds = $this->limiter()->availableIn($this->throttleKey($request));
-        throw ValidationException::withMessages([
-            $this->username() => [__('notifications.message.login.throttle', ['seconds' => $seconds])],
-        ])->status(429);
+        throw ValidationException::withMessages([$this->username() => [
+            __('Too many connection attempts detected. Please try again in :seconds seconds.', ['seconds' => $seconds])
+        ]])->status(429);
     }
 }

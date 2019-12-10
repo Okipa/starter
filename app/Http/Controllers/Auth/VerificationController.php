@@ -2,10 +2,16 @@
 
 namespace App\Http\Controllers\Auth;
 
+use Illuminate\Auth\Access\AuthorizationException;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\VerifiesEmails;
 use Artesaos\SEOTools\Facades\SEOTools;
+use Illuminate\Http\Response;
+use Illuminate\Routing\Redirector;
+use Illuminate\View\View;
 
 class VerificationController extends Controller
 {
@@ -33,13 +39,13 @@ class VerificationController extends Controller
     /**
      * Show the email verification notice.
      *
-     * @param \Illuminate\Http\Request $request
+     * @param Request $request
      *
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector|\Illuminate\View\View
+     * @return Factory|RedirectResponse|Redirector|View
      */
     public function show(Request $request)
     {
-        SEOTools::setTitle(__('auth.title.verifyEmail'));
+        SEOTools::setTitle(__('Email address verification'));
 
         return $request->user()->hasVerifiedEmail()
             ? redirect($this->redirectPath())
@@ -57,15 +63,15 @@ class VerificationController extends Controller
     /**
      * Resend the email verification notification.
      *
-     * @param \Illuminate\Http\Request $request
+     * @param Request $request
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function resend(Request $request)
     {
         if (! $request->user()->hasVerifiedEmail()) {
             alert()->html(
-                __('notifications.title.success'),
+                __('Success'),
                 __('notifications.message.auth.verificationEmailSent', ['email' => $request->user()->email]),
                 'success'
             )->showConfirmButton();
@@ -77,15 +83,15 @@ class VerificationController extends Controller
     /**
      * Mark the authenticated user's email address as verified.
      *
-     * @param \Illuminate\Http\Request $request
+     * @param Request $request
      *
-     * @return \Illuminate\Http\Response
-     * @throws \Illuminate\Auth\Access\AuthorizationException
+     * @return Response
+     * @throws AuthorizationException
      */
     public function verify(Request $request)
     {
         alert()->html(
-            __('notifications.title.success'),
+            __('Success'),
             __('notifications.message.auth.emailVerified', ['email' => $request->user()->email]),
             'success'
         )->showConfirmButton();

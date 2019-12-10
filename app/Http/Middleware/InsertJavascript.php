@@ -22,7 +22,6 @@ class InsertJavascript
         $termsOfServicePage = cache('termsOfServicePage');
         JavaScript::put([
             'locale'        => app()->getLocale(),
-            'notifications' => __('notifications'),
             'cookieConsent' => __('cookieconsent'),
             'sumoSelect'    => __('sumoselect'),
             'templates' => [

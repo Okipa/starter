@@ -9,18 +9,27 @@ use App\Http\Requests\LibraryMedia\FileUpdateRequest;
 use App\Models\LibraryMediaFile;
 use App\Services\LibraryMedia\FilesService;
 use Artesaos\SEOTools\Facades\SEOTools;
+use ErrorException;
 use Exception;
+use Illuminate\Contracts\Container\BindingResolutionException;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Str;
+use Illuminate\View\View;
 use Log;
+use Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\DiskDoesNotExist;
+use Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\FileDoesNotExist;
+use Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\FileIsTooBig;
 
 class LibraryMediaFilesController extends Controller
 {
     /**
-     * @param \App\Http\Requests\LibraryMedia\FilesIndexRequest $request
+     * @param FilesIndexRequest $request
      *
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     * @throws \ErrorException
-     * @throws \Illuminate\Contracts\Container\BindingResolutionException
+     * @return Factory|View
+     * @throws ErrorException
+     * @throws BindingResolutionException
      */
     public function index(FilesIndexRequest $request)
     {
@@ -33,7 +42,7 @@ class LibraryMediaFilesController extends Controller
     }
 
     /**
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @return Factory|View
      */
     public function create()
     {
@@ -44,12 +53,12 @@ class LibraryMediaFilesController extends Controller
     }
 
     /**
-     * @param \App\Http\Requests\LibraryMedia\FileStoreRequest $request
+     * @param FileStoreRequest $request
      *
-     * @return \Illuminate\Http\RedirectResponse
-     * @throws \Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\DiskDoesNotExist
-     * @throws \Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\FileDoesNotExist
-     * @throws \Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\FileIsTooBig
+     * @return RedirectResponse
+     * @throws DiskDoesNotExist
+     * @throws FileDoesNotExist
+     * @throws FileIsTooBig
      */
     public function store(FileStoreRequest $request)
     {
@@ -70,10 +79,10 @@ class LibraryMediaFilesController extends Controller
     }
 
     /**
-     * @param \App\Models\LibraryMediaFile $file
+     * @param LibraryMediaFile $file
      *
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     * @throws \Exception
+     * @return Factory|View
+     * @throws Exception
      */
     public function edit(LibraryMediaFile $file)
     {
@@ -88,13 +97,13 @@ class LibraryMediaFilesController extends Controller
     }
 
     /**
-     * @param \App\Models\LibraryMediaFile $file
-     * @param \App\Http\Requests\LibraryMedia\FileUpdateRequest $request
+     * @param LibraryMediaFile $file
+     * @param FileUpdateRequest $request
      *
-     * @return \Illuminate\Http\RedirectResponse
-     * @throws \Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\DiskDoesNotExist
-     * @throws \Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\FileDoesNotExist
-     * @throws \Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\FileIsTooBig
+     * @return RedirectResponse
+     * @throws DiskDoesNotExist
+     * @throws FileDoesNotExist
+     * @throws FileIsTooBig
      */
     public function update(LibraryMediaFile $file, FileUpdateRequest $request)
     {
@@ -115,10 +124,10 @@ class LibraryMediaFilesController extends Controller
     }
 
     /**
-     * @param \App\Models\LibraryMediaFile $file
+     * @param LibraryMediaFile $file
      *
-     * @return \Illuminate\Http\RedirectResponse
-     * @throws \Exception
+     * @return RedirectResponse
+     * @throws Exception
      */
     public function destroy(LibraryMediaFile $file)
     {
@@ -132,10 +141,10 @@ class LibraryMediaFilesController extends Controller
     }
 
     /**
-     * @param \App\Models\LibraryMediaFile $file
+     * @param LibraryMediaFile $file
      * @param string $type
      *
-     * @return \Illuminate\Http\JsonResponse
+     * @return JsonResponse
      */
     public function clipboardContent(LibraryMediaFile $file, string $type)
     {

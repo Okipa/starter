@@ -4,6 +4,8 @@
         "php": "^7.3",
         "ext-json": "*",
         "artesaos/seotools": "^0.16.0",
+        "codezero/laravel-localized-routes": "^1.3",
+        "codezero/laravel-unique-translation": "^2.0",
         "deployer/deployer": "^6.0",
         "doctrine/dbal": "^2.9",
         "fideloper/proxy": "^4.0",
@@ -12,7 +14,6 @@
         "laravel/horizon": "^3.0",
         "laravel/telescope": "^2.0",
         "laravel/tinker": "^1.0",
-        "mcamara/laravel-localization": "^1.4",
         "okipa/laravel-bootstrap-components": "dev-multilingual",
         "okipa/laravel-failed-jobs-notifier": "^1.0",
         "okipa/laravel-medialibrary-ext": "^7.11.0",
@@ -24,7 +25,8 @@
         "realrashid/sweet-alert": "^2.0",
         "sentry/sentry-laravel": "^1.0",
         "spatie/eloquent-sortable": "^3.7",
-        "spatie/laravel-sitemap": "^5.0"
+        "spatie/laravel-sitemap": "^5.0",
+        "spatie/laravel-translatable": "^4.2"
     },
     "require-dev": {
         "facade/ignition": "^1.4",
@@ -55,6 +57,9 @@
         "classmap": [
             "database/seeds",
             "database/factories"
+        ],
+        "files": [
+            "app/Helpers/helpers.php"
         ]
     },
     "autoload-dev": {

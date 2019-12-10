@@ -5,20 +5,21 @@ namespace App\Http\Middleware;
 use App\Models\Settings;
 use App\Models\SimplePage;
 use Closure;
+use Exception;
+use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
-use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 class ShareDataGlobally
 {
     /**
      * Handle an incoming request.
      *
-     * @param \Illuminate\Http\Request $request
-     * @param \Closure $next
+     * @param Request $request
+     * @param Closure $next
      *
      * @return mixed
-     * @throws \Exception
+     * @throws Exception
      */
     public function handle($request, Closure $next)
     {
@@ -26,9 +27,6 @@ class ShareDataGlobally
         $sharedData = [
             'settings' => cache()->rememberForever('settings', function () {
                 return (new Settings)->with(['media'])->first();
-            }),
-            'supportedLocales' => cache()->rememberForever('supportedLocales', function () {
-                return array_keys(LaravelLocalization::getLocalesOrder());
             }),
         ];
         // cache dynamic items

@@ -1,5 +1,7 @@
 <?php
+
 return [
+
     /*
     |--------------------------------------------------------------------------
     | Pagination Language Lines
@@ -10,6 +12,8 @@ return [
     | you want to customize your views to better match your application.
     |
     */
-    'previous' => 'Précédent',
-    'next'     => 'Suivant',
+
+    'previous' => '&laquo; Précédent',
+    'next' => 'Suivant &raquo;',
+
 ];

@@ -1,9 +1,9 @@
 @extends('layouts.admin.auth')
 @section('content')
     @include('components.common.language.selector', [
-        'containerClasses'        => 'text-right',
-        'dropdownLabelClass'    => ['btn', 'btn-link'],
-        'dropdownMenuClass'     => 'dropdown-menu-right'
+        'containerClasses' => ['text-right'],
+        'dropdownLabelClasses' => ['btn', 'btn-link'],
+        'dropdownMenuClasses' => ['dropdown-menu-right']
     ])
     @if($icon = $settings->getFirstMedia('icon'))
         <div class="mx-auto mb-4">
@@ -12,7 +12,7 @@
     @endif
     <h1 class="h3 mb-3 font-weight-normal">
         <i class="fas fa-sign-in-alt fa-fw"></i>
-        @lang('auth.title.signIn')
+        @lang('Sign in area')
     </h1>
     <form method="POST" class="w-100" novalidate action="{{ route('login.login') }}">
         @csrf
@@ -20,18 +20,15 @@
         {{ bsEmail()->name('email')->componentHtmlAttributes(['autofocus'])->containerHtmlAttributes(['required']) }}
         {{ bsPassword()->name('password')->containerHtmlAttributes(['required']) }}
         {{ bsToggle()->name('remember') }}
-        {{ bsValidate()
-            ->label(__('auth.label.signIn'))
-            ->componentClasses(['btn', 'btn-block', 'btn-primary', 'load-on-click']) }}
+        {{ bsValidate()->label(__('Sign me in'))->componentClasses(['btn', 'btn-block', 'btn-primary', 'load-on-click']) }}
         <div class="form-group d-block">
             <a href="{{ route('password.request') }}">
-                @lang('auth.label.forgottenPassword')
+                @lang('Forgotten password')
             </a>
-            {{--todo : uncomment if this feature is needed--}}
-            {{--<a href="{{ route('register') }}" class="float-right">--}}
-            {{--@lang('auth.label.register')--}}
-            {{--</a>--}}
+            <a href="{{ route('register') }}" class="float-right">
+                @lang('Create account')
+            </a>
         </div>
     </form>
-    {{ bsBack()->url(route('home')) }}
+    {{ bsBack()->route('home') }}
 @endsection

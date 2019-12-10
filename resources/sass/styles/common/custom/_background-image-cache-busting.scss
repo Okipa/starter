@@ -1,3 +1,0 @@
-@mixin background-image-cache-busting($url) {
-    background-image: #{'url('} + $url + #{'?v='} + unique_id() + #{')'};
-}

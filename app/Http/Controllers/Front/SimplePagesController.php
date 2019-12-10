@@ -5,18 +5,23 @@ namespace App\Http\Controllers\Front;
 use App\Http\Controllers\Controller;
 use App\Models\SimplePage;
 use App\Services\Seo\SeoService;
+use Exception;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\View\View;
 
 class SimplePagesController extends Controller
 {
     /**
      * @param string $url
      *
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     * @throws \Exception
+     * @return Factory|View
+     * @throws Exception
      */
     public function show(string $url)
     {
-        $simplePage = (new SimplePage)->where('url', $url)->where('active', true)->firstOrFail();
+        $simplePage = (new SimplePage)->where('url->' . app()->getLocale(), $url)
+            ->where('active', true)
+            ->firstOrFail();
         (new SeoService)->displayMetaTagsFromModel($simplePage);
         $css = mix('/css/simple-pages/show.css');
 

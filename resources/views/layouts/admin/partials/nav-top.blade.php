@@ -2,12 +2,12 @@
     {{-- language --}}
     <li class="nav-item">
         @include('components.common.language.selector', [
-            'dropdownLabelClass'    => 'nav-link',
-            'dropdownMenuClass'     => 'dropdown-menu-right',
+            'dropdownLabelClasses' => ['nav-link'],
+            'dropdownMenuClasses' => ['dropdown-menu-right'],
         ])
     </li>
     {{-- top menu --}}
-    <li {{ classTag('nav-item', request()->route()->getName() === 'user.profile' ? 'active' : null) }}>
+    <li class="nav-item {{ request()->route()->getName() === 'user.profile' ? 'active' : null }}">
         <div class="dropdown">
             <a href=""
                class="dropdown-toggle nav-link"
@@ -19,9 +19,9 @@
                     {{ auth()->user()->name }}
                 </span>
             </a>
-            <div {{ classTag('dropdown-menu', 'dropdown-menu-right') }}>
+            <div class="dropdown-menu dropdown-menu-right">
                 <a href="{{ route('user.profile.edit') }}"
-                   {{ classTag('dropdown-item', 'load-on-click', request()->route()->getName() === 'user.profile' ? 'active' : null) }}
+                   class="dropdown-item load-on-click {{ request()->route()->getName() === 'user.profile' ? 'active' : null }}"
                    title="{{ __('nav.admin.profile') }}">
                     <i class="fas fa-user-circle fa-fw"></i>
                     @lang('nav.admin.profile')
@@ -32,7 +32,7 @@
                     <button type="submit"
                             class="dropdown-item btn btn-link"
                             title="{{ __('nav.admin.logout') }}"
-                            data-confirm="@lang('notifications.message.logout.confirmation')">
+                            data-confirm="@lang('Are you sure you want to logout ?')">
                         <i class="fas fa-sign-out-alt fa-fw"></i>
                         @lang('nav.admin.logout')
                     </button>

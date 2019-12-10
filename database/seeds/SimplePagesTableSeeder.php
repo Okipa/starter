@@ -43,27 +43,81 @@ Ordered list :
 
 [Link](http://www.google.com).
 EOT;
-        $this->createSimplePage('Contact', 'contact-page');
-        $this->createSimplePage('CGU et mentions légales', 'terms-of-service-page');
-        $this->createSimplePage('Charte de respect de la vie privée - RGPD', 'rgpd-page');
+        $this->createSimplePage(
+            [
+                'slug' => 'terms-of-service-page',
+                'active' => true
+            ],
+            [
+                'url' => [
+                    'fr' => 'cgu-et-mentions-legales',
+                    'en' => 'terms-and-legal-notice',
+                ],
+                'title' => [
+                    'fr' => 'CGU et mentions légales',
+                    'en' => 'Terms and legal notice',
+                ],
+                'description' => [
+                    'fr' => $this->fakeText,
+                    'en' => $this->fakeText,
+                ],
+            ],
+            [
+                'meta_title' => [
+                    'fr' => 'CGU et mentions légales',
+                    'en' => 'Terms and legal notice',
+                ],
+                'meta_description' => [
+                    'fr' => null,
+                    'en' => null,
+                ]
+            ]
+        );
+        $this->createSimplePage(
+            [
+                'slug' => 'gdpr-page',
+                'active' => true
+            ],
+            [
+                'url' => [
+                    'fr' => 'respect-vie-privee-rgpd',
+                    'en' => 'privacy-policy-gdpr',
+                ],
+                'title' => [
+                    'fr' => 'Respect de la vie privée - RGPD',
+                    'en' => 'Privacy policy - GDPR',
+                ],
+                'description' => [
+                    'fr' => $this->fakeText,
+                    'en' => $this->fakeText,
+                ],
+            ],
+            [
+                'meta_title' => [
+                    'fr' => 'CGU et mentions légales',
+                    'en' => 'Terms and legal notice',
+                ],
+                'meta_description' => [
+                    'fr' => null,
+                    'en' => null,
+                ]
+            ]
+        );
     }
 
     /**
-     * @param string $title
-     * @param string $slug
+     * @param array $data
+     * @param array $translatableData
+     * @param array $seoTags
      */
-    protected function createSimplePage(string $title, string $slug): void
+    protected function createSimplePage(array $data, array $translatableData, array $seoTags): void
     {
-        $simplePage = (new SimplePage)->create([
-            'slug'        => $slug,
-            'url'         => Str::slug($title),
-            'title'       => $title,
-            'description' => $this->fakeText,
-            'active'      => true,
-        ]);
-        (new SeoService)->saveMetaTags($simplePage, [
-            'meta_title' => $title,
-            'meta_description' => $this->faker->text(150)
-        ]);
+        /** @var SimplePage $simplePage */
+        $simplePage = (new SimplePage)->fill($data);
+        foreach ($translatableData as $key => $values) {
+            $simplePage->setTranslations($key, $values);
+        }
+        $simplePage->save();
+        (new SeoService)->saveSeoTags($simplePage, $seoTags);
     }
 }

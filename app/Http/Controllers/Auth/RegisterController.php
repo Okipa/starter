@@ -3,6 +3,9 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Models\User;
+use Exception;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use App\Services\Users\UsersService;
 use App\Http\Controllers\Controller;
@@ -10,6 +13,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Artesaos\SEOTools\Facades\SEOTools;
+use Illuminate\View\View;
 
 class RegisterController extends Controller
 {
@@ -28,11 +32,11 @@ class RegisterController extends Controller
     /**
      * Show the application registration form.
      *
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @return Factory|View
      */
     public function showRegistrationForm()
     {
-        SEOTools::setTitle(__('auth.title.register'));
+        SEOTools::setTitle(__('Registration area'));
 
         return view('templates.auth.register');
     }
@@ -59,8 +63,8 @@ class RegisterController extends Controller
      *
      * @param array $data
      *
-     * @return \Illuminate\Database\Eloquent\Model
-     * @throws \Exception
+     * @return Model
+     * @throws Exception
      */
     protected function create(array $data)
     {
@@ -79,13 +83,13 @@ class RegisterController extends Controller
     /**
      * The user has been registered.
      *
-     * @param \Illuminate\Http\Request $request
+     * @param Request $request
      *
      * @return mixed
      */
     protected function registered(Request $request)
     {
-        alert()->toast(__('notifications.message.auth.accountCreated', [
+        alert()->toast(__('Welcome to your new account, :name.', [
             'name' => $request->first_name . ' ' . $request->last_name,
         ]), 'success');
     }

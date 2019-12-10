@@ -2,31 +2,36 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Models\SimplePage;
 use App\Http\Controllers\Controller;
-use App\Services\Seo\SeoService;
-use App\Services\SimplePages\PagesService;
 use App\Http\Requests\SimplePages\SimplePageStoreRequest;
 use App\Http\Requests\SimplePages\SimplePageUpdateRequest;
-use Illuminate\Support\Str;
+use App\Models\SimplePage;
+use App\Services\Seo\SeoService;
+use App\Services\SimplePages\SimpleSimplePagesService;
 use Artesaos\SEOTools\Facades\SEOTools;
+use Exception;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Arr;
+use Illuminate\Support\Str;
+use Illuminate\View\View;
 
 class SimplePagesController extends Controller
 {
     /**
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     * @throws \Exception
+     * @return Factory|View
+     * @throws Exception
      */
     public function index()
     {
-        $table = (new PagesService)->table();
+        $table = (new SimpleSimplePagesService)->table();
         SEOTools::setTitle(__('admin.title.orphan.index', ['entity' => __('entities.simplePages')]));
 
         return view('templates.admin.simple-pages.index', compact('table'));
     }
 
     /**
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @return Factory|View
      */
     public function create()
     {
@@ -37,27 +42,27 @@ class SimplePagesController extends Controller
     }
 
     /**
-     * @param \App\Http\Requests\SimplePages\SimplePageStoreRequest $request
+     * @param SimplePageStoreRequest $request
      *
-     * @return \Illuminate\Http\RedirectResponse
-     * @throws \Exception
+     * @return RedirectResponse
+     * @throws Exception
      */
     public function store(SimplePageStoreRequest $request)
     {
         $simplePage = (new SimplePage)->create($request->validated());
-        (new SeoService)->saveMetaTagsFromRequest($simplePage, $request);
+        (new SeoService)->saveSeoTagsFromRequest($simplePage, $request);
         cache()->forever(Str::camel($simplePage->slug), $simplePage->fresh());
 
         return redirect()->route('simplePages')->with('toast_success', __('notifications.message.crud.orphan.created', [
             'entity' => __('entities.simplePages'),
-            'name'   => $simplePage->title,
+            'name' => $simplePage->title,
         ]));
     }
 
     /**
-     * @param \App\Models\SimplePage $simplePage
+     * @param SimplePage $simplePage
      *
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @return Factory|View
      */
     public function edit(SimplePage $simplePage)
     {
@@ -70,30 +75,30 @@ class SimplePagesController extends Controller
     }
 
     /**
-     * @param \App\Models\SimplePage $simplePage
-     * @param \App\Http\Requests\SimplePages\SimplePageUpdateRequest $request
+     * @param SimplePage $simplePage
+     * @param SimplePageUpdateRequest $request
      *
-     * @return \Illuminate\Http\RedirectResponse
-     * @throws \Exception
+     * @return RedirectResponse
+     * @throws Exception
      */
     public function update(SimplePage $simplePage, SimplePageUpdateRequest $request)
     {
         cache()->forget(Str::camel($simplePage->slug));
-        $simplePage->update($request->except('slug'));
-        (new SeoService)->saveMetaTagsFromRequest($simplePage, $request);
+        $simplePage->update(Arr::except($request->validated(), 'slug'));
+        (new SeoService)->saveSeoTagsFromRequest($simplePage, $request);
         cache()->forever(Str::camel($simplePage->slug), $simplePage->fresh());
 
         return back()->with('toast_success', __('notifications.message.crud.orphan.updated', [
             'entity' => __('entities.simplePages'),
-            'name'   => $simplePage->title,
+            'name' => $simplePage->title,
         ]));
     }
 
     /**
-     * @param \App\Models\SimplePage $simplePage
+     * @param SimplePage $simplePage
      *
-     * @return \Illuminate\Http\RedirectResponse
-     * @throws \Exception
+     * @return RedirectResponse
+     * @throws Exception
      */
     public function destroy(SimplePage $simplePage)
     {
@@ -103,7 +108,7 @@ class SimplePagesController extends Controller
 
         return back()->with('toast_success', __('notifications.message.crud.orphan.destroyed', [
             'entity' => __('entities.simplePages'),
-            'name'   => $name,
+            'name' => $name,
         ]));
     }
 }

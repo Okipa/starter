@@ -2,6 +2,7 @@
     <a class="nav-link"
        href="{{ route('news') }}"
        title="@lang('nav.front.news')">
+        <i class="fas fa-newspaper fa-fw"></i>
         @lang('nav.front.news')
     </a>
 </li>

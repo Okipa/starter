@@ -29,7 +29,7 @@ class ResetPassword extends \Illuminate\Auth\Notifications\ResetPassword impleme
      *
      * @param mixed $notifiable
      *
-     * @return \Illuminate\Notifications\Messages\MailMessage
+     * @return MailMessage
      */
     public function toMail($notifiable)
     {
@@ -41,10 +41,7 @@ class ResetPassword extends \Illuminate\Auth\Notifications\ResetPassword impleme
             ->subject(__('mail.passwordReset.subject'))
             ->greeting(__('mail.notification.greeting.named', ['name' => $notifiable->name]))
             ->line(__('mail.passwordReset.message'))
-            ->action(
-                __('mail.passwordReset.action'),
-                url(config('app.url') . route('password.update', $this->token, false))
-            )
+            ->action(__('mail.passwordReset.action'), route('password.update', $this->token))
             ->line(__('mail.passwordReset.notice'));
     }
 }

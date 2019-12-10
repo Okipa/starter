@@ -1,9 +1,9 @@
 @extends('layouts.admin.auth')
 @section('content')
     @include('components.common.language.selector', [
-        'containerClasses'        => 'text-right',
-        'dropdownLabelClass'    => ['btn', 'btn-link'],
-        'dropdownMenuClass'     => 'dropdown-menu-right'
+        'containerClasses' => ['text-right'],
+        'dropdownLabelClasses' => ['btn', 'btn-link'],
+        'dropdownMenuClasses' => ['dropdown-menu-right']
     ])
     @if($icon = $settings->getFirstMedia('icon'))
         <div class="mx-auto mb-4">
@@ -12,7 +12,7 @@
     @endif
     <h1 class="h3 mb-3 font-weight-normal">
         <i class="fas fa-user-plus fa-fw"></i>
-        @lang('auth.title.signUp')
+        @lang('Registration area')
     </h1>
     <form method="POST" class="w-100" action="{{ route('register.register') }}">
         @csrf
@@ -29,7 +29,7 @@
             ->containerHtmlAttributes(['required']) }}
         {{ bsPassword()->name('password_confirmation')
             ->containerHtmlAttributes(['required']) }}
-        {{ bsValidate()->label(__('auth.label.createAccount'))
+        {{ bsValidate()->label(__('Create my account'))
             ->componentClasses(['btn', 'btn-block', 'btn-primary', 'load-on-click']) }}
     </form>
     {{ bsCancel()->route('login') }}

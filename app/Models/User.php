@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Notifications\ResetPassword;
 use App\Notifications\VerifyEmail;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Spatie\Image\Manipulations;
@@ -11,10 +12,9 @@ use Spatie\MediaLibrary\HasMedia\HasMedia;
 use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
 use Spatie\MediaLibrary\Models\Media;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail; // todo : uncomment if this feature is needed
 class User extends Authenticatable implements
-    HasMedia
-    // MustVerifyEmail // todo : uncomment if this feature is needed
+    HasMedia,
+    MustVerifyEmail // todo : uncomment if this this feature is needed
 {
     use Notifiable;
     use HasMediaTrait;
@@ -111,6 +111,6 @@ class User extends Authenticatable implements
      */
     public function sendEmailVerificationNotification()
     {
-        $this->notify(new VerifyEmail());
+        $this->notify(new VerifyEmail);
     }
 }

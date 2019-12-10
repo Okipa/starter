@@ -3,9 +3,8 @@
 namespace App\Http\Requests\SimplePages;
 
 use App\Http\Requests\Request;
-use App\Rules\UrlUnique;
 use App\Services\Seo\SeoService;
-use Illuminate\Support\Facades\Validator;
+use CodeZero\UniqueTranslation\UniqueTranslationRule;
 
 class SimplePageUpdateRequest extends Request
 {
@@ -13,56 +12,26 @@ class SimplePageUpdateRequest extends Request
     protected $safetyChecks = ['active' => 'boolean'];
 
     /**
-     * Execute a pre-validation treatment.
-     *
-     * @return void
-     */
-    public function before()
-    {
-        $this->merge([
-            'url' => $this->url ? strtolower($this->url) : null,
-        ]);
-    }
-
-    /**
-     * Get the validation rules that apply to the request.c
+     * Get the validation rules that apply to the request.
      *
      * @return array
      */
     public function rules()
     {
-        return array_merge([
-            'url'         => [
+        $rules = [
+            'active' => ['required', 'boolean']
+        ];
+        $multilingualRules = $this->localizeRules(array_merge([
+            'url' => [
                 'required',
                 'string',
                 'max:255',
-                'unique:simple_pages,url,' . $this->simplePage->id,
-                new UrlUnique,
+                UniqueTranslationRule::for('simple_pages')->ignore($this->simplePage->id),
             ],
-            'title'       => ['required', 'string', 'max:255'],
+            'title' => ['required', 'string', 'max:255'],
             'description' => ['string', 'max:4294967295'],
-            'active'      => ['required', 'boolean'],
-        ], (new SeoService)->metaTagsRules());
-    }
+        ], (new SeoService)->metaTagsRules()));
 
-    /**
-     * Configure the validator instance.
-     *
-     * @param \Illuminate\Validation\Validator $validator
-     *
-     * @return void
-     */
-    public function withValidator($validator)
-    {
-        $customValidator = Validator::make([
-            'full_url' => $this->url ? route('simplePage.show', $this->url) : null,
-        ], [
-            'full_url' => ['required', 'string', 'url'],
-        ]);
-        if ($customValidator->failed()) {
-            $validator->after(function ($validator) {
-                $validator->errors()->add('url', __('validation.url'));
-            });
-        }
+        return array_merge($multilingualRules, $rules);
     }
 }

@@ -4,8 +4,12 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Artesaos\SEOTools\Facades\SEOTools;
+use Illuminate\Contracts\View\Factory;
 use Illuminate\Foundation\Auth\SendsPasswordResetEmails;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\View\View;
 
 class ForgotPasswordController extends Controller
 {
@@ -26,11 +30,11 @@ class ForgotPasswordController extends Controller
     /**
      * Display the form to request a password reset link.
      *
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @return Factory|View
      */
     public function showLinkRequestForm()
     {
-        SEOTools::setTitle(__('auth.title.forgottenPassword'));
+        SEOTools::setTitle(__('Forgotten password'));
 
         return view('templates.auth.password.forgotten');
     }
@@ -38,15 +42,14 @@ class ForgotPasswordController extends Controller
     /**
      * Get the response for a successful password reset link.
      *
-     * @param \Illuminate\Http\Request $request
+     * @param Request $request
      * @param string $response
      *
-     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Http\JsonResponse
+     * @return RedirectResponse|JsonResponse
      */
     protected function sendResetLinkResponse(Request $request, $response)
     {
-        $response = 'notifications.message.' . $response;
-        alert()->html(__('notifications.title.success'), __($response), 'success')
+        alert()->html(__('Success'), __($response), 'success')
             ->showConfirmButton();
 
         return redirect()->route('login')->withInput($request->only('email'));
@@ -55,15 +58,15 @@ class ForgotPasswordController extends Controller
     /**
      * Get the response for a failed password reset link.
      *
-     * @param \Illuminate\Http\Request $request
+     * @param Request $request
      * @param string $response
      *
-     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Http\JsonResponse
+     * @return RedirectResponse|JsonResponse
      */
     protected function sendResetLinkFailedResponse(Request $request, $response)
     {
         $response = 'notifications.message.' . $response;
-        alert()->html(__('notifications.title.error'), __($response), 'error')->showConfirmButton();
+        alert()->html(__('Error'), __($response), 'error')->showConfirmButton();
 
         return $this->traitSendResetLinkResponse($request, $response);
     }

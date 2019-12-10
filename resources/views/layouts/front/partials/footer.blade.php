@@ -12,11 +12,11 @@
                     {{ $termsOfServicePage->title }}
                 </a>
             @endif
-            @if($rgpdPage)
+            @if($gdprPage)
                 <a class="text-body"
-                   href="{{ route('simplePage.show', $rgpdPage->url) }}"
-                   title="{{ $rgpdPage->title }}">
-                    {{ $rgpdPage->title }}
+                   href="{{ route('simplePage.show', $gdprPage->url) }}"
+                   title="{{ $gdprPage->title }}">
+                    {{ $gdprPage->title }}
                 </a>
             @endif
             <div>

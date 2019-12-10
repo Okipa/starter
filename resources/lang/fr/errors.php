@@ -1,6 +1,7 @@
 <?php
 
 return [
+
     'title'   => 'Erreur',
     'message' => [
         '403' => 'Action non autorisée.',
@@ -10,4 +11,5 @@ return [
         '500' => 'Erreur interne',
         '503' => 'Maintenance en cours.',
     ],
+
 ];
