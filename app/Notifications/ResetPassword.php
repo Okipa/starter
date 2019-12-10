@@ -38,10 +38,10 @@ class ResetPassword extends \Illuminate\Auth\Notifications\ResetPassword impleme
         }
 
         return (new MailMessage)
-            ->subject(__('mail.passwordReset.subject'))
-            ->greeting(__('mail.notification.greeting.named', ['name' => $notifiable->name]))
-            ->line(__('mail.passwordReset.message'))
-            ->action(__('mail.passwordReset.action'), route('password.update', $this->token))
-            ->line(__('mail.passwordReset.notice'));
+            ->subject(__('Reset your password'))
+            ->greeting(__('mails.notification.greeting.named', ['name' => $notifiable->name]))
+            ->line(__('mails.passwordReset.message'))
+            ->action(__('mails.passwordReset.action'), route('password.update', $this->token))
+            ->line(__('mails.passwordReset.notice'));
     }
 }

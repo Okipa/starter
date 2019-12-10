@@ -3,25 +3,25 @@
 return [
 
     'labels' => [
-        'file'          => 'Fichier',
-        'mime_type'     => 'Type MIME',
-        'clipboardCopy' => 'Copie presse-papier',
-        'url'           => 'URL',
-        'html'          => 'HTML',
-        'media'         => 'Média',
-        'data'          => 'Données',
+        'file' => 'File',
+        'mime_type' => 'MIME type',
+        'clipboardCopy' => 'Clipboard copy',
+        'url' => 'URL',
+        'html' => 'HTML',
+        'media' => 'Media',
+        'data' => 'Data',
     ],
 
     'actions' => [
-        'preview'  => 'Prévisualiser « :name »',
-        'download' => 'Télécharger « :name »',
-        'filter'   => 'Filtrer',
-        'reset'    => 'Réinitialiser',
+        'preview' => 'Preview « :name »',
+        'download' => 'Download « :name »',
+        'filter' => 'Filter',
+        'reset' => 'Reset',
     ],
 
     'notifications' => [
         'clipboardCopy' => [
-            'success' => ':type du média « :name » copié dans le presse-papier.',
+            'success' => 'Media« :name » :type copied in clipboard.',
         ],
     ],
 

@@ -57,7 +57,7 @@ class VerificationController extends Controller
      */
     public function redirectTo()
     {
-        return route('home');
+        return route('admin.index');
     }
 
     /**

@@ -65,8 +65,7 @@ task('deploy', [
     'artisan:cache:clear',
     'artisan:view:cache',
     'artisan:config:cache',
-    'artisan:route:cache', // todo : comment this if your app is multilingual
-    // 'php artisan route:trans:cache', // todo : uncomment this if your app is multilingual
+    'artisan:route:cache',
     'artisan:optimize',
     'artisan:migrate',
     'deploy:symlink',

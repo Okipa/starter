@@ -85,7 +85,7 @@ class Handler extends ExceptionHandler
     protected function invalid($request, ValidationException $exception)
     {
         if (! $request->expectsJson()) {
-            toast(__('notifications.message.validation.failed'), 'error');
+            toast(__('Invalid fields have been detected.'), 'error');
         }
 
         return parent::invalid($request, $exception);

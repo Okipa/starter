@@ -14,13 +14,16 @@
         <i class="fas fa-sign-in-alt fa-fw"></i>
         @lang('Email address verification')
     </h1>
-    <div>
-        @lang('auth.label.beforeResendingVerificationLink')
-    </div>
-    <div>
-        @lang('auth.label.didNotReceivedVerificationLink')
-    </div>
-    <form class="mt-3" method="POST" action="{{ route('verification.resend') }}">
-        {{ bsValidate()->label(__('auth.label.newVerificationEmail'))->prepend('<i class="fas fa-paper-plane fa-fw"></i>')}}
+    <p>
+        @lang('You are seeing this message because your e-mail address has not been validated yet.')
+    </p>
+    <p>
+        @lang('First, make sure you have not already received your verification link by e-mail.')
+    </p>
+    <p>
+        @lang('You can\'t find it? Click the button below to receive a new one.')
+    </p>
+    <form method="POST" action="{{ route('verification.resend') }}">
+        {{ bsValidate()->label(__('Send new verification link'))->prepend('<i class="fas fa-paper-plane fa-fw"></i>')}}
     </form>
 @endsection

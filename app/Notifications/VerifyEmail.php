@@ -33,10 +33,10 @@ class VerifyEmail extends \Illuminate\Auth\Notifications\VerifyEmail implements 
         }
 
         return (new MailMessage)
-            ->subject(__('mail.emailVerification.subject'))
-            ->greeting(__('mail.notification.greeting.named', ['name' => $notifiable->name]))
-            ->line(__('mail.emailVerification.message'))
-            ->action(__('mail.emailVerification.action'), $this->verificationUrl($notifiable))
-            ->line(__('mail.emailVerification.notice'));
+            ->subject(__('mails.emailVerification.subject'))
+            ->greeting(__('mails.notification.greeting.named', ['name' => $notifiable->name]))
+            ->line(__('mails.emailVerification.message'))
+            ->action(__('mails.emailVerification.action'), $this->verificationUrl($notifiable))
+            ->line(__('mails.emailVerification.notice'));
     }
 }

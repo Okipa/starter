@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Http\Controllers\Controller;
+use Artesaos\SEOTools\Facades\SEOTools;
 use Illuminate\Contracts\View\Factory;
+use Illuminate\Foundation\Auth\ResetsPasswords;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
-use Illuminate\Foundation\Auth\ResetsPasswords;
-use Artesaos\SEOTools\Facades\SEOTools;
 use Illuminate\View\View;
 
 class ResetPasswordController extends Controller
@@ -39,7 +39,7 @@ class ResetPasswordController extends Controller
      */
     public function showResetForm(Request $request, $token = null)
     {
-        SEOTools::setTitle(__('Define a new password'));
+        SEOTools::setTitle(__('Define new password'));
 
         return view('templates.auth.password.reset')->with(['token' => $token, 'email' => $request->email]);
     }
@@ -54,7 +54,6 @@ class ResetPasswordController extends Controller
      */
     public function sendResetResponse(Request $request, $response)
     {
-        $response = 'notifications.message.' . $response;
         alert()->html(__('Success'), __($response), 'success')->showConfirmButton();
 
         return $this->traitSendResetResponse($request, $response);
@@ -67,7 +66,7 @@ class ResetPasswordController extends Controller
      */
     public function redirectPath()
     {
-        return route('admin');
+        return route('admin.index');
     }
 
     /**
@@ -80,8 +79,7 @@ class ResetPasswordController extends Controller
      */
     protected function sendResetFailedResponse(Request $request, string $response)
     {
-        alert()->html(__('Error'), __('notifications.message.' . $response), 'error')
-            ->showConfirmButton();
+        alert()->html(__('Error'), __($response), 'error')->showConfirmButton();
 
         return back()->withInput($request->only('email'));
     }

@@ -55,9 +55,11 @@
                 {{ bsEmail()->name('email')->model($user)->containerHtmlAttributes(['required']) }}
                 <h3 class="pt-4">@lang('admin.section.security')</h3>
                 {{ bsPassword()->name($user ? 'new_password' : 'password')
-                    ->legend(__('static.legend.password.constraint.min', ['count' => config('security.password.constraint.min')]) . '<br/>'
-                        . __('static.legend.password.recommendation') . '<br/>'
-                        . __('static.legend.password.update'))
+                    ->legend(
+                        __('passwords.minLength', ['count' => config('security.password.constraint.min')]) . '<br/>'
+                        . __('passwords.recommendation') . '<br/>'
+                        . __('passwords.fillForUpdate')
+                    )
                     ->containerHtmlAttributes($user ? [] : ['required'])  }}
                 {{ bsPassword()->name($user ? 'new_password_confirmation' : 'password_confirmation')
                     ->model($user)

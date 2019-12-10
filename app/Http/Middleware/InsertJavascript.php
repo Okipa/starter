@@ -19,22 +19,15 @@ class InsertJavascript
      */
     public function handle($request, Closure $next)
     {
-        $termsOfServicePage = cache('termsOfServicePage');
+        $termsOfServiceUrl = data_get(cache('termsOfServicePage'), 'url')
+            ? route('simplePage.show', cache('termsOfServicePage')->url)
+            : null;
         JavaScript::put([
-            'locale'        => app()->getLocale(),
+            'locale' => app()->getLocale(),
+            'sweetalert' => __('sweetalert'),
             'cookieConsent' => __('cookieconsent'),
-            'sumoSelect'    => __('sumoselect'),
-            'templates' => [
-                'loading' => view('components.common.notifications.loading')->render(),
-            ],
-            'static'        => __('static'),
-            'routes'        => [
-                'page' => [
-                    'termsOfService' => $termsOfServicePage
-                        ? route('simplePage.show', $termsOfServicePage->url)
-                        : null,
-                ],
-            ],
+            'sumoSelect' => __('sumoselect'),
+            'termsOfService' => ['route' => $termsOfServiceUrl],
         ]);
 
         return $next($request);

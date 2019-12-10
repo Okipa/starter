@@ -44,17 +44,17 @@ class UserCredentialsReset extends Notification implements ShouldQueue
     public function toMail()
     {
         $mailMessage = (new MailMessage)
-            ->subject(__('mail.UserCredentialsReset.subject'))
-            ->greeting(__('mail.notification.greeting.named', ['name' => $this->data['first_name']]))
-            ->line(__('mail.UserCredentialsReset.introduction'))
+            ->subject(__('mails.UserCredentialsReset.subject'))
+            ->greeting(__('mails.notification.greeting.named', ['name' => $this->data['first_name']]))
+            ->line(__('mails.UserCredentialsReset.introduction'))
             ->line('  ')
-            ->line(__('mail.UserCredentialsReset.registration', ['url' => route('home')]));
-        foreach (__('mail.UserCredentialsReset.possibilities') as $possibility) {
+            ->line(__('mails.UserCredentialsReset.registration', ['url' => route('home')]));
+        foreach (__('mails.UserCredentialsReset.possibilities') as $possibility) {
             $mailMessage->line($possibility);
         }
         $mailMessage->line('  ')
-            ->line(__('mail.UserCredentialsReset.connection'))
-            ->line(__('mail.UserCredentialsReset.credentials.email', [
+            ->line(__('mails.UserCredentialsReset.connection'))
+            ->line(__('mails.UserCredentialsReset.credentials.email', [
                 'email' => $this->data['email'],
             ]))
             ->line(__(
@@ -62,9 +62,9 @@ class UserCredentialsReset extends Notification implements ShouldQueue
                 ['password' => $this->data['password']]
             ))
             ->line('  ')
-            ->action(__('mail.UserCredentialsReset.action'), route('user.profile.edit'))
+            ->action(__('mails.UserCredentialsReset.action'), route('user.profile.edit'))
             ->line('  ')
-            ->line(__('mail.UserCredentialsReset.closing'));
+            ->line(__('mails.UserCredentialsReset.closing'));
 
         return $mailMessage;
     }

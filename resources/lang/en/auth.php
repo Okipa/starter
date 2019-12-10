@@ -2,28 +2,18 @@
 
 return [
 
-    'title' => [
-        'signIn' => 'Sign in',
-        'signUp' => 'Sign up',
-        'forgottenPassword' => 'Forgotten password',
-        'resetPassword' => 'New password',
-        'verifyEmail' => 'Email address confirmation',
-        'register' => 'Registration',
-        'confirmPassword' => 'Password confirmation',
-    ],
+    /*
+    |--------------------------------------------------------------------------
+    | Authentication Language Lines
+    |--------------------------------------------------------------------------
+    |
+    | The following language lines are used during authentication for various
+    | messages that we need to display to the user. You are free to modify
+    | these language lines according to your application's requirements.
+    |
+    */
 
-    'label' => [
-        'forgottenPassword' => 'Forgotten password',
-        'register' => 'Create an account',
-        'signIn' => 'Sign me in',
-        'sendEmail' => 'Send email',
-        'resetPassword' => 'Reset my password',
-        'createAccount' => 'Create my account',
-        'beforeResendingVerificationLink' => 'First, make sure you have not already received your verification link by e-mail.',
-        'didNotReceivedVerificationLink' => 'You can not find it? Click the button below to receive a new one.',
-        'newVerificationEmail' => 'Send new verification link',
-        'confirmPasswordNotice' => 'For security reasons, please confirm your password. You will not be asked for several hours.',
-        'confirmPassword' => 'Confirm password',
-    ],
+    'failed' => 'These credentials do not match our records.',
+    'throttle' => 'Too many login attempts. Please try again in :seconds seconds.',
 
 ];

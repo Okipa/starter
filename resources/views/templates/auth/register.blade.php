@@ -29,7 +29,7 @@
             ->containerHtmlAttributes(['required']) }}
         {{ bsPassword()->name('password_confirmation')
             ->containerHtmlAttributes(['required']) }}
-        {{ bsValidate()->label(__('Create my account'))
+        {{ bsValidate()->label(__('Create account'))
             ->componentClasses(['btn', 'btn-block', 'btn-primary', 'load-on-click']) }}
     </form>
     {{ bsCancel()->route('login') }}

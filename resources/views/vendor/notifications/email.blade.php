@@ -38,16 +38,16 @@
 @if (! empty($salutation))
 {{ $salutation }}
 @else
-@lang('mail.notification.salutation.default'),<br>
-*@lang('mail.notification.signature', ['team' => config('app.name')])*
+@lang('mails.notification.salutation.default'),<br>
+*@lang('mails.notification.signature', ['team' => config('app.name')])*
 @endif
 
 {{-- Subcopy --}}
 @component('mail::subcopy')
-@lang('mail.notification.action.alternative', [
+@lang('mails.notification.action.alternative', [
 'actionText' => $actionText,
 'actionURL'  => $actionUrl
 ])
 @endcomponent
-    
+
 @endcomponent
