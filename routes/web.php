@@ -35,7 +35,7 @@ Route::prefix(LaravelLocalization::setLocale())
         // front *******************************************************************************************************
         require('web/front/home.php');
         require('web/front/news.php');
-        // /!\ any declaration under this one will be lost /!\
         require('web/front/dynamicPages.php');
+        // /!\ any declaration under this one will be lost /!\
         require('web/front/simplePages.php');
     });

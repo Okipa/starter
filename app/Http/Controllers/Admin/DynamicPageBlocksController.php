@@ -6,44 +6,57 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\DynamicPageBlocks\DynamicPageBlockStoreRequest;
 use App\Models\DynamicPage;
 use App\Models\DynamicPageBlock;
-use Illuminate\Support\Facades\DB;
-use RuntimeException;
 
 class DynamicPageBlocksController extends Controller
 {
-
+    /**
+     * @param \App\Http\Requests\DynamicPageBlocks\DynamicPageBlockStoreRequest $request
+     * @param \App\Models\DynamicPage $dynamicPage
+     *
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function store(DynamicPageBlockStoreRequest $request, DynamicPage $dynamicPage)
     {
+
         $blockId = $request->get('block_id');
         $blockConfig = config("dynamic-pages.blocks.{$blockId}", []);
-        $blockModel = data_get($blockConfig, 'model', false);
+        $blockController = array_reverse(explode('\\', $blockConfig['controller']))[0];
 
-        if (!$blockConfig) {
-            throw new RuntimeException("Block '{$blockId}' does not exists");
-        }
+        return redirect()
+            ->action("Admin\\DynamicPages\\{$blockController}@create", compact('dynamicPage'));
+    }
 
-        if (!$blockModel) {
-            throw new RuntimeException("Model of '{$blockId}' is not defined");
-        }
+    /**
+     * @param \App\Models\DynamicPage $dynamicPage
+     * @param \App\Models\DynamicPageBlock $dynamicPageBlock
+     *
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function edit(DynamicPage $dynamicPage, DynamicPageBlock $dynamicPageBlock)
+    {
+        $blockConfig = config("dynamic-pages.blocks.{$dynamicPageBlock->block_id}", []);
+        $blockController = array_reverse(explode('\\', data_get($blockConfig, 'controller')))[0];
 
-        $block = new DynamicPageBlock([
-            'position'        => -1,
-            'block_id'        => $blockId,
-            'dynamic_page_id' => $dynamicPage->id,
-        ]);
+        return redirect()
+            ->action("Admin\\DynamicPages\\{$blockController}@edit", compact('dynamicPage', 'dynamicPageBlock'));
+    }
 
-        DB::transaction(function () use ($blockModel, $block) {
-            $blockable = app($blockModel)->create();
+    /**
+     * @param \App\Models\DynamicPage $dynamicPage
+     * @param \App\Models\DynamicPageBlock $dynamicPageBlock
+     *
+     * @return \Illuminate\Http\RedirectResponse
+     * @throws \Exception
+     */
+    public function destroy(DynamicPage $dynamicPage, DynamicPageBlock $dynamicPageBlock)
+    {
+        $dynamicPageBlock->blockable()->delete();
+        $dynamicPageBlock->delete();
 
-            if (!$blockable) {
-                throw new RuntimeException('Unable to create blockable');
-            }
-
-            if (!$blockable->block()->save($block)) {
-                throw new RuntimeException('Unable to create block');
-            }
-        });
-
-        return back();
+        return back()
+            ->with('toast_success', __('notifications.message.crud.orphan.destroyed', [
+                'entity' => __('dynamic-pages.entities.dynamicPageBlocks'),
+                'name'   => __(data_get(config("dynamic-pages.blocks.{$dynamicPageBlock->block_id}", []), 'name')),
+            ]));
     }
 }

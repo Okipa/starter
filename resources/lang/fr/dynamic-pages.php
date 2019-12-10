@@ -12,11 +12,27 @@ return [
             'destroy' => 'page-dynamique/supprimer/{dynamicPage}',
         ],
         'dynamicPageBlocks' => [
-            'store' => 'page-dynamique/{dynamicPage}/bloc/enregistrer',
+            'index'   => 'page-dynamique-blocs',
+            'store'   => 'page-dynamique/{dynamicPage}/bloc/creer',
+            'edit'    => 'page-dynamique/{dynamicPage}/bloc/editer/{dynamicPageBlock}',
+            'destroy' => 'page-dynamique/{dynamicPage}/block/supprimer/{dynamicPageBlock}',
+            'h1'        => [
+                'create' => 'page-dynamique/{dynamicPage}/bloc/creer/h1',
+                'store'  => 'page-dynamique/{dynamicPage}/bloc/enregistrer/h1',
+                'edit'   => 'page-dynamique/{dynamicPage}/bloc/editer/h1/{dynamicPageBlock}',
+                'update' => 'page-dynamique/{dynamicPage}/bloc/mettre-a-jour/h1/{dynamicPageBlock}',
+            ],
+            'paragraph' => [
+                'create' => 'page-dynamique/{dynamicPage}/bloc/creer/paragraphe',
+                'store'  => 'page-dynamique/{dynamicPage}/bloc/enregistrer/paragraphe',
+                'edit'   => 'page-dynamique/{dynamicPage}/bloc/editer/paragraphe/{dynamicPageBlock}',
+                'update' => 'page-dynamique/{dynamicPage}/bloc/mettre-a-jour/paragraphe/{dynamicPageBlock}',
+            ],
         ],
     ],
     'entities'   => [
-        'dynamicPages' => 'Pages dynamiques',
+        'dynamicPages'      => 'Pages dynamiques',
+        'dynamicPageBlocks' => 'Bloc de page dynamique',
     ],
     'nav'        => [
         'dynamicPages' => 'Pages dynamiques',
@@ -26,10 +42,17 @@ return [
     ],
     'validation' => [
         'attributes' => [
-            'block' => 'Bloc',
+            'block_id'  => 'Bloc',
+            'h1'        => [
+                'content' => 'Contenu',
+            ],
+            'paragraph' => [
+                'content' => 'Contenu',
+            ],
         ],
     ],
     'names'      => [
-        'two_columns_text' => '2 colonnes de texte',
+        'h1'        => 'En-tête 1',
+        'paragraph' => 'Paragraphe',
     ],
 ];

@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use App\Services\DynamicPageBlocks\BlocksService;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Plank\Metable\Metable;
@@ -35,8 +37,18 @@ class DynamicPage extends Model
         'active' => 'boolean',
     ];
 
+    public function scopeActive(Builder $builder)
+    {
+        return $builder->where('active', true);
+    }
+
     public function blocks(): HasMany
     {
         return $this->hasMany(DynamicPageBlock::class);
+    }
+
+    public function getBlocksTableAttribute()
+    {
+        return (new BlocksService)->table($this);
     }
 }

@@ -58,36 +58,25 @@
                 </h2>
             </div>
             <div class="card-body">
-                <form action="{{ route('dynamicPageBlock.store', [ $dynamicPage->id ]) }}" method="POST">
+                <form action="{{ route('dynamicPageBlock.store', $dynamicPage) }}" method="POST">
                     @csrf
 
                     {{ bsSelect()
-                    ->name('block_id')
-                    ->options(array_map(function (array $block, string $id) {
-                        $block['id']   = $id;
-                        $block['name'] = __($block['name']);
+                        ->name('block_id')
+                        ->options(array_map(function (array $block, string $id) {
+                            $block['id']   = $id;
+                            $block['name'] = __($block['name']);
 
-                        return $block;
-                    }, config('dynamic-pages.blocks'), array_keys(config('dynamic-pages.blocks'))), 'id', 'name')
-                    ->label(__('dynamic-pages.validation.attributes.block')) }}
+                            return $block;
+                        }, config('dynamic-pages.blocks'), array_keys(config('dynamic-pages.blocks'))), 'id', 'name')
+                        ->label(__('dynamic-pages.validation.attributes.block_id')) }}
 
                     <div class="d-flex pt-4">
-                        {{ bsCancel()->route('dynamicPages')->containerClasses(['mr-2']) }}
                         {{ bsCreate() }}
                     </div>
                 </form>
             </div>
-            <div class="table-responsive">
-                <table class="table mb-0">
-                    <tbody>
-                        @foreach ($dynamicPage->blocks as $block)
-                            <tr>
-                                <td>@lang(data_get(config("dynamic-pages.blocks.{$block->block_id}", []), 'name'))</td>
-                            </tr>
-                        @endforeach
-                    </tbody>
-                </table>
-            </div>
+            {{ $dynamicPage->blocks_table }}
         </div>
     @endif
 @endsection
