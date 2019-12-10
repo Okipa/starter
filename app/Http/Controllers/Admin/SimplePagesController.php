@@ -7,7 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Services\Seo\SeoService;
 use App\Services\SimplePages\PagesService;
 use App\Http\Requests\SimplePages\SimplePageStoreRequest;
-use App\Http\Requests\SimplePages\DynamicPageUpdateRequest;
+use App\Http\Requests\SimplePages\SimplePageUpdateRequest;
 use Illuminate\Support\Str;
 use Artesaos\SEOTools\Facades\SEOTools;
 
@@ -71,12 +71,12 @@ class SimplePagesController extends Controller
 
     /**
      * @param \App\Models\SimplePage $simplePage
-     * @param \App\Http\Requests\SimplePages\DynamicPageUpdateRequest $request
+     * @param \App\Http\Requests\SimplePages\SimplePageUpdateRequest $request
      *
      * @return \Illuminate\Http\RedirectResponse
      * @throws \Exception
      */
-    public function update(SimplePage $simplePage, DynamicPageUpdateRequest $request)
+    public function update(SimplePage $simplePage, SimplePageUpdateRequest $request)
     {
         cache()->forget(Str::camel($simplePage->slug));
         $simplePage->update($request->except('slug'));
