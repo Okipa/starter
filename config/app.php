@@ -167,6 +167,7 @@ return [
         /*
          * Package Service Providers...
          */
+        DynamicPages\DynamicPagesServiceProvider::class,
 
         /*
          * Application Service Providers...

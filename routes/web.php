@@ -24,7 +24,6 @@ Route::prefix(LaravelLocalization::setLocale())
             require('web/admin/home.php');
             require('web/admin/news.php');
             require('web/admin/simplePages.php');
-            require('web/admin/dynamicPages.php');
             require('web/admin/libraryMedia.php');
             // sensitive data
             Route::middleware(['password.confirm'])->group(function () {
@@ -35,7 +34,6 @@ Route::prefix(LaravelLocalization::setLocale())
         // front *******************************************************************************************************
         require('web/front/home.php');
         require('web/front/news.php');
-        require('web/front/dynamicPages.php');
         // /!\ any declaration under this one will be lost /!\
         require('web/front/simplePages.php');
     });
