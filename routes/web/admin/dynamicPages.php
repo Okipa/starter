@@ -2,9 +2,9 @@
 
 use App\Http\Controllers\Admin\DynamicPageBlocksController;
 use App\Http\Controllers\Admin\DynamicPages\H1Controller;
-use App\Http\Controllers\Admin\DynamicPages\ParagraphController;
-use App\Http\Controllers\Admin\DynamicPages\TwoColumnsParagraphController;
-use App\Http\Controllers\Admin\DynamicPages\ParagraphImageController;
+use App\Http\Controllers\Admin\DynamicPages\TextController;
+use App\Http\Controllers\Admin\DynamicPages\TwoColumnsTextController;
+use App\Http\Controllers\Admin\DynamicPages\TextImageController;
 use App\Http\Controllers\Admin\DynamicPagesController;
 
 Route::get(LaravelLocalization::transRoute('dynamic-pages.routes.dynamicPages.index'), [
@@ -52,41 +52,41 @@ Route::put(LaravelLocalization::transRoute('dynamic-pages.routes.dynamicPageBloc
     H1Controller::class, 'update'
 ])->name('dynamicPageBlock.h1.update');
 
-Route::get(LaravelLocalization::transRoute('dynamic-pages.routes.dynamicPageBlocks.paragraph.create'), [
-    ParagraphController::class, 'create'
-])->name('dynamicPageBlock.paragraph.create');
-Route::post(LaravelLocalization::transRoute('dynamic-pages.routes.dynamicPageBlocks.paragraph.store'), [
-    ParagraphController::class, 'store'
-])->name('dynamicPageBlock.paragraph.store');
-Route::get(LaravelLocalization::transRoute('dynamic-pages.routes.dynamicPageBlocks.paragraph.edit'), [
-    ParagraphController::class, 'edit'
-])->name('dynamicPageBlock.paragraph.edit');
-Route::put(LaravelLocalization::transRoute('dynamic-pages.routes.dynamicPageBlocks.paragraph.update'), [
-    ParagraphController::class, 'update'
-])->name('dynamicPageBlock.paragraph.update');
+Route::get(LaravelLocalization::transRoute('dynamic-pages.routes.dynamicPageBlocks.text.create'), [
+    TextController::class, 'create'
+])->name('dynamicPageBlock.text.create');
+Route::post(LaravelLocalization::transRoute('dynamic-pages.routes.dynamicPageBlocks.text.store'), [
+    TextController::class, 'store'
+])->name('dynamicPageBlock.text.store');
+Route::get(LaravelLocalization::transRoute('dynamic-pages.routes.dynamicPageBlocks.text.edit'), [
+    TextController::class, 'edit'
+])->name('dynamicPageBlock.text.edit');
+Route::put(LaravelLocalization::transRoute('dynamic-pages.routes.dynamicPageBlocks.text.update'), [
+    TextController::class, 'update'
+])->name('dynamicPageBlock.text.update');
 
-Route::get(LaravelLocalization::transRoute('dynamic-pages.routes.dynamicPageBlocks.two_columns_paragraph.create'), [
-    TwoColumnsParagraphController::class, 'create'
-])->name('dynamicPageBlock.two_columns_paragraph.create');
-Route::post(LaravelLocalization::transRoute('dynamic-pages.routes.dynamicPageBlocks.two_columns_paragraph.store'), [
-    TwoColumnsParagraphController::class, 'store'
-])->name('dynamicPageBlock.two_columns_paragraph.store');
-Route::get(LaravelLocalization::transRoute('dynamic-pages.routes.dynamicPageBlocks.two_columns_paragraph.edit'), [
-    TwoColumnsParagraphController::class, 'edit'
-])->name('dynamicPageBlock.two_columns_paragraph.edit');
-Route::put(LaravelLocalization::transRoute('dynamic-pages.routes.dynamicPageBlocks.two_columns_paragraph.update'), [
-    TwoColumnsParagraphController::class, 'update'
-])->name('dynamicPageBlock.two_columns_paragraph.update');
+Route::get(LaravelLocalization::transRoute('dynamic-pages.routes.dynamicPageBlocks.two_columns_text.create'), [
+    TwoColumnsTextController::class, 'create'
+])->name('dynamicPageBlock.two_columns_text.create');
+Route::post(LaravelLocalization::transRoute('dynamic-pages.routes.dynamicPageBlocks.two_columns_text.store'), [
+    TwoColumnsTextController::class, 'store'
+])->name('dynamicPageBlock.two_columns_text.store');
+Route::get(LaravelLocalization::transRoute('dynamic-pages.routes.dynamicPageBlocks.two_columns_text.edit'), [
+    TwoColumnsTextController::class, 'edit'
+])->name('dynamicPageBlock.two_columns_text.edit');
+Route::put(LaravelLocalization::transRoute('dynamic-pages.routes.dynamicPageBlocks.two_columns_text.update'), [
+    TwoColumnsTextController::class, 'update'
+])->name('dynamicPageBlock.two_columns_text.update');
 
-Route::get(LaravelLocalization::transRoute('dynamic-pages.routes.dynamicPageBlocks.paragraph_image.create'), [
-    ParagraphImageController::class, 'create'
-])->name('dynamicPageBlock.paragraph_image.create');
-Route::post(LaravelLocalization::transRoute('dynamic-pages.routes.dynamicPageBlocks.paragraph_image.store'), [
-    ParagraphImageController::class, 'store'
-])->name('dynamicPageBlock.paragraph_image.store');
-Route::get(LaravelLocalization::transRoute('dynamic-pages.routes.dynamicPageBlocks.paragraph_image.edit'), [
-    ParagraphImageController::class, 'edit'
-])->name('dynamicPageBlock.paragraph_image.edit');
-Route::put(LaravelLocalization::transRoute('dynamic-pages.routes.dynamicPageBlocks.paragraph_image.update'), [
-    ParagraphImageController::class, 'update'
-])->name('dynamicPageBlock.paragraph_image.update');
+Route::get(LaravelLocalization::transRoute('dynamic-pages.routes.dynamicPageBlocks.text_image.create'), [
+    TextImageController::class, 'create'
+])->name('dynamicPageBlock.text_image.create');
+Route::post(LaravelLocalization::transRoute('dynamic-pages.routes.dynamicPageBlocks.text_image.store'), [
+    TextImageController::class, 'store'
+])->name('dynamicPageBlock.text_image.store');
+Route::get(LaravelLocalization::transRoute('dynamic-pages.routes.dynamicPageBlocks.text_image.edit'), [
+    TextImageController::class, 'edit'
+])->name('dynamicPageBlock.text_image.edit');
+Route::put(LaravelLocalization::transRoute('dynamic-pages.routes.dynamicPageBlocks.text_image.update'), [
+    TextImageController::class, 'update'
+])->name('dynamicPageBlock.text_image.update');

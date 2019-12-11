@@ -2,30 +2,30 @@
 
 return [
     'blocks' => [
-        'h1'                    => [
+        'h1'               => [
             'name'       => 'dynamic-pages.names.h1',
             'controller' => \App\Http\Controllers\Admin\DynamicPages\H1Controller::class,
             'model'      => \App\Models\DynamicPages\H1::class,
         ],
-        'paragraph'             => [
-            'name'       => 'dynamic-pages.names.paragraph',
-            'controller' => \App\Http\Controllers\Admin\DynamicPages\ParagraphController::class,
-            'model'      => \App\Models\DynamicPages\Paragraph::class,
+        'text'             => [
+            'name'       => 'dynamic-pages.names.text',
+            'controller' => \App\Http\Controllers\Admin\DynamicPages\TextController::class,
+            'model'      => \App\Models\DynamicPages\Text::class,
         ],
-        'two_columns_paragraph' => [
-            'name'       => 'dynamic-pages.names.two_columns_paragraph',
-            'controller' => \App\Http\Controllers\Admin\DynamicPages\TwoColumnsParagraphController::class,
-            'model'      => \App\Models\DynamicPages\TwoColumnsParagraph::class,
+        'two_columns_text' => [
+            'name'       => 'dynamic-pages.names.two_columns_text',
+            'controller' => \App\Http\Controllers\Admin\DynamicPages\TwoColumnsTextController::class,
+            'model'      => \App\Models\DynamicPages\TwoColumnsText::class,
         ],
-        'paragraph_image'       => [
-            'name'       => 'dynamic-pages.names.paragraph_image',
-            'controller' => \App\Http\Controllers\Admin\DynamicPages\ParagraphImageController::class,
-            'model'      => \App\Models\DynamicPages\ParagraphImage::class,
+        'text_image'       => [
+            'name'       => 'dynamic-pages.names.text_image',
+            'controller' => \App\Http\Controllers\Admin\DynamicPages\TextImageController::class,
+            'model'      => \App\Models\DynamicPages\TextImage::class,
         ],
-        'image_paragraph'       => [
-            'name'       => 'dynamic-pages.names.image_paragraph',
-            'controller' => \App\Http\Controllers\Admin\DynamicPages\ParagraphImageController::class,
-            'model'      => \App\Models\DynamicPages\ParagraphImage::class,
+        'image_text'       => [
+            'name'       => 'dynamic-pages.names.image_text',
+            'controller' => \App\Http\Controllers\Admin\DynamicPages\TextImageController::class,
+            'model'      => \App\Models\DynamicPages\TextImage::class,
         ],
     ],
 ];

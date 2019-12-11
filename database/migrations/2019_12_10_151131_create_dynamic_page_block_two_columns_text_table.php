@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateDynamicPageBlockParagraphImageTable extends Migration
+class CreateDynamicPageBlockTwoColumnsTextTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,10 @@ class CreateDynamicPageBlockParagraphImageTable extends Migration
      */
     public function up()
     {
-        Schema::create('dynamic_page_block_paragraph_image', function (Blueprint $table) {
+        Schema::create('dynamic_page_block_two_columns_text', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->longText('content');
+            $table->longText('content_left');
+            $table->longText('content_right');
             $table->timestamps();
         });
     }
@@ -27,6 +28,6 @@ class CreateDynamicPageBlockParagraphImageTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('dynamic_page_block_paragraph_image');
+        Schema::dropIfExists('dynamic_page_block_two_columns_text');
     }
 }

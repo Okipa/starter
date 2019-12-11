@@ -3,15 +3,15 @@
 namespace App\Http\Controllers\Admin\DynamicPages;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\DynamicPageBlocks\ParagraphStoreRequest;
-use App\Http\Requests\DynamicPageBlocks\ParagraphUpdateRequest;
+use App\Http\Requests\DynamicPageBlocks\TwoColumnsTextStoreRequest;
+use App\Http\Requests\DynamicPageBlocks\TwoColumnsTextUpdateRequest;
 use App\Models\DynamicPage;
 use App\Models\DynamicPageBlock;
 use Artesaos\SEOTools\Facades\SEOTools;
 use Illuminate\Support\Facades\DB;
 use RuntimeException;
 
-class ParagraphController extends Controller
+class TwoColumnsTextController extends Controller
 {
     /**
      * @param \App\Models\DynamicPage $dynamicPage
@@ -22,28 +22,31 @@ class ParagraphController extends Controller
     {
         $dynamicPageBlock = null;
 
-        return view('templates.admin.dynamic-pages.blocks.paragraph', compact('dynamicPage', 'dynamicPageBlock'));
+        return view(
+            'templates.admin.dynamic-pages.blocks.two_columns_text',
+            compact('dynamicPage', 'dynamicPageBlock')
+        );
     }
 
     /**
-     * @param \App\Http\Requests\DynamicPageBlocks\ParagraphStoreRequest $request
+     * @param \App\Http\Requests\DynamicPageBlocks\TwoColumnsTextStoreRequest $request
      * @param \App\Models\DynamicPage $dynamicPage
      *
      * @return \Illuminate\Http\RedirectResponse
      * @throws \Throwable
      */
-    public function store(ParagraphStoreRequest $request, DynamicPage $dynamicPage)
+    public function store(TwoColumnsTextStoreRequest $request, DynamicPage $dynamicPage)
     {
-        $blockConfig = config('dynamic-pages.blocks.paragraph');
+        $blockConfig = config('dynamic-pages.blocks.two_columns_text');
         $blockModel = data_get($blockConfig, 'model');
 
         if (!$blockModel) {
-            throw new RuntimeException('Model of \'paragraph\' does not exists');
+            throw new RuntimeException('Model of \'two_columns_text\' does not exists');
         }
 
         $block = new DynamicPageBlock([
             'position'        => -1,
-            'block_id'        => 'paragraph',
+            'block_id'        => 'two_columns_text',
             'dynamic_page_id' => data_get($dynamicPage, 'id'),
         ]);
 
@@ -76,18 +79,24 @@ class ParagraphController extends Controller
             'detail' => __(data_get(config("dynamic-pages.blocks.{$dynamicPageBlock->block_id}", []), 'name')),
         ]));
 
-        return view('templates.admin.dynamic-pages.blocks.paragraph', compact('dynamicPage', 'dynamicPageBlock'));
+        return view(
+            'templates.admin.dynamic-pages.blocks.two_columns_text',
+            compact('dynamicPage', 'dynamicPageBlock')
+        );
     }
 
     /**
-     * @param \App\Http\Requests\DynamicPageBlocks\ParagraphUpdateRequest $request
+     * @param \App\Http\Requests\DynamicPageBlocks\TwoColumnsTextUpdateRequest $request
      * @param \App\Models\DynamicPage $dynamicPage
      * @param \App\Models\DynamicPageBlock $dynamicPageBlock
      *
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(ParagraphUpdateRequest $request, DynamicPage $dynamicPage, DynamicPageBlock $dynamicPageBlock)
-    {
+    public function update(
+        TwoColumnsTextUpdateRequest $request,
+        DynamicPage $dynamicPage,
+        DynamicPageBlock $dynamicPageBlock
+    ) {
         $dynamicPageBlock->blockable()->update($request->validated());
 
         return redirect()

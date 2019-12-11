@@ -2,9 +2,10 @@
 
 namespace App\Http\Requests\DynamicPageBlocks;
 
+use App\Models\DynamicPages\TextImage;
 use Illuminate\Foundation\Http\FormRequest;
 
-class TwoColumnsParagraphUpdateRequest extends FormRequest
+class TextImageStoreRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,8 +25,11 @@ class TwoColumnsParagraphUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            'content_left'  => 'required|string',
-            'content_right' => 'required|string',
+            'image'   => array_merge(
+                [ 'required' ],
+                app(TextImage::class)->validationConstraints('text_images')
+            ),
+            'content' => 'required|string',
         ];
     }
 }

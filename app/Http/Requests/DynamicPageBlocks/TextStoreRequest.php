@@ -4,7 +4,7 @@ namespace App\Http\Requests\DynamicPageBlocks;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class ParagraphUpdateRequest extends FormRequest
+class TextStoreRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.

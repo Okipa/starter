@@ -4,7 +4,7 @@ namespace App\Http\Requests\DynamicPageBlocks;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class ParagraphStoreRequest extends FormRequest
+class TwoColumnsTextUpdateRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,7 +24,8 @@ class ParagraphStoreRequest extends FormRequest
     public function rules()
     {
         return [
-            'content' => 'required|string',
+            'content_left'  => 'required|string',
+            'content_right' => 'required|string',
         ];
     }
 }

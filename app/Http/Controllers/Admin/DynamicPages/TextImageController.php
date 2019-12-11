@@ -3,15 +3,15 @@
 namespace App\Http\Controllers\Admin\DynamicPages;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\DynamicPageBlocks\TwoColumnsParagraphStoreRequest;
-use App\Http\Requests\DynamicPageBlocks\TwoColumnsParagraphUpdateRequest;
+use App\Http\Requests\DynamicPageBlocks\TextImageStoreRequest;
+use App\Http\Requests\DynamicPageBlocks\TextImageUpdateRequest;
 use App\Models\DynamicPage;
 use App\Models\DynamicPageBlock;
 use Artesaos\SEOTools\Facades\SEOTools;
 use Illuminate\Support\Facades\DB;
 use RuntimeException;
 
-class TwoColumnsParagraphController extends Controller
+class TextImageController extends Controller
 {
     /**
      * @param \App\Models\DynamicPage $dynamicPage
@@ -22,37 +22,38 @@ class TwoColumnsParagraphController extends Controller
     {
         $dynamicPageBlock = null;
 
-        return view(
-            'templates.admin.dynamic-pages.blocks.two_columns_paragraph',
-            compact('dynamicPage', 'dynamicPageBlock')
-        );
+        return view('templates.admin.dynamic-pages.blocks.text_image', compact('dynamicPage', 'dynamicPageBlock'));
     }
 
     /**
-     * @param \App\Http\Requests\DynamicPageBlocks\TwoColumnsParagraphStoreRequest $request
+     * @param \App\Http\Requests\DynamicPageBlocks\TextImageStoreRequest $request
      * @param \App\Models\DynamicPage $dynamicPage
      *
      * @return \Illuminate\Http\RedirectResponse
      * @throws \Throwable
      */
-    public function store(TwoColumnsParagraphStoreRequest $request, DynamicPage $dynamicPage)
+    public function store(TextImageStoreRequest $request, DynamicPage $dynamicPage)
     {
-        $blockConfig = config('dynamic-pages.blocks.two_columns_paragraph');
+        $blockId = $request->query('blockId', 'text_image');
+        $blockConfig = config("dynamic-pages.blocks.{$blockId}");
         $blockModel = data_get($blockConfig, 'model');
 
         if (!$blockModel) {
-            throw new RuntimeException('Model of \'two_columns_paragraph\' does not exists');
+            throw new RuntimeException('Model of \'text_image\' does not exists');
         }
 
         $block = new DynamicPageBlock([
             'position'        => -1,
-            'block_id'        => 'two_columns_paragraph',
+            'block_id'        => $blockId,
             'dynamic_page_id' => data_get($dynamicPage, 'id'),
         ]);
 
         DB::transaction(function () use ($blockModel, $request, $block) {
-            /** @var \App\Models\DynamicPages\Blockable $blockable */
+            /** @var \App\Models\DynamicPages\TextImage $blockable */
             $blockable = app($blockModel)->create($request->validated());
+            $blockable
+                ->addMediaFromRequest('image')
+                ->toMediaCollection('text_images');
 
             if (!$blockable) {
                 throw new RuntimeException('Unable to create blockable');
@@ -79,25 +80,32 @@ class TwoColumnsParagraphController extends Controller
             'detail' => __(data_get(config("dynamic-pages.blocks.{$dynamicPageBlock->block_id}", []), 'name')),
         ]));
 
-        return view(
-            'templates.admin.dynamic-pages.blocks.two_columns_paragraph',
-            compact('dynamicPage', 'dynamicPageBlock')
-        );
+        return view('templates.admin.dynamic-pages.blocks.text_image', compact('dynamicPage', 'dynamicPageBlock'));
     }
 
     /**
-     * @param \App\Http\Requests\DynamicPageBlocks\TwoColumnsParagraphUpdateRequest $request
+     * @param \App\Http\Requests\DynamicPageBlocks\TextImageUpdateRequest $request
      * @param \App\Models\DynamicPage $dynamicPage
      * @param \App\Models\DynamicPageBlock $dynamicPageBlock
      *
      * @return \Illuminate\Http\RedirectResponse
+     * @throws \Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\DiskDoesNotExist
+     * @throws \Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\FileDoesNotExist
+     * @throws \Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\FileIsTooBig
      */
     public function update(
-        TwoColumnsParagraphUpdateRequest $request,
+        TextImageUpdateRequest $request,
         DynamicPage $dynamicPage,
         DynamicPageBlock $dynamicPageBlock
     ) {
-        $dynamicPageBlock->blockable()->update($request->validated());
+        /** @var \App\Models\DynamicPages\TextImage $blockable */
+        $blockable = $dynamicPageBlock->blockable()->update($request->validated());
+
+        if ($request->file('image')) {
+            $blockable
+                ->addMediaFromRequest('image')
+                ->toMediaCollection('text_images');
+        }
 
         return redirect()
             ->route('dynamicPage.edit', $dynamicPage)
