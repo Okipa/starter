@@ -20,10 +20,8 @@
         @include('components.common.form.notice')
         {{ bsEmail()->name('email')->componentHtmlAttributes(['autofocus'])->containerHtmlAttributes(['required']) }}
         {{ bsPassword()->name('password')
-            ->legend(
-                __('passwords.minLength', ['count' => config('security.password.constraint.min')]) . '<br/>'
-                . __('passwords.recommendation')
-            )
+            ->legend(__('passwords.minLength', ['count' => config('security.password.constraint.min')]) . '<br/>'
+                . __('passwords.recommendation'))
             ->containerHtmlAttributes(['required']) }}
         {{ bsPassword()->name('password_confirmation')->containerHtmlAttributes(['required']) }}
         {{ bsValidate()->label(__('Save new password'))

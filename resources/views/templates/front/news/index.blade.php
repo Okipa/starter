@@ -3,7 +3,7 @@
     <div id="news" class="container my-5">
         <div class="row">
             <div class="col-12">
-                <h1>@lang('entities.news')</h1>
+                <h1>@lang('News')</h1>
             </div>
             @foreach($articles as $article)
                 <div class="col-sm-4 py-3">
@@ -29,8 +29,8 @@
                             <p class="card-text shave description">{!! Str::limit(strip_tags((new Parsedown)->text($article->description)), 500) !!}</p>
                             <a class="btn btn-primary load-on-click"
                                href="{{ route('news.article.show', $article->url) }}"
-                               title="@lang('static.action.moreInfo')">
-                                @lang('static.action.moreInfo')
+                               title="@lang('Know more')">
+                                @lang('Know more')
                             </a>
                         </div>
                     </div>

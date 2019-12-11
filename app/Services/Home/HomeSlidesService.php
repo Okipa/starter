@@ -20,18 +20,18 @@ class HomeSlidesService extends Service implements HomeSlidesServiceInterface
     public function table(): Table
     {
         $table = (new Table)->model(HomeSlide::class)->routes([
-            'index'   => ['name' => 'home.slides'],
-            'create'  => ['name' => 'home.slide.create'],
-            'edit'    => ['name' => 'home.slide.edit'],
+            'index' => ['name' => 'home.slides'],
+            'create' => ['name' => 'home.slide.create'],
+            'edit' => ['name' => 'home.slide.edit'],
             'destroy' => ['name' => 'home.slide.destroy'],
         ])->query(function (Builder $query) {
             $query->orderBy('position', 'ASC');
         })->destroyConfirmationHtmlAttributes(function (HomeSlide $homeSlide) {
             return [
-                'data-confirm' => __('notifications.message.crud.parent.destroyConfirm', [
-                    'parent' => __('entities.home'),
-                    'entity' => __('entities.slides'),
-                    'name'   => $homeSlide->title,
+                'data-confirm' => __('notifications.parent.destroyConfirm', [
+                    'parent' => __('Home'),
+                    'entity' => __('Slides'),
+                    'name' => $homeSlide->title,
                 ]),
             ];
         });

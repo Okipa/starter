@@ -12,7 +12,7 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        SEOTools::setTitle(__('entities.dashboard'));
+        SEOTools::setTitle(__('Dashboard'));
 
         return view('templates.admin.dashboard.index');
     }

@@ -19,9 +19,9 @@ class ContactPageController extends Controller
     {
         /** @var PageContent $contactPageContent */
         $contactPageContent = (new PageContent)->where('slug', 'contact-page-content')->firstOrFail();
-        SEOTools::setTitle(__('admin.title.orphan.edit', [
-            'entity' => __('entities.contact'),
-            'detail' => __('entities.page'),
+        SEOTools::setTitle(__('breadcrumbs.orphan.edit', [
+            'entity' => __('Contact'),
+            'detail' => __('Page'),
         ]));
 
         return view('templates.admin.contact.page.edit', compact('contactPageContent'));
@@ -38,9 +38,9 @@ class ContactPageController extends Controller
         $contactPageContent = (new PageContent)->where('slug', 'contact-page-content')->firstOrFail();
         $contactPageContent->saveMetaFromRequest($request, ['title', 'description']);
         (new SeoService)->saveSeoTagsFromRequest($contactPageContent, $request);
-        return back()->with('toast_success', __('notifications.message.crud.orphan.updated', [
-            'entity' => __('entities.contact'),
-            'name'   => __('entities.page'),
+        return back()->with('toast_success', __('notifications.orphan.updated', [
+            'entity' => __('Contact'),
+            'name'   => __('Page'),
         ]));
     }
 }

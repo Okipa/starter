@@ -34,7 +34,7 @@ class LibraryMediaFilesController extends Controller
     public function index(FilesIndexRequest $request)
     {
         $table = (new FilesService)->table($request);
-        SEOTools::setTitle(__('admin.title.orphan.index', ['entity' => __('entities.libraryMedia')]));
+        SEOTools::setTitle(__('breadcrumbs.orphan.index', ['entity' => __('Media library')]));
         (new FilesService)->injectJavascriptInView();
         $js = mix('/js/library-media/index.js');
 
@@ -47,7 +47,7 @@ class LibraryMediaFilesController extends Controller
     public function create()
     {
         $file = null;
-        SEOTools::setTitle(__('admin.title.orphan.create', ['entity' => __('entities.libraryMedia')]));
+        SEOTools::setTitle(__('breadcrumbs.orphan.create', ['entity' => __('Media library')]));
 
         return view('templates.admin.libraryMedia.files.edit', compact('file'));
     }
@@ -72,8 +72,8 @@ class LibraryMediaFilesController extends Controller
             ->toMediaCollection('medias');
 
         return redirect()->route('libraryMedia.files.index')
-            ->with('toast_success', __('notifications.message.crud.orphan.created', [
-                'entity' => __('entities.libraryMedia'),
+            ->with('toast_success', __('notifications.orphan.created', [
+                'entity' => __('Media library'),
                 'name'   => $file->name,
             ]));
     }
@@ -86,8 +86,8 @@ class LibraryMediaFilesController extends Controller
      */
     public function edit(LibraryMediaFile $file)
     {
-        SEOTools::setTitle(__('admin.title.orphan.edit', [
-            'entity' => __('entities.libraryMedia'),
+        SEOTools::setTitle(__('breadcrumbs.orphan.edit', [
+            'entity' => __('Media library'),
             'detail' => $file->name,
         ]));
         (new FilesService)->injectJavascriptInView();
@@ -117,8 +117,8 @@ class LibraryMediaFilesController extends Controller
                 ->toMediaCollection('medias');
         }
 
-        return back()->with('toast_success', __('notifications.message.crud.orphan.updated', [
-            'entity' => __('entities.libraryMedia'),
+        return back()->with('toast_success', __('notifications.orphan.updated', [
+            'entity' => __('Media library'),
             'name'   => $file->name,
         ]));
     }
@@ -134,8 +134,8 @@ class LibraryMediaFilesController extends Controller
         $name = $file->name;
         $file->delete();
 
-        return back()->with('toast_success', __('notifications.message.crud.orphan.destroyed', [
-            'entity' => __('entities.libraryMedia'),
+        return back()->with('toast_success', __('notifications.orphan.destroyed', [
+            'entity' => __('Media library'),
             'name'   => $name,
         ]));
     }
@@ -152,13 +152,13 @@ class LibraryMediaFilesController extends Controller
             $clipboardContent = $type === 'url'
                 ? $file->getFirstMedia('medias')->getFullUrl()
                 : trim(view('components.admin.table.library-media.html-clipboard-content', compact('file'))->toHtml());
-            $message = __('library-media.notifications.clipboardCopy.success', [
+            $message = __('Media « :name » :type copied in clipboard.', [
                 'type' => strtoupper($type),
                 'name' => $file->name,
             ]);
         } catch (Exception $exception) {
             Log::error($exception);
-            $message = __('notifications.message.exception.support');
+            $message = __('An unexpected error occurred. If the problem persists, please contact support.');
         }
 
         return response()->json(compact('clipboardContent', 'message'));

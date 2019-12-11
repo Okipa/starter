@@ -31,7 +31,7 @@
                 </p>
                 {{ bsBack()->route('home')->label($maintenanceMode
                     ? __('static.action.retry')
-                    : __('static.action.backHome'))->containerClasses(['mt-5']) }}
+                    : __('Back to home page'))->containerClasses(['mt-5']) }}
             </div>
         </div>
     </div>

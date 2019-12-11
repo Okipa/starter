@@ -9,45 +9,52 @@ use App\Http\Requests\News\ArticleStoreRequest;
 use App\Http\Requests\News\ArticleUpdateRequest;
 use App\Services\Seo\SeoService;
 use Artesaos\SEOTools\Facades\SEOTools;
+use Exception;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\View\View;
+use Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\DiskDoesNotExist;
+use Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\FileDoesNotExist;
+use Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\FileIsTooBig;
 
 class NewsArticlesController extends Controller
 {
     /**
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     * @throws \Exception
+     * @return Factory|View
+     * @throws Exception
      */
     public function index()
     {
         $table = (new ArticlesService)->table();
-        SEOTools::setTitle(__('admin.title.parent.index', [
-            'parent' => __('entities.news'),
-            'entity' => __('entities.articles'),
+        SEOTools::setTitle(__('breadcrumbs.parent.index', [
+            'parent' => __('News'),
+            'entity' => __('Articles'),
         ]));
 
         return view('templates.admin.news.articles.index', compact('table'));
     }
 
     /**
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @return Factory|View
      */
     public function create()
     {
         $article = null;
-        SEOTools::setTitle(__('admin.title.parent.create', [
-            'parent' => __('entities.news'),
-            'entity' => __('entities.articles'),
+        SEOTools::setTitle(__('breadcrumbs.parent.create', [
+            'parent' => __('News'),
+            'entity' => __('Articles'),
         ]));
 
         return view('templates.admin.news.articles.edit', compact('article'));
     }
 
     /**
-     * @param \App\Http\Requests\News\ArticleStoreRequest $request
+     * @param ArticleStoreRequest $request
      *
-     * @return \Illuminate\Http\RedirectResponse
-     * @throws \Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\DiskDoesNotExist
-     * @throws \Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\FileDoesNotExist
-     * @throws \Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\FileIsTooBig
+     * @return RedirectResponse
+     * @throws DiskDoesNotExist
+     * @throws FileDoesNotExist
+     * @throws FileIsTooBig
      */
     public function store(ArticleStoreRequest $request)
     {
@@ -60,24 +67,24 @@ class NewsArticlesController extends Controller
         $article->categories()->sync($request->category_ids);
         (new SeoService)->saveSeoTagsFromRequest($article, $request);
 
-        return redirect()->route('news.articles')
-            ->with('toast_success', __('notifications.message.crud.parent.created', [
-                'parent' => __('entities.news'),
-                'entity' => __('entities.articles'),
+        return redirect()->route('news.articles.index')
+            ->with('toast_success', __('notifications.parent.created', [
+                'parent' => __('News'),
+                'entity' => __('Articles'),
                 'name'   => $article->title,
             ]));
     }
 
     /**
-     * @param \App\Models\NewsArticle $article
+     * @param NewsArticle $article
      *
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @return Factory|View
      */
     public function edit(NewsArticle $article)
     {
-        SEOTools::setTitle(__('admin.title.parent.edit', [
-            'parent' => __('entities.news'),
-            'entity' => __('entities.articles'),
+        SEOTools::setTitle(__('breadcrumbs.parent.edit', [
+            'parent' => __('News'),
+            'entity' => __('Articles'),
             'detail' => $article->title,
         ]));
 
@@ -85,13 +92,13 @@ class NewsArticlesController extends Controller
     }
 
     /**
-     * @param \App\Models\NewsArticle $article
-     * @param \App\Http\Requests\News\ArticleUpdateRequest $request
+     * @param NewsArticle $article
+     * @param ArticleUpdateRequest $request
      *
-     * @return \Illuminate\Http\RedirectResponse
-     * @throws \Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\DiskDoesNotExist
-     * @throws \Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\FileDoesNotExist
-     * @throws \Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\FileIsTooBig
+     * @return RedirectResponse
+     * @throws DiskDoesNotExist
+     * @throws FileDoesNotExist
+     * @throws FileIsTooBig
      */
     public function update(NewsArticle $article, ArticleUpdateRequest $request)
     {
@@ -103,27 +110,27 @@ class NewsArticlesController extends Controller
         $article->categories()->sync($request->category_ids);
         (new SeoService)->saveSeoTagsFromRequest($article, $request);
 
-        return back()->with('toast_success', __('notifications.message.crud.parent.updated', [
-            'parent' => __('entities.news'),
-            'entity' => __('entities.articles'),
+        return back()->with('toast_success', __('notifications.parent.updated', [
+            'parent' => __('News'),
+            'entity' => __('Articles'),
             'name'   => $article->title,
         ]));
     }
 
     /**
-     * @param \App\Models\NewsArticle $article
+     * @param NewsArticle $article
      *
-     * @return \Illuminate\Http\RedirectResponse
-     * @throws \Exception
+     * @return RedirectResponse
+     * @throws Exception
      */
     public function destroy(NewsArticle $article)
     {
         $name = $article->title;
         $article->delete();
 
-        return back()->with('toast_success', __('notifications.message.crud.parent.destroyed', [
-            'parent' => __('entities.news'),
-            'entity' => __('entities.articles'),
+        return back()->with('toast_success', __('notifications.parent.destroyed', [
+            'parent' => __('News'),
+            'entity' => __('Articles'),
             'name'   => $name,
         ]));
     }

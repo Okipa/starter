@@ -20,15 +20,15 @@ class SimpleSimplePagesService extends Service implements SimplePagesServiceInte
     public function table(): Table
     {
         $table = (new Table)->model(SimplePage::class)->routes([
-            'index'   => ['name' => 'simplePages'],
-            'create'  => ['name' => 'simplePage.create'],
-            'edit'    => ['name' => 'simplePage.edit'],
+            'index' => ['name' => 'simplePages'],
+            'create' => ['name' => 'simplePage.create'],
+            'edit' => ['name' => 'simplePage.edit'],
             'destroy' => ['name' => 'simplePage.destroy'],
         ])->destroyConfirmationHtmlAttributes(function (SimplePage $simplePage) {
             return [
-                'data-confirm' => __('notifications.message.crud.orphan.destroyConfirm', [
-                    'entity' => __('entities.simplePages'),
-                    'name'   => $simplePage->title,
+                'data-confirm' => __('notifications.orphan.destroyConfirm', [
+                    'entity' => __('Simple pages'),
+                    'name' => $simplePage->title,
                 ]),
             ];
         });
@@ -40,7 +40,7 @@ class SimpleSimplePagesService extends Service implements SimplePagesServiceInte
             ->searchable();
         $table->column('url')->title(__('components.table.link'))->html(function (SimplePage $simplePage) {
             return view('components.admin.table.link', [
-                'url'    => route('simplePage.show', $simplePage->url),
+                'url' => route('simplePage.show', $simplePage->url),
                 'active' => $simplePage->active,
             ]);
         });

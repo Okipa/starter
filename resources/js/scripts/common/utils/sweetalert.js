@@ -13,7 +13,7 @@ notify.toast = notify.mixin({
     timer: 10000
 });
 
-notify.loading = (title = app.sweetalert.loading, message = null) => {
+notify.loading = (title = app.sweetalert.pleaseWait, message = app.sweetalert.loading) => {
     return swal.fire({
         toast: true,
         position: 'top-end',
@@ -28,7 +28,7 @@ notify.loading = (title = app.sweetalert.loading, message = null) => {
     });
 };
 
-notify.warning = (html, title = app.notifications.title.confirm) => {
+notify.warning = (html, title = app.sweetalert.confirmRequest) => {
     return notify.fire({
         title: title,
         html: html,

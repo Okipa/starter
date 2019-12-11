@@ -24,6 +24,7 @@
         @lang('You can\'t find it? Click the button below to receive a new one.')
     </p>
     <form method="POST" action="{{ route('verification.resend') }}">
+        @csrf
         {{ bsValidate()->label(__('Send new verification link'))->prepend('<i class="fas fa-paper-plane fa-fw"></i>')}}
     </form>
 @endsection

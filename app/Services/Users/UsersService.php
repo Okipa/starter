@@ -5,31 +5,36 @@ namespace App\Services\Users;
 use App\Http\Requests\Request;
 use App\Models\User;
 use App\Services\Service;
+use ErrorException;
+use Illuminate\Contracts\Container\BindingResolutionException;
 use Okipa\LaravelTable\Table;
+use Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\DiskDoesNotExist;
+use Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\FileDoesNotExist;
+use Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\FileIsTooBig;
 
 class UsersService extends Service implements UsersServiceInterface
 {
     /**
      * Configure the model table list.
      *
-     * @return \Okipa\LaravelTable\Table
-     * @throws \ErrorException
-     * @throws \Illuminate\Contracts\Container\BindingResolutionException
+     * @return Table
+     * @throws ErrorException
+     * @throws BindingResolutionException
      */
     public function table(): Table
     {
         $table = (new Table)->model(User::class)->routes([
-            'index'   => ['name' => 'users'],
-            'create'  => ['name' => 'user.create'],
-            'edit'    => ['name' => 'user.edit'],
+            'index' => ['name' => 'users'],
+            'create' => ['name' => 'user.create'],
+            'edit' => ['name' => 'user.edit'],
             'destroy' => ['name' => 'user.destroy'],
         ])->disableRows(function (User $user) {
             return $user->id === auth()->id();
         })->destroyConfirmationHtmlAttributes(function (User $user) {
             return [
-                'data-confirm' => __('notifications.message.crud.orphan.destroyConfirm', [
-                    'entity' => __('entities.settings'),
-                    'name'   => $user->name,
+                'data-confirm' => __('notifications.orphan.destroyConfirm', [
+                    'entity' => __('Settings'),
+                    'name' => $user->name,
                 ]),
             ];
         });
@@ -46,13 +51,13 @@ class UsersService extends Service implements UsersServiceInterface
     /**
      * Manage avatar from request.
      *
-     * @param \App\Http\Requests\Request $request
-     * @param \App\Models\User $user
+     * @param Request $request
+     * @param User $user
      *
      * @return void
-     * @throws \Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\DiskDoesNotExist
-     * @throws \Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\FileDoesNotExist
-     * @throws \Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\FileIsTooBig
+     * @throws DiskDoesNotExist
+     * @throws FileDoesNotExist
+     * @throws FileIsTooBig
      */
     public function manageAvatarFromRequest(Request $request, User $user): void
     {
@@ -66,11 +71,11 @@ class UsersService extends Service implements UsersServiceInterface
     /**
      * Set default avatar image for the given user.
      *
-     * @param \App\Models\User $user
+     * @param User $user
      *
-     * @throws \Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\DiskDoesNotExist
-     * @throws \Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\FileDoesNotExist
-     * @throws \Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\FileIsTooBig
+     * @throws DiskDoesNotExist
+     * @throws FileDoesNotExist
+     * @throws FileIsTooBig
      */
     public function setDefaultAvatarImage(User $user): void
     {

@@ -18,9 +18,9 @@ class NewsArticlesController extends Controller
      */
     public function index(ArticlesIndexRequest $request)
     {
-        SEOTools::setTitle(__('admin.title.parent.index', [
-            'parent' => __('entities.news'),
-            'entity' => __('entities.articles'),
+        SEOTools::setTitle(__('breadcrumbs.parent.index', [
+            'parent' => __('News'),
+            'entity' => __('Articles'),
         ]));
         $query = (new NewsArticle)->with(['media', 'categories'])
             ->where('active', true)

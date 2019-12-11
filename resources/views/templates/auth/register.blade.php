@@ -26,6 +26,8 @@
         {{ bsEmail()->name('email')
             ->containerHtmlAttributes(['required']) }}
         {{ bsPassword()->name('password')
+            ->legend(__('passwords.minLength', ['count' => config('security.password.constraint.min')]) . '<br/>'
+                . __('passwords.recommendation'))
             ->containerHtmlAttributes(['required']) }}
         {{ bsPassword()->name('password_confirmation')
             ->containerHtmlAttributes(['required']) }}

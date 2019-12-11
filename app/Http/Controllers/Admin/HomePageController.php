@@ -19,9 +19,9 @@ class HomePageController extends Controller
     {
         /** @var \App\Models\HomePage $homePage */
         $homePage = (new HomePage)->firstOrFail();
-        SEOTools::setTitle(__('admin.title.orphan.edit', [
-            'entity' => __('entities.home'),
-            'detail' => __('entities.page'),
+        SEOTools::setTitle(__('breadcrumbs.orphan.edit', [
+            'entity' => __('Home'),
+            'detail' => __('Page'),
         ]));
 
         return view('templates.admin.home.page.edit', compact('homePage'));
@@ -39,9 +39,9 @@ class HomePageController extends Controller
         $homePage->update($request->validated());
         (new SeoService)->saveSeoTagsFromRequest($homePage, $request);
 
-        return back()->with('toast_success', __('notifications.message.crud.name.updated', [
-            'entity' => __('entities.home'),
-            'name'   => __('entities.page'),
+        return back()->with('toast_success', __('notifications.orphan.updated', [
+            'entity' => __('Home'),
+            'name'   => __('Page'),
         ]));
     }
 }

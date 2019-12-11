@@ -22,19 +22,19 @@
             <div class="dropdown-menu dropdown-menu-right">
                 <a href="{{ route('user.profile.edit') }}"
                    class="dropdown-item load-on-click {{ request()->route()->getName() === 'user.profile' ? 'active' : null }}"
-                   title="{{ __('nav.admin.profile') }}">
+                   title="@lang('My profile')">
                     <i class="fas fa-user-circle fa-fw"></i>
-                    @lang('nav.admin.profile')
+                    @lang('My profile')
                 </a>
                 <div class="dropdown-divider"></div>
                 <form id="logout-form" class="p-0" action="{{ route('logout') }}" method="POST">
                     @csrf()
                     <button type="submit"
                             class="dropdown-item btn btn-link"
-                            title="{{ __('nav.admin.logout') }}"
+                            title="@lang('Logout')"
                             data-confirm="@lang('Are you sure you want to logout ?')">
                         <i class="fas fa-sign-out-alt fa-fw"></i>
-                        @lang('nav.admin.logout')
+                        @lang('Logout')
                     </button>
                 </form>
             </div>

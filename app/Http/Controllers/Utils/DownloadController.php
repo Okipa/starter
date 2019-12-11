@@ -19,7 +19,7 @@ class DownloadController extends Controller
         if (file_exists($request->path)) {
             return response()->download($request->path, $request->name);
         }
-        alert()->html(__('notifications.message.downloadFile.doesNotExist', [
+        alert()->html(__('The file: file does not exist.', [
             'file' => $request->path,
         ]), 'error', __('Error'))->showConfirmButton();
 

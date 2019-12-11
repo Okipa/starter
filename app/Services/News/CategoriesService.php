@@ -18,16 +18,16 @@ class CategoriesService extends Service implements CategoriesServiceInterface
     public function table(): Table
     {
         $table = (new Table)->model(NewsCategory::class)->routes([
-            'index'   => ['name' => 'news.categories'],
-            'create'  => ['name' => 'news.category.create'],
-            'edit'    => ['name' => 'news.category.edit'],
+            'index' => ['name' => 'news.categories'],
+            'create' => ['name' => 'news.category.create'],
+            'edit' => ['name' => 'news.category.edit'],
             'destroy' => ['name' => 'news.category.destroy'],
         ])->destroyConfirmationHtmlAttributes(function (NewsCategory $category) {
             return [
-                'data-confirm' => __('notifications.message.crud.parent.destroyConfirm', [
-                    'parent' => __('entities.news'),
-                    'entity' => __('entities.categories'),
-                    'name'   => $category->name,
+                'data-confirm' => __('notifications.parent.destroyConfirm', [
+                    'parent' => __('News'),
+                    'entity' => __('Categories'),
+                    'name' => $category->name,
                 ]),
             ];
         });

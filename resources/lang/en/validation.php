@@ -149,7 +149,10 @@ return [
     'attributes' => [
         'email' => 'Email',
         'password' => 'Password',
+        'password_confirmation' => 'Password confirmation',
         'remember' => 'Remember me',
+        'first_name' => 'First name',
+        'last_name' => 'Last name'
     ],
 
 ];

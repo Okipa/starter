@@ -2,7 +2,7 @@
 @section('template')
     <h1>
         <i class="fas fa-envelope fa-fw"></i>
-        @lang('admin.title.orphan.edit', ['entity' => __('entities.contact'), 'detail' => __('entities.page')])
+        @lang('breadcrumbs.orphan.edit', ['entity' => __('Contact'), 'detail' => __('Page')])
     </h1>
     <hr>
     <form method="POST" class="w-100" action="{{ route('contact.page.update') }}" enctype="multipart/form-data">
@@ -12,11 +12,11 @@
         <div class="card">
             <div class="card-header">
                 <h2 class="m-0">
-                    @lang('admin.section.data')
+                    @lang('Data')
                 </h2>
             </div>
             <div class="card-body">
-                <h3>@lang('admin.section.content')</h3>
+                <h3>@lang('Content')</h3>
                 {{ bsText()->name('title')
                     ->locales(supportedLocaleKeys())
                     ->value(function($locale) use ($contactPageContent) {

@@ -3,6 +3,6 @@
        href="{{ route('home') }}"
        title="@lang('Home')">
         <i class="fas fa-home fa-fw"></i>
-        @lang('nav.front.home')
+        @lang('Home')
     </a>
 </li>

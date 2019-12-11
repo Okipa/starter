@@ -2,16 +2,16 @@
 @section('template')
     <h1>
         <i class="fas fa-images fa-fw"></i>
-        @lang('admin.title.parent.index', [
-            'parent' => __('entities.home'),
-            'entity' => __('entities.slides'),
+        @lang('breadcrumbs.parent.index', [
+            'parent' => __('Home'),
+            'entity' => __('Slides'),
         ])
     </h1>
     <hr>
     <div class="card">
         <div class="card-header">
             <h2 class="m-0">
-                @lang('admin.section.list')
+                @lang('List')
             </h2>
         </div>
         <div class="card-body">

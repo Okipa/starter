@@ -5,7 +5,7 @@
 @if($file->type === 'image')
     <img src="{{ $media->getUrl() }}" alt="{{ $file->name }}">
 @elseif($file->type === 'pdf')
-    <a href="{{ $media->getUrl() }}" title="{{ __('library-media.actions.preview', ['name' => $file->name]) }}" data-lity>
+    <a href="{{ $media->getUrl() }}" title="@lang('Preview') {{ $file->name }}" data-lity>
         <img src="{{ $media->getUrl('thumb') }}" alt="{{ $file->name }}">
         <span class="mt-1 d-block small"><i class="fas fa-search fa-fw"></i>{{ $file->name }}</span>
     </a>
@@ -24,7 +24,7 @@
 @else
 {{-- download --}}
 <div class="my-3">
-    <a href="{{ route('download.file', ['path' => $media->getPath()]) }}" title="{{ __('library-media.actions.download', ['name' => $file->name]) }}">
+    <a href="{{ route('download.file', ['path' => $media->getPath()]) }}" title="@lang('Download') {{ $file->name }}">
         {!! $file->icon !!}
         <span class="mt-1 d-block small"><i class="fas fa-download fa-fw"></i>{{ $file->name }}</span>
     </a>

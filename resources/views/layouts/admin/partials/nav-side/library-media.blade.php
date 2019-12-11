@@ -6,13 +6,13 @@
 <li class="nav-item">
     <a class="nav-link {{ $subMenuActive ? 'active' : null }}"
         href="#libraryMediaMenu"
-            title="@lang('nav.admin.libraryMedia')"
+            title="@lang('Media library')"
             data-toggle="collapse"
             role="button"
             aria-expanded="false"
             aria-controls="newsMenu">
         <i class="fas fa-photo-video fa-fw"></i>
-        @lang('nav.admin.libraryMedia')
+        @lang('Media library')
         <i class="fas fa-caret-down fa-fw"></i>
     </a>
     <ul id="libraryMediaMenu" class="collapse list-unstyled {{ $subMenuActive ? 'show' : null }}">
@@ -20,18 +20,18 @@
         <li class="nav-item">
             <a class="nav-link load-on-click {{ $libraryMediaCategoriesActive ? 'active' : null }}"
                 href="{{ route('libraryMedia.categories.index') }}"
-                    title="@lang('nav.admin.categories')">
+                    title="@lang('Categories')">
                 <i class="fas fa-tags fa-fw"></i>
-                @lang('nav.admin.categories')
+                @lang('Categories')
             </a>
         </li>
         {{-- files --}}
         <li class="nav-item">
             <a class="nav-link load-on-click {{ $libraryMediaFilesActive ? 'active' : null }}"
                href="{{ route('libraryMedia.files.index') }}"
-               title="@lang('nav.admin.files')">
+               title="@lang('Files')">
                     <i class="fas fa-copy fa-fw"></i>
-                    @lang('nav.admin.files')
+                    @lang('Files')
             </a>
         </li>
     </ul>

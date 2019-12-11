@@ -1,5 +1,5 @@
 <nav id="navbar" class="navbar navbar-expand-md navbar-dark bg-dark w-100 fixed-top">
-    <a class="navbar-brand d-flex align-items-center pl-3 pr-3" href="{{ route('admin') }}">
+    <a class="navbar-brand d-flex align-items-center pl-3 pr-3" href="{{ route('admin.index') }}">
         @if($icon = $settings->getFirstMedia('icon'))
             {{ $icon('admin-header') }}
         @endif

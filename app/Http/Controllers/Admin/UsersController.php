@@ -9,42 +9,51 @@ use App\Models\User;
 use App\Services\Users\UsersService;
 use Artesaos\SEOTools\Facades\SEOTools;
 use Auth;
+use ErrorException;
+use Exception;
 use Hash;
+use Illuminate\Contracts\Container\BindingResolutionException;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\View\View;
+use Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\DiskDoesNotExist;
+use Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\FileDoesNotExist;
+use Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\FileIsTooBig;
 
 class UsersController extends Controller
 {
     /**
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     * @throws \ErrorException
-     * @throws \Illuminate\Contracts\Container\BindingResolutionException
+     * @return Factory|View
+     * @throws ErrorException
+     * @throws BindingResolutionException
      */
     public function index()
     {
-        SEOTools::setTitle(__('admin.title.orphan.index', ['entity' => __('entities.users')]));
+        SEOTools::setTitle(__('breadcrumbs.orphan.index', ['entity' => __('Users')]));
         $table = (new UsersService)->table();
 
         return view('templates.admin.users.index', compact('table'));
     }
 
     /**
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     * @throws \Exception
+     * @return Factory|View
+     * @throws Exception
      */
     public function create()
     {
         $user = null;
-        SEOTools::setTitle(__('admin.title.orphan.create', ['entity' => __('entities.users')]));
+        SEOTools::setTitle(__('breadcrumbs.orphan.create', ['entity' => __('Users')]));
 
         return view('templates.admin.users.edit', compact('user'));
     }
 
     /**
-     * @param \App\Http\Requests\Users\UserStoreRequest $request
+     * @param UserStoreRequest $request
      *
-     * @return \Illuminate\Http\RedirectResponse
-     * @throws \Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\DiskDoesNotExist
-     * @throws \Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\FileDoesNotExist
-     * @throws \Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\FileIsTooBig
+     * @return RedirectResponse
+     * @throws DiskDoesNotExist
+     * @throws FileDoesNotExist
+     * @throws FileIsTooBig
      */
     public function store(UserStoreRequest $request)
     {
@@ -52,33 +61,33 @@ class UsersController extends Controller
         $user = (new User)->create($request->validated());
         (new UsersService)->manageAvatarFromRequest($request, $user);
 
-        return redirect()->route('users')->with('toast_success', __('notifications.message.crud.orphan.created', [
-            'entity' => __('entities.users'),
+        return redirect()->route('users.index')->with('toast_success', __('notifications.orphan.created', [
+            'entity' => __('Users'),
             'name'   => $user->name,
         ]));
     }
 
     /**
-     * @param \App\Models\User $user
+     * @param User $user
      *
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     * @throws \Exception
+     * @return Factory|View
+     * @throws Exception
      */
     public function edit(User $user)
     {
-        SEOTools::setTitle(__('admin.title.orphan.edit', ['entity' => __('entities.users'), 'detail' => $user->name]));
+        SEOTools::setTitle(__('breadcrumbs.orphan.edit', ['entity' => __('Users'), 'detail' => $user->name]));
 
         return view('templates.admin.users.edit', compact('user'));
     }
 
     /**
-     * @param \App\Models\User $user
-     * @param \App\Http\Requests\Users\UserUpdateRequest $request
+     * @param User $user
+     * @param UserUpdateRequest $request
      *
-     * @return \Illuminate\Http\RedirectResponse
-     * @throws \Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\DiskDoesNotExist
-     * @throws \Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\FileDoesNotExist
-     * @throws \Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\FileIsTooBig
+     * @return RedirectResponse
+     * @throws DiskDoesNotExist
+     * @throws FileDoesNotExist
+     * @throws FileIsTooBig
      */
     public function update(User $user, UserUpdateRequest $request)
     {
@@ -89,38 +98,38 @@ class UsersController extends Controller
         (new UsersService)->manageAvatarFromRequest($request, $user);
 
         return back()->with('toast_success', $user->id === Auth::id()
-            ? __('notifications.message.crud.name.updated', ['name' => __('entities.profile')])
-            : __('notifications.message.crud.orphan.updated', [
-                'entity' => __('entities.users'),
+            ? __('notifications.name.updated', ['name' => __('My profile')])
+            : __('notifications.orphan.updated', [
+                'entity' => __('Users'),
                 'name'   => $user->name,
             ]));
     }
 
     /**
-     * @param \App\Models\User $user
+     * @param User $user
      *
-     * @return \Illuminate\Http\RedirectResponse
-     * @throws \Exception
+     * @return RedirectResponse
+     * @throws Exception
      */
     public function destroy(User $user)
     {
         $name = $user->name;
         $user->delete();
 
-        return back()->with('toast_success', __('notifications.message.crud.orphan.destroyed', [
-            'entity' => __('entities.users'),
+        return back()->with('toast_success', __('notifications.orphan.destroyed', [
+            'entity' => __('Users'),
             'name'   => $name,
         ]));
     }
 
     /**
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     * @throws \Exception
+     * @return Factory|View
+     * @throws Exception
      */
     public function profile()
     {
         $user = auth()->user();
-        SEOTools::setTitle(__('entities.profile'));
+        SEOTools::setTitle(__('My profile'));
 
         return view('templates.admin.users.edit', compact('user'));
     }

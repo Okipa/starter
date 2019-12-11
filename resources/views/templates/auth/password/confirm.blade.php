@@ -17,13 +17,13 @@
     <form method="POST" class="w-100" action="{{ route('password.reconfirm') }}">
         @csrf
         @include('components.common.form.notice')
-        <p>@lang('auth.label.confirmPasswordNotice')</p>
+        <p>@lang('For security reasons, please confirm your password. You will not be asked for several hours.')</p>
         {{ bsPassword()->name('password')->containerHtmlAttributes(['required']) }}
-        {{ bsValidate()->label(__('auth.label.confirmPassword'))
+        {{ bsValidate()->label(__('Confirm password'))
             ->componentClasses(['btn', 'btn-block', 'btn-primary', 'load-on-click']) }}
         <div class="form-group d-block">
             <a href="{{ route('password.request') }}">
-                @lang('auth.label.forgottenPassword')
+                @lang('Forgotten password')
             </a>
         </div>
     </form>

@@ -1074,16 +1074,16 @@
         },
         {
             "name": "giggsey/libphonenumber-for-php",
-            "version": "8.11.0",
+            "version": "8.11.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/giggsey/libphonenumber-for-php.git",
-                "reference": "356a97b1601edde8256dace68fe7ffeec0d777f9"
+                "reference": "f6a367f08e323edc1c27546d8d5818bb016d812e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/giggsey/libphonenumber-for-php/zipball/356a97b1601edde8256dace68fe7ffeec0d777f9",
-                "reference": "356a97b1601edde8256dace68fe7ffeec0d777f9",
+                "url": "https://api.github.com/repos/giggsey/libphonenumber-for-php/zipball/f6a367f08e323edc1c27546d8d5818bb016d812e",
+                "reference": "f6a367f08e323edc1c27546d8d5818bb016d812e",
                 "shasum": ""
             },
             "require": {
@@ -1138,7 +1138,7 @@
                 "phonenumber",
                 "validation"
             ],
-            "time": "2019-11-26T16:09:47+00:00"
+            "time": "2019-12-11T10:03:19+00:00"
         },
         {
             "name": "giggsey/locale",
@@ -2983,16 +2983,16 @@
         },
         {
             "name": "okipa/laravel-medialibrary-ext",
-            "version": "7.15.0",
+            "version": "7.15.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Okipa/laravel-medialibrary-ext.git",
-                "reference": "b72ba409b0e2cb1cd8077444b92c08124711554b"
+                "reference": "971518e467d0ac0fa0b087f94c70824a67d43543"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Okipa/laravel-medialibrary-ext/zipball/b72ba409b0e2cb1cd8077444b92c08124711554b",
-                "reference": "b72ba409b0e2cb1cd8077444b92c08124711554b",
+                "url": "https://api.github.com/repos/Okipa/laravel-medialibrary-ext/zipball/971518e467d0ac0fa0b087f94c70824a67d43543",
+                "reference": "971518e467d0ac0fa0b087f94c70824a67d43543",
                 "shasum": ""
             },
             "require": {
@@ -3069,7 +3069,7 @@
                 "package",
                 "spatie"
             ],
-            "time": "2019-12-04T10:06:40+00:00"
+            "time": "2019-12-11T10:07:17+00:00"
         },
         {
             "name": "okipa/laravel-request-sanitizer",

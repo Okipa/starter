@@ -21,11 +21,11 @@
     @if($slides->count() > 1)
         <a class="carousel-control-prev" href="#carouselTitleCaption" role="button" data-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="sr-only">@lang('static.action.previous')</span>
+            <span class="sr-only">@lang('Previous')</span>
         </a>
         <a class="carousel-control-next" href="#carouselTitleCaption" role="button" data-slide="next">
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="sr-only">@lang('static.action.next')</span>
+            <span class="sr-only">@lang('Next')</span>
         </a>
     @endif
 </div>

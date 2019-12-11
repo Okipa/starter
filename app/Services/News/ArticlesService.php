@@ -18,16 +18,16 @@ class ArticlesService extends Service implements ArticlesServiceInterface
     public function table(): Table
     {
         $table = (new Table)->model(NewsArticle::class)->routes([
-            'index'   => ['name' => 'news.articles'],
-            'create'  => ['name' => 'news.article.create'],
-            'edit'    => ['name' => 'news.article.edit'],
+            'index' => ['name' => 'news.articles'],
+            'create' => ['name' => 'news.article.create'],
+            'edit' => ['name' => 'news.article.edit'],
             'destroy' => ['name' => 'news.article.destroy'],
         ])->destroyConfirmationHtmlAttributes(function (NewsArticle $newsArticle) {
             return [
-                'data-confirm' => __('notifications.message.crud.parent.destroyConfirm', [
-                    'parent' => __('entities.news'),
-                    'entity' => __('entities.articles'),
-                    'name'   => $newsArticle->title,
+                'data-confirm' => __('notifications.parent.destroyConfirm', [
+                    'parent' => __('News'),
+                    'entity' => __('Articles'),
+                    'name' => $newsArticle->title,
                 ]),
             ];
         });
@@ -44,7 +44,7 @@ class ArticlesService extends Service implements ArticlesServiceInterface
         });
         $table->column()->title(__('components.table.link'))->html(function (NewsArticle $newsArticle) {
             return view('components.admin.table.link', [
-                'url'    => route('news.article.show', $newsArticle->url),
+                'url' => route('news.article.show', $newsArticle->url),
                 'active' => $newsArticle->active,
             ]);
         });

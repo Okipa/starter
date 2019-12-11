@@ -3,14 +3,14 @@
     <h1>
         <i class="fas fa-paper-plane fa-fw"></i>
         @if($article)
-            @lang('admin.title.parent.edit', [
-                'entity' => __('entities.articles'), 'detail' => $article->name,
-                'parent' => __('entities.news')
+            @lang('breadcrumbs.parent.edit', [
+                'entity' => __('Articles'), 'detail' => $article->name,
+                'parent' => __('News')
             ])
         @else
-            @lang('admin.title.parent.create', [
-                'entity' => __('entities.articles'),
-                'parent' => __('entities.news')
+            @lang('breadcrumbs.parent.create', [
+                'entity' => __('Articles'),
+                'parent' => __('News')
             ])
         @endif
     </h1>
@@ -26,11 +26,11 @@
         <div class="card">
             <div class="card-header">
                 <h2 class="m-0">
-                    @lang('admin.section.data')
+                    @lang('Data')
                 </h2>
             </div>
             <div class="card-body">
-                <h3>@lang('admin.section.media')</h3>
+                <h3>@lang('Media')</h3>
                 @php($illustration = optional($article)->getFirstMedia('illustration'))
                 {{ bsFile()->name('illustration')
                     ->value(optional($illustration)->file_name)
@@ -44,7 +44,7 @@
                     ->showRemoveCheckbox(false)
                     ->containerHtmlAttributes(['required'])
                     ->legend((new \App\Models\NewsArticle)->constraintsLegend('illustration')) }}
-                <h3 class="pt-4">@lang('admin.section.identity')</h3>
+                <h3 class="pt-4">@lang('Identity')</h3>
                 {{ bsText()->name('title')->model($article)->containerHtmlAttributes(['required']) }}
                 {{ bsText()->name('url')
                     ->model($article)
@@ -52,7 +52,7 @@
                     ->componentClasses(['lowercase'])
                     ->componentHtmlAttributes(['data-autofill-from' => '#text-title'])
                     ->containerHtmlAttributes(['required']) }}
-                <h3 class="pt-4">@lang('admin.section.information')</h3>
+                <h3 class="pt-4">@lang('Information')</h3>
                 {{ bsSelect()->name('category_ids')
                     ->model($article)
                     ->prepend(' <i class="fas fa-tags"></i>')
@@ -61,7 +61,7 @@
                     ->componentClasses(['selector'])
                     ->containerHtmlAttributes(['required']) }}
                 {{ bsTextarea()->name('description')->model($article)->componentClasses(['editor'])->prepend(false) }}
-                <h3 class="pt-4">@lang('admin.section.publication')</h3>
+                <h3 class="pt-4">@lang('Publication')</h3>
                 {{ bsText()->name('published_at')
                     ->value(($article ? $article->published_at : now())->format('d/m/Y H:i'))
                     ->prepend('<i class="fas fa-calendar-alt"></i>')
@@ -70,7 +70,7 @@
                 {{ bsToggle()->name('active')->model($article) }}
                 @include('components.admin.seo.meta-tags', ['model' => $article])
                 <div class="d-flex pt-4">
-                    {{ bsCancel()->route('news.articles')->containerClasses(['mr-2']) }}
+                    {{ bsCancel()->route('news.articles.index')->containerClasses(['mr-2']) }}
                     @if($article){{ bsUpdate() }}@else{{ bsCreate() }}@endif
                 </div>
             </div>

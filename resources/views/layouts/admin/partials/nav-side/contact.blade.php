@@ -5,13 +5,13 @@
 <li class="nav-item">
     <a class="nav-link {{ $subMenuActive ? 'active' : null }}"
        href="#contactMenu"
-       title="@lang('nav.admin.home')"
+       title="@lang('Contact')"
        data-toggle="collapse"
        role="button"
        aria-expanded="false"
        aria-controls="newsMenu">
         <i class="fas fa-envelope fa-fw"></i>
-        @lang('nav.admin.contact')
+        @lang('Contact')
         <i class="fas fa-caret-down fa-fw"></i>
     </a>
     <ul id="contactMenu" class="collapse list-unstyled {{ $subMenuActive ? 'show' : null }}">
@@ -19,9 +19,9 @@
         <li class="nav-item">
             <a class="nav-link load-on-click {{ $contactPageActive ? 'active' : null }}"
                href="{{ route('contact.page.edit') }}"
-               title="@lang('nav.admin.page')">
+               title="@lang('Contact')">
                 <i class="fas fa-desktop fa-fw"></i>
-                @lang('nav.admin.page')
+                @lang('Contact')
             </a>
         </li>
     </ul>

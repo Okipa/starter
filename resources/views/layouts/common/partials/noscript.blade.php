@@ -8,8 +8,8 @@
     <div class="noscript">
         <h3>
             <i class="fa fa-exclamation-triangle"></i>
-            @lang('noscript.warning.title')
+            @lang('Beware')
         </h3>
-        @lang('noscript.warning.message')
+        @lang('Javascript is currently disabled in your browser and you are currently browsing in a degraded version. Thank you for reactivating your Javascript to benefit from all the features offered by our web platform.')
     </div>
 </noscript>

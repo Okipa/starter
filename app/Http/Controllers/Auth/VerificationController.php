@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Http\Controllers\Controller;
+use Artesaos\SEOTools\Facades\SEOTools;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Contracts\View\Factory;
+use Illuminate\Foundation\Auth\VerifiesEmails;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
-use Illuminate\Foundation\Auth\VerifiesEmails;
-use Artesaos\SEOTools\Facades\SEOTools;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Redirector;
 use Illuminate\View\View;
@@ -25,10 +25,12 @@ class VerificationController extends Controller
     | be re-sent if the user didn't receive the original email message.
     |
     */
+
     use VerifiesEmails {
         resend as traitResend;
         verify as traitVerify;
     }
+
     /**
      * Where to redirect users after verification.
      *
@@ -72,7 +74,7 @@ class VerificationController extends Controller
         if (! $request->user()->hasVerifiedEmail()) {
             alert()->html(
                 __('Success'),
-                __('notifications.message.auth.verificationEmailSent', ['email' => $request->user()->email]),
+                __('A new verification link has been sent to :email.', ['email' => $request->user()->email]),
                 'success'
             )->showConfirmButton();
         }
@@ -90,12 +92,15 @@ class VerificationController extends Controller
      */
     public function verify(Request $request)
     {
-        alert()->html(
-            __('Success'),
-            __('notifications.message.auth.emailVerified', ['email' => $request->user()->email]),
-            'success'
-        )->showConfirmButton();
+        $return = $this->traitVerify($request);
+        if ($return instanceof Redirector) {
+            alert()->html(
+                __('Success'),
+                __('Thank you, your e-mail address :email has been confirmed.', ['email' => $request->user()->email]),
+                'success'
+            )->showConfirmButton();
+        }
 
-        return $this->traitVerify($request);
+        return $return;
     }
 }

@@ -18,8 +18,8 @@ return [
     'throttled' => 'Merci de patienter quelques instants avant de rééssayer.',
     'token' => 'La clé de réinitialisation du mot de passe est incorrecte.',
     'user' => 'Nous ne trouvons pas d\'utilisateur associé à cette adresse e-mail.',
-    'minLength' => ':count caractères minimum.',
-    'recommendation' => 'Nous vous recommandons de mélanger majuscules, minuscules, chiffres et caractères spéciaux.',
+    'minLength' => 'Nombre de caractères min. : :count.',
+    'recommendation' => 'Recommendation : mélanger majuscules, minuscules, chiffres et caractères spéciaux.',
     'fillForUpdate' => 'Ne renseigner que pour modifier le mot de passe actuel.',
 
 ];

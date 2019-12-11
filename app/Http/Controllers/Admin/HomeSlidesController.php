@@ -10,21 +10,31 @@ use App\Models\HomePage;
 use App\Models\HomeSlide;
 use App\Services\Home\HomeSlidesService;
 use Artesaos\SEOTools\Facades\SEOTools;
+use ErrorException;
+use Exception;
+use Illuminate\Contracts\Container\BindingResolutionException;
+use Illuminate\Contracts\Routing\ResponseFactory;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Response;
 use Illuminate\View\View;
 use JavaScript;
+use Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\DiskDoesNotExist;
+use Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\FileDoesNotExist;
+use Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\FileIsTooBig;
 
 class HomeSlidesController extends Controller
 {
     /**
-     * @return \Illuminate\View\View
-     * @throws \ErrorException
-     * @throws \Illuminate\Contracts\Container\BindingResolutionException
+     * @return View
+     * @throws ErrorException
+     * @throws BindingResolutionException
      */
     public function index(): View
     {
-        SEOTools::setTitle(__('admin.title.parent.index', [
-            'parent' => __('entities.home'),
-            'entity' => __('entities.slides'),
+        SEOTools::setTitle(__('breadcrumbs.parent.index', [
+            'parent' => __('Home'),
+            'entity' => __('Slides'),
         ]));
         $table = (new HomeSlidesService)->table();
         Javascript::put([
@@ -40,9 +50,9 @@ class HomeSlidesController extends Controller
     }
 
     /**
-     * @param \App\Models\HomePage $homePage
+     * @param HomePage $homePage
      *
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @return Factory|View
      */
     public function create(HomePage $homePage)
     {
@@ -55,42 +65,42 @@ class HomeSlidesController extends Controller
     }
 
     /**
-     * @param \App\Http\Requests\Home\HomeSlidesStoreRequest $request
+     * @param HomeSlidesStoreRequest $request
      *
-     * @return \Illuminate\Http\RedirectResponse
-     * @throws \Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\DiskDoesNotExist
-     * @throws \Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\FileDoesNotExist
-     * @throws \Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\FileIsTooBig
+     * @return RedirectResponse
+     * @throws DiskDoesNotExist
+     * @throws FileDoesNotExist
+     * @throws FileIsTooBig
      */
     public function store(HomeSlidesStoreRequest $request)
     {
-        /** @var \App\Models\HomePage $homePage */
+        /** @var HomePage $homePage */
         $homePage = (new HomePage)->firstOrFail();
-        /** @var \App\Models\HomeSlide $slide */
+        /** @var HomeSlide $slide */
         $slide = (new HomeSlide)->create(array_merge($request->validated(), ['home_page_id' => $homePage->id]));
         if ($request->file('illustration')) {
             $slide->addMediaFromRequest('illustration')->toMediaCollection('illustrations');
         }
 
-        return redirect()->route('home.slides')
-            ->with('toast_success', __('notifications.message.crud.parent.created', [
-                'parent' => __('entities.home'),
-                'entity' => __('entities.slides'),
+        return redirect()->route('home.slides.index')
+            ->with('toast_success', __('notifications.parent.created', [
+                'parent' => __('Home'),
+                'entity' => __('Slides'),
                 'name'   => $slide->title,
             ]));
     }
 
     /**
-     * @param \App\Models\HomePage $homePage
-     * @param \App\Models\HomeSlide $homeSlide
+     * @param HomePage $homePage
+     * @param HomeSlide $homeSlide
      *
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @return Factory|View
      */
     public function edit(HomePage $homePage, HomeSlide $homeSlide)
     {
-        SEOTools::setTitle(__('admin.title.parent.edit', [
-            'parent' => __('entities.home'),
-            'entity' => __('entities.slides'),
+        SEOTools::setTitle(__('breadcrumbs.parent.edit', [
+            'parent' => __('Home'),
+            'entity' => __('Slides'),
             'detail' => $homeSlide->title,
         ]));
 
@@ -101,13 +111,13 @@ class HomeSlidesController extends Controller
     }
 
     /**
-     * @param \App\Models\HomeSlide $homeSlide
-     * @param \App\Http\Requests\Home\HomeSlidesUpdateRequest $request
+     * @param HomeSlide $homeSlide
+     * @param HomeSlidesUpdateRequest $request
      *
-     * @return \Illuminate\Http\RedirectResponse
-     * @throws \Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\DiskDoesNotExist
-     * @throws \Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\FileDoesNotExist
-     * @throws \Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\FileIsTooBig
+     * @return RedirectResponse
+     * @throws DiskDoesNotExist
+     * @throws FileDoesNotExist
+     * @throws FileIsTooBig
      */
     public function update(HomeSlide $homeSlide, HomeSlidesUpdateRequest $request)
     {
@@ -116,18 +126,18 @@ class HomeSlidesController extends Controller
             $homeSlide->addMediaFromRequest('illustration')->toMediaCollection('illustrations');
         }
 
-        return back()->with('toast_success', __('notifications.message.crud.parent.updated', [
-            'parent' => __('entities.home'),
-            'entity' => __('entities.slides'),
+        return back()->with('toast_success', __('notifications.parent.updated', [
+            'parent' => __('Home'),
+            'entity' => __('Slides'),
             'name'   => $homeSlide->title,
         ]));
     }
 
     /**
-     * @param \App\Models\HomeSlide $homeSlide
+     * @param HomeSlide $homeSlide
      *
-     * @return \Illuminate\Http\RedirectResponse
-     * @throws \Exception
+     * @return RedirectResponse
+     * @throws Exception
      */
     public function destroy(HomeSlide $homeSlide)
     {
@@ -137,22 +147,22 @@ class HomeSlidesController extends Controller
         $orderedIds = (new HomeSlide)->where('home_page_id', $homePage->id)->ordered()->pluck('id');
         (new HomeSlide)->setNewOrder($orderedIds);
 
-        return back()->with('toast_success', __('notifications.message.crud.parent.destroyed', [
-            'parent' => __('entities.home'),
-            'entity' => __('entities.slides'),
+        return back()->with('toast_success', __('notifications.parent.destroyed', [
+            'parent' => __('Home'),
+            'entity' => __('Slides'),
             'name'   => $name,
         ]));
     }
 
     /**
-     * @param \App\Http\Requests\Home\HomeSlidesReorganizeRequest $request
+     * @param HomeSlidesReorganizeRequest $request
      *
-     * @return \Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response
+     * @return ResponseFactory|Response
      */
     public function reorganize(HomeSlidesReorganizeRequest $request)
     {
         (new HomeSlide)->setNewOrder($request->ordered_ids);
 
-        return response(['message' => __('notifications.message.reorganization.success')], 200);
+        return response(['message' => __('The list has been reorganized.')], 200);
     }
 }

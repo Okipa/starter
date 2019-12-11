@@ -3,9 +3,9 @@
     <h1>
         <i class="fas fa-images fa-fw"></i>
         @if($homeSlide)
-            @lang('admin.title.parent.edit', ['parent' => __('entities.home'), 'entity' => __('entities.slides'), 'detail' => $homeSlide->title])
+            @lang('breadcrumbs.parent.edit', ['parent' => __('Home'), 'entity' => __('Slides'), 'detail' => $homeSlide->title])
         @else
-            @lang('admin.title.parent.create', ['parent' => __('entities.home'), 'entity' => __('entities.slides')])
+            @lang('breadcrumbs.parent.create', ['parent' => __('Home'), 'entity' => __('Slides')])
         @endif
     </h1>
     <hr>
@@ -20,11 +20,11 @@
         <div class="card">
             <div class="card-header">
                 <h2 class="m-0">
-                    @lang('admin.section.data')
+                    @lang('Data')
                 </h2>
             </div>
             <div class="card-body">
-                <h3>@lang('admin.section.media')</h3>
+                <h3>@lang('Media')</h3>
                 @php($illustration = optional($homeSlide)->getFirstMedia('illustrations'))
                 {{ bsFile()->name('illustration')
                     ->value(optional($illustration)->file_name)
@@ -37,13 +37,13 @@
                             : null;
                     })
                     ->legend((new \App\Models\HomeSlide)->constraintsLegend('illustrations')) }}
-                <h3 class="pt-4">@lang('admin.section.content')</h3>
+                <h3 class="pt-4">@lang('Content')</h3>
                 {{ bsText()->name('title')->model($homeSlide)->containerHtmlAttributes(['required']) }}
                 {{ bsTextarea()->name('description')->model($homeSlide) }}
-                <h3 class="pt-4">@lang('admin.section.publication')</h3>
+                <h3 class="pt-4">@lang('Publication')</h3>
                 {{ bsToggle()->name('active')->model($homeSlide) }}
                 <div class="d-flex pt-4">
-                    {{ bsCancel()->route('home.slides')->containerClasses(['mr-2']) }}
+                    {{ bsCancel()->route('home.slides.index')->containerClasses(['mr-2']) }}
                     @if($homeSlide){{ bsUpdate() }}@else{{ bsCreate() }}@endif
                 </div>
             </div>

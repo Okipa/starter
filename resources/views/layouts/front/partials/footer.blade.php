@@ -21,22 +21,22 @@
             @endif
             <div>
                 @if($settings->facebook)
-                    <a class="new-window" href="{{ $settings->facebook }}" title="Facebook">
+                    <a class="new-window" href="{{ $settings->facebook }}" title="@lang('Facebook')">
                         <i class="fab fa-facebook fa-fw"></i>
                     </a>
                 @endif
                 @if($settings->twitter)
-                    <a class="new-window" href="{{ $settings->twitter }}" title="Twitter">
+                    <a class="new-window" href="{{ $settings->twitter }}" title="@lang('Twitter')">
                         <i class="fab fa-twitter fa-fw"></i>
                     </a>
                 @endif
                 @if($settings->instagram)
-                    <a class="new-window" href="{{ $settings->instagram }}" title="Instagram">
+                    <a class="new-window" href="{{ $settings->instagram }}" title="@lang('Instagram')">
                         <i class="fab fa-instagram fa-fw"></i>
                     </a>
                 @endif
                 @if($settings->youtube)
-                    <a class="new-window" href="{{ $settings->youtube }}" title="Youtube">
+                    <a class="new-window" href="{{ $settings->youtube }}" title="@lang('Youtube')">
                         <i class="fab fa-youtube fa-fw"></i>
                     </a>
                 @endif

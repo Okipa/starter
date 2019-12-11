@@ -1,7 +1,7 @@
 @extends('layouts.admin.full')
 @section('template')
-    <h1>@lang('entities.dashboard')</h1>
+    <h1>@lang('Dashboard')</h1>
     <hr>
-    <p>@lang('static.sentence.dashboardWelcome')</p>
+    <p>@lang('Welcome to your dashboard.')</p>
 @endsection
 

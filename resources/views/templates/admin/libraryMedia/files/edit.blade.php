@@ -3,9 +3,9 @@
     <h1>
         <i class="fas fa-photo-video fa-fw"></i>
         @if($file)
-            @lang('admin.title.orphan.edit', ['entity' => __('entities.libraryMedia'), 'detail' => $file->name])
+            @lang('breadcrumbs.orphan.edit', ['entity' => __('Media library'), 'detail' => $file->name])
         @else
-            @lang('admin.title.orphan.create', ['entity' => __('entities.libraryMedia')])
+            @lang('breadcrumbs.orphan.create', ['entity' => __('Media library')])
         @endif
     </h1>
     <hr>
@@ -20,11 +20,11 @@
         <div class="card">
             <div class="card-header">
                 <h2 class="m-0">
-                    @lang('library-media.labels.file')
+                    @lang('Data')
                 </h2>
             </div>
             <div class="card-body">
-                <h3>@lang('library-media.labels.media')</h3>
+                <h3>@lang('Media')</h3>
                 {{ bsFile()->name('media')
                     ->value(optional(optional($file)->getFirstMedia('medias'))->file_name)
                     ->uploadedFile(function() use($file) {
@@ -35,7 +35,7 @@
                     ->showRemoveCheckbox(false)
                     ->containerHtmlAttributes(['required'])
                     ->legend((new \App\Models\LibraryMediaFile)->constraintsLegend('medias')) }}
-                <h3 class="pt-4">@lang('library-media.labels.data')</h3>
+                <h3 class="pt-4">@lang('File')</h3>
                 {{ bsText()->name('name')->model($file)->containerHtmlAttributes(['required']) }}
                 {{ bsSelect()->name('category_id')
                     ->model($file)
@@ -48,9 +48,9 @@
                         ->containerClasses(['form-group', 'mt-4']) }}
                 @endif
                 @if($file)
-                    <h3 class="pt-4">@lang('library-media.labels.clipboardCopy')</h3>
+                    <h3 class="pt-4">@lang('Clipboard copy')</h3>
                     {{ bsText()->name('url')
-                        ->label(__('library-media.labels.url'))
+                        ->label(__('URL'))
                         ->prepend(false)
                         ->value($file->getFirstMedia('medias')->getFullUrl())
                         ->containerClasses(['mb-1'])
@@ -60,7 +60,7 @@
                                 class="btn btn-outline-primary clipboard-copy"
                                 data-library-media-id="{{ $file->id }}"
                                 data-type="url">
-                            <i class="fas fa-link fa-fw"></i> @lang('library-media.labels.clipboardCopy')
+                            <i class="fas fa-link fa-fw"></i> @lang('Clipboard copy')
                         </button>
                     </div>
                     {{ bsTextarea()->name('html')
@@ -74,7 +74,7 @@
                                 class="btn btn-outline-primary clipboard-copy"
                                 data-library-media-id="{{ $file->id }}"
                                 data-type="html">
-                            <i class="fas fa-link fa-fw"></i> @lang('library-media.labels.clipboardCopy')
+                            <i class="fas fa-link fa-fw"></i> @lang('Clipboard copy')
                         </button>
                     </div>
                 @endif
