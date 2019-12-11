@@ -17,7 +17,11 @@
            </h2>
        </div>
        <div class="card-body">
-           <form action="{{ $dynamicPageBlock ? route('dynamicPageBlock.paragraph_image.update', [ $dynamicPage, $dynamicPageBlock ]) : route('dynamicPageBlock.paragraph_image.store', $dynamicPage) }}" method="POST">
+           <form action="{{ $dynamicPageBlock ?
+                            route('dynamicPageBlock.paragraph_image.update', [ $dynamicPage, $dynamicPageBlock, 'blockId' => request()->query('blockId') ]) :
+                            route('dynamicPageBlock.paragraph_image.store', [ $dynamicPage, 'blockId' => request()->query('blockId') ]) }}"
+                 method="POST"
+                 enctype="multipart/form-data">
                @csrf
 
                @if ($dynamicPageBlock)
@@ -29,7 +33,8 @@
                {{ bsFile()
                     ->name('image')
                    ->label('dynamic-pages.validation.attributes.paragraph_image.image')
-                    ->containerHtmlAttributes(['required']) }}
+                    ->containerHtmlAttributes(['required'])
+                    ->legend((new \App\Models\NewsArticle)->constraintsLegend('illustration'))  }}
 
                {{ bsTextarea()
                    ->name('content')

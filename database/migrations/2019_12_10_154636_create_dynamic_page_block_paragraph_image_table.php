@@ -15,6 +15,7 @@ class CreateDynamicPageBlockParagraphImageTable extends Migration
     {
         Schema::create('dynamic_page_block_paragraph_image', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->longText('content');
             $table->timestamps();
         });
     }

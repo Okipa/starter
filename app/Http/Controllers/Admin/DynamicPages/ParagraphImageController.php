@@ -34,7 +34,8 @@ class ParagraphImageController extends Controller
      */
     public function store(ParagraphImageStoreRequest $request, DynamicPage $dynamicPage)
     {
-        $blockConfig = config('dynamic-pages.blocks.paragraph_image');
+        $blockId = $request->query('blockId', 'paragraph_image');
+        $blockConfig = config("dynamic-pages.blocks.{$blockId}");
         $blockModel = data_get($blockConfig, 'model');
 
         if (!$blockModel) {
@@ -43,13 +44,16 @@ class ParagraphImageController extends Controller
 
         $block = new DynamicPageBlock([
             'position'        => -1,
-            'block_id'        => 'paragraph_image',
+            'block_id'        => $blockId,
             'dynamic_page_id' => data_get($dynamicPage, 'id'),
         ]);
 
         DB::transaction(function () use ($blockModel, $request, $block) {
-            /** @var \App\Models\DynamicPages\Blockable $blockable */
+            /** @var \App\Models\DynamicPages\ParagraphImage $blockable */
             $blockable = app($blockModel)->create($request->validated());
+            $blockable
+                ->addMediaFromRequest('image')
+                ->toMediaCollection('paragraph_images');
 
             if (!$blockable) {
                 throw new RuntimeException('Unable to create blockable');

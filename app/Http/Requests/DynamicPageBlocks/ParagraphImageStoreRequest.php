@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests\DynamicPageBlocks;
 
+use App\Models\DynamicPages\ParagraphImage;
 use Illuminate\Foundation\Http\FormRequest;
 
 class ParagraphImageStoreRequest extends FormRequest
@@ -24,7 +25,10 @@ class ParagraphImageStoreRequest extends FormRequest
     public function rules()
     {
         return [
-            'image'   => 'required',
+            'image'   => array_merge(
+                [ 'required' ],
+                app(ParagraphImage::class)->validationConstraints('paragraph_images')
+            ),
             'content' => 'required|string',
         ];
     }

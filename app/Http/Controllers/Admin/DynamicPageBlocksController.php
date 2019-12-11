@@ -23,7 +23,7 @@ class DynamicPageBlocksController extends Controller
         $blockController = array_reverse(explode('\\', $blockConfig['controller']))[0];
 
         return redirect()
-            ->action("Admin\\DynamicPages\\{$blockController}@create", compact('dynamicPage'));
+            ->action("Admin\\DynamicPages\\{$blockController}@create", compact('dynamicPage', 'blockId'));
     }
 
     /**
@@ -42,6 +42,8 @@ class DynamicPageBlocksController extends Controller
     }
 
     /**
+     * @SuppressWarnings(PHPMD.UnusedFormalParameter)
+     *
      * @param \App\Models\DynamicPage $dynamicPage
      * @param \App\Models\DynamicPageBlock $dynamicPageBlock
      *
