@@ -2,9 +2,9 @@
 
 namespace DynamicPages;
 
-use Illuminate\Support\ServiceProvider as AppServiceProvider;
+use Illuminate\Support\ServiceProvider;
 
-class DynamicPagesServiceProvider extends AppServiceProvider
+class DynamicPagesServiceProvider extends ServiceProvider
 {
 
     public function register()
