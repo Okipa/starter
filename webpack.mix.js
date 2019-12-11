@@ -23,7 +23,6 @@ mix
     .copyDirectoryOutsideMixWorkflow('resources/images', 'public/images')
     // js **************************************************************************************************************
     // admin
-    .js('resources/js/admin/home/slides/index.js', 'public/js/home/slides')
     .js('resources/js/admin/library-media/index.js', 'public/js/library-media')
     .js('resources/js/admin/library-media/edit.js', 'public/js/library-media')
     // front

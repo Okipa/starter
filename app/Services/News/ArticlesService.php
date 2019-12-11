@@ -18,7 +18,7 @@ class ArticlesService extends Service implements ArticlesServiceInterface
     public function table(): Table
     {
         $table = (new Table)->model(NewsArticle::class)->routes([
-            'index' => ['name' => 'news.articles'],
+            'index' => ['name' => 'news.articles.index'],
             'create' => ['name' => 'news.article.create'],
             'edit' => ['name' => 'news.article.edit'],
             'destroy' => ['name' => 'news.article.destroy'],

@@ -1,10 +1,7 @@
 <?php
 
 // not localized routes ************************************************************************************************
-// admin
 require('web/admin/admin.php');
-// front
-require('web/front/home.php');
 // utils
 require('web/utils/seo.php');
 require('web/utils/download.php');
@@ -33,6 +30,7 @@ Route::localized(function () {
         });
     });
     // front
+    require('web/front/home.php');
     require('web/front/news.php');
     require('web/front/simplePages.php');
 });

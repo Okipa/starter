@@ -20,8 +20,6 @@ return [
     'resend' => 'renvoyer',
     'dashboard' => 'tableau-de-bord',
     'home' => 'accueil',
-    'slides' => 'slides',
-    'slide' => 'slide',
     'news' => 'actualites',
     'categories' => 'categories',
     'category' => 'categorie',

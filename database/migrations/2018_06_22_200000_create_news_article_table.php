@@ -15,9 +15,12 @@ class CreateNewsArticleTable extends Migration
     {
         Schema::create('news_articles', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('title');
-            $table->string('url')->unique();
-            $table->longText('description')->nullable();
+            // todo : change column type with monolingual app
+            $table->json('title');
+            // todo : change column type with monolingual app
+            $table->json('url');
+            // todo : change column type with monolingual app
+            $table->json('description')->nullable();
             $table->boolean('active');
             $table->dateTime('published_at');
             $table->timestamps();

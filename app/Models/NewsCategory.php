@@ -2,14 +2,20 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Spatie\Translatable\HasTranslations;
+
 class NewsCategory extends Model
 {
+    use HasTranslations;
+
     /**
      * The database table used by the model.
      *
      * @var string
      */
     protected $table = 'news_categories';
+
     /**
      * The attributes that are mass assignable.
      *
@@ -19,8 +25,10 @@ class NewsCategory extends Model
         'name',
     ];
 
+    public $translatable = ['name'];
+
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     * @return BelongsToMany
      */
     public function articles()
     {

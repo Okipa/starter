@@ -17,14 +17,14 @@ class ContactPageController extends Controller
      */
     public function edit(): View
     {
-        /** @var PageContent $contactPageContent */
-        $contactPageContent = (new PageContent)->where('slug', 'contact-page-content')->firstOrFail();
+        /** @var PageContent $pageContent */
+        $pageContent = (new PageContent)->firstOrCreate(['slug' => 'contact-page-content']);
         SEOTools::setTitle(__('breadcrumbs.orphan.edit', [
             'entity' => __('Contact'),
             'detail' => __('Page'),
         ]));
 
-        return view('templates.admin.contact.page.edit', compact('contactPageContent'));
+        return view('templates.admin.contact.page.edit', compact('pageContent'));
     }
 
     /**
@@ -34,13 +34,14 @@ class ContactPageController extends Controller
      */
     public function update(ContactPageUpdateRequest $request): RedirectResponse
     {
-        /** @var PageContent $contactPageContent */
-        $contactPageContent = (new PageContent)->where('slug', 'contact-page-content')->firstOrFail();
-        $contactPageContent->saveMetaFromRequest($request, ['title', 'description']);
-        (new SeoService)->saveSeoTagsFromRequest($contactPageContent, $request);
+        /** @var PageContent $pageContent */
+        $pageContent = (new PageContent)->where('slug', 'contact-page-content')->firstOrFail();
+        $pageContent->saveMetaFromRequest($request, ['title', 'description']);
+        (new SeoService)->saveSeoTagsFromRequest($pageContent, $request);
+
         return back()->with('toast_success', __('notifications.orphan.updated', [
             'entity' => __('Contact'),
-            'name'   => __('Page'),
+            'name' => __('Page'),
         ]));
     }
 }

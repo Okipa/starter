@@ -17,13 +17,20 @@
             </div>
             <div class="card-body">
                 <h3>@lang('Content')</h3>
-                {{ bsText()->name('title')->model($homePage)->containerHtmlAttributes(['required']) }}
-                {{ bsTextarea()->name('description')
-                    ->model($homePage)
-                    ->prepend(false)
-                    ->componentClasses(['editor'])
+                {{ bsText()->name('title')
+                    ->locales(supportedLocaleKeys())
+                    ->value(function($locale) use ($pageContent) {
+                        return optional($pageContent)->getMeta('title', null, $locale);
+                    })
                     ->containerHtmlAttributes(['required']) }}
-                @include('components.admin.seo.meta-tags', ['model' => $homePage])
+                {{ bsTextarea()->name('description')
+                    ->locales(supportedLocaleKeys())
+                    ->value(function($locale) use ($pageContent) {
+                        return optional($pageContent)->getMeta('description', null, $locale);
+                    })
+                    ->prepend(false)
+                    ->componentClasses(['editor']) }}
+                @include('components.admin.seo.meta-tags', ['model' => $pageContent])
                 <div class="d-flex pt-4">
                     {{ bsUpdate() }}
                 </div>

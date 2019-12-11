@@ -3,6 +3,7 @@
 namespace App\Http\Requests\News;
 
 use App\Http\Requests\Request;
+use CodeZero\UniqueTranslation\UniqueTranslationRule;
 
 class CategoryUpdateRequest extends Request
 {
@@ -13,8 +14,13 @@ class CategoryUpdateRequest extends Request
      */
     public function rules()
     {
-        return [
-            'name' => ['required', 'string', 'max:255', 'unique:news_categories,name,' . $this->category->id],
-        ];
+        return $this->localizeRules([
+            'name' => [
+                'required',
+                'string',
+                'max:255',
+                UniqueTranslationRule::for('news_categories')->ignore($this->category->id),
+            ],
+        ]);
     }
 }

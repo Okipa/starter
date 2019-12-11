@@ -4,6 +4,8 @@ namespace App\Services\News;
 
 use App\Models\NewsCategory;
 use App\Services\Service;
+use ErrorException;
+use Illuminate\Contracts\Container\BindingResolutionException;
 use Okipa\LaravelTable\Table;
 
 class CategoriesService extends Service implements CategoriesServiceInterface
@@ -11,14 +13,14 @@ class CategoriesService extends Service implements CategoriesServiceInterface
     /**
      * Configure the model table list.
      *
-     * @return \Okipa\LaravelTable\Table
-     * @throws \ErrorException
-     * @throws \Illuminate\Contracts\Container\BindingResolutionException
+     * @return Table
+     * @throws ErrorException
+     * @throws BindingResolutionException
      */
     public function table(): Table
     {
         $table = (new Table)->model(NewsCategory::class)->routes([
-            'index' => ['name' => 'news.categories'],
+            'index' => ['name' => 'news.categories.index'],
             'create' => ['name' => 'news.category.create'],
             'edit' => ['name' => 'news.category.edit'],
             'destroy' => ['name' => 'news.category.destroy'],

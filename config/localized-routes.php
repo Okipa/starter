@@ -13,7 +13,7 @@ return [
      *
      * 'omit_url_prefix_for_locale' => 'en',
      */
-    'omit_url_prefix_for_locale' => null,
+    'omit_url_prefix_for_locale' => 'fr',
 
     /**
      * If you want to automatically set the locale

@@ -1,28 +1,19 @@
 <?php
 
-use Faker\Factory;
 use App\Models\NewsArticle;
 use App\Models\NewsCategory;
+use App\Services\Seo\SeoService;
 use Carbon\Carbon;
+use Faker\Factory;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Collection;
 
 class NewsTableSeeder extends Seeder
 {
-    protected $faker;
+    protected $fakerFr;
+    protected $fakerEn;
     protected $categories;
-    protected $fakeText;
-
-    /**
-     * Run the database seeds.
-     *
-     * @return void
-     * @throws \Exception
-     */
-    public function run()
-    {
-        $this->faker = Factory::create(config('app.faker_locale'));
-        $this->fakeText = <<<EOT
+    protected $fakeText = <<<EOT
 **Bold text.**
 
 *Italic text.*
@@ -46,63 +37,80 @@ Ordered list :
 
 [Link](http://www.google.com).
 EOT;
-        $this->categories = $this->seedCategories();
-        for ($ii = 1; $ii <= 5; $ii++) {
-            $this->seedArticles($ii);
-        }
-    }
+    protected $images = ['seeds/files/news/article-2560-1440.jpg', 'seeds/files/news/article-2560-1769.jpg'];
 
     /**
-     * @return \Illuminate\Support\Collection
-     */
-    protected function seedCategories(): Collection
-    {
-        $seededCategories = new Collection();
-        $categories = [
-            'Cat1',
-            'Cat2',
-        ];
-        foreach ($categories as $category) {
-            $category = (new NewsCategory)->create(['name' => $category]);
-            $seededCategories->push($category);
-        }
-
-        return $seededCategories;
-    }
-
-    /**
-     * @param int $key
+     * Run the database seeds.
      *
      * @return void
+     * @throws Exception
      */
-    protected function seedArticles(int $key): void
+    public function run()
     {
-        $images = ['seeds/files/news/article-2560-1440.jpg', 'seeds/files/news/article-2560-1769.jpg'];
-        $this->createArticle(
-            "Article #$key",
-            $images[array_rand($images, 1)]
-        );
+        $this->fakerFr = Factory::create('fr_EN');
+        $this->fakerEn = Factory::create('en_GB');
+        $this->createCategories();
+        for ($ii = 1; $ii <= 5; $ii++) {
+            $this->createArticle();
+        }
     }
 
     /**
-     * @param string $title
-     * @param string $imageUrl
+     * @return void
      */
-    protected function createArticle(string $title, string $imageUrl): void
+    protected function createCategories(): void
     {
+        $seededCategories = new Collection();
+        for ($ii = 1; $ii <= 5; $ii++) {
+            $category = (new NewsCategory)->create([
+                'name' => [
+                    'fr' => $this->fakerFr->word(),
+                    'en' => $this->fakerFr->word(),
+                ]
+            ]);
+            $seededCategories->push($category);
+        }
+        $this->categories = $seededCategories;
+    }
+
+    /**
+     * @return void
+     */
+    protected function createArticle(): void
+    {
+        $titleFr = ucfirst($this->fakerFr->words(3, true));
+        $titleEn = ucfirst($this->fakerEn->words(3, true));
         $article = (new NewsArticle)->create([
-            'url'          => Str::slug($title),
-            'title'        => $title,
-            'description'  => $this->fakeText,
-            'active'       => true,
+            'url' => [
+                'fr' => Str::slug($titleFr),
+                'en' => Str::slug($titleEn),
+            ],
+            'title' => [
+                'fr' => $titleFr,
+                'en' => $titleEn,
+            ],
+            'description' => [
+                'fr' => $this->fakeText,
+                'en' => $this->fakeText,
+            ],
+            'active' => true,
             'published_at' => Carbon::now(),
         ]);
+        $imageUrl = $this->images[array_rand($this->images, 1)];
         $article->addMedia(database_path($imageUrl))
             ->preservingOriginal()
             ->toMediaCollection('illustrations');
         $categoryIds = $this->categories->random(rand(1, $this->categories->count() / 3))->pluck('id');
         $article->categories()->sync($categoryIds);
-        $article->setMeta('meta_title', $title);
-        $article->setMeta('meta_description', $this->faker->text(150));
+        (new SeoService)->saveSeoTags($article, [
+            'meta_title' => [
+                'fr' => $titleFr,
+                'en' => $titleEn,
+            ],
+            'meta_description' => [
+                'fr' => $this->fakerFr->text(150),
+                'en' => $this->fakerEn->text(150),
+            ]
+        ]);
     }
 }

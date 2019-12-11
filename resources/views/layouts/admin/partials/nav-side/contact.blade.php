@@ -1,5 +1,5 @@
 @php
-    $contactPageActive = in_array(request()->route()->getName(), ['contact.page.edit']);
+    $contactPageActive = Str::contains(request()->route()->getName(), ['contact.page.edit']);
     $subMenuActive = $contactPageActive;
 @endphp
 <li class="nav-item">
@@ -19,9 +19,9 @@
         <li class="nav-item">
             <a class="nav-link load-on-click {{ $contactPageActive ? 'active' : null }}"
                href="{{ route('contact.page.edit') }}"
-               title="@lang('Contact')">
+               title="@lang('Page')">
                 <i class="fas fa-desktop fa-fw"></i>
-                @lang('Contact')
+                @lang('Page')
             </a>
         </li>
     </ul>

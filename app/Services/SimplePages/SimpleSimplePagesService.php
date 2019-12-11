@@ -20,7 +20,7 @@ class SimpleSimplePagesService extends Service implements SimplePagesServiceInte
     public function table(): Table
     {
         $table = (new Table)->model(SimplePage::class)->routes([
-            'index' => ['name' => 'simplePages'],
+            'index' => ['name' => 'simplePages.index'],
             'create' => ['name' => 'simplePage.create'],
             'edit' => ['name' => 'simplePage.edit'],
             'destroy' => ['name' => 'simplePage.destroy'],

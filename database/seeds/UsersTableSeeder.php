@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Database\Seeder;
 
 class UsersTableSeeder extends Seeder
@@ -16,9 +17,10 @@ class UsersTableSeeder extends Seeder
         // todo : create needed users
         $this->createUser([
             'first_name' => 'App',
-            'last_name'  => 'Starter',
-            'email'      => 'app@starter.fr',
-            'password'   => Hash::make('secret'),
+            'last_name' => 'Starter',
+            'email' => 'app@starter.fr',
+            'email_verified_at' => Carbon::now(),
+            'password' => Hash::make('secret'),
         ]);
     }
 

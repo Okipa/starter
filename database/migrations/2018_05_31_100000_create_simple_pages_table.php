@@ -16,17 +16,11 @@ class CreateSimplePagesTable extends Migration
         Schema::create('simple_pages', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('slug')->unique();
-            // todo : uncomment if monolingual app
-            // $table->string('url')->unique();
-            // todo : uncomment if monolingual app
-            // $table->string('title');
-            // todo : uncomment if monolingual app
-            // $table->longText('description')->nullable();
-            // todo : remove if monolingual app
+            // todo : change column type with monolingual app
             $table->json('url');
-            // todo : remove if monolingual app
+            // todo : change column type with monolingual app
             $table->json('title');
-            // todo : remove if monolingual app
+            // todo : change column type with monolingual app
             $table->json('description')->nullable();
             $table->boolean('active');
             $table->timestamps();

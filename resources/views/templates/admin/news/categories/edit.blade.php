@@ -31,7 +31,9 @@
             </div>
             <div class="card-body">
                 <h3>@lang('Identity')</h3>
-                {{ bsText()->name('title')->model($category)->containerHtmlAttributes(['required']) }}
+                {{ bsText()->name('name')->locales(supportedLocaleKeys())
+                    ->model($category)
+                    ->containerHtmlAttributes(['required']) }}
                 <div class="d-flex pt-4">
                     {{ bsCancel()->route('news.categories.index')->containerClasses(['mr-2']) }}
                     @if($category){{ bsUpdate() }}@else{{ bsCreate() }}@endif

@@ -1,6 +1,6 @@
 @php
-    $libraryMediaCategoriesActive = in_array(request()->route()->getName(), ['libraryMedia.categories.index', 'libraryMedia.category.create', 'libraryMedia.category.edit']);
-    $libraryMediaFilesActive = in_array(request()->route()->getName(), ['libraryMedia.files.index', 'libraryMedia.file.create', 'libraryMedia.file.edit']);
+    $libraryMediaCategoriesActive = Str::contains(request()->route()->getName(), ['libraryMedia.categories.index', 'libraryMedia.category.create', 'libraryMedia.category.edit']);
+    $libraryMediaFilesActive = Str::contains(request()->route()->getName(), ['libraryMedia.files.index', 'libraryMedia.file.create', 'libraryMedia.file.edit']);
     $subMenuActive = $libraryMediaCategoriesActive || $libraryMediaFilesActive;
 @endphp
 <li class="nav-item">

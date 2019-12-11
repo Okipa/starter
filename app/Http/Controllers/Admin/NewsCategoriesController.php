@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Models\NewsCategory;
 use App\Http\Controllers\Controller;
-use App\Services\News\CategoriesService;
 use App\Http\Requests\News\CategoryStoreRequest;
 use App\Http\Requests\News\CategoryUpdateRequest;
+use App\Models\NewsCategory;
+use App\Services\News\CategoriesService;
 use Artesaos\SEOTools\Facades\SEOTools;
 use Exception;
 use Illuminate\Contracts\View\Factory;
@@ -57,7 +57,7 @@ class NewsCategoriesController extends Controller
             ->with('toast_success', __('notifications.parent.created', [
                 'parent' => __('News'),
                 'entity' => __('Categories'),
-                'name'   => $category->name,
+                'name' => $category->name,
             ]));
     }
 
@@ -90,7 +90,7 @@ class NewsCategoriesController extends Controller
         return back()->with('toast_success', __('notifications.parent.updated', [
             'parent' => __('News'),
             'entity' => __('Categories'),
-            'name'   => $category->name,
+            'name' => $category->name,
         ]));
     }
 
@@ -108,7 +108,7 @@ class NewsCategoriesController extends Controller
         return back()->with('toast_success', __('notifications.parent.destroyed', [
             'parent' => __('News'),
             'entity' => __('Categories'),
-            'name'   => $name,
+            'name' => $name,
         ]));
     }
 }

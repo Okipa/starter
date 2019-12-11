@@ -55,7 +55,7 @@
                 <h3 class="pt-4">@lang('Information')</h3>
                 {{ bsSelect()->name('category_ids')
                     ->model($article)
-                    ->prepend(' <i class="fas fa-tags"></i>')
+                    ->prepend('<i class="fas fa-tags"></i>')
                     ->options((new \App\Models\NewsCategory)->orderBy('name')->get(), 'id', 'name')
                     ->multiple()
                     ->componentClasses(['selector'])

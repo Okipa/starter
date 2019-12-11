@@ -2,34 +2,43 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Plank\Metable\Metable;
+use Spatie\Image\Exceptions\InvalidManipulation;
 use Spatie\Image\Manipulations;
 use Spatie\MediaLibrary\HasMedia\HasMedia;
 use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
 use Spatie\MediaLibrary\Models\Media;
+use Spatie\Translatable\HasTranslations;
 
 class NewsArticle extends Model implements HasMedia
 {
     use HasMediaTrait;
     use Metable;
+    use HasTranslations;
+
     /**
      * The database table used by the model.
      *
      * @var string
      */
     protected $table = 'news_articles';
+
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
     protected $fillable = [
-        'title',
         'url',
+        'title',
         'description',
         'active',
         'published_at',
     ];
+
+    public $translatable = ['url', 'title', 'description'];
+
     /**
      * The attributes that should be cast to native types.
      *
@@ -64,10 +73,10 @@ class NewsArticle extends Model implements HasMedia
     /**
      * Register the media conversions.
      *
-     * @param \Spatie\MediaLibrary\Models\Media|null $media
+     * @param Media|null $media
      * @SuppressWarnings(PHPMD.UnusedFormalParameter)
      *
-     * @throws \Spatie\Image\Exceptions\InvalidManipulation
+     * @throws InvalidManipulation
      */
     public function registerMediaConversions(Media $media = null)
     {
@@ -77,7 +86,7 @@ class NewsArticle extends Model implements HasMedia
     }
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     * @return BelongsToMany
      */
     public function categories()
     {

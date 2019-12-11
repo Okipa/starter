@@ -1,7 +1,6 @@
 @php
-    $homePageActive = in_array(request()->route()->getName(), ['home.page.edit']);
-    $homeSlidesActive = in_array(request()->route()->getName(), ['home.slides', 'home.slide.create', 'home.slide.edit']);
-    $subMenuActive = $homePageActive || $homeSlidesActive;
+    $homePageActive = Str::contains(request()->route()->getName(), ['home.page.edit']);
+    $subMenuActive = $homePageActive;
 @endphp
 <li class="nav-item">
     <a class="nav-link {{ $subMenuActive ? 'active' : null }}"
@@ -23,15 +22,6 @@
                title="@lang('Page')">
                 <i class="fas fa-desktop fa-fw"></i>
                 @lang('Page')
-            </a>
-        </li>
-        {{-- slides --}}
-        <li class="nav-item">
-            <a class="nav-link load-on-click {{$homeSlidesActive ? 'active' : null }}"
-               href="{{ route('home.slides.index') }}"
-               title="@lang('Slides')">
-                <i class="fas fa-images fa-fw"></i>
-                @lang('Slides')
             </a>
         </li>
     </ul>

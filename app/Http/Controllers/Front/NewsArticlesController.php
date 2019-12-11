@@ -7,14 +7,17 @@ use App\Http\Requests\News\ArticlesIndexRequest;
 use App\Models\NewsArticle;
 use App\Services\Seo\SeoService;
 use Artesaos\SEOTools\Facades\SEOTools;
+use Exception;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\View\View;
 
 class NewsArticlesController extends Controller
 {
     /**
-     * @param \App\Http\Requests\News\ArticlesIndexRequest $request
+     * @param ArticlesIndexRequest $request
      *
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     * @throws \Exception
+     * @return Factory|View
+     * @throws Exception
      */
     public function index(ArticlesIndexRequest $request)
     {
@@ -40,12 +43,12 @@ class NewsArticlesController extends Controller
     /**
      * @param string $url
      *
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     * @throws \Exception
+     * @return Factory|View
+     * @throws Exception
      */
     public function show(string $url)
     {
-        /** @var \App\Models\NewsArticle $article */
+        /** @var NewsArticle $article */
         $article = (new NewsArticle)->with(['media', 'categories'])
             ->where('url', $url)
             ->where('active', true)
