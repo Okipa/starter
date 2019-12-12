@@ -5,7 +5,7 @@
         <div class="row">
             <div class="text-center">
                 <div class="mx-auto mb-4">
-                    @include('components.common.language.selector', [
+                    @include('components.common.language.switcher', [
                         'containerClasses' => ['text-right'],
                         'dropdownLabelClasses' => ['btn', 'btn-link'],
                         'dropdownMenuClasses' => ['dropdown-menu-right']

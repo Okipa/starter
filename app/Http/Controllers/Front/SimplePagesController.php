@@ -22,7 +22,7 @@ class SimplePagesController extends Controller
         $simplePage = (new SimplePage)->where('url', 'LIKE', '%' . $url . '%')
             ->where('active', true)
             ->firstOrFail();
-        if($simplePage->url !== $url) {
+        if ($simplePage->url !== $url) {
             return redirect()->route('simplePage.show', $simplePage->url);
         }
         (new SeoService)->displayMetaTagsFromModel($simplePage);

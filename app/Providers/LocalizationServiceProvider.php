@@ -17,6 +17,6 @@ class LocalizationServiceProvider extends ServiceProvider
         // time localization
         // todo : fix this
         // setlocale(LC_TIME, LaravelLocalization::getCurrentLocaleRegional() . '.UTF-8');
-        Carbon::setLocale(app()->getLocale());
+        // Carbon::setLocale(app()->getLocale());
     }
 }

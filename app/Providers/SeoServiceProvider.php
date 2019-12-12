@@ -2,8 +2,8 @@
 
 namespace App\Providers;
 
-use Illuminate\Support\Arr;
 use Illuminate\Support\ServiceProvider;
+use Route;
 use SEO;
 
 class SeoServiceProvider extends ServiceProvider
@@ -16,20 +16,19 @@ class SeoServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        if (multilingual()) {
-            // todo : fix this
-//            foreach (config('localized-routes.supported-locales') as $locale) {
-//                 SEO::metatags()->addAlternateLanguage($locale, LaravelLocalization::getLocalizedURL($locale));
-//            }
-        }
+        //if (multilingual()) {
+            // foreach (supportedLocaleKeys() as $localeKey) {
+            //     SEO::metatags()->addAlternateLanguage($localeKey, Route::getLocalizedCurrentUrl($localeKey));
+            // }
+        //}
         // todo : fix this
-//         SEO::opengraph()->addProperty('locale', LaravelLocalization::getCurrentLocaleRegional());
-        if (multilingual()) {
+        //         SEO::opengraph()->addProperty('locale', LaravelLocalization::getCurrentLocaleRegional());
+        //if (multilingual()) {
             // todo : fix this
-//            SEO::opengraph()->addProperty(
-//                'locale:alternate',
-//                implode(',', Arr::pluck(LaravelLocalization::getLocalesOrder(), 'regional'))
-//            );
-        }
+            //            SEO::opengraph()->addProperty(
+            //                'locale:alternate',
+            //                implode(',', Arr::pluck(LaravelLocalization::getLocalesOrder(), 'regional'))
+            //            );
+        //}
     }
 }

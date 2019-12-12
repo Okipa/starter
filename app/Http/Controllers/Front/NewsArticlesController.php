@@ -30,7 +30,7 @@ class NewsArticlesController extends Controller
             ->where('published_at', '<=', now())
             ->orderBy('published_at', 'desc');
         if ($request->category_id) {
-            $query->whereHas('categories', function ($category) use ($request) {
+            $query->whereHas('categories', function($category) use ($request) {
                 $category->where('id', $request->category_id);
             });
         }
@@ -54,7 +54,7 @@ class NewsArticlesController extends Controller
             ->where('active', true)
             ->where('published_at', '<=', now())
             ->firstOrFail();
-        if($article->url !== $url) {
+        if ($article->url !== $url) {
             return redirect()->route('news.article.show', $article->url);
         }
         (new SeoService)->displayMetaTagsFromModel($article);

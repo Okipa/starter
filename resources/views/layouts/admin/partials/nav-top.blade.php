@@ -1,7 +1,7 @@
 <ul id="topnav" class="navbar-nav nav bg-dark flex-column flex-grow-1 align-content-end align-items-end">
     {{-- language --}}
     <li class="nav-item">
-        @include('components.common.language.selector', [
+        @include('components.common.language.switcher', [
             'dropdownLabelClasses' => ['nav-link'],
             'dropdownMenuClasses' => ['dropdown-menu-right'],
         ])

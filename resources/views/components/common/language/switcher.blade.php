@@ -14,7 +14,7 @@
              aria-labelledby="language-selector">
             @foreach(supportedLocales() as $localeKey => $locale)
                 <a class="dropdown-item {{ app()->getLocale() === $locale ? 'active' : ''}} {{ ! empty($dropDownLinkClasses) ? implode(' ', $dropDownLinkClasses) : '' }}"
-                   href="{{ route(Route::current()->getName(), Route::current()->parameters(), true, $localeKey) }}"
+                   href="{{ Route::currentLocalizedUrl($localeKey) }}"
                    title="{{ $locale['name'] }}"
                    rel="alternate"
                    hreflang="{{ $localeKey }}">
