@@ -1,9 +1,8 @@
 <?php
-
 return [
     'attributes' => [
-        'block_id'  => 'Bloc',
-        'h1'                    => [
+        'block_id'         => 'Bloc',
+        'h1'               => [
             'content' => 'Contenu',
         ],
         'text'             => [
@@ -17,5 +16,6 @@ return [
             'content' => 'Contenu',
             'image'   => 'Image',
         ],
+        'actions'          => 'Actions',
     ],
 ];

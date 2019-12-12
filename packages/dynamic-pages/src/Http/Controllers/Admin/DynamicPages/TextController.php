@@ -3,11 +3,11 @@
 namespace DynamicPages\Http\Controllers\Admin\DynamicPages;
 
 use App\Http\Controllers\Controller;
+use Artesaos\SEOTools\Facades\SEOTools;
 use DynamicPages\Http\Requests\DynamicPageBlocks\TextStoreRequest;
 use DynamicPages\Http\Requests\DynamicPageBlocks\TextUpdateRequest;
 use DynamicPages\Models\DynamicPage;
 use DynamicPages\Models\DynamicPageBlock;
-use Artesaos\SEOTools\Facades\SEOTools;
 use Illuminate\Support\Facades\DB;
 use RuntimeException;
 
@@ -22,7 +22,10 @@ class TextController extends Controller
     {
         $dynamicPageBlock = null;
 
-        return view('dynamic-pages::templates.admin.dynamic-pages.blocks.text', compact('dynamicPage', 'dynamicPageBlock'));
+        return view(
+            'dynamic-pages::templates.admin.dynamic-pages.blocks.text',
+            compact('dynamicPage', 'dynamicPageBlock')
+        );
     }
 
     /**
@@ -36,26 +39,21 @@ class TextController extends Controller
     {
         $blockConfig = config('dynamic-pages.blocks.text');
         $blockModel = data_get($blockConfig, 'model');
-
-        if (!$blockModel) {
+        if (! $blockModel) {
             throw new RuntimeException('Model of \'text\' does not exists');
         }
-
         $block = new DynamicPageBlock([
             'position'        => -1,
             'block_id'        => 'text',
             'dynamic_page_id' => data_get($dynamicPage, 'id'),
         ]);
-
         DB::transaction(function () use ($blockModel, $request, $block) {
             /** @var \App\Models\DynamicPages\Blockable $blockable */
             $blockable = app($blockModel)->create($request->validated());
-
-            if (!$blockable) {
+            if (! $blockable) {
                 throw new RuntimeException('Unable to create blockable');
             }
-
-            if (!$blockable->block()->save($block)) {
+            if (! $blockable->block()->save($block)) {
                 throw new RuntimeException('Unable to create block');
             }
         });
@@ -76,7 +74,10 @@ class TextController extends Controller
             'detail' => __(data_get(config("dynamic-pages.blocks.{$dynamicPageBlock->block_id}", []), 'name')),
         ]));
 
-        return view('dynamic-pages::templates.admin.dynamic-pages.blocks.text', compact('dynamicPage', 'dynamicPageBlock'));
+        return view(
+            'dynamic-pages::templates.admin.dynamic-pages.blocks.text',
+            compact('dynamicPage', 'dynamicPageBlock')
+        );
     }
 
     /**

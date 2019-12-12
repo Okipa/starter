@@ -37,16 +37,29 @@ class DynamicPage extends Model
         'active' => 'boolean',
     ];
 
+    /**
+     * @param \Illuminate\Database\Eloquent\Builder $builder
+     *
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
     public function scopeActive(Builder $builder)
     {
         return $builder->where('active', true);
     }
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
     public function blocks(): HasMany
     {
         return $this->hasMany(DynamicPageBlock::class);
     }
 
+    /**
+     * @return \Okipa\LaravelTable\Table
+     * @throws \ErrorException
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
+     */
     public function getBlocksTableAttribute()
     {
         return (new BlocksService)->table($this);

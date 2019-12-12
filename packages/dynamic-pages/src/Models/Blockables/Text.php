@@ -4,7 +4,12 @@ namespace DynamicPages\Models\Blockables;
 
 class Text extends Blockable
 {
-
-    protected $table    = 'dynamic_page_block_text';
-    protected $fillable = [ 'content' ];
+    /**
+     * @var string
+     */
+    protected $table = 'dynamic_page_block_text';
+    /**
+     * @var array
+     */
+    protected $fillable = ['content'];
 }

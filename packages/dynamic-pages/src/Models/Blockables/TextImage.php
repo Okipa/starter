@@ -9,22 +9,26 @@ use Spatie\MediaLibrary\Models\Media;
 
 class TextImage extends Blockable implements HasMedia
 {
-
     use HasMediaTrait;
-
-    protected $table    = 'dynamic_page_block_text_image';
-    protected $fillable = [ 'content' ];
+    /**
+     * @var string
+     */
+    protected $table = 'dynamic_page_block_text_image';
+    /**
+     * @var array
+     */
+    protected $fillable = ['content'];
 
     public function registerMediaCollections()
     {
         $this
             ->addMediaCollection('text_images')
-            ->acceptsMimeTypes([ 'image/jpeg', 'image/png' ]);
+            ->acceptsMimeTypes(['image/jpeg', 'image/png'])
+            ->singleFile();
     }
 
     /**
      * @SuppressWarnings(PHPMD.UnusedFormalParameter)
-     *
      * @param \Spatie\MediaLibrary\Models\Media|null $media
      *
      * @throws \Spatie\Image\Exceptions\InvalidManipulation

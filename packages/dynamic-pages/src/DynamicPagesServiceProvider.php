@@ -6,7 +6,6 @@ use Illuminate\Support\ServiceProvider;
 
 class DynamicPagesServiceProvider extends ServiceProvider
 {
-
     public function register()
     {
         //

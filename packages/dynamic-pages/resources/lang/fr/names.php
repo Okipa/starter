@@ -1,5 +1,4 @@
 <?php
-
 return [
     'h1'               => 'En-tête 1',
     'text'             => 'Texte',

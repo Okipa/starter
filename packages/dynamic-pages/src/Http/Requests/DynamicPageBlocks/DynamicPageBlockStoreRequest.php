@@ -25,7 +25,7 @@ class DynamicPageBlockStoreRequest extends FormRequest
     public function rules()
     {
         return [
-            'block_id' => [ 'required', Rule::in(array_keys(config('dynamic-pages.blocks'))), ],
+            'block_id' => ['required', Rule::in(array_keys(config('dynamic-pages.blocks'))),],
         ];
     }
 }

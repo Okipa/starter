@@ -15,43 +15,43 @@
         @endif
     </h1>
     <hr>
-   <div class="card">
-       <div class="card-header">
-           <h2 class="m-0">
-               @lang('admin.section.data')
-           </h2>
-       </div>
-       <div class="card-body">
-           <form action="{{ $dynamicPageBlock ?
+    <div class="card">
+        <div class="card-header">
+            <h2 class="m-0">
+                @lang('admin.section.data')
+            </h2>
+        </div>
+        <div class="card-body">
+            <form action="{{ $dynamicPageBlock ?
                     route('dynamic-pages::dynamicPageBlock.text.update', [ $dynamicPage, $dynamicPageBlock ]) :
                     route('dynamic-pages::dynamicPageBlock.text.store', $dynamicPage) }}"
-                 method="POST">
-               @csrf
+                  method="POST">
+                @csrf
 
-               @if ($dynamicPageBlock)
-                   @method('PUT')
-               @endif
+                @if ($dynamicPageBlock)
+                    @method('PUT')
+                @endif
 
-               @include('components.common.form.notice')
+                @include('components.common.form.notice')
 
-               {{ bsTextarea()
-                   ->name('content')
-                   ->model($dynamicPageBlock ? $dynamicPageBlock->blockable : null)
-                   ->label('dynamic-pages::validation.attributes.text.content')
-                   ->containerHtmlAttributes([ 'required' ])
-                   ->componentClasses(['editor'])
-                   ->prepend(false) }}
+                {{ bsTextarea()
+                    ->name('content')
+                    ->model($dynamicPageBlock ? $dynamicPageBlock->blockable : null)
+                    ->label('dynamic-pages::validation.attributes.text.content')
+                    ->containerHtmlAttributes([ 'required' ])
+                    ->componentClasses(['editor'])
+                    ->prepend(false) }}
 
-               <div class="d-flex pt-4">
-                   {{ bsCancel()->route('dynamic-pages::dynamicPage.edit', compact('dynamicPage'))->containerClasses(['mr-2']) }}
+                <div class="d-flex pt-4">
+                    {{ bsCancel()->route('dynamic-pages::dynamicPage.edit', compact('dynamicPage'))->containerClasses(['mr-2']) }}
 
-                   @if ($dynamicPageBlock)
-                       {{ bsUpdate() }}
-                   @else
-                       {{ bsCreate() }}
-                   @endif
-               </div>
-           </form>
-       </div>
-   </div>
+                    @if ($dynamicPageBlock)
+                        {{ bsUpdate() }}
+                    @else
+                        {{ bsCreate() }}
+                    @endif
+                </div>
+            </form>
+        </div>
+    </div>
 @endsection

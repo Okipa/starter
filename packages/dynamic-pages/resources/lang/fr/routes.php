@@ -1,5 +1,4 @@
 <?php
-
 return [
     'dynamicPages'      => [
         'show'    => 'pages-dynamiques/{url?}',

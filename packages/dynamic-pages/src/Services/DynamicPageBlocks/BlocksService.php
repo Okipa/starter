@@ -2,9 +2,9 @@
 
 namespace DynamicPages\Services\DynamicPageBlocks;
 
+use App\Services\Service;
 use DynamicPages\Models\DynamicPage;
 use DynamicPages\Models\DynamicPageBlock;
-use App\Services\Service;
 use Illuminate\Database\Eloquent\Builder;
 use Okipa\LaravelTable\Table;
 
@@ -24,9 +24,17 @@ class BlocksService extends Service implements BlocksServiceInterface
         $table = (new Table)
             ->model(DynamicPageBlock::class)
             ->routes([
-                'index'   => ['name' => 'dynamic-pages::dynamicPageBlocks', 'params' => [ 'dynamicPage' => $dynamicPage ]],
-                'edit'    => ['name' => 'dynamic-pages::dynamicPageBlock.edit', 'params' => [ 'dynamicPage' => $dynamicPage ]],
-                'destroy' => ['name' => 'dynamic-pages::dynamicPageBlock.destroy', 'params' => [ 'dynamicPage' => $dynamicPage ]],
+                'index'   => [
+                    'name'   => 'dynamic-pages::dynamicPageBlocks',
+                    'params' => ['dynamicPage' => $dynamicPage],
+                ],
+                'edit'    => [
+                    'name' => 'dynamic-pages::dynamicPageBlock.edit', 'params' => ['dynamicPage' => $dynamicPage],
+                ],
+                'destroy' => [
+                    'name'   => 'dynamic-pages::dynamicPageBlock.destroy',
+                    'params' => ['dynamicPage' => $dynamicPage],
+                ],
             ])
             ->query(function (Builder $query) use ($dynamicPage) {
                 return $query->where('dynamic_page_id', $dynamicPage->id);
@@ -39,9 +47,8 @@ class BlocksService extends Service implements BlocksServiceInterface
                     ]),
                 ];
             })
-            ->tableClasses([ 'mb-0' ])
+            ->tableClasses(['mb-0'])
             ->rowsNumberSelectionActivation(false);
-
         $table
             ->column('block_id')
             ->title(__('dynamic-pages::validation.attributes.block_id'))

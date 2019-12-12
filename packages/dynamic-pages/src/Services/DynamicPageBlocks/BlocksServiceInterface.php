@@ -2,8 +2,8 @@
 
 namespace DynamicPages\Services\DynamicPageBlocks;
 
-use DynamicPages\Models\DynamicPage;
 use App\Services\ServiceInterface;
+use DynamicPages\Models\DynamicPage;
 
 interface BlocksServiceInterface extends ServiceInterface
 {

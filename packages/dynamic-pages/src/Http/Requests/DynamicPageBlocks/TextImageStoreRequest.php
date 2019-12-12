@@ -26,7 +26,7 @@ class TextImageStoreRequest extends FormRequest
     {
         return [
             'image'   => array_merge(
-                [ 'required' ],
+                ['required'],
                 app(TextImage::class)->validationConstraints('text_images')
             ),
             'content' => 'required|string',

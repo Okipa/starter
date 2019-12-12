@@ -6,7 +6,7 @@
             <h1 class="text-primary mb-5">{{ $dynamicPage->title }}</h1>
             <div class="text">
                 @foreach ($dynamicPage->blocks as $block)
-                    @include("dynamic-pages::templates.front.dynamic-pages.blocks.{$block->block_id}", [ 'blockable' => $block->blockable ])
+                    {{ $block->html() }}
                 @endforeach
             </div>
         </div>

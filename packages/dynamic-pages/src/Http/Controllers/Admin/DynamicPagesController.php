@@ -2,14 +2,14 @@
 
 namespace DynamicPages\Http\Controllers\Admin;
 
-use DynamicPages\Models\DynamicPage;
 use App\Http\Controllers\Controller;
 use App\Services\Seo\SeoService;
-use DynamicPages\Services\DynamicPages\PagesService;
+use Artesaos\SEOTools\Facades\SEOTools;
 use DynamicPages\Http\Requests\DynamicPages\DynamicPageStoreRequest;
 use DynamicPages\Http\Requests\DynamicPages\DynamicPageUpdateRequest;
+use DynamicPages\Models\DynamicPage;
+use DynamicPages\Services\DynamicPages\PagesService;
 use Illuminate\Support\Str;
-use Artesaos\SEOTools\Facades\SEOTools;
 
 class DynamicPagesController extends Controller
 {

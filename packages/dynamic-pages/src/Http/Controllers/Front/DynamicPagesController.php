@@ -3,8 +3,8 @@
 namespace DynamicPages\Http\Controllers\Front;
 
 use App\Http\Controllers\Controller;
-use DynamicPages\Models\DynamicPage;
 use App\Services\Seo\SeoService;
+use DynamicPages\Models\DynamicPage;
 
 class DynamicPagesController extends Controller
 {

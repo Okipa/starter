@@ -3,11 +3,11 @@
 namespace DynamicPages\Http\Controllers\Admin\DynamicPages;
 
 use App\Http\Controllers\Controller;
+use Artesaos\SEOTools\Facades\SEOTools;
 use DynamicPages\Http\Requests\DynamicPageBlocks\TwoColumnsTextStoreRequest;
 use DynamicPages\Http\Requests\DynamicPageBlocks\TwoColumnsTextUpdateRequest;
 use DynamicPages\Models\DynamicPage;
 use DynamicPages\Models\DynamicPageBlock;
-use Artesaos\SEOTools\Facades\SEOTools;
 use Illuminate\Support\Facades\DB;
 use RuntimeException;
 
@@ -39,26 +39,21 @@ class TwoColumnsTextController extends Controller
     {
         $blockConfig = config('dynamic-pages.blocks.two_columns_text');
         $blockModel = data_get($blockConfig, 'model');
-
-        if (!$blockModel) {
+        if (! $blockModel) {
             throw new RuntimeException('Model of \'two_columns_text\' does not exists');
         }
-
         $block = new DynamicPageBlock([
             'position'        => -1,
             'block_id'        => 'two_columns_text',
             'dynamic_page_id' => data_get($dynamicPage, 'id'),
         ]);
-
         DB::transaction(function () use ($blockModel, $request, $block) {
             /** @var \App\Models\DynamicPages\Blockable $blockable */
             $blockable = app($blockModel)->create($request->validated());
-
-            if (!$blockable) {
+            if (! $blockable) {
                 throw new RuntimeException('Unable to create blockable');
             }
-
-            if (!$blockable->block()->save($block)) {
+            if (! $blockable->block()->save($block)) {
                 throw new RuntimeException('Unable to create block');
             }
         });

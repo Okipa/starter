@@ -2,8 +2,8 @@
 
 namespace DynamicPages\Services\DynamicPages;
 
-use DynamicPages\Models\DynamicPage;
 use App\Services\Service;
+use DynamicPages\Models\DynamicPage;
 use Okipa\LaravelTable\Table;
 
 class PagesService extends Service implements PagesServiceInterface

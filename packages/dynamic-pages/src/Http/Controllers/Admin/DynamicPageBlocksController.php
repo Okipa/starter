@@ -17,7 +17,6 @@ class DynamicPageBlocksController extends Controller
      */
     public function store(DynamicPageBlockStoreRequest $request, DynamicPage $dynamicPage)
     {
-
         $blockId = $request->get('block_id');
         $blockConfig = config("dynamic-pages.blocks.{$blockId}", []);
         $blockController = $blockConfig['controller'];
@@ -43,7 +42,6 @@ class DynamicPageBlocksController extends Controller
 
     /**
      * @SuppressWarnings(PHPMD.UnusedFormalParameter)
-     *
      * @param \DynamicPages\Models\DynamicPage $dynamicPage
      * @param \DynamicPages\Models\DynamicPageBlock $dynamicPageBlock
      *

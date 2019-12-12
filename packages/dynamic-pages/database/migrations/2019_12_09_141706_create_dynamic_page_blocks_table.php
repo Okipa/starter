@@ -21,7 +21,6 @@ class CreateDynamicPageBlocksTable extends Migration
             $table->unsignedBigInteger('blockable_id')->nullable();
             $table->string('blockable_type')->nullable();
             $table->timestamps();
-
             $table
                 ->foreign('dynamic_page_id')
                 ->on('dynamic_pages')
