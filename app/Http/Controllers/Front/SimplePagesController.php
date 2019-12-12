@@ -19,9 +19,12 @@ class SimplePagesController extends Controller
      */
     public function show(string $url)
     {
-        $simplePage = (new SimplePage)->where('url->' . app()->getLocale(), $url)
+        $simplePage = (new SimplePage)->where('url', 'LIKE', '%' . $url . '%')
             ->where('active', true)
             ->firstOrFail();
+        if($simplePage->url !== $url) {
+            return redirect()->route('simplePage.show', $simplePage->url);
+        }
         (new SeoService)->displayMetaTagsFromModel($simplePage);
         $css = mix('/css/simple-pages/show.css');
 

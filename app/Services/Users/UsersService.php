@@ -24,7 +24,7 @@ class UsersService extends Service implements UsersServiceInterface
     public function table(): Table
     {
         $table = (new Table)->model(User::class)->routes([
-            'index' => ['name' => 'users'],
+            'index' => ['name' => 'users.index'],
             'create' => ['name' => 'user.create'],
             'edit' => ['name' => 'user.edit'],
             'destroy' => ['name' => 'user.destroy'],

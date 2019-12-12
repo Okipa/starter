@@ -49,7 +49,7 @@ composer:nodev:
 
 yarn:
   stage: build
-  image: node:10
+  image: node:12 # todo : set node version
   script:
     - yarn install
   artifacts:

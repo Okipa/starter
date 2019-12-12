@@ -11,6 +11,7 @@ use Illuminate\Support\Str;
 class SimplePageStoreRequest extends Request
 {
     protected $exceptFromSanitize = ['url'];
+
     protected $safetyChecks = ['active' => 'boolean'];
 
     /**
@@ -20,10 +21,7 @@ class SimplePageStoreRequest extends Request
      */
     public function before()
     {
-        $this->merge([
-            'slug' => Str::slug($this->slug),
-            'url'  => $this->url ? strtolower($this->url) : null,
-        ]);
+        $this->merge(['slug' => Str::slug($this->slug)]);
     }
 
     /**
@@ -34,7 +32,7 @@ class SimplePageStoreRequest extends Request
     public function rules()
     {
         $rules = [
-            'active' => ['required', 'boolean']
+            'active' => ['required', 'boolean'],
         ];
         $multilingualRules = $this->localizeRules(array_merge([
             'url' => [
@@ -48,26 +46,5 @@ class SimplePageStoreRequest extends Request
         ], (new SeoService)->metaTagsRules()));
 
         return array_merge($multilingualRules, $rules);
-    }
-
-    /**
-     * Configure the validator instance.
-     *
-     * @param \Illuminate\Validation\Validator $validator
-     *
-     * @return void
-     */
-    public function withValidator($validator)
-    {
-        $customValidator = Validator::make([
-            'full_url' => $this->url ? route('simplePage.show', $this->url) : null,
-        ], [
-            'full_url' => ['required', 'string', 'url'],
-        ]);
-        if ($customValidator->failed()) {
-            $validator->after(function ($validator) {
-                $validator->errors()->add('url', __('validation.url'));
-            });
-        }
     }
 }

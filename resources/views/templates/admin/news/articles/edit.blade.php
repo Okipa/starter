@@ -31,22 +31,26 @@
             </div>
             <div class="card-body">
                 <h3>@lang('Media')</h3>
-                @php($illustration = optional($article)->getFirstMedia('illustration'))
+                @php($illustration = optional($article)->getFirstMedia('illustrations'))
                 {{ bsFile()->name('illustration')
                     ->value(optional($illustration)->file_name)
                     ->uploadedFile(function() use ($illustration) {
                         return $illustration
                             ? image()->src($illustration->getUrl('thumb'))
-                                ->linkUrl($illustration->getUrl('illustrations'))
+                                ->linkUrl($illustration->getUrl())
                                 ->containerClasses(['mb-2'])
                             : null;
                     })
                     ->showRemoveCheckbox(false)
                     ->containerHtmlAttributes(['required'])
-                    ->legend((new \App\Models\NewsArticle)->constraintsLegend('illustration')) }}
+                    ->legend((new \App\Models\NewsArticle)->constraintsLegend('illustrations')) }}
                 <h3 class="pt-4">@lang('Identity')</h3>
-                {{ bsText()->name('title')->model($article)->containerHtmlAttributes(['required']) }}
+                {{ bsText()->name('title')
+                    ->locales(supportedLocaleKeys())
+                    ->model($article)
+                    ->containerHtmlAttributes(['required']) }}
                 {{ bsText()->name('url')
+                    ->locales(supportedLocaleKeys())
                     ->model($article)
                     ->prepend(route('news.article.show', '') . '/')
                     ->componentClasses(['lowercase'])
@@ -56,11 +60,20 @@
                 {{ bsSelect()->name('category_ids')
                     ->model($article)
                     ->prepend('<i class="fas fa-tags"></i>')
-                    ->options((new \App\Models\NewsCategory)->orderBy('name')->get(), 'id', 'name')
+                    ->options((new \App\Models\NewsCategory)->orderBy('name')->get()->map(function($category){
+                        $array = $category->toArray();
+                        $array['name'] = $category->name;
+
+                        return $array;
+                    }), 'id', 'name')
                     ->multiple()
                     ->componentClasses(['selector'])
                     ->containerHtmlAttributes(['required']) }}
-                {{ bsTextarea()->name('description')->model($article)->componentClasses(['editor'])->prepend(false) }}
+                {{ bsTextarea()->name('description')
+                    ->locales(supportedLocaleKeys())
+                    ->model($article)
+                    ->prepend(false)
+                    ->componentClasses(['editor']) }}
                 <h3 class="pt-4">@lang('Publication')</h3>
                 {{ bsText()->name('published_at')
                     ->value(($article ? $article->published_at : now())->format('d/m/Y H:i'))

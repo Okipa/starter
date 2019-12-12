@@ -62,10 +62,11 @@ EOT;
     {
         $seededCategories = new Collection();
         for ($ii = 1; $ii <= 5; $ii++) {
+            $name = $this->fakerFr->word();
             $category = (new NewsCategory)->create([
                 'name' => [
-                    'fr' => $this->fakerFr->word(),
-                    'en' => $this->fakerFr->word(),
+                    'fr' => $name . ' FR',
+                    'en' => $name . ' EN',
                 ]
             ]);
             $seededCategories->push($category);
@@ -78,8 +79,8 @@ EOT;
      */
     protected function createArticle(): void
     {
-        $titleFr = ucfirst($this->fakerFr->words(3, true));
-        $titleEn = ucfirst($this->fakerEn->words(3, true));
+        $titleFr = ucfirst($this->fakerFr->words(3, true)) . ' FR';
+        $titleEn = ucfirst($this->fakerEn->words(3, true)) . ' EN';
         $article = (new NewsArticle)->create([
             'url' => [
                 'fr' => Str::slug($titleFr),

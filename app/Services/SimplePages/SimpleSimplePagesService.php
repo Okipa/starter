@@ -38,7 +38,7 @@ class SimpleSimplePagesService extends Service implements SimplePagesServiceInte
         $table->column('slug')
             ->sortable()
             ->searchable();
-        $table->column('url')->title(__('components.table.link'))->html(function (SimplePage $simplePage) {
+        $table->column('url')->title(__('Link'))->html(function (SimplePage $simplePage) {
             return view('components.admin.table.link', [
                 'url' => route('simplePage.show', $simplePage->url),
                 'active' => $simplePage->active,

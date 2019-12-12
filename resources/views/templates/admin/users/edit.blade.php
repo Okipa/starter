@@ -44,7 +44,7 @@
                     ->uploadedFile(function() use ($avatar) {
                         return $avatar
                             ? image()->src(optional($avatar)->getUrl('thumb'))
-                                ->linkUrl(optional($avatar)->getUrl('profile'))
+                                ->linkUrl(optional($avatar)->getUrl())
                                 ->containerClasses(['mb-2'])
                             : null;
                     })

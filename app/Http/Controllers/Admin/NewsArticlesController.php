@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Models\NewsArticle;
 use App\Http\Controllers\Controller;
-use App\Services\News\ArticlesService;
 use App\Http\Requests\News\ArticleStoreRequest;
 use App\Http\Requests\News\ArticleUpdateRequest;
+use App\Models\NewsArticle;
+use App\Services\News\ArticlesService;
 use App\Services\Seo\SeoService;
 use Artesaos\SEOTools\Facades\SEOTools;
 use Exception;
@@ -58,7 +58,6 @@ class NewsArticlesController extends Controller
      */
     public function store(ArticleStoreRequest $request)
     {
-        $request->merge(['title' => ucfirst(strtolower($request->title))]);
         /** @var NewsArticle $article */
         $article = (new NewsArticle)->create($request->validated());
         if ($request->file('illustration')) {
@@ -71,7 +70,7 @@ class NewsArticlesController extends Controller
             ->with('toast_success', __('notifications.parent.created', [
                 'parent' => __('News'),
                 'entity' => __('Articles'),
-                'name'   => $article->title,
+                'name' => $article->title,
             ]));
     }
 
@@ -102,7 +101,6 @@ class NewsArticlesController extends Controller
      */
     public function update(NewsArticle $article, ArticleUpdateRequest $request)
     {
-        $request->merge(['title' => ucfirst(strtolower($request->title))]);
         $article->update($request->validated());
         if ($request->file('illustration')) {
             $article->addMediaFromRequest('illustration')->toMediaCollection('illustrations');
@@ -113,7 +111,7 @@ class NewsArticlesController extends Controller
         return back()->with('toast_success', __('notifications.parent.updated', [
             'parent' => __('News'),
             'entity' => __('Articles'),
-            'name'   => $article->title,
+            'name' => $article->title,
         ]));
     }
 
@@ -131,7 +129,7 @@ class NewsArticlesController extends Controller
         return back()->with('toast_success', __('notifications.parent.destroyed', [
             'parent' => __('News'),
             'entity' => __('Articles'),
-            'name'   => $name,
+            'name' => $name,
         ]));
     }
 }

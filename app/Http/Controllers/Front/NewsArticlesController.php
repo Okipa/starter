@@ -50,10 +50,13 @@ class NewsArticlesController extends Controller
     {
         /** @var NewsArticle $article */
         $article = (new NewsArticle)->with(['media', 'categories'])
-            ->where('url', $url)
+            ->where('url', 'LIKE', '%' . $url . '%')
             ->where('active', true)
             ->where('published_at', '<=', now())
             ->firstOrFail();
+        if($article->url !== $url) {
+            return redirect()->route('news.article.show', $article->url);
+        }
         (new SeoService)->displayMetaTagsFromModel($article);
         $css = mix('/css/news/show.css');
 

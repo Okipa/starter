@@ -42,7 +42,7 @@ class ArticlesService extends Service implements ArticlesServiceInterface
                     : null;
             })->implode(' ');
         });
-        $table->column()->title(__('components.table.link'))->html(function (NewsArticle $newsArticle) {
+        $table->column()->title(__('Link'))->html(function (NewsArticle $newsArticle) {
             return view('components.admin.table.link', [
                 'url' => route('news.article.show', $newsArticle->url),
                 'active' => $newsArticle->active,

@@ -3,7 +3,6 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
-use Plank\Metable\Metable;
 use Spatie\Image\Exceptions\InvalidManipulation;
 use Spatie\Image\Manipulations;
 use Spatie\MediaLibrary\HasMedia\HasMedia;
@@ -11,11 +10,12 @@ use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
 use Spatie\MediaLibrary\Models\Media;
 use Spatie\Translatable\HasTranslations;
 
-class NewsArticle extends Model implements HasMedia
+class NewsArticle extends Metable implements HasMedia
 {
     use HasMediaTrait;
-    use Metable;
     use HasTranslations;
+
+    public $translatable = ['url', 'title', 'description'];
 
     /**
      * The database table used by the model.
@@ -30,14 +30,12 @@ class NewsArticle extends Model implements HasMedia
      * @var array
      */
     protected $fillable = [
-        'url',
         'title',
+        'url',
         'description',
         'active',
         'published_at',
     ];
-
-    public $translatable = ['url', 'title', 'description'];
 
     /**
      * The attributes that should be cast to native types.
@@ -45,7 +43,7 @@ class NewsArticle extends Model implements HasMedia
      * @var array
      */
     protected $casts = [
-        'active'       => 'boolean',
+        'active' => 'boolean',
         'published_at' => 'datetime',
     ];
 
@@ -59,7 +57,7 @@ class NewsArticle extends Model implements HasMedia
     {
         $this->addMediaCollection('illustrations')
             ->acceptsMimeTypes(['image/jpeg', 'image/png'])
-            ->registerMediaConversions(function (Media $media = null) {
+            ->registerMediaConversions(function(Media $media = null) {
                 $this->addMediaConversion('cover')
                     ->fit(Manipulations::FIT_CROP, 1140, 500)
                     ->withResponsiveImages()

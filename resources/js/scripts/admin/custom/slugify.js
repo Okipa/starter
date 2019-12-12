@@ -5,9 +5,9 @@ window.triggerSlugifyElementsDetection = () => {
             const $this = $(element);
             const autofillFrom = $this.data('autofillFrom');
             let manualInterventionRealized = false;
-            if (!$this.val()) {
+            if (! $this.val()) {
                 $(autofillFrom).on('propertychange change keyup input paste', (event) => {
-                    if (!manualInterventionRealized) {
+                    if (! manualInterventionRealized) {
                         const slug = $(event.target).val().toLowerCase().replace(/[^a-zA-Z0-9]+/g, '-');
                         $this.val(slug);
                     }
