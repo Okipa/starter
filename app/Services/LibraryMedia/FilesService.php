@@ -89,7 +89,7 @@ class FilesService extends Service implements FilesServiceInterface
         JavaScript::put([
             'libraryMedia' => [
                 'clipboardCopy' => [
-                    'route' => route('libraryMedia.file.clipboardContent', ['__ID__', '__TYPE__']),
+                    'route' => route('libraryMedia.file.clipboardContent', ['__ID__', '__TYPE__', '__LOCALE__']),
                 ],
             ],
         ]);

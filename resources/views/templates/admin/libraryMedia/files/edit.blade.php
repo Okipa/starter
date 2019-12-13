@@ -59,32 +59,19 @@
                     <h3 class="pt-4">@lang('Clipboard copy')</h3>
                     {{ bsText()->name('url')
                         ->label(__('URL'))
-                        ->prepend(false)
+                        ->prepend('<i class="fas fa-link fa-fw"></i>')
                         ->value($file->getFirstMedia('medias')->getFullUrl())
-                        ->containerClasses(['mb-1'])
+                        ->append(view('components.admin.table.library-media.url-copy-link', compact('file')))
                         ->componentHtmlAttributes(['disabled']) }}
-                    <div class="form-group">
-                        <button type="button"
-                                class="btn btn-outline-primary clipboard-copy"
-                                data-library-media-id="{{ $file->id }}"
-                                data-type="url">
-                            <i class="fas fa-link fa-fw"></i> @lang('Clipboard copy')
-                        </button>
-                    </div>
                     {{ bsTextarea()->name('html')
+                        ->locales(supportedLocaleKeys())
                         ->label(__('library-media.labels.html'))
-                        ->prepend(false)
-                        ->value(trim(view('components.admin.table.library-media.html-clipboard-content', compact('file'))->toHtml()))
-                        ->containerClasses(['mb-1'])
+                        ->prepend('<i class="fas fa-code fa-fw"></i>')
+                        ->value(function($locale) use($file) {
+                            return trim(view('components.admin.table.library-media.html-clipboard-content', compact('file', 'locale'))->toHtml());
+                        })
+                        ->append(view('components.admin.table.library-media.html-copy-link', compact('file')))
                         ->componentHtmlAttributes(['rows' => 6, 'disabled']) }}
-                    <div class="form-group">
-                        <button type="button"
-                                class="btn btn-outline-primary clipboard-copy"
-                                data-library-media-id="{{ $file->id }}"
-                                data-type="html">
-                            <i class="fas fa-link fa-fw"></i> @lang('Clipboard copy')
-                        </button>
-                    </div>
                 @endif
                 <div class="d-flex pt-4">
                     {{ bsCancel()->route('libraryMedia.files.index')->containerClasses(['mr-2']) }}

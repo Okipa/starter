@@ -18,4 +18,4 @@ Route::post(Lang::uri('library/media/file/store'), [LibraryMediaFilesController:
 Route::get(Lang::uri('library/media/file/edit/{file}'), [LibraryMediaFilesController::class, 'edit'])->name('libraryMedia.file.edit');
 Route::put(Lang::uri('library/media/file/update/{file}'), [LibraryMediaFilesController::class, 'update'])->name('libraryMedia.file.update');
 Route::delete(Lang::uri('library/media/file/destroy/{file}'), [LibraryMediaFilesController::class, 'destroy'])->name('libraryMedia.file.destroy');
-Route::get(Lang::uri('library/media/files/clipboard/content/{file}/{type}'), [LibraryMediaFilesController::class, 'clipboardContent'])->name('libraryMedia.file.clipboardContent');
+Route::get(Lang::uri('library/media/files/clipboard/content/{file}/{type}/{locale?}'), [LibraryMediaFilesController::class, 'clipboardContent'])->name('libraryMedia.file.clipboardContent');
