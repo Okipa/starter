@@ -5,7 +5,6 @@ namespace App\Http\Requests\SimplePages;
 use App\Http\Requests\Request;
 use App\Services\Seo\SeoService;
 use CodeZero\UniqueTranslation\UniqueTranslationRule;
-use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
 
 class SimplePageStoreRequest extends Request

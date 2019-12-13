@@ -22,7 +22,7 @@ class ArticleUpdateRequest extends Request
     public function before()
     {
         $this->merge([
-            'published_at' => $this->published_at ? rescue(function() {
+            'published_at' => $this->published_at ? rescue(function () {
                 return Carbon::createFromFormat('d/m/Y H:i', $this->published_at)->toDateTimeString();
             }, 'XXX', false) : null,
         ]);

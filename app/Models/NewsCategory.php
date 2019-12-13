@@ -10,6 +10,13 @@ class NewsCategory extends Model
     use HasTranslations;
 
     /**
+     * The attributes that are translatable.
+     *
+     * @var array
+     */
+    public $translatable = ['name'];
+
+    /**
      * The database table used by the model.
      *
      * @var string
@@ -21,11 +28,7 @@ class NewsCategory extends Model
      *
      * @var array
      */
-    protected $fillable = [
-        'name',
-    ];
-
-    public $translatable = ['name'];
+    protected $fillable = ['name'];
 
     /**
      * @return BelongsToMany

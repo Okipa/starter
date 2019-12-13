@@ -152,7 +152,8 @@ return [
         'password_confirmation' => 'Password confirmation',
         'remember' => 'Remember me',
         'first_name' => 'First name',
-        'last_name' => 'Last name'
+        'last_name' => 'Last name',
+        'category_name' => 'Catégorie',
     ],
 
 ];

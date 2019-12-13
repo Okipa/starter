@@ -4,6 +4,8 @@ namespace App\Services\LibraryMedia;
 
 use App\Models\LibraryMediaFile;
 use App\Services\Service;
+use ErrorException;
+use Illuminate\Contracts\Container\BindingResolutionException;
 use Illuminate\Http\Request;
 use JavaScript;
 use Okipa\LaravelTable\Table;
@@ -13,11 +15,11 @@ class FilesService extends Service implements FilesServiceInterface
     /**
      * Configure the model table list.
      *
-     * @param \Illuminate\Http\Request $request
+     * @param Request $request
      *
-     * @return \Okipa\LaravelTable\Table
-     * @throws \ErrorException
-     * @throws \Illuminate\Contracts\Container\BindingResolutionException
+     * @return Table
+     * @throws ErrorException
+     * @throws BindingResolutionException
      */
     public function table(Request $request): Table
     {
@@ -35,7 +37,7 @@ class FilesService extends Service implements FilesServiceInterface
             ];
         })->query(function ($query) use ($request) {
             $query->select('library_media_files.*');
-            $query->addSelect('library_media_categories.name as category_name');
+            $query->addSelect('library_media_categories.name->' . app()->getLocale() . ' as category_name');
             $query->addSelect('media.mime_type');
             $query->join('media', 'media.model_id', '=', 'library_media_files.id');
             $query->join(
@@ -55,9 +57,7 @@ class FilesService extends Service implements FilesServiceInterface
         $table->column('name')->value(function (LibraryMediaFile $file) {
             return $file->name;
         })->sortable()->searchable();
-        $table->column('category_id')->value(function (LibraryMediaFile $file) {
-            return $file->category_name;
-        })->sortable()->searchable('library_media_categories', ['name']);
+        $table->column('category_name')->sortable()->searchable('library_media_categories', ['name']);
         $table->column('mime_type')
             ->title(__('MIME types'))
             ->html(function (LibraryMediaFile $file) {

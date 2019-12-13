@@ -64,12 +64,7 @@ class LibraryMediaFilesController extends Controller
     {
         /** @var LibraryMediaFile $file */
         $file = (new LibraryMediaFile)->create($request->validated());
-        $uploadedMediaFile = $request->file('media');
-        $fileName = Str::slug($request->name) . '.' . $uploadedMediaFile->getClientOriginalExtension();
-        $file->addMedia($uploadedMediaFile->getRealPath())
-            ->setName($request->name)
-            ->setFileName($fileName)
-            ->toMediaCollection('medias');
+        $file->addMediaFromRequest('media')->toMediaCollection('medias');
 
         return redirect()->route('libraryMedia.files.index')
             ->with('toast_success', __('notifications.orphan.created', [
@@ -109,12 +104,7 @@ class LibraryMediaFilesController extends Controller
     {
         $file->update($request->validated());
         if ($request->file('media')) {
-            $uploadedMediaFile = $request->file('media');
-            $fileName = Str::slug($request->name) . '.' . $uploadedMediaFile->getClientOriginalExtension();
-            $file->addMedia($uploadedMediaFile->getRealPath())
-                ->setName($request->name)
-                ->setFileName($fileName)
-                ->toMediaCollection('medias');
+            $file->addMediaFromRequest('media')->toMediaCollection('medias');
         }
 
         return back()->with('toast_success', __('notifications.orphan.updated', [

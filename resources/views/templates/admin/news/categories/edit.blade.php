@@ -4,14 +4,14 @@
         <i class="fas fa-tags fa-fw"></i>
         @if($category)
             @lang('breadcrumbs.parent.edit', [
+                'parent' => __('News'),
                 'entity' => __('Categories'),
                 'detail' => $category->name,
-                'parent' => __('News')
             ])
         @else
             @lang('breadcrumbs.parent.create', [
+                'parent' => __('News'),
                 'entity' => __('Categories'),
-                'parent' => __('News')
             ])
         @endif
     </h1>
@@ -31,7 +31,8 @@
             </div>
             <div class="card-body">
                 <h3>@lang('Identity')</h3>
-                {{ bsText()->name('name')->locales(supportedLocaleKeys())
+                {{ bsText()->name('name')
+                    ->locales(supportedLocaleKeys())
                     ->model($category)
                     ->containerHtmlAttributes(['required']) }}
                 <div class="d-flex pt-4">

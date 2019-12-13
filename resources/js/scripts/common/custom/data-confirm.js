@@ -15,7 +15,7 @@ window.listenToDataConfirmEvents = () => {
         if ($this.is('button') && $this.has('form')) {
             const form = $this.closest('form');
             form.submit((event) => {
-                if (!confirmationGiven) {
+                if (! confirmationGiven) {
                     event.preventDefault();
                     askConfirmation(event, message, () => {
                         form.submit();
@@ -25,7 +25,7 @@ window.listenToDataConfirmEvents = () => {
         } else if ($this.is('a')) {
             const link = $this.closest('a');
             link.click((event) => {
-                if (!confirmationGiven) {
+                if (! confirmationGiven) {
                     event.preventDefault();
                     askConfirmation(event, message, () => {
                         window.location.href = $this.attr('href');

@@ -3,6 +3,7 @@
 namespace App\Http\Requests\LibraryMedia;
 
 use App\Http\Requests\Request;
+use CodeZero\UniqueTranslation\UniqueTranslationRule;
 
 class CategoryUpdateRequest extends Request
 {
@@ -13,8 +14,13 @@ class CategoryUpdateRequest extends Request
      */
     public function rules()
     {
-        return [
-            'name' => ['required', 'string', 'max:255', 'unique:library_media_categories,name,' . $this->category->id],
-        ];
+        return $this->localizeRules([
+            'name' => [
+                'required',
+                'string',
+                'max:255',
+                UniqueTranslationRule::for('library_media_categories')->ignore($this->category->id),
+            ],
+        ]);
     }
 }
