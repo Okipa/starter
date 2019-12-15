@@ -2,21 +2,34 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Support\Str;
+use Spatie\Image\Exceptions\InvalidManipulation;
 use Spatie\Image\Manipulations;
 use Spatie\MediaLibrary\HasMedia\HasMedia;
 use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
 use Spatie\MediaLibrary\Models\Media;
+use Spatie\Translatable\HasTranslations;
 
 class LibraryMediaFile extends Model implements HasMedia
 {
     use HasMediaTrait;
+    use HasTranslations;
+
+    /**
+     * The attributes that are translatable.
+     *
+     * @var array
+     */
+    public $translatable = ['name'];
+
     /**
      * The database table used by the model.
      *
      * @var string
      */
     protected $table = 'library_media_files';
+
     /**
      * The attributes that are mass assignable.
      *
@@ -27,6 +40,7 @@ class LibraryMediaFile extends Model implements HasMedia
         'name',
         'downloadable',
     ];
+
     /**
      * The attributes that should be cast to native types.
      *
@@ -97,10 +111,10 @@ class LibraryMediaFile extends Model implements HasMedia
     /**
      * Register the media conversions.
      *
-     * @param \Spatie\MediaLibrary\Models\Media|null $media
+     * @param Media|null $media
      * @SuppressWarnings(PHPMD.UnusedFormalParameter)
      *
-     * @throws \Spatie\Image\Exceptions\InvalidManipulation
+     * @throws InvalidManipulation
      */
     public function registerMediaConversions(Media $media = null)
     {
@@ -145,10 +159,10 @@ class LibraryMediaFile extends Model implements HasMedia
     }
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     * @return HasOne
      */
     public function category()
     {
-        return $this->hasOne(LibraryMediaCategory::class, 'category_id');
+        return $this->hasOne(LibraryMediaCategory::class, 'id', 'category_id');
     }
 }

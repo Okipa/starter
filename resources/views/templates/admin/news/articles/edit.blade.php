@@ -60,12 +60,12 @@
                 {{ bsSelect()->name('category_ids')
                     ->model($article)
                     ->prepend('<i class="fas fa-tags"></i>')
-                    ->options((new \App\Models\NewsCategory)->orderBy('name')->get()->map(function($category){
+                    ->options((new \App\Models\NewsCategory)->get()->map(function($category){
                         $array = $category->toArray();
                         $array['name'] = $category->name;
 
                         return $array;
-                    }), 'id', 'name')
+                    })->sortBy('name'), 'id', 'name')
                     ->multiple()
                     ->componentClasses(['selector'])
                     ->containerHtmlAttributes(['required']) }}

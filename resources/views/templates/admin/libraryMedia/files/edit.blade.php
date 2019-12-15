@@ -36,10 +36,18 @@
                     ->containerHtmlAttributes(['required'])
                     ->legend((new \App\Models\LibraryMediaFile)->constraintsLegend('medias')) }}
                 <h3 class="pt-4">@lang('File')</h3>
-                {{ bsText()->name('name')->model($file)->containerHtmlAttributes(['required']) }}
+                {{ bsText()->name('name')
+                    ->locales(supportedLocaleKeys())
+                    ->model($file)
+                    ->containerHtmlAttributes(['required']) }}
                 {{ bsSelect()->name('category_id')
                     ->model($file)
-                    ->options((new \App\Models\LibraryMediaCategory)->orderBy('name')->get(), 'id', 'name')
+                    ->options((new \App\Models\LibraryMediaCategory)->get()->map(function($category){
+                        $array = $category->toArray();
+                        $array['name'] = $category->name;
+
+                        return $array;
+                    })->sortBy('name'), 'id', 'name')
                     ->componentClasses(['selector'])
                     ->containerHtmlAttributes(['required']) }}
                 @if(! $file || optional($file)->canBeDisplayed)
@@ -51,32 +59,19 @@
                     <h3 class="pt-4">@lang('Clipboard copy')</h3>
                     {{ bsText()->name('url')
                         ->label(__('URL'))
-                        ->prepend(false)
+                        ->prepend('<i class="fas fa-link fa-fw"></i>')
                         ->value($file->getFirstMedia('medias')->getFullUrl())
-                        ->containerClasses(['mb-1'])
+                        ->append(view('components.admin.table.library-media.url-copy-link', compact('file')))
                         ->componentHtmlAttributes(['disabled']) }}
-                    <div class="form-group">
-                        <button type="button"
-                                class="btn btn-outline-primary clipboard-copy"
-                                data-library-media-id="{{ $file->id }}"
-                                data-type="url">
-                            <i class="fas fa-link fa-fw"></i> @lang('Clipboard copy')
-                        </button>
-                    </div>
                     {{ bsTextarea()->name('html')
+                        ->locales(supportedLocaleKeys())
                         ->label(__('library-media.labels.html'))
-                        ->prepend(false)
-                        ->value(trim(view('components.admin.table.library-media.html-clipboard-content', compact('file'))->toHtml()))
-                        ->containerClasses(['mb-1'])
-                        ->componentHtmlAttributes(['rows' => 6, 'disabled']) }}
-                    <div class="form-group">
-                        <button type="button"
-                                class="btn btn-outline-primary clipboard-copy"
-                                data-library-media-id="{{ $file->id }}"
-                                data-type="html">
-                            <i class="fas fa-link fa-fw"></i> @lang('Clipboard copy')
-                        </button>
-                    </div>
+                        ->prepend('<i class="fas fa-code fa-fw"></i>')
+                        ->value(function($locale) use($file) {
+                            return trim(view('components.admin.table.library-media.html-clipboard-content', compact('file', 'locale')));
+                        })
+                        ->append(view('components.admin.table.library-media.html-copy-link', compact('file')))
+                        ->componentHtmlAttributes(['disabled']) }}
                 @endif
                 <div class="d-flex pt-4">
                     {{ bsCancel()->route('libraryMedia.files.index')->containerClasses(['mr-2']) }}

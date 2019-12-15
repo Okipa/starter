@@ -23,5 +23,6 @@ class DatabaseSeeder extends Seeder
         $this->call(SimplePagesTableSeeder::class);
         $this->call(PageContentsTableSeeder::class);
         $this->call(NewsTableSeeder::class);
+        $this->call(LibraryMediaTableSeeder::class);
     }
 }

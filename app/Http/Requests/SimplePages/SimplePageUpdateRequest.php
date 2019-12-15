@@ -9,6 +9,7 @@ use CodeZero\UniqueTranslation\UniqueTranslationRule;
 class SimplePageUpdateRequest extends Request
 {
     protected $exceptFromSanitize = ['url'];
+
     protected $safetyChecks = ['active' => 'boolean'];
 
     /**
@@ -19,7 +20,7 @@ class SimplePageUpdateRequest extends Request
     public function rules()
     {
         $rules = [
-            'active' => ['required', 'boolean']
+            'active' => ['required', 'boolean'],
         ];
         $multilingualRules = $this->localizeRules(array_merge([
             'url' => [

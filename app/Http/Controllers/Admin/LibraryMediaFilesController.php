@@ -64,12 +64,7 @@ class LibraryMediaFilesController extends Controller
     {
         /** @var LibraryMediaFile $file */
         $file = (new LibraryMediaFile)->create($request->validated());
-        $uploadedMediaFile = $request->file('media');
-        $fileName = Str::slug($request->name) . '.' . $uploadedMediaFile->getClientOriginalExtension();
-        $file->addMedia($uploadedMediaFile->getRealPath())
-            ->setName($request->name)
-            ->setFileName($fileName)
-            ->toMediaCollection('medias');
+        $file->addMediaFromRequest('media')->toMediaCollection('medias');
 
         return redirect()->route('libraryMedia.files.index')
             ->with('toast_success', __('notifications.orphan.created', [
@@ -109,12 +104,7 @@ class LibraryMediaFilesController extends Controller
     {
         $file->update($request->validated());
         if ($request->file('media')) {
-            $uploadedMediaFile = $request->file('media');
-            $fileName = Str::slug($request->name) . '.' . $uploadedMediaFile->getClientOriginalExtension();
-            $file->addMedia($uploadedMediaFile->getRealPath())
-                ->setName($request->name)
-                ->setFileName($fileName)
-                ->toMediaCollection('medias');
+            $file->addMediaFromRequest('media')->toMediaCollection('medias');
         }
 
         return back()->with('toast_success', __('notifications.orphan.updated', [
@@ -146,12 +136,12 @@ class LibraryMediaFilesController extends Controller
      *
      * @return JsonResponse
      */
-    public function clipboardContent(LibraryMediaFile $file, string $type)
+    public function clipboardContent(LibraryMediaFile $file, string $type, ?string $locale)
     {
         try {
             $clipboardContent = $type === 'url'
                 ? $file->getFirstMedia('medias')->getFullUrl()
-                : trim(view('components.admin.table.library-media.html-clipboard-content', compact('file'))->toHtml());
+                : trim(view('components.admin.table.library-media.html-clipboard-content', compact('file', 'locale'))->toHtml());
             $message = __('Media « :name » :type copied in clipboard.', [
                 'type' => strtoupper($type),
                 'name' => $file->name,

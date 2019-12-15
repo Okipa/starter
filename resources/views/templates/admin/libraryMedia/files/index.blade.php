@@ -19,7 +19,12 @@
                 {{ bsSelect()->name('category_id')
                     ->prepend('<i class="fas fa-tags fa-fw"></i>')
                     ->label(false)
-                    ->options((new \App\Models\LibraryMediaCategory)->orderBy('name')->get(), 'id', 'name')
+                    ->options((new \App\Models\LibraryMediaCategory)->get()->map(function($category){
+                        $array = $category->toArray();
+                        $array['name'] = $category->name;
+
+                        return $array;
+                    })->sortBy('name'), 'id', 'name')
                     ->selected('id', $request->category_id)
                     ->componentClasses(['selector']) }}
                 {{ bsValidate()->prepend('<i class="fas fa-filter"></i>')->label(__('Filter'))->containerClasses(['ml-3']) }}

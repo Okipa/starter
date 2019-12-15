@@ -12,10 +12,7 @@ class ArticleStoreRequest extends Request
 {
     protected $exceptFromSanitize = ['url'];
 
-    protected $safetyChecks = [
-        'active' => 'boolean',
-        'category_ids' => 'array',
-    ];
+    protected $safetyChecks = ['active' => 'boolean', 'category_ids' => 'array'];
 
     /**
      * Execute a pre-validation treatment.
@@ -25,7 +22,7 @@ class ArticleStoreRequest extends Request
     public function before()
     {
         $this->merge([
-            'published_at' => $this->published_at ? rescue(function() {
+            'published_at' => $this->published_at ? rescue(function () {
                 return Carbon::createFromFormat('d/m/Y H:i', $this->published_at)->toDateTimeString();
             }, 'XXX', false) : null,
         ]);

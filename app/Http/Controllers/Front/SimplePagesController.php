@@ -12,22 +12,16 @@ use Illuminate\View\View;
 class SimplePagesController extends Controller
 {
     /**
-     * @param string $url
+     * @param SimplePage $page
      *
      * @return Factory|View
      * @throws Exception
      */
-    public function show(string $url)
+    public function show(SimplePage $page)
     {
-        $simplePage = (new SimplePage)->where('url', 'LIKE', '%' . $url . '%')
-            ->where('active', true)
-            ->firstOrFail();
-        if ($simplePage->url !== $url) {
-            return redirect()->route('simplePage.show', $simplePage->url);
-        }
-        (new SeoService)->displayMetaTagsFromModel($simplePage);
+        (new SeoService)->displayMetaTagsFromModel($page);
         $css = mix('/css/simple-pages/show.css');
 
-        return view('templates.front.simple-pages.show', compact('simplePage', 'css'));
+        return view('templates.front.simple-pages.show', compact('page', 'css'));
     }
 }

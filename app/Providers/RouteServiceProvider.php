@@ -22,10 +22,13 @@ class RouteServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        Route::macro('currentLocalizedUrl', function (string $locale = null, array $parameters = null, bool $absolute = true) {
-            return route(Route::current()->getName(), $parameters ?: Route::current()->parameters(), $absolute, $locale);
-        });
         parent::boot();
+        Route::macro('currentLocalizedUrl', function ($locale = null, $parameters = null, $absolute = true) {
+            $locale = $locale ?: app()->getLocale();
+            $parameters = $parameters ?: Route::current()->parameters();
+
+            return route(Route::current()->getName(), $parameters, $absolute, $locale);
+        });
     }
 
     /**

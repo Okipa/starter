@@ -37,5 +37,32 @@ class SimplePage extends Metable
         'active' => 'boolean',
     ];
 
+    /**
+     * The attributes that are translatable.
+     *
+     * @var array
+     */
     public $translatable = ['url', 'title', 'description'];
+
+    /**
+     * Get the value of the model's route key.
+     *
+     * @return mixed
+     */
+    public function getRouteKey()
+    {
+        return $this->getTranslation('url', app()->getLocale());
+    }
+
+    /**
+     * Retrieve the model for a bound value.
+     *
+     * @param mixed $value
+     *
+     * @return \Illuminate\Database\Eloquent\Model|null
+     */
+    public function resolveRouteBinding($value)
+    {
+        return $this->where('url->' . app()->getLocale(), $value)->firstOrFail();
+    }
 }

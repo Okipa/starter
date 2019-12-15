@@ -342,16 +342,16 @@
         },
         {
             "name": "deployer/deployer",
-            "version": "v6.7.0",
+            "version": "v6.7.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/deployphp/deployer.git",
-                "reference": "9fd858fbd6376949570bacff9ac2157efad60a64"
+                "reference": "6242bb8748c714dab628d67e3a0e1c57cb8d4afe"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/deployphp/deployer/zipball/9fd858fbd6376949570bacff9ac2157efad60a64",
-                "reference": "9fd858fbd6376949570bacff9ac2157efad60a64",
+                "url": "https://api.github.com/repos/deployphp/deployer/zipball/6242bb8748c714dab628d67e3a0e1c57cb8d4afe",
+                "reference": "6242bb8748c714dab628d67e3a0e1c57cb8d4afe",
                 "shasum": ""
             },
             "require": {
@@ -363,7 +363,7 @@
                 "symfony/yaml": "~2.7|~3.0|~4.0|~5.0"
             },
             "require-dev": {
-                "phpunit/phpunit": "^6.4.3"
+                "phpunit/phpunit": "^8"
             },
             "bin": [
                 "bin/dep"
@@ -390,7 +390,7 @@
             ],
             "description": "Deployment Tool",
             "homepage": "https://deployer.org",
-            "time": "2019-12-14T10:38:03+00:00"
+            "time": "2019-12-15T14:13:11+00:00"
         },
         {
             "name": "deployer/phar-update",
@@ -2789,12 +2789,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Okipa/laravel-bootstrap-components.git",
-                "reference": "bf7194d8ce0d38d681ebc3dc1fa8b3850bfabe23"
+                "reference": "e4f7db372b6eeb4d78ccab71b48ec182e6b1c4d0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Okipa/laravel-bootstrap-components/zipball/bf7194d8ce0d38d681ebc3dc1fa8b3850bfabe23",
-                "reference": "bf7194d8ce0d38d681ebc3dc1fa8b3850bfabe23",
+                "url": "https://api.github.com/repos/Okipa/laravel-bootstrap-components/zipball/e4f7db372b6eeb4d78ccab71b48ec182e6b1c4d0",
+                "reference": "e4f7db372b6eeb4d78ccab71b48ec182e6b1c4d0",
                 "shasum": ""
             },
             "require": {
@@ -2852,7 +2852,7 @@
                 "package",
                 "php"
             ],
-            "time": "2019-12-14T20:02:28+00:00"
+            "time": "2019-12-15T15:13:56+00:00"
         },
         {
             "name": "okipa/laravel-failed-jobs-notifier",
