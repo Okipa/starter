@@ -16,8 +16,9 @@ use Illuminate\View\View;
 class LibraryMediaCategoriesController extends Controller
 {
     /**
-     * @return Factory|View
-     * @throws Exception
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @throws \ErrorException
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
     public function index()
     {
@@ -31,7 +32,7 @@ class LibraryMediaCategoriesController extends Controller
     }
 
     /**
-     * @return Factory|View
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function create()
     {
@@ -45,9 +46,9 @@ class LibraryMediaCategoriesController extends Controller
     }
 
     /**
-     * @param CategoryStoreRequest $request
+     * @param \App\Http\Requests\LibraryMedia\CategoryStoreRequest $request
      *
-     * @return RedirectResponse
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function store(CategoryStoreRequest $request)
     {
@@ -62,9 +63,9 @@ class LibraryMediaCategoriesController extends Controller
     }
 
     /**
-     * @param LibraryMediaCategory $category
+     * @param \App\Models\LibraryMediaCategory $category
      *
-     * @return Factory|View
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function edit(LibraryMediaCategory $category)
     {
@@ -78,10 +79,10 @@ class LibraryMediaCategoriesController extends Controller
     }
 
     /**
-     * @param LibraryMediaCategory $category
-     * @param CategoryUpdateRequest $request
+     * @param \App\Models\LibraryMediaCategory $category
+     * @param \App\Http\Requests\LibraryMedia\CategoryUpdateRequest $request
      *
-     * @return RedirectResponse
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function update(LibraryMediaCategory $category, CategoryUpdateRequest $request)
     {
@@ -95,10 +96,10 @@ class LibraryMediaCategoriesController extends Controller
     }
 
     /**
-     * @param LibraryMediaCategory $category
+     * @param \App\Models\LibraryMediaCategory $category
      *
-     * @return RedirectResponse
-     * @throws Exception
+     * @return \Illuminate\Http\RedirectResponse
+     * @throws \Exception
      */
     public function destroy(LibraryMediaCategory $category)
     {

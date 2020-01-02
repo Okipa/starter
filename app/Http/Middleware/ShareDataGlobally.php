@@ -5,8 +5,6 @@ namespace App\Http\Middleware;
 use App\Models\Settings;
 use App\Models\SimplePage;
 use Closure;
-use Exception;
-use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
 
@@ -15,11 +13,11 @@ class ShareDataGlobally
     /**
      * Handle an incoming request.
      *
-     * @param Request $request
-     * @param Closure $next
+     * @param \Illuminate\Http\Request $request
+     * @param \Closure $next
      *
      * @return mixed
-     * @throws Exception
+     * @throws \Exception
      */
     public function handle($request, Closure $next)
     {

@@ -9,23 +9,14 @@ use App\Models\User;
 use App\Services\Users\UsersService;
 use Artesaos\SEOTools\Facades\SEOTools;
 use Auth;
-use ErrorException;
-use Exception;
 use Hash;
-use Illuminate\Contracts\Container\BindingResolutionException;
-use Illuminate\Contracts\View\Factory;
-use Illuminate\Http\RedirectResponse;
-use Illuminate\View\View;
-use Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\DiskDoesNotExist;
-use Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\FileDoesNotExist;
-use Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\FileIsTooBig;
 
 class UsersController extends Controller
 {
     /**
-     * @return Factory|View
-     * @throws ErrorException
-     * @throws BindingResolutionException
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @throws \ErrorException
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
     public function index()
     {
@@ -36,8 +27,7 @@ class UsersController extends Controller
     }
 
     /**
-     * @return Factory|View
-     * @throws Exception
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function create()
     {
@@ -48,12 +38,12 @@ class UsersController extends Controller
     }
 
     /**
-     * @param UserStoreRequest $request
+     * @param \App\Http\Requests\Users\UserStoreRequest $request
      *
-     * @return RedirectResponse
-     * @throws DiskDoesNotExist
-     * @throws FileDoesNotExist
-     * @throws FileIsTooBig
+     * @return \Illuminate\Http\RedirectResponse
+     * @throws \Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\DiskDoesNotExist
+     * @throws \Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\FileDoesNotExist
+     * @throws \Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\FileIsTooBig
      */
     public function store(UserStoreRequest $request)
     {
@@ -63,15 +53,14 @@ class UsersController extends Controller
 
         return redirect()->route('users.index')->with('toast_success', __('notifications.orphan.created', [
             'entity' => __('Users'),
-            'name'   => $user->name,
+            'name' => $user->name,
         ]));
     }
 
     /**
-     * @param User $user
+     * @param \App\Models\User $user
      *
-     * @return Factory|View
-     * @throws Exception
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function edit(User $user)
     {
@@ -81,13 +70,13 @@ class UsersController extends Controller
     }
 
     /**
-     * @param User $user
-     * @param UserUpdateRequest $request
+     * @param \App\Models\User $user
+     * @param \App\Http\Requests\Users\UserUpdateRequest $request
      *
-     * @return RedirectResponse
-     * @throws DiskDoesNotExist
-     * @throws FileDoesNotExist
-     * @throws FileIsTooBig
+     * @return \Illuminate\Http\RedirectResponse
+     * @throws \Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\DiskDoesNotExist
+     * @throws \Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\FileDoesNotExist
+     * @throws \Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\FileIsTooBig
      */
     public function update(User $user, UserUpdateRequest $request)
     {
@@ -101,15 +90,15 @@ class UsersController extends Controller
             ? __('notifications.name.updated', ['name' => __('My profile')])
             : __('notifications.orphan.updated', [
                 'entity' => __('Users'),
-                'name'   => $user->name,
+                'name' => $user->name,
             ]));
     }
 
     /**
-     * @param User $user
+     * @param \App\Models\User $user
      *
-     * @return RedirectResponse
-     * @throws Exception
+     * @return \Illuminate\Http\RedirectResponse
+     * @throws \Exception
      */
     public function destroy(User $user)
     {
@@ -118,13 +107,12 @@ class UsersController extends Controller
 
         return back()->with('toast_success', __('notifications.orphan.destroyed', [
             'entity' => __('Users'),
-            'name'   => $name,
+            'name' => $name,
         ]));
     }
 
     /**
-     * @return Factory|View
-     * @throws Exception
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function profile()
     {

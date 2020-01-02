@@ -31,7 +31,7 @@ class NewsCategory extends Model
     protected $fillable = ['name'];
 
     /**
-     * @return BelongsToMany
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
     public function articles()
     {

@@ -4,12 +4,8 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Artesaos\SEOTools\Facades\SEOTools;
-use Illuminate\Contracts\View\Factory;
 use Illuminate\Foundation\Auth\SendsPasswordResetEmails;
-use Illuminate\Http\JsonResponse;
-use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use Illuminate\View\View;
 
 class ForgotPasswordController extends Controller
 {
@@ -30,7 +26,7 @@ class ForgotPasswordController extends Controller
     /**
      * Display the form to request a password reset link.
      *
-     * @return Factory|View
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function showLinkRequestForm()
     {
@@ -42,10 +38,10 @@ class ForgotPasswordController extends Controller
     /**
      * Get the response for a successful password reset link.
      *
-     * @param Request $request
-     * @param string $response
+     * @param \Illuminate\Http\Request $request
+     * @param $response
      *
-     * @return RedirectResponse|JsonResponse
+     * @return \Illuminate\Http\RedirectResponse
      */
     protected function sendResetLinkResponse(Request $request, $response)
     {
@@ -58,10 +54,10 @@ class ForgotPasswordController extends Controller
     /**
      * Get the response for a failed password reset link.
      *
-     * @param Request $request
+     * @param \Illuminate\Http\Request $request
      * @param string $response
      *
-     * @return RedirectResponse|JsonResponse
+     * @return \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse
      */
     protected function sendResetLinkFailedResponse(Request $request, $response)
     {

@@ -5,17 +5,14 @@ namespace App\Http\Controllers\Front;
 use App\Http\Controllers\Controller;
 use App\Models\SimplePage;
 use App\Services\Seo\SeoService;
-use Exception;
-use Illuminate\Contracts\View\Factory;
-use Illuminate\View\View;
 
 class SimplePagesController extends Controller
 {
     /**
-     * @param SimplePage $page
+     * @param \App\Models\SimplePage $page
      *
-     * @return Factory|View
-     * @throws Exception
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @throws \Exception
      */
     public function show(SimplePage $page)
     {

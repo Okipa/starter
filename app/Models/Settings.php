@@ -10,12 +10,14 @@ use Spatie\MediaLibrary\Models\Media;
 class Settings extends Model implements HasMedia
 {
     use HasMediaTrait;
+
     /**
      * The database table used by the model.
      *
      * @var string
      */
     protected $table = 'settings';
+
     /**
      * The attributes that are mass assignable.
      *

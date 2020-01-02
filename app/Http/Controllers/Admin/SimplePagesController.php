@@ -19,8 +19,9 @@ use Illuminate\View\View;
 class SimplePagesController extends Controller
 {
     /**
-     * @return Factory|View
-     * @throws Exception
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @throws \ErrorException
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
     public function index()
     {
@@ -31,7 +32,7 @@ class SimplePagesController extends Controller
     }
 
     /**
-     * @return Factory|View
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function create()
     {
@@ -42,10 +43,10 @@ class SimplePagesController extends Controller
     }
 
     /**
-     * @param SimplePageStoreRequest $request
+     * @param \App\Http\Requests\SimplePages\SimplePageStoreRequest $request
      *
-     * @return RedirectResponse
-     * @throws Exception
+     * @return \Illuminate\Http\RedirectResponse
+     * @throws \Exception
      */
     public function store(SimplePageStoreRequest $request)
     {
@@ -60,9 +61,9 @@ class SimplePagesController extends Controller
     }
 
     /**
-     * @param SimplePage $simplePage
+     * @param \App\Models\SimplePage $simplePage
      *
-     * @return Factory|View
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function edit(SimplePage $simplePage)
     {
@@ -75,11 +76,11 @@ class SimplePagesController extends Controller
     }
 
     /**
-     * @param SimplePage $simplePage
-     * @param SimplePageUpdateRequest $request
+     * @param \App\Models\SimplePage $simplePage
+     * @param \App\Http\Requests\SimplePages\SimplePageUpdateRequest $request
      *
-     * @return RedirectResponse
-     * @throws Exception
+     * @return \Illuminate\Http\RedirectResponse
+     * @throws \Exception
      */
     public function update(SimplePage $simplePage, SimplePageUpdateRequest $request)
     {
@@ -95,10 +96,10 @@ class SimplePagesController extends Controller
     }
 
     /**
-     * @param SimplePage $simplePage
+     * @param \App\Models\SimplePage $simplePage
      *
-     * @return RedirectResponse
-     * @throws Exception
+     * @return \Illuminate\Http\RedirectResponse
+     * @throws \Exception
      */
     public function destroy(SimplePage $simplePage)
     {

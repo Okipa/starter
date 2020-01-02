@@ -8,7 +8,7 @@ use Illuminate\Http\RedirectResponse;
 class AdminController extends Controller
 {
     /**
-     * @return RedirectResponse
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function index()
     {

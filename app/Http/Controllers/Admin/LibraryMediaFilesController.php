@@ -24,11 +24,11 @@ use Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\FileIsTooBig;
 class LibraryMediaFilesController extends Controller
 {
     /**
-     * @param FilesIndexRequest $request
+     * @param \App\Http\Requests\LibraryMedia\FilesIndexRequest $request
      *
-     * @return Factory|View
-     * @throws ErrorException
-     * @throws BindingResolutionException
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @throws \ErrorException
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
     public function index(FilesIndexRequest $request)
     {
@@ -41,7 +41,7 @@ class LibraryMediaFilesController extends Controller
     }
 
     /**
-     * @return Factory|View
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function create()
     {
@@ -52,12 +52,12 @@ class LibraryMediaFilesController extends Controller
     }
 
     /**
-     * @param FileStoreRequest $request
+     * @param \App\Http\Requests\LibraryMedia\FileStoreRequest $request
      *
-     * @return RedirectResponse
-     * @throws DiskDoesNotExist
-     * @throws FileDoesNotExist
-     * @throws FileIsTooBig
+     * @return \Illuminate\Http\RedirectResponse
+     * @throws \Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\DiskDoesNotExist
+     * @throws \Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\FileDoesNotExist
+     * @throws \Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\FileIsTooBig
      */
     public function store(FileStoreRequest $request)
     {
@@ -73,10 +73,10 @@ class LibraryMediaFilesController extends Controller
     }
 
     /**
-     * @param LibraryMediaFile $file
+     * @param \App\Models\LibraryMediaFile $file
      *
-     * @return Factory|View
-     * @throws Exception
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @throws \Exception
      */
     public function edit(LibraryMediaFile $file)
     {
@@ -91,13 +91,13 @@ class LibraryMediaFilesController extends Controller
     }
 
     /**
-     * @param LibraryMediaFile $file
-     * @param FileUpdateRequest $request
+     * @param \App\Models\LibraryMediaFile $file
+     * @param \App\Http\Requests\LibraryMedia\FileUpdateRequest $request
      *
-     * @return RedirectResponse
-     * @throws DiskDoesNotExist
-     * @throws FileDoesNotExist
-     * @throws FileIsTooBig
+     * @return \Illuminate\Http\RedirectResponse
+     * @throws \Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\DiskDoesNotExist
+     * @throws \Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\FileDoesNotExist
+     * @throws \Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\FileIsTooBig
      */
     public function update(LibraryMediaFile $file, FileUpdateRequest $request)
     {
@@ -113,10 +113,10 @@ class LibraryMediaFilesController extends Controller
     }
 
     /**
-     * @param LibraryMediaFile $file
+     * @param \App\Models\LibraryMediaFile $file
      *
-     * @return RedirectResponse
-     * @throws Exception
+     * @return \Illuminate\Http\RedirectResponse
+     * @throws \Exception
      */
     public function destroy(LibraryMediaFile $file)
     {
@@ -130,10 +130,11 @@ class LibraryMediaFilesController extends Controller
     }
 
     /**
-     * @param LibraryMediaFile $file
+     * @param \App\Models\LibraryMediaFile $file
      * @param string $type
+     * @param string|null $locale
      *
-     * @return JsonResponse
+     * @return \Illuminate\Http\JsonResponse
      */
     public function clipboardContent(LibraryMediaFile $file, string $type, ?string $locale)
     {

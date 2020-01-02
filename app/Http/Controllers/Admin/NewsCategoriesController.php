@@ -16,8 +16,9 @@ use Illuminate\View\View;
 class NewsCategoriesController extends Controller
 {
     /**
-     * @return Factory|View
-     * @throws Exception
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @throws \ErrorException
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
     public function index()
     {
@@ -31,7 +32,7 @@ class NewsCategoriesController extends Controller
     }
 
     /**
-     * @return Factory|View
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function create()
     {
@@ -45,9 +46,9 @@ class NewsCategoriesController extends Controller
     }
 
     /**
-     * @param CategoryStoreRequest $request
+     * @param \App\Http\Requests\News\CategoryStoreRequest $request
      *
-     * @return RedirectResponse
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function store(CategoryStoreRequest $request)
     {
@@ -62,9 +63,9 @@ class NewsCategoriesController extends Controller
     }
 
     /**
-     * @param NewsCategory $category
+     * @param \App\Models\NewsCategory $category
      *
-     * @return Factory|View
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function edit(NewsCategory $category)
     {
@@ -78,10 +79,10 @@ class NewsCategoriesController extends Controller
     }
 
     /**
-     * @param NewsCategory $category
-     * @param CategoryUpdateRequest $request
+     * @param \App\Models\NewsCategory $category
+     * @param \App\Http\Requests\News\CategoryUpdateRequest $request
      *
-     * @return RedirectResponse
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function update(NewsCategory $category, CategoryUpdateRequest $request)
     {
@@ -95,10 +96,10 @@ class NewsCategoriesController extends Controller
     }
 
     /**
-     * @param NewsCategory $category
+     * @param \App\Models\NewsCategory $category
      *
-     * @return RedirectResponse
-     * @throws Exception
+     * @return \Illuminate\Http\RedirectResponse
+     * @throws \Exception
      */
     public function destroy(NewsCategory $category)
     {

@@ -32,7 +32,7 @@ class RegisterController extends Controller
     /**
      * Show the application registration form.
      *
-     * @return Factory|View
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function showRegistrationForm()
     {
@@ -63,8 +63,10 @@ class RegisterController extends Controller
      *
      * @param array $data
      *
-     * @return Model
-     * @throws Exception
+     * @return \App\Models\User
+     * @throws \Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\DiskDoesNotExist
+     * @throws \Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\FileDoesNotExist
+     * @throws \Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\FileIsTooBig
      */
     protected function create(array $data)
     {
@@ -83,7 +85,7 @@ class RegisterController extends Controller
     /**
      * The user has been registered.
      *
-     * @param Request $request
+     * @param \Illuminate\Http\Request $request
      *
      * @return mixed
      */

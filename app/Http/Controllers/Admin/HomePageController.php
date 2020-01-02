@@ -13,7 +13,7 @@ use Illuminate\View\View;
 class HomePageController extends Controller
 {
     /**
-     * @return View
+     * @return \Illuminate\View\View
      */
     public function edit(): View
     {
@@ -28,9 +28,9 @@ class HomePageController extends Controller
     }
 
     /**
-     * @param HomePageUpdateRequest $request
+     * @param \App\Http\Requests\News\HomePageUpdateRequest $request
      *
-     * @return RedirectResponse
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function update(HomePageUpdateRequest $request): RedirectResponse
     {

@@ -9,6 +9,13 @@ class SimplePage extends Metable
     use HasTranslations;
 
     /**
+     * The attributes that are translatable.
+     *
+     * @var array
+     */
+    public $translatable = ['url', 'title', 'description'];
+
+    /**
      * The database table used by the model.
      *
      * @var string
@@ -36,13 +43,6 @@ class SimplePage extends Metable
     protected $casts = [
         'active' => 'boolean',
     ];
-
-    /**
-     * The attributes that are translatable.
-     *
-     * @var array
-     */
-    public $translatable = ['url', 'title', 'description'];
 
     /**
      * Get the value of the model's route key.

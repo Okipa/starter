@@ -13,7 +13,7 @@ abstract class Metable extends Model
     /**
      * Add or update the translated meta from the request.
      *
-     * @param Request $request
+     * @param \Illuminate\Http\Request $request
      * @param array $metaKeys
      */
     public function saveMetaFromRequest(Request $request, array $metaKeys): void
@@ -33,7 +33,7 @@ abstract class Metable extends Model
      * Retrieve the translated value of the `Meta` at a given key.
      *
      * @param string $key
-     * @param mixed $default Fallback value if no Meta is found.
+     * @param null $default
      * @param null $locale
      *
      * @return mixed

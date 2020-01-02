@@ -7,19 +7,14 @@ use App\Http\Requests\News\ArticlesIndexRequest;
 use App\Models\NewsArticle;
 use App\Services\Seo\SeoService;
 use Artesaos\SEOTools\Facades\SEOTools;
-use Exception;
-use Illuminate\Contracts\View\Factory;
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Http\RedirectResponse;
-use Illuminate\View\View;
 
 class NewsArticlesController extends Controller
 {
     /**
-     * @param ArticlesIndexRequest $request
+     * @param \App\Http\Requests\News\ArticlesIndexRequest $request
      *
-     * @return Factory|View
-     * @throws Exception
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @throws \Exception
      */
     public function index(ArticlesIndexRequest $request)
     {
@@ -43,45 +38,15 @@ class NewsArticlesController extends Controller
     }
 
     /**
-     * @param NewsArticle $article
+     * @param \App\Models\NewsArticle $article
      *
-     * @return Factory|RedirectResponse|View
-     * @throws Exception
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @throws \Exception
      */
     public function show(NewsArticle $article)
     {
-//        /** @var NewsArticle $article */
-//        $article = (new NewsArticle)->with(['media', 'categories'])
-//            ->where('url', 'LIKE', '%' . $url . '%')
-//            ->where('active', true)
-//            ->where('published_at', '<=', now())
-//            ->firstOrFail();
-//        if ($article->url !== $url) {
-//            return redirect()->route('news.article.show', $article->url);
-//        }
         (new SeoService)->displayMetaTagsFromModel($article);
         $css = mix('/css/news/show.css');
-
-//        $parameters = function ($locale) use ($article) {
-//            return $article->getTranslation('url', $locale);
-//        };
-
-
-
-//        $parameters = [];
-//        $originalLocale = app()->getLocale();
-//        foreach (supportedLocales() as $localeKey => $locale) {
-//            app()->setLocale($localeKey);
-//            foreach (\Route::current()->parameters() as $attribute  => $value) {
-//                if($value instanceof Model) {
-//                    $parameters[] = $value->getRouteKey();
-////                    dd($value->getTranslation('url', 'en'));
-//                }
-//            }
-//        }
-//        app()->setLocale($originalLocale);
-//        dd($parameters);
-
 
         return view('templates.front.news.show', compact('article', 'css'));
     }

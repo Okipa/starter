@@ -4,15 +4,13 @@ namespace App\Http\Controllers\Utils;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Utils\DownloadFileRequest;
-use Illuminate\Http\RedirectResponse;
-use Symfony\Component\HttpFoundation\BinaryFileResponse;
 
 class DownloadController extends Controller
 {
     /**
-     * @param DownloadFileRequest $request
+     * @param \App\Http\Requests\Utils\DownloadFileRequest $request
      *
-     * @return RedirectResponse|BinaryFileResponse
+     * @return \Illuminate\Http\RedirectResponse|\Symfony\Component\HttpFoundation\BinaryFileResponse
      */
     public function file(DownloadFileRequest $request)
     {

@@ -65,9 +65,9 @@ class VerificationController extends Controller
     /**
      * Resend the email verification notification.
      *
-     * @param Request $request
+     * @param \Illuminate\Http\Request $request
      *
-     * @return Response
+     * @return \Illuminate\Http\Response
      */
     public function resend(Request $request)
     {
@@ -85,10 +85,10 @@ class VerificationController extends Controller
     /**
      * Mark the authenticated user's email address as verified.
      *
-     * @param Request $request
+     * @param \Illuminate\Http\Request $request
      *
-     * @return Response
-     * @throws AuthorizationException
+     * @return \Illuminate\Http\Response
+     * @throws \Illuminate\Auth\Access\AuthorizationException
      */
     public function verify(Request $request)
     {

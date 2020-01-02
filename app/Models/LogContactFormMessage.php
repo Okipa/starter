@@ -2,8 +2,6 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Relations\BelongsToMany;
-
 class LogContactFormMessage extends Model
 {
     /**
@@ -21,6 +19,7 @@ class LogContactFormMessage extends Model
     protected $fillable = [
         'data',
     ];
+
     /**
      * The attributes that should be cast to native types.
      *

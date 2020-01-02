@@ -3,7 +3,6 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
-use Spatie\Image\Exceptions\InvalidManipulation;
 use Spatie\Image\Manipulations;
 use Spatie\MediaLibrary\HasMedia\HasMedia;
 use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
@@ -97,11 +96,11 @@ class NewsArticle extends Metable implements HasMedia
 
     /**
      * Register the media conversions.
-     *
-     * @param Media|null $media
      * @SuppressWarnings(PHPMD.UnusedFormalParameter)
      *
-     * @throws InvalidManipulation
+     * @param \Spatie\MediaLibrary\Models\Media|null $media
+     *
+     * @throws \Spatie\Image\Exceptions\InvalidManipulation
      */
     public function registerMediaConversions(Media $media = null)
     {
@@ -111,7 +110,7 @@ class NewsArticle extends Metable implements HasMedia
     }
 
     /**
-     * @return BelongsToMany
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
     public function categories()
     {

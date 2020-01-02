@@ -13,7 +13,7 @@ use Illuminate\View\View;
 class ContactPageController extends Controller
 {
     /**
-     * @return View
+     * @return \Illuminate\View\View
      */
     public function edit(): View
     {
@@ -28,9 +28,9 @@ class ContactPageController extends Controller
     }
 
     /**
-     * @param ContactPageUpdateRequest $request
+     * @param \App\Http\Requests\Contact\ContactPageUpdateRequest $request
      *
-     * @return RedirectResponse
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function update(ContactPageUpdateRequest $request): RedirectResponse
     {

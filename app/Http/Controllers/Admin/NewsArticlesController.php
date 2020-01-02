@@ -20,8 +20,9 @@ use Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\FileIsTooBig;
 class NewsArticlesController extends Controller
 {
     /**
-     * @return Factory|View
-     * @throws Exception
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @throws \ErrorException
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
     public function index()
     {
@@ -35,7 +36,7 @@ class NewsArticlesController extends Controller
     }
 
     /**
-     * @return Factory|View
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function create()
     {
@@ -49,12 +50,12 @@ class NewsArticlesController extends Controller
     }
 
     /**
-     * @param ArticleStoreRequest $request
+     * @param \App\Http\Requests\News\ArticleStoreRequest $request
      *
-     * @return RedirectResponse
-     * @throws DiskDoesNotExist
-     * @throws FileDoesNotExist
-     * @throws FileIsTooBig
+     * @return \Illuminate\Http\RedirectResponse
+     * @throws \Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\DiskDoesNotExist
+     * @throws \Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\FileDoesNotExist
+     * @throws \Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\FileIsTooBig
      */
     public function store(ArticleStoreRequest $request)
     {
@@ -75,9 +76,9 @@ class NewsArticlesController extends Controller
     }
 
     /**
-     * @param NewsArticle $article
+     * @param \App\Models\NewsArticle $article
      *
-     * @return Factory|View
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function edit(NewsArticle $article)
     {
@@ -91,13 +92,13 @@ class NewsArticlesController extends Controller
     }
 
     /**
-     * @param NewsArticle $article
-     * @param ArticleUpdateRequest $request
+     * @param \App\Models\NewsArticle $article
+     * @param \App\Http\Requests\News\ArticleUpdateRequest $request
      *
-     * @return RedirectResponse
-     * @throws DiskDoesNotExist
-     * @throws FileDoesNotExist
-     * @throws FileIsTooBig
+     * @return \Illuminate\Http\RedirectResponse
+     * @throws \Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\DiskDoesNotExist
+     * @throws \Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\FileDoesNotExist
+     * @throws \Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\FileIsTooBig
      */
     public function update(NewsArticle $article, ArticleUpdateRequest $request)
     {
@@ -116,10 +117,10 @@ class NewsArticlesController extends Controller
     }
 
     /**
-     * @param NewsArticle $article
+     * @param \App\Models\NewsArticle $article
      *
-     * @return RedirectResponse
-     * @throws Exception
+     * @return \Illuminate\Http\RedirectResponse
+     * @throws \Exception
      */
     public function destroy(NewsArticle $article)
     {

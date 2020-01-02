@@ -31,7 +31,7 @@ class ConfirmPasswordController extends Controller
     /**
      * Display the password confirmation view.
      *
-     * @return View
+     * @return \Illuminate\View\View
      */
     public function showConfirmForm(): View
     {

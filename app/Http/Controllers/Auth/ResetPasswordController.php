@@ -4,12 +4,8 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Artesaos\SEOTools\Facades\SEOTools;
-use Illuminate\Contracts\View\Factory;
 use Illuminate\Foundation\Auth\ResetsPasswords;
-use Illuminate\Http\JsonResponse;
-use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use Illuminate\View\View;
 
 class ResetPasswordController extends Controller
 {
@@ -32,10 +28,10 @@ class ResetPasswordController extends Controller
      * Display the password reset view for the given token.
      * If no token is present, display the link request form.
      *
-     * @param Request $request
+     * @param \Illuminate\Http\Request $request
      * @param string|null $token
      *
-     * @return Factory|View
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function showResetForm(Request $request, $token = null)
     {
@@ -47,10 +43,10 @@ class ResetPasswordController extends Controller
     /**
      * Get the response for a successful password reset.
      *
-     * @param Request $request
-     * @param string $response
+     * @param \Illuminate\Http\Request $request
+     * @param $response
      *
-     * @return RedirectResponse|JsonResponse
+     * @return \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse
      */
     public function sendResetResponse(Request $request, $response)
     {
@@ -72,10 +68,10 @@ class ResetPasswordController extends Controller
     /**
      * Get the response for a failed password reset.
      *
-     * @param Request $request
+     * @param \Illuminate\Http\Request $request
      * @param string $response
      *
-     * @return RedirectResponse|JsonResponse
+     * @return \Illuminate\Http\RedirectResponse
      */
     protected function sendResetFailedResponse(Request $request, string $response)
     {

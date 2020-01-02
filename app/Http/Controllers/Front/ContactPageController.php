@@ -26,6 +26,12 @@ class ContactPageController extends Controller
         return view('templates.front.contact.page.show', compact('pageContent', 'css'));
     }
 
+    /**
+     * @param \App\Http\Requests\Contact\ContactPageSendMessageRequest $request
+     *
+     * @return \Illuminate\Http\RedirectResponse
+     * @throws \Exception
+     */
     public function sendMessage(ContactPageSendMessageRequest $request)
     {
         Notification::route('mail', cache('settings')->email)

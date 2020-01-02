@@ -15,7 +15,6 @@ class InsertJavascript
      *
      * @return mixed
      * @throws \Exception
-     * @throws \Throwable
      */
     public function handle($request, Closure $next)
     {

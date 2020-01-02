@@ -4,7 +4,6 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Support\Str;
-use Spatie\Image\Exceptions\InvalidManipulation;
 use Spatie\Image\Manipulations;
 use Spatie\MediaLibrary\HasMedia\HasMedia;
 use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
@@ -110,11 +109,11 @@ class LibraryMediaFile extends Model implements HasMedia
 
     /**
      * Register the media conversions.
-     *
-     * @param Media|null $media
      * @SuppressWarnings(PHPMD.UnusedFormalParameter)
      *
-     * @throws InvalidManipulation
+     * @param \Spatie\MediaLibrary\Models\Media|null $media
+     *
+     * @throws \Spatie\Image\Exceptions\InvalidManipulation
      */
     public function registerMediaConversions(Media $media = null)
     {
@@ -159,7 +158,7 @@ class LibraryMediaFile extends Model implements HasMedia
     }
 
     /**
-     * @return HasOne
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
      */
     public function category()
     {

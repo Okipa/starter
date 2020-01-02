@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Spatie\Translatable\HasTranslations;
 
 class LibraryMediaCategory extends Model
@@ -31,7 +30,7 @@ class LibraryMediaCategory extends Model
     protected $fillable = ['name'];
 
     /**
-     * @return BelongsTo
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function libraryMedia()
     {

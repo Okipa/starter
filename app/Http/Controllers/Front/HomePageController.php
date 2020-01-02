@@ -12,8 +12,8 @@ use Illuminate\View\View;
 class HomePageController extends Controller
 {
     /**
-     * @return Factory|View
-     * @throws Exception
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @throws \Exception
      */
     public function show()
     {

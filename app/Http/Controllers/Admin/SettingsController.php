@@ -14,7 +14,7 @@ use Illuminate\View\View;
 class SettingsController extends Controller
 {
     /**
-     * @return Factory|View
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function index()
     {
@@ -24,10 +24,12 @@ class SettingsController extends Controller
     }
 
     /**
-     * @param SettingsUpdateRequest $request
+     * @param \App\Http\Requests\Settings\SettingsUpdateRequest $request
      *
-     * @return RedirectResponse
-     * @throws Exception
+     * @return \Illuminate\Http\RedirectResponse
+     * @throws \Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\DiskDoesNotExist
+     * @throws \Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\FileDoesNotExist
+     * @throws \Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\FileIsTooBig
      */
     public function update(SettingsUpdateRequest $request)
     {
