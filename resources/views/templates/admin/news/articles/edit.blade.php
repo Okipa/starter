@@ -32,24 +32,22 @@
             <div class="card-body">
                 <h3>@lang('Media')</h3>
                 @php($illustration = optional($article)->getFirstMedia('illustrations'))
-                {{ bsFile()->name('illustration')
+                {{ inputFile()->name('illustration')
                     ->value(optional($illustration)->file_name)
                     ->uploadedFile(function() use ($illustration) {
                         return $illustration
-                            ? image()->src($illustration->getUrl('thumb'))
-                                ->linkUrl($illustration->getUrl())
-                                ->containerClasses(['mb-2'])
+                            ? image()->src($illustration->getUrl('thumb'))->linkUrl($illustration->getUrl())->linkTitle($illustration->name)
                             : null;
                     })
                     ->showRemoveCheckbox(false)
                     ->containerHtmlAttributes(['required'])
                     ->legend((new \App\Models\NewsArticle)->constraintsLegend('illustrations')) }}
                 <h3 class="pt-4">@lang('Identity')</h3>
-                {{ bsText()->name('title')
+                {{ inputText()->name('title')
                     ->locales(supportedLocaleKeys())
                     ->model($article)
                     ->containerHtmlAttributes(['required']) }}
-                {{ bsText()->name('url')
+                {{ inputText()->name('url')
                     ->locales(supportedLocaleKeys())
                     ->model($article)
                     ->prepend(route('news.article.show', '') . '/')
@@ -57,7 +55,7 @@
                     ->componentHtmlAttributes(['data-autofill-from' => '#text-title'])
                     ->containerHtmlAttributes(['required']) }}
                 <h3 class="pt-4">@lang('Information')</h3>
-                {{ bsSelect()->name('category_ids')
+                {{ select()->name('category_ids')
                     ->model($article)
                     ->prepend('<i class="fas fa-tags"></i>')
                     ->options((new \App\Models\NewsCategory)->get()->map(function($category){
@@ -69,22 +67,22 @@
                     ->multiple()
                     ->componentClasses(['selector'])
                     ->containerHtmlAttributes(['required']) }}
-                {{ bsTextarea()->name('description')
+                {{ textarea()->name('description')
                     ->locales(supportedLocaleKeys())
                     ->model($article)
                     ->prepend(false)
                     ->componentClasses(['editor']) }}
                 <h3 class="pt-4">@lang('Publication')</h3>
-                {{ bsText()->name('published_at')
+                {{ inputText()->name('published_at')
                     ->value(($article ? $article->published_at : now())->format('d/m/Y H:i'))
                     ->prepend('<i class="fas fa-calendar-alt"></i>')
                     ->componentClasses(['datetime-picker'])
                     ->containerHtmlAttributes(['required']) }}
-                {{ bsToggle()->name('active')->model($article) }}
+                {{ inputToggle()->name('active')->model($article) }}
                 @include('components.admin.seo.meta-tags', ['model' => $article])
                 <div class="d-flex pt-4">
-                    {{ bsCancel()->route('news.articles.index')->containerClasses(['mr-2']) }}
-                    @if($article){{ bsUpdate() }}@else{{ bsCreate() }}@endif
+                    {{ buttonCancel()->route('news.articles.index')->containerClasses(['mr-2']) }}
+                    @if($article){{ submitUpdate() }}@else{{ submitCreate() }}@endif
                 </div>
             </div>
         </div>

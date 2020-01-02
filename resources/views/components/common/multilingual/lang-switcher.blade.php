@@ -13,8 +13,8 @@
         <div class="dropdown-menu {{ ! empty($dropdownMenuClasses) ? implode(' ', $dropdownMenuClasses) : '' }}"
              aria-labelledby="language-selector">
             @foreach(supportedLocales() as $localeKey => $locale)
-                <a class="dropdown-item {{ app()->getLocale() === $locale ? 'active' : ''}} {{ ! empty($dropDownLinkClasses) ? implode(' ', $dropDownLinkClasses) : '' }}"
-                   href="{{ Route::currentLocalizedUrl($localeKey) }}"
+                <a class="dropdown-item {{ app()->getLocale() === $localeKey ? 'active' : null }} {{ ! empty($dropDownLinkClasses) ? implode(' ', $dropDownLinkClasses) : '' }}"
+                   href="{{ Route::localizedUrl($localeKey) }}"
                    title="{{ $locale['name'] }}"
                    rel="alternate"
                    hreflang="{{ $localeKey }}">

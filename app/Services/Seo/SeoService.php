@@ -5,7 +5,6 @@ namespace App\Services\Seo;
 use App\Models\Metable;
 use App\Services\Service;
 use Artesaos\SEOTools\Facades\SEOTools;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 
 class SeoService extends Service implements SeoServiceInterface
@@ -33,31 +32,27 @@ class SeoService extends Service implements SeoServiceInterface
     }
 
     /**
-     * @param Model $model
+     * @param \App\Models\Metable $model
      * @param array $values
      */
-    public function saveSeoTags(Model $model, array $values): void
+    public function saveSeoTags(Metable $model, array $values): void
     {
-//        $model->setMeta
-
         foreach ($this->seoTags as $tag) {
-            if (method_exists($model, 'removeMeta') && method_exists($model, 'hasMeta') && $model->hasMeta($tag)) {
+            if ($model->hasMeta($tag)) {
                 $model->removeMeta($tag);
             }
-            if (method_exists($model, 'setMeta') && ! empty(data_get($values, $tag))) {
+            if (! empty(data_get($values, $tag))) {
                 $model->setMeta($tag, data_get($values, $tag));
             }
         }
     }
 
     /**
-     * @param Model $model
+     * @param \App\Models\Metable $model
      */
-    public function displayMetaTagsFromModel(Model $model): void
+    public function displayMetaTagsFromModel(Metable $model): void
     {
-        if (method_exists($model, 'getMeta')) {
-            SEOTools::setTitle($model->getMeta('meta_title'));
-            SEOTools::setDescription($model->getMeta('meta_description'));
-        }
+        SEOTools::setTitle($model->getMeta('meta_title'));
+        SEOTools::setDescription($model->getMeta('meta_description'));
     }
 }

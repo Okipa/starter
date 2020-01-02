@@ -76,4 +76,17 @@ class Settings extends Model implements HasMedia
             ->fit(Manipulations::FIT_CROP, 40, 40)
             ->keepOriginalImageFormat();
     }
+
+    /**
+     * @return string
+     */
+    public function getFullPostalAddressAttribute(): string
+    {
+        $fullPostalAddress = '';
+        $fullPostalAddress .= $this->address ?: '';
+        $fullPostalAddress .= $this->zip_code ? ($fullPostalAddress ? ' ' : '') . $this->zip_code : '';
+        $fullPostalAddress .= $this->city ? ($fullPostalAddress ? ' ' : '') . $this->city : '';
+
+        return $fullPostalAddress;
+    }
 }

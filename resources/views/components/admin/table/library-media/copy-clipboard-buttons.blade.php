@@ -1,12 +1,11 @@
-<button class="btn btn-outline-primary btn-sm mx-1 clipboard-copy"
-        data-library-media-id="{{ $file->id }}"
-        data-type="url">
-    <i class="fas fa-link fa-fw"></i>
-    @lang('URL')
-</button>
-<button class="btn btn-outline-primary btn-sm mx-1 clipboard-copy"
-        data-library-media-id="{{ $file->id }}"
-        data-type="html">
-    <i class="fas fa-code fa-fw"></i>
-    @lang('HTML')
-</button>
+{{ button()->prepend('<i class="fas fa-link fa-fw"></i>')
+        ->label(__('URL'))
+        ->componentClasses(['btn-outline-primary',  'btn-sm', 'm-1', 'clipboard-copy'])
+        ->componentHtmlAttributes(['data-library-media-id' => $file->id, 'data-type' => 'url']) }}
+@foreach(supportedLocaleKeys() as $localeKey)
+    {{ button()->prepend('<i class="fas fa-code fa-fw"></i>')
+        ->label(__('HTML') . ' (' . strtoupper($localeKey). ')')
+        ->componentClasses(['btn-outline-primary',  'btn-sm', 'm-1', 'clipboard-copy'])
+        ->componentHtmlAttributes(['data-library-media-id' => $file->id, 'data-type' => 'html'])
+        ->containerHtmlAttributes(['data-locale' => $localeKey]) }}
+@endforeach

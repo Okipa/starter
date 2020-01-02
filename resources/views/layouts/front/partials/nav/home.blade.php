@@ -2,7 +2,6 @@
     <a class="nav-link"
        href="{{ route('home') }}"
        title="@lang('Home')">
-        <i class="fas fa-home fa-fw"></i>
         @lang('Home')
     </a>
 </li>

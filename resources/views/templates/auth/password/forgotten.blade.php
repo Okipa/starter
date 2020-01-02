@@ -1,6 +1,6 @@
 @extends('layouts.admin.auth')
 @section('content')
-    @include('components.common.language.switcher', [
+    @include('components.common.multilingual.lang-switcher', [
         'containerClasses' => ['text-right'],
         'dropdownClass' => ['dropdown-menu-right'],
         'labelClass' => ['btn', 'btn-link']
@@ -17,11 +17,11 @@
     <form method="POST" class="w-100" action="{{ route('password.email') }}">
         @csrf
         @include('components.common.form.notice')
-        {{ bsEmail()->name('email')
+        {{ inputEmail()->name('email')
             ->legend(__('Fill in your e-mail to receive instructions for resetting your password.'))
             ->componentHtmlAttributes(['autofocus'])
             ->containerHtmlAttributes(['required']) }}
-        {{ bsValidate()->label(__('Send reset e-mail'))->componentClasses(['btn', 'btn-block', 'btn-primary', 'load-on-click']) }}
+        {{ submitValidate()->label(__('Send reset e-mail'))->componentClasses(['btn', 'btn-block', 'btn-primary', 'load-on-click']) }}
     </form>
-    {{ bsCancel()->route('login') }}
+    {{ buttonCancel()->route('login') }}
 @endsection

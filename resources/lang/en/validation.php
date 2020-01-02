@@ -153,6 +153,7 @@ return [
         'remember' => 'Remember me',
         'first_name' => 'First name',
         'last_name' => 'Last name',
+        'name' => 'Name',
         'category_name' => 'Catégorie',
     ],
 

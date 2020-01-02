@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Front;
 
 use App\Http\Controllers\Controller;
-use App\Models\HomePage;
 use App\Models\PageContent;
 use App\Services\Seo\SeoService;
 use Exception;
@@ -18,7 +17,7 @@ class HomePageController extends Controller
      */
     public function show()
     {
-        /** @var PageContent $contactPageContent */
+        /** @var PageContent $pageContent */
         $pageContent = (new PageContent)->firstOrCreate(['slug' => 'home-page-content']);
         (new SeoService)->displayMetaTagsFromModel($pageContent);
         $css = mix('/css/home/page/show.css');

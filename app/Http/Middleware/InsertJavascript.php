@@ -29,6 +29,16 @@ class InsertJavascript
             'sumoSelect' => __('sumoselect'),
             'termsOfService' => ['route' => $termsOfServiceUrl],
         ]);
+        // admin only
+        if ($request->is('admin/*') || $request->is('*/admin/*')) {
+            JavaScript::put([
+                'multilingual' => [
+                    'template' => [
+                        'formLangSwitcher' => view('components.admin.multilingual.form-lang-switcher')->toHtml(),
+                    ],
+                ],
+            ]);
+        }
 
         return $next($request);
     }

@@ -169,7 +169,9 @@ return [
         'zip_code' => 'Code postal',
         'city' => 'Ville',
         'facebook' => 'Page Facebook',
+        'twitter' => 'Page Twitter',
         'instagram' => 'Page Instagram',
+        'youtube' => 'Page Youtube',
         'google_tag_manager_id' => 'Identifiant Google Tag Manager',
         'avatar' => 'Avatar',
         'illustration' => 'Illustration',
@@ -184,6 +186,7 @@ return [
         'thumb' => 'Aperçu',
         'media' => 'Média',
         'downloadable' => 'Téléchargeable',
+        'message' => 'Message',
     ],
 
 ];

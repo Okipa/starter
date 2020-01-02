@@ -39,34 +39,32 @@
             <div class="card-body">
                 <h3>@lang('Identity')</h3>
                 @php($avatar = optional($user)->getFirstMedia('avatar'))
-                {{ bsFile()->name('avatar')
+                {{ inputFile()->name('avatar')
                     ->value(optional($avatar)->file_name)
                     ->uploadedFile(function() use ($avatar) {
                         return $avatar
-                            ? image()->src(optional($avatar)->getUrl('thumb'))
-                                ->linkUrl(optional($avatar)->getUrl())
-                                ->containerClasses(['mb-2'])
+                            ? image()->src($avatar->getUrl('thumb'))->linkUrl($avatar->getUrl())->linkTitle($avatar->name)
                             : null;
                     })
                     ->legend((new App\Models\User)->constraintsLegend('avatar')) }}
-                {{ bsText()->name('last_name')->model($user)->containerHtmlAttributes(['required']) }}
-                {{ bsText()->name('first_name')->model($user)->containerHtmlAttributes(['required']) }}
+                {{ inputText()->name('last_name')->model($user)->containerHtmlAttributes(['required']) }}
+                {{ inputText()->name('first_name')->model($user)->containerHtmlAttributes(['required']) }}
                 <h3 class="pt-4">@lang('Contact')</h3>
-                {{ bsEmail()->name('email')->model($user)->containerHtmlAttributes(['required']) }}
+                {{ inputEmail()->name('email')->model($user)->containerHtmlAttributes(['required']) }}
                 <h3 class="pt-4">@lang('Security')</h3>
-                {{ bsPassword()->name($user ? 'new_password' : 'password')
+                {{ inputPassword()->name($user ? 'new_password' : 'password')
                     ->legend(
                         __('passwords.minLength', ['count' => config('security.password.constraint.min')]) . '<br/>'
                         . __('passwords.recommendation') . '<br/>'
                         . __('passwords.fillForUpdate')
                     )
                     ->containerHtmlAttributes($user ? [] : ['required'])  }}
-                {{ bsPassword()->name($user ? 'new_password_confirmation' : 'password_confirmation')
+                {{ inputPassword()->name($user ? 'new_password_confirmation' : 'password_confirmation')
                     ->model($user)
                     ->containerHtmlAttributes($user ? [] : ['required']) }}
                 <div class="d-flex pt-4">
-                    {{ bsCancel()->route('users.index')->containerClasses(['mr-2']) }}
-                    @if($user){{ bsUpdate() }}@else{{ bsCreate() }}@endif
+                    {{ buttonCancel()->route('users.index')->containerClasses(['mr-2']) }}
+                    @if($user){{ submitUpdate() }}@else{{ submitCreate() }}@endif
                 </div>
             </div>
         </div>

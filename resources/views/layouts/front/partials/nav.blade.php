@@ -19,6 +19,7 @@
             <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
                 @include('layouts.front.partials.nav.home')
                 @include('layouts.front.partials.nav.news')
+                @include('layouts.front.partials.nav.contact')
             </ul>
             <ul class="navbar-nav">
                 @include('layouts.front.partials.nav.language')

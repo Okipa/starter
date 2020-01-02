@@ -20,7 +20,7 @@ class SettingsTableSeeder extends Seeder
         // todo : customize settings and seeder image
         $settings = (new Settings)->create([
             'email'        => $this->faker->email,
-            'phone_number' => Str::replaceFirst('0', '+33', $this->faker->phoneNumber),
+            'phone_number' => $this->faker->phoneNumber,
             'address'      => $this->faker->address,
             'zip_code'     => $this->faker->postcode,
             'city'         => $this->faker->city,

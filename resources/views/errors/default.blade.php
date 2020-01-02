@@ -5,7 +5,7 @@
         <div class="row">
             <div class="text-center">
                 <div class="mx-auto mb-4">
-                    @include('components.common.language.switcher', [
+                    @include('components.common.multilingual.lang-switcher', [
                         'containerClasses' => ['text-right'],
                         'dropdownLabelClasses' => ['btn', 'btn-link'],
                         'dropdownMenuClasses' => ['dropdown-menu-right']
@@ -29,7 +29,7 @@
                         @lang('errors.message.' . $exception->getStatusCode())
                     @endif
                 </p>
-                {{ bsBack()->route('home')->label($maintenanceMode
+                {{ buttonBack()->route('home')->label($maintenanceMode
                     ? __('static.action.retry')
                     : __('Back to home page'))->containerClasses(['mt-5']) }}
             </div>

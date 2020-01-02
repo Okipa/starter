@@ -41,7 +41,7 @@
     "Contact": "Contact",
     "Security": "Sécurité",
     "SEO": "Référencement",
-    "Tracking": "Suivi",
+    "Tracking and property": "Suivi et propriété",
     "Publication": "Publication",
     "Media": "Média",
     "Information": "Informations",
@@ -75,5 +75,9 @@
     "An unexpected error occurred. If the problem persists, please contact support.": "Une erreur imprévue est survenue. Si le problème persiste, merci de contacter le support.",
     "The file: file does not exist.": "Le fichier :file est introuvable.",
     "The list has been reorganized.": "La liste a été réorganisée.",
-    "Link": "Lien"
+    "Link": "Lien",
+    "Contact us": "Nous contacter",
+    "Where to find us ?": "Où nous trouver ?",
+    "Send": "Envoyer",
+    "Your message have been sent, thank you for your interest.": "Votre message a été envoyé, merci pour votre intérêt !"
 }

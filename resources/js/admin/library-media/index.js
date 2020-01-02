@@ -1,1 +1,1 @@
-require('./clipboardCopy');
+require('./clipboard-copy');

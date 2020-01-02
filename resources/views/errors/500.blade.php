@@ -4,7 +4,7 @@
         <div class="row">
             <div class="text-center">
                 <div class="mx-auto mb-4">
-                    @include('components.common.language.switcher', [
+                    @include('components.common.multilingual.lang-switcher', [
                         'containerClasses' => ['text-right'],
                         'dropdownLabelClasses' => ['btn', 'btn-link'],
                         'dropdownMenuClasses' => ['dropdown-menu-right']
@@ -34,7 +34,7 @@
                         });
                     </script>
                 @endif
-                {{ bsBack()->route('home')->label(__('Back to home page'))->containerClasses(['mt-5']) }}
+                {{ buttonBack()->route('home')->label(__('Back to home page'))->containerClasses(['mt-5']) }}
             </div>
         </div>
     </div>

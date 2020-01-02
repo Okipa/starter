@@ -1,6 +1,6 @@
 @extends('layouts.admin.auth')
 @section('content')
-    @include('components.common.language.switcher', [
+    @include('components.common.multilingual.lang-switcher', [
         'containerClasses' => ['text-right'],
         'dropdownLabelClasses' => ['btn', 'btn-link'],
         'dropdownMenuClasses' => ['dropdown-menu-right']
@@ -25,6 +25,6 @@
     </p>
     <form method="POST" action="{{ route('verification.resend') }}">
         @csrf
-        {{ bsValidate()->label(__('Send new verification link'))->prepend('<i class="fas fa-paper-plane fa-fw"></i>')}}
+        {{ submitValidate()->label(__('Send new verification link'))->prepend('<i class="fas fa-paper-plane fa-fw"></i>')}}
     </form>
 @endsection

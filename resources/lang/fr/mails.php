@@ -36,4 +36,15 @@ return [
         'notice' => 'Si vous n\'avez pas créé de compte, aucune action de votre part n\'est nécessaire.',
     ],
 
+    'ContactFormMessage' => [
+        'subject' => [
+            'original' => 'Formulaire de contact : nouveau message',
+            'copy'     => 'Formulaire de contact : copie de votre message',
+        ],
+        'message' => [
+            'original' => 'Ce message vous a été adressé depuis le formulaire de contact de :app.',
+            'copy'     => 'Nous vous adressons une copie de votre message, envoyé depuis le formulaire de contact de :app.',
+        ],
+    ]
+
 ];

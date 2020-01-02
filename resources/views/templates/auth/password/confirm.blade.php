@@ -1,6 +1,6 @@
 @extends('layouts.admin.auth')
 @section('content')
-    @include('components.common.language.switcher', [
+    @include('components.common.multilingual.lang-switcher', [
         'containerClasses' => ['text-right'],
         'dropdownClass' => ['dropdown-menu-right'],
         'labelClass' => ['btn', 'btn-link']
@@ -18,8 +18,8 @@
         @csrf
         @include('components.common.form.notice')
         <p>@lang('For security reasons, please confirm your password. You will not be asked for several hours.')</p>
-        {{ bsPassword()->name('password')->containerHtmlAttributes(['required']) }}
-        {{ bsValidate()->label(__('Confirm password'))
+        {{ inputPassword()->name('password')->containerHtmlAttributes(['required']) }}
+        {{ submitValidate()->label(__('Confirm password'))
             ->componentClasses(['btn', 'btn-block', 'btn-primary', 'load-on-click']) }}
         <div class="form-group d-block">
             <a href="{{ route('password.request') }}">
@@ -27,5 +27,5 @@
             </a>
         </div>
     </form>
-    {{ bsCancel() }}
+    {{ buttonCancel() }}
 @endsection

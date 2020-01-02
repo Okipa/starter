@@ -83,6 +83,8 @@ class FilesService extends Service implements FilesServiceInterface
 
     /**
      * Inject javascript in the current view.
+     *
+     * @return void
      */
     public function injectJavascriptInView(): void
     {

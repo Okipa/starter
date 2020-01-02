@@ -2,8 +2,6 @@
 
 namespace App\Http;
 
-use App\Http\Middleware\InsertJavascript;
-use App\Http\Middleware\ShareDataGlobally;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
 class Kernel extends HttpKernel
@@ -15,8 +13,7 @@ class Kernel extends HttpKernel
      * @var array
      */
     protected $middleware = [
-        ShareDataGlobally::class,
-        InsertJavascript::class,
+        \App\Http\Middleware\ShareDataGlobally::class,
         \App\Http\Middleware\CheckForMaintenanceMode::class,
         \Illuminate\Foundation\Http\Middleware\ValidatePostSize::class,
         \App\Http\Middleware\TrimStrings::class,
@@ -38,6 +35,7 @@ class Kernel extends HttpKernel
             \App\Http\Middleware\VerifyCsrfToken::class,
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
             \RealRashid\SweetAlert\ToSweetAlert::class,
+            \App\Http\Middleware\InsertJavascript::class,
         ],
         'api' => [
             'throttle:60,1',
@@ -74,7 +72,7 @@ class Kernel extends HttpKernel
         \App\Http\Middleware\Authenticate::class,
         \Illuminate\Routing\Middleware\ThrottleRequests::class,
         \Illuminate\Session\Middleware\AuthenticateSession::class,
-        \CodeZero\LocalizedRoutes\Middleware\LocalizedRouteLocaleHandler::class,
+        \CodeZero\LocalizedRoutes\Middleware\SetLocale::class,
         \Illuminate\Routing\Middleware\SubstituteBindings::class,
         \Illuminate\Auth\Middleware\Authorize::class,
     ];

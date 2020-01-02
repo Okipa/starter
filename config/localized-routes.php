@@ -5,7 +5,7 @@ return [
     /**
      * The locales you wish to support.
      */
-     'supported-locales' => ['fr', 'en'],
+    'supported-locales' => ['fr', 'en'],
 
     /**
      * If you have a main locale and don't want
@@ -22,17 +22,41 @@ return [
     'use_locale_middleware' => true,
 
     /**
+     * If true, this package will use 'codezero/laravel-localizer'
+     * to detect and set the preferred supported locale.
+     *
+     * For non-localized routes, it will look for a locale in the URL,
+     * in the session, in a cookie, in the browser or in the app config.
+     * This can be very useful if you have a generic home page.
+     *
+     * If a locale is detected, it will be stored in the session,
+     * in a cookie and as the app locale.
+     *
+     * If you disable this option, only localized routes will have a locale
+     * and only the app locale will be set (so not in the session or cookie).
+     *
+     * You can publish its config file and tweak it for your needs.
+     * This package will only override its 'supported-locales' option
+     * with the 'supported-locales' option in this file.
+     *
+     * For more info, visit:
+     * https://github.com/codezero-be/laravel-localizer
+     *
+     * This option only has effect if you use the SetLocale middleware.
+     */
+    'use_localizer' => true,
+
+    /**
      * Set locales details
      */
     'locales' => [
         'fr' => [
             'name' => 'Français',
-            'regional' => 'fr_FR'
+            'regional' => 'fr_FR',
         ],
         'en' => [
             'name' => 'English',
-            'regional' => 'en_GB'
-        ]
-    ]
-
+            'regional' => 'en_GB',
+        ],
+    ],
 ];

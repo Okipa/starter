@@ -1,6 +1,6 @@
 @extends('layouts.admin.auth')
 @section('content')
-    @include('components.common.language.switcher', [
+    @include('components.common.multilingual.lang-switcher', [
         'containerClasses' => ['text-right'],
         'dropdownLabelClasses' => ['btn', 'btn-link'],
         'dropdownMenuClasses' => ['dropdown-menu-right']
@@ -17,22 +17,22 @@
     <form method="POST" class="w-100" action="{{ route('register.register') }}">
         @csrf
         @include('components.common.form.notice')
-        {{ bsText()->name('first_name')
+        {{ inputText()->name('first_name')
             ->prepend('<i class="fas fa-user"></i>')
             ->containerHtmlAttributes(['required']) }}
-        {{ bsText()->name('last_name')
+        {{ inputText()->name('last_name')
             ->prepend('<i class="fas fa-user"></i>')
             ->containerHtmlAttributes(['required']) }}
-        {{ bsEmail()->name('email')
+        {{ inputEmail()->name('email')
             ->containerHtmlAttributes(['required']) }}
-        {{ bsPassword()->name('password')
+        {{ inputPassword()->name('password')
             ->legend(__('passwords.minLength', ['count' => config('security.password.constraint.min')]) . '<br/>'
                 . __('passwords.recommendation'))
             ->containerHtmlAttributes(['required']) }}
-        {{ bsPassword()->name('password_confirmation')
+        {{ inputPassword()->name('password_confirmation')
             ->containerHtmlAttributes(['required']) }}
-        {{ bsValidate()->label(__('Create account'))
+        {{ submitValidate()->label(__('Create account'))
             ->componentClasses(['btn', 'btn-block', 'btn-primary', 'load-on-click']) }}
     </form>
-    {{ bsCancel()->route('login') }}
+    {{ buttonCancel()->route('login') }}
 @endsection

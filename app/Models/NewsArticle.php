@@ -84,7 +84,7 @@ class NewsArticle extends Metable implements HasMedia
     {
         $this->addMediaCollection('illustrations')
             ->acceptsMimeTypes(['image/jpeg', 'image/png'])
-            ->registerMediaConversions(function(Media $media = null) {
+            ->registerMediaConversions(function (Media $media = null) {
                 $this->addMediaConversion('cover')
                     ->fit(Manipulations::FIT_CROP, 1140, 500)
                     ->withResponsiveImages()

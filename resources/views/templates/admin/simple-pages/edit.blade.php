@@ -24,36 +24,36 @@
             </div>
             <div class="card-body">
                 <h3>@lang('Page')</h3>
-                {{ bsText()->name('title')
+                {{ inputText()->name('title')
                     ->locales(supportedLocaleKeys())
                     ->model($simplePage)
                     ->containerHtmlAttributes(['required']) }}
                 @if(! $simplePage)
-                    {{ bsText()->name('slug')
+                    {{ inputText()->name('slug')
                         ->model($simplePage)
                         ->prepend('<i class="fas fa-key fa-fw"></i>')
                         ->componentClasses(['slugify'])
                         ->componentHtmlAttributes(['data-autofill-from' => '#text-title'])
                         ->containerHtmlAttributes(['required'])}}
                 @endif
-                {{ bsText()->name('url')
+                {{ inputText()->name('url')
                     ->locales(supportedLocaleKeys())
                     ->model($simplePage)
                     ->prepend(route('simplePage.show', '/') . '/')
                     ->componentClasses(['lowercase'])
                     ->componentHtmlAttributes(['data-autofill-from' => '#text-title'])
                     ->containerHtmlAttributes(['required']) }}
-                {{ bsTextarea()->name('description')
+                {{ textarea()->name('description')
                     ->locales(supportedLocaleKeys())
                     ->model($simplePage)
                     ->prepend(false)
                     ->componentClasses(['editor']) }}
                 <h3 class="pt-4">@lang('Publication')</h3>
-                {{ bsToggle()->name('active')->model($simplePage) }}
+                {{ inputToggle()->name('active')->model($simplePage) }}
                 @include('components.admin.seo.meta-tags', ['model' => $simplePage])
                 <div class="d-flex pt-4">
-                    {{ bsCancel()->route('simplePages.index')->containerClasses(['mr-2']) }}
-                    @if($simplePage){{ bsUpdate() }}@else{{ bsCreate() }}@endif
+                    {{ buttonCancel()->route('simplePages.index')->containerClasses(['mr-2']) }}
+                    @if($simplePage){{ submitUpdate() }}@else{{ submitCreate() }}@endif
                 </div>
             </div>
         </div>

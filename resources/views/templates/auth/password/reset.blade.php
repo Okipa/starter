@@ -1,6 +1,6 @@
 @extends('layouts.admin.auth')
 @section('content')
-    @include('components.common.language.switcher', [
+    @include('components.common.multilingual.lang-switcher', [
         'containerClasses' => ['text-right'],
         'dropdownClass' => ['dropdown-menu-right'],
         'labelClass' => ['btn', 'btn-link']
@@ -18,14 +18,14 @@
         @csrf
         <input type="hidden" name="token" value="{{ $token }}">
         @include('components.common.form.notice')
-        {{ bsEmail()->name('email')->componentHtmlAttributes(['autofocus'])->containerHtmlAttributes(['required']) }}
-        {{ bsPassword()->name('password')
+        {{ inputEmail()->name('email')->componentHtmlAttributes(['autofocus'])->containerHtmlAttributes(['required']) }}
+        {{ inputPassword()->name('password')
             ->legend(__('passwords.minLength', ['count' => config('security.password.constraint.min')]) . '<br/>'
                 . __('passwords.recommendation'))
             ->containerHtmlAttributes(['required']) }}
-        {{ bsPassword()->name('password_confirmation')->containerHtmlAttributes(['required']) }}
-        {{ bsValidate()->label(__('Save new password'))
+        {{ inputPassword()->name('password_confirmation')->containerHtmlAttributes(['required']) }}
+        {{ submitValidate()->label(__('Save new password'))
             ->componentClasses(['btn', 'btn-block', 'btn-primary', 'load-on-click']) }}
     </form>
-    {{ bsBack()->route('login') }}
+    {{ buttonBack()->route('login') }}
 @endsection

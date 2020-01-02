@@ -22,13 +22,9 @@ class RouteServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        parent::boot();
-        Route::macro('currentLocalizedUrl', function ($locale = null, $parameters = null, $absolute = true) {
-            $locale = $locale ?: app()->getLocale();
-            $parameters = $parameters ?: Route::current()->parameters();
+        //
 
-            return route(Route::current()->getName(), $parameters, $absolute, $locale);
-        });
+        parent::boot();
     }
 
     /**
@@ -39,7 +35,9 @@ class RouteServiceProvider extends ServiceProvider
     public function map()
     {
         $this->mapApiRoutes();
+
         $this->mapWebRoutes();
+
         //
     }
 

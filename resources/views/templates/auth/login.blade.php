@@ -1,6 +1,6 @@
 @extends('layouts.admin.auth')
 @section('content')
-    @include('components.common.language.switcher', [
+    @include('components.common.multilingual.lang-switcher', [
         'containerClasses' => ['text-right'],
         'dropdownLabelClasses' => ['btn', 'btn-link'],
         'dropdownMenuClasses' => ['dropdown-menu-right']
@@ -17,10 +17,10 @@
     <form method="POST" class="w-100" novalidate action="{{ route('login.login') }}">
         @csrf
         @include('components.common.form.notice')
-        {{ bsEmail()->name('email')->componentHtmlAttributes(['autofocus'])->containerHtmlAttributes(['required']) }}
-        {{ bsPassword()->name('password')->containerHtmlAttributes(['required']) }}
-        {{ bsToggle()->name('remember') }}
-        {{ bsValidate()->label(__('Sign me in'))->componentClasses(['btn', 'btn-block', 'btn-primary', 'load-on-click']) }}
+        {{ inputEmail()->name('email')->componentHtmlAttributes(['autofocus'])->containerHtmlAttributes(['required']) }}
+        {{ inputPassword()->name('password')->containerHtmlAttributes(['required']) }}
+        {{ inputToggle()->name('remember') }}
+        {{ submitValidate()->label(__('Sign me in'))->componentClasses(['btn', 'btn-block', 'btn-primary', 'load-on-click']) }}
         <div class="form-group d-block">
             <a href="{{ route('password.request') }}">
                 @lang('Forgotten password')
@@ -30,5 +30,5 @@
             </a>
         </div>
     </form>
-    {{ bsBack()->route('home') }}
+    {{ buttonBack()->route('home') }}
 @endsection

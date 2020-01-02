@@ -32,5 +32,6 @@ Route::localized(function () {
     // front
     require('web/front/home.php');
     require('web/front/news.php');
+    require('web/front/contact.php');
     require('web/front/simplePages.php');
 });

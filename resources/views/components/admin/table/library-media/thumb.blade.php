@@ -1,4 +1,4 @@
-@if($media = $file->getFirstMedia('medias'))
+@if($file && $media = $file->getFirstMedia('medias'))
     @if($file->canBeDisplayed)
         <a href="{{ $media->getUrl() }}" title="@lang('Preview') {{ $file->name }}" data-lity>
             @if(in_array($file->type, ['image', 'pdf']))

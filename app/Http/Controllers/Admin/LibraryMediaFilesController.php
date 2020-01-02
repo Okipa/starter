@@ -15,7 +15,6 @@ use Illuminate\Contracts\Container\BindingResolutionException;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Support\Str;
 use Illuminate\View\View;
 use Log;
 use Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\DiskDoesNotExist;
@@ -69,7 +68,7 @@ class LibraryMediaFilesController extends Controller
         return redirect()->route('libraryMedia.files.index')
             ->with('toast_success', __('notifications.orphan.created', [
                 'entity' => __('Media library'),
-                'name'   => $file->name,
+                'name' => $file->name,
             ]));
     }
 
@@ -109,7 +108,7 @@ class LibraryMediaFilesController extends Controller
 
         return back()->with('toast_success', __('notifications.orphan.updated', [
             'entity' => __('Media library'),
-            'name'   => $file->name,
+            'name' => $file->name,
         ]));
     }
 
@@ -126,7 +125,7 @@ class LibraryMediaFilesController extends Controller
 
         return back()->with('toast_success', __('notifications.orphan.destroyed', [
             'entity' => __('Media library'),
-            'name'   => $name,
+            'name' => $name,
         ]));
     }
 
@@ -141,10 +140,13 @@ class LibraryMediaFilesController extends Controller
         try {
             $clipboardContent = $type === 'url'
                 ? $file->getFirstMedia('medias')->getFullUrl()
-                : trim(view('components.admin.table.library-media.html-clipboard-content', compact('file', 'locale'))->toHtml());
+                : trim(view(
+                    'components.admin.table.library-media.html-clipboard-content',
+                    compact('file', 'locale')
+                )->toHtml());
             $message = __('Media « :name » :type copied in clipboard.', [
                 'type' => strtoupper($type),
-                'name' => $file->name,
+                'name' => $file->getTranslation('name', $locale),
             ]);
         } catch (Exception $exception) {
             Log::error($exception);

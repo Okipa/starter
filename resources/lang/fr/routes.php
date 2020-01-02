@@ -1,6 +1,7 @@
 <?php
-return [
 
+return [
+    
     'create' => 'creer',
     'store' => 'enregistrer',
     'edit' => 'editer',

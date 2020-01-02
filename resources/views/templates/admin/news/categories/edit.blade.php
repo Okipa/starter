@@ -31,13 +31,13 @@
             </div>
             <div class="card-body">
                 <h3>@lang('Identity')</h3>
-                {{ bsText()->name('name')
+                {{ inputText()->name('name')
                     ->locales(supportedLocaleKeys())
                     ->model($category)
                     ->containerHtmlAttributes(['required']) }}
                 <div class="d-flex pt-4">
-                    {{ bsCancel()->route('news.categories.index')->containerClasses(['mr-2']) }}
-                    @if($category){{ bsUpdate() }}@else{{ bsCreate() }}@endif
+                    {{ buttonCancel()->route('news.categories.index')->containerClasses(['mr-2']) }}
+                    @if($category){{ submitUpdate() }}@else{{ submitCreate() }}@endif
                 </div>
             </div>
         </div>
