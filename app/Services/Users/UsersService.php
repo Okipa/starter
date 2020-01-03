@@ -5,12 +5,7 @@ namespace App\Services\Users;
 use App\Http\Requests\Request;
 use App\Models\User;
 use App\Services\Service;
-use ErrorException;
-use Illuminate\Contracts\Container\BindingResolutionException;
 use Okipa\LaravelTable\Table;
-use Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\DiskDoesNotExist;
-use Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\FileDoesNotExist;
-use Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\FileIsTooBig;
 
 class UsersService extends Service implements UsersServiceInterface
 {
@@ -33,7 +28,7 @@ class UsersService extends Service implements UsersServiceInterface
         })->destroyConfirmationHtmlAttributes(function (User $user) {
             return [
                 'data-confirm' => __('notifications.orphan.destroyConfirm', [
-                    'entity' => __('Settings'),
+                    'entity' => __('Users'),
                     'name' => $user->name,
                 ]),
             ];

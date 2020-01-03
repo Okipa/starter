@@ -16,12 +16,13 @@ class SeoServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        // todo : fix this => https://github.com/codezero-be/laravel-localized-routes/issues/16
 //        if (multilingual()) {
 //            foreach (supportedLocaleKeys() as $localeKey) {
 //                SEO::metatags()->addAlternateLanguage($localeKey, Route::localizedUrl($localeKey));
 //            }
 //        }
-        SEO::opengraph()->addProperty('locale', currentLocale('regional'));
+        SEO::opengraph()->addProperty('locale', currentLocale()['regional']);
         if (multilingual()) {
             SEO::opengraph()->addProperty(
                 'locale:alternate',

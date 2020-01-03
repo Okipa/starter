@@ -15,7 +15,7 @@ class LocalizationServiceProvider extends ServiceProvider
     public function boot()
     {
         // time localization
-         setlocale(LC_TIME, currentLocale('regional') . '.UTF-8');
+         setlocale(LC_TIME, currentLocale()['regional'] . '.UTF-8');
          Carbon::setLocale(app()->getLocale());
     }
 }

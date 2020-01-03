@@ -37,14 +37,10 @@ if (! function_exists('supportedLocaleKeys')) {
 
 if (! function_exists('currentLocale')) {
     /**
-     * @param string|null $key
-     *
      * @return array|string
      */
-    function currentLocale(?string $key)
+    function currentLocale()
     {
-        $currentLocale = supportedLocales()[app()->getLocale()];
-
-        return $key ? $currentLocale[$key] : $currentLocale;
+        return supportedLocales()[app()->getLocale()];
     }
 }
