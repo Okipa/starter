@@ -2,7 +2,6 @@
 
 return [
 
-    'title' => 'Erreur',
     'message' => [
         400 => 'Requête erronée.',
         401 => 'Authentification requise.',

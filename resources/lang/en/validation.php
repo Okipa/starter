@@ -154,7 +154,11 @@ return [
         'first_name' => 'First name',
         'last_name' => 'Last name',
         'name' => 'Name',
-        'category_name' => 'Catégorie',
+        'category_name' => 'Category',
+        'title' => 'Title',
+        'description' => 'Description',
+        'meta_title' => 'Meta title',
+        'meta_description' => 'Meta description',
     ],
 
 ];

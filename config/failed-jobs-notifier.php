@@ -39,8 +39,7 @@ return [
     ],
 
     'mail' => [
-        // todo : customize this value
-        'to' => 'email@example.com',
+        'to' => env('MONITORING_NOTIFICATIONS'),
     ],
 
     'slack' => [

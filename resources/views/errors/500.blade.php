@@ -15,7 +15,7 @@
                 </div>
                 <i class="fas fa-5x fa-exclamation-triangle fa-fw text-danger"></i>
                 <h1 class="h3 font-weight-normal mt-3">
-                    @lang('errors.title') {{ $exception->getStatusCode() }}
+                    @lang('Error') {{ $exception->getStatusCode() }}
                 </h1>
                 <p class="h5">
                     @lang('errors.message.' . $exception->getStatusCode())

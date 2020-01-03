@@ -4,11 +4,11 @@
     ->value(function($locale) use ($model) {
         return optional($model)->getMeta('meta_title', null, $locale);
     })
-    ->legend(__('Recommended length : ~ :count characters.', ['count' => 50]))
+    ->legend(__('Recommended length : around :count characters.', ['count' => 50]))
     ->containerHtmlAttributes(['required']) }}
 {{ textarea()->name('meta_description')
     ->locales(supportedLocaleKeys())
     ->value(function($locale) use ($model) {
         return optional($model)->getMeta('meta_description', null, $locale);
     })
-    ->legend(__('Recommended length : ~ :count characters.', ['count' => 150])) }}
+    ->legend(__('Recommended length : around :count characters.', ['count' => 150])) }}

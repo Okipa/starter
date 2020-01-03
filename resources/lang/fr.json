@@ -63,7 +63,7 @@
     "Share on :name": "Partager sur :name",
     "Previous": "Précédent",
     "Next": "Suivant",
-    "Recommended length : ~ :count characters.": "Longueur recommandée : ~:count caractères.",
+    "Recommended length : around :count characters.": "Longueur recommandée : environs :count caractères.",
     "MIME types": "Types MIME",
     "Clipboard copy": "Copie presse-papier",
     "Download": "Télécharger",

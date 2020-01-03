@@ -170,8 +170,4 @@ return [
             ],
         ],
     ],
-
-    'notifications' => [
-        'mail' => env('HORIZON_EMAIL_NOTIFICATIONS')
-    ],
 ];

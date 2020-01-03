@@ -35,8 +35,10 @@ class Kernel extends HttpKernel
             \Illuminate\View\Middleware\ShareErrorsFromSession::class,
             \App\Http\Middleware\VerifyCsrfToken::class,
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
-            \RealRashid\SweetAlert\ToSweetAlert::class,
+            \App\Http\Middleware\LocalizeTime::class,
+            \App\Http\Middleware\GenerateSeoMeta::class,
             \App\Http\Middleware\InsertJavascript::class,
+            \RealRashid\SweetAlert\ToSweetAlert::class,
         ],
         'api' => [
             'throttle:60,1',
