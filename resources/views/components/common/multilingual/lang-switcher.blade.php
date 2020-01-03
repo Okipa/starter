@@ -19,7 +19,7 @@
                    rel="alternate"
                    hreflang="{{ $localeKey }}">
                     <i class="fas fa-caret-right fa-fw"></i>
-                    {{ $locale['name'] }}
+                    @lang($locale['name'])
                 </a>
             @endforeach
         </div>

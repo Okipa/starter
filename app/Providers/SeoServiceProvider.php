@@ -16,19 +16,17 @@ class SeoServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //if (multilingual()) {
-            // foreach (supportedLocaleKeys() as $localeKey) {
-            //     SEO::metatags()->addAlternateLanguage($localeKey, Route::getLocalizedCurrentUrl($localeKey));
-            // }
-        //}
-        // todo : fix this
-        //         SEO::opengraph()->addProperty('locale', LaravelLocalization::getCurrentLocaleRegional());
-        //if (multilingual()) {
-            // todo : fix this
-            //            SEO::opengraph()->addProperty(
-            //                'locale:alternate',
-            //                implode(',', Arr::pluck(LaravelLocalization::getLocalesOrder(), 'regional'))
-            //            );
-        //}
+//        if (multilingual()) {
+//            foreach (supportedLocaleKeys() as $localeKey) {
+//                SEO::metatags()->addAlternateLanguage($localeKey, Route::localizedUrl($localeKey));
+//            }
+//        }
+        SEO::opengraph()->addProperty('locale', currentLocale('regional'));
+        if (multilingual()) {
+            SEO::opengraph()->addProperty(
+                'locale:alternate',
+                collect(supportedLocales())->pluck('regional')->implode(',')
+            );
+        }
     }
 }

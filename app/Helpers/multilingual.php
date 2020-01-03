@@ -34,3 +34,17 @@ if (! function_exists('supportedLocaleKeys')) {
         return config('localized-routes.supported-locales');
     }
 }
+
+if (! function_exists('currentLocale')) {
+    /**
+     * @param string|null $key
+     *
+     * @return array|string
+     */
+    function currentLocale(?string $key)
+    {
+        $currentLocale = supportedLocales()[app()->getLocale()];
+
+        return $key ? $currentLocale[$key] : $currentLocale;
+    }
+}

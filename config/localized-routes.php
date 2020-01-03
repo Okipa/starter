@@ -51,11 +51,13 @@ return [
      */
     'locales' => [
         'fr' => [
-            'name' => 'Français',
+            'name' => 'French',
+            'native' => 'Français',
             'regional' => 'fr_FR',
         ],
         'en' => [
             'name' => 'English',
+            'native' => 'English',
             'regional' => 'en_GB',
         ],
     ],
