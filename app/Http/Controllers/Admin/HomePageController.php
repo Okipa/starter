@@ -17,7 +17,7 @@ class HomePageController extends Controller
      */
     public function edit(): View
     {
-        /** @var PageContent $contactPageContent */
+        /** @var PageContent $pageContent */
         $pageContent = (new PageContent)->firstOrCreate(['slug' => 'home-page-content']);
         SEOTools::setTitle(__('breadcrumbs.orphan.edit', [
             'entity' => __('Home'),

@@ -20,33 +20,23 @@ class ResetPasswordController extends Controller
     |
     */
     use ResetsPasswords {
-        reset as traitReset;
+        showResetForm as traitShowResetForm;
         sendResetResponse as traitSendResetResponse;
+        sendResetFailedResponse as traitSendResetFailedResponse;
     }
 
     /**
-     * Display the password reset view for the given token.
-     * If no token is present, display the link request form.
-     *
-     * @param \Illuminate\Http\Request $request
-     * @param string|null $token
-     *
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @inheritDoc
      */
     public function showResetForm(Request $request, $token = null)
     {
         SEOTools::setTitle(__('Define new password'));
 
-        return view('templates.auth.password.reset')->with(['token' => $token, 'email' => $request->email]);
+        return $this->traitShowResetForm($request, $token);
     }
 
     /**
-     * Get the response for a successful password reset.
-     *
-     * @param \Illuminate\Http\Request $request
-     * @param $response
-     *
-     * @return \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse
+     * @inheritDoc
      */
     public function sendResetResponse(Request $request, $response)
     {
@@ -56,9 +46,7 @@ class ResetPasswordController extends Controller
     }
 
     /**
-     * Get the post register / login redirect path.
-     *
-     * @return string
+     * @inheritDoc
      */
     public function redirectPath()
     {
@@ -66,17 +54,12 @@ class ResetPasswordController extends Controller
     }
 
     /**
-     * Get the response for a failed password reset.
-     *
-     * @param \Illuminate\Http\Request $request
-     * @param string $response
-     *
-     * @return \Illuminate\Http\RedirectResponse
+     * @inheritDoc
      */
     protected function sendResetFailedResponse(Request $request, string $response)
     {
         alert()->html(__('Error'), __($response), 'error')->showConfirmButton();
 
-        return back()->withInput($request->only('email'));
+        return $this->traitSendResetFailedResponse($request, $response);
     }
 }

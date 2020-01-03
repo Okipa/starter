@@ -9,12 +9,13 @@ use Illuminate\Notifications\Messages\MailMessage;
 class ResetPassword extends \Illuminate\Auth\Notifications\ResetPassword implements ShouldQueue
 {
     use Queueable;
+
     public $tries = 3;
 
     /**
      * Create a notification instance.
      *
-     * @param  string $token
+     * @param string $token
      *
      * @return void
      */
@@ -29,7 +30,7 @@ class ResetPassword extends \Illuminate\Auth\Notifications\ResetPassword impleme
      *
      * @param mixed $notifiable
      *
-     * @return MailMessage
+     * @return \Illuminate\Notifications\Messages\MailMessage|mixed
      */
     public function toMail($notifiable)
     {

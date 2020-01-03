@@ -2,18 +2,14 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Models\User;
-use Exception;
-use Illuminate\Contracts\View\Factory;
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Http\Request;
-use App\Services\Users\UsersService;
 use App\Http\Controllers\Controller;
+use App\Models\User;
+use App\Services\Users\UsersService;
+use Artesaos\SEOTools\Facades\SEOTools;
+use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Foundation\Auth\RegistersUsers;
-use Artesaos\SEOTools\Facades\SEOTools;
-use Illuminate\View\View;
 
 class RegisterController extends Controller
 {
@@ -27,18 +23,18 @@ class RegisterController extends Controller
     | provide this functionality without requiring any additional code.
     |
     */
-    use RegistersUsers;
+    use RegistersUsers {
+        showRegistrationForm as traitShowRegistrationForm;
+    }
 
     /**
-     * Show the application registration form.
-     *
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @inheritDoc
      */
     public function showRegistrationForm()
     {
         SEOTools::setTitle(__('Registration area'));
 
-        return view('templates.auth.register');
+        return $this->traitShowRegistrationForm();
     }
 
     /**
@@ -52,9 +48,9 @@ class RegisterController extends Controller
     {
         return Validator::make($data, [
             'first_name' => ['required', 'string', 'max:255'],
-            'last_name'  => ['required', 'string', 'max:255'],
-            'email'      => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password'   => ['required', 'string', 'min:8', 'confirmed'],
+            'last_name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
     }
 
@@ -73,9 +69,9 @@ class RegisterController extends Controller
         /** @var User $user */
         $user = (new User)->create([
             'first_name' => $data['first_name'],
-            'last_name'  => $data['last_name'],
-            'email'      => $data['email'],
-            'password'   => Hash::make($data['password']),
+            'last_name' => $data['last_name'],
+            'email' => $data['email'],
+            'password' => Hash::make($data['password']),
         ]);
         (new UsersService)->setDefaultAvatar($user);
 
@@ -83,24 +79,23 @@ class RegisterController extends Controller
     }
 
     /**
-     * The user has been registered.
-     *
-     * @param \Illuminate\Http\Request $request
-     *
-     * @return mixed
+     * @inheritDoc
      */
     protected function registered(Request $request)
     {
-        alert()->toast(__('Welcome to your new account, :name.', [
-            'name' => $request->first_name . ' ' . $request->last_name,
-        ]), 'success');
+        alert()->toast(
+            __('Welcome to your new account') . ', ' . $request->first_name . ' ' . $request->last_name . '.',
+            'success'
+        );
+
+        return;
     }
 
     /**
-     * @return string
+     * @inheritDoc
      */
-    protected function redirectTo()
+    protected function redirectPath()
     {
-        return route('home');
+        return route('admin.index');
     }
 }

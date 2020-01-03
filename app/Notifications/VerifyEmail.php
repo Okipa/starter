@@ -9,6 +9,7 @@ use Illuminate\Notifications\Messages\MailMessage;
 class VerifyEmail extends \Illuminate\Auth\Notifications\VerifyEmail implements ShouldQueue
 {
     use Queueable;
+
     public $tries = 3;
 
     /**
@@ -22,9 +23,9 @@ class VerifyEmail extends \Illuminate\Auth\Notifications\VerifyEmail implements 
     /**
      * Build the mail representation of the notification.
      *
-     * @param  mixed $notifiable
+     * @param mixed $notifiable
      *
-     * @return MailMessage
+     * @return \Illuminate\Notifications\Messages\MailMessage|mixed
      */
     public function toMail($notifiable)
     {

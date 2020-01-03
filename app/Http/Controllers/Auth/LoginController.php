@@ -21,85 +21,45 @@ class LoginController extends Controller
     |
     */
     use AuthenticatesUsers {
-        sendLockoutResponse as protected traitSendLockoutResponse;
+        showLoginForm as traitShowLoginForm;
+        sendLockoutResponse as traitSendLockoutResponse;
     }
 
     /**
-     * Show the application's login form.
-     *
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @inheritDoc
      */
     public function showLoginForm()
     {
         SEOTools::setTitle(__('Sign in area'));
 
-        return view('templates.auth.login');
+        return $this->traitShowLoginForm();
     }
 
     /**
-     * @return string
+     * @inheritDoc
      */
-    protected function redirectTo()
+    protected function redirectPath()
     {
         return route('admin.index');
     }
 
     /**
-     * The user has logged out of the application.
-     *
-     * @return mixed
+     * @inheritDoc
      */
     protected function loggedOut()
     {
         alert()->toast(__('You have been logged out.'), 'success');
 
-        return;
+        return redirect()->route('home');
     }
 
     /**
-     * Get the failed login response instance.
-     *
-     * @return void
-     * @throws \Illuminate\Validation\ValidationException
+     * @inheritDoc
      */
-    protected function sendFailedLoginResponse()
+    protected function authenticated(Request $request, $user)
     {
-        throw ValidationException::withMessages([
-            $this->username() => [__('The provided credentials do not match our records.')],
-        ])->redirectTo(route('login'));
-    }
-
-    /**
-     * The user has been authenticated.
-     *
-     * @return mixed
-     */
-    protected function authenticated()
-    {
-        alert()->toast(__('Welcome :name.', [
-            'name' => auth()->user()->name,
-        ]), 'success');
+        alert()->toast(__('Welcome') . ' ' . $user->name . '.', 'success');
 
         return;
-    }
-
-    /**
-     * Redirect the user after determining they are locked out.
-     *
-     * @param Request $request
-     *
-     * @return void
-     * @throws \Illuminate\Validation\ValidationException
-     */
-    protected function sendLockoutResponse(Request $request)
-    {
-        $seconds = $this->limiter()->availableIn($this->throttleKey($request));
-        throw ValidationException::withMessages([
-            $this->username() => [
-                __('Too many connection attempts detected. Please try again in :seconds seconds.', [
-                    'seconds' => $seconds,
-                ]),
-            ],
-        ])->status(429);
     }
 }

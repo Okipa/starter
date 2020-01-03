@@ -29,5 +29,4 @@ class ContactPageTableSeeder extends Seeder
             'meta_description' => ['fr' => $fakerFr->text(150), 'en' => $fakerEn->text(150)],
         ]);
     }
-
 }

@@ -14,7 +14,7 @@ use Spatie\MediaLibrary\Models\Media;
 
 class User extends Authenticatable implements
     HasMedia,
-    MustVerifyEmail // todo : uncomment if this this feature is needed
+    MustVerifyEmail // todo : comment if this feature is not needed
 {
     use Notifiable;
     use HasMediaTrait;

@@ -22,21 +22,20 @@ class ConfirmPasswordController extends Controller
     use ConfirmsPasswords;
 
     /**
-     * Where to redirect users when the intended url fails.
-     *
-     * @var string
-     */
-    protected $redirectTo = '/home';
-
-    /**
-     * Display the password confirmation view.
-     *
-     * @return \Illuminate\View\View
+     * @inheritDoc
      */
     public function showConfirmForm(): View
     {
         SEOTools::setTitle(__('Password verification'));
 
         return view('templates.auth.password.confirm');
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function redirectPath()
+    {
+        return route('admin.index');
     }
 }

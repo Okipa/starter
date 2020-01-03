@@ -52,6 +52,7 @@ class LibraryMediaCategoriesController extends Controller
      */
     public function store(CategoryStoreRequest $request)
     {
+        /** @var \App\Models\LibraryMediaCategory $category */
         $category = (new LibraryMediaCategory)->create($request->validated());
 
         return redirect()->route('libraryMedia.categories.index')

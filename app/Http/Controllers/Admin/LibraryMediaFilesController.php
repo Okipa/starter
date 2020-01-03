@@ -151,6 +151,7 @@ class LibraryMediaFilesController extends Controller
             ]);
         } catch (Exception $exception) {
             Log::error($exception);
+            $clipboardContent = null;
             $message = __('An unexpected error occurred. If the problem persists, please contact support.');
         }
 
