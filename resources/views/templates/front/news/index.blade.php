@@ -1,6 +1,6 @@
 @extends('layouts.front.full')
 @section('template')
-    <div id="news" class="container my-5">
+    <div class="container my-5">
         <div class="row">
             <div class="col-12">
                 <h1>@lang('News')</h1>

@@ -6,7 +6,6 @@
         <div id="layout" class="d-flex flex-grow-1 position-relative">
             @yield('template')
         </div>
-        @yield('modals')
     </body>
     @include('layouts.front.partials.end')
 @endsection

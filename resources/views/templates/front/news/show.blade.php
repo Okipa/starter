@@ -1,6 +1,6 @@
 @extends('layouts.front.full')
 @section('template')
-    <div id="news-show" class="container my-5">
+    <div class="container my-5">
         {{-- cover --}}
         <div class="row">
             {{ $article->getFirstMedia('illustrations')('cover') }}

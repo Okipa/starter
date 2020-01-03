@@ -54,6 +54,7 @@ mix
         lozad: ['lozad']
     })
     .extract(['bootstrap', 'lodash', 'axios', 'jquery', 'popper.js', 'sweetalert2', 'cookieconsent', 'lozad'])
+    .sourceMaps()
     .version([
         'public/images/',
         'public/favicon.ico'

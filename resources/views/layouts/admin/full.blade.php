@@ -9,7 +9,6 @@
                 @yield('template')
             </div>
         </div>
-        @yield('modals')
     </body>
     @include('layouts.admin.partials.end')
 @endsection

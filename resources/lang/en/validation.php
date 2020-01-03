@@ -159,6 +159,8 @@ return [
         'description' => 'Description',
         'meta_title' => 'Meta title',
         'meta_description' => 'Meta description',
+        'phone_number' => 'Phone number',
+        'message' => 'Message',
     ],
 
 ];

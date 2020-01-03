@@ -11,6 +11,6 @@ window.triggerInputFileChangeDetection = (fileInputElements) => {
     });
 };
 const fileInputElements = $('input[type=file]');
-if(fileInputElements.length) {
+if (fileInputElements.length) {
     triggerInputFileChangeDetection(fileInputElements);
 }

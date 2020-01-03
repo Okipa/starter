@@ -10,7 +10,6 @@
             </div>
             @include('layouts.front.partials.footer')
         </div>
-        @yield('modals')
     </body>
     @include('layouts.front.partials.end')
 @endsection

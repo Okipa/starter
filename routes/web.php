@@ -1,10 +1,5 @@
 <?php
 
-// not localized routes ************************************************************************************************
-require('web/admin/admin.php');
-// utils
-require('web/utils/seo.php');
-require('web/utils/download.php');
 // localized routes ****************************************************************************************************
 Route::localized(function () {
     // auth
@@ -35,3 +30,10 @@ Route::localized(function () {
     require('web/front/contact.php');
     require('web/front/simplePages.php');
 });
+
+// not localized routes ************************************************************************************************
+require('web/admin/admin.php');
+// utils
+require('web/utils/seo.php');
+require('web/utils/download.php');
+require('web/utils/fallback.php');

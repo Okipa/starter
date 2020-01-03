@@ -4,4 +4,3 @@
 @if(! empty($js))
     <script type="text/javascript" src="{{ $js }}" defer></script>
 @endif
-@yield('js-import')

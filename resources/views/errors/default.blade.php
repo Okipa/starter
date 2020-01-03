@@ -1,7 +1,7 @@
 @extends('layouts.front.empty')
 @section('template')
     @php($maintenanceMode = $exception->getStatusCode() === 503)
-    <div id="error" class="container d-flex flex-grow-1 align-items-center justify-content-center">
+    <div class="container d-flex flex-grow-1 align-items-center justify-content-center">
         <div class="row">
             <div class="text-center">
                 <div class="mx-auto mb-4">
@@ -29,9 +29,9 @@
                         @lang('errors.message.' . $exception->getStatusCode())
                     @endif
                 </p>
-                {{ buttonBack()->route('home')->label($maintenanceMode
-                    ? __('static.action.retry')
-                    : __('Back to home page'))->containerClasses(['mt-5']) }}
+                {{ buttonBack()->route('home')
+                    ->label($maintenanceMode ? __('Retry') : __('Back to home page'))
+                    ->containerClasses(['mt-5']) }}
             </div>
         </div>
     </div>
