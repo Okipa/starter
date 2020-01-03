@@ -35,4 +35,15 @@ return [
         'notice' => 'If you have not created an account, no action is required.',
     ],
 
+    'ContactFormMessage' => [
+        'subject' => [
+            'original' => 'Contact form : new message',
+            'copy' => 'Contact form : copy of your message',
+        ],
+        'message' => [
+            'original' => 'This message has been sent from the contact form of :app.',
+            'copy' => 'This is a copy of the message your sent from the contact form of :app.',
+        ],
+    ],
+
 ];

@@ -9,8 +9,7 @@ return [
             'error' => 'Whoops !',
         ],
         'action' => [
-            'alternative' => 'Si vous ne parvenez pas à cliquer sur le bouton « :actionText », effectuez un copier '
-                . '/ coller du lien ci-dessous dans votre navigateur : :actionURL',
+            'alternative' => 'Si vous ne parvenez pas à cliquer sur le bouton « :actionText », effectuez un copier/coller du lien ci-dessous dans votre navigateur : :actionURL',
             'contact' => 'Nous contacter',
             'phone' => '[:phoneNumber](tel::phoneNumber)',
             'email' => '[:email](mailto::email)',
@@ -39,12 +38,12 @@ return [
     'ContactFormMessage' => [
         'subject' => [
             'original' => 'Formulaire de contact : nouveau message',
-            'copy'     => 'Formulaire de contact : copie de votre message',
+            'copy' => 'Formulaire de contact : copie de votre message',
         ],
         'message' => [
             'original' => 'Ce message vous a été adressé depuis le formulaire de contact de :app.',
-            'copy'     => 'Nous vous adressons une copie de votre message, envoyé depuis le formulaire de contact de :app.',
+            'copy' => 'Nous vous adressons une copie du message que vous avez envoyé depuis le formulaire de contact de :app.',
         ],
-    ]
+    ],
 
 ];

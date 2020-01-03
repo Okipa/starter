@@ -24,7 +24,6 @@ $('.clipboard-copy').click(function (e) {
         });
     }).catch((error) => {
         console.error(error);
-        console.error(error);
         notify.toast.fire({
             type: 'error',
             title: error.response.data.message
