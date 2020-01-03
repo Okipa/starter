@@ -17,6 +17,6 @@ class ContactPageUpdateRequest extends Request
         return $this->localizeRules(array_merge([
             'title'       => ['required', 'string', 'max:255'],
             'description' => ['required', 'string', 'max:65535'],
-        ], (new SeoService)->metaTagsRules()));
+        ], (new SeoService)->getSeoMetaRules()));
     }
 }

@@ -49,7 +49,7 @@ class UsersController extends Controller
     {
         $request->merge(['password' => Hash::make($request->password)]);
         $user = (new User)->create($request->validated());
-        (new UsersService)->manageAvatarFromRequest($request, $user);
+        (new UsersService)->saveAvatarFromRequest($request, $user);
 
         return redirect()->route('users.index')->with('toast_success', __('notifications.orphan.created', [
             'entity' => __('Users'),
@@ -84,7 +84,7 @@ class UsersController extends Controller
             $request->merge(['password' => Hash::make($request->new_password)]);
         }
         $user->update($request->validated());
-        (new UsersService)->manageAvatarFromRequest($request, $user);
+        (new UsersService)->saveAvatarFromRequest($request, $user);
 
         return back()->with('toast_success', $user->id === Auth::id()
             ? __('notifications.name.updated', ['name' => __('My profile')])

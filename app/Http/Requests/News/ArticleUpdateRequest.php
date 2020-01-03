@@ -51,7 +51,7 @@ class ArticleUpdateRequest extends Request
                 UniqueTranslationRule::for('news_articles')->ignore($this->article->id),
             ],
             'description' => ['string', 'max:4294967295'],
-        ], (new SeoService)->metaTagsRules()));
+        ], (new SeoService)->getSeoMetaRules()));
 
         return array_merge($multilingualRules, $rules);
     }

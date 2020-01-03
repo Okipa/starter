@@ -16,23 +16,30 @@ interface UsersServiceInterface extends ServiceInterface
      *
      * @return \Okipa\LaravelTable\Table
      * @throws \ErrorException
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
     public function table(): Table;
 
     /**
-     * Manage avatar from request.
+     * Save avatar from request.
      *
      * @param \App\Http\Requests\Request $request
      * @param \App\Models\User $user
      *
-     * @return void
+     * @throws \Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\DiskDoesNotExist
+     * @throws \Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\FileDoesNotExist
+     * @throws \Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\FileIsTooBig
      */
-    public function manageAvatarFromRequest(Request $request, User $user): void;
+    public function saveAvatarFromRequest(Request $request, User $user): void;
 
     /**
      * Set default avatar image for the given user.
      *
      * @param \App\Models\User $user
+     *
+     * @throws \Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\DiskDoesNotExist
+     * @throws \Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\FileDoesNotExist
+     * @throws \Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\FileIsTooBig
      */
-    public function setDefaultAvatarImage(User $user): void;
+    public function setDefaultAvatar(User $user): void;
 }

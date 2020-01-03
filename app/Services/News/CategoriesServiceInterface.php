@@ -8,10 +8,11 @@ use Okipa\LaravelTable\Table;
 interface CategoriesServiceInterface extends ServiceInterface
 {
     /**
-     * Generate the news categories table list.
+     * Configure the model table list.
      *
      * @return \Okipa\LaravelTable\Table
      * @throws \ErrorException
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
     public function table(): Table;
 }

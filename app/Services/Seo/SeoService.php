@@ -12,9 +12,11 @@ class SeoService extends Service implements SeoServiceInterface
     protected $seoTags = ['meta_title', 'meta_description'];
 
     /**
+     * Get SEO meta rules.
+     *
      * @return array
      */
-    public function metaTagsRules(): array
+    public function getSeoMetaRules(): array
     {
         return [
             'meta_title' => ['required', 'string', 'max:255'],
@@ -23,6 +25,8 @@ class SeoService extends Service implements SeoServiceInterface
     }
 
     /**
+     * Save SEO meta from request.
+     *
      * @param Metable $model
      * @param Request $request
      */
@@ -32,6 +36,8 @@ class SeoService extends Service implements SeoServiceInterface
     }
 
     /**
+     * Save SEO meta for model from given array.
+     *
      * @param \App\Models\Metable $model
      * @param array $values
      */
@@ -48,6 +54,8 @@ class SeoService extends Service implements SeoServiceInterface
     }
 
     /**
+     * Display SEO meta in the HTML head from model.
+     *
      * @param \App\Models\Metable $model
      */
     public function displayMetaTagsFromModel(Metable $model): void

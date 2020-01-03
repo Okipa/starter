@@ -77,7 +77,7 @@ class RegisterController extends Controller
             'email'      => $data['email'],
             'password'   => Hash::make($data['password']),
         ]);
-        (new UsersService)->setDefaultAvatarImage($user);
+        (new UsersService)->setDefaultAvatar($user);
 
         return $user;
     }

@@ -11,8 +11,9 @@ interface SimplePagesServiceInterface extends ServiceInterface
     /**
      * Configure the model table list.
      *
-     * @return Table
-     * @throws ErrorException
+     * @return \Okipa\LaravelTable\Table
+     * @throws \ErrorException
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
-    public function table();
+    public function table(): Table;
 }

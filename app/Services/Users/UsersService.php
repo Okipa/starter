@@ -17,9 +17,9 @@ class UsersService extends Service implements UsersServiceInterface
     /**
      * Configure the model table list.
      *
-     * @return Table
-     * @throws ErrorException
-     * @throws BindingResolutionException
+     * @return \Okipa\LaravelTable\Table
+     * @throws \ErrorException
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
     public function table(): Table
     {
@@ -49,35 +49,34 @@ class UsersService extends Service implements UsersServiceInterface
     }
 
     /**
-     * Manage avatar from request.
+     * Save avatar from request.
      *
-     * @param Request $request
-     * @param User $user
+     * @param \App\Http\Requests\Request $request
+     * @param \App\Models\User $user
      *
-     * @return void
-     * @throws DiskDoesNotExist
-     * @throws FileDoesNotExist
-     * @throws FileIsTooBig
+     * @throws \Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\DiskDoesNotExist
+     * @throws \Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\FileDoesNotExist
+     * @throws \Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\FileIsTooBig
      */
-    public function manageAvatarFromRequest(Request $request, User $user): void
+    public function saveAvatarFromRequest(Request $request, User $user): void
     {
         if ($request->file('avatar')) {
             $user->addMediaFromRequest('avatar')->toMediaCollection('avatars');
         } elseif ($request->method() !== 'PUT' || $request->remove_avatar) {
-            $this->setDefaultAvatarImage($user);
+            $this->setDefaultAvatar($user);
         }
     }
 
     /**
      * Set default avatar image for the given user.
      *
-     * @param User $user
+     * @param \App\Models\User $user
      *
-     * @throws DiskDoesNotExist
-     * @throws FileDoesNotExist
-     * @throws FileIsTooBig
+     * @throws \Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\DiskDoesNotExist
+     * @throws \Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\FileDoesNotExist
+     * @throws \Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\FileIsTooBig
      */
-    public function setDefaultAvatarImage(User $user): void
+    public function setDefaultAvatar(User $user): void
     {
         $user->addMedia(database_path('seeds/files/users/default-450-450.png'))
             ->preservingOriginal()

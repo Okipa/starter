@@ -4,4 +4,5 @@ namespace App\Services;
 
 interface ServiceInterface
 {
+    //
 }

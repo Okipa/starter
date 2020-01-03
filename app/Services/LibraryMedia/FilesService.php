@@ -15,11 +15,11 @@ class FilesService extends Service implements FilesServiceInterface
     /**
      * Configure the model table list.
      *
-     * @param Request $request
+     * @param \Illuminate\Http\Request $request
      *
-     * @return Table
-     * @throws ErrorException
-     * @throws BindingResolutionException
+     * @return \Okipa\LaravelTable\Table
+     * @throws \ErrorException
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
     public function table(Request $request): Table
     {

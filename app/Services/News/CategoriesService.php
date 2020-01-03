@@ -13,9 +13,9 @@ class CategoriesService extends Service implements CategoriesServiceInterface
     /**
      * Configure the model table list.
      *
-     * @return Table
-     * @throws ErrorException
-     * @throws BindingResolutionException
+     * @return \Okipa\LaravelTable\Table
+     * @throws \ErrorException
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
     public function table(): Table
     {

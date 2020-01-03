@@ -42,7 +42,7 @@ class SimplePageStoreRequest extends Request
             ],
             'title' => ['required', 'string', 'max:255'],
             'description' => ['string', 'max:4294967295'],
-        ], (new SeoService)->metaTagsRules()));
+        ], (new SeoService)->getSeoMetaRules()));
 
         return array_merge($multilingualRules, $rules);
     }
