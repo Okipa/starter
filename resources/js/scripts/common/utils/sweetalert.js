@@ -10,17 +10,15 @@ window.notify = swal.mixin({
 notify.toast = notify.mixin({
     toast: true,
     position: 'top-end',
-    timer: 10000
+    timer: 8000
 });
 
 notify.loading = (title = app.sweetalert.pleaseWait, message = app.sweetalert.loading) => {
     return swal.fire({
         toast: true,
         position: 'top-end',
-        timer: 10000,
-        type: 'info',
-        title: title,
-        html: message,
+        icon: 'info',
+        title: message,
         timerProgressBar: true,
         onBeforeOpen: () => {
             swal.showLoading();
@@ -28,16 +26,18 @@ notify.loading = (title = app.sweetalert.pleaseWait, message = app.sweetalert.lo
     });
 };
 
-notify.warning = (html, title = app.sweetalert.confirmRequest) => {
+notify.confirm = (html, title = app.sweetalert.confirmRequest) => {
     return notify.fire({
         title: title,
         html: html,
-        type: 'warning',
+        icon: 'warning',
         showCancelButton: true,
         confirmButtonText: app.sweetalert.confirm,
         cancelButtonText: app.sweetalert.cancel
     });
 };
+
+console.log(app.swalConfig);
 
 if (app.swalConfig) {
     notify.fire(app.swalConfig);

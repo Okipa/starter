@@ -1,7 +1,7 @@
 let confirmationGiven;
 const askConfirmation = (event, message, actionOnceConfirmed) => {
     confirmationGiven = false;
-    notify.warning(message).then((result) => {
+    notify.confirm(message).then((result) => {
         if (result.value) {
             confirmationGiven = true;
             actionOnceConfirmed();
