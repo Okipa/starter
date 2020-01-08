@@ -37,8 +37,6 @@ notify.confirm = (html, title = app.sweetalert.confirmRequest) => {
     });
 };
 
-console.log(app.swalConfig);
-
 if (app.swalConfig) {
     notify.fire(app.swalConfig);
 }
