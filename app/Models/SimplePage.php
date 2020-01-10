@@ -2,11 +2,14 @@
 
 namespace App\Models;
 
+use Okipa\LaravelBrickables\Contracts\HasBrickables;
+use Okipa\LaravelBrickables\Traits\HasBrickablesTrait;
 use Spatie\Translatable\HasTranslations;
 
-class SimplePage extends Metable
+class SimplePage extends Metable implements HasBrickables
 {
     use HasTranslations;
+    use HasBrickablesTrait;
 
     /**
      * The attributes that are translatable.

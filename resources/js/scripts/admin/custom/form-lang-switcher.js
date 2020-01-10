@@ -25,7 +25,7 @@ const switcher = {
         });
     },
     initialize: () => {
-        $('.card').before(app.multilingual.template.formLangSwitcher);
+        $('#form-notice').after(app.multilingual.template.formLangSwitcher);
         switcher.selectLang(app.locale);
         switcher.triggerTabClickListening();
     }

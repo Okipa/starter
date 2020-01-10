@@ -23,7 +23,7 @@
                 </h2>
             </div>
             <div class="card-body">
-                <h3>@lang('Page')</h3>
+                <h3>@lang('Identity')</h3>
                 {{ inputText()->name('title')
                     ->locales(supportedLocaleKeys())
                     ->model($simplePage)
@@ -43,11 +43,6 @@
                     ->componentClasses(['lowercase'])
                     ->componentHtmlAttributes(['data-autofill-from' => '#text-title'])
                     ->containerHtmlAttributes(['required']) }}
-                {{ textarea()->name('description')
-                    ->locales(supportedLocaleKeys())
-                    ->model($simplePage)
-                    ->prepend(false)
-                    ->componentClasses(['editor']) }}
                 <h3 class="pt-4">@lang('Publication')</h3>
                 {{ inputToggle()->name('active')->model($simplePage) }}
                 @include('components.admin.seo.meta-tags', ['model' => $simplePage])
@@ -58,4 +53,6 @@
             </div>
         </div>
     </form>
+    {{ Brickables::adminPanel($simplePage)  }}
+    </div>
 @endsection

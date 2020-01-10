@@ -1,4 +1,4 @@
-<div class="pt-1 pb-3">
+<div id="form-notice" class="mt-1 mb-3">
     <span class="h6">
         @lang('Form notice :')
     </span>

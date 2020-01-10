@@ -22,6 +22,7 @@ Route::localized(function () {
         require('web/admin/news.php');
         require('web/admin/contact.php');
         require('web/admin/simplePages.php');
+        require('web/admin/bricks.php');
         require('web/admin/libraryMedia.php');
         // password reconfirm protection
         Route::middleware(['password.confirm'])->group(function () {
@@ -44,4 +45,4 @@ require('web/utils/download.php');
 // 404 fallback catch : do not not place any route declaration under this one ******************************************
 Route::fallback(function () {
     return response()->view('errors.default', ['exception' => new HttpException(404)], 404);
-})->middleware(SetLocale::class)->name('404');
+})->middleware(SetLocale::class);

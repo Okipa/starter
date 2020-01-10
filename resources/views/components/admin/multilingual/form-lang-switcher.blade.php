@@ -1,5 +1,5 @@
 @if(multilingual())
-    <ul id="form-lang-switcher" class="nav nav-tabs">
+    <ul id="form-lang-switcher" class="nav nav-tabs my-3">
         @foreach(supportedLocales() as $localeKey => $locale)
             <li class="nav-item">
                 <a class="nav-link"

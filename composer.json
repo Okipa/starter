@@ -1,5 +1,11 @@
 {
     "license": "proprietary",
+    "repositories": [
+        {
+            "url": "https://github.com/Okipa/laravel-brickables",
+            "type": "git"
+        }
+    ],
     "require": {
         "php": "^7.3",
         "ext-json": "*",
@@ -16,6 +22,7 @@
         "laravel/telescope": "^2.0",
         "laravel/tinker": "^1.0",
         "okipa/laravel-bootstrap-components": "2.0.0.x-dev",
+        "okipa/laravel-brickables": "master",
         "okipa/laravel-failed-jobs-notifier": "^1.0",
         "okipa/laravel-medialibrary-ext": "^7.11.0",
         "okipa/laravel-request-sanitizer": "^1.0",
@@ -25,7 +32,6 @@
         "propaganistas/laravel-phone": "^4.0",
         "realrashid/sweet-alert": "^3.0",
         "sentry/sentry-laravel": "^1.0",
-        "spatie/eloquent-sortable": "^3.0",
         "spatie/laravel-sitemap": "^5.0",
         "spatie/laravel-translatable": "^4.0",
         "spatie/laravel-welcome-notification": "^1.0"

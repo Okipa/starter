@@ -18,6 +18,7 @@ class SettingsTableSeeder extends Seeder
     {
         $this->faker = Factory::create(config('app.faker_locale'));
         // todo : customize settings and seeder image
+        /** @var \App\Models\Settings $settings */
         $settings = (new Settings)->create([
             'email'        => $this->faker->email,
             'phone_number' => $this->faker->phoneNumber,

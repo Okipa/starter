@@ -15,6 +15,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Str;
 use Illuminate\View\View;
+use Okipa\LaravelBrickables\Brickables\OneTextColumn;
 
 class SimplePagesController extends Controller
 {
@@ -71,6 +72,8 @@ class SimplePagesController extends Controller
             'entity' => __('Simple pages'),
             'detail' => $simplePage->title,
         ]));
+
+         //$simplePage->addBrick(OneTextColumn::class, ['content' => 'Text']);
 
         return view('templates.admin.simple-pages.edit', compact('simplePage'));
     }
