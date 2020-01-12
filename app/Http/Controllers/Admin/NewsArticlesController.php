@@ -9,13 +9,6 @@ use App\Models\NewsArticle;
 use App\Services\News\ArticlesService;
 use App\Services\Seo\SeoService;
 use Artesaos\SEOTools\Facades\SEOTools;
-use Exception;
-use Illuminate\Contracts\View\Factory;
-use Illuminate\Http\RedirectResponse;
-use Illuminate\View\View;
-use Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\DiskDoesNotExist;
-use Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\FileDoesNotExist;
-use Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\FileIsTooBig;
 
 class NewsArticlesController extends Controller
 {

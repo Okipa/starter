@@ -53,6 +53,8 @@
             </div>
         </div>
     </form>
-    {{ Brickables::adminPanel($simplePage)  }}
+    @if($simplePage)
+        {{ Brickables::adminPanel($simplePage)  }}
+    @endif
     </div>
 @endsection

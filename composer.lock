@@ -3048,12 +3048,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Okipa/laravel-bootstrap-components.git",
-                "reference": "d80857acf9ceb481bbb07597602488c147d1a9f7"
+                "reference": "ad35d7a840703be7bbeb80151694cc0776127a38"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Okipa/laravel-bootstrap-components/zipball/d80857acf9ceb481bbb07597602488c147d1a9f7",
-                "reference": "d80857acf9ceb481bbb07597602488c147d1a9f7",
+                "url": "https://api.github.com/repos/Okipa/laravel-bootstrap-components/zipball/ad35d7a840703be7bbeb80151694cc0776127a38",
+                "reference": "ad35d7a840703be7bbeb80151694cc0776127a38",
                 "shasum": ""
             },
             "require": {
@@ -3111,7 +3111,7 @@
                 "package",
                 "php"
             ],
-            "time": "2020-01-07T12:21:30+00:00"
+            "time": "2020-01-12T13:14:53+00:00"
         },
         {
             "name": "okipa/laravel-brickables",
@@ -3119,7 +3119,7 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Okipa/laravel-brickables",
-                "reference": "0b7962a7a43f3215b47f83bdfe3ae8c971a4c0aa"
+                "reference": "2aa6f6aea0ddd982dda628c7fe499accce2be818"
             },
             "require": {
                 "illuminate/support": "~5.5.0||~5.6.0||~5.7.0||~5.8.0||^6.0",
@@ -3191,7 +3191,7 @@
                 "management",
                 "okipa"
             ],
-            "time": "2020-01-10T18:02:59+00:00"
+            "time": "2020-01-12T23:09:02+00:00"
         },
         {
             "name": "okipa/laravel-failed-jobs-notifier",
@@ -9349,16 +9349,16 @@
         },
         {
             "name": "phpstan/phpstan",
-            "version": "0.12.4",
+            "version": "0.12.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpstan/phpstan.git",
-                "reference": "100a25ba8561223f6bf5a5ff4204f951c0ec007c"
+                "reference": "71a20c18f06c53605251a00a8efe443fa85225d1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/100a25ba8561223f6bf5a5ff4204f951c0ec007c",
-                "reference": "100a25ba8561223f6bf5a5ff4204f951c0ec007c",
+                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/71a20c18f06c53605251a00a8efe443fa85225d1",
+                "reference": "71a20c18f06c53605251a00a8efe443fa85225d1",
                 "shasum": ""
             },
             "require": {
@@ -9384,7 +9384,7 @@
                 "MIT"
             ],
             "description": "PHPStan - PHP Static Analysis Tool",
-            "time": "2020-01-06T06:38:17+00:00"
+            "time": "2020-01-12T14:31:21+00:00"
         },
         {
             "name": "phpunit/php-code-coverage",
