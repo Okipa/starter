@@ -6,6 +6,7 @@ use Symfony\Component\HttpKernel\Exception\HttpException;
 // localized ***********************************************************************************************************
 Route::localized(function () {
     // auth
+    Auth::routes();
     require('web/auth/login.php');
     require('web/auth/password.php');
     require('web/auth/register.php'); // todo : comment if this feature is not needed
@@ -22,7 +23,8 @@ Route::localized(function () {
         require('web/admin/news.php');
         require('web/admin/contact.php');
         require('web/admin/simplePages.php');
-        require('web/admin/bricks.php');
+        //require('web/admin/bricks.php');
+        Brickables::routes();
         require('web/admin/libraryMedia.php');
         // password reconfirm protection
         Route::middleware(['password.confirm'])->group(function () {
