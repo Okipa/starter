@@ -4,6 +4,10 @@
         {
             "url": "https://github.com/Okipa/laravel-brickables",
             "type": "git"
+        },
+        {
+            "url": "https://github.com/Okipa/laravel-bootstrap-components",
+            "type": "git"
         }
     ],
     "require": {

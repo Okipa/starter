@@ -22,7 +22,7 @@ class InsertJavascript
             ? route('simplePage.show', cache('termsOfServicePage')->url)
             : null;
         JavaScript::put([
-            'locale' => $request->getLocale(),
+            'locale' => app()->getLocale(),
             'sweetalert' => __('sweetalert'),
             'cookieConsent' => __('cookieconsent'),
             'sumoSelect' => __('sumoselect'),

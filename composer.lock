@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "d543c162b341b9bd8e0fbb304a95f95e",
+    "content-hash": "48a46f6ef8586aeeb62a4a3e65911620",
     "packages": [
         {
             "name": "0.0.0/composer-include-files",
@@ -3047,14 +3047,8 @@
             "version": "2.0.0.x-dev",
             "source": {
                 "type": "git",
-                "url": "https://github.com/Okipa/laravel-bootstrap-components.git",
-                "reference": "632b7fb44c807ddf8ab7d423d951835fed5e09ea"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/Okipa/laravel-bootstrap-components/zipball/632b7fb44c807ddf8ab7d423d951835fed5e09ea",
-                "reference": "632b7fb44c807ddf8ab7d423d951835fed5e09ea",
-                "shasum": ""
+                "url": "https://github.com/Okipa/laravel-bootstrap-components",
+                "reference": "0724e3a3e1a617bb9696d3cff53352088b1ad579"
             },
             "require": {
                 "ext-json": "*",
@@ -3083,10 +3077,23 @@
                     "Okipa\\LaravelBootstrapComponents\\": "src/"
                 },
                 "files": [
-                    "app/Helpers/componentsHelper.php"
+                    "src/Helpers/components.php"
                 ]
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "autoload-dev": {
+                "psr-4": {
+                    "Okipa\\LaravelBootstrapComponents\\Tests\\": "tests"
+                }
+            },
+            "scripts": {
+                "test": [
+                    "vendor/bin/phpcbf",
+                    "vendor/bin/phpcs",
+                    "vendor/bin/phpmd config,src text phpmd.xml",
+                    "vendor/bin/phpstan analyse",
+                    "vendor/bin/phpunit"
+                ]
+            },
             "license": [
                 "MIT"
             ],
@@ -3111,7 +3118,7 @@
                 "package",
                 "php"
             ],
-            "time": "2020-01-15T15:09:05+00:00"
+            "time": "2020-01-15T21:11:24+00:00"
         },
         {
             "name": "okipa/laravel-brickables",
