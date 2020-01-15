@@ -25,16 +25,16 @@ return [
         'textarea' => Okipa\LaravelBootstrapComponents\Components\Form\Textarea::class,
         'select' => Okipa\LaravelBootstrapComponents\Components\Form\Select::class,
         // buttons
-        'submit' => App\Vendor\LaravelBootstrapComponents\Components\Buttons\Submit::class,
-        'create' => App\Vendor\LaravelBootstrapComponents\Components\Buttons\Create::class,
-        'update' => App\Vendor\LaravelBootstrapComponents\Components\Buttons\Update::class,
-        'validate' => App\Vendor\LaravelBootstrapComponents\Components\Buttons\Validate::class,
-        'button' => App\Vendor\LaravelBootstrapComponents\Components\Buttons\Button::class,
-        'link' => App\Vendor\LaravelBootstrapComponents\Components\Buttons\Link::class,
-        'back' => App\Vendor\LaravelBootstrapComponents\Components\Buttons\Back::class,
-        'cancel' => App\Vendor\LaravelBootstrapComponents\Components\Buttons\Cancel::class,
+        'submit' => Okipa\LaravelBootstrapComponents\Components\Buttons\Submit::class,
+        'create' => Okipa\LaravelBootstrapComponents\Components\Buttons\Create::class,
+        'update' => Okipa\LaravelBootstrapComponents\Components\Buttons\Update::class,
+        'validate' => Okipa\LaravelBootstrapComponents\Components\Buttons\Validate::class,
+        'button' => Okipa\LaravelBootstrapComponents\Components\Buttons\Button::class,
+        'link' => Okipa\LaravelBootstrapComponents\Components\Buttons\Link::class,
+        'back' => Okipa\LaravelBootstrapComponents\Components\Buttons\Back::class,
+        'cancel' => Okipa\LaravelBootstrapComponents\Components\Buttons\Cancel::class,
         // media
-        'image' => App\Vendor\LaravelBootstrapComponents\Components\Media\Image::class,
+        'image' => App\Components\Media\Image::class,
         'audio' => Okipa\LaravelBootstrapComponents\Components\Media\Audio::class,
         'video' => Okipa\LaravelBootstrapComponents\Components\Media\Video::class,
     ],
@@ -47,7 +47,7 @@ return [
          * The fully qualified class name of the multilingual resolver.
          * You can override it. Make sure your custom resolver extends this one.
          */
-        'multilingualResolver' => App\Vendor\LaravelBootstrapComponents\Components\Form\Multilingual\Resolver::class,
+        'multilingualResolver' => App\Components\Form\Multilingual\Resolver::class,
 
         /*
          * Whether the form component label is positioned above the component itself.

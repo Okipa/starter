@@ -25,7 +25,7 @@
             ->containerHtmlAttributes(['required']) }}
         {{ inputPassword()->name('password_confirmation')->containerHtmlAttributes(['required']) }}
         {{ submitValidate()->label(__('Save new password'))
-            ->componentClasses(['btn', 'btn-block', 'btn-primary', 'load-on-click']) }}
+            ->componentClasses(['btn', 'btn-block', 'btn-primary']) }}
     </form>
     {{ buttonBack()->route('login') }}
 @endsection

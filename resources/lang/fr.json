@@ -84,5 +84,10 @@
     "If no password is defined for this user, he will be e-mailed a password creation link.": "Si aucun mot de passe n'est défini pour cet utilisateur, un lien de création de mot de passe lui sera envoyé par e-mail.",
     "A password creation link has been sent.": "Un lien de création de mot de passe a été envoyé.",
     "Welcome on :app ! To be able to login to your new account please define a secured password with the fields bellow.": "Bienvenue sur :app ! Pour pouvoir vous connecter à votre nouveau compte, merci de définir un mot de passe sécurisé à l'aide des champs ci-dessous.",
-    "Data": "Données"
+    "Data": "Données",
+    "Content bricks": "Briques contenu",
+    "Add": "Ajouter",
+    "One text column": "Une colonne texte",
+    "Two text columns": "Deux colonnes texte",
+    "No saved content brick.": "Aucune brique de contenu enregistrée."
 }

@@ -18,7 +18,7 @@
     <ul id="libraryMediaMenu" class="collapse list-unstyled {{ $subMenuActive ? 'show' : null }}">
         {{-- categories --}}
         <li class="nav-item">
-            <a class="nav-link load-on-click {{ $libraryMediaCategoriesActive ? 'active' : null }}"
+            <a class="nav-link {{ $libraryMediaCategoriesActive ? 'active' : null }}"
                 href="{{ route('libraryMedia.categories.index') }}"
                     title="@lang('Categories')">
                 <i class="fas fa-tags fa-fw"></i>
@@ -27,7 +27,7 @@
         </li>
         {{-- files --}}
         <li class="nav-item">
-            <a class="nav-link load-on-click {{ $libraryMediaFilesActive ? 'active' : null }}"
+            <a class="nav-link {{ $libraryMediaFilesActive ? 'active' : null }}"
                href="{{ route('libraryMedia.files.index') }}"
                title="@lang('Files')">
                     <i class="fas fa-copy fa-fw"></i>

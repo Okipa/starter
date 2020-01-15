@@ -18,7 +18,7 @@
     <ul id="newsMenu" class="collapse list-unstyled {{ $subMenuActive ? 'show' : null }}">
         {{-- categories --}}
         <li class="nav-item">
-            <a class="nav-link load-on-click {{ $newsCategoriesActive ? 'active' : null }}"
+            <a class="nav-link {{ $newsCategoriesActive ? 'active' : null }}"
                href="{{ route('news.categories.index') }}"
                title="@lang('Categories')">
                 <i class="fas fa-tags fa-fw"></i>
@@ -27,7 +27,7 @@
         </li>
         {{-- articles --}}
         <li class="nav-item">
-            <a class="nav-link load-on-click {{ $newsArticlesActive ? 'active' : null }}"
+            <a class="nav-link {{ $newsArticlesActive ? 'active' : null }}"
                href="{{ route('news.articles.index') }}"
                title="@lang('Articles')">
                 <i class="fas fa-paper-plane fa-fw"></i>

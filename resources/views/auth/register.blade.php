@@ -32,7 +32,7 @@
         {{ inputPassword()->name('password_confirmation')
             ->containerHtmlAttributes(['required']) }}
         {{ submitValidate()->label(__('Create account'))
-            ->componentClasses(['btn', 'btn-block', 'btn-primary', 'load-on-click']) }}
+            ->componentClasses(['btn', 'btn-block', 'btn-primary']) }}
     </form>
     {{ buttonCancel()->route('login') }}
 @endsection

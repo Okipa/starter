@@ -17,7 +17,7 @@
     <ul id="homeMenu" class="collapse list-unstyled {{ $subMenuActive ? 'show' : null }}">
         {{-- page --}}
         <li class="nav-item">
-            <a class="nav-link load-on-click {{ $homePageActive ? 'active' : null }}"
+            <a class="nav-link {{ $homePageActive ? 'active' : null }}"
                href="{{ route('home.page.edit') }}"
                title="@lang('Page')">
                 <i class="fas fa-desktop fa-fw"></i>

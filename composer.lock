@@ -1194,16 +1194,16 @@
         },
         {
             "name": "giggsey/libphonenumber-for-php",
-            "version": "8.11.1",
+            "version": "8.11.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/giggsey/libphonenumber-for-php.git",
-                "reference": "f6a367f08e323edc1c27546d8d5818bb016d812e"
+                "reference": "1ec1059b56b40cc1b6b02b438711e4a90ba4bbc7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/giggsey/libphonenumber-for-php/zipball/f6a367f08e323edc1c27546d8d5818bb016d812e",
-                "reference": "f6a367f08e323edc1c27546d8d5818bb016d812e",
+                "url": "https://api.github.com/repos/giggsey/libphonenumber-for-php/zipball/1ec1059b56b40cc1b6b02b438711e4a90ba4bbc7",
+                "reference": "1ec1059b56b40cc1b6b02b438711e4a90ba4bbc7",
                 "shasum": ""
             },
             "require": {
@@ -1258,7 +1258,7 @@
                 "phonenumber",
                 "validation"
             ],
-            "time": "2019-12-11T10:03:19+00:00"
+            "time": "2020-01-15T09:35:09+00:00"
         },
         {
             "name": "giggsey/locale",
@@ -1863,16 +1863,16 @@
         },
         {
             "name": "laravel/framework",
-            "version": "v6.10.1",
+            "version": "v6.11.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "fe45ad5bc89e5e1b08ab2c8687f9be01c9c84d14"
+                "reference": "17af23842c259edcfd8c5b9e6a7c86596e040034"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/fe45ad5bc89e5e1b08ab2c8687f9be01c9c84d14",
-                "reference": "fe45ad5bc89e5e1b08ab2c8687f9be01c9c84d14",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/17af23842c259edcfd8c5b9e6a7c86596e040034",
+                "reference": "17af23842c259edcfd8c5b9e6a7c86596e040034",
                 "shasum": ""
             },
             "require": {
@@ -2006,20 +2006,20 @@
                 "framework",
                 "laravel"
             ],
-            "time": "2020-01-08T21:17:42+00:00"
+            "time": "2020-01-14T15:12:09+00:00"
         },
         {
             "name": "laravel/horizon",
-            "version": "v3.4.6",
+            "version": "v3.4.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/horizon.git",
-                "reference": "78516806b280b360996e514565bc0e1f8d3cc7e3"
+                "reference": "45a76521b4c378eb97bbc86ef59fd6e323f9d8d1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/horizon/zipball/78516806b280b360996e514565bc0e1f8d3cc7e3",
-                "reference": "78516806b280b360996e514565bc0e1f8d3cc7e3",
+                "url": "https://api.github.com/repos/laravel/horizon/zipball/45a76521b4c378eb97bbc86ef59fd6e323f9d8d1",
+                "reference": "45a76521b4c378eb97bbc86ef59fd6e323f9d8d1",
                 "shasum": ""
             },
             "require": {
@@ -2075,7 +2075,7 @@
                 "laravel",
                 "queue"
             ],
-            "time": "2019-12-30T22:01:12+00:00"
+            "time": "2020-01-14T16:41:11+00:00"
         },
         {
             "name": "laravel/slack-notification-channel",
@@ -2262,16 +2262,16 @@
         },
         {
             "name": "league/commonmark",
-            "version": "1.2.0",
+            "version": "1.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thephpleague/commonmark.git",
-                "reference": "2533c389fd2a7573d4f7be279b1c33cf941c8dfc"
+                "reference": "74e08793c41c72c8ed7a22df803f2ffcaf77efb7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/commonmark/zipball/2533c389fd2a7573d4f7be279b1c33cf941c8dfc",
-                "reference": "2533c389fd2a7573d4f7be279b1c33cf941c8dfc",
+                "url": "https://api.github.com/repos/thephpleague/commonmark/zipball/74e08793c41c72c8ed7a22df803f2ffcaf77efb7",
+                "reference": "74e08793c41c72c8ed7a22df803f2ffcaf77efb7",
                 "shasum": ""
             },
             "require": {
@@ -2329,7 +2329,7 @@
                 "markdown",
                 "parser"
             ],
-            "time": "2020-01-09T22:41:09+00:00"
+            "time": "2020-01-15T03:32:39+00:00"
         },
         {
             "name": "league/commonmark-ext-table",
@@ -3048,12 +3048,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Okipa/laravel-bootstrap-components.git",
-                "reference": "ad35d7a840703be7bbeb80151694cc0776127a38"
+                "reference": "632b7fb44c807ddf8ab7d423d951835fed5e09ea"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Okipa/laravel-bootstrap-components/zipball/ad35d7a840703be7bbeb80151694cc0776127a38",
-                "reference": "ad35d7a840703be7bbeb80151694cc0776127a38",
+                "url": "https://api.github.com/repos/Okipa/laravel-bootstrap-components/zipball/632b7fb44c807ddf8ab7d423d951835fed5e09ea",
+                "reference": "632b7fb44c807ddf8ab7d423d951835fed5e09ea",
                 "shasum": ""
             },
             "require": {
@@ -3111,7 +3111,7 @@
                 "package",
                 "php"
             ],
-            "time": "2020-01-12T13:14:53+00:00"
+            "time": "2020-01-15T15:09:05+00:00"
         },
         {
             "name": "okipa/laravel-brickables",
@@ -3119,7 +3119,7 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Okipa/laravel-brickables",
-                "reference": "828ad32cc81663ee4dea715f027b673ff4a880f8"
+                "reference": "0e83ccc7a0c1f36e209bb5471dcb680daa616747"
             },
             "require": {
                 "illuminate/support": "~5.5.0||~5.6.0||~5.7.0||~5.8.0||^6.0",
@@ -3191,7 +3191,7 @@
                 "management",
                 "okipa"
             ],
-            "time": "2020-01-13T16:51:49+00:00"
+            "time": "2020-01-15T15:13:31+00:00"
         },
         {
             "name": "okipa/laravel-failed-jobs-notifier",
@@ -7576,16 +7576,16 @@
         },
         {
             "name": "tightenco/collect",
-            "version": "v6.9.0",
+            "version": "v6.11.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/tightenco/collect.git",
-                "reference": "67525fa5ebaab40acb69f0507fa91e6bce212d5c"
+                "reference": "b0263d1e2931a272dcf091f1481291ea8ec3ec14"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/tightenco/collect/zipball/67525fa5ebaab40acb69f0507fa91e6bce212d5c",
-                "reference": "67525fa5ebaab40acb69f0507fa91e6bce212d5c",
+                "url": "https://api.github.com/repos/tightenco/collect/zipball/b0263d1e2931a272dcf091f1481291ea8ec3ec14",
+                "reference": "b0263d1e2931a272dcf091f1481291ea8ec3ec14",
                 "shasum": ""
             },
             "require": {
@@ -7622,7 +7622,7 @@
                 "collection",
                 "laravel"
             ],
-            "time": "2019-12-06T22:56:34+00:00"
+            "time": "2020-01-14T17:16:45+00:00"
         },
         {
             "name": "tijsverkoyen/css-to-inline-styles",
@@ -7971,16 +7971,16 @@
         },
         {
             "name": "composer/composer",
-            "version": "1.9.1",
+            "version": "1.9.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/composer/composer.git",
-                "reference": "bb01f2180df87ce7992b8331a68904f80439dd2f"
+                "reference": "7a04aa0201ddaa0b3cf64d41022bd8cdcd7fafeb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/composer/composer/zipball/bb01f2180df87ce7992b8331a68904f80439dd2f",
-                "reference": "bb01f2180df87ce7992b8331a68904f80439dd2f",
+                "url": "https://api.github.com/repos/composer/composer/zipball/7a04aa0201ddaa0b3cf64d41022bd8cdcd7fafeb",
+                "reference": "7a04aa0201ddaa0b3cf64d41022bd8cdcd7fafeb",
                 "shasum": ""
             },
             "require": {
@@ -8047,7 +8047,7 @@
                 "dependency",
                 "package"
             ],
-            "time": "2019-11-01T16:20:17+00:00"
+            "time": "2020-01-14T15:30:32+00:00"
         },
         {
             "name": "composer/semver",
@@ -8441,16 +8441,16 @@
         },
         {
             "name": "filp/whoops",
-            "version": "2.7.0",
+            "version": "2.7.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/filp/whoops.git",
-                "reference": "4c97f814aa2f0dd4d5bedc89181c10ef12c004c5"
+                "reference": "fff6f1e4f36be0e0d0b84d66b413d9dcb0c49130"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/filp/whoops/zipball/4c97f814aa2f0dd4d5bedc89181c10ef12c004c5",
-                "reference": "4c97f814aa2f0dd4d5bedc89181c10ef12c004c5",
+                "url": "https://api.github.com/repos/filp/whoops/zipball/fff6f1e4f36be0e0d0b84d66b413d9dcb0c49130",
+                "reference": "fff6f1e4f36be0e0d0b84d66b413d9dcb0c49130",
                 "shasum": ""
             },
             "require": {
@@ -8498,7 +8498,7 @@
                 "throwable",
                 "whoops"
             ],
-            "time": "2019-12-29T10:00:00+00:00"
+            "time": "2020-01-15T10:00:00+00:00"
         },
         {
             "name": "fzaninotto/faker",

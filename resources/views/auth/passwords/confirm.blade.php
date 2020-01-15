@@ -20,7 +20,7 @@
         <p>@lang('For security reasons, please confirm your password. You will not be asked for several hours.')</p>
         {{ inputPassword()->name('password')->containerHtmlAttributes(['required']) }}
         {{ submitValidate()->label(__('Confirm password'))
-            ->componentClasses(['btn', 'btn-block', 'btn-primary', 'load-on-click']) }}
+            ->componentClasses(['btn', 'btn-block', 'btn-primary']) }}
         <div class="form-group d-block">
             <a href="{{ route('password.request') }}">
                 @lang('Forgotten password')

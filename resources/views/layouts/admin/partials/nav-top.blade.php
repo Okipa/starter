@@ -21,7 +21,7 @@
             </a>
             <div class="dropdown-menu dropdown-menu-right">
                 <a href="{{ route('user.profile.edit') }}"
-                   class="dropdown-item load-on-click {{ request()->route()->getName() === 'user.profile' ? 'active' : null }}"
+                   class="dropdown-item {{ request()->route()->getName() === 'user.profile' ? 'active' : null }}"
                    title="@lang('My profile')">
                     <i class="fas fa-user-circle fa-fw"></i>
                     @lang('My profile')

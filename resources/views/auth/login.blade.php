@@ -20,7 +20,7 @@
         {{ inputEmail()->name('email')->componentHtmlAttributes(['autofocus'])->containerHtmlAttributes(['required']) }}
         {{ inputPassword()->name('password')->containerHtmlAttributes(['required']) }}
         {{ inputToggle()->name('remember') }}
-        {{ submitValidate()->label(__('Sign me in'))->componentClasses(['btn', 'btn-block', 'btn-primary', 'load-on-click']) }}
+        {{ submitValidate()->label(__('Sign me in'))->componentClasses(['btn', 'btn-block', 'btn-primary']) }}
         <div class="form-group d-block">
             <a href="{{ route('password.request') }}">
                 @lang('Forgotten password')

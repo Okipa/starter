@@ -1,11 +1,11 @@
 @extends('layouts.front.full')
 @section('template')
-    <div class="container d-flex flex-grow-1 my-4 py-4">
-        <div class="d-flex flex-column">
-            <h1 class="text-primary mb-5">{{ $simplePage->title }}</h1>
-            <div class="text">
-                {!! (new Parsedown)->text($simplePage->description) !!}
+    <div class="container my-5">
+        <div class="row mb-5">
+            <div class="col">
+                <h1 class="text-primary">{{ $simplePage->title }}</h1>
             </div>
         </div>
+        {{ Brickables::bricks($simplePage) }}
     </div>
 @endsection

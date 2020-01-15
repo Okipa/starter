@@ -17,7 +17,7 @@
     <ul id="contactMenu" class="collapse list-unstyled {{ $subMenuActive ? 'show' : null }}">
         {{-- page --}}
         <li class="nav-item">
-            <a class="nav-link load-on-click {{ $contactPageActive ? 'active' : null }}"
+            <a class="nav-link {{ $contactPageActive ? 'active' : null }}"
                href="{{ route('contact.page.edit') }}"
                title="@lang('Page')">
                 <i class="fas fa-desktop fa-fw"></i>

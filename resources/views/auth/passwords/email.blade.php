@@ -21,7 +21,7 @@
             ->legend(__('Fill in your e-mail to receive instructions for resetting your password.'))
             ->componentHtmlAttributes(['autofocus'])
             ->containerHtmlAttributes(['required']) }}
-        {{ submitValidate()->label(__('Send reset e-mail'))->componentClasses(['btn', 'btn-block', 'btn-primary', 'load-on-click']) }}
+        {{ submitValidate()->label(__('Send reset e-mail'))->componentClasses(['btn', 'btn-block', 'btn-primary']) }}
     </form>
     {{ buttonCancel()->route('login') }}
 @endsection

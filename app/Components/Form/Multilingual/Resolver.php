@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Vendor\LaravelBootstrapComponents\Components\Form\Multilingual;
+namespace App\Components\Form\Multilingual;
 
 use Illuminate\Database\Eloquent\Model;
 

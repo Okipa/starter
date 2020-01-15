@@ -13,7 +13,7 @@ class Request extends RequestSanitizer
      *
      * @return array
      */
-    protected function localizeRules(array $rules): array
+    public function localizeRules(array $rules): array
     {
         $localizedRules = [];
         foreach ($rules as $ruleKey => $ruleDetails) {
