@@ -25,9 +25,7 @@ class ResetPasswordController extends Controller
         sendResetFailedResponse as traitSendResetFailedResponse;
     }
 
-    /**
-     * @inheritDoc
-     */
+    /** @inheritDoc */
     public function showResetForm(Request $request, $token = null)
     {
         SEOTools::setTitle(__('Define new password'));
@@ -35,9 +33,7 @@ class ResetPasswordController extends Controller
         return $this->traitShowResetForm($request, $token);
     }
 
-    /**
-     * @inheritDoc
-     */
+    /** @inheritDoc */
     public function sendResetResponse(Request $request, $response)
     {
         alert()->html(__('Success'), __($response), 'success')->showConfirmButton();
@@ -45,17 +41,13 @@ class ResetPasswordController extends Controller
         return $this->traitSendResetResponse($request, $response);
     }
 
-    /**
-     * @inheritDoc
-     */
+    /** @inheritDoc */
     public function redirectPath()
     {
         return route('admin.index');
     }
 
-    /**
-     * @inheritDoc
-     */
+    /** @inheritDoc */
     protected function sendResetFailedResponse(Request $request, string $response)
     {
         alert()->html(__('Error'), __($response), 'error')->showConfirmButton();

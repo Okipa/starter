@@ -23,9 +23,7 @@ class ConfirmPasswordController extends Controller
         showConfirmForm as traitShowConfirmForm;
     }
 
-    /**
-     * @inheritDoc
-     */
+    /** @inheritDoc */
     public function showConfirmForm(): View
     {
         SEOTools::setTitle(__('Password verification'));
@@ -33,9 +31,7 @@ class ConfirmPasswordController extends Controller
         return $this->traitShowConfirmForm();
     }
 
-    /**
-     * @inheritDoc
-     */
+    /** @inheritDoc */
     public function redirectPath()
     {
         return route('admin.index');

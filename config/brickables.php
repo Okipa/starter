@@ -3,9 +3,9 @@
 return [
 
     /*
-     * The fully qualified class name of the brick model.
+     * The fully qualified class name of the Brick model associated by default to all brickables.
      */
-    'brickModel' => App\Models\Brick::class,
+    'defaultBrickModel' => App\Models\Brick::class,
 
     /*
      * Register here the available brickables.
@@ -14,6 +14,7 @@ return [
     'registered' => [
         App\Brickables\OneTextColumn::class,
         App\Brickables\TwoTextColumns::class,
+        App\Brickables\TwoTextImageColumns::class,
         // add your content brick type configurations here ...
     ],
 

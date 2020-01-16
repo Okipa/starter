@@ -73,8 +73,6 @@ class SimplePagesController extends Controller
             'detail' => $simplePage->title,
         ]));
 
-         //$simplePage->addBrick(OneTextColumn::class, ['content' => 'Text']);
-
         return view('templates.admin.simple-pages.edit', compact('simplePage'));
     }
 

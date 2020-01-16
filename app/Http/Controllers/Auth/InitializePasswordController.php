@@ -11,9 +11,7 @@ use Symfony\Component\HttpFoundation\Response;
 
 class InitializePasswordController extends WelcomeController
 {
-    /**
-     * @inheritDoc
-     */
+    /** @inheritDoc */
     public function showWelcomeForm(Request $request, User $user)
     {
         SEOTools::setTitle(__('Welcome'));
@@ -21,9 +19,7 @@ class InitializePasswordController extends WelcomeController
         return parent::showWelcomeForm($request, $user);
     }
 
-    /**
-     * @inheritDoc
-     */
+    /** @inheritDoc */
     public function savePassword(Request $request, User $user)
     {
         $response = parent::savePassword($request, $user);
@@ -36,9 +32,7 @@ class InitializePasswordController extends WelcomeController
         return $response;
     }
 
-    /**
-     * @inheritDoc
-     */
+    /** @inheritDoc */
     public function sendPasswordSavedResponse(): Response
     {
         alert()->html(__('Success'), __('Your new password has been saved.'), 'success');
@@ -46,9 +40,7 @@ class InitializePasswordController extends WelcomeController
         return redirect()->route('admin.index');
     }
 
-    /**
-     * @inheritDoc
-     */
+    /** @inheritDoc */
     protected function rules()
     {
         return [

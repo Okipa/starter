@@ -25,9 +25,7 @@ class LoginController extends Controller
         sendLockoutResponse as traitSendLockoutResponse;
     }
 
-    /**
-     * @inheritDoc
-     */
+    /** @inheritDoc */
     public function showLoginForm()
     {
         SEOTools::setTitle(__('Sign in area'));
@@ -35,17 +33,13 @@ class LoginController extends Controller
         return $this->traitShowLoginForm();
     }
 
-    /**
-     * @inheritDoc
-     */
+    /** @inheritDoc */
     protected function redirectPath()
     {
         return route('admin.index');
     }
 
-    /**
-     * @inheritDoc
-     */
+    /** @inheritDoc */
     protected function loggedOut()
     {
         alert()->toast(__('You have been logged out.'), 'success');
@@ -53,9 +47,7 @@ class LoginController extends Controller
         return redirect()->route('home');
     }
 
-    /**
-     * @inheritDoc
-     */
+    /** @inheritDoc */
     protected function authenticated(Request $request, $user)
     {
         alert()->toast(__('Welcome') . ' ' . $user->name . '.', 'success');

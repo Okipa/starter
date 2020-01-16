@@ -3,6 +3,6 @@
         {{ $left_text }}
     </div>
     <div class="col-md-6">
-        {{ $right_text }}
+        {{ $brick->getFirstMedia('bricks')('image') }}
     </div>
 </div>

@@ -27,9 +27,7 @@ class RegisterController extends Controller
         showRegistrationForm as traitShowRegistrationForm;
     }
 
-    /**
-     * @inheritDoc
-     */
+    /** @inheritDoc */
     public function showRegistrationForm()
     {
         SEOTools::setTitle(__('Registration area'));
@@ -78,9 +76,7 @@ class RegisterController extends Controller
         return $user;
     }
 
-    /**
-     * @inheritDoc
-     */
+    /** @inheritDoc */
     protected function registered(Request $request)
     {
         alert()->toast(
@@ -91,9 +87,7 @@ class RegisterController extends Controller
         return;
     }
 
-    /**
-     * @inheritDoc
-     */
+    /** @inheritDoc */
     protected function redirectPath()
     {
         return route('admin.index');

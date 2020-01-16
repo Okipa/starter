@@ -26,9 +26,7 @@ class VerificationController extends Controller
         verify as traitVerify;
     }
 
-    /**
-     * @inheritDoc
-     */
+    /** @inheritDoc */
     public function show(Request $request)
     {
         SEOTools::setTitle(__('Email address verification'));
@@ -36,17 +34,13 @@ class VerificationController extends Controller
         return $this->traitShow($request);
     }
 
-    /**
-     * @inheritDoc
-     */
+    /** @inheritDoc */
     public function redirectPath()
     {
         return route('admin.index');
     }
 
-    /**
-     * @inheritDoc
-     */
+    /** @inheritDoc */
     public function resend(Request $request)
     {
         $response = $this->traitResend($request);
@@ -58,9 +52,7 @@ class VerificationController extends Controller
         return $response;
     }
 
-    /**
-     * @inheritDoc
-     */
+    /** @inheritDoc */
     public function verify(Request $request)
     {
         $response = $this->traitVerify($request);

@@ -16,18 +16,14 @@ class InitializePassword extends WelcomeNotification implements ShouldQueue
 
     public $tries = 3;
 
-    /**
-     * @inheritDoc
-     */
+    /** @inheritDoc */
     public function __construct(Carbon $validUntil)
     {
         $this->queue = 'high';
         parent::__construct($validUntil);
     }
 
-    /**
-     * @inheritDoc
-     */
+    /** @inheritDoc */
     public function buildWelcomeNotificationMessage(): MailMessage
     {
         return (new MailMessage)
@@ -40,9 +36,7 @@ class InitializePassword extends WelcomeNotification implements ShouldQueue
             ->line(__('mails.InitializePassword.notice'));
     }
 
-    /**
-     * @inheritDoc
-     */
+    /** @inheritDoc */
     protected function initializeNotificationProperties(User $user)
     {
         $this->user = $user;

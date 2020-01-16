@@ -7,14 +7,12 @@ use Okipa\LaravelBrickables\Abstracts\Brickable;
 
 class TwoTextColumns extends Brickable
 {
-    /**
-     * @inheritDoc
-     */
-    public function setValidationRules(): array
+    /** @inheritDoc */
+    protected function setValidationRules(): array
     {
         return (new Request)->localizeRules([
-            'left_content' => ['required', 'string'],
-            'right_content' => ['required', 'string'],
+            'left_text' => ['required', 'string'],
+            'right_text' => ['required', 'string'],
         ]);
     }
 }

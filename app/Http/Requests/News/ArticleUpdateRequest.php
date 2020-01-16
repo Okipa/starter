@@ -42,7 +42,7 @@ class ArticleUpdateRequest extends Request
             'published_at' => ['required', 'date_format:Y-m-d H:i:s'],
             'active' => ['required', 'boolean'],
         ];
-        $multilingualRules = $this->localizeRules(array_merge([
+        $localizedRules = $this->localizeRules(array_merge([
             'title' => ['required', 'string', 'max:255'],
             'url' => [
                 'required',
@@ -53,6 +53,6 @@ class ArticleUpdateRequest extends Request
             'description' => ['string', 'max:4294967295'],
         ], (new SeoService)->getSeoMetaRules()));
 
-        return array_merge($multilingualRules, $rules);
+        return array_merge($localizedRules, $rules);
     }
 }

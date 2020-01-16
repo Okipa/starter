@@ -22,7 +22,7 @@ class SimplePageUpdateRequest extends Request
         $rules = [
             'active' => ['required', 'boolean'],
         ];
-        $multilingualRules = $this->localizeRules(array_merge([
+        $localizedRules = $this->localizeRules(array_merge([
             'url' => [
                 'required',
                 'string',
@@ -33,6 +33,6 @@ class SimplePageUpdateRequest extends Request
             'description' => ['string', 'max:4294967295'],
         ], (new SeoService)->getSeoMetaRules()));
 
-        return array_merge($multilingualRules, $rules);
+        return array_merge($localizedRules, $rules);
     }
 }

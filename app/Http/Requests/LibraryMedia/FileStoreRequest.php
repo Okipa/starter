@@ -21,8 +21,8 @@ class FileStoreRequest extends Request
             'media' => array_merge(['required'], (new LibraryMediaFile)->validationConstraints('medias')),
             'downloadable' => ['required', 'boolean'],
         ];
-        $multilingualRules = $this->localizeRules(['name' => ['required', 'string', 'max:255']]);
+        $localizedRules = $this->localizeRules(['name' => ['required', 'string', 'max:255']]);
 
-        return array_merge($multilingualRules, $rules);
+        return array_merge($localizedRules, $rules);
     }
 }

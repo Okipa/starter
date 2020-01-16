@@ -188,9 +188,10 @@ return [
         'downloadable' => 'Téléchargeable',
         'message' => 'Message',
         'brickable_type' => 'Type brique',
-        'content' => 'Contenu',
-        'left_content' => 'Contenu gauche',
-        'right_content' => 'Contenu droit',
+        'text' => 'Texte',
+        'left_text' => 'Texte gauche',
+        'right_text' => 'Texte droit',
+        'right_image' => 'Image droite',
     ],
 
 ];

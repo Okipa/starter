@@ -25,9 +25,7 @@ class ForgotPasswordController extends Controller
         sendResetLinkFailedResponse as traitSendResetLinkFailedResponse;
     }
 
-    /**
-     * @inheritDoc
-     */
+    /** @inheritDoc */
     public function showLinkRequestForm()
     {
         SEOTools::setTitle(__('Forgotten password'));
@@ -35,9 +33,7 @@ class ForgotPasswordController extends Controller
         return $this->traitShowLinkRequestForm();
     }
 
-    /**
-     * @inheritDoc
-     */
+    /** @inheritDoc */
     protected function sendResetLinkResponse(Request $request, $response)
     {
         alert()->html(__('Success'), __($response), 'success')->showConfirmButton();
@@ -45,9 +41,7 @@ class ForgotPasswordController extends Controller
         return $this->traitSendResetLinkResponse($request, $response);
     }
 
-    /**
-     * @inheritDoc
-     */
+    /** @inheritDoc */
     protected function sendResetLinkFailedResponse(Request $request, $response)
     {
         alert()->html(__('Error'), __($response), 'error')->showConfirmButton();
