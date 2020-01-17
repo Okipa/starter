@@ -6,20 +6,11 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\LibraryMedia\FilesIndexRequest;
 use App\Http\Requests\LibraryMedia\FileStoreRequest;
 use App\Http\Requests\LibraryMedia\FileUpdateRequest;
-use App\Models\LibraryMediaFile;
+use App\Models\LibraryMedias\LibraryMediaFile;
 use App\Services\LibraryMedia\FilesService;
 use Artesaos\SEOTools\Facades\SEOTools;
-use ErrorException;
 use Exception;
-use Illuminate\Contracts\Container\BindingResolutionException;
-use Illuminate\Contracts\View\Factory;
-use Illuminate\Http\JsonResponse;
-use Illuminate\Http\RedirectResponse;
-use Illuminate\View\View;
 use Log;
-use Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\DiskDoesNotExist;
-use Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\FileDoesNotExist;
-use Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\FileIsTooBig;
 
 class LibraryMediaFilesController extends Controller
 {
@@ -61,7 +52,7 @@ class LibraryMediaFilesController extends Controller
      */
     public function store(FileStoreRequest $request)
     {
-        /** @var LibraryMediaFile $file */
+        /** @var \App\Models\LibraryMedias\LibraryMediaFile $file */
         $file = (new LibraryMediaFile)->create($request->validated());
         $file->addMediaFromRequest('media')->toMediaCollection('medias');
 
@@ -73,7 +64,7 @@ class LibraryMediaFilesController extends Controller
     }
 
     /**
-     * @param \App\Models\LibraryMediaFile $file
+     * @param \App\Models\LibraryMedias\LibraryMediaFile $file
      *
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      * @throws \Exception
@@ -91,7 +82,7 @@ class LibraryMediaFilesController extends Controller
     }
 
     /**
-     * @param \App\Models\LibraryMediaFile $file
+     * @param \App\Models\LibraryMedias\LibraryMediaFile $file
      * @param \App\Http\Requests\LibraryMedia\FileUpdateRequest $request
      *
      * @return \Illuminate\Http\RedirectResponse
@@ -113,7 +104,7 @@ class LibraryMediaFilesController extends Controller
     }
 
     /**
-     * @param \App\Models\LibraryMediaFile $file
+     * @param \App\Models\LibraryMedias\LibraryMediaFile $file
      *
      * @return \Illuminate\Http\RedirectResponse
      * @throws \Exception
@@ -130,7 +121,7 @@ class LibraryMediaFilesController extends Controller
     }
 
     /**
-     * @param \App\Models\LibraryMediaFile $file
+     * @param \App\Models\LibraryMedias\LibraryMediaFile $file
      * @param string $type
      * @param string|null $locale
      *

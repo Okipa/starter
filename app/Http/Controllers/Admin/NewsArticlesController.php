@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\News\ArticleStoreRequest;
 use App\Http\Requests\News\ArticleUpdateRequest;
-use App\Models\NewsArticle;
+use App\Models\News\NewsArticle;
 use App\Services\News\ArticlesService;
 use App\Services\Seo\SeoService;
 use Artesaos\SEOTools\Facades\SEOTools;
@@ -52,7 +52,7 @@ class NewsArticlesController extends Controller
      */
     public function store(ArticleStoreRequest $request)
     {
-        /** @var NewsArticle $article */
+        /** @var \App\Models\News\NewsArticle $article */
         $article = (new NewsArticle)->create($request->validated());
         if ($request->file('illustration')) {
             $article->addMediaFromRequest('illustration')->toMediaCollection('illustrations');
@@ -69,7 +69,7 @@ class NewsArticlesController extends Controller
     }
 
     /**
-     * @param \App\Models\NewsArticle $article
+     * @param \App\Models\News\NewsArticle $article
      *
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
@@ -85,7 +85,7 @@ class NewsArticlesController extends Controller
     }
 
     /**
-     * @param \App\Models\NewsArticle $article
+     * @param \App\Models\News\NewsArticle $article
      * @param \App\Http\Requests\News\ArticleUpdateRequest $request
      *
      * @return \Illuminate\Http\RedirectResponse
@@ -110,7 +110,7 @@ class NewsArticlesController extends Controller
     }
 
     /**
-     * @param \App\Models\NewsArticle $article
+     * @param \App\Models\News\NewsArticle $article
      *
      * @return \Illuminate\Http\RedirectResponse
      * @throws \Exception

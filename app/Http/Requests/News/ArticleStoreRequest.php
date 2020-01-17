@@ -3,7 +3,7 @@
 namespace App\Http\Requests\News;
 
 use App\Http\Requests\Request;
-use App\Models\NewsArticle;
+use App\Models\News\NewsArticle;
 use App\Services\Seo\SeoService;
 use Carbon\Carbon;
 use CodeZero\UniqueTranslation\UniqueTranslationRule;

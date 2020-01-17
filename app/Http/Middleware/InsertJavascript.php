@@ -19,7 +19,7 @@ class InsertJavascript
     public function handle($request, Closure $next)
     {
         $termsOfServiceUrl = data_get(cache('termsOfServicePage'), 'url')
-            ? route('simplePage.show', cache('termsOfServicePage')->url)
+            ? route('page.show', cache('termsOfServicePage')->url)
             : null;
         JavaScript::put([
             'locale' => app()->getLocale(),

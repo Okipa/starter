@@ -192,6 +192,7 @@ return [
         'left_text' => 'Texte gauche',
         'right_text' => 'Texte droit',
         'right_image' => 'Image droite',
+        'invert_order' => 'Inverser ordre',
     ],
 
 ];

@@ -1,8 +1,8 @@
 <div class="row">
     <div class="col-md-6">
-        {{ $left_text }}
+        {!! (new Parsedown)->text(data_get($brick, 'data.left_text' . app()->getLocale())) !!}
     </div>
     <div class="col-md-6">
-        {{ $right_text }}
+        {!! (new Parsedown)->text(data_get($brick, 'data.right_text' . app()->getLocale())) !!}
     </div>
 </div>

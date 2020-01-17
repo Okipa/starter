@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Front;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\News\ArticlesIndexRequest;
-use App\Models\NewsArticle;
+use App\Models\News\NewsArticle;
 use App\Services\Seo\SeoService;
 use Artesaos\SEOTools\Facades\SEOTools;
 
@@ -38,7 +38,7 @@ class NewsArticlesController extends Controller
     }
 
     /**
-     * @param \App\Models\NewsArticle $article
+     * @param \App\Models\News\NewsArticle $article
      *
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      * @throws \Exception

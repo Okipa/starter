@@ -19,7 +19,7 @@
                 {{ select()->name('category_id')
                     ->prepend('<i class="fas fa-tags fa-fw"></i>')
                     ->label(false)
-                    ->options((new \App\Models\LibraryMediaCategory)->get()->map(function($category){
+                    ->options((new \App\Models\LibraryMedias\LibraryMediaCategory)->get()->map(function($category){
                         $array = $category->toArray();
                         $array['name'] = $category->name;
 

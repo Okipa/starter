@@ -3,10 +3,8 @@
 namespace App\Services\Users;
 
 use App\Http\Requests\Request;
-use App\Models\User;
+use App\Models\Users\User;
 use App\Services\ServiceInterface;
-use Illuminate\Contracts\Pagination\LengthAwarePaginator;
-use Illuminate\Support\Collection;
 use Okipa\LaravelTable\Table;
 
 interface UsersServiceInterface extends ServiceInterface
@@ -24,7 +22,7 @@ interface UsersServiceInterface extends ServiceInterface
      * Save avatar from request.
      *
      * @param \App\Http\Requests\Request $request
-     * @param \App\Models\User $user
+     * @param \App\Models\Users\User $user
      *
      * @throws \Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\DiskDoesNotExist
      * @throws \Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\FileDoesNotExist
@@ -35,7 +33,7 @@ interface UsersServiceInterface extends ServiceInterface
     /**
      * Set default avatar image for the given user.
      *
-     * @param \App\Models\User $user
+     * @param \App\Models\Users\User $user
      *
      * @throws \Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\DiskDoesNotExist
      * @throws \Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\FileDoesNotExist

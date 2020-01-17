@@ -3,7 +3,7 @@
 namespace App\Http\Requests\Users;
 
 use App\Http\Requests\Request;
-use App\Models\User;
+use App\Models\Users\User;
 
 class UserStoreRequest extends Request
 {

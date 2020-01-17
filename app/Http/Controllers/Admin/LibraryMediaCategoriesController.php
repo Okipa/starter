@@ -5,13 +5,9 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\LibraryMedia\CategoryStoreRequest;
 use App\Http\Requests\LibraryMedia\CategoryUpdateRequest;
-use App\Models\LibraryMediaCategory;
+use App\Models\LibraryMedias\LibraryMediaCategory;
 use App\Services\LibraryMedia\CategoriesService;
 use Artesaos\SEOTools\Facades\SEOTools;
-use Exception;
-use Illuminate\Contracts\View\Factory;
-use Illuminate\Http\RedirectResponse;
-use Illuminate\View\View;
 
 class LibraryMediaCategoriesController extends Controller
 {
@@ -52,19 +48,19 @@ class LibraryMediaCategoriesController extends Controller
      */
     public function store(CategoryStoreRequest $request)
     {
-        /** @var \App\Models\LibraryMediaCategory $category */
+        /** @var \App\Models\LibraryMedias\LibraryMediaCategory $category */
         $category = (new LibraryMediaCategory)->create($request->validated());
 
         return redirect()->route('libraryMedia.categories.index')
             ->with('toast_success', __('notifications.parent.created', [
                 'parent' => __('Media library'),
                 'entity' => __('Categories'),
-                'name'   => $category->name,
+                'name' => $category->name,
             ]));
     }
 
     /**
-     * @param \App\Models\LibraryMediaCategory $category
+     * @param \App\Models\LibraryMedias\LibraryMediaCategory $category
      *
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
@@ -80,7 +76,7 @@ class LibraryMediaCategoriesController extends Controller
     }
 
     /**
-     * @param \App\Models\LibraryMediaCategory $category
+     * @param \App\Models\LibraryMedias\LibraryMediaCategory $category
      * @param \App\Http\Requests\LibraryMedia\CategoryUpdateRequest $request
      *
      * @return \Illuminate\Http\RedirectResponse
@@ -92,12 +88,12 @@ class LibraryMediaCategoriesController extends Controller
         return back()->with('toast_success', __('notifications.parent.updated', [
             'parent' => __('Media library'),
             'entity' => __('Categories'),
-            'name'   => $category->name,
+            'name' => $category->name,
         ]));
     }
 
     /**
-     * @param \App\Models\LibraryMediaCategory $category
+     * @param \App\Models\LibraryMedias\LibraryMediaCategory $category
      *
      * @return \Illuminate\Http\RedirectResponse
      * @throws \Exception
@@ -110,7 +106,7 @@ class LibraryMediaCategoriesController extends Controller
         return back()->with('toast_success', __('notifications.parent.destroyed', [
             'parent' => __('Media library'),
             'entity' => __('Categories'),
-            'name'   => $name,
+            'name' => $name,
         ]));
     }
 }

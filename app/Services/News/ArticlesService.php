@@ -2,7 +2,7 @@
 
 namespace App\Services\News;
 
-use App\Models\NewsArticle;
+use App\Models\News\NewsArticle;
 use App\Services\Service;
 use Okipa\LaravelTable\Table;
 

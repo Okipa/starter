@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Contact\ContactPageUpdateRequest;
-use App\Models\PageContent;
+use App\Models\Pages\PageContent;
 use App\Services\Seo\SeoService;
 use Artesaos\SEOTools\Facades\SEOTools;
 use Illuminate\Http\RedirectResponse;
@@ -34,7 +34,7 @@ class ContactPageController extends Controller
      */
     public function update(ContactPageUpdateRequest $request): RedirectResponse
     {
-        /** @var PageContent $pageContent */
+        /** @var \App\Models\Pages\PageContent $pageContent */
         $pageContent = (new PageContent)->where('slug', 'contact-page-content')->firstOrFail();
         $pageContent->saveMetaFromRequest($request, ['title', 'description']);
         (new SeoService)->saveSeoTagsFromRequest($pageContent, $request);

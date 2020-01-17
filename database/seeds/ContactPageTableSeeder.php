@@ -1,6 +1,6 @@
 <?php
 
-use App\Models\PageContent;
+use App\Models\Pages\PageContent;
 use App\Services\Seo\SeoService;
 use Faker\Factory;
 use Illuminate\Database\Seeder;
@@ -20,8 +20,7 @@ class ContactPageTableSeeder extends Seeder
         $pageContent = (new PageContent)->create(['slug' => 'contact-page-content']);
         $pageContent->setMeta('title', ['fr' => 'Contact', 'en' => 'Contact']);
         $pageContent->setMeta('description', [
-            'fr' => 'Pour toute question, n\'hésitez pas à prendre contact avec notre équipe. Nous vous recontacterons
-            dans les plus brefs délais.',
+            'fr' => 'Pour toute question, n\'hésitez pas à prendre contact avec notre équipe. Nous vous recontacterons dans les plus brefs délais.',
             'en' => 'If you have any questions, please contact our team. We will get back to you as soon as possible.',
         ]);
         (new SeoService)->saveSeoTags($pageContent, [

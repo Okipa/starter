@@ -3,9 +3,13 @@
 return [
 
     /*
-     * The fully qualified class name of the Brick model associated by default to all brickables.
+     * The fully qualified class names of the classes that will be used for the brickables management.
+     * Each class can be overridden in each brickable itself to customize treatments.
      */
-    'defaultBrickModel' => App\Models\Brick::class,
+    'bricks' => [
+        'model' => Okipa\LaravelBrickables\Models\Brick::class,
+        'controller' => App\Http\Controllers\Brickables\BricksController::class,
+    ],
 
     /*
      * Register here the available brickables.

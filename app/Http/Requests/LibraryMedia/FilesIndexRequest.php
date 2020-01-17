@@ -13,8 +13,6 @@ class FilesIndexRequest extends Request
      */
     public function rules()
     {
-        return [
-            'category_id' => ['integer', 'exists:library_media_categories,id'],
-        ];
+        return ['category_id' => ['integer', 'exists:library_media_categories,id']];
     }
 }

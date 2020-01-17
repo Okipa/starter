@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\News\HomePageUpdateRequest;
-use App\Models\PageContent;
+use App\Models\Pages\PageContent;
 use App\Services\Seo\SeoService;
 use Artesaos\SEOTools\Facades\SEOTools;
 use Illuminate\Http\RedirectResponse;
@@ -17,7 +17,7 @@ class HomePageController extends Controller
      */
     public function edit(): View
     {
-        /** @var PageContent $pageContent */
+        /** @var \App\Models\Pages\PageContent $pageContent */
         $pageContent = (new PageContent)->firstOrCreate(['slug' => 'home-page-content']);
         SEOTools::setTitle(__('breadcrumbs.orphan.edit', [
             'entity' => __('Home'),
@@ -34,7 +34,7 @@ class HomePageController extends Controller
      */
     public function update(HomePageUpdateRequest $request): RedirectResponse
     {
-        /** @var PageContent $pageContent */
+        /** @var \App\Models\Pages\PageContent $pageContent */
         $pageContent = (new PageContent)->where('slug', 'home-page-content')->firstOrFail();
         $pageContent->saveMetaFromRequest($request, ['title', 'description']);
         (new SeoService)->saveSeoTagsFromRequest($pageContent, $request);

@@ -18,10 +18,7 @@ class SeoService extends Service implements SeoServiceInterface
      */
     public function getSeoMetaRules(): array
     {
-        return [
-            'meta_title' => ['required', 'string', 'max:255'],
-            'meta_description' => ['string', 'max:255'],
-        ];
+        return ['meta_title' => ['required', 'string', 'max:255'], 'meta_description' => ['string', 'max:255']];
     }
 
     /**

@@ -1,6 +1,6 @@
 <?php
 
-use App\Models\Settings;
+use App\Models\Settings\Settings;
 use Faker\Factory;
 use Illuminate\Database\Seeder;
 
@@ -18,7 +18,7 @@ class SettingsTableSeeder extends Seeder
     {
         $this->faker = Factory::create(config('app.faker_locale'));
         // todo : customize settings and seeder image
-        /** @var \App\Models\Settings $settings */
+        /** @var \App\Models\Settings\Settings $settings */
         $settings = (new Settings)->create([
             'email'        => $this->faker->email,
             'phone_number' => $this->faker->phoneNumber,

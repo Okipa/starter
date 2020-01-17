@@ -13,8 +13,6 @@ class ArticlesIndexRequest extends Request
      */
     public function rules()
     {
-        return [
-            'category_id' => ['integer', 'exists:news_categories,id'],
-        ];
+        return ['category_id' => ['integer', 'exists:news_categories,id']];
     }
 }

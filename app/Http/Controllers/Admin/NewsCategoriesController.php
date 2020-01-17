@@ -5,13 +5,9 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\News\CategoryStoreRequest;
 use App\Http\Requests\News\CategoryUpdateRequest;
-use App\Models\NewsCategory;
+use App\Models\News\NewsCategory;
 use App\Services\News\CategoriesService;
 use Artesaos\SEOTools\Facades\SEOTools;
-use Exception;
-use Illuminate\Contracts\View\Factory;
-use Illuminate\Http\RedirectResponse;
-use Illuminate\View\View;
 
 class NewsCategoriesController extends Controller
 {
@@ -63,7 +59,7 @@ class NewsCategoriesController extends Controller
     }
 
     /**
-     * @param \App\Models\NewsCategory $category
+     * @param \App\Models\News\NewsCategory $category
      *
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
@@ -79,7 +75,7 @@ class NewsCategoriesController extends Controller
     }
 
     /**
-     * @param \App\Models\NewsCategory $category
+     * @param \App\Models\News\NewsCategory $category
      * @param \App\Http\Requests\News\CategoryUpdateRequest $request
      *
      * @return \Illuminate\Http\RedirectResponse
@@ -96,7 +92,7 @@ class NewsCategoriesController extends Controller
     }
 
     /**
-     * @param \App\Models\NewsCategory $category
+     * @param \App\Models\News\NewsCategory $category
      *
      * @return \Illuminate\Http\RedirectResponse
      * @throws \Exception

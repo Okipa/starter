@@ -287,16 +287,16 @@
         },
         {
             "name": "codezero/laravel-localized-routes",
-            "version": "2.2.2",
+            "version": "2.2.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/codezero-be/laravel-localized-routes.git",
-                "reference": "99e528e271281d541bc3fe9c9be46e21095fe93d"
+                "reference": "294ac6ce622e6437672f2d664e74480dd85d4b31"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/codezero-be/laravel-localized-routes/zipball/99e528e271281d541bc3fe9c9be46e21095fe93d",
-                "reference": "99e528e271281d541bc3fe9c9be46e21095fe93d",
+                "url": "https://api.github.com/repos/codezero-be/laravel-localized-routes/zipball/294ac6ce622e6437672f2d664e74480dd85d4b31",
+                "reference": "294ac6ce622e6437672f2d664e74480dd85d4b31",
                 "shasum": ""
             },
             "require": {
@@ -348,7 +348,7 @@
                 "routing",
                 "translation"
             ],
-            "time": "2020-01-09T22:37:59+00:00"
+            "time": "2020-01-17T15:38:10+00:00"
         },
         {
             "name": "codezero/laravel-localizer",
@@ -3048,7 +3048,7 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Okipa/laravel-bootstrap-components",
-                "reference": "865b5801f5f2703714ecb1ceb93002a05be84adb"
+                "reference": "7559b9b06f65ff9e6bc9bfd910adbc22836b76a1"
             },
             "require": {
                 "ext-json": "*",
@@ -3147,7 +3147,7 @@
                 "package",
                 "php"
             ],
-            "time": "2020-01-16T09:43:50+00:00"
+            "time": "2020-01-16T16:24:04+00:00"
         },
         {
             "name": "okipa/laravel-brickables",
@@ -3155,7 +3155,7 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Okipa/laravel-brickables",
-                "reference": "22e44d7e9e93fb026901ef257b1ae495670b70f9"
+                "reference": "f3348c0b80b18554d534e4a6d3fc22889239c610"
             },
             "require": {
                 "illuminate/support": "~5.5.0||~5.6.0||~5.7.0||~5.8.0||^6.0",
@@ -3227,7 +3227,7 @@
                 "management",
                 "okipa"
             ],
-            "time": "2020-01-16T15:46:26+00:00"
+            "time": "2020-01-17T15:52:16+00:00"
         },
         {
             "name": "okipa/laravel-failed-jobs-notifier",

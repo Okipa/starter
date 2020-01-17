@@ -1,5 +1,5 @@
 <div class="row">
     <div class="col-12">
-        {{ $text }}
+        {!! (new Parsedown)->text(data_get($brick, 'data.text.' . app()->getLocale())) !!}
     </div>
 </div>

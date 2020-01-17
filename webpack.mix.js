@@ -38,7 +38,7 @@ mix
     .sass('resources/sass/front/news/index.scss', 'public/css/news')
     .sass('resources/sass/front/news/show.scss', 'public/css/news')
     .sass('resources/sass/front/contact/page/show.scss', 'public/css/contact/page')
-    .sass('resources/sass/front/simple-pages/show.scss', 'public/css/simple-pages')
+    .sass('resources/sass/front/pages/show.scss', 'public/css/pages')
     // base
     .sass('resources/sass/styles/admin/_base.scss', 'public/css/admin.css')
     .sass('resources/sass/styles/front/_base.scss', 'public/css/front.css')

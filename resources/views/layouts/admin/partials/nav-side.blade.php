@@ -4,7 +4,7 @@
         @include('layouts.admin.partials.nav-side.home')
         @include('layouts.admin.partials.nav-side.news')
         @include('layouts.admin.partials.nav-side.contact')
-        @include('layouts.admin.partials.nav-side.simple-pages')
+        @include('layouts.admin.partials.nav-side.pages')
         @include('layouts.admin.partials.nav-side.library-media')
         <hr class="w-100">
         @include('layouts.admin.partials.nav-side.users')

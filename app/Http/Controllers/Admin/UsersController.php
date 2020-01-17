@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Users\UserStoreRequest;
 use App\Http\Requests\Users\UserUpdateRequest;
-use App\Models\User;
+use App\Models\Users\User;
 use App\Services\Users\UsersService;
 use Artesaos\SEOTools\Facades\SEOTools;
 use Auth;
@@ -48,7 +48,7 @@ class UsersController extends Controller
      */
     public function store(UserStoreRequest $request)
     {
-        /** @var \App\Models\User $user */
+        /** @var \App\Models\Users\User $user */
         $user = (new User)->create(array_merge(
             $request->validated(),
             ['password' => Hash::make($request->has('password') ? $request->password: Str::random(8))]
@@ -67,7 +67,7 @@ class UsersController extends Controller
     }
 
     /**
-     * @param \App\Models\User $user
+     * @param \App\Models\Users\User $user
      *
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
@@ -79,7 +79,7 @@ class UsersController extends Controller
     }
 
     /**
-     * @param \App\Models\User $user
+     * @param \App\Models\Users\User $user
      * @param \App\Http\Requests\Users\UserUpdateRequest $request
      *
      * @return \Illuminate\Http\RedirectResponse
@@ -104,7 +104,7 @@ class UsersController extends Controller
     }
 
     /**
-     * @param \App\Models\User $user
+     * @param \App\Models\Users\User $user
      *
      * @return \Illuminate\Http\RedirectResponse
      * @throws \Exception

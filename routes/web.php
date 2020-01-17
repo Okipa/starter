@@ -3,6 +3,11 @@
 use CodeZero\LocalizedRoutes\Middleware\SetLocale;
 use Symfony\Component\HttpKernel\Exception\HttpException;
 
+// not localized *******************************************************************************************************
+// utils
+require('web/utils/seo.php');
+require('web/utils/download.php');
+
 // localized ***********************************************************************************************************
 Route::localized(function () {
     // auth
@@ -22,7 +27,7 @@ Route::localized(function () {
         require('web/admin/home.php');
         require('web/admin/news.php');
         require('web/admin/contact.php');
-        require('web/admin/simplePages.php');
+        require('web/admin/pages.php');
         //require('web/admin/bricks.php');
         Brickables::routes();
         require('web/admin/libraryMedia.php');
@@ -36,13 +41,8 @@ Route::localized(function () {
     require('web/front/home.php');
     require('web/front/news.php');
     require('web/front/contact.php');
-    require('web/front/simplePages.php');
+    require('web/front/pages.php');
 });
-
-// not localized *******************************************************************************************************
-// utils
-require('web/utils/seo.php');
-require('web/utils/download.php');
 
 // 404 fallback catch : do not not place any route declaration under this one ******************************************
 Route::fallback(function () {

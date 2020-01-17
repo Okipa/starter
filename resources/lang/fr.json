@@ -12,6 +12,7 @@
     "Fill in your e-mail to receive instructions for resetting your password.": "Renseignez votre e-mail pour y recevoir les instructions de réinitialisation de votre mot de passe.",
     "Define new password": "Nouveau mot de passe",
     "Save new password": "Enregistrer nouveau mot de passe",
+    "Your new password has been saved.": "Votre nouveau mot de passe a été enregistré.",
     "Registration area": "Espace inscription",
     "Create account": "Créer compte",
     "Welcome to your new account": "Bienvenue sur votre nouveau compte",
@@ -46,7 +47,6 @@
     "Content": "Contenu",
     "Dashboard": "Tableau de bord",
     "News": "Actualités",
-    "Simple pages": "Pages simples",
     "Users": "Utilisateurs",
     "My profile": "Mon profil",
     "Settings": "Paramètres",
@@ -89,5 +89,8 @@
     "Add": "Ajouter",
     "One text column": "Une colonne texte",
     "Two text columns": "Deux colonnes texte",
-    "No saved content brick.": "Aucune brique de contenu enregistrée."
+    "Two text image columns": "Deux colonnes texte image",
+    "No saved content brick.": "Aucune brique de contenu enregistrée.",
+    "Cancel": "Annuler",
+    "Create": "Créer"
 }

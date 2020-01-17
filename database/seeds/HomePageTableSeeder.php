@@ -1,6 +1,6 @@
 <?php
 
-use App\Models\PageContent;
+use App\Models\Pages\PageContent;
 use App\Services\Seo\SeoService;
 use Faker\Factory;
 use Illuminate\Database\Seeder;

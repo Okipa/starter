@@ -41,7 +41,7 @@
                     })
                     ->showRemoveCheckbox(false)
                     ->containerHtmlAttributes(['required'])
-                    ->legend((new \App\Models\NewsArticle)->constraintsLegend('illustrations')) }}
+                    ->legend((new \App\Models\News\NewsArticle)->constraintsLegend('illustrations')) }}
                 <h3 class="pt-4">@lang('Identity')</h3>
                 {{ inputText()->name('title')
                     ->locales(supportedLocaleKeys())
@@ -58,7 +58,7 @@
                 {{ select()->name('category_ids')
                     ->model($article)
                     ->prepend('<i class="fas fa-tags"></i>')
-                    ->options((new \App\Models\NewsCategory)->get()->map(function($category){
+                    ->options((new \App\Models\News\NewsCategory)->get()->map(function($category){
                         $array = $category->toArray();
                         $array['name'] = $category->name;
 

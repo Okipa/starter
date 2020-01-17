@@ -20,7 +20,7 @@ class DatabaseSeeder extends Seeder
         }
         $this->call(SettingsTableSeeder::class);
         $this->call(UsersTableSeeder::class);
-        $this->call(SimplePagesTableSeeder::class);
+        $this->call(PagesTableSeeder::class);
         $this->call(HomePageTableSeeder::class);
         $this->call(ContactPageTableSeeder::class);
         $this->call(NewsTableSeeder::class);

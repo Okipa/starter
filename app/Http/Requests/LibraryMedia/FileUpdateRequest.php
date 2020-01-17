@@ -3,7 +3,7 @@
 namespace App\Http\Requests\LibraryMedia;
 
 use App\Http\Requests\Request;
-use App\Models\LibraryMediaFile;
+use App\Models\LibraryMedias\LibraryMediaFile;
 
 class FileUpdateRequest extends Request
 {

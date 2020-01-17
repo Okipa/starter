@@ -4,12 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Settings\SettingsUpdateRequest;
-use App\Models\Settings;
+use App\Models\Settings\Settings;
 use Artesaos\SEOTools\Facades\SEOTools;
-use Exception;
-use Illuminate\Contracts\View\Factory;
-use Illuminate\Http\RedirectResponse;
-use Illuminate\View\View;
 
 class SettingsController extends Controller
 {
@@ -34,7 +30,7 @@ class SettingsController extends Controller
      */
     public function update(SettingsUpdateRequest $request)
     {
-        /** @var Settings $settings */
+        /** @var \App\Models\Settings\Settings $settings */
         $settings = (new Settings)->firstOrFail();
         $settings->update($request->validated());
         if ($request->remove_icon) {

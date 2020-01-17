@@ -13,9 +13,6 @@ class DownloadFileRequest extends Request
      */
     public function rules()
     {
-        return [
-            'path' => ['required', 'string'],
-            'name' => ['string'],
-        ];
+        return ['path' => ['required', 'string'], 'name' => ['string']];
     }
 }

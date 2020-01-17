@@ -5,16 +5,16 @@
                 <i class="fas fa-copyright fa-fw"></i>
                 {{ config('app.name') }}
             </span>
-            @if($termsOfServicePage = simplePages()->where('slug', 'terms-of-service-page')->first())
+            @if($termsOfServicePage = pages()->where('slug', 'terms-of-service-page')->first())
                 <a class="text-body"
-                   href="{{ route('simplePage.show', $termsOfServicePage->url) }}"
+                   href="{{ route('page.show', $termsOfServicePage->url) }}"
                    title="{{ $termsOfServicePage->title }}">
                     {{ $termsOfServicePage->title }}
                 </a>
             @endif
-            @if($gdprPage = simplePages()->where('slug', 'gdpr-page')->first())
+            @if($gdprPage = pages()->where('slug', 'gdpr-page')->first())
                 <a class="text-body"
-                   href="{{ route('simplePage.show', $gdprPage->url) }}"
+                   href="{{ route('page.show', $gdprPage->url) }}"
                    title="{{ $gdprPage->title }}">
                     {{ $gdprPage->title }}
                 </a>

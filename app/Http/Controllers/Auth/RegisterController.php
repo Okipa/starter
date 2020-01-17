@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use App\Models\User;
+use App\Models\Users\User;
 use App\Services\Users\UsersService;
 use Artesaos\SEOTools\Facades\SEOTools;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -57,7 +57,7 @@ class RegisterController extends Controller
      *
      * @param array $data
      *
-     * @return \App\Models\User
+     * @return \App\Models\Users\User
      * @throws \Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\DiskDoesNotExist
      * @throws \Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\FileDoesNotExist
      * @throws \Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\FileIsTooBig

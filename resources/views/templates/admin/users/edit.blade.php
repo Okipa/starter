@@ -44,7 +44,7 @@
                             ? image()->src($avatar->getUrl('thumb'))->linkUrl($avatar->getUrl())->linkTitle($avatar->name)
                             : null;
                     })
-                    ->legend((new App\Models\User)->constraintsLegend('avatar')) }}
+                    ->legend((new \App\Models\Users\User)->constraintsLegend('avatar')) }}
                 {{ inputText()->name('last_name')->model($user)->containerHtmlAttributes(['required']) }}
                 {{ inputText()->name('first_name')->model($user)->containerHtmlAttributes(['required']) }}
                 <h3 class="pt-4">@lang('Contact')</h3>

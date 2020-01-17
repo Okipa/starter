@@ -3,7 +3,7 @@
 namespace App\Services\Users;
 
 use App\Http\Requests\Request;
-use App\Models\User;
+use App\Models\Users\User;
 use App\Services\Service;
 use Okipa\LaravelTable\Table;
 
@@ -47,7 +47,7 @@ class UsersService extends Service implements UsersServiceInterface
      * Save avatar from request.
      *
      * @param \App\Http\Requests\Request $request
-     * @param \App\Models\User $user
+     * @param \App\Models\Users\User $user
      *
      * @throws \Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\DiskDoesNotExist
      * @throws \Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\FileDoesNotExist
@@ -65,7 +65,7 @@ class UsersService extends Service implements UsersServiceInterface
     /**
      * Set default avatar image for the given user.
      *
-     * @param \App\Models\User $user
+     * @param \App\Models\Users\User $user
      *
      * @throws \Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\DiskDoesNotExist
      * @throws \Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\FileDoesNotExist

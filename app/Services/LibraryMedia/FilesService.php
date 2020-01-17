@@ -2,10 +2,8 @@
 
 namespace App\Services\LibraryMedia;
 
-use App\Models\LibraryMediaFile;
+use App\Models\LibraryMedias\LibraryMediaFile;
 use App\Services\Service;
-use ErrorException;
-use Illuminate\Contracts\Container\BindingResolutionException;
 use Illuminate\Http\Request;
 use JavaScript;
 use Okipa\LaravelTable\Table;
@@ -46,7 +44,7 @@ class FilesService extends Service implements FilesServiceInterface
                 '=',
                 'library_media_files.category_id'
             );
-            $query->where('model_type', 'App\Models\LibraryMediaFile');
+            $query->where('model_type', 'App\Models\LibraryMedias\LibraryMediaFile');
             if ($request->has('category_id')) {
                 $query->where('library_media_categories.id', $request->category_id);
             }

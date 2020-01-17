@@ -38,8 +38,6 @@ return [
     'user' => 'utilisateur',
     'parameters' => 'parametres',
     'profile' => 'profil',
-    'simple-pages' => 'pages-simples',
-    'simple-page' => 'page-simple',
     'welcome' => 'bienvenue',
 
 ];
