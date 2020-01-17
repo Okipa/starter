@@ -28,7 +28,6 @@ Route::localized(function () {
         require('web/admin/news.php');
         require('web/admin/contact.php');
         require('web/admin/pages.php');
-        //require('web/admin/bricks.php');
         Brickables::routes();
         require('web/admin/libraryMedia.php');
         // password reconfirm protection
