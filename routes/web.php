@@ -11,7 +11,6 @@ require('web/utils/download.php');
 // localized ***********************************************************************************************************
 Route::localized(function () {
     // auth
-    Auth::routes();
     require('web/auth/login.php');
     require('web/auth/password.php');
     require('web/auth/register.php'); // todo : comment if this feature is not needed
