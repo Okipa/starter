@@ -16,7 +16,7 @@ class SettingsController extends Controller
     {
         SEOTools::setTitle(__('breadcrumbs.orphan.index', ['entity' => __('Settings')]));
 
-        return view('templates.admin.settings.edit');
+        return view('templates.admin.settings.edit', ['settings' => (new Settings)->with(['media'])->firstOrFail()]);
     }
 
     /**
