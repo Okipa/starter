@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\LibraryMedia\FilesIndexRequest;
 use App\Http\Requests\LibraryMedia\FileStoreRequest;
 use App\Http\Requests\LibraryMedia\FileUpdateRequest;
-use App\Models\LibraryMedias\LibraryMediaFile;
+use App\Models\LibraryMedia\LibraryMediaFile;
 use App\Services\LibraryMedia\FilesService;
 use Artesaos\SEOTools\Facades\SEOTools;
 use Exception;
@@ -52,7 +52,7 @@ class LibraryMediaFilesController extends Controller
      */
     public function store(FileStoreRequest $request)
     {
-        /** @var \App\Models\LibraryMedias\LibraryMediaFile $file */
+        /** @var \App\Models\LibraryMedia\LibraryMediaFile $file */
         $file = (new LibraryMediaFile)->create($request->validated());
         $file->addMediaFromRequest('media')->toMediaCollection('medias');
 
@@ -64,7 +64,7 @@ class LibraryMediaFilesController extends Controller
     }
 
     /**
-     * @param \App\Models\LibraryMedias\LibraryMediaFile $file
+     * @param \App\Models\LibraryMedia\LibraryMediaFile $file
      *
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      * @throws \Exception
@@ -82,7 +82,7 @@ class LibraryMediaFilesController extends Controller
     }
 
     /**
-     * @param \App\Models\LibraryMedias\LibraryMediaFile $file
+     * @param \App\Models\LibraryMedia\LibraryMediaFile $file
      * @param \App\Http\Requests\LibraryMedia\FileUpdateRequest $request
      *
      * @return \Illuminate\Http\RedirectResponse
@@ -104,7 +104,7 @@ class LibraryMediaFilesController extends Controller
     }
 
     /**
-     * @param \App\Models\LibraryMedias\LibraryMediaFile $file
+     * @param \App\Models\LibraryMedia\LibraryMediaFile $file
      *
      * @return \Illuminate\Http\RedirectResponse
      * @throws \Exception
@@ -121,7 +121,7 @@ class LibraryMediaFilesController extends Controller
     }
 
     /**
-     * @param \App\Models\LibraryMedias\LibraryMediaFile $file
+     * @param \App\Models\LibraryMedia\LibraryMediaFile $file
      * @param string $type
      * @param string|null $locale
      *

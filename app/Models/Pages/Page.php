@@ -65,6 +65,9 @@ class Page extends Metable implements HasBrickables
      */
     public function resolveRouteBinding($value)
     {
-        return $this->where('url->' . app()->getLocale(), $value)->firstOrFail();
+        /** @var \App\Models\Pages\Page $page */
+        $page = $this->where('url->' . app()->getLocale(), $value)->firstOrFail();
+
+        return $page;
     }
 }

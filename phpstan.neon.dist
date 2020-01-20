@@ -12,7 +12,8 @@ parameters:
     level: 5
 
     ignoreErrors:
-        - '#Unsafe usage of new static#'
+        - '#Call to an undefined method Illuminate\\Http\\Request::validated\(\)#'
+        - '#Access to an undefined property#'
 
     excludes_analyse:
         - ./*/*/FileToBeExcluded.php

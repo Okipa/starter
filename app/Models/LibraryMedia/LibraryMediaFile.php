@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models\LibraryMedias;
+namespace App\Models\LibraryMedia;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;

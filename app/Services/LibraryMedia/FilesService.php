@@ -2,7 +2,7 @@
 
 namespace App\Services\LibraryMedia;
 
-use App\Models\LibraryMedias\LibraryMediaFile;
+use App\Models\LibraryMedia\LibraryMediaFile;
 use App\Services\Service;
 use Illuminate\Http\Request;
 use JavaScript;
@@ -44,7 +44,7 @@ class FilesService extends Service implements FilesServiceInterface
                 '=',
                 'library_media_files.category_id'
             );
-            $query->where('model_type', 'App\Models\LibraryMedias\LibraryMediaFile');
+            $query->where('model_type', 'App\Models\LibraryMedia\LibraryMediaFile');
             if ($request->has('category_id')) {
                 $query->where('library_media_categories.id', $request->category_id);
             }

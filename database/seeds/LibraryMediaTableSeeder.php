@@ -1,6 +1,6 @@
 <?php
 
-use App\Models\LibraryMedias\LibraryMediaCategory;
+use App\Models\LibraryMedia\LibraryMediaCategory;
 use Faker\Factory;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Collection;

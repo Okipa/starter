@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\LibraryMedia\CategoryStoreRequest;
 use App\Http\Requests\LibraryMedia\CategoryUpdateRequest;
-use App\Models\LibraryMedias\LibraryMediaCategory;
+use App\Models\LibraryMedia\LibraryMediaCategory;
 use App\Services\LibraryMedia\CategoriesService;
 use Artesaos\SEOTools\Facades\SEOTools;
 
@@ -48,7 +48,7 @@ class LibraryMediaCategoriesController extends Controller
      */
     public function store(CategoryStoreRequest $request)
     {
-        /** @var \App\Models\LibraryMedias\LibraryMediaCategory $category */
+        /** @var \App\Models\LibraryMedia\LibraryMediaCategory $category */
         $category = (new LibraryMediaCategory)->create($request->validated());
 
         return redirect()->route('libraryMedia.categories.index')
@@ -60,7 +60,7 @@ class LibraryMediaCategoriesController extends Controller
     }
 
     /**
-     * @param \App\Models\LibraryMedias\LibraryMediaCategory $category
+     * @param \App\Models\LibraryMedia\LibraryMediaCategory $category
      *
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
@@ -76,7 +76,7 @@ class LibraryMediaCategoriesController extends Controller
     }
 
     /**
-     * @param \App\Models\LibraryMedias\LibraryMediaCategory $category
+     * @param \App\Models\LibraryMedia\LibraryMediaCategory $category
      * @param \App\Http\Requests\LibraryMedia\CategoryUpdateRequest $request
      *
      * @return \Illuminate\Http\RedirectResponse
@@ -93,7 +93,7 @@ class LibraryMediaCategoriesController extends Controller
     }
 
     /**
-     * @param \App\Models\LibraryMedias\LibraryMediaCategory $category
+     * @param \App\Models\LibraryMedia\LibraryMediaCategory $category
      *
      * @return \Illuminate\Http\RedirectResponse
      * @throws \Exception

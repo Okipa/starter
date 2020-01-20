@@ -24,8 +24,10 @@ class TwoTextImageColumns extends Brickable
     /** @inheritDoc */
     protected function setStoreValidationRules(): array
     {
+        /** @var \Spatie\MediaLibrary\HasMedia\HasMedia $model */
+        $model = $this->getBrickModel();
         $rules = [
-            'right_image' => array_merge(['required'], $this->getBrickModel()->validationConstraints('bricks')),
+            'right_image' => array_merge(['required'], $model->validationConstraints('bricks')),
             'invert_order' => ['nullable', 'in:on'],
         ];
         $localizedRules = (new Request)->localizeRules(['left_text' => ['required', 'string']]);
@@ -36,9 +38,11 @@ class TwoTextImageColumns extends Brickable
     /** @inheritDoc */
     protected function setUpdateValidationRules(): array
     {
+        /** @var \Spatie\MediaLibrary\HasMedia\HasMedia $model */
+        $model = $this->getBrickModel();
         $rules = [
-            'right_image' => $this->getBrickModel()->validationConstraints('bricks'),
-            'invert_order' => ['in:0,1'],
+            'right_image' => $model->validationConstraints('bricks'),
+            'invert_order' => ['nullable', 'in:on'],
         ];
         $localizedRules = (new Request)->localizeRules(['left_text' => ['required', 'string']]);
 

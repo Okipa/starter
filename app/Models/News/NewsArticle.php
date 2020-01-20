@@ -61,16 +61,13 @@ class NewsArticle extends Metable implements HasMedia
         return $this->getTranslation('url', app()->getLocale());
     }
 
-    /**
-     * Retrieve the model for a bound value.
-     *
-     * @param mixed $value
-     *
-     * @return \Illuminate\Database\Eloquent\Model|null
-     */
+    /** @inheritDoc */
     public function resolveRouteBinding($value)
     {
-        return $this->where('url->' . app()->getLocale(), $value)->firstOrFail();
+        /** @var \App\Models\News\NewsArticle $newArticle */
+        $newArticle = $this->where('url->' . app()->getLocale(), $value)->firstOrFail();
+
+        return $newArticle;
     }
 
     /**

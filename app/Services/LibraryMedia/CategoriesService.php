@@ -2,7 +2,7 @@
 
 namespace App\Services\LibraryMedia;
 
-use App\Models\LibraryMedias\LibraryMediaCategory;
+use App\Models\LibraryMedia\LibraryMediaCategory;
 use App\Services\Service;
 use Okipa\LaravelTable\Table;
 

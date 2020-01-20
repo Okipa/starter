@@ -33,11 +33,11 @@ class TwoTextImageColumnsBrick extends Brick implements HasMedia
 
     /**
      * Register the media conversions.
-     * @SuppressWarnings(PHPMD.UnusedFormalParameter)
      *
      * @param \Spatie\MediaLibrary\Models\Media|null $media
      *
      * @throws \Spatie\Image\Exceptions\InvalidManipulation
+     * @SuppressWarnings(PHPMD.UnusedFormalParameter)
      */
     public function registerMediaConversions(Media $media = null)
     {
