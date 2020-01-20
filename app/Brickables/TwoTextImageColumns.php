@@ -21,9 +21,7 @@ class TwoTextImageColumns extends Brickable
         return TwoTextImageBricksController::class;
     }
 
-    /**
-     * @inheritDoc
-     */
+    /** @inheritDoc */
     protected function setStoreValidationRules(): array
     {
         $rules = [
@@ -35,9 +33,7 @@ class TwoTextImageColumns extends Brickable
         return array_merge($rules, $localizedRules);
     }
 
-    /**
-     * @inheritDoc
-     */
+    /** @inheritDoc */
     protected function setUpdateValidationRules(): array
     {
         $rules = [

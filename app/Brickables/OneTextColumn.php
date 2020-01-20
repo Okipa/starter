@@ -7,17 +7,13 @@ use Okipa\LaravelBrickables\Abstracts\Brickable;
 
 class OneTextColumn extends Brickable
 {
-    /**
-     * @inheritDoc
-     */
+    /** @inheritDoc */
     protected function setStoreValidationRules(): array
     {
         return (new Request)->localizeRules(['text' => ['required', 'string']]);
     }
 
-    /**
-     * @inheritDoc
-     */
+    /** @inheritDoc */
     protected function setUpdateValidationRules(): array
     {
         return (new Request)->localizeRules(['text' => ['required', 'string']]);
