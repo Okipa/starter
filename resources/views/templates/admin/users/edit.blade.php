@@ -4,7 +4,7 @@
         $title = __('breadcrumbs.orphan.create', ['entity' => __('Users')]);
         $action = route('user.store');
     }
-    if(Str::contains(request()->route()->getName(), 'user.update')) {
+    if(Str::contains(request()->route()->getName(), 'user.edit')) {
         $title = __('breadcrumbs.orphan.edit', ['entity' => __('Users'), 'detail' => $user->name]);
             $action = route('user.update', $user);
     }

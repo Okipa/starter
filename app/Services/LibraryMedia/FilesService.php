@@ -66,7 +66,7 @@ class FilesService extends Service implements FilesServiceInterface
             ->sortable()
             ->searchable('media');
         $table->column('downloadable')
-            ->html(fn(LibraryMediaFile $file) => $file->downloadable && $file->canBeDisplayed
+            ->html(fn(LibraryMediaFile $file) => $file->downloadable || !$file->canBeDisplayed
                 ? '<i class="fas fa-check text-success"></i>'
                 : '<i class="fas fa-times text-danger"></i>')
             ->sortable();

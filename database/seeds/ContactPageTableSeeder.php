@@ -16,7 +16,7 @@ class ContactPageTableSeeder extends Seeder
      */
     public function run()
     {
-        $fakerFr = Factory::create('fr_EN');
+        $fakerFr = Factory::create('fr_FR');
         $fakerEn = Factory::create('en_GB');
         /** @var \App\Models\Pages\TitleDescriptionPageContent $pageContent */
         $pageContent = (new TitleDescriptionPageContent)->create(['slug' => 'contact-page-content']);

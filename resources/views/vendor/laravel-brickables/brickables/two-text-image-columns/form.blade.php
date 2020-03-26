@@ -13,5 +13,5 @@
         ->showRemoveCheckbox(false)
         ->containerHtmlAttributes(['required'])
         ->caption($brickable->getBrickModel()->constraintsCaption('images')) }}
-    {{ inputToggle()->name('invert_order')->checked((bool) data_get($brick, 'invert_order')) }}
+    {{ inputToggle()->name('invert_order')->checked((bool) data_get(optional($brick)->data, 'invert_order')) }}
 @endsection

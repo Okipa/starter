@@ -45,7 +45,7 @@ EOT;
      */
     public function run()
     {
-        $this->fakerFr = Factory::create('fr_EN');
+        $this->fakerFr = Factory::create('fr_FR');
         $this->fakerEn = Factory::create('en_GB');
         $this->createPage(
             [

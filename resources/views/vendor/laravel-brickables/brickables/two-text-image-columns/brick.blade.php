@@ -6,10 +6,10 @@
 @endphp
 <div class="container">
     <div class="row">
-        <div class="col-sm-12 my-3 col-md-6 my-md-0">
+        <div class="col-sm-12 my-3 col-md-6 my-md-0 text">
             {!! $invertOrder ? $rightResponsiveImage : $leftText !!}
         </div>
-        <div class="col-sm-12 my-3 col-md-6 my-md-0">
+        <div class="col-sm-12 my-3 col-md-6 my-md-0 text">
             {!! $invertOrder ? $leftText : $rightResponsiveImage !!}
         </div>
     </div>

@@ -41,7 +41,7 @@ Ordered list :
 
 [Link](http://www.google.com).
 EOT;
-        $fakerFr = Factory::create('fr_EN');
+        $fakerFr = Factory::create('fr_FR');
         $fakerEn = Factory::create('en_GB');
         /** @var \App\Models\Pages\PageContent $pageContent */
         $pageContent = (new PageContent)->create(['slug' => 'home-page-content']);

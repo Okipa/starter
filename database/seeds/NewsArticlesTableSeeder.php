@@ -49,7 +49,7 @@ EOT;
      */
     public function run()
     {
-        $this->fakerFr = Factory::create('fr_EN');
+        $this->fakerFr = Factory::create('fr_FR');
         $this->fakerEn = Factory::create('en_GB');
         $this->categories = NewsCategory::all();
         for ($ii = 1; $ii <= 5; $ii++) {

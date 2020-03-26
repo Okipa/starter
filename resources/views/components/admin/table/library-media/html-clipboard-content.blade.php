@@ -3,7 +3,7 @@
 {{-- display --}}
 <div class="my-3">
 @if($file->type === 'image')
-    <img src="{{ $media->getUrl() }}" alt="{{ $file->getTranslation('name', $locale) }}">
+    <img src="{{ $media->getUrl() }}" alt="{{ $file->getTranslation('name', $locale) }}" class="w-100">
 @elseif($file->type === 'pdf')
     <a href="{{ $media->getUrl() }}" title="@lang('Preview') {{ $file->getTranslation('name', $locale) }}" data-lity>
         <img src="{{ $media->getUrl('thumb') }}" alt="{{ $file->getTranslation('name', $locale) }}">
