@@ -116,7 +116,7 @@ class NewsArticle extends Seo implements HasMedia, Feedable
             ->title($this->title)
             ->summary($this->description)
             ->updated($this->updated_at)
-            ->link(route('news.show', $this->url))
+            ->link(route('news.article.show', $this->url))
             ->author(config('app.name'))
             ->enclosure($media->getUrl())
             ->enclosureType($media->mime_type)

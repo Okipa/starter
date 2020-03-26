@@ -8,6 +8,8 @@ stages:
 composer:
   stage: build
   image: composer:latest
+  before_script:
+    - composer global require hirak/prestissimo
   script:
     - composer install --no-progress --no-scripts --ignore-platform-reqs
   artifacts:
@@ -27,6 +29,7 @@ composer:nodev:
   stage: build
   image: composer:latest
   before_script:
+    - composer global require hirak/prestissimo
     - rm -rf .utils
     - git submodule sync --recursive .utils
     - git submodule update --init --recursive --remote .utils

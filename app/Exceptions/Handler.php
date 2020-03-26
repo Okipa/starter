@@ -11,9 +11,7 @@ use Symfony\Component\HttpKernel\Exception\HttpException;
 class Handler extends ExceptionHandler
 {
     /** @inheritDoc */
-    protected $dontReport = [
-        //
-    ];
+    protected $dontReport = [];
 
     /** @inheritDoc */
     protected $dontFlash = ['password', 'password_confirmation'];

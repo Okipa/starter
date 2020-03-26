@@ -34,11 +34,7 @@ class LibraryMediaFile extends Model implements HasMedia
      *
      * @var array
      */
-    protected $fillable = [
-        'category_id',
-        'name',
-        'downloadable',
-    ];
+    protected $fillable = ['category_id', 'name', 'downloadable'];
 
     /**
      * The attributes that should be cast to native types.

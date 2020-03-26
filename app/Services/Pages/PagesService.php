@@ -29,7 +29,7 @@ class PagesService extends Service implements PagesServiceInterface
             ]),
         ]);
         $table->column('slug')->sortable()->searchable();
-        $table->column('url')->title(__('Link'))->html(fn(Page $page) => view('components.admin.table.link', [
+        $table->column('url')->title(__('Display'))->html(fn(Page $page) => view('components.admin.table.display', [
             'url' => route('page.show', $page->url),
             'active' => $page->active,
         ]));

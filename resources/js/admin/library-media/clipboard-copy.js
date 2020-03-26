@@ -20,13 +20,13 @@ $('.clipboard-copy').click(function (e) {
     axios.get(route).then((response) => {
         copyToClipboard(response.data.clipboardContent);
         notify.toast.fire({
-            type: 'success',
+            icon: 'success',
             title: response.data.message
         });
     }).catch((error) => {
         console.error(error);
         notify.toast.fire({
-            type: 'error',
+            icon: 'error',
             title: error.response.data.message
         });
     });

@@ -18,10 +18,16 @@
         @endif()
         @include('components.common.form.notice')
         <div class="card">
-            <div class="card-header">
+            <div class="card-header d-flex justify-content-between">
                 <h2 class="m-0">
                     @lang('Data')
                 </h2>
+                @if($article->active)
+                    {{ buttonLink()->route('news.article.show', [$article->url])
+                        ->prepend('<i class="fas fa-external-link-square-alt fa-fw"></i>')
+                        ->label(__('Display'))
+                        ->componentClasses(['btn-primary', 'new-window']) }}
+                @endif
             </div>
             <div class="card-body">
                 <h3>@lang('Media')</h3>
@@ -40,7 +46,7 @@
                 {{ inputText()->name('url')
                     ->locales(supportedLocaleKeys())
                     ->model($article)
-                    ->prepend(route('news.show', '') . '/')
+                    ->prepend(route('news.article.show', '') . '/')
                     ->componentClasses(['lowercase'])
                     ->componentHtmlAttributes(['data-autofill-from' => '#text-title'])
                     ->containerHtmlAttributes(['required']) }}
