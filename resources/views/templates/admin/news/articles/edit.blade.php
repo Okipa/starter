@@ -22,7 +22,7 @@
                 <h2 class="m-0">
                     @lang('Data')
                 </h2>
-                @if($article->active)
+                @if(optional($article)->active)
                     {{ buttonLink()->route('news.article.show', [$article->url])
                         ->prepend('<i class="fas fa-external-link-square-alt fa-fw"></i>')
                         ->label(__('Display'))

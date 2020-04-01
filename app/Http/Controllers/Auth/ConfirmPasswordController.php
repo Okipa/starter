@@ -24,7 +24,10 @@ class ConfirmPasswordController extends Controller
         showConfirmForm as traitShowConfirmForm;
     }
 
-    public function showConfirmForm(): Response
+    /**
+     * @return \Illuminate\Http\Response
+     */
+    public function showConfirmForm()
     {
         SEOTools::setTitle(__('Password verification'));
 
