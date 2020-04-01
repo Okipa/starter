@@ -3,14 +3,11 @@
 namespace App\Services\LibraryMedia;
 
 use App\Models\LibraryMedia\LibraryMediaCategory;
-use App\Services\Service;
 use Okipa\LaravelTable\Table;
 
-class CategoriesService extends Service implements CategoriesServiceInterface
+class CategoriesService
 {
     /**
-     * Configure the model table list.
-     *
      * @return \Okipa\LaravelTable\Table
      * @throws \ErrorException
      * @throws \Illuminate\Contracts\Container\BindingResolutionException

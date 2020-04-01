@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Artesaos\SEOTools\Facades\SEOTools;
 use Illuminate\Foundation\Auth\VerifiesEmails;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 
 class VerificationController extends Controller
 {
@@ -26,22 +27,19 @@ class VerificationController extends Controller
         verify as traitVerify;
     }
 
-    /** @inheritDoc */
-    public function show(Request $request)
+    public function show(Request $request): Response
     {
         SEOTools::setTitle(__('Email address verification'));
 
         return $this->traitShow($request);
     }
 
-    /** @inheritDoc */
-    public function redirectPath()
+    public function redirectPath(): string
     {
         return route('admin.index');
     }
 
-    /** @inheritDoc */
-    public function resend(Request $request)
+    public function resend(Request $request): Response
     {
         $response = $this->traitResend($request);
         if (! $request->user()->hasVerifiedEmail()) {
@@ -52,8 +50,13 @@ class VerificationController extends Controller
         return $response;
     }
 
-    /** @inheritDoc */
-    public function verify(Request $request)
+    /**
+     * @param \Illuminate\Http\Request $request
+     *
+     * @return \Illuminate\Http\Response
+     * @throws \Illuminate\Auth\Access\AuthorizationException
+     */
+    public function verify(Request $request): Response
     {
         $response = $this->traitVerify($request);
         alert()->html(__('Success'), __('Your e-mail address has been confirmed.'), 'success')->showConfirmButton();

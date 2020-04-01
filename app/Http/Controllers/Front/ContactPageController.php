@@ -7,6 +7,8 @@ use App\Http\Requests\Contact\ContactPageSendMessageRequest;
 use App\Models\Logs\LogContactFormMessage;
 use App\Models\Pages\TitleDescriptionPageContent;
 use App\Notifications\ContactFormMessage;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\View\View;
 use Notification;
 
 class ContactPageController extends Controller
@@ -15,7 +17,7 @@ class ContactPageController extends Controller
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      * @throws \Exception
      */
-    public function show()
+    public function show(): View
     {
         /** @var \App\Models\Pages\TitleDescriptionPageContent $pageContent */
         $pageContent = (new TitleDescriptionPageContent)->firstOrCreate(['slug' => 'contact-page-content']);
@@ -31,7 +33,7 @@ class ContactPageController extends Controller
      * @return \Illuminate\Http\RedirectResponse
      * @throws \Exception
      */
-    public function sendMessage(ContactPageSendMessageRequest $request)
+    public function sendMessage(ContactPageSendMessageRequest $request): RedirectResponse
     {
         Notification::route('mail', settings()->email)
             ->notify(new ContactFormMessage('original', $request->validated()));

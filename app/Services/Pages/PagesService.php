@@ -3,14 +3,11 @@
 namespace App\Services\Pages;
 
 use App\Models\Pages\Page;
-use App\Services\Service;
 use Okipa\LaravelTable\Table;
 
-class PagesService extends Service implements PagesServiceInterface
+class PagesService
 {
     /**
-     * Configure the model table list.
-     *
      * @return \Okipa\LaravelTable\Table
      * @throws \ErrorException
      * @throws \Illuminate\Contracts\Container\BindingResolutionException

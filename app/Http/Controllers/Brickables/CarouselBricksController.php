@@ -2,19 +2,20 @@
 
 namespace App\Http\Controllers\Brickables;
 
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Okipa\LaravelBrickables\Models\Brick;
-use Spatie\MediaLibrary\Models\Media;
+use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
 class CarouselBricksController extends BricksController
 {
     /**
-     * @param \Spatie\MediaLibrary\Models\Media $slide
+     * @param \Spatie\MediaLibrary\MediaCollections\Models\Media $slide
      *
      * @return \Illuminate\Http\RedirectResponse
      * @throws \Exception
      */
-    public function destroySlide(Media $slide)
+    public function destroySlide(Media $slide): RedirectResponse
     {
         $brick = $slide->model;
         /** @var \Okipa\LaravelBrickables\Contracts\HasBrickables $model */
@@ -31,13 +32,9 @@ class CarouselBricksController extends BricksController
         ]));
     }
 
-    /**
-     * @param \Spatie\MediaLibrary\Models\Media $slide
-     *
-     * @return \Illuminate\Http\RedirectResponse
-     */
-    public function moveUpSlide(Media $slide)
+    public function moveUpSlide(Media $slide): RedirectResponse
     {
+        /** @var \Illuminate\Support\Collection $slides */
         $slides = $slide->model->getMedia('slides');
         $prev = $slides->where('order_column', '<', $slide->order_column)->values();
         $next = $slides->where('order_column', '>', $slide->order_column)->values();
@@ -52,13 +49,9 @@ class CarouselBricksController extends BricksController
         return back();
     }
 
-    /**
-     * @param \Spatie\MediaLibrary\Models\Media $slide
-     *
-     * @return \Illuminate\Http\RedirectResponse
-     */
-    public function moveDownSlide(Media $slide)
+    public function moveDownSlide(Media $slide): RedirectResponse
     {
+        /** @var \Illuminate\Support\Collection $slides */
         $slides = $slide->model->getMedia('slides');
         $prev = $slides->where('order_column', '<', $slide->order_column)->values();
         $next = $slides->where('order_column', '>', $slide->order_column)->values();
@@ -73,7 +66,13 @@ class CarouselBricksController extends BricksController
         return back();
     }
 
-    /** @inheritDoc */
+    /**
+     * @param \Illuminate\Http\Request $request
+     * @param \Okipa\LaravelBrickables\Models\Brick $brick
+     *
+     * @throws \Spatie\MediaLibrary\MediaCollections\Exceptions\FileDoesNotExist
+     * @throws \Spatie\MediaLibrary\MediaCollections\Exceptions\FileIsTooBig
+     */
     protected function stored(Request $request, Brick $brick): void
     {
         $this->addNewSlide($request, $brick);
@@ -83,23 +82,28 @@ class CarouselBricksController extends BricksController
      * @param \Illuminate\Http\Request $request
      * @param \Okipa\LaravelBrickables\Models\Brick $brick
      *
-     * @return \Spatie\MediaLibrary\Models\Media
-     * @throws \Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\DiskDoesNotExist
-     * @throws \Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\FileDoesNotExist
-     * @throws \Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\FileIsTooBig
+     * @return \Spatie\MediaLibrary\MediaCollections\Models\Media
+     * @throws \Spatie\MediaLibrary\MediaCollections\Exceptions\FileDoesNotExist
+     * @throws \Spatie\MediaLibrary\MediaCollections\Exceptions\FileIsTooBig
      */
     protected function addNewSlide(Request $request, Brick $brick): Media
     {
         $image = $request->file('image');
 
-        /** @var \Spatie\MediaLibrary\HasMedia\HasMedia $brick */
+        /** @var \Spatie\MediaLibrary\HasMedia $brick */
         return $brick->addMedia($image->getRealPath())
             ->setFileName($image->getClientOriginalName())
             ->withCustomProperties(['label' => $request->label, 'caption' => $request->caption])
             ->toMediaCollection('slides');
     }
 
-    /** @inheritDoc */
+    /**
+     * @param \Illuminate\Http\Request $request
+     * @param \Okipa\LaravelBrickables\Models\Brick $brick
+     *
+     * @throws \Spatie\MediaLibrary\MediaCollections\Exceptions\FileDoesNotExist
+     * @throws \Spatie\MediaLibrary\MediaCollections\Exceptions\FileIsTooBig
+     */
     protected function updated(Request $request, Brick $brick): void
     {
         if ($request->file('image')) {

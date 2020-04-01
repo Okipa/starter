@@ -2,8 +2,6 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Brickables\OneTextColumn;
-use App\Brickables\TitleH1;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\News\NewsPageUpdateRequest;
 use App\Models\Pages\TitleDescriptionPageContent;
@@ -13,12 +11,8 @@ use Illuminate\View\View;
 
 class NewsPageController extends Controller
 {
-    /**
-     * @return \Illuminate\View\View
-     */
     public function edit(): View
     {
-        /** @var \App\Models\Pages\TitleDescriptionPageContent $pageContent */
         $pageContent = (new TitleDescriptionPageContent)->firstOrCreate(['slug' => 'news-page-content']);
         SEOTools::setTitle(__('breadcrumbs.orphan.edit', [
             'entity' => __('News'),

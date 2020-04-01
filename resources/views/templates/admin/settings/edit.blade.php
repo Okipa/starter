@@ -21,7 +21,7 @@
                 {{ inputFile()->name('icon')
                     ->value(optional($logo)->file_name)
                     ->uploadedFile(fn() => $logo ? image()->src($logo->getUrl('thumb'))->linkUrl($logo->getUrl())->linkTitle($logo->name) : null)
-                    ->caption($settings->constraintsCaption('icons')) }}
+                    ->caption($settings->getMediaCaption('icons')) }}
                 <h3>@lang('Contact')</h3>
                 {{ inputEmail()->name('email')->model($settings)->containerHtmlAttributes(['required']) }}
                 {{ inputTel()->name('phone_number')->model($settings)->containerHtmlAttributes(['required']) }}

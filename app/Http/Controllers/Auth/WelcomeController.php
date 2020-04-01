@@ -6,20 +6,19 @@ use Artesaos\SEOTools\Facades\SEOTools;
 use Illuminate\Auth\Events\Verified;
 use Illuminate\Foundation\Auth\User;
 use Illuminate\Http\Request;
+use Illuminate\View\View;
 use Symfony\Component\HttpFoundation\Response;
 
 class WelcomeController extends \Spatie\WelcomeNotification\WelcomeController
 {
-    /** @inheritDoc */
-    public function showWelcomeForm(Request $request, User $user)
+    public function showWelcomeForm(Request $request, User $user): View
     {
         SEOTools::setTitle(__('Welcome'));
 
         return parent::showWelcomeForm($request, $user);
     }
 
-    /** @inheritDoc */
-    public function savePassword(Request $request, User $user)
+    public function savePassword(Request $request, User $user): Response
     {
         $response = parent::savePassword($request, $user);
         if (! $request->user()->hasVerifiedEmail()) {
@@ -31,7 +30,6 @@ class WelcomeController extends \Spatie\WelcomeNotification\WelcomeController
         return $response;
     }
 
-    /** @inheritDoc */
     public function sendPasswordSavedResponse(): Response
     {
         alert()->html(__('Success'), __('Your new password has been saved.'), 'success');
@@ -39,8 +37,7 @@ class WelcomeController extends \Spatie\WelcomeNotification\WelcomeController
         return redirect()->route('admin.index');
     }
 
-    /** @inheritDoc */
-    protected function rules()
+    protected function rules(): array
     {
         return [
             'password' => ['required', 'string', 'min:' . config('security.password.constraint.min'), 'confirmed'],

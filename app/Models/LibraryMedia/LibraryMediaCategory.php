@@ -3,18 +3,14 @@
 namespace App\Models\LibraryMedia;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Spatie\Translatable\HasTranslations;
 
 class LibraryMediaCategory extends Model
 {
     use HasTranslations;
 
-    /**
-     * The attributes that are translatable.
-     *
-     * @var array
-     */
-    public $translatable = ['name'];
+    public array $translatable = ['name'];
 
     /**
      * The database table used by the model.
@@ -30,10 +26,7 @@ class LibraryMediaCategory extends Model
      */
     protected $fillable = ['name'];
 
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
-    public function files()
+    public function files(): HasMany
     {
         return $this->hasMany(LibraryMediaFile::class, 'category_id', 'id');
     }

@@ -6,12 +6,7 @@ use App\Http\Requests\SeoRequest;
 
 class ContactPageUpdateRequest extends SeoRequest
 {
-    /**
-     * Get the validation rules that apply to the request.
-     *
-     * @return array
-     */
-    public function rules()
+    public function rules(): array
     {
         $localizedRules = localizeRules([
             'title' => ['required', 'string', 'max:255'],

@@ -13,10 +13,9 @@ class HorizonServiceProvider extends HorizonApplicationServiceProvider
      *
      * @return void
      */
-    public function boot()
+    public function boot(): void
     {
         parent::boot();
-
         // Horizon::routeSmsNotificationsTo('15556667777');
         $mailNotificationsRecipients = config('notifications.recipients.monitoring.email');
         if ($mailNotificationsRecipients) {
@@ -33,7 +32,7 @@ class HorizonServiceProvider extends HorizonApplicationServiceProvider
      *
      * @return void
      */
-    protected function gate()
+    protected function gate(): void
     {
         Gate::define('viewHorizon', function ($user) {
             return in_array($user->email, [

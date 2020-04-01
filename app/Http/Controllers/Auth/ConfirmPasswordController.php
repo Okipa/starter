@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use Artesaos\SEOTools\Facades\SEOTools;
 use Illuminate\Foundation\Auth\ConfirmsPasswords;
-use Illuminate\View\View;
+use Illuminate\Http\Response;
 
 class ConfirmPasswordController extends Controller
 {
@@ -19,20 +19,19 @@ class ConfirmPasswordController extends Controller
     | this trait and override any functions that require customization.
     |
     */
+
     use ConfirmsPasswords {
         showConfirmForm as traitShowConfirmForm;
     }
 
-    /** @inheritDoc */
-    public function showConfirmForm(): View
+    public function showConfirmForm(): Response
     {
         SEOTools::setTitle(__('Password verification'));
 
         return $this->traitShowConfirmForm();
     }
 
-    /** @inheritDoc */
-    public function redirectPath()
+    public function redirectPath(): string
     {
         return route('admin.index');
     }

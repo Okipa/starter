@@ -8,25 +8,22 @@ use Okipa\LaravelBrickables\Abstracts\Brickable;
 
 class TwoTextImageColumns extends Brickable
 {
-    /** @inheritDoc */
     protected function setBrickModelClass(): string
     {
         return TwoTextImageColumnsBrick::class;
     }
 
-    /** @inheritDoc */
     protected function setBricksControllerClass(): string
     {
         return TwoTextImageBricksController::class;
     }
 
-    /** @inheritDoc */
     protected function setStoreValidationRules(): array
     {
-        /** @var \Spatie\MediaLibrary\HasMedia\HasMedia $model */
+        /** @var \Okipa\MediaLibraryExt\ExtendsMediaAbilities $model */
         $model = $this->getBrickModel();
         $rules = [
-            'right_image' => array_merge(['required'], $model->validationRules('images')),
+            'right_image' => array_merge(['required'], $model->getMediaValidationRules('images')),
             'invert_order' => ['nullable', 'in:on'],
         ];
         $localizedRules = localizeRules(['text_left' => ['required', 'string']]);
@@ -34,13 +31,12 @@ class TwoTextImageColumns extends Brickable
         return array_merge($rules, $localizedRules);
     }
 
-    /** @inheritDoc */
     protected function setUpdateValidationRules(): array
     {
-        /** @var \Spatie\MediaLibrary\HasMedia\HasMedia $model */
+        /** @var \Okipa\MediaLibraryExt\ExtendsMediaAbilities $model */
         $model = $this->getBrickModel();
         $rules = [
-            'right_image' => $model->validationRules('images'),
+            'right_image' => $model->getMediaValidationRules('images'),
             'invert_order' => ['nullable', 'in:on'],
         ];
         $localizedRules = localizeRules(['text_left' => ['required', 'string']]);

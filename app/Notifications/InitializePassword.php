@@ -14,20 +14,19 @@ class InitializePassword extends WelcomeNotification implements ShouldQueue
 {
     use Queueable;
 
-    public $tries = 3;
+    public int $tries = 3;
 
-    /** @inheritDoc */
     public function __construct(Carbon $validUntil)
     {
         $this->queue = 'high';
         parent::__construct($validUntil);
     }
 
-    /** @inheritDoc */
     public function buildWelcomeNotificationMessage(): MailMessage
     {
         /** @var \App\Models\Users\User $user */
         $user = $this->user;
+
         return (new MailMessage)
             ->subject(__('mails.InitializePassword.subject'))
             ->greeting(__('mails.notification.greeting.named', ['name' => $user->name]))
@@ -38,8 +37,7 @@ class InitializePassword extends WelcomeNotification implements ShouldQueue
             ->line(__('mails.InitializePassword.notice'));
     }
 
-    /** @inheritDoc */
-    protected function initializeNotificationProperties(User $user)
+    protected function initializeNotificationProperties(User $user): void
     {
         $this->user = $user;
         $this->user->welcome_valid_until = $this->validUntil;

@@ -6,12 +6,7 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class ArticlesIndexRequest extends FormRequest
 {
-    /**
-     * Get the validation rules that apply to the request.
-     *
-     * @return array
-     */
-    public function rules()
+    public function rules(): array
     {
         return ['category_id' => ['integer', 'exists:news_categories,id']];
     }

@@ -12,6 +12,6 @@
         ->uploadedFile(fn() =>  $image ? image()->src($image->getUrl('thumb'))->linkUrl($image->getUrl())->linkTitle($image->name) : null)
         ->showRemoveCheckbox(false)
         ->containerHtmlAttributes(['required'])
-        ->caption($brickable->getBrickModel()->constraintsCaption('images')) }}
+        ->caption($brickable->getBrickModel()->getMediaCaption('images')) }}
     {{ inputToggle()->name('invert_order')->checked((bool) data_get($brick, 'data.invert_order')) }}
 @endsection

@@ -3,22 +3,18 @@
 namespace App\Http\Controllers\Utils;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Response;
 use Symfony\Component\HttpKernel\Exception\HttpException;
 
 class Error404Controller extends Controller
 {
-    /**
-     * @return \Illuminate\Http\JsonResponse
-     */
-    public function apiResponse()
+    public function apiResponse(): JsonResponse
     {
         return response()->json(['message' => __('Page not found')], 404);
     }
 
-    /**
-     * @return \Illuminate\Http\Response
-     */
-    public function webResponse()
+    public function webResponse(): Response
     {
         return response()->view('errors.404', ['exception' => new HttpException(404)], 404);
     }

@@ -4,25 +4,22 @@ namespace App\Models\Abstracts;
 
 use Artesaos\SEOTools\Facades\SEOTools;
 use Illuminate\Http\Request;
+use Okipa\MediaLibraryExt\ExtendsMediaAbilities;
 use Spatie\Image\Image;
 use Spatie\Image\Manipulations;
-use Spatie\MediaLibrary\HasMedia\HasMedia;
-use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
-use Spatie\MediaLibrary\Models\Media;
+use Spatie\MediaLibrary\HasMedia;
+use Spatie\MediaLibrary\InteractsWithMedia;
+use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
 abstract class Seo extends Metable implements HasMedia
 {
-    use HasMediaTrait;
+    use InteractsWithMedia;
+    use ExtendsMediaAbilities;
 
     protected array $seoTags = ['meta_title', 'meta_description'];
 
-    /**
-     * Register the media collections.
-     * @SuppressWarnings(PHPMD.UnusedLocalVariable)
-     *
-     * @return void
-     */
-    public function registerMediaCollections()
+    /** @SuppressWarnings(PHPMD.UnusedLocalVariable) */
+    public function registerMediaCollections(): void
     {
         $this->addMediaCollection('seo')
             ->singleFile()
@@ -35,14 +32,12 @@ abstract class Seo extends Metable implements HasMedia
     }
 
     /**
-     * Register the media conversions.
      * @SuppressWarnings(PHPMD.UnusedFormalParameter)
-     *
-     * @param \Spatie\MediaLibrary\Models\Media|null $media
+     * @param \Spatie\MediaLibrary\MediaCollections\Models\Media $media
      *
      * @throws \Spatie\Image\Exceptions\InvalidManipulation
      */
-    public function registerMediaConversions(Media $media = null)
+    public function registerMediaConversions(Media $media = null): void
     {
         $this->addMediaConversion('thumb')
             ->fit(Manipulations::FIT_CROP, 40, 40)
@@ -50,13 +45,10 @@ abstract class Seo extends Metable implements HasMedia
     }
 
     /**
-     * Save SEO meta from request.
+     * @param \Illuminate\Http\Request $request
      *
-     * @param Request $request
-     *
-     * @throws \Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\DiskDoesNotExist
-     * @throws \Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\FileDoesNotExist
-     * @throws \Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\FileIsTooBig
+     * @throws \Spatie\MediaLibrary\MediaCollections\Exceptions\FileDoesNotExist
+     * @throws \Spatie\MediaLibrary\MediaCollections\Exceptions\FileIsTooBig
      */
     public function saveSeoMetaFromRequest(Request $request): void
     {
@@ -69,11 +61,6 @@ abstract class Seo extends Metable implements HasMedia
         }
     }
 
-    /**
-     * Save SEO meta for model from given array.
-     *
-     * @param array $values
-     */
     public function saveSeoMeta(array $values): void
     {
         foreach ($this->seoTags as $tag) {
@@ -86,9 +73,6 @@ abstract class Seo extends Metable implements HasMedia
         }
     }
 
-    /**
-     * Display SEO meta in the HTML head from model.
-     */
     public function displaySeoMeta(): void
     {
         SEOTools::setTitle($this->getMeta('meta_title'));

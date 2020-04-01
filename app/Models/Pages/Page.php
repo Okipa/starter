@@ -12,12 +12,7 @@ class Page extends Seo implements HasBrickables
     use HasTranslations;
     use HasBrickablesTrait;
 
-    /**
-     * The attributes that are translatable.
-     *
-     * @var array
-     */
-    public $translatable = ['url', 'nav_title'];
+    public array $translatable = ['url', 'nav_title'];
 
     /**
      * The database table used by the model.
@@ -40,28 +35,19 @@ class Page extends Seo implements HasBrickables
      */
     protected $casts = ['active' => 'boolean'];
 
-    /**
-     * Get the value of the model's route key.
-     *
-     * @return mixed
-     */
-    public function getRouteKey()
+    public function getRouteKey(): string
     {
         return $this->getTranslation('url', app()->getLocale());
     }
 
     /**
-     * Retrieve the model for a bound value.
-     *
      * @param mixed $value
      *
-     * @return \Illuminate\Database\Eloquent\Model|null
+     * @return \App\Models\Pages\Page
+     * @throws \Illuminate\Database\Eloquent\ModelNotFoundException
      */
-    public function resolveRouteBinding($value)
+    public function resolveRouteBinding($value): Page
     {
-        /** @var \App\Models\Pages\Page $page */
-        $page = $this->where('url->' . app()->getLocale(), $value)->firstOrFail();
-
-        return $page;
+        return $this->where('url->' . app()->getLocale(), $value)->firstOrFail();
     }
 }

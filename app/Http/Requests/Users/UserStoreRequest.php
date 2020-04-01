@@ -7,15 +7,10 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class UserStoreRequest extends FormRequest
 {
-    /**
-     * Get the validation rules that apply to the request.
-     *
-     * @return array
-     */
-    public function rules()
+    public function rules(): array
     {
         return [
-            'avatar' => (new User)->validationRules('avatars'),
+            'avatar' => (new User)->getMediaValidationRules('avatars'),
             'first_name' => ['required', 'string', 'max:255'],
             'last_name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'max:255', 'email:rfc,dns,spoof', 'unique:users'],

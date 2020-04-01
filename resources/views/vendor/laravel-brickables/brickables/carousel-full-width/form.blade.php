@@ -5,7 +5,7 @@
 @section('inputs')
     {{ inputFile()->name('image')
         ->containerHtmlAttributes(['required'])
-        ->caption($brickable->getBrickModel()->constraintsCaption('slides')) }}
+        ->caption($brickable->getBrickModel()->getMediaCaption('slides')) }}
     {{ inputText()->name('label')->locales(supportedLocaleKeys()) }}
     {{ inputText()->name('caption')->locales(supportedLocaleKeys())->prepend('<i class="fas fa-align-left"></i>') }}
 @endsection

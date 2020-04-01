@@ -8,6 +8,7 @@ use App\Services\Users\UsersService;
 use Artesaos\SEOTools\Facades\SEOTools;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
@@ -23,26 +24,19 @@ class RegisterController extends Controller
     | provide this functionality without requiring any additional code.
     |
     */
+
     use RegistersUsers {
         showRegistrationForm as traitShowRegistrationForm;
     }
 
-    /** @inheritDoc */
-    public function showRegistrationForm()
+    public function showRegistrationForm(): Response
     {
         SEOTools::setTitle(__('Registration area'));
 
         return $this->traitShowRegistrationForm();
     }
 
-    /**
-     * Get a validator for an incoming registration request.
-     *
-     * @param array $data
-     *
-     * @return \Illuminate\Contracts\Validation\Validator
-     */
-    protected function validator(array $data)
+    protected function validator(array $data): \Illuminate\Contracts\Validation\Validator
     {
         return Validator::make($data, [
             'first_name' => ['required', 'string', 'max:255'],
@@ -53,16 +47,13 @@ class RegisterController extends Controller
     }
 
     /**
-     * Create a new user instance after a valid registration.
-     *
      * @param array $data
      *
      * @return \App\Models\Users\User
-     * @throws \Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\DiskDoesNotExist
-     * @throws \Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\FileDoesNotExist
-     * @throws \Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\FileIsTooBig
+     * @throws \Spatie\MediaLibrary\MediaCollections\Exceptions\FileDoesNotExist
+     * @throws \Spatie\MediaLibrary\MediaCollections\Exceptions\FileIsTooBig
      */
-    protected function create(array $data)
+    protected function create(array $data): User
     {
         /** @var User $user */
         $user = (new User)->create([
@@ -76,19 +67,15 @@ class RegisterController extends Controller
         return $user;
     }
 
-    /** @inheritDoc */
-    protected function registered(Request $request)
+    protected function registered(Request $request): void
     {
         alert()->toast(
             __('Welcome to your new account') . ', ' . $request->first_name . ' ' . $request->last_name . '.',
             'success'
         );
-
-        return;
     }
 
-    /** @inheritDoc */
-    protected function redirectPath()
+    protected function redirectPath(): string
     {
         return route('admin.index');
     }

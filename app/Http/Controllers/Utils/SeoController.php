@@ -3,13 +3,11 @@
 namespace App\Http\Controllers\Utils;
 
 use App\Http\Controllers\Controller;
+use Symfony\Component\HttpFoundation\Response;
 
 class SeoController extends Controller
 {
-    /**
-     * @return \Symfony\Component\HttpFoundation\Response
-     */
-    public function robotsTxt()
+    public function robotsTxt(): Response
     {
         $sitemap = url('sitemap.xml');
         $robotsTxtContent = app()->environment() === 'production'

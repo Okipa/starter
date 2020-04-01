@@ -8,26 +8,21 @@ use Okipa\LaravelBrickables\Abstracts\Brickable;
 
 class CarouselContainerWidth extends Brickable
 {
-    /** @inheritDoc */
     protected function setBrickModelClass(): string
     {
         return CarouselContainerWidthBrick::class;
     }
 
-    /** @inheritDoc */
     protected function setBricksControllerClass(): string
     {
         return CarouselBricksController::class;
     }
 
-    /** @inheritDoc */
     protected function setStoreValidationRules(): array
     {
-        /** @var \Spatie\MediaLibrary\HasMedia\HasMedia $model */
+        /** @var \Okipa\MediaLibraryExt\ExtendsMediaAbilities $model */
         $model = $this->getBrickModel();
-        $rules = [
-            'image' => array_merge(['required'], $model->validationRules('slides')),
-        ];
+        $rules = ['image' => array_merge(['required'], $model->getMediaValidationRules('slides'))];
         $localizedRules = localizeRules([
             'label' => ['nullable', 'string', 'max:75'],
             'caption' => ['nullable', 'string', 'max:150'],
@@ -36,14 +31,11 @@ class CarouselContainerWidth extends Brickable
         return array_merge($rules, $localizedRules);
     }
 
-    /** @inheritDoc */
     protected function setUpdateValidationRules(): array
     {
-        /** @var \Spatie\MediaLibrary\HasMedia\HasMedia $model */
+        /** @var \Okipa\MediaLibraryExt\ExtendsMediaAbilities $model */
         $model = $this->getBrickModel();
-        $rules = [
-            'image' => array_merge(['required'], $model->validationRules('slides')),
-        ];
+        $rules = ['image' => array_merge(['required'], $model->getMediaValidationRules('slides'))];
         $localizedRules = localizeRules([
             'label' => ['nullable', 'string', 'max:75'],
             'caption' => ['nullable', 'string', 'max:150'],

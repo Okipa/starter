@@ -4,13 +4,11 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Artesaos\SEOTools\Facades\SEOTools;
+use Illuminate\View\View;
 
 class DashboardController extends Controller
 {
-    /**
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
-    public function index()
+    public function index(): View
     {
         SEOTools::setTitle(__('Dashboard'));
 

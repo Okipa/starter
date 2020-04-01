@@ -10,7 +10,9 @@ use App\Services\Users\UsersService;
 use Artesaos\SEOTools\Facades\SEOTools;
 use Auth;
 use Hash;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Str;
+use Illuminate\View\View;
 
 class UsersController extends Controller
 {
@@ -19,7 +21,7 @@ class UsersController extends Controller
      * @throws \ErrorException
      * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
-    public function index()
+    public function index(): View
     {
         SEOTools::setTitle(__('breadcrumbs.orphan.index', ['entity' => __('Users')]));
         $table = (new UsersService)->table();
@@ -27,10 +29,7 @@ class UsersController extends Controller
         return view('templates.admin.users.index', compact('table'));
     }
 
-    /**
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
-    public function create()
+    public function create(): View
     {
         $user = null;
         SEOTools::setTitle(__('breadcrumbs.orphan.create', ['entity' => __('Users')]));
@@ -42,16 +41,15 @@ class UsersController extends Controller
      * @param \App\Http\Requests\Users\UserStoreRequest $request
      *
      * @return \Illuminate\Http\RedirectResponse
-     * @throws \Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\DiskDoesNotExist
-     * @throws \Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\FileDoesNotExist
-     * @throws \Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\FileIsTooBig
+     * @throws \Spatie\MediaLibrary\MediaCollections\Exceptions\FileDoesNotExist
+     * @throws \Spatie\MediaLibrary\MediaCollections\Exceptions\FileIsTooBig
      */
-    public function store(UserStoreRequest $request)
+    public function store(UserStoreRequest $request): RedirectResponse
     {
         /** @var \App\Models\Users\User $user */
         $user = (new User)->create(array_merge(
             $request->validated(),
-            ['password' => Hash::make($request->has('password') ? $request->password: Str::random(8))]
+            ['password' => Hash::make($request->has('password') ? $request->password : Str::random(8))]
         ));
         (new UsersService)->saveAvatarFromRequest($request, $user);
         $additionalMessage = '';
@@ -66,12 +64,7 @@ class UsersController extends Controller
             ]) . $additionalMessage);
     }
 
-    /**
-     * @param \App\Models\Users\User $user
-     *
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
-    public function edit(User $user)
+    public function edit(User $user): View
     {
         SEOTools::setTitle(__('breadcrumbs.orphan.edit', ['entity' => __('Users'), 'detail' => $user->name]));
 
@@ -83,11 +76,10 @@ class UsersController extends Controller
      * @param \App\Http\Requests\Users\UserUpdateRequest $request
      *
      * @return \Illuminate\Http\RedirectResponse
-     * @throws \Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\DiskDoesNotExist
-     * @throws \Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\FileDoesNotExist
-     * @throws \Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\FileIsTooBig
+     * @throws \Spatie\MediaLibrary\MediaCollections\Exceptions\FileDoesNotExist
+     * @throws \Spatie\MediaLibrary\MediaCollections\Exceptions\FileIsTooBig
      */
-    public function update(User $user, UserUpdateRequest $request)
+    public function update(User $user, UserUpdateRequest $request): RedirectResponse
     {
         if ($request->new_password) {
             $request->merge(['password' => Hash::make($request->new_password)]);
@@ -109,7 +101,7 @@ class UsersController extends Controller
      * @return \Illuminate\Http\RedirectResponse
      * @throws \Exception
      */
-    public function destroy(User $user)
+    public function destroy(User $user): RedirectResponse
     {
         $name = $user->name;
         $user->delete();
@@ -120,10 +112,7 @@ class UsersController extends Controller
         ]));
     }
 
-    /**
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
-    public function profile()
+    public function profile(): View
     {
         $user = auth()->user();
         SEOTools::setTitle(__('My profile'));

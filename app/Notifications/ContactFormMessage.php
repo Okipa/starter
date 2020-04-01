@@ -11,18 +11,12 @@ class ContactFormMessage extends Notification implements ShouldQueue
 {
     use Queueable;
 
-    public $tries = 3;
+    public int $tries = 3;
 
-    protected $emailCopyStatus;
+    protected string $emailCopyStatus;
 
-    protected $data;
+    protected array $data;
 
-    /**
-     * Create a notification instance.
-     *
-     * @param string $emailCopyStatus
-     * @param array $data
-     */
     public function __construct(string $emailCopyStatus, array $data)
     {
         $this->queue = 'high';
@@ -30,22 +24,12 @@ class ContactFormMessage extends Notification implements ShouldQueue
         $this->data = $data;
     }
 
-    /**
-     * Get the notification's delivery channels.
-     *
-     * @return array
-     */
-    public function via()
+    public function via(): array
     {
         return ['mail'];
     }
 
-    /**
-     * Get the mail representation of the notification.
-     *
-     * @return \Illuminate\Notifications\Messages\MailMessage
-     */
-    public function toMail()
+    public function toMail(): MailMessage
     {
         $mailMessage = (new MailMessage)
             ->subject(__('mails.ContactFormMessage.subject.' . $this->emailCopyStatus))

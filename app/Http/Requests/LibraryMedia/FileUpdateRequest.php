@@ -7,16 +7,11 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class FileUpdateRequest extends FormRequest
 {
-    /**
-     * Get the validation rules that apply to the request.
-     *
-     * @return array
-     */
-    public function rules()
+    public function rules(): array
     {
         $rules = [
             'category_id' => ['required', 'integer', 'exists:library_media_categories,id'],
-            'media' => (new LibraryMediaFile)->validationRules('medias'),
+            'media' => (new LibraryMediaFile)->getMediaValidationRules('medias'),
             'downloadable' => ['required', 'boolean'],
         ];
         $localizedRules = localizeRules(['name' => ['required', 'string', 'max:255']]);
@@ -24,8 +19,7 @@ class FileUpdateRequest extends FormRequest
         return array_merge($rules, $localizedRules);
     }
 
-    /** @inheritDoc */
-    protected function prepareForValidation()
+    protected function prepareForValidation(): void
     {
         $this->merge(['downloadable' => boolval($this->downloadable)]);
     }

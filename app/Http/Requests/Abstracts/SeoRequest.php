@@ -7,15 +7,10 @@ use Illuminate\Foundation\Http\FormRequest;
 
 abstract class SeoRequest extends FormRequest
 {
-    /**
-     * Get the validation rules that apply to the request.
-     *
-     * @return array
-     */
-    public function rules()
+    public function rules(): array
     {
         return array_merge([
-            'meta_image' => (new PageContent)->validationRules('seo'),
+            'meta_image' => (new PageContent)->getMediaValidationRules('seo'),
             'remove_meta_image' => ['required', 'boolean'],
         ], localizeRules([
             'meta_title' => ['required', 'string', 'max:255'],
@@ -23,8 +18,7 @@ abstract class SeoRequest extends FormRequest
         ]));
     }
 
-    /** @inheritDoc */
-    protected function prepareForValidation()
+    protected function prepareForValidation(): void
     {
         $this->merge(['remove_meta_image' => boolval($this->remove_meta_image)]);
     }

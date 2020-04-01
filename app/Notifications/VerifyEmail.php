@@ -10,24 +10,14 @@ class VerifyEmail extends \Illuminate\Auth\Notifications\VerifyEmail implements 
 {
     use Queueable;
 
-    public $tries = 3;
+    public int $tries = 3;
 
-    /**
-     * Create a notification instance.
-     */
     public function __construct()
     {
         $this->queue = 'high';
     }
 
-    /**
-     * Build the mail representation of the notification.
-     *
-     * @param mixed $notifiable
-     *
-     * @return \Illuminate\Notifications\Messages\MailMessage|mixed
-     */
-    public function toMail($notifiable)
+    public function toMail($notifiable): MailMessage
     {
         if (static::$toMailCallback) {
             return call_user_func(static::$toMailCallback, $notifiable);

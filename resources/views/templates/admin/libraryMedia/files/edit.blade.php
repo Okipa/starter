@@ -30,7 +30,7 @@
                     ->uploadedFile(fn() => trim(view('components.admin.table.library-media.thumb', ['file' => $file])))
                     ->showRemoveCheckbox(false)
                     ->containerHtmlAttributes(['required'])
-                    ->caption((new \App\Models\LibraryMedia\LibraryMediaFile)->constraintsCaption('medias')) }}
+                    ->caption((new \App\Models\LibraryMedia\LibraryMediaFile)->getMediaCaption('medias')) }}
                 <h3>@lang('File')</h3>
                 {{ inputText()->name('name')
                     ->locales(supportedLocaleKeys())

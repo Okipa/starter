@@ -40,7 +40,7 @@
                 {{ inputFile()->name('avatar')
                     ->value(optional($avatar)->file_name)
                     ->uploadedFile(fn() => $avatar ? image()->src($avatar->getUrl('thumb'))->linkUrl($avatar->getUrl())->linkTitle($avatar->name) : null)
-                    ->caption((new \App\Models\Users\User)->constraintsCaption('avatars')) }}
+                    ->caption((new \App\Models\Users\User)->getMediaCaption('avatars')) }}
                 {{ inputText()->name('last_name')->model($user)->containerHtmlAttributes(['required']) }}
                 {{ inputText()->name('first_name')->model($user)->containerHtmlAttributes(['required']) }}
                 <h3>@lang('Contact')</h3>

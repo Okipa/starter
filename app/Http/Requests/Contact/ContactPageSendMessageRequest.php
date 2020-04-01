@@ -7,12 +7,7 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class ContactPageSendMessageRequest extends FormRequest
 {
-    /**
-     * Get the validation rules that apply to the request.
-     *
-     * @return array
-     */
-    public function rules()
+    public function rules(): array
     {
         return [
             'last_name' => ['required', 'string', 'max:255'],

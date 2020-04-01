@@ -7,18 +7,31 @@ use Okipa\LaravelBrickables\Models\Brick;
 
 class TwoTextImageBricksController extends BricksController
 {
-    /** @inheritDoc */
+    /**
+     * @param \Illuminate\Http\Request $request
+     * @param \Okipa\LaravelBrickables\Models\Brick $brick
+     * @SuppressWarnings(PHPMD.UnusedFormalParameter)
+     *
+     * @throws \Spatie\MediaLibrary\MediaCollections\Exceptions\FileDoesNotExist
+     * @throws \Spatie\MediaLibrary\MediaCollections\Exceptions\FileIsTooBig
+     */
     protected function stored(Request $request, Brick $brick): void
     {
-        /** @var \Spatie\MediaLibrary\HasMedia\HasMediaTrait $brick */
+        /** @var \App\Models\Brickables\TwoTextImageColumnsBrick $brick */
         $brick->addMediaFromRequest('right_image')->toMediaCollection('images');
     }
 
-    /** @inheritDoc */
+    /**
+     * @param \Illuminate\Http\Request $request
+     * @param \Okipa\LaravelBrickables\Models\Brick $brick
+     *
+     * @throws \Spatie\MediaLibrary\MediaCollections\Exceptions\FileDoesNotExist
+     * @throws \Spatie\MediaLibrary\MediaCollections\Exceptions\FileIsTooBig
+     */
     protected function updated(Request $request, Brick $brick): void
     {
         if ($request->file('right_image')) {
-            /** @var \Spatie\MediaLibrary\HasMedia\HasMediaTrait $brick */
+            /** @var \App\Models\Brickables\TwoTextImageColumnsBrick $brick */
             $brick->addMediaFromRequest('right_image')->toMediaCollection('images');
         }
     }

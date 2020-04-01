@@ -3,14 +3,11 @@
 namespace App\Services\News;
 
 use App\Models\News\NewsArticle;
-use App\Services\Service;
 use Okipa\LaravelTable\Table;
 
-class ArticlesService extends Service implements ArticlesServiceInterface
+class ArticlesService
 {
     /**
-     * Configure the model table list.
-     *
      * @return \Okipa\LaravelTable\Table
      * @throws \ErrorException
      * @throws \Illuminate\Contracts\Container\BindingResolutionException

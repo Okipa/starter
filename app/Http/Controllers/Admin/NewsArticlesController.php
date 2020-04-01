@@ -8,6 +8,8 @@ use App\Http\Requests\News\ArticleUpdateRequest;
 use App\Models\News\NewsArticle;
 use App\Services\News\ArticlesService;
 use Artesaos\SEOTools\Facades\SEOTools;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\View\View;
 
 class NewsArticlesController extends Controller
 {
@@ -16,7 +18,7 @@ class NewsArticlesController extends Controller
      * @throws \ErrorException
      * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
-    public function index()
+    public function index(): View
     {
         $table = (new ArticlesService)->table();
         SEOTools::setTitle(__('breadcrumbs.parent.index', [
@@ -27,10 +29,7 @@ class NewsArticlesController extends Controller
         return view('templates.admin.news.articles.index', compact('table'));
     }
 
-    /**
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
-    public function create()
+    public function create(): View
     {
         $article = null;
         SEOTools::setTitle(__('breadcrumbs.parent.create', [
@@ -45,11 +44,10 @@ class NewsArticlesController extends Controller
      * @param \App\Http\Requests\News\ArticleStoreRequest $request
      *
      * @return \Illuminate\Http\RedirectResponse
-     * @throws \Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\DiskDoesNotExist
-     * @throws \Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\FileDoesNotExist
-     * @throws \Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\FileIsTooBig
+     * @throws \Spatie\MediaLibrary\MediaCollections\Exceptions\FileDoesNotExist
+     * @throws \Spatie\MediaLibrary\MediaCollections\Exceptions\FileIsTooBig
      */
-    public function store(ArticleStoreRequest $request)
+    public function store(ArticleStoreRequest $request): RedirectResponse
     {
         /** @var \App\Models\News\NewsArticle $article */
         $article = (new NewsArticle)->create($request->validated());
@@ -72,7 +70,7 @@ class NewsArticlesController extends Controller
      *
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function edit(NewsArticle $article)
+    public function edit(NewsArticle $article): View
     {
         SEOTools::setTitle(__('breadcrumbs.parent.edit', [
             'parent' => __('News'),
@@ -88,11 +86,10 @@ class NewsArticlesController extends Controller
      * @param \App\Http\Requests\News\ArticleUpdateRequest $request
      *
      * @return \Illuminate\Http\RedirectResponse
-     * @throws \Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\DiskDoesNotExist
-     * @throws \Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\FileDoesNotExist
-     * @throws \Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\FileIsTooBig
+     * @throws \Spatie\MediaLibrary\MediaCollections\Exceptions\FileDoesNotExist
+     * @throws \Spatie\MediaLibrary\MediaCollections\Exceptions\FileIsTooBig
      */
-    public function update(NewsArticle $article, ArticleUpdateRequest $request)
+    public function update(NewsArticle $article, ArticleUpdateRequest $request): RedirectResponse
     {
         $article->update($request->validated());
         if ($request->file('image')) {
@@ -114,7 +111,7 @@ class NewsArticlesController extends Controller
      * @return \Illuminate\Http\RedirectResponse
      * @throws \Exception
      */
-    public function destroy(NewsArticle $article)
+    public function destroy(NewsArticle $article): RedirectResponse
     {
         $name = $article->title;
         $article->delete();

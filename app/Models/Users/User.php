@@ -9,19 +9,19 @@ use Carbon\Carbon;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Okipa\MediaLibraryExt\ExtendsMediaAbilities;
 use Spatie\Image\Manipulations;
-use Spatie\MediaLibrary\HasMedia\HasMedia;
-use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
-use Spatie\MediaLibrary\Models\Media;
+use Spatie\MediaLibrary\HasMedia;
+use Spatie\MediaLibrary\InteractsWithMedia;
+use Spatie\MediaLibrary\MediaCollections\Models\Media;
 use Spatie\WelcomeNotification\ReceivesWelcomeNotification;
 
-class User extends Authenticatable implements
-    HasMedia,
-    MustVerifyEmail
+class User extends Authenticatable implements HasMedia, MustVerifyEmail
 {
     use Notifiable;
-    use HasMediaTrait;
     use ReceivesWelcomeNotification;
+    use InteractsWithMedia;
+    use ExtendsMediaAbilities;
 
     /**
      * The attributes that are mass assignable.
@@ -37,13 +37,8 @@ class User extends Authenticatable implements
      */
     protected $hidden = ['password', 'remember_token'];
 
-    /**
-     * Register the media collections.
-     * @SuppressWarnings(PHPMD.UnusedLocalVariable)
-     *
-     * @return void
-     */
-    public function registerMediaCollections()
+    /** @SuppressWarnings(PHPMD.UnusedLocalVariable) */
+    public function registerMediaCollections(): void
     {
         $this->addMediaCollection('avatars')
             ->acceptsMimeTypes(['image/jpeg', 'image/png'])
@@ -56,56 +51,34 @@ class User extends Authenticatable implements
     }
 
     /**
-     * Register the media conversions.
-     *
-     * @param \Spatie\MediaLibrary\Models\Media|null $media
-     * @SuppressWarnings(PHPMD.UnusedFormalParameter)
+     * @param \Spatie\MediaLibrary\MediaCollections\Models\Media $media
      *
      * @throws \Spatie\Image\Exceptions\InvalidManipulation
+     * @SuppressWarnings(PHPMD.UnusedFormalParameter)
      */
-    public function registerMediaConversions(Media $media = null)
+    public function registerMediaConversions(Media $media = null): void
     {
         $this->addMediaConversion('thumb')
             ->fit(Manipulations::FIT_CROP, 40, 40)
             ->keepOriginalImageFormat();
     }
 
-    /**
-     * @return string
-     */
-    public function getNameAttribute()
+    public function getNameAttribute(): string
     {
         return $this->first_name . ' ' . $this->last_name;
     }
 
-    /**
-     * Send the password reset notification.
-     *
-     * @param string $token
-     *
-     * @return void
-     */
-    public function sendPasswordResetNotification($token)
+    public function sendPasswordResetNotification($token): void
     {
         $this->notify(new ResetPassword($token));
     }
 
-    /**
-     * Send the email verification notification.
-     *
-     * @return void
-     */
-    public function sendEmailVerificationNotification()
+    public function sendEmailVerificationNotification(): void
     {
         $this->notify(new VerifyEmail);
     }
 
-    /**
-     * Send the welcome notification for password initialization.
-     *
-     * @param \Carbon\Carbon $validUntil
-     */
-    public function sendWelcomeNotification(Carbon $validUntil)
+    public function sendWelcomeNotification(Carbon $validUntil): void
     {
         $this->notify(new InitializePassword($validUntil));
     }

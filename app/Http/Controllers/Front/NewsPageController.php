@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\News\ArticlesIndexRequest;
 use App\Models\News\NewsArticle;
 use App\Models\Pages\TitleDescriptionPageContent;
+use Illuminate\View\View;
 
 class NewsPageController extends Controller
 {
@@ -15,7 +16,7 @@ class NewsPageController extends Controller
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      * @throws \Exception
      */
-    public function show(ArticlesIndexRequest $request)
+    public function show(ArticlesIndexRequest $request): View
     {
         /** @var \App\Models\Pages\TitleDescriptionPageContent $pageContent */
         $pageContent = (new TitleDescriptionPageContent)->firstOrCreate(['slug' => 'news-page-content']);

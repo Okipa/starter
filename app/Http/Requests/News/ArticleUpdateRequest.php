@@ -9,15 +9,10 @@ use CodeZero\UniqueTranslation\UniqueTranslationRule;
 
 class ArticleUpdateRequest extends SeoRequest
 {
-    /**
-     * Get the validation rules that apply to the request.
-     *
-     * @return array
-     */
-    public function rules()
+    public function rules(): array
     {
         $rules = [
-            'illustration' => (new NewsArticle)->validationRules('illustration'),
+            'illustration' => (new NewsArticle)->getMediaValidationRules('illustration'),
             'category_ids' => ['required', 'array'],
             'category_ids.*' => ['required', 'integer', 'exists:news_categories,id'],
             'published_at' => ['required', 'date_format:Y-m-d H:i:s'],
@@ -37,8 +32,7 @@ class ArticleUpdateRequest extends SeoRequest
         return array_merge($rules, $localizedRules, parent::rules());
     }
 
-    /** @inheritDoc */
-    protected function prepareForValidation()
+    protected function prepareForValidation(): void
     {
         parent::prepareForValidation();
         $this->merge([

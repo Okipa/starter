@@ -3,24 +3,20 @@
 namespace App\Models\News;
 
 use App\Models\Abstracts\Seo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Support\Collection;
 use Spatie\Feed\Feedable;
 use Spatie\Feed\FeedItem;
 use Spatie\Image\Manipulations;
-use Spatie\MediaLibrary\HasMedia\HasMedia;
-use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
-use Spatie\MediaLibrary\Models\Media;
+use Spatie\MediaLibrary\HasMedia;
+use Spatie\MediaLibrary\MediaCollections\Models\Media;
 use Spatie\Translatable\HasTranslations;
 
 class NewsArticle extends Seo implements HasMedia, Feedable
 {
     use HasTranslations;
 
-    /**
-     * The attributes that are translatable.
-     *
-     * @var array
-     */
-    public $translatable = ['url', 'title', 'description'];
+    public array $translatable = ['url', 'title', 'description'];
 
     /**
      * The database table used by the model.
@@ -34,13 +30,7 @@ class NewsArticle extends Seo implements HasMedia, Feedable
      *
      * @var array
      */
-    protected $fillable = [
-        'title',
-        'url',
-        'description',
-        'active',
-        'published_at',
-    ];
+    protected $fillable = ['title', 'url', 'description', 'active', 'published_at'];
 
     /**
      * The attributes that should be cast to native types.
@@ -49,32 +39,29 @@ class NewsArticle extends Seo implements HasMedia, Feedable
      */
     protected $casts = ['active' => 'boolean', 'published_at' => 'datetime'];
 
-    /**
-     * Get the value of the model's route key.
-     *
-     * @return mixed
-     */
-    public function getRouteKey()
+    public static function getFeedItems(): Collection
+    {
+        return self::orderBy('published_at', 'desc')->get();
+    }
+
+    public function getRouteKey(): string
     {
         return $this->getTranslation('url', app()->getLocale());
     }
 
-    /** @inheritDoc */
-    public function resolveRouteBinding($value)
+    /**
+     * @param mixed $value
+     *
+     * @return \App\Models\News\NewsArticle
+     * @throws \Illuminate\Database\Eloquent\ModelNotFoundException
+     */
+    public function resolveRouteBinding($value): NewsArticle
     {
-        /** @var \App\Models\News\NewsArticle $newArticle */
-        $newArticle = $this->where('url->' . app()->getLocale(), $value)->firstOrFail();
-
-        return $newArticle;
+        return $this->where('url->' . app()->getLocale(), $value)->firstOrFail();
     }
 
-    /**
-     * Register the media collections.
-     * @SuppressWarnings(PHPMD.UnusedLocalVariable)
-     *
-     * @return void
-     */
-    public function registerMediaCollections()
+    /** @SuppressWarnings(PHPMD.UnusedLocalVariable) */
+    public function registerMediaCollections(): void
     {
         parent::registerMediaCollections();
         $this->addMediaCollection('illustrations')
@@ -91,24 +78,17 @@ class NewsArticle extends Seo implements HasMedia, Feedable
             });
     }
 
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
-     */
-    public function categories()
+    public function categories(): BelongsToMany
     {
         return $this->belongsToMany(NewsCategory::class, 'news_article_category')->withTimestamps();
     }
 
-    /**
-     * @return mixed
-     */
-    public function getCategoryIdsAttribute()
+    public function getCategoryIdsAttribute(): array
     {
         return $this->categories->pluck('id')->toArray();
     }
 
-    /** @inheritDoc */
-    public function toFeedItem()
+    public function toFeedItem(): FeedItem
     {
         $media = $this->getFirstMedia('illustrations');
 
@@ -121,13 +101,5 @@ class NewsArticle extends Seo implements HasMedia, Feedable
             ->enclosure($media->getUrl())
             ->enclosureType($media->mime_type)
             ->enclosureLength($media->size);
-    }
-
-    /**
-     * @return \App\Models\News\NewsArticle[]|\Illuminate\Database\Eloquent\Collection
-     */
-    public static function getFeedItems()
-    {
-        return self::orderBy('published_at', 'desc')->get();
     }
 }

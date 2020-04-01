@@ -5,7 +5,10 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use Artesaos\SEOTools\Facades\SEOTools;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
+use Illuminate\View\View;
 
 class LoginController extends Controller
 {
@@ -24,33 +27,32 @@ class LoginController extends Controller
         showLoginForm as traitShowLoginForm;
     }
 
-    /** @inheritDoc */
-    public function showLoginForm()
+    public function showLoginForm(): View
     {
         SEOTools::setTitle(__('Sign in area'));
 
         return $this->traitShowLoginForm();
     }
 
-    /** @inheritDoc */
-    protected function redirectPath()
+    protected function redirectPath(): string
     {
         return route('admin.index');
     }
 
-    /** @inheritDoc */
-    protected function loggedOut()
+    protected function loggedOut(): RedirectResponse
     {
         alert()->toast(__('You have been logged out.'), 'success');
 
         return redirect()->route('home');
     }
 
-    /** @inheritDoc */
-    protected function authenticated(Request $request, $user)
+    /**
+     * @param \Illuminate\Http\Request $request
+     * @param $user
+     * @SuppressWarnings(PHPMD.UnusedFormalParameter)
+     */
+    protected function authenticated(Request $request, $user): void
     {
         alert()->toast(__('Welcome') . ' ' . $user->name . '.', 'success');
-
-        return;
     }
 }

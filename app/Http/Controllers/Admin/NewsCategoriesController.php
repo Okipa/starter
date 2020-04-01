@@ -8,6 +8,8 @@ use App\Http\Requests\News\CategoryUpdateRequest;
 use App\Models\News\NewsCategory;
 use App\Services\News\CategoriesService;
 use Artesaos\SEOTools\Facades\SEOTools;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\View\View;
 
 class NewsCategoriesController extends Controller
 {
@@ -16,7 +18,7 @@ class NewsCategoriesController extends Controller
      * @throws \ErrorException
      * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
-    public function index()
+    public function index(): View
     {
         $table = (new CategoriesService)->table();
         SEOTools::setTitle(__('breadcrumbs.parent.index', [
@@ -27,10 +29,7 @@ class NewsCategoriesController extends Controller
         return view('templates.admin.news.categories.index', compact('table'));
     }
 
-    /**
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
-    public function create()
+    public function create(): View
     {
         $category = null;
         SEOTools::setTitle(__('breadcrumbs.parent.create', [
@@ -41,12 +40,7 @@ class NewsCategoriesController extends Controller
         return view('templates.admin.news.categories.edit', compact('category'));
     }
 
-    /**
-     * @param \App\Http\Requests\News\CategoryStoreRequest $request
-     *
-     * @return \Illuminate\Http\RedirectResponse
-     */
-    public function store(CategoryStoreRequest $request)
+    public function store(CategoryStoreRequest $request): RedirectResponse
     {
         $category = (new NewsCategory)->create($request->validated());
 
@@ -58,12 +52,7 @@ class NewsCategoriesController extends Controller
             ]));
     }
 
-    /**
-     * @param \App\Models\News\NewsCategory $category
-     *
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
-    public function edit(NewsCategory $category)
+    public function edit(NewsCategory $category): View
     {
         SEOTools::setTitle(__('breadcrumbs.parent.edit', [
             'parent' => __('News'),
@@ -74,13 +63,7 @@ class NewsCategoriesController extends Controller
         return view('templates.admin.news.categories.edit', compact('category'));
     }
 
-    /**
-     * @param \App\Models\News\NewsCategory $category
-     * @param \App\Http\Requests\News\CategoryUpdateRequest $request
-     *
-     * @return \Illuminate\Http\RedirectResponse
-     */
-    public function update(NewsCategory $category, CategoryUpdateRequest $request)
+    public function update(NewsCategory $category, CategoryUpdateRequest $request): RedirectResponse
     {
         $category->update($request->validated());
 
@@ -91,13 +74,7 @@ class NewsCategoriesController extends Controller
         ]));
     }
 
-    /**
-     * @param \App\Models\News\NewsCategory $category
-     *
-     * @return \Illuminate\Http\RedirectResponse
-     * @throws \Exception
-     */
-    public function destroy(NewsCategory $category)
+    public function destroy(NewsCategory $category): RedirectResponse
     {
         $name = $category->name;
         $category->delete();

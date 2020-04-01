@@ -9,12 +9,7 @@ class NewsCategory extends Model
 {
     use HasTranslations;
 
-    /**
-     * The attributes that are translatable.
-     *
-     * @var array
-     */
-    public $translatable = ['name'];
+    public array $translatable = ['name'];
 
     /**
      * The database table used by the model.

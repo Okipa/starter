@@ -3,7 +3,7 @@
 {{ inputFile()->name('meta_image')
     ->uploadedFile(fn() => $metaImage ? image()->src($metaImage->getUrl('thumb'))->linkUrl($metaImage->getUrl())->linkTitle($metaImage->name) : null)
     ->caption(
-        (new \App\Models\Pages\PageContent)->constraintsCaption('seo') . '<br>' .
+        (new \App\Models\Pages\PageContent)->getMediaCaption('seo') . '<br>' .
         __('Recommended width: :width pixels / recommended height: :height pixels.', ['width' => 600, 'height' => 600])
     ) }}
 {{ inputText()->name('meta_title')

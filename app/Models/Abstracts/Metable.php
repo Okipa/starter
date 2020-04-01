@@ -11,12 +11,6 @@ abstract class Metable extends Model
         getMeta as traitGetMeta;
     }
 
-    /**
-     * Add or update the translated meta from the request.
-     *
-     * @param \Illuminate\Http\Request $request
-     * @param array $metaKeys
-     */
     public function saveMetaFromRequest(Request $request, array $metaKeys): void
     {
         foreach ($metaKeys as $metaKey) {
@@ -31,11 +25,9 @@ abstract class Metable extends Model
     }
 
     /**
-     * Retrieve the translated value of the `Meta` at a given key.
-     *
      * @param string $key
-     * @param null $default
-     * @param null $locale
+     * @param mixed|null $default
+     * @param string|null $locale
      *
      * @return mixed
      */

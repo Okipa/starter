@@ -3,16 +3,13 @@
 namespace App\Services\LibraryMedia;
 
 use App\Models\LibraryMedia\LibraryMediaFile;
-use App\Services\Service;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
-use JavaScript;
 use Okipa\LaravelTable\Table;
 
-class FilesService extends Service implements FilesServiceInterface
+class FilesService
 {
     /**
-     * Configure the model table list.
-     *
      * @param \Illuminate\Http\Request $request
      *
      * @return \Okipa\LaravelTable\Table
@@ -31,7 +28,7 @@ class FilesService extends Service implements FilesServiceInterface
                 'entity' => __('Media library'),
                 'name' => $file->name,
             ]),
-        ])->query(function ($query) use ($request) {
+        ])->query(function (Builder $query) use ($request) {
             $query->select('library_media_files.*');
             $query->addSelect(multilingual()
                 ? 'library_media_categories.name->' . app()->getLocale() . ' as category_name'

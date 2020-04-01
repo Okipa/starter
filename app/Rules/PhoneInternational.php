@@ -9,25 +9,13 @@ use Illuminate\Support\Str;
 class PhoneInternational implements Rule
 {
     /**
-     * Create a new rule instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        //
-    }
-
-    /**
-     * Determine if the validation rule passes.
-     * @SuppressWarnings("unused")
-     *
-     * @param string $attribute
-     * @param mixed $value
+     * @param $attribute
+     * @param $value
+     * @SuppressWarnings(PHPMD.UnusedFormalParameter)
      *
      * @return bool
      */
-    public function passes($attribute, $value)
+    public function passes($attribute, $value): bool
     {
         $localizedPhoneNumber = Str::replaceFirst('0', '+33', $value);
 
@@ -37,12 +25,7 @@ class PhoneInternational implements Rule
         )->fails();
     }
 
-    /**
-     * Get the validation error message.
-     *
-     * @return string
-     */
-    public function message()
+    public function message(): string
     {
         return __('validation.phone_international');
     }

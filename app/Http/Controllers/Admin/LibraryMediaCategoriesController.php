@@ -8,15 +8,17 @@ use App\Http\Requests\LibraryMedia\CategoryUpdateRequest;
 use App\Models\LibraryMedia\LibraryMediaCategory;
 use App\Services\LibraryMedia\CategoriesService;
 use Artesaos\SEOTools\Facades\SEOTools;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\View\View;
 
 class LibraryMediaCategoriesController extends Controller
 {
     /**
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @return \Illuminate\View\View
      * @throws \ErrorException
      * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
-    public function index()
+    public function index(): View
     {
         $table = (new CategoriesService)->table();
         SEOTools::setTitle(__('breadcrumbs.parent.index', [
@@ -27,10 +29,7 @@ class LibraryMediaCategoriesController extends Controller
         return view('templates.admin.libraryMedia.categories.index', compact('table'));
     }
 
-    /**
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
-    public function create()
+    public function create(): View
     {
         $category = null;
         SEOTools::setTitle(__('breadcrumbs.parent.create', [
@@ -41,12 +40,7 @@ class LibraryMediaCategoriesController extends Controller
         return view('templates.admin.libraryMedia.categories.edit', compact('category'));
     }
 
-    /**
-     * @param \App\Http\Requests\LibraryMedia\CategoryStoreRequest $request
-     *
-     * @return \Illuminate\Http\RedirectResponse
-     */
-    public function store(CategoryStoreRequest $request)
+    public function store(CategoryStoreRequest $request): RedirectResponse
     {
         /** @var \App\Models\LibraryMedia\LibraryMediaCategory $category */
         $category = (new LibraryMediaCategory)->create($request->validated());
@@ -59,12 +53,7 @@ class LibraryMediaCategoriesController extends Controller
             ]));
     }
 
-    /**
-     * @param \App\Models\LibraryMedia\LibraryMediaCategory $category
-     *
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
-    public function edit(LibraryMediaCategory $category)
+    public function edit(LibraryMediaCategory $category): View
     {
         SEOTools::setTitle(__('breadcrumbs.parent.edit', [
             'parent' => __('Media library'),
@@ -75,13 +64,7 @@ class LibraryMediaCategoriesController extends Controller
         return view('templates.admin.libraryMedia.categories.edit', compact('category'));
     }
 
-    /**
-     * @param \App\Models\LibraryMedia\LibraryMediaCategory $category
-     * @param \App\Http\Requests\LibraryMedia\CategoryUpdateRequest $request
-     *
-     * @return \Illuminate\Http\RedirectResponse
-     */
-    public function update(LibraryMediaCategory $category, CategoryUpdateRequest $request)
+    public function update(LibraryMediaCategory $category, CategoryUpdateRequest $request): RedirectResponse
     {
         $category->update($request->validated());
 
@@ -92,13 +75,7 @@ class LibraryMediaCategoriesController extends Controller
         ]));
     }
 
-    /**
-     * @param \App\Models\LibraryMedia\LibraryMediaCategory $category
-     *
-     * @return \Illuminate\Http\RedirectResponse
-     * @throws \Exception
-     */
-    public function destroy(LibraryMediaCategory $category)
+    public function destroy(LibraryMediaCategory $category): RedirectResponse
     {
         $name = $category->name;
         $category->delete();

@@ -10,15 +10,8 @@ class ResetPassword extends \Illuminate\Auth\Notifications\ResetPassword impleme
 {
     use Queueable;
 
-    public $tries = 3;
+    public int $tries = 3;
 
-    /**
-     * Create a notification instance.
-     *
-     * @param string $token
-     *
-     * @return void
-     */
     public function __construct(string $token)
     {
         $this->queue = 'high';

@@ -3,24 +3,22 @@
 namespace App\Models\LibraryMedia;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Support\Str;
+use Okipa\MediaLibraryExt\ExtendsMediaAbilities;
 use Spatie\Image\Manipulations;
-use Spatie\MediaLibrary\HasMedia\HasMedia;
-use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
-use Spatie\MediaLibrary\Models\Media;
+use Spatie\MediaLibrary\HasMedia;
+use Spatie\MediaLibrary\InteractsWithMedia;
+use Spatie\MediaLibrary\MediaCollections\Models\Media;
 use Spatie\Translatable\HasTranslations;
 
 class LibraryMediaFile extends Model implements HasMedia
 {
-    use HasMediaTrait;
     use HasTranslations;
+    use InteractsWithMedia;
+    use ExtendsMediaAbilities;
 
-    /**
-     * The attributes that are translatable.
-     *
-     * @var array
-     */
-    public $translatable = ['name'];
+    public array $translatable = ['name'];
 
     /**
      * The database table used by the model.
@@ -43,13 +41,8 @@ class LibraryMediaFile extends Model implements HasMedia
      */
     protected $casts = ['downloadable' => 'boolean'];
 
-    /**
-     * Register the media collections.
-     * @SuppressWarnings(PHPMD.UnusedLocalVariable)
-     *
-     * @return void
-     */
-    public function registerMediaCollections()
+    /** @SuppressWarnings(PHPMD.UnusedLocalVariable) */
+    public function registerMediaCollections(): void
     {
         $this->addMediaCollection('medias')->acceptsMimeTypes([
             // todo : only keep mime types you need here
@@ -102,23 +95,18 @@ class LibraryMediaFile extends Model implements HasMedia
     }
 
     /**
-     * Register the media conversions.
      * @SuppressWarnings(PHPMD.UnusedFormalParameter)
-     *
-     * @param \Spatie\MediaLibrary\Models\Media|null $media
+     * @param \Spatie\MediaLibrary\MediaCollections\Models\Media $media
      *
      * @throws \Spatie\Image\Exceptions\InvalidManipulation
      */
-    public function registerMediaConversions(Media $media = null)
+    public function registerMediaConversions(Media $media = null): void
     {
         $this->addMediaConversion('thumb')
             ->fit(Manipulations::FIT_CROP, 40, 40)
             ->keepOriginalImageFormat();
     }
 
-    /**
-     * @return string
-     */
     public function getTypeAttribute(): string
     {
         $media = $this->getFirstMedia('medias');
@@ -135,26 +123,17 @@ class LibraryMediaFile extends Model implements HasMedia
         }
     }
 
-    /**
-     * @return string
-     */
     public function getIconAttribute(): string
     {
         return config('library-media.icons.' . $this->type);
     }
 
-    /**
-     * @return bool
-     */
     public function getCanBeDisplayedAttribute(): bool
     {
         return $this->type !== 'file';
     }
 
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
-    public function category()
+    public function category(): BelongsTo
     {
         return $this->belongsTo(LibraryMediaCategory::class);
     }

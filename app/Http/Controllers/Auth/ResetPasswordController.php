@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Artesaos\SEOTools\Facades\SEOTools;
 use Illuminate\Foundation\Auth\ResetsPasswords;
 use Illuminate\Http\Request;
+use Illuminate\View\View;
 
 class ResetPasswordController extends Controller
 {
@@ -19,21 +20,26 @@ class ResetPasswordController extends Controller
     | explore this trait and override any methods you wish to tweak.
     |
     */
+
     use ResetsPasswords {
         showResetForm as traitShowResetForm;
         sendResetResponse as traitSendResetResponse;
         sendResetFailedResponse as traitSendResetFailedResponse;
     }
 
-    /** @inheritDoc */
-    public function showResetForm(Request $request, $token = null)
+    public function showResetForm(Request $request, $token = null): View
     {
         SEOTools::setTitle(__('Define new password'));
 
         return $this->traitShowResetForm($request, $token);
     }
 
-    /** @inheritDoc */
+    /**
+     * @param \Illuminate\Http\Request $request
+     * @param $response
+     *
+     * @return \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse
+     */
     public function sendResetResponse(Request $request, $response)
     {
         alert()->html(__('Success'), __($response), 'success')->showConfirmButton();
@@ -41,13 +47,17 @@ class ResetPasswordController extends Controller
         return $this->traitSendResetResponse($request, $response);
     }
 
-    /** @inheritDoc */
-    public function redirectPath()
+    public function redirectPath(): string
     {
         return route('admin.index');
     }
 
-    /** @inheritDoc */
+    /**
+     * @param \Illuminate\Http\Request $request
+     * @param string $response
+     *
+     * @return \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse
+     */
     protected function sendResetFailedResponse(Request $request, string $response)
     {
         alert()->html(__('Error'), __($response), 'error')->showConfirmButton();

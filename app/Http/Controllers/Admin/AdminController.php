@@ -3,13 +3,11 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Http\RedirectResponse;
 
 class AdminController extends Controller
 {
-    /**
-     * @return \Illuminate\Http\RedirectResponse
-     */
-    public function index()
+    public function index(): RedirectResponse
     {
         // keep alert message with the redirection
         if (session()->has('alert.config')) {

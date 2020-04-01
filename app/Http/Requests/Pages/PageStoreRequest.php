@@ -8,12 +8,7 @@ use Illuminate\Support\Str;
 
 class PageStoreRequest extends SeoRequest
 {
-    /**
-     * Get the validation rules that apply to the request.
-     *
-     * @return array
-     */
-    public function rules()
+    public function rules(): array
     {
         $rules = [
             'slug' => ['required', 'alpha_dash', 'unique:pages'],
@@ -32,8 +27,7 @@ class PageStoreRequest extends SeoRequest
         return array_merge($rules, $localizedRules, parent::rules());
     }
 
-    /** @inheritDoc */
-    protected function prepareForValidation()
+    protected function prepareForValidation(): void
     {
         parent::prepareForValidation();
         $this->merge([

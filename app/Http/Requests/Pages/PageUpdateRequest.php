@@ -7,12 +7,7 @@ use CodeZero\UniqueTranslation\UniqueTranslationRule;
 
 class PageUpdateRequest extends SeoRequest
 {
-    /**
-     * Get the validation rules that apply to the request.
-     *
-     * @return array
-     */
-    public function rules()
+    public function rules(): array
     {
         $rules = ['active' => ['required', 'boolean']];
         $localizedRules = localizeRules([
@@ -28,8 +23,7 @@ class PageUpdateRequest extends SeoRequest
         return array_merge($rules, $localizedRules, parent::rules());
     }
 
-    /** @inheritDoc */
-    protected function prepareForValidation()
+    protected function prepareForValidation(): void
     {
         parent::prepareForValidation();
         $this->merge(['active' => boolval($this->active)]);

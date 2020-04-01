@@ -2,8 +2,6 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Brickables\OneTextColumn;
-use App\Brickables\TitleH1;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Contact\ContactPageUpdateRequest;
 use App\Models\Pages\TitleDescriptionPageContent;
@@ -13,12 +11,8 @@ use Illuminate\View\View;
 
 class ContactPageController extends Controller
 {
-    /**
-     * @return \Illuminate\View\View
-     */
     public function edit(): View
     {
-        /** @var \App\Models\Pages\TitleDescriptionPageContent $pageContent */
         $pageContent = (new TitleDescriptionPageContent)->firstOrCreate(['slug' => 'contact-page-content']);
         SEOTools::setTitle(__('breadcrumbs.orphan.edit', [
             'entity' => __('Contact'),
@@ -32,6 +26,8 @@ class ContactPageController extends Controller
      * @param \App\Http\Requests\Contact\ContactPageUpdateRequest $request
      *
      * @return \Illuminate\Http\RedirectResponse
+     * @throws \Spatie\MediaLibrary\MediaCollections\Exceptions\FileDoesNotExist
+     * @throws \Spatie\MediaLibrary\MediaCollections\Exceptions\FileIsTooBig
      */
     public function update(ContactPageUpdateRequest $request): RedirectResponse
     {

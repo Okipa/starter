@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Front;
 
 use App\Http\Controllers\Controller;
 use App\Models\Pages\Page;
+use Illuminate\View\View;
 
 class PagesController extends Controller
 {
@@ -13,7 +14,7 @@ class PagesController extends Controller
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      * @throws \Exception
      */
-    public function show(Page $page)
+    public function show(Page $page): View
     {
         $page->displaySeoMeta();
         $css = mix('/css/pages/show.css');

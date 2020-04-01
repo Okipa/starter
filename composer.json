@@ -18,7 +18,7 @@
         "okipa/laravel-bootstrap-components": "^2.0",
         "okipa/laravel-brickables": "^1.0",
         "okipa/laravel-failed-jobs-notifier": "^1.0",
-        "okipa/laravel-medialibrary-ext": "^7.17",
+        "okipa/laravel-medialibrary-ext": "^8.0",
         "okipa/laravel-table": "^1.0",
         "plank/laravel-metable": "^2.0",
         "propaganistas/laravel-phone": "^4.0",
@@ -28,7 +28,8 @@
         "spatie/laravel-honeypot": "^1.4",
         "spatie/laravel-sitemap": "^5.0",
         "spatie/laravel-translatable": "^4.0",
-        "spatie/laravel-welcome-notification": "^1.0"
+        "spatie/laravel-welcome-notification": "^1.0",
+        "spatie/pdf-to-image": "^2.0"
     },
     "require-dev": {
         "barryvdh/laravel-ide-helper": "^2.0",

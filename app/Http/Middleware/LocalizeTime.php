@@ -3,10 +3,7 @@
 namespace App\Http\Middleware;
 
 use Closure;
-use Illuminate\Support\Arr;
 use Illuminate\Support\Carbon;
-use Route;
-use SEO;
 
 class LocalizeTime
 {

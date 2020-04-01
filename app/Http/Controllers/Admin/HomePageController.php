@@ -11,12 +11,9 @@ use Illuminate\View\View;
 
 class HomePageController extends Controller
 {
-    /**
-     * @return \Illuminate\View\View
-     */
     public function edit(): View
     {
-        /** @var \App\Models\Pages\PageContent $pageContent */
+        /** @var \Illuminate\Database\Eloquent\Model $pageContent */
         $pageContent = (new PageContent)->firstOrCreate(['slug' => 'home-page-content']);
         SEOTools::setTitle(__('breadcrumbs.orphan.edit', [
             'entity' => __('Home'),
@@ -30,9 +27,8 @@ class HomePageController extends Controller
      * @param \App\Http\Requests\Home\HomePageUpdateRequest $request
      *
      * @return \Illuminate\Http\RedirectResponse
-     * @throws \Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\DiskDoesNotExist
-     * @throws \Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\FileDoesNotExist
-     * @throws \Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\FileIsTooBig
+     * @throws \Spatie\MediaLibrary\MediaCollections\Exceptions\FileDoesNotExist
+     * @throws \Spatie\MediaLibrary\MediaCollections\Exceptions\FileIsTooBig
      */
     public function update(HomePageUpdateRequest $request): RedirectResponse
     {

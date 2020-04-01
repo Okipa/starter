@@ -14,7 +14,7 @@ class SslServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function boot(UrlGenerator $url)
+    public function boot(UrlGenerator $url): void
     {
         if (in_array($this->app->environment(), ['preprod', 'production']) || config('app.force_https')) {
             $url->forceScheme('https');

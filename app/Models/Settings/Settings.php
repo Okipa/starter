@@ -3,14 +3,16 @@
 namespace App\Models\Settings;
 
 use Illuminate\Database\Eloquent\Model;
+use Okipa\MediaLibraryExt\ExtendsMediaAbilities;
 use Spatie\Image\Manipulations;
-use Spatie\MediaLibrary\HasMedia\HasMedia;
-use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
-use Spatie\MediaLibrary\Models\Media;
+use Spatie\MediaLibrary\HasMedia;
+use Spatie\MediaLibrary\InteractsWithMedia;
+use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
 class Settings extends Model implements HasMedia
 {
-    use HasMediaTrait;
+    use InteractsWithMedia;
+    use ExtendsMediaAbilities;
 
     /**
      * The database table used by the model.
@@ -36,13 +38,8 @@ class Settings extends Model implements HasMedia
         'google_tag_manager_id',
     ];
 
-    /**
-     * Register the media collections.
-     * @SuppressWarnings(PHPMD.UnusedLocalVariable)
-     *
-     * @return void
-     */
-    public function registerMediaCollections()
+    /** @SuppressWarnings(PHPMD.UnusedLocalVariable) */
+    public function registerMediaCollections(): void
     {
         $this->addMediaCollection('icons')
             ->acceptsMimeTypes(['image/jpeg', 'image/png'])
@@ -66,23 +63,18 @@ class Settings extends Model implements HasMedia
     }
 
     /**
-     * Register the media conversions.
-     *
-     * @param \Spatie\MediaLibrary\Models\Media|null $media
-     * @SuppressWarnings(PHPMD.UnusedFormalParameter)
+     * @param \Spatie\MediaLibrary\MediaCollections\Models\Media $media
      *
      * @throws \Spatie\Image\Exceptions\InvalidManipulation
+     * @SuppressWarnings(PHPMD.UnusedFormalParameter)
      */
-    public function registerMediaConversions(Media $media = null)
+    public function registerMediaConversions(Media $media = null): void
     {
         $this->addMediaConversion('thumb')
             ->fit(Manipulations::FIT_CROP, 40, 40)
             ->keepOriginalImageFormat();
     }
 
-    /**
-     * @return string
-     */
     public function getFullPostalAddressAttribute(): string
     {
         $fullPostalAddress = '';
