@@ -20,7 +20,7 @@ class TwoTextImageColumns extends Brickable
 
     protected function setStoreValidationRules(): array
     {
-        /** @var \Okipa\MediaLibraryExt\ExtendsMediaAbilities $model */
+        /** @var \App\Models\Brickables\TwoTextImageColumnsBrick $model */
         $model = $this->getBrickModel();
         $rules = [
             'right_image' => array_merge(['required'], $model->getMediaValidationRules('images')),
@@ -33,7 +33,7 @@ class TwoTextImageColumns extends Brickable
 
     protected function setUpdateValidationRules(): array
     {
-        /** @var \Okipa\MediaLibraryExt\ExtendsMediaAbilities $model */
+        /** @var \App\Models\Brickables\TwoTextImageColumnsBrick $model */
         $model = $this->getBrickModel();
         $rules = [
             'right_image' => $model->getMediaValidationRules('images'),

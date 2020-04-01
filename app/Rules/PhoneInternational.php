@@ -9,8 +9,8 @@ use Illuminate\Support\Str;
 class PhoneInternational implements Rule
 {
     /**
-     * @param $attribute
-     * @param $value
+     * @param string $attribute
+     * @param mixed $value
      * @SuppressWarnings(PHPMD.UnusedFormalParameter)
      *
      * @return bool

@@ -11,7 +11,7 @@ class PagesController extends Controller
     /**
      * @param \App\Models\Pages\Page $page
      *
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @return \Illuminate\View\View
      * @throws \Exception
      */
     public function show(Page $page): View

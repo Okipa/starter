@@ -20,7 +20,7 @@ class CarouselFullWidth extends Brickable
 
     protected function setStoreValidationRules(): array
     {
-        /** @var \Okipa\MediaLibraryExt\ExtendsMediaAbilities $model */
+        /** @var \App\Models\Brickables\CarouselFullWidthBrick $model */
         $model = $this->getBrickModel();
         $rules = ['image' => array_merge(['required'], $model->getMediaValidationRules('slides'))];
         $localizedRules = localizeRules([
@@ -33,7 +33,7 @@ class CarouselFullWidth extends Brickable
 
     protected function setUpdateValidationRules(): array
     {
-        /** @var \Okipa\MediaLibraryExt\ExtendsMediaAbilities $model */
+        /** @var \App\Models\Brickables\CarouselFullWidthBrick $model */
         $model = $this->getBrickModel();
         $rules = ['image' => array_merge(['required'], $model->getMediaValidationRules('slides'))];
         $localizedRules = localizeRules([

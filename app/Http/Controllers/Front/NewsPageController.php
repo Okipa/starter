@@ -13,7 +13,7 @@ class NewsPageController extends Controller
     /**
      * @param \App\Http\Requests\News\ArticlesIndexRequest $request
      *
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @return \Illuminate\View\View
      * @throws \Exception
      */
     public function show(ArticlesIndexRequest $request): View

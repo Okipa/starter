@@ -27,7 +27,7 @@ class ResetPasswordController extends Controller
         sendResetFailedResponse as traitSendResetFailedResponse;
     }
 
-    public function showResetForm(Request $request, $token = null): View
+    public function showResetForm(Request $request, ?string $token = null): View
     {
         SEOTools::setTitle(__('Define new password'));
 
@@ -36,11 +36,11 @@ class ResetPasswordController extends Controller
 
     /**
      * @param \Illuminate\Http\Request $request
-     * @param $response
+     * @param string $response
      *
      * @return \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse
      */
-    public function sendResetResponse(Request $request, $response)
+    public function sendResetResponse(Request $request, string $response)
     {
         alert()->html(__('Success'), __($response), 'success')->showConfirmButton();
 

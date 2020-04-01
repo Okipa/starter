@@ -9,7 +9,7 @@ use Illuminate\View\View;
 class HomePageController extends Controller
 {
     /**
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @return \Illuminate\View\View
      * @throws \Exception
      */
     public function show(): View

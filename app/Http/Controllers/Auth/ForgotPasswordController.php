@@ -36,11 +36,11 @@ class ForgotPasswordController extends Controller
 
     /**
      * @param \Illuminate\Http\Request $request
-     * @param $response
+     * @param string $response
      *
      * @return \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse
      */
-    protected function sendResetLinkResponse(Request $request, $response)
+    protected function sendResetLinkResponse(Request $request, string $response)
     {
         alert()->html(__('Success'), __($response), 'success')->showConfirmButton();
 
@@ -49,11 +49,11 @@ class ForgotPasswordController extends Controller
 
     /**
      * @param \Illuminate\Http\Request $request
-     * @param $response
+     * @param string $response
      *
      * @return \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse
      */
-    protected function sendResetLinkFailedResponse(Request $request, $response)
+    protected function sendResetLinkFailedResponse(Request $request, string $response)
     {
         alert()->html(__('Error'), __($response), 'error')->showConfirmButton();
 

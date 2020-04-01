@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\Users\User;
 use Artesaos\SEOTools\Facades\SEOTools;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\RedirectResponse;
@@ -48,10 +49,10 @@ class LoginController extends Controller
 
     /**
      * @param \Illuminate\Http\Request $request
-     * @param $user
+     * @param User $user
      * @SuppressWarnings(PHPMD.UnusedFormalParameter)
      */
-    protected function authenticated(Request $request, $user): void
+    protected function authenticated(Request $request, User $user): void
     {
         alert()->toast(__('Welcome') . ' ' . $user->name . '.', 'success');
     }

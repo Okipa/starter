@@ -66,7 +66,13 @@ class Handler extends ExceptionHandler
         return parent::render($request, $exception);
     }
 
-    protected function invalid($request, ValidationException $exception): RedirectResponse
+    /**
+     * @param \Illuminate\Http\Request $request
+     * @param \Illuminate\Validation\ValidationException $exception
+     *
+     * @return \Illuminate\Http\Response
+     */
+    protected function invalid($request, ValidationException $exception)
     {
         if (! $request->expectsJson()) {
             toast(__('Invalid fields have been detected.'), 'error');

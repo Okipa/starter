@@ -14,7 +14,7 @@ use Illuminate\View\View;
 class NewsArticlesController extends Controller
 {
     /**
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @return \Illuminate\View\View
      * @throws \ErrorException
      * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
@@ -65,11 +65,6 @@ class NewsArticlesController extends Controller
             ]));
     }
 
-    /**
-     * @param \App\Models\News\NewsArticle $article
-     *
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
     public function edit(NewsArticle $article): View
     {
         SEOTools::setTitle(__('breadcrumbs.parent.edit', [

@@ -11,7 +11,7 @@ class NewsArticlesController extends Controller
     /**
      * @param \App\Models\News\NewsArticle $article
      *
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @return \Illuminate\View\View
      * @throws \Exception
      */
     public function show(NewsArticle $article): View

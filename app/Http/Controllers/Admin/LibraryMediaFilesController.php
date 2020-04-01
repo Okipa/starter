@@ -20,7 +20,7 @@ class LibraryMediaFilesController extends Controller
     /**
      * @param \App\Http\Requests\LibraryMedia\FilesIndexRequest $request
      *
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @return \Illuminate\View\View
      * @throws \ErrorException
      * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
@@ -65,7 +65,7 @@ class LibraryMediaFilesController extends Controller
     /**
      * @param \App\Models\LibraryMedia\LibraryMediaFile $file
      *
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @return \Illuminate\View\View
      * @throws \Exception
      */
     public function edit(LibraryMediaFile $file): View
