@@ -48,17 +48,21 @@ class Settings extends Model implements HasMedia
                 $this->addMediaConversion('front')
                     ->fit(Manipulations::FIT_CROP, 70, 70)
                     ->keepOriginalImageFormat()
-                    ->withResponsiveImages();
+                    ->withResponsiveImages()
+                    ->nonQueued();
                 $this->addMediaConversion('admin')
                     ->fit(Manipulations::FIT_CROP, 30, 30)
-                    ->keepOriginalImageFormat();
+                    ->keepOriginalImageFormat()
+                    ->nonQueued();
                 $this->addMediaConversion('mail')
                     ->fit(Manipulations::FIT_CROP, 50, 50)
-                    ->keepOriginalImageFormat();
+                    ->keepOriginalImageFormat()
+                    ->nonQueued();
                 $this->addMediaConversion('auth')
                     ->fit(Manipulations::FIT_CROP, 225, 225)
                     ->keepOriginalImageFormat()
-                    ->withResponsiveImages();
+                    ->withResponsiveImages()
+                    ->nonQueued();
             });
     }
 
@@ -72,7 +76,8 @@ class Settings extends Model implements HasMedia
     {
         $this->addMediaConversion('thumb')
             ->fit(Manipulations::FIT_CROP, 40, 40)
-            ->keepOriginalImageFormat();
+            ->keepOriginalImageFormat()
+            ->nonQueued();
     }
 
     public function getFullPostalAddressAttribute(): string

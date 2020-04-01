@@ -22,7 +22,8 @@ class CarouselFullWidthBrick extends Brick implements HasMedia
             ->registerMediaConversions(fn(Media $media = null) => $this->addMediaConversion('full')
                 ->fit(Manipulations::FIT_CROP, 2560, 700)
                 ->withResponsiveImages()
-                ->keepOriginalImageFormat());
+                ->keepOriginalImageFormat()
+                ->nonQueued());
     }
 
     /**
@@ -35,6 +36,7 @@ class CarouselFullWidthBrick extends Brick implements HasMedia
     {
         $this->addMediaConversion('thumb')
             ->fit(Manipulations::FIT_CROP, 40, 40)
-            ->keepOriginalImageFormat();
+            ->keepOriginalImageFormat()
+            ->nonQueued();
     }
 }

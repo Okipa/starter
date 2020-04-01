@@ -46,7 +46,8 @@ class User extends Authenticatable implements HasMedia, MustVerifyEmail
             ->registerMediaConversions(function (Media $media = null) {
                 $this->addMediaConversion('profile')
                     ->fit(Manipulations::FIT_CROP, 260, 350)
-                    ->keepOriginalImageFormat();
+                    ->keepOriginalImageFormat()
+                    ->nonQueued();
             });
     }
 
@@ -60,7 +61,8 @@ class User extends Authenticatable implements HasMedia, MustVerifyEmail
     {
         $this->addMediaConversion('thumb')
             ->fit(Manipulations::FIT_CROP, 40, 40)
-            ->keepOriginalImageFormat();
+            ->keepOriginalImageFormat()
+            ->nonQueued();
     }
 
     public function getNameAttribute(): string
