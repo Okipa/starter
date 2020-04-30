@@ -40,13 +40,11 @@ Ordered list :
 [Link](http://www.google.com).
 EOT;
 
-    protected $images = ['seeds/files/news/article-2560-1440.jpg', 'seeds/files/news/article-2560-1769.jpg'];
+    protected array $images = ['seeds/files/news/article-2560-1440.jpg', 'seeds/files/news/article-2560-1769.jpg'];
 
     /**
-     * Run the database seeds.
-     *
-     * @return void
-     * @throws Exception
+     * @throws \Spatie\MediaLibrary\MediaCollections\Exceptions\FileDoesNotExist
+     * @throws \Spatie\MediaLibrary\MediaCollections\Exceptions\FileIsTooBig
      */
     public function run(): void
     {
@@ -59,7 +57,6 @@ EOT;
     }
 
     /**
-     * @return void
      * @throws \Spatie\MediaLibrary\MediaCollections\Exceptions\FileDoesNotExist
      * @throws \Spatie\MediaLibrary\MediaCollections\Exceptions\FileIsTooBig
      */

@@ -9,12 +9,11 @@ use Illuminate\Database\Seeder;
 class NewsPageTableSeeder extends Seeder
 {
     /**
-     * Run the database seeds.
-     *
-     * @return void
-     * @throws Exception
+     * @throws \Okipa\LaravelBrickables\Exceptions\BrickableCannotBeHandledException
+     * @throws \Okipa\LaravelBrickables\Exceptions\InvalidBrickableClassException
+     * @throws \Okipa\LaravelBrickables\Exceptions\NotRegisteredBrickableClassException
      */
-    public function run()
+    public function run(): void
     {
         $fakerFr = Factory::create('fr_FR');
         $fakerEn = Factory::create('en_GB');

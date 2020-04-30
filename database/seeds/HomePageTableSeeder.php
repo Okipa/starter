@@ -10,12 +10,11 @@ use Illuminate\Database\Seeder;
 class HomePageTableSeeder extends Seeder
 {
     /**
-     * Run the database seeds.
-     *
-     * @return void
-     * @throws Exception
+     * @throws \Okipa\LaravelBrickables\Exceptions\BrickableCannotBeHandledException
+     * @throws \Okipa\LaravelBrickables\Exceptions\InvalidBrickableClassException
+     * @throws \Okipa\LaravelBrickables\Exceptions\NotRegisteredBrickableClassException
      */
-    public function run()
+    public function run(): void
     {
         $fakeText = <<<EOT
 **Bold text.**

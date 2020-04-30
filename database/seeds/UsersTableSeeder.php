@@ -6,13 +6,7 @@ use Illuminate\Database\Seeder;
 
 class UsersTableSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     *
-     * @return void
-     * @throws \Exception
-     */
-    public function run()
+    public function run(): void
     {
         // todo : create needed users
         $this->createUser([
@@ -24,11 +18,7 @@ class UsersTableSeeder extends Seeder
         ]);
     }
 
-    /**
-     * @param array $data
-     * @SuppressWarnings("unused")
-     */
-    public function createUser(array $data)
+    public function createUser(array $data): void
     {
         $user = (new User)->create($data);
         $user->addMedia(database_path('seeds/files/users/default-450-450.png'))

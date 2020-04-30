@@ -6,15 +6,13 @@ use Illuminate\Database\Seeder;
 
 class SettingsTableSeeder extends Seeder
 {
-    protected $faker;
+    protected \Faker\Generator $faker;
 
     /**
-     * Run the database seeds.
-     *
-     * @return void
-     * @throws \Exception
+     * @throws \Spatie\MediaLibrary\MediaCollections\Exceptions\FileDoesNotExist
+     * @throws \Spatie\MediaLibrary\MediaCollections\Exceptions\FileIsTooBig
      */
-    public function run()
+    public function run(): void
     {
         $this->faker = Factory::create(config('app.faker_locale'));
         // todo : customize settings and seeder image

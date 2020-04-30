@@ -8,11 +8,11 @@ use Illuminate\Database\Seeder;
 
 class PagesTableSeeder extends Seeder
 {
-    protected $fakerFr;
+    protected \Faker\Generator $fakerFr;
 
-    protected $fakerEn;
+    protected \Faker\Generator $fakerEn;
 
-    protected $fakeText = <<<EOT
+    protected string $fakeText = <<<EOT
 **Bold text.**
 
 *Italic text.*
@@ -38,12 +38,11 @@ Ordered list :
 EOT;
 
     /**
-     * Run the database seeds.
-     *
-     * @return void
-     * @throws Exception
+     * @throws \Okipa\LaravelBrickables\Exceptions\BrickableCannotBeHandledException
+     * @throws \Okipa\LaravelBrickables\Exceptions\InvalidBrickableClassException
+     * @throws \Okipa\LaravelBrickables\Exceptions\NotRegisteredBrickableClassException
      */
-    public function run()
+    public function run(): void
     {
         $this->fakerFr = Factory::create('fr_FR');
         $this->fakerEn = Factory::create('en_GB');
