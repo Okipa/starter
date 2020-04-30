@@ -5,16 +5,17 @@ use App\Models\News\NewsCategory;
 use Carbon\Carbon;
 use Faker\Factory;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Collection;
 
 class NewsArticlesTableSeeder extends Seeder
 {
-    protected $fakerFr;
+    protected \Faker\Generator $fakerFr;
 
-    protected $fakerEn;
+    protected \Faker\Generator $fakerEn;
 
-    protected $categories;
+    protected Collection $categories;
 
-    protected $fakeText = <<<EOT
+    protected string $fakeText = <<<EOT
 **Bold text.**
 
 *Italic text.*
@@ -47,21 +48,20 @@ EOT;
      * @return void
      * @throws Exception
      */
-    public function run()
+    public function run(): void
     {
         $this->fakerFr = Factory::create('fr_FR');
         $this->fakerEn = Factory::create('en_GB');
         $this->categories = NewsCategory::all();
-        for ($ii = 1; $ii <= 5; $ii++) {
+        for ($ii = 1; $ii <= 10; $ii++) {
             $this->createArticle();
         }
     }
 
     /**
      * @return void
-     * @throws \Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\DiskDoesNotExist
-     * @throws \Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\FileDoesNotExist
-     * @throws \Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\FileIsTooBig
+     * @throws \Spatie\MediaLibrary\MediaCollections\Exceptions\FileDoesNotExist
+     * @throws \Spatie\MediaLibrary\MediaCollections\Exceptions\FileIsTooBig
      */
     protected function createArticle(): void
     {
@@ -85,9 +85,7 @@ EOT;
             'published_at' => Carbon::now(),
         ]);
         $imageUrl = $this->images[array_rand($this->images, 1)];
-        $article->addMedia(database_path($imageUrl))
-            ->preservingOriginal()
-            ->toMediaCollection('illustrations');
+        $article->addMedia(database_path($imageUrl))->preservingOriginal()->toMediaCollection('illustrations');
         $categoryIds = $this->categories->random(rand(1, $this->categories->count() / 3))->pluck('id');
         $article->categories()->sync($categoryIds);
         $article->saveSeoMeta([

@@ -24,7 +24,7 @@ class UsersController extends Controller
     public function index(): View
     {
         SEOTools::setTitle(__('breadcrumbs.orphan.index', ['entity' => __('Users')]));
-        $table = (new UsersTable)->instance();
+        $table = (new UsersTable)->setup();
 
         return view('templates.admin.users.index', compact('table'));
     }

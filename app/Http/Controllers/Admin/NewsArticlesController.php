@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\News\ArticleStoreRequest;
 use App\Http\Requests\News\ArticleUpdateRequest;
 use App\Models\News\NewsArticle;
-use App\Services\News\ArticlesService;
+use App\Tables\NewsArticlesTable;
 use Artesaos\SEOTools\Facades\SEOTools;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
@@ -16,11 +16,10 @@ class NewsArticlesController extends Controller
     /**
      * @return \Illuminate\View\View
      * @throws \ErrorException
-     * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
     public function index(): View
     {
-        $table = (new ArticlesService)->table();
+        $table = (new NewsArticlesTable)->setup();
         SEOTools::setTitle(__('breadcrumbs.parent.index', [
             'parent' => __('News'),
             'entity' => __('Articles'),

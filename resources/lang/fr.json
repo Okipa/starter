@@ -113,5 +113,12 @@
     "[0,1]:count file|[2,*]:count files": "[0,1]:count fichier|[2,*]:count fichiers",
     "Maintenance in progress": "Maintenance en cours",
     "Page not found": "Page non trouvée",
-    "An unexpected error has occurred.": "Une erreur imprévue est survenue."
+    "An unexpected error has occurred.": "Une erreur imprévue est survenue.",
+    "Search by:": "Rechercher par :",
+    "Number of rows": "Nombre de lignes",
+    "Reset research": "Annuler recherche",
+    "No results were found.": "Aucun résultat trouvé.",
+    "Showing results <b>:start</b> to <b>:stop</b> on <b>:total</b>": "Affichage des résultats <b>:start</b> à <b>:stop</b> sur <b>:total</b>",
+    "Slide moved up.": "Diapositive déplacée vers le haut.",
+    "Slide moved down.": "Diapositive déplacée vers le bas."
 }

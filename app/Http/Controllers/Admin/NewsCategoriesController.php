@@ -7,6 +7,7 @@ use App\Http\Requests\News\CategoryStoreRequest;
 use App\Http\Requests\News\CategoryUpdateRequest;
 use App\Models\News\NewsCategory;
 use App\Services\News\CategoriesService;
+use App\Tables\NewsCategoriesTable;
 use Artesaos\SEOTools\Facades\SEOTools;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
@@ -16,11 +17,10 @@ class NewsCategoriesController extends Controller
     /**
      * @return \Illuminate\View\View
      * @throws \ErrorException
-     * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
     public function index(): View
     {
-        $table = (new CategoriesService)->table();
+        $table = (new NewsCategoriesTable)->setup();
         SEOTools::setTitle(__('breadcrumbs.parent.index', [
             'parent' => __('News'),
             'entity' => __('Categories'),

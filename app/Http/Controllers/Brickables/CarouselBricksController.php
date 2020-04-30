@@ -46,7 +46,7 @@ class CarouselBricksController extends BricksController
         $ids = [...$prev->pluck('id'), ...$next->pluck('id')];
         Media::setNewOrder($ids);
 
-        return back();
+        return back()->with('toast_success', __('Slide moved up.'));
     }
 
     public function moveDownSlide(Media $slide): RedirectResponse
@@ -63,7 +63,7 @@ class CarouselBricksController extends BricksController
         $ids = [...$prev->pluck('id'), ...$next->pluck('id')];
         Media::setNewOrder($ids);
 
-        return back();
+        return back()->with('toast_success', __('Slide moved down.'));
     }
 
     /**

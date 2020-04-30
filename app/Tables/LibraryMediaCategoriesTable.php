@@ -1,20 +1,22 @@
 <?php
 
-namespace App\Services\LibraryMedia;
+namespace App\Tables;
 
 use App\Models\LibraryMedia\LibraryMediaCategory;
+use Okipa\LaravelTable\Abstracts\AbstractTable;
 use Okipa\LaravelTable\Table;
 
-class CategoriesService
+class LibraryMediaCategoriesTable extends AbstractTable
 {
     /**
+     * Configure the table itself.
+     *
      * @return \Okipa\LaravelTable\Table
      * @throws \ErrorException
-     * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
-    public function table(): Table
+    protected function table(): Table
     {
-        $table = (new Table)->model(LibraryMediaCategory::class)->routes([
+        return (new Table)->model(LibraryMediaCategory::class)->routes([
             'index' => ['name' => 'libraryMedia.categories.index'],
             'create' => ['name' => 'libraryMedia.category.create'],
             'edit' => ['name' => 'libraryMedia.category.edit'],
@@ -28,6 +30,17 @@ class CategoriesService
                 ]),
             ];
         });
+    }
+
+    /**
+     * Configure the table columns.
+     *
+     * @param \Okipa\LaravelTable\Table $table
+     *
+     * @throws \ErrorException
+     */
+    protected function columns(Table $table): void
+    {
         $table->column('name')->stringLimit(30)->sortable()->searchable();
         $table->column()
             ->title(__('Files count'))
@@ -40,7 +53,5 @@ class CategoriesService
 
                 return trans_choice('[0,1]:count file|[2,*]:count files', $count, compact('count'));
             });
-
-        return $table;
     }
 }

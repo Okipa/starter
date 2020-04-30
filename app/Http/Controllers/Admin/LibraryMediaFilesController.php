@@ -8,6 +8,7 @@ use App\Http\Requests\LibraryMedia\FileStoreRequest;
 use App\Http\Requests\LibraryMedia\FileUpdateRequest;
 use App\Models\LibraryMedia\LibraryMediaFile;
 use App\Services\LibraryMedia\FilesService;
+use App\Tables\LibraryMediaFilesTable;
 use Artesaos\SEOTools\Facades\SEOTools;
 use Exception;
 use Illuminate\Http\JsonResponse;
@@ -22,11 +23,10 @@ class LibraryMediaFilesController extends Controller
      *
      * @return \Illuminate\View\View
      * @throws \ErrorException
-     * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
     public function index(FilesIndexRequest $request): View
     {
-        $table = (new FilesService)->table($request);
+        $table = (new LibraryMediaFilesTable($request))->setup();
         SEOTools::setTitle(__('breadcrumbs.orphan.index', ['entity' => __('Media library')]));
         (new FilesService)->injectJavascriptInView();
         $js = mix('/js/library-media/index.js');

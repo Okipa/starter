@@ -7,6 +7,7 @@ use App\Http\Requests\Pages\PageStoreRequest;
 use App\Http\Requests\Pages\PageUpdateRequest;
 use App\Models\Pages\Page;
 use App\Services\Pages\PagesService;
+use App\Tables\PagesTable;
 use Artesaos\SEOTools\Facades\SEOTools;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Arr;
@@ -17,11 +18,10 @@ class PagesController extends Controller
     /**
      * @return \Illuminate\View\View
      * @throws \ErrorException
-     * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
     public function index(): View
     {
-        $table = (new PagesService)->table();
+        $table = (new PagesTable)->setup();
         SEOTools::setTitle(__('breadcrumbs.orphan.index', ['entity' => __('Pages')]));
 
         return view('templates.admin.pages.index', compact('table'));

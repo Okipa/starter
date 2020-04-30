@@ -1,20 +1,22 @@
 <?php
 
-namespace App\Services\News;
+namespace App\Tables;
 
 use App\Models\News\NewsArticle;
+use Okipa\LaravelTable\Abstracts\AbstractTable;
 use Okipa\LaravelTable\Table;
 
-class ArticlesService
+class NewsArticlesTable extends AbstractTable
 {
     /**
+     * Configure the table itself.
+     *
      * @return \Okipa\LaravelTable\Table
      * @throws \ErrorException
-     * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
-    public function table(): Table
+    protected function table(): Table
     {
-        $table = (new Table)->model(NewsArticle::class)->routes([
+        return (new Table)->model(NewsArticle::class)->routes([
             'index' => ['name' => 'news.articles.index'],
             'create' => ['name' => 'news.article.create'],
             'edit' => ['name' => 'news.article.edit'],
@@ -28,6 +30,17 @@ class ArticlesService
                 ]),
             ];
         });
+    }
+
+    /**
+     * Configure the table columns.
+     *
+     * @param \Okipa\LaravelTable\Table $table
+     *
+     * @throws \ErrorException
+     */
+    protected function columns(Table $table): void
+    {
         $table->column('thumb')->html(function (NewsArticle $newsArticle) {
             return view('components.admin.table.image', ['image' => $newsArticle->getFirstMedia('illustrations')]);
         });
@@ -51,7 +64,5 @@ class ArticlesService
             ]);
         });
         $table->column('published_at')->dateTimeFormat('d/m/Y H:i')->sortable(true);
-
-        return $table;
     }
 }

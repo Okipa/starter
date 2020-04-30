@@ -1,7 +1,9 @@
 // base
 @import '../base';
 // bootstrap
-@import '../../../../node_modules/bootstrap/scss/card';
+@import '~bootstrap/scss/card';
+@import '~bootstrap/scss/mixins/pagination';
+@import '~bootstrap/scss/pagination';
 // components
 //
 // sass

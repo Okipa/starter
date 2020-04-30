@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\LibraryMedia\CategoryStoreRequest;
 use App\Http\Requests\LibraryMedia\CategoryUpdateRequest;
 use App\Models\LibraryMedia\LibraryMediaCategory;
-use App\Services\LibraryMedia\CategoriesService;
+use App\Tables\LibraryMediaCategoriesTable;
 use Artesaos\SEOTools\Facades\SEOTools;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
@@ -16,11 +16,10 @@ class LibraryMediaCategoriesController extends Controller
     /**
      * @return \Illuminate\View\View
      * @throws \ErrorException
-     * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
     public function index(): View
     {
-        $table = (new CategoriesService)->table();
+        $table = (new LibraryMediaCategoriesTable)->setup();
         SEOTools::setTitle(__('breadcrumbs.parent.index', [
             'parent' => __('Media library'),
             'entity' => __('Categories'),

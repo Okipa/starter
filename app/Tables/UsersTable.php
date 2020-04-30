@@ -9,6 +9,8 @@ use Okipa\LaravelTable\Table;
 class UsersTable extends AbstractTable
 {
     /**
+     * Configure the table itself.
+     *
      * @return \Okipa\LaravelTable\Table
      * @throws \ErrorException
      */
@@ -32,6 +34,8 @@ class UsersTable extends AbstractTable
     }
 
     /**
+     * Configure the table columns.
+     *
      * @param \Okipa\LaravelTable\Table $table
      *
      * @throws \ErrorException

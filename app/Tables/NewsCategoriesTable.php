@@ -1,20 +1,22 @@
 <?php
 
-namespace App\Services\News;
+namespace App\Tables;
 
 use App\Models\News\NewsCategory;
+use Okipa\LaravelTable\Abstracts\AbstractTable;
 use Okipa\LaravelTable\Table;
 
-class CategoriesService
+class NewsCategoriesTable extends AbstractTable
 {
     /**
+     * Configure the table itself.
+     *
      * @return \Okipa\LaravelTable\Table
      * @throws \ErrorException
-     * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
-    public function table(): Table
+    protected function table(): Table
     {
-        $table = (new Table)->model(NewsCategory::class)->routes([
+        return $table = (new Table)->model(NewsCategory::class)->routes([
             'index' => ['name' => 'news.categories.index'],
             'create' => ['name' => 'news.category.create'],
             'edit' => ['name' => 'news.category.edit'],
@@ -28,8 +30,17 @@ class CategoriesService
                 ]),
             ];
         });
-        $table->column('name')->stringLimit(30)->sortable()->searchable();
+    }
 
-        return $table;
+    /**
+     * Configure the table columns.
+     *
+     * @param \Okipa\LaravelTable\Table $table
+     *
+     * @throws \ErrorException
+     */
+    protected function columns(Table $table): void
+    {
+        $table->column('name')->stringLimit(30)->sortable()->searchable();
     }
 }
