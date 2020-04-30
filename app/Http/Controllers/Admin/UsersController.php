@@ -7,6 +7,7 @@ use App\Http\Requests\Users\UserStoreRequest;
 use App\Http\Requests\Users\UserUpdateRequest;
 use App\Models\Users\User;
 use App\Services\Users\UsersService;
+use App\Tables\UsersTable;
 use Artesaos\SEOTools\Facades\SEOTools;
 use Auth;
 use Hash;
@@ -19,12 +20,11 @@ class UsersController extends Controller
     /**
      * @return \Illuminate\View\View
      * @throws \ErrorException
-     * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
     public function index(): View
     {
         SEOTools::setTitle(__('breadcrumbs.orphan.index', ['entity' => __('Users')]));
-        $table = (new UsersService)->table();
+        $table = (new UsersTable)->instance();
 
         return view('templates.admin.users.index', compact('table'));
     }
