@@ -42,7 +42,7 @@ notify.loading = (html = app.sweetalert.loading, title = app.sweetalert.please_w
         showConfirmButton: false,
         timerProgressBar: true,
         onBeforeOpen: () => {
-            notify.showLoading();
+            swal.showLoading();
         },
         ...config
     });
