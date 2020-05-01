@@ -1,8 +1,8 @@
 import 'air-datepicker/src/js/air-datepicker';
 import 'air-datepicker/dist/js/i18n/datepicker.fr';
 
+// configuration
 const moment = require('moment');
-
 const baseConfig = {
     language: app.locale,
     navTitles: {days: 'MM yyyy'},
@@ -24,12 +24,13 @@ window.triggerDateTimePickerElementsDetection = () => {
     _.each(dateTimeElements, (dateTimeElement) => {
         const $datePicker = $(dateTimeElement);
         const datePicker = $datePicker.datepicker({
-            ...baseConfig, ...{
+            ...baseConfig,
+            ...{
                 timepicker: true,
                 dateFormat: 'dd/mm/yyyy',
-                timeFormat: 'hh:ii',
-                onShow: () => selectDateTime(datePicker, $datePicker)
-            }
+                timeFormat: 'hh:ii'
+            },
+            onShow: () => selectDateTime(datePicker, $datePicker)
         });
     });
 };

@@ -1,53 +1,59 @@
 @component('mail::message')
-
 {{-- Greeting --}}
-@if ($greeting)
+@if (! empty($greeting))
 # {{ $greeting }}
 @else
-# @lang('mails.notification.greeting.default')
+@if ($level === 'error')
+# @lang('Sorry'),
+@else
+# @lang('Hello'),
+@endif
 @endif
 
 {{-- Intro Lines --}}
 @foreach ($introLines as $line)
-{!! $line . '  ' !!}
+{{ $line }}
+
 @endforeach
 
 {{-- Action Button --}}
 @isset($actionText)
-@php
-    switch ($level) {
-        case 'success':
-        case 'error':
-            $color = $level;
-            break;
-        default:
-            $color = 'primary';
-    }
-@endphp
+<?php
+switch ($level) {
+    case 'success':
+    case 'error':
+        $color = $level;
+        break;
+    default:
+        $color = 'primary';
+}
+?>
 @component('mail::button', ['url' => $actionUrl, 'color' => $color])
-    {{ $actionText }}
+{{ $actionText }}
 @endcomponent
 @endisset
 
 {{-- Outro Lines --}}
 @foreach ($outroLines as $line)
-{!! $line . '  ' !!}
+{{ $line }}
+
 @endforeach
 
 {{-- Salutation --}}
 @if (! empty($salutation))
 {{ $salutation }}
 @else
-@lang('mails.notification.salutation.default'),<br>
-*@lang('mails.notification.signature', ['team' => config('app.name')])*
+@lang('Regards'),<br>
+{{ config('app.name') }}
 @endif
 
 {{-- Subcopy --}}
-@component('mail::subcopy')
-@lang('mails.notification.action.alternative', [
-'actionText' => $actionText,
-'actionURL'  => $actionUrl
-])
-@endcomponent
-
+@isset($actionText)
+@slot('subcopy')
+@lang('If you’re having trouble clicking the ":actionText" button, copy and paste the URL below into your web '
+.'browser:', [
+    'actionText' => $actionText,
+]) <span class="break-all">[{{ $displayableActionUrl }}]({{ $actionUrl }})</span>
+@endslot
+@endisset
 @endcomponent

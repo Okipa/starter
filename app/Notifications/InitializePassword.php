@@ -18,7 +18,7 @@ class InitializePassword extends WelcomeNotification implements ShouldQueue
 
     public function __construct(Carbon $validUntil)
     {
-        $this->queue = 'high';
+        $this->onQueue('high');
         parent::__construct($validUntil);
     }
 
@@ -28,13 +28,13 @@ class InitializePassword extends WelcomeNotification implements ShouldQueue
         $user = $this->user;
 
         return (new MailMessage)
-            ->subject(__('mails.InitializePassword.subject'))
+            ->subject(__('Create your secured password'))
             ->greeting(__('mails.notification.greeting.named', ['name' => $user->name]))
-            ->line(__('mails.InitializePassword.message', ['app' => config('app.name')]))
-            ->action(__('mails.InitializePassword.action'), $this->showWelcomeFormUrl)
-            ->line(__('mails.InitializePassword.expiration', ['minutes' => $this->validUntil->diffInRealMinutes()]))
+            ->line(__('Welcome on the :app platform. Your account has been created and to authenticate yourself, you first have to create a secured password.', ['app' => config('app.name')]))
+            ->action(__('Create my secured password'), $this->showWelcomeFormUrl)
+            ->line(__('This link will expire in :minutes minutes.', ['minutes' => $this->validUntil->diffInRealMinutes()]))
             ->line('  ')
-            ->line(__('mails.InitializePassword.notice'));
+            ->line(__('If you have not requested an account creation, no action is required.'));
     }
 
     protected function initializeNotificationProperties(User $user): void

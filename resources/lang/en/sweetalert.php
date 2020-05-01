@@ -2,10 +2,12 @@
 
 return [
 
-    'pleaseWait' => 'A moment',
+    'please_wait' => 'Please wait',
     'loading' => 'Loading in progress ...',
-    'confirmRequest' => 'Confirmation requested',
+    'confirm_request' => 'Confirmation requested',
     'confirm' => 'Confirm',
     'cancel' => 'Cancel',
+    'error' => 'Error',
+    'unexpected' => 'An unexpected error has occurred.',
 
 ];

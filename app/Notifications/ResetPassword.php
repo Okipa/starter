@@ -14,7 +14,7 @@ class ResetPassword extends \Illuminate\Auth\Notifications\ResetPassword impleme
 
     public function __construct(string $token)
     {
-        $this->queue = 'high';
+        $this->onQueue('high');
         parent::__construct($token);
     }
 
@@ -32,10 +32,11 @@ class ResetPassword extends \Illuminate\Auth\Notifications\ResetPassword impleme
         }
 
         return (new MailMessage)
-            ->subject(__('mails.ResetPassword.subject'))
-            ->greeting(__('mails.notification.greeting.named', ['name' => $notifiable->name]))
-            ->line(__('mails.ResetPassword.message'))
-            ->action(__('mails.ResetPassword.action'), route('password.reset', [$this->token]))
-            ->line(__('mails.ResetPassword.notice'));
+            ->subject(__('Reset your password'))
+            ->greeting(__('Hello') . ' ' . $notifiable->name . ',')
+            ->line(__('This email has been sent to you because we have received a password reset request for your '
+                . 'account.'))
+            ->action(__('Reset password'), route('password.reset', [$this->token]))
+            ->line(__('If you have not requested a password reset, no action is required.'));
     }
 }

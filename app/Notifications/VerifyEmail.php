@@ -14,7 +14,7 @@ class VerifyEmail extends \Illuminate\Auth\Notifications\VerifyEmail implements 
 
     public function __construct()
     {
-        $this->queue = 'high';
+        $this->onQueue('high');
     }
 
     public function toMail($notifiable): MailMessage
@@ -24,10 +24,10 @@ class VerifyEmail extends \Illuminate\Auth\Notifications\VerifyEmail implements 
         }
 
         return (new MailMessage)
-            ->subject(__('mails.emailVerification.subject'))
-            ->greeting(__('mails.notification.greeting.named', ['name' => $notifiable->name]))
-            ->line(__('mails.emailVerification.message'))
-            ->action(__('mails.emailVerification.action'), $this->verificationUrl($notifiable))
-            ->line(__('mails.emailVerification.notice'));
+            ->subject(__('Confirm your email address'))
+            ->greeting(__('Hello') . ' ' . $notifiable->name . ',')
+            ->line(__('To confirm your email address, please click the button below.'))
+            ->action(__('Confirm my email address'), $this->verificationUrl($notifiable))
+            ->line(__('If you have not created an account, no action is required.'));
     }
 }

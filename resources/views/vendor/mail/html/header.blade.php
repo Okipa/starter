@@ -12,12 +12,8 @@ $base64Logo = 'data:image/' . $type . ';base64,' . $base64Image;
 <a href="{{ $url }}" style="display: inline-block;">
 @if ($base64Logo)
 <img src="{{ $base64Logo }}" class="logo" alt="{{ config('app.name') }}">
-<a href="{{ $url }}">
-{{ $slot }}
-</a>
-@else
-{{ $slot }}
 @endif
+{{ $slot }}
 </a>
 </td>
 </tr>

@@ -2,9 +2,12 @@
 
 return [
 
+    'please_wait' => 'Veuillez patienter',
     'loading' => 'Chargement en cours ...',
-    'confirmRequest' => 'Demande de confirmation',
+    'confirm_request' => 'Demande de confirmation',
     'confirm' => 'Confirmer',
     'cancel' => 'Annuler',
+    'error' => 'Erreur',
+    'unexpected' => 'Une erreur imprévue est survenue.',
 
 ];
