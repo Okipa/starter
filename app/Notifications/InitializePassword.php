@@ -30,9 +30,13 @@ class InitializePassword extends WelcomeNotification implements ShouldQueue
         return (new MailMessage)
             ->subject(__('Create your secured password'))
             ->greeting(__('mails.notification.greeting.named', ['name' => $user->name]))
-            ->line(__('Welcome on the :app platform. Your account has been created and to authenticate yourself, you first have to create a secured password.', ['app' => config('app.name')]))
+            ->line(__('Welcome on the :app platform. Your account has been created and to authenticate yourself, '
+                . 'you first have to create a secured password.', ['app' => config('app.name')]))
             ->action(__('Create my secured password'), $this->showWelcomeFormUrl)
-            ->line(__('This link will expire in :minutes minutes.', ['minutes' => $this->validUntil->diffInRealMinutes()]))
+            ->line(__(
+                'This link will expire in :minutes minutes.',
+                ['minutes' => $this->validUntil->diffInRealMinutes()]
+            ))
             ->line('  ')
             ->line(__('If you have not requested an account creation, no action is required.'));
     }
