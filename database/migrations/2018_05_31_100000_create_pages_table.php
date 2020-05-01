@@ -14,7 +14,7 @@ class CreatePagesTable extends Migration
     public function up()
     {
         Schema::create('pages', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->id();
             $table->string('slug')->unique();
             // todo : change column type with monolingual app
             $table->json('nav_title');

@@ -9,7 +9,7 @@ class CreateMediaTable extends Migration
     public function up(): void
     {
         Schema::create('media', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->id();
             $table->morphs('model');
             $table->uuid('uuid')->nullable();
             $table->string('collection_name');

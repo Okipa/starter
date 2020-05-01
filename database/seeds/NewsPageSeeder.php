@@ -6,7 +6,7 @@ use App\Models\Pages\TitleDescriptionPageContent;
 use Faker\Factory;
 use Illuminate\Database\Seeder;
 
-class ContactPageTableSeeder extends Seeder
+class NewsPageSeeder extends Seeder
 {
     /**
      * @throws \Okipa\LaravelBrickables\Exceptions\BrickableCannotBeHandledException
@@ -18,18 +18,17 @@ class ContactPageTableSeeder extends Seeder
         $fakerFr = Factory::create('fr_FR');
         $fakerEn = Factory::create('en_GB');
         /** @var \App\Models\Pages\TitleDescriptionPageContent $pageContent */
-        $pageContent = (new TitleDescriptionPageContent)->create(['slug' => 'contact-page-content']);
+        $pageContent = (new TitleDescriptionPageContent)->create(['slug' => 'news-page-content']);
         $pageContent->saveSeoMeta([
-            'meta_title' => ['fr' => 'Nous contacter', 'en' => 'Contact us'],
+            'meta_title' => ['fr' => 'Actualités', 'en' => 'News'],
             'meta_description' => ['fr' => $fakerFr->text(150), 'en' => $fakerEn->text(150)],
         ]);
-        $pageContent->addBrick(TitleH1::class, ['title' => ['fr' => 'Nous contacter', 'en' => 'Contact us']]);
+        $pageContent->addBrick(TitleH1::class, ['title' => ['fr' => 'Actualités', 'en' => 'News']]);
         $pageContent->addBrick(OneTextColumn::class, [
             'text' => [
-                'fr' => 'Pour toute question, n\'hésitez pas à prendre contact avec notre équipe. '
-                    . 'Nous vous recontacterons dans les plus brefs délais.',
-                'en' => 'If you have any questions, please contact our team. We will get back to you as soon as '
-                    . 'possible.',
+                'fr' => 'Découvrez ici toutes nos actualités catégorisées. Cliquez sur l\'une des catégories pour '
+                    . 'filter les actualités.',
+                'en' => 'Discover here all our categorized news. Click on one of the categories to filter the news.',
             ],
         ]);
     }

@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
 use Spatie\Feed\Http\FeedController;
 
 foreach (config('feed.feeds') as $name => $feed) {

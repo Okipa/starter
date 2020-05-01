@@ -15,10 +15,10 @@
         @lang('Email address verification')
     </h1>
     <p>
-        @lang('You are seeing this message because your e-mail address has not been validated yet.')
+        @lang('You are seeing this message because your email address has not been validated yet.')
     </p>
     <p>
-        @lang('First, make sure you have not already received your verification link by e-mail.')
+        @lang('First, make sure you have not already received your verification link by email.')
     </p>
     <p>
         @lang('You can\'t find it? Click the button below to receive a new one.')

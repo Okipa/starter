@@ -4,7 +4,7 @@ use App\Models\Settings\Settings;
 use Faker\Factory;
 use Illuminate\Database\Seeder;
 
-class SettingsTableSeeder extends Seeder
+class SettingsSeeder extends Seeder
 {
     protected \Faker\Generator $faker;
 

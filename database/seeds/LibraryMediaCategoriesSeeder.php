@@ -3,7 +3,7 @@
 use App\Models\LibraryMedia\LibraryMediaCategory;
 use Illuminate\Database\Seeder;
 
-class LibraryMediaCategoriesTableSeeder extends Seeder
+class LibraryMediaCategoriesSeeder extends Seeder
 {
     public function run(): void
     {

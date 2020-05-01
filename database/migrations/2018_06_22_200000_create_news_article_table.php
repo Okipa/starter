@@ -14,7 +14,7 @@ class CreateNewsArticleTable extends Migration
     public function up()
     {
         Schema::create('news_articles', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->id();
             // todo : change column type with monolingual app
             $table->json('title');
             // todo : change column type with monolingual app

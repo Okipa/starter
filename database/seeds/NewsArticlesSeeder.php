@@ -7,7 +7,7 @@ use Faker\Factory;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Collection;
 
-class NewsArticlesTableSeeder extends Seeder
+class NewsArticlesSeeder extends Seeder
 {
     protected \Faker\Generator $fakerFr;
 

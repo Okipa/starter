@@ -18,10 +18,10 @@
         @csrf
         @include('components.common.form.notice')
         {{ inputEmail()->name('email')
-            ->caption(__('Fill in your e-mail to receive instructions for resetting your password.'))
+            ->caption(__('Fill in your email to receive instructions for resetting your password.'))
             ->componentHtmlAttributes(['autofocus'])
             ->containerHtmlAttributes(['required']) }}
-        {{ submitValidate()->label(__('Send reset e-mail'))->componentClasses(['btn', 'btn-block', 'btn-primary']) }}
+        {{ submitValidate()->label(__('Send reset email'))->componentClasses(['btn', 'btn-block', 'btn-primary']) }}
         {{ buttonCancel()->route('login')->containerClasses(['mt-3']) }}
     </form>
 @endsection

@@ -1,5 +1,7 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
+
 // localized ***********************************************************************************************************
 Route::localized(function () {
     // auth

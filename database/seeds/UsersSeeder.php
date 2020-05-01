@@ -4,7 +4,7 @@ use App\Models\Users\User;
 use Carbon\Carbon;
 use Illuminate\Database\Seeder;
 
-class UsersTableSeeder extends Seeder
+class UsersSeeder extends Seeder
 {
     public function run(): void
     {

@@ -13,14 +13,14 @@ class DatabaseSeeder extends Seeder
         if (app()->environment() !== 'local') {
             config()->set('medialibrary.queued_conversions', true);
         }
-        $this->call(SettingsTableSeeder::class);
-        $this->call(UsersTableSeeder::class);
-        $this->call(PagesTableSeeder::class);
-        $this->call(LibraryMediaCategoriesTableSeeder::class);
-        $this->call(HomePageTableSeeder::class);
-        $this->call(NewsPageTableSeeder::class);
-        $this->call(NewsCategoriesTableSeeder::class);
-        $this->call(NewsArticlesTableSeeder::class);
-        $this->call(ContactPageTableSeeder::class);
+        $this->call(SettingsSeeder::class);
+        $this->call(UsersSeeder::class);
+        $this->call(PagesSeeder::class);
+        $this->call(LibraryMediaCategoriesSeeder::class);
+        $this->call(HomePageSeeder::class);
+        $this->call(NewsPageSeeder::class);
+        $this->call(NewsCategoriesSeeder::class);
+        $this->call(NewsArticlesSeeder::class);
+        $this->call(ContactPageSeeder::class);
     }
 }

@@ -15,9 +15,9 @@ class PageAccessTest extends TestCase
      */
     public function testHomeAccess()
     {
-        $this->artisan('db:seed --class=SettingsTableSeeder');
-        $this->artisan('db:seed --class=HomePageTableSeeder');
-        $this->artisan('db:seed --class=PagesTableSeeder');
+        $this->artisan('db:seed --class=SettingsSeeder');
+        $this->artisan('db:seed --class=HomePageSeeder');
+        $this->artisan('db:seed --class=PagesSeeder');
         $this->get('/')->assertStatus(200);
     }
 }

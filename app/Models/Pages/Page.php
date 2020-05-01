@@ -40,14 +40,8 @@ class Page extends Seo implements HasBrickables
         return $this->getTranslation('url', app()->getLocale());
     }
 
-    /**
-     * @param mixed $value
-     *
-     * @return \App\Models\Pages\Page
-     * @throws \Illuminate\Database\Eloquent\ModelNotFoundException
-     */
-    public function resolveRouteBinding($value): Page
+    public function resolveRouteBinding($value, $field = null): ?Page
     {
-        return $this->where('url->' . app()->getLocale(), $value)->firstOrFail();
+        return $this->where($field ? $field . '->' . app()->getLocale() : $this->getRouteKeyName(), $value)->first();
     }
 }

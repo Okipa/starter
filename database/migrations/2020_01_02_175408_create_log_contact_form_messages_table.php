@@ -14,7 +14,7 @@ class CreateLogContactFormMessagesTable extends Migration
     public function up()
     {
         Schema::create('log_contact_form_messages', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->id();
             $table->json('data');
             $table->timestamps();
         });

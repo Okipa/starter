@@ -7,7 +7,7 @@ use App\Models\Pages\PageContent;
 use Faker\Factory;
 use Illuminate\Database\Seeder;
 
-class HomePageTableSeeder extends Seeder
+class HomePageSeeder extends Seeder
 {
     /**
      * @throws \Okipa\LaravelBrickables\Exceptions\BrickableCannotBeHandledException

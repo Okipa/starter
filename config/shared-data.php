@@ -1,5 +1,4 @@
 <?php
-
 /**
  * @see https://github.com/coderello/laravel-shared-data
  */
@@ -15,4 +14,36 @@ return [
      */
     'js_namespace' => 'app',
 
+    /*
+     * The settings for the JavaScript helper function that allows
+     * retrieving the shared data on the front-end side easily.
+     *
+     * Example: `shared('user.email')`
+     */
+    'js_helper' => [
+        /*
+         * Determines whether the JavaScript helper should be included
+         * alongside with the shared data.
+         */
+        'enabled' => false,
+
+        /*
+         * The function name for the JavaScript helper.
+         */
+        'name' => 'shared',
+    ],
+
+    /*
+     * The settings for the Blade directive.
+     */
+    'blade_directive' => [
+        /*
+         * Blade directive name.
+         *
+         * By default the Blade directive named 'shared'.
+         *
+         * It means that the shared data rendering will be available in view files via `@shared`.
+         */
+        'name' => 'shared',
+    ],
 ];

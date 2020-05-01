@@ -14,7 +14,7 @@ class CreatePageContentsTable extends Migration
     public function up()
     {
         Schema::create('page_contents', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->id();
             $table->string('slug')->unique();
             $table->timestamps();
         });

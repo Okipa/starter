@@ -49,7 +49,7 @@
                 @if(Str::contains(request()->route()->getName(), 'user.create'))
                     <p>
                         <i class="fas fa-exclamation-triangle fa-fw text-warning"></i>
-                        @lang('If no password is defined for this user, he will be e-mailed a password creation link.')
+                        @lang('If no password is defined for this user, he will be emailed a password creation link.')
                     </p>
                 @endif
                 {{ inputPassword()->name($user ? 'new_password' : 'password')->caption(

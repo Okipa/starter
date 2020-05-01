@@ -39,7 +39,7 @@ return [
     'digits_between' => 'Le champ :attribute doit compter entre :min et :max chiffres.',
     'dimensions' => 'L\'image :attribute ne possède pas les dimensions requises.',
     'distinct' => 'Le champ :attribute possède une valeur dupliquée.',
-    'email' => 'Le champ :attribute doit être une adresse e-mail valide.',
+    'email' => 'Le champ :attribute doit être une adresse email valide.',
     'ends_with' => 'Le champ :attribute doit terminer par l\'une des valeurs suivantes :values.',
     'exists' => 'Le champ :attribute n\'existe pas.',
     'file' => 'Le champ :attribute doit être un fichier.',

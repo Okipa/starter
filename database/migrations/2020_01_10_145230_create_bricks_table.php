@@ -12,7 +12,7 @@ class CreateBricksTable extends Migration
     public function up()
     {
         Schema::create('bricks', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->id();
             $table->morphs('model');
             $table->string('brickable_type');
             $table->json('data');

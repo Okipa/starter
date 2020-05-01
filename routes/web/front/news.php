@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Front\NewsArticlesController;
 use App\Http\Controllers\Front\NewsPageController;
 
@@ -11,6 +12,6 @@ Route::get(
 
 // articles
 Route::get(
-    Lang::uri('news/{article}'),
+    Lang::uri('news/{article:url}'),
     [NewsArticlesController::class, 'show']
 )->name('news.article.show')->where('url', '.*');

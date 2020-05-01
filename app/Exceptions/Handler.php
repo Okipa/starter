@@ -2,13 +2,11 @@
 
 namespace App\Exceptions;
 
-use Exception;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
-use Illuminate\Http\RedirectResponse;
 use Illuminate\Validation\ValidationException;
 use Sentry\State\Scope;
-use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\HttpException;
+use Throwable;
 
 class Handler extends ExceptionHandler
 {
@@ -27,11 +25,11 @@ class Handler extends ExceptionHandler
     protected $dontFlash = ['password', 'password_confirmation'];
 
     /**
-     * @param \Exception $exception
+     * @param \Throwable $exception
      *
      * @throws \Exception
      */
-    public function report(Exception $exception): void
+    public function report(Throwable $exception): void
     {
         if (app()->bound('sentry') && $this->shouldReport($exception)) {
             /** @var \App\Models\Users\User|null $user */
@@ -46,12 +44,12 @@ class Handler extends ExceptionHandler
 
     /**
      * @param \Illuminate\Http\Request $request
-     * @param \Exception $exception
+     * @param \Throwable $exception
      *
      * @return \Symfony\Component\HttpFoundation\Response
-     * @throws \Exception
+     * @throws \Throwable
      */
-    public function render($request, Exception $exception): Response
+    public function render($request, Throwable $exception)
     {
         // Convert all non-http exceptions to a proper 500 http exception
         // if we don't do this exceptions are shown as a default template

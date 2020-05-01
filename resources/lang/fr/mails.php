@@ -18,7 +18,6 @@ return [
             'default' => 'Bien à vous',
         ],
         'signature' => 'L\'équipe **:team**',
-        'noReply' => 'Cet e-mail a été envoyé automatiquement. Merci de ne pas y répondre.',
     ],
 
     'ResetPassword' => [
@@ -29,9 +28,9 @@ return [
     ],
 
     'emailVerification' => [
-        'subject' => 'Confirmez votre adresse e-mail',
-        'message' => 'Pour confirmer votre adresse e-mail, veuillez cliquer sur le bouton ci-dessous.',
-        'action' => 'Confirmer mon adresse e-mail',
+        'subject' => 'Confirmez votre adresse email',
+        'message' => 'Pour confirmer votre adresse email, veuillez cliquer sur le bouton ci-dessous.',
+        'action' => 'Confirmer mon adresse email',
         'notice' => 'Si vous n\'avez pas créé de compte, aucune action de votre part n\'est nécessaire.',
     ],
 

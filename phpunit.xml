@@ -1,20 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:noNamespaceSchemaLocation="./vendor/phpunit/phpunit/phpunit.xsd"
-         backupGlobals="false"
-         backupStaticAttributes="false"
          bootstrap="vendor/autoload.php"
-         colors="true"
-         convertErrorsToExceptions="true"
-         convertNoticesToExceptions="true"
-         convertWarningsToExceptions="true"
-         processIsolation="false"
-         stopOnFailure="false">
+         colors="true">
     <testsuites>
         <testsuite name="Unit">
             <directory suffix="Test.php">./tests/Unit</directory>
         </testsuite>
-
         <testsuite name="Feature">
             <directory suffix="Test.php">./tests/Feature</directory>
         </testsuite>
@@ -24,25 +16,17 @@
             <directory suffix=".php">./app</directory>
         </whitelist>
     </filter>
-    <extensions>
-        <extension class="Tests\Bootstrap"/>
-    </extensions>
     <php>
         <server name="APP_ENV" value="testing"/>
         <server name="APP_KEY" value="base64:3dnIpEBp/joM1J74wnZp393KVOhoSFG9hULSj/yvqAI="/>
         <server name="BCRYPT_ROUNDS" value="4"/>
         <server name="CACHE_DRIVER" value="array"/>
-        <server name="MAIL_DRIVER" value="array"/>
-        <server name="QUEUE_CONNECTION" value="sync"/>
-        <server name="SESSION_DRIVER" value="array"/>
         <server name="DB_CONNECTION" value="sqlite"/>
         <server name="DB_DATABASE" value=":memory:"/>
+        <server name="MAIL_MAILER" value="array"/>
+        <server name="QUEUE_CONNECTION" value="sync"/>
+        <server name="SESSION_DRIVER" value="array"/>
         <server name="TELESCOPE_ENABLED" value="false"/>
-        <server name="APP_CONFIG_CACHE" value="bootstrap/cache/config.phpunit.php"/>
-        <server name="APP_SERVICES_CACHE" value="bootstrap/cache/services.phpunit.php"/>
-        <server name="APP_PACKAGES_CACHE" value="bootstrap/cache/packages.phpunit.php"/>
-        <server name="APP_ROUTES_CACHE" value="bootstrap/cache/routes.phpunit.php"/>
-        <server name="APP_EVENTS_CACHE" value="bootstrap/cache/events.phpunit.php"/>
     </php>
     <listeners>
         <listener class="NunoMaduro\Collision\Adapters\Phpunit\Listener"/>

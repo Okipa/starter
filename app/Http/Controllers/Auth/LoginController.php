@@ -8,7 +8,6 @@ use Artesaos\SEOTools\Facades\SEOTools;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use Illuminate\Http\Response;
 use Illuminate\View\View;
 
 class LoginController extends Controller

@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use Artesaos\SEOTools\Facades\SEOTools;
 use Illuminate\Foundation\Auth\SendsPasswordResetEmails;
 use Illuminate\Http\Request;
-use Illuminate\Http\Response;
+use Illuminate\View\View;
 
 class ForgotPasswordController extends Controller
 {
@@ -27,7 +27,7 @@ class ForgotPasswordController extends Controller
         sendResetLinkFailedResponse as traitSendResetLinkFailedResponse;
     }
 
-    public function showLinkRequestForm(): Response
+    public function showLinkRequestForm(): View
     {
         SEOTools::setTitle(__('Forgotten password'));
 

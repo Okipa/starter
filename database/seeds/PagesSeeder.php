@@ -6,7 +6,7 @@ use App\Models\Pages\Page;
 use Faker\Factory;
 use Illuminate\Database\Seeder;
 
-class PagesTableSeeder extends Seeder
+class PagesSeeder extends Seeder
 {
     protected \Faker\Generator $fakerFr;
 
