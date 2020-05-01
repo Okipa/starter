@@ -5317,12 +5317,6 @@
                 "sort",
                 "sortable"
             ],
-            "funding": [
-                {
-                    "url": "https://spatie.be/open-source/support-us",
-                    "type": "custom"
-                }
-            ],
             "time": "2020-03-02T19:45:44+00:00"
         },
         {
@@ -5564,26 +5558,20 @@
                 "laravel-honeypot",
                 "spatie"
             ],
-            "funding": [
-                {
-                    "url": "https://spatie.be/open-source/support-us",
-                    "type": "custom"
-                }
-            ],
             "time": "2020-03-02T17:18:56+00:00"
         },
         {
             "name": "spatie/laravel-medialibrary",
-            "version": "8.2.3",
+            "version": "8.2.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/laravel-medialibrary.git",
-                "reference": "4d1177d1925e3f7e5bc96ee020b6610bb1d67d45"
+                "reference": "cf17b85309775589888d49371810f41833845b0a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/laravel-medialibrary/zipball/4d1177d1925e3f7e5bc96ee020b6610bb1d67d45",
-                "reference": "4d1177d1925e3f7e5bc96ee020b6610bb1d67d45",
+                "url": "https://api.github.com/repos/spatie/laravel-medialibrary/zipball/cf17b85309775589888d49371810f41833845b0a",
+                "reference": "cf17b85309775589888d49371810f41833845b0a",
                 "shasum": ""
             },
             "require": {
@@ -5670,7 +5658,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2020-04-29T14:47:55+00:00"
+            "time": "2020-05-01T09:38:50+00:00"
         },
         {
             "name": "spatie/laravel-sitemap",
@@ -5729,12 +5717,6 @@
             "keywords": [
                 "laravel-sitemap",
                 "spatie"
-            ],
-            "funding": [
-                {
-                    "url": "https://spatie.be/open-source/support-us",
-                    "type": "custom"
-                }
             ],
             "time": "2020-03-03T07:05:15+00:00"
         },
@@ -5871,12 +5853,6 @@
             "keywords": [
                 "laravel-welcome-mail",
                 "spatie"
-            ],
-            "funding": [
-                {
-                    "url": "https://www.patreon.com/spatie",
-                    "type": "patreon"
-                }
             ],
             "time": "2020-03-06T08:13:01+00:00"
         },
@@ -8515,16 +8491,6 @@
                 "dependency",
                 "package"
             ],
-            "funding": [
-                {
-                    "url": "https://packagist.com",
-                    "type": "custom"
-                },
-                {
-                    "url": "https://tidelift.com/funding/github/packagist/composer/composer",
-                    "type": "tidelift"
-                }
-            ],
             "time": "2020-04-10T09:44:22+00:00"
         },
         {
@@ -8690,12 +8656,6 @@
                 "Xdebug",
                 "performance"
             ],
-            "funding": [
-                {
-                    "url": "https://packagist.com",
-                    "type": "custom"
-                }
-            ],
             "time": "2020-03-01T12:26:26+00:00"
         },
         {
@@ -8805,12 +8765,6 @@
                 "facade",
                 "flare",
                 "reporting"
-            ],
-            "funding": [
-                {
-                    "url": "https://www.patreon.com/spatie",
-                    "type": "patreon"
-                }
             ],
             "time": "2020-03-02T15:52:04+00:00"
         },
@@ -10404,12 +10358,6 @@
                 "highlight.js",
                 "highlight.php",
                 "syntax"
-            ],
-            "funding": [
-                {
-                    "url": "https://github.com/allejo",
-                    "type": "github"
-                }
             ],
             "time": "2020-03-02T05:59:21+00:00"
         },
