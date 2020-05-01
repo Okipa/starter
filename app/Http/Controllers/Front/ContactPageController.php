@@ -35,8 +35,10 @@ class ContactPageController extends Controller
      */
     public function sendMessage(ContactPageSendMessageRequest $request): RedirectResponse
     {
-        Notification::route('mail', settings()->email)->notify(new ContactFormMessage($request->validated()));
-        Notification::route('mail', settings()->email)->notify(new ContactFormMessage($request->validated(), true));
+        Notification::route('mail', settings()->email)
+            ->notify((new ContactFormMessage($request->validated()))->locale(app()->getLocale()));
+        Notification::route('mail', settings()->email)
+            ->notify((new ContactFormMessage($request->validated(), true))->locale(app()->getLocale()));
         (new LogContactFormMessage)->create(['data' => $request->validated()]);
 
         return back()->with('toast_success', __('Your message have been sent, thank you for your interest.'));

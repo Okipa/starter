@@ -72,16 +72,16 @@ class User extends Authenticatable implements HasMedia, MustVerifyEmail
 
     public function sendPasswordResetNotification($token): void
     {
-        $this->notify(new ResetPassword($token));
+        $this->notify((new ResetPassword($token))->locale(app()->getLocale()));
     }
 
     public function sendEmailVerificationNotification(): void
     {
-        $this->notify(new VerifyEmail);
+        $this->notify((new VerifyEmail)->locale(app()->getLocale()));
     }
 
     public function sendWelcomeNotification(Carbon $validUntil): void
     {
-        $this->notify(new InitializePassword($validUntil));
+        $this->notify((new InitializePassword($validUntil))->locale(app()->getLocale()));
     }
 }

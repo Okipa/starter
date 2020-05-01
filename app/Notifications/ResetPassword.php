@@ -32,6 +32,7 @@ class ResetPassword extends \Illuminate\Auth\Notifications\ResetPassword impleme
         }
 
         return (new MailMessage)
+            ->level('success')
             ->subject(__('Reset your password'))
             ->greeting(__('Hello') . ' ' . $notifiable->name . ',')
             ->line(__('This email has been sent to you because we have received a password reset request for your '

@@ -12,6 +12,6 @@ Route::get(
 
 // articles
 Route::get(
-    Lang::uri('news/{article:url}'),
+    Lang::uri('news/{article}'),
     [NewsArticlesController::class, 'show']
 )->name('news.article.show')->where('url', '.*');

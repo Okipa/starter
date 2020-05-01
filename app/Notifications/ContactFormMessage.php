@@ -32,6 +32,7 @@ class ContactFormMessage extends Notification implements ShouldQueue
     public function toMail(): MailMessage
     {
         $mailMessage = (new MailMessage)
+            ->level('success')
             ->subject($this->isCopyToSender ? __('Copy of your sent message') : __('New message from the contact form'))
             ->line(__($this->isCopyToSender
                 ? 'Here is a copy of your message, sent from the contact form of :app.'
