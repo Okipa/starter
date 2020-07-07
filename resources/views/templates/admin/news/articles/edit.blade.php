@@ -46,7 +46,7 @@
                 {{ inputText()->name('slug')
                     ->locales(supportedLocaleKeys())
                     ->model($article)
-                    ->prepend(route('news.article.show', '') . '/')
+                    ->prepend('/' . (Lang::has('routes.news') ? __('routes.news') : 'news') . '/')
                     ->componentHtmlAttributes(['data-slugify', 'data-autofill-from' => '#text-title'])
                     ->containerHtmlAttributes(['required']) }}
                 <h3>@lang('Information')</h3>

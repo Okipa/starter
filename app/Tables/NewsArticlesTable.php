@@ -3,6 +3,7 @@
 namespace App\Tables;
 
 use App\Models\News\NewsArticle;
+use Illuminate\Support\Facades\Lang;
 use Okipa\LaravelTable\Abstracts\AbstractTable;
 use Okipa\LaravelTable\Table;
 
@@ -45,24 +46,24 @@ class NewsArticlesTable extends AbstractTable
             return view('components.admin.table.image', ['image' => $newsArticle->getFirstMedia('illustrations')]);
         });
         $table->column('title')->stringLimit(50)->sortable()->searchable();
-        $table->column()->title(__('validation.attributes.category_ids'))->html(function (NewsArticle $newsArticle) {
-            return $newsArticle->categories->pluck('title')->map(function ($title) {
-                return $title
-                    ? '<button class="btn btn-sm btn-outline-primary m-1 no-click">' . $title . '</button>'
+        $table->column()->title(__('Categories'))->html(function (NewsArticle $newsArticle) {
+            return $newsArticle->categories->pluck('name')->map(function ($name) {
+                return $name
+                    ? '<button class="btn btn-sm btn-outline-primary m-1 no-click">' . $name . '</button>'
                     : null;
             })->implode(' ');
         });
-        $table->column()->title(__('Display'))->html(function (NewsArticle $newsArticle) {
-            return view('components.admin.table.display', [
-                'url' => route('news.article.show', $newsArticle->slug),
-                'active' => $newsArticle->active,
-            ]);
-        });
-        $table->column('active')->sortable()->html(function (NewsArticle $newsArticle) {
-            return view('components.admin.table.active', [
-                'active' => $newsArticle->active,
-            ]);
-        });
+        $table->column('slug')->value(fn(NewsArticle $newsArticle) => '/' . (Lang::has('routes.news')
+                ? __('routes.news')
+                : 'news') . '/' . $newsArticle->slug);
+        $table->column()->title(__('Display'))->html(fn(NewsArticle $newsArticle) => view(
+            'components.admin.table.display',
+            ['url' => route('news.article.show', $newsArticle->slug), 'active' => $newsArticle->active]
+        ));
+        $table->column('active')->sortable()->html(fn(NewsArticle $newsArticle) => view(
+            'components.admin.table.active',
+            ['active' => $newsArticle->active]
+        ));
         $table->column('published_at')->dateTimeFormat('d/m/Y H:i')->sortable(true);
     }
 }
