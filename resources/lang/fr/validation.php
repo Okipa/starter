@@ -199,6 +199,7 @@ return [
         'image' => 'Image',
         'label' => 'Label',
         'caption' => 'Légende',
+        'full_width' => 'Pleine largeur',
     ],
 
 ];

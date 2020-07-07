@@ -3,14 +3,14 @@
 namespace App\Brickables;
 
 use App\Http\Controllers\Brickables\CarouselBricksController;
-use App\Models\Brickables\CarouselContainerWidthBrick;
+use App\Models\Brickables\CarouselBrick;
 use Okipa\LaravelBrickables\Abstracts\Brickable;
 
-class CarouselContainerWidth extends Brickable
+class Carousel extends Brickable
 {
     protected function setBrickModelClass(): string
     {
-        return CarouselContainerWidthBrick::class;
+        return CarouselBrick::class;
     }
 
     protected function setBricksControllerClass(): string
@@ -20,9 +20,12 @@ class CarouselContainerWidth extends Brickable
 
     protected function setStoreValidationRules(): array
     {
-        /** @var \App\Models\Brickables\CarouselContainerWidthBrick $model */
+        /** @var \App\Models\Brickables\CarouselBrick $model */
         $model = $this->getBrickModel();
-        $rules = ['image' => array_merge(['required'], $model->getMediaValidationRules('slides'))];
+        $rules = [
+            'full_width' => ['nullable', 'in:on'],
+            'image' => array_merge(['required'], $model->getMediaValidationRules('slides')),
+        ];
         $localizedRules = localizeRules([
             'label' => ['nullable', 'string', 'max:75'],
             'caption' => ['nullable', 'string', 'max:150'],
@@ -33,9 +36,12 @@ class CarouselContainerWidth extends Brickable
 
     protected function setUpdateValidationRules(): array
     {
-        /** @var \App\Models\Brickables\CarouselContainerWidthBrick $model */
+        /** @var \App\Models\Brickables\CarouselBrick $model */
         $model = $this->getBrickModel();
-        $rules = ['image' => array_merge(['required'], $model->getMediaValidationRules('slides'))];
+        $rules = [
+            'full_width' => ['nullable', 'in:on'],
+            'image' => $model->getMediaValidationRules('slides'),
+        ];
         $localizedRules = localizeRules([
             'label' => ['nullable', 'string', 'max:75'],
             'caption' => ['nullable', 'string', 'max:150'],

@@ -90,10 +90,13 @@ class CarouselBricksController extends BricksController
     {
         $image = $request->file('image');
 
-        /** @var \Spatie\MediaLibrary\HasMedia $brick */
+        /** @var \App\Models\Brickables\CarouselBrick $brick */
         return $brick->addMedia($image->getRealPath())
             ->setFileName($image->getClientOriginalName())
-            ->withCustomProperties(['label' => $request->label, 'caption' => $request->caption])
+            ->withCustomProperties([
+                'label' => $request->label,
+                'caption' => $request->caption,
+            ])
             ->toMediaCollection('slides');
     }
 
@@ -107,7 +110,7 @@ class CarouselBricksController extends BricksController
     protected function updated(Request $request, Brick $brick): void
     {
         if ($request->file('image')) {
-            /** @var \App\Models\Brickables\CarouselFullWidthBrick $brick */
+            /** @var \App\Models\Brickables\CarouselBrick $brick */
             $this->addNewSlide($request, $brick);
         }
     }

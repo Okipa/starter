@@ -85,6 +85,9 @@
     "A password creation link has been sent.": "Un lien de création de mot de passe a été envoyé.",
     "Welcome on :app ! To be able to login to your new account please define a secured password with the fields bellow.": "Bienvenue sur :app ! Pour pouvoir vous connecter à votre nouveau compte, merci de définir un mot de passe sécurisé à l'aide des champs ci-dessous.",
     "Data": "Données",
+    "Brick data": "Données brique",
+    "Carousel configuration": "Configuration caroussel",
+    "New slide": "Nouvelle diapo",
     "Content bricks": "Briques contenu",
     "Add": "Ajouter",
     "No saved content brick.": "Aucune brique de contenu enregistrée.",
@@ -103,7 +106,6 @@
     "Awaited format: Day/Month/Year Hour:Minutes.": "Format attendu : Jour/Mois/Année Heure:Minutes.",
     "Your browser does not support the :tag HTML5 tag.": "Votre navigateur n'est pas compatible avec le tag HTML5 : tag.",
     "Field correctly filled.": "Champ correctement saisi.",
-    "Add new slide": "Ajouter nouvelle slide",
     "Page content": "Contenu page",
     "Move up": "Déplacer vers le haut",
     "Move down": "Déplacer vers le bas",
@@ -125,8 +127,8 @@
     "Reset research": "Annuler recherche",
     "No results were found.": "Aucun résultat trouvé.",
     "Showing results <b>:start</b> to <b>:stop</b> on <b>:total</b>": "Affichage des résultats <b>:start</b> à <b>:stop</b> sur <b>:total</b>",
-    "Slide moved up.": "Diapositive déplacée vers le haut.",
-    "Slide moved down.": "Diapositive déplacée vers le bas.",
+    "Slide moved up.": "Diapo déplacée vers le haut.",
+    "Slide moved down.": "Diapo déplacée vers le bas.",
     "Hello": "Bonjour",
     "Hello!": "Bonjour !",
     "Whoops!": "Oups !",
@@ -152,5 +154,6 @@
     "Min. width: :width px.": "Largeur min. : :width px.",
     "Min. height: :height px.": "Hauteur min. : :height px.",
     "{1}Accepted type: :types.|[2,*]Accepted types: :types.": "{1}Type accepté : :types.|[2,*]Types acceptés : :types.",
-    "Max. file size: :size Mb.": "Poids max. fichier : :size Mb."
+    "Max. file size: :size Mb.": "Poids max. fichier : :size Mb.",
+    "Save": "Enregistrer"
 }

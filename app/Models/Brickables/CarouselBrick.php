@@ -9,7 +9,7 @@ use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
-class CarouselFullWidthBrick extends Brick implements HasMedia
+class CarouselBrick extends Brick implements HasMedia
 {
     use InteractsWithMedia;
     use ExtendsMediaAbilities;
@@ -19,11 +19,18 @@ class CarouselFullWidthBrick extends Brick implements HasMedia
     {
         $this->addMediaCollection('slides')
             ->acceptsMimeTypes(['image/jpeg', 'image/png'])
-            ->registerMediaConversions(fn(Media $media = null) => $this->addMediaConversion('full')
-                ->fit(Manipulations::FIT_CROP, 2560, 700)
-                ->withResponsiveImages()
-                ->keepOriginalImageFormat()
-                ->nonQueued());
+            ->registerMediaConversions(function (Media $media = null) {
+                $this->addMediaConversion('containerized')
+                    ->fit(Manipulations::FIT_CROP, 1110, 400)
+                    ->withResponsiveImages()
+                    ->keepOriginalImageFormat()
+                    ->nonQueued();
+                $this->addMediaConversion('full')
+                    ->fit(Manipulations::FIT_CROP, 2560, 700)
+                    ->withResponsiveImages()
+                    ->keepOriginalImageFormat()
+                    ->nonQueued();
+            });
     }
 
     /**

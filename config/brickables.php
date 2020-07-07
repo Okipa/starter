@@ -20,8 +20,7 @@ return [
         App\Brickables\OneTextColumn::class,
         App\Brickables\TwoTextColumns::class,
         App\Brickables\TwoTextImageColumns::class,
-        App\Brickables\CarouselFullWidth::class,
-        App\Brickables\CarouselContainerWidth::class,
+        App\Brickables\Carousel::class,
         // add your own brickables here ...
     ],
 

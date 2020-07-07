@@ -1,6 +1,6 @@
 <?php
 
-use App\Brickables\CarouselFullWidth;
+use App\Brickables\Carousel;
 use App\Brickables\OneTextColumn;
 use App\Brickables\TitleH1;
 use App\Models\Pages\PageContent;
@@ -13,6 +13,8 @@ class HomePageSeeder extends Seeder
      * @throws \Okipa\LaravelBrickables\Exceptions\BrickableCannotBeHandledException
      * @throws \Okipa\LaravelBrickables\Exceptions\InvalidBrickableClassException
      * @throws \Okipa\LaravelBrickables\Exceptions\NotRegisteredBrickableClassException
+     * @throws \Spatie\MediaLibrary\MediaCollections\Exceptions\FileDoesNotExist
+     * @throws \Spatie\MediaLibrary\MediaCollections\Exceptions\FileIsTooBig
      */
     public function run(): void
     {
@@ -48,8 +50,8 @@ EOT;
             'meta_title' => ['fr' => 'Accueil', 'en' => 'Home'],
             'meta_description' => ['fr' => $fakerFr->text(150), 'en' => $fakerEn->text(150)],
         ]);
-        /** @var \App\Brickables\CarouselFullWidth $carouselBrick */
-        $carouselBrick = $pageContent->addBrick(CarouselFullWidth::class);
+        /** @var \App\Models\Brickables\CarouselBrick $carouselBrick */
+        $carouselBrick = $pageContent->addBrick(Carousel::class, ['full_width' => true]);
         $carouselBrick->addMedia(database_path('seeds/files/home/2251x1600.jpg'))
             ->preservingOriginal()
             ->withCustomProperties([

@@ -1,8 +1,9 @@
 @extends('laravel-brickables::admin.form.layout')
-@section('title')
-    @lang('Add new slide')
-@endsection
+@php($slides = optional($brick)->getMedia('slides') ?: collect())
 @section('inputs')
+    <h3>@lang('Carousel configuration')</h3>
+    {{ inputToggle()->name('full_width')->checked((bool) data_get($brick, 'data.full_width')) }}
+    <h3>@lang('New slide')</h3>
     {{ inputFile()->name('image')
         ->containerHtmlAttributes(['required'])
         ->caption($brickable->getBrickModel()->getMediaCaption('slides')) }}
@@ -12,12 +13,11 @@
 @section('actions')
     <div class="d-flex pt-4">
         {{ buttonCancel()->url($adminPanelUrl)->containerClasses(['mr-2']) }}
-        {{ submitCreate() }}
+        {{ submitUpdate()->label(__('Save')) }}
     </div>
 @endsection
 @section('append')
     <div class="row mt-3">
-        @php($slides = optional($brick)->getMedia('slides'))
         @if($slides && $slides->isNotEmpty())
             @foreach($slides as $slide)
                 <div class="col-sm-6 col-lg-4 col-xl-3">

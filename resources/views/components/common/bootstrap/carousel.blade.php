@@ -2,7 +2,7 @@
     <div class="carousel-inner">
         @foreach($slides as $key => $slide)
             <div class="carousel-item{{ $loop->first ? ' active' : null }}">
-                {!! $slide->img('full', ['class' => 'w-100', 'alt' => $slide->name]) !!}
+                {!! $slide->img($conversionName, ['class' => 'w-100', 'alt' => $slide->name]) !!}
                 @php($label = translatedData($slide->getCustomProperty('label')))
                 @php($caption = translatedData($slide->getCustomProperty('caption')))
                 @if($label || $caption)
