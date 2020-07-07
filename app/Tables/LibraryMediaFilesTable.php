@@ -25,34 +25,38 @@ class LibraryMediaFilesTable extends AbstractTable
      */
     protected function table(): Table
     {
-        return (new Table)->model(LibraryMediaFile::class)->routes([
-            'index' => ['name' => 'libraryMedia.files.index'],
-            'create' => ['name' => 'libraryMedia.file.create'],
-            'edit' => ['name' => 'libraryMedia.file.edit'],
-            'destroy' => ['name' => 'libraryMedia.file.destroy'],
-        ])->destroyConfirmationHtmlAttributes(fn(LibraryMediaFile $file) => [
-            'data-confirm' => __('notifications.orphan.destroyConfirm', [
-                'entity' => __('Media library'),
-                'name' => $file->name,
-            ]),
-        ])->query(function (Builder $query) {
-            $query->select('library_media_files.*');
-            $query->addSelect(multilingual()
-                ? 'library_media_categories.name->' . app()->getLocale() . ' as category_name'
-                : 'library_media_categories.name as category_name');
-            $query->addSelect('media.mime_type');
-            $query->join('media', 'media.model_id', '=', 'library_media_files.id');
-            $query->join(
-                'library_media_categories',
-                'library_media_categories.id',
-                '=',
-                'library_media_files.category_id'
-            );
-            $query->where('model_type', 'App\Models\LibraryMedia\LibraryMediaFile');
-            if ($this->request->has('category_id')) {
-                $query->where('library_media_categories.id', $this->request->category_id);
-            }
-        })->appendData($this->request->validated());
+        return (new Table)->model(LibraryMediaFile::class)
+            ->routes([
+                'index' => ['name' => 'libraryMedia.files.index'],
+                'create' => ['name' => 'libraryMedia.file.create'],
+                'edit' => ['name' => 'libraryMedia.file.edit'],
+                'destroy' => ['name' => 'libraryMedia.file.destroy'],
+            ])
+            ->destroyConfirmationHtmlAttributes(fn(LibraryMediaFile $file) => [
+                'data-confirm' => __('notifications.orphan.destroyConfirm', [
+                    'entity' => __('Media library'),
+                    'name' => $file->name,
+                ]),
+            ])
+            ->query(function (Builder $query) {
+                $query->select('library_media_files.*');
+                $query->addSelect(multilingual()
+                    ? 'library_media_categories.name->' . app()->getLocale() . ' as category_name'
+                    : 'library_media_categories.name as category_name');
+                $query->addSelect('media.mime_type');
+                $query->join('media', 'media.model_id', '=', 'library_media_files.id');
+                $query->join(
+                    'library_media_categories',
+                    'library_media_categories.id',
+                    '=',
+                    'library_media_files.category_id'
+                );
+                $query->where('model_type', 'App\Models\LibraryMedia\LibraryMediaFile');
+                if ($this->request->has('category_id')) {
+                    $query->where('library_media_categories.id', $this->request->category_id);
+                }
+            })
+            ->appendData($this->request->validated());
     }
 
     /**

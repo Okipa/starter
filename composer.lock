@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "7bddb9c4fbbc47361869038cc8ce7773",
+    "content-hash": "4bfadc5f6ae0bea348348001d9d61c61",
     "packages": [
         {
             "name": "0.0.0/composer-include-files",
@@ -1987,67 +1987,6 @@
                 "watermark"
             ],
             "time": "2019-11-02T09:15:47+00:00"
-        },
-        {
-            "name": "intervention/validation",
-            "version": "2.4.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/Intervention/validation.git",
-                "reference": "1637e3c6a0f32fd3fcefaff56eff09831cd32bb5"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/Intervention/validation/zipball/1637e3c6a0f32fd3fcefaff56eff09831cd32bb5",
-                "reference": "1637e3c6a0f32fd3fcefaff56eff09831cd32bb5",
-                "shasum": ""
-            },
-            "require": {
-                "illuminate/support": "^5.5|~6|~7",
-                "illuminate/validation": "^5.5|~6|~7",
-                "php": "^7.2"
-            },
-            "require-dev": {
-                "phpstan/phpstan": "^0.12.17",
-                "phpunit/phpunit": "^8.0"
-            },
-            "type": "library",
-            "extra": {
-                "laravel": {
-                    "providers": [
-                        "Intervention\\Validation\\Laravel\\ValidationServiceProvider"
-                    ]
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Intervention\\Validation\\": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Oliver Vogel",
-                    "email": "oliver@olivervogel.com",
-                    "homepage": "https://olivervogel.com/"
-                }
-            ],
-            "description": "Additional Validator Functions for the Laravel Framework",
-            "keywords": [
-                "BIC",
-                "IBAN",
-                "ISBN",
-                "ISIN",
-                "creditcard",
-                "laravel",
-                "luhn",
-                "validation",
-                "validator"
-            ],
-            "time": "2020-06-05T07:55:39+00:00"
         },
         {
             "name": "jean85/pretty-package-versions",
@@ -10418,31 +10357,31 @@
         },
         {
             "name": "nunomaduro/larastan",
-            "version": "v0.5.8",
+            "version": "v0.6.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nunomaduro/larastan.git",
-                "reference": "0eaea6316dcdcbaef56a67e0d7bd5fff0da7b773"
+                "reference": "7e333510eaaed6fc0e670c69fed148320ecb1cac"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nunomaduro/larastan/zipball/0eaea6316dcdcbaef56a67e0d7bd5fff0da7b773",
-                "reference": "0eaea6316dcdcbaef56a67e0d7bd5fff0da7b773",
+                "url": "https://api.github.com/repos/nunomaduro/larastan/zipball/7e333510eaaed6fc0e670c69fed148320ecb1cac",
+                "reference": "7e333510eaaed6fc0e670c69fed148320ecb1cac",
                 "shasum": ""
             },
             "require": {
                 "composer/composer": "^1.0 || ^2.0",
                 "ext-json": "*",
-                "illuminate/console": "^6.0 || ^7.0",
-                "illuminate/container": "^6.0 || ^7.0",
-                "illuminate/contracts": "^6.0 || ^7.0",
-                "illuminate/database": "^6.0 || ^7.0",
-                "illuminate/http": "^6.0 || ^7.0",
-                "illuminate/pipeline": "^6.0 || ^7.0",
-                "illuminate/support": "^6.0 || ^7.0",
+                "illuminate/console": "^6.0 || ^7.0 || ^8.0",
+                "illuminate/container": "^6.0 || ^7.0 || ^8.0",
+                "illuminate/contracts": "^6.0 || ^7.0 || ^8.0",
+                "illuminate/database": "^6.0 || ^7.0 || ^8.0",
+                "illuminate/http": "^6.0 || ^7.0 || ^8.0",
+                "illuminate/pipeline": "^6.0 || ^7.0 || ^8.0",
+                "illuminate/support": "^6.0 || ^7.0 || ^8.0",
                 "mockery/mockery": "^0.9 || ^1.0",
                 "php": "^7.2",
-                "phpstan/phpstan": "^0.12.23",
+                "phpstan/phpstan": "^0.12.28",
                 "symfony/process": "^4.3 || ^5.0"
             },
             "require-dev": {
@@ -10454,6 +10393,9 @@
             },
             "type": "phpstan-extension",
             "extra": {
+                "branch-alias": {
+                    "dev-master": "0.6-dev"
+                },
                 "phpstan": {
                     "includes": [
                         "extension.neon"
@@ -10492,6 +10434,10 @@
                     "type": "custom"
                 },
                 {
+                    "url": "https://github.com/canvural",
+                    "type": "github"
+                },
+                {
                     "url": "https://github.com/nunomaduro",
                     "type": "github"
                 },
@@ -10500,7 +10446,7 @@
                     "type": "patreon"
                 }
             ],
-            "time": "2020-05-06T08:56:49+00:00"
+            "time": "2020-06-20T12:11:51+00:00"
         },
         {
             "name": "pdepend/pdepend",
