@@ -50,8 +50,8 @@ class NewsArticlesController extends Controller
     {
         /** @var \App\Models\News\NewsArticle $article */
         $article = (new NewsArticle)->create($request->validated());
-        if ($request->file('image')) {
-            $article->addMediaFromRequest('image')->toMediaCollection('illustrations');
+        if ($request->file('illustration')) {
+            $article->addMediaFromRequest('illustration')->toMediaCollection('illustrations');
         }
         $article->categories()->sync($request->category_ids);
         $article->saveSeoMetaFromRequest($request);
@@ -86,8 +86,8 @@ class NewsArticlesController extends Controller
     public function update(NewsArticle $article, ArticleUpdateRequest $request): RedirectResponse
     {
         $article->update($request->validated());
-        if ($request->file('image')) {
-            $article->addMediaFromRequest('image')->toMediaCollection('illustrations');
+        if ($request->file('illustration')) {
+            $article->addMediaFromRequest('illustration')->toMediaCollection('illustrations');
         }
         $article->categories()->sync($request->category_ids);
         $article->saveSeoMetaFromRequest($request);

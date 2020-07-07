@@ -16,6 +16,9 @@ class PagesController extends Controller
      */
     public function show(Page $page): View
     {
+        if (! $page->active) {
+            abort(404);
+        }
         $page->displaySeoMeta();
         $css = mix('/css/pages/show.css');
 

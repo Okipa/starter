@@ -20,13 +20,14 @@ class ArticleStoreRequest extends AbstractSeoRequest
         ];
         $localizedRules = localizeRules([
             'title' => ['required', 'string', 'max:255'],
-            'url' => [
+            'slug' => [
                 'required',
                 'string',
+                'slug',
                 'max:255',
                 UniqueTranslationRule::for('news_articles'),
             ],
-            'description' => ['string', 'max:4294967295'],
+            'description' => ['nullable', 'string', 'max:4294967295'],
         ]);
 
         return array_merge($rules, $localizedRules, parent::rules());

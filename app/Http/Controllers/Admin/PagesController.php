@@ -72,7 +72,7 @@ class PagesController extends Controller
      */
     public function update(Page $page, PageUpdateRequest $request): RedirectResponse
     {
-        $page->update(Arr::except($request->validated(), 'slug'));
+        $page->update(Arr::except($request->validated(), 'unique_key'));
         $page->saveSeoMetaFromRequest($request);
         pages(true);
 

@@ -173,7 +173,7 @@ return [
         'active' => 'Active',
         'published_at' => 'Published at',
         'illustration' => 'Illustration',
-        'url' => 'URL',
+        'unique_key' => 'Unique identifier',
         'slug' => 'Slug',
         'downloadable' => 'Downloadable',
         'updated_at' => 'Updated at',

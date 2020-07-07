@@ -48,10 +48,10 @@ EOT;
         $this->fakerEn = Factory::create('en_GB');
         $this->createPage(
             [
-                'slug' => 'terms-of-service-page',
+                'unique_key' => 'terms_of_service_page',
                 'nav_title' => ['fr' => 'CGU et mentions légales', 'en' => 'Terms and legal notice'],
                 'active' => true,
-                'url' => ['fr' => 'cgu-et-mentions-legales', 'en' => 'terms-and-legal-notice'],
+                'slug' => ['fr' => 'cgu-et-mentions-legales', 'en' => 'terms-and-legal-notice'],
             ],
             [
                 [TitleH1::class, ['title' => ['fr' => 'CGU et mentions légales', 'en' => 'Terms and legal notice']]],
@@ -64,10 +64,10 @@ EOT;
         );
         $this->createPage(
             [
-                'slug' => 'gdpr-page',
+                'unique_key' => 'gdpr_page',
                 'nav_title' => ['fr' => 'Vie privée et RGPD', 'en' => 'Privacy policy and GDPR'],
                 'active' => true,
-                'url' => ['fr' => 'vie-privee-rgpd', 'en' => 'privacy-policy-gdpr'],
+                'slug' => ['fr' => 'vie-privee-rgpd', 'en' => 'privacy-policy-gdpr'],
             ],
             [
                 [TitleH1::class, ['title' => ['fr' => 'Vie privée et RGPD', 'en' => 'Privacy policy and GDPR']]],

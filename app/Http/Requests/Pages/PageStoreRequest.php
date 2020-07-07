@@ -4,20 +4,20 @@ namespace App\Http\Requests\Pages;
 
 use App\Http\Requests\AbstractSeoRequest;
 use CodeZero\UniqueTranslation\UniqueTranslationRule;
-use Illuminate\Support\Str;
 
 class PageStoreRequest extends AbstractSeoRequest
 {
     public function rules(): array
     {
         $rules = [
-            'slug' => ['required', 'alpha_dash', 'unique:pages'],
+            'unique_key' => ['required', 'snakecase', 'unique:pages'],
             'active' => ['required', 'boolean'],
         ];
         $localizedRules = localizeRules([
-            'url' => [
+            'slug' => [
                 'required',
                 'string',
+                'slug',
                 'max:255',
                 UniqueTranslationRule::for('pages'),
             ],
@@ -30,9 +30,6 @@ class PageStoreRequest extends AbstractSeoRequest
     protected function prepareForValidation(): void
     {
         parent::prepareForValidation();
-        $this->merge([
-            'slug' => Str::slug($this->slug),
-            'active' => (bool) $this->active,
-        ]);
+        $this->merge(['active' => (bool) $this->active]);
     }
 }

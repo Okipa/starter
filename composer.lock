@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "4bfadc5f6ae0bea348348001d9d61c61",
+    "content-hash": "35a0d74452839b1ae106c8f7c49cb7dd",
     "packages": [
         {
             "name": "0.0.0/composer-include-files",
@@ -1632,16 +1632,16 @@
         },
         {
             "name": "giggsey/locale",
-            "version": "1.8",
+            "version": "1.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/giggsey/Locale.git",
-                "reference": "85a1b251bad11c986fec2a051b10d4b80a5caa1b"
+                "reference": "b07f1eace8072ccc61445ad8fbd493ff9d783043"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/giggsey/Locale/zipball/85a1b251bad11c986fec2a051b10d4b80a5caa1b",
-                "reference": "85a1b251bad11c986fec2a051b10d4b80a5caa1b",
+                "url": "https://api.github.com/repos/giggsey/Locale/zipball/b07f1eace8072ccc61445ad8fbd493ff9d783043",
+                "reference": "b07f1eace8072ccc61445ad8fbd493ff9d783043",
                 "shasum": ""
             },
             "require": {
@@ -1677,7 +1677,7 @@
                 }
             ],
             "description": "Locale functions required by libphonenumber-for-php",
-            "time": "2019-10-09T18:53:14+00:00"
+            "time": "2020-07-07T11:16:24+00:00"
         },
         {
             "name": "guzzlehttp/guzzle",
@@ -1987,6 +1987,67 @@
                 "watermark"
             ],
             "time": "2019-11-02T09:15:47+00:00"
+        },
+        {
+            "name": "intervention/validation",
+            "version": "2.4.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Intervention/validation.git",
+                "reference": "1637e3c6a0f32fd3fcefaff56eff09831cd32bb5"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Intervention/validation/zipball/1637e3c6a0f32fd3fcefaff56eff09831cd32bb5",
+                "reference": "1637e3c6a0f32fd3fcefaff56eff09831cd32bb5",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "^5.5|~6|~7",
+                "illuminate/validation": "^5.5|~6|~7",
+                "php": "^7.2"
+            },
+            "require-dev": {
+                "phpstan/phpstan": "^0.12.17",
+                "phpunit/phpunit": "^8.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Intervention\\Validation\\Laravel\\ValidationServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Intervention\\Validation\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Oliver Vogel",
+                    "email": "oliver@olivervogel.com",
+                    "homepage": "https://olivervogel.com/"
+                }
+            ],
+            "description": "Additional Validator Functions for the Laravel Framework",
+            "keywords": [
+                "BIC",
+                "IBAN",
+                "ISBN",
+                "ISIN",
+                "creditcard",
+                "laravel",
+                "luhn",
+                "validation",
+                "validator"
+            ],
+            "time": "2020-06-05T07:55:39+00:00"
         },
         {
             "name": "jean85/pretty-package-versions",
@@ -3289,16 +3350,16 @@
         },
         {
             "name": "okipa/laravel-bootstrap-components",
-            "version": "2.1.11",
+            "version": "2.1.12",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Okipa/laravel-bootstrap-components.git",
-                "reference": "6c613d37b7cad8b9262f1acca702995e3aa46711"
+                "reference": "08bd7ba784d206a96ba900ef449ce6c0f2b50e28"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Okipa/laravel-bootstrap-components/zipball/6c613d37b7cad8b9262f1acca702995e3aa46711",
-                "reference": "6c613d37b7cad8b9262f1acca702995e3aa46711",
+                "url": "https://api.github.com/repos/Okipa/laravel-bootstrap-components/zipball/08bd7ba784d206a96ba900ef449ce6c0f2b50e28",
+                "reference": "08bd7ba784d206a96ba900ef449ce6c0f2b50e28",
                 "shasum": ""
             },
             "require": {
@@ -3308,7 +3369,7 @@
                 "php": "^7.2"
             },
             "require-dev": {
-                "nunomaduro/larastan": "^0.4.3||^0.5",
+                "nunomaduro/larastan": "^0.4.3||^0.6",
                 "orchestra/testbench": "~3.8.0||^4.0||^5.0",
                 "phpmd/phpmd": "^2.8",
                 "squizlabs/php_codesniffer": "^3.5"
@@ -3383,7 +3444,7 @@
                 "package",
                 "php"
             ],
-            "time": "2020-06-08T21:16:35+00:00"
+            "time": "2020-07-07T12:10:40+00:00"
         },
         {
             "name": "okipa/laravel-brickables",
@@ -4277,21 +4338,24 @@
         },
         {
             "name": "php-http/promise",
-            "version": "v1.0.0",
+            "version": "1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-http/promise.git",
-                "reference": "dc494cdc9d7160b9a09bd5573272195242ce7980"
+                "reference": "4c4c1f9b7289a2ec57cde7f1e9762a5789506f88"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/php-http/promise/zipball/dc494cdc9d7160b9a09bd5573272195242ce7980",
-                "reference": "dc494cdc9d7160b9a09bd5573272195242ce7980",
+                "url": "https://api.github.com/repos/php-http/promise/zipball/4c4c1f9b7289a2ec57cde7f1e9762a5789506f88",
+                "reference": "4c4c1f9b7289a2ec57cde7f1e9762a5789506f88",
                 "shasum": ""
             },
+            "require": {
+                "php": "^7.1 || ^8.0"
+            },
             "require-dev": {
-                "henrikbjorn/phpspec-code-coverage": "^1.0",
-                "phpspec/phpspec": "^2.4"
+                "friends-of-phpspec/phpspec-code-coverage": "^4.3.2",
+                "phpspec/phpspec": "^5.1.2 || ^6.2"
             },
             "type": "library",
             "extra": {
@@ -4310,12 +4374,12 @@
             ],
             "authors": [
                 {
-                    "name": "Márk Sági-Kazár",
-                    "email": "mark.sagikazar@gmail.com"
-                },
-                {
                     "name": "Joel Wurtz",
                     "email": "joel.wurtz@gmail.com"
+                },
+                {
+                    "name": "Márk Sági-Kazár",
+                    "email": "mark.sagikazar@gmail.com"
                 }
             ],
             "description": "Promise used for asynchronous HTTP requests",
@@ -4323,7 +4387,7 @@
             "keywords": [
                 "promise"
             ],
-            "time": "2016-01-26T13:27:02+00:00"
+            "time": "2020-07-07T09:29:14+00:00"
         },
         {
             "name": "phpoption/phpoption",

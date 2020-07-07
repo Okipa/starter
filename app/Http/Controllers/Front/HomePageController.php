@@ -15,7 +15,7 @@ class HomePageController extends Controller
     public function show(): View
     {
         /** @var \App\Models\Pages\PageContent $pageContent */
-        $pageContent = (new PageContent)->firstOrCreate(['slug' => 'home-page-content']);
+        $pageContent = (new PageContent)->firstOrCreate(['unique_key' => 'home_page_content']);
         $pageContent->displaySeoMeta();
         $css = mix('/css/home/page/show.css');
 

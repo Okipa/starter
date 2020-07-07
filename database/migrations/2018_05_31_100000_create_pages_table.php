@@ -15,11 +15,11 @@ class CreatePagesTable extends Migration
     {
         Schema::create('pages', function (Blueprint $table) {
             $table->id();
-            $table->string('slug')->unique();
+            $table->string('unique_key')->unique();
             // todo: change column type with monolingual app
             $table->json('nav_title');
             // todo: change column type with monolingual app
-            $table->json('url');
+            $table->json('slug');
             $table->boolean('active');
             $table->timestamps();
         });

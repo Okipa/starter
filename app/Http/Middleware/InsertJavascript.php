@@ -17,7 +17,7 @@ class InsertJavascript
      */
     public function handle($request, Closure $next)
     {
-        $gdprPage = pages()->where('slug', 'gdpr-page')->first();
+        $gdprPage = pages()->where('unique_key', 'gdpr_page')->first();
         share([
             'locale' => app()->getLocale(),
             'sweetalert' => __('sweetalert'),

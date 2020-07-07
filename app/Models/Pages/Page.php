@@ -12,7 +12,7 @@ class Page extends Seo implements HasBrickables
     use HasTranslations;
     use HasBrickablesTrait;
 
-    public array $translatable = ['url', 'nav_title'];
+    public array $translatable = ['slug', 'nav_title'];
 
     /**
      * The database table used by the model.
@@ -26,7 +26,7 @@ class Page extends Seo implements HasBrickables
      *
      * @var array
      */
-    protected $fillable = ['slug', 'nav_title', 'url', 'active'];
+    protected $fillable = ['unique_key', 'nav_title', 'slug', 'active'];
 
     /**
      * The attributes that should be cast to native types.
@@ -37,7 +37,7 @@ class Page extends Seo implements HasBrickables
 
     public function getRouteKey(): string
     {
-        return $this->getTranslation('url', app()->getLocale());
+        return $this->getTranslation('slug', app()->getLocale());
     }
 
     /**
@@ -49,6 +49,6 @@ class Page extends Seo implements HasBrickables
      */
     public function resolveRouteBinding($value, $field = null): ?Page
     {
-        return $this->where('url->' . app()->getLocale(), $value)->first();
+        return $this->where('slug->' . app()->getLocale(), $value)->first();
     }
 }

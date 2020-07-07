@@ -66,7 +66,7 @@ EOT;
         $titleEn = ucfirst($this->fakerEn->words(3, true)) . ' EN';
         /** @var \App\Models\News\NewsArticle $article */
         $article = (new NewsArticle)->create([
-            'url' => [
+            'slug' => [
                 'fr' => Str::slug($titleFr),
                 'en' => Str::slug($titleEn),
             ],

@@ -1,4 +1,4 @@
-const $slugifyElements = $('.slugify');
+const $slugifyElements = $('[data-slugify]');
 
 window.triggerSlugifyElementsDetection = () => {
     $slugifyElements.each((key, element) => {

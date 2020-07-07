@@ -11,9 +11,10 @@ class PageUpdateRequest extends AbstractSeoRequest
     {
         $rules = ['active' => ['required', 'boolean']];
         $localizedRules = localizeRules([
-            'url' => [
+            'slug' => [
                 'required',
                 'string',
+                'slug',
                 'max:255',
                 UniqueTranslationRule::for('pages')->ignore($this->page->id),
             ],

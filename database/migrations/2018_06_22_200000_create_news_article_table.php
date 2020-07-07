@@ -18,7 +18,7 @@ class CreateNewsArticleTable extends Migration
             // todo: change column type with monolingual app
             $table->json('title');
             // todo: change column type with monolingual app
-            $table->json('url');
+            $table->json('slug');
             // todo: change column type with monolingual app
             $table->json('description')->nullable();
             $table->boolean('active');

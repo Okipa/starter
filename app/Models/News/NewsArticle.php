@@ -16,7 +16,7 @@ class NewsArticle extends Seo implements HasMedia, Feedable
 {
     use HasTranslations;
 
-    public array $translatable = ['url', 'title', 'description'];
+    public array $translatable = ['slug', 'title', 'description'];
 
     /**
      * The database table used by the model.
@@ -30,7 +30,7 @@ class NewsArticle extends Seo implements HasMedia, Feedable
      *
      * @var array
      */
-    protected $fillable = ['title', 'url', 'description', 'active', 'published_at'];
+    protected $fillable = ['title', 'slug', 'description', 'active', 'published_at'];
 
     /**
      * The attributes that should be cast to native types.
@@ -46,7 +46,7 @@ class NewsArticle extends Seo implements HasMedia, Feedable
 
     public function getRouteKey(): string
     {
-        return $this->getTranslation('url', app()->getLocale());
+        return $this->getTranslation('slug', app()->getLocale());
     }
 
     /**
@@ -58,7 +58,7 @@ class NewsArticle extends Seo implements HasMedia, Feedable
      */
     public function resolveRouteBinding($value, $field = null): ?NewsArticle
     {
-        return $this->where('url->' . app()->getLocale(), $value)->first();
+        return $this->where('slug->' . app()->getLocale(), $value)->first();
     }
 
     /** @SuppressWarnings(PHPMD.UnusedLocalVariable) */
@@ -100,7 +100,7 @@ class NewsArticle extends Seo implements HasMedia, Feedable
             ->title($this->title)
             ->summary($this->description)
             ->updated($this->updated_at)
-            ->link(route('news.article.show', $this->url))
+            ->link(route('news.article.show', $this->slug))
             ->author(config('app.name'))
             ->enclosure($media->getUrl())
             ->enclosureType($media->mime_type)

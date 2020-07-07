@@ -14,8 +14,8 @@ class PageContent extends Seo implements HasBrickables
 
     public array $brickables = [
         'numberOfBricks' => [
-            Carousel::class => ['min' => 1, 'max' => 1],
             TitleH1::class => ['min' => 1, 'max' => 1],
+            Carousel::class => ['max' => 1],
         ],
     ];
 
@@ -31,5 +31,5 @@ class PageContent extends Seo implements HasBrickables
      *
      * @var array
      */
-    protected $fillable = ['slug'];
+    protected $fillable = ['unique_key'];
 }

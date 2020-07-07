@@ -13,7 +13,7 @@ class ContactPageController extends Controller
 {
     public function edit(): View
     {
-        $pageContent = (new TitleDescriptionPageContent)->firstOrCreate(['slug' => 'contact-page-content']);
+        $pageContent = (new TitleDescriptionPageContent)->firstOrCreate(['unique_key' => 'contact_page_content']);
         SEOTools::setTitle(__('breadcrumbs.orphan.edit', [
             'entity' => __('Contact'),
             'detail' => __('Page'),
@@ -32,7 +32,7 @@ class ContactPageController extends Controller
     public function update(ContactPageUpdateRequest $request): RedirectResponse
     {
         /** @var \App\Models\Pages\TitleDescriptionPageContent $pageContent */
-        $pageContent = (new TitleDescriptionPageContent)->where('slug', 'contact-page-content')->firstOrFail();
+        $pageContent = (new TitleDescriptionPageContent)->where('unique_key', 'contact_page_content')->firstOrFail();
         $pageContent->saveSeoMetaFromRequest($request);
 
         return back()->with('toast_success', __('notifications.orphan.updated', [

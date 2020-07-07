@@ -23,7 +23,7 @@
                     @lang('Data')
                 </h2>
                 @if(optional($article)->active)
-                    {{ buttonLink()->route('news.article.show', [$article->url])
+                    {{ buttonLink()->route('news.article.show', [$article->slug])
                         ->prepend('<i class="fas fa-external-link-square-alt fa-fw"></i>')
                         ->label(__('Display'))
                         ->componentClasses(['btn-primary', 'new-window']) }}
@@ -32,7 +32,7 @@
             <div class="card-body">
                 <h3>@lang('Media')</h3>
                 @php($image = optional($article)->getFirstMedia('illustrations'))
-                {{ inputFile()->name('image')
+                {{ inputFile()->name('illustration')
                     ->value(optional($image)->file_name)
                     ->uploadedFile(fn() => $image ? image()->src($image->getUrl('thumb'))->linkUrl($image->getUrl())->linkTitle($image->name) : null)
                     ->showRemoveCheckbox(false)
@@ -43,12 +43,11 @@
                     ->locales(supportedLocaleKeys())
                     ->model($article)
                     ->containerHtmlAttributes(['required']) }}
-                {{ inputText()->name('url')
+                {{ inputText()->name('slug')
                     ->locales(supportedLocaleKeys())
                     ->model($article)
                     ->prepend(route('news.article.show', '') . '/')
-                    ->componentClasses(['lowercase'])
-                    ->componentHtmlAttributes(['data-autofill-from' => '#text-title'])
+                    ->componentHtmlAttributes(['data-slugify', 'data-autofill-from' => '#text-title'])
                     ->containerHtmlAttributes(['required']) }}
                 <h3>@lang('Information')</h3>
                 {{ select()->name('category_ids')

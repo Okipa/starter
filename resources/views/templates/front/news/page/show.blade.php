@@ -64,7 +64,7 @@
                             @endif
                             <p class="card-text description">{!! Str::limit(strip_tags((new Parsedown)->text($article->description)), 500) !!}</p>
                             <a class="btn btn-primary"
-                               href="{{ route('news.article.show', $article->url) }}"
+                               href="{{ route('news.article.show', $article->slug) }}"
                                title="@lang('Know more')">
                                 @lang('Know more')
                             </a>

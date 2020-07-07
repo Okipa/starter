@@ -14,4 +14,4 @@ Route::get(
 Route::get(
     Lang::uri('news/{article}'),
     [NewsArticlesController::class, 'show']
-)->name('news.article.show')->where('url', '.*');
+)->name('news.article.show');

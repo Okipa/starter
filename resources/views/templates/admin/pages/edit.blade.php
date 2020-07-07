@@ -30,19 +30,17 @@
                     ->model($page)
                     ->containerHtmlAttributes(['required']) }}
                 @if(! $page)
-                    {{ inputText()->name('slug')
+                    {{ inputText()->name('unique_key')
                         ->model($page)
                         ->prepend('<i class="fas fa-key fa-fw"></i>')
-                        ->componentClasses(['slugify'])
-                        ->componentHtmlAttributes(['data-autofill-from' => '#text-nav-title'])
+                        ->componentHtmlAttributes(['data-snakify', 'data-autofill-from' => '#text-nav-title'])
                         ->containerHtmlAttributes(['required'])}}
                 @endif
-                {{ inputText()->name('url')
+                {{ inputText()->name('slug')
                     ->locales(supportedLocaleKeys())
                     ->model($page)
-                    ->prepend(route('page.show', '') . '/')
-                    ->componentClasses(['lowercase'])
-                    ->componentHtmlAttributes(['data-autofill-from' => '#text-nav-title'])
+                    ->prepend('/page/')
+                    ->componentHtmlAttributes(['data-slugify', 'data-autofill-from' => '#text-nav-title'])
                     ->containerHtmlAttributes(['required']) }}
                 {{ inputToggle()->name('active')->model($page) }}
                 @include('components.admin.seo.meta', ['model' => $page])

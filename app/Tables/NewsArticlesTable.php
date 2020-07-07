@@ -54,7 +54,7 @@ class NewsArticlesTable extends AbstractTable
         });
         $table->column()->title(__('Display'))->html(function (NewsArticle $newsArticle) {
             return view('components.admin.table.display', [
-                'url' => route('news.article.show', $newsArticle->url),
+                'url' => route('news.article.show', $newsArticle->slug),
                 'active' => $newsArticle->active,
             ]);
         });
