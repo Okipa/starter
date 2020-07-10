@@ -84,13 +84,8 @@ class LibraryMediaFilesTable extends AbstractTable
                 . $file->getFirstMedia('medias')->mime_type . '</a>')
             ->sortable()
             ->searchable('media');
-        $table->column('downloadable')
-            ->html(fn(LibraryMediaFile $file) => $file->downloadable || ! $file->canBeDisplayed
-                ? '<i class="fas fa-check text-success"></i>'
-                : '<i class="fas fa-times text-danger"></i>')
-            ->sortable();
         $table->column()->title(__('Clipboard copy'))->html(fn(LibraryMediaFile $file) => view(
-            'components.admin.table.library-media.copy-clipboard-buttons',
+            'components.admin.table.library-media.clipboard-copy.buttons',
             compact('file')
         ));
         $table->column('updated_at')->dateTimeFormat('d/m/Y H:i')->sortable(true, 'desc');

@@ -175,7 +175,6 @@ return [
         'illustration' => 'Illustration',
         'unique_key' => 'Unique identifier',
         'slug' => 'Slug',
-        'downloadable' => 'Downloadable',
         'updated_at' => 'Updated at',
         'created_at' => 'Created at',
         'media' => 'Media',

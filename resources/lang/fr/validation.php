@@ -188,7 +188,6 @@ return [
         'meta_image' => 'Meta image',
         'thumb' => 'Aperçu',
         'media' => 'Média',
-        'downloadable' => 'Téléchargeable',
         'message' => 'Message',
         'brickable_type' => 'Type brique',
         'text' => 'Texte',

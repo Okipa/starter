@@ -19,7 +19,6 @@ class CreateLibraryMediaFilesTable extends Migration
             $table->foreign('category_id')->references('id')->on('library_media_categories')->onDelete('CASCADE');
             // todo: change column type with monolingual app
             $table->json('name');
-            $table->boolean('downloadable');
             $table->timestamps();
         });
     }

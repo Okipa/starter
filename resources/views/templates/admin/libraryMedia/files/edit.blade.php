@@ -46,11 +46,6 @@
                     })->sortBy('name'), 'id', 'name')
                     ->componentClasses(['selector'])
                     ->containerHtmlAttributes(['required']) }}
-                @if(! $file || optional($file)->canBeDisplayed)
-                    {{ inputToggle()->name('downloadable')
-                        ->checked(optional($file)->downloadable ?? false)
-                        ->containerClasses(['form-group', 'mt-4']) }}
-                @endif
                 @if($file)
                     <h3>@lang('Clipboard copy')</h3>
                     {{ inputText()->name('url')

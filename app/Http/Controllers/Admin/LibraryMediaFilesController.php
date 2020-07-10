@@ -10,11 +10,10 @@ use App\Models\LibraryMedia\LibraryMediaFile;
 use App\Services\LibraryMedia\FilesService;
 use App\Tables\LibraryMediaFilesTable;
 use Artesaos\SEOTools\Facades\SEOTools;
-use Exception;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Response;
 use Illuminate\View\View;
-use Log;
 
 class LibraryMediaFilesController extends Controller
 {
@@ -120,24 +119,58 @@ class LibraryMediaFilesController extends Controller
 
     public function clipboardContent(LibraryMediaFile $file, string $type, ?string $locale = null): JsonResponse
     {
-        try {
-            $locale = $locale ?: app()->getLocale();
-            $clipboardContent = $type === 'url'
-                ? $file->getFirstMedia('medias')->getFullUrl()
-                : trim(view(
-                    'components.admin.table.library-media.html-clipboard-content',
-                    compact('file', 'locale')
-                )->toHtml());
-            $message = __('Media ":name" :type copied in clipboard.', [
-                'type' => strtoupper($type),
-                'name' => $file->getTranslation('name', $locale),
-            ]);
-        } catch (Exception $exception) {
-            Log::error($exception);
+        $media = $file->getFirstMedia('medias');
+        if (! $media) {
+            $returnCode = Response::HTTP_NOT_FOUND;
             $clipboardContent = null;
-            $message = __('An unexpected error occurred. If the problem persists, please contact support.');
+            $message = __('Not media has been attached to this file.');
+
+            return response()->json(compact('clipboardContent', 'message'), $returnCode);
+        }
+        $locale = $locale ?: app()->getLocale();
+        switch ($type) {
+            case 'url':
+                $returnCode = Response::HTTP_OK;
+                $clipboardContent = $file->getFirstMedia('medias')->getFullUrl();
+                $message = __('Clipboard copy: :name - :type.', [
+                    'type' => __('URL'),
+                    'name' => $file->getTranslation('name', $locale),
+                ]);
+                break;
+            case 'display':
+                if (! $file->is_displayable) {
+                    $returnCode = Response::HTTP_NOT_FOUND;
+                    $clipboardContent = null;
+                    $message = __('This type of media can\'t be displayed.');
+                    break;
+                }
+                $returnCode = Response::HTTP_OK;
+                $clipboardContent = trim(view(
+                    'components.admin.table.library-media.clipboard-copy.display-html',
+                    compact('file', 'media', 'locale')
+                )->toHtml());
+                $message = __('Clipboard copy: :name - :type.', [
+                    'type' => __('HTML Display'),
+                    'name' => $file->getTranslation('name', $locale),
+                ]);
+                break;
+            case 'download':
+                $returnCode = Response::HTTP_OK;
+                $clipboardContent = trim(view(
+                    'components.admin.table.library-media.clipboard-copy.download-html',
+                    compact('file', 'media', 'locale')
+                )->toHtml());
+                $message = __('Clipboard copy: :name - :type.', [
+                    'type' => __('HTML Download'),
+                    'name' => $file->getTranslation('name', $locale),
+                ]);
+                break;
+            default:
+                $returnCode = Response::HTTP_BAD_REQUEST;
+                $clipboardContent = null;
+                $message = __('An unexpected error occurred. If the problem persists, please contact support.');
         }
 
-        return response()->json(compact('clipboardContent', 'message'));
+        return response()->json(compact('clipboardContent', 'message'), $returnCode);
     }
 }

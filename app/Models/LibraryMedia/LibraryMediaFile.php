@@ -32,19 +32,12 @@ class LibraryMediaFile extends Model implements HasMedia
      *
      * @var array
      */
-    protected $fillable = ['category_id', 'name', 'downloadable'];
-
-    /**
-     * The attributes that should be cast to native types.
-     *
-     * @var array
-     */
-    protected $casts = ['downloadable' => 'boolean'];
+    protected $fillable = ['category_id', 'name'];
 
     /** @SuppressWarnings(PHPMD.UnusedLocalVariable) */
     public function registerMediaCollections(): void
     {
-        $this->addMediaCollection('medias')->acceptsMimeTypes([
+        $this->addMediaCollection('medias')->withResponsiveImages()->acceptsMimeTypes([
             // todo: only keep mime types you need here
             // check complete list here : https://slick.pl/kb/htaccess/complete-list-mime-types/
             // image
@@ -129,7 +122,7 @@ class LibraryMediaFile extends Model implements HasMedia
         return config('library-media.icons.' . $this->type);
     }
 
-    public function getCanBeDisplayedAttribute(): bool
+    public function getIsDisplayableAttribute(): bool
     {
         return $this->type !== 'file';
     }

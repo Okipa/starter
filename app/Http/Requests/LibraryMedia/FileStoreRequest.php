@@ -12,15 +12,9 @@ class FileStoreRequest extends FormRequest
         $rules = [
             'category_id' => ['required', 'integer', 'exists:library_media_categories,id'],
             'media' => array_merge(['required'], (new LibraryMediaFile)->getMediaValidationRules('medias')),
-            'downloadable' => ['required', 'boolean'],
         ];
         $localizedRules = localizeRules(['name' => ['required', 'string', 'max:255']]);
 
         return array_merge($rules, $localizedRules);
-    }
-
-    protected function prepareForValidation(): void
-    {
-        $this->merge(['downloadable' => (bool) $this->downloadable]);
     }
 }
