@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "35a0d74452839b1ae106c8f7c49cb7dd",
+    "content-hash": "1e007a71b46dea07e6f240e28b12a53d",
     "packages": [
         {
             "name": "0.0.0/composer-include-files",
@@ -3448,26 +3448,26 @@
         },
         {
             "name": "okipa/laravel-brickables",
-            "version": "1.1.0",
+            "version": "2.0.0.x-dev",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Okipa/laravel-brickables.git",
-                "reference": "06c2f775374c62b1467f87de1dc8c9cc1c537833"
+                "reference": "552d71b567fe1a549712141666cebbc6476015b9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Okipa/laravel-brickables/zipball/06c2f775374c62b1467f87de1dc8c9cc1c537833",
-                "reference": "06c2f775374c62b1467f87de1dc8c9cc1c537833",
+                "url": "https://api.github.com/repos/Okipa/laravel-brickables/zipball/552d71b567fe1a549712141666cebbc6476015b9",
+                "reference": "552d71b567fe1a549712141666cebbc6476015b9",
                 "shasum": ""
             },
             "require": {
-                "illuminate/support": "~5.8.0||^6.0||^7.0",
-                "php": "^7.2",
-                "spatie/eloquent-sortable": "^3.0"
+                "illuminate/support": "^6.0||^7.0",
+                "php": "^7.4",
+                "spatie/eloquent-sortable": "^3.7"
             },
             "require-dev": {
-                "nunomaduro/larastan": "^0.4.3||^0.5",
-                "orchestra/testbench": "~3.8.0||^4.0||^5.0",
+                "nunomaduro/larastan": "^0.6",
+                "orchestra/testbench": "^4.0||^5.0",
                 "phpmd/phpmd": "^2.8",
                 "squizlabs/php_codesniffer": "^3.5"
             },
@@ -3516,7 +3516,7 @@
                 "management",
                 "okipa"
             ],
-            "time": "2020-03-16T09:54:55+00:00"
+            "time": "2020-07-11T13:15:45+00:00"
         },
         {
             "name": "okipa/laravel-html-helper",
@@ -8979,16 +8979,16 @@
         },
         {
             "name": "tightenco/collect",
-            "version": "v7.12.0",
+            "version": "v7.15.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/tightenco/collect.git",
-                "reference": "ba504e959241f1f408867ffd03159b040f66e00b"
+                "reference": "4606f2088591d34d6c4600604b3ad64d8699698e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/tightenco/collect/zipball/ba504e959241f1f408867ffd03159b040f66e00b",
-                "reference": "ba504e959241f1f408867ffd03159b040f66e00b",
+                "url": "https://api.github.com/repos/tightenco/collect/zipball/4606f2088591d34d6c4600604b3ad64d8699698e",
+                "reference": "4606f2088591d34d6c4600604b3ad64d8699698e",
                 "shasum": ""
             },
             "require": {
@@ -9025,7 +9025,7 @@
                 "collection",
                 "laravel"
             ],
-            "time": "2020-05-08T22:25:37+00:00"
+            "time": "2020-07-10T22:07:43+00:00"
         },
         {
             "name": "tijsverkoyen/css-to-inline-styles",
@@ -12557,7 +12557,9 @@
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": [],
+    "stability-flags": {
+        "okipa/laravel-brickables": 20
+    },
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {

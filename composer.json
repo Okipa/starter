@@ -20,7 +20,7 @@
         "laravel/tinker": "^2.0",
         "laravel/ui": "^2.0",
         "okipa/laravel-bootstrap-components": "^2.0",
-        "okipa/laravel-brickables": "^1.0",
+        "okipa/laravel-brickables": "2.0.0.x-dev",
         "okipa/laravel-medialibrary-ext": "^8.0",
         "okipa/laravel-stuck-jobs-notifier": "^1.0",
         "okipa/laravel-supervisor-downtime-notifier": "^1.0",

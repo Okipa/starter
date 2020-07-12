@@ -2,17 +2,19 @@
 
 namespace App\Brickables;
 
+use App\Http\Requests\Brickables\TwoTextColumns\TwoTextColumnsStoreRequest;
+use App\Http\Requests\Brickables\TwoTextColumns\TwoTextColumnsUpdateRequest;
 use Okipa\LaravelBrickables\Abstracts\Brickable;
 
 class TwoTextColumns extends Brickable
 {
-    protected function setStoreValidationRules(): array
+    public function validateStoreInputs(): array
     {
-        return localizeRules(['text_left' => ['required', 'string'], 'text_right' => ['required', 'string']]);
+        return (new TwoTextColumnsStoreRequest)->validated();
     }
 
-    protected function setUpdateValidationRules(): array
+    public function validateUpdateInputs(): array
     {
-        return localizeRules(['text_left' => ['required', 'string'], 'text_right' => ['required', 'string']]);
+        return (new TwoTextColumnsUpdateRequest)->validated();
     }
 }

@@ -36,14 +36,3 @@
         </a>
     @endif
 </div>
-@push('scripts')
-    <script type="text/javascript">
-        $(window).bind('load', function () {
-            setTimeout(function(){
-                const carousel = $('#{{ $carouselId }}');
-                const sizes = carousel.find('.carousel-item.active > img').attr('sizes');
-                carousel.find('.carousel-item:not(.active) > img').attr('sizes', sizes);
-            }, 500);
-        });
-    </script>
-@endpush

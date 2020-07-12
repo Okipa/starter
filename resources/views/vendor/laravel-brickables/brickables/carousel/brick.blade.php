@@ -1,5 +1,5 @@
 @php
-    $carouselId = 'carousel';
+    $carouselId = 'carousel-brick-' . $brick->id;
     $slides = $brick->getMedia('slides');
     $fullWidth = (bool) data_get($brick, 'data.full_width');
     $conversionName = $fullWidth ? 'full' : 'containerized';

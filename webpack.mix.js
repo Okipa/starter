@@ -25,6 +25,8 @@ mix
     // admin
     .js('resources/js/admin/library-media/index.js', 'public/js/library-media')
     .js('resources/js/admin/library-media/edit.js', 'public/js/library-media')
+    // common
+    .js('resources/js/scripts/common/brickables/carousel.js', 'public/js/brickables')
     // front
     //
     // base

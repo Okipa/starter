@@ -10,6 +10,7 @@
     @include('feed::links')
     <link href="{{ mix('css/front.css') }}" rel="stylesheet"/>
     @if(! empty($css))<link href="{{ $css }}" rel="stylesheet"/>@endif
+    @brickablesCss
     @shared
     @include('layouts.front.partials.google-tag-manager')
 </head>

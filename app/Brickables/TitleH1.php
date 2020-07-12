@@ -2,17 +2,19 @@
 
 namespace App\Brickables;
 
+use App\Http\Requests\Brickables\TitleH1\TitleH1StoreRequest;
+use App\Http\Requests\Brickables\TitleH1\TitleH1UpdateRequest;
 use Okipa\LaravelBrickables\Abstracts\Brickable;
 
 class TitleH1 extends Brickable
 {
-    protected function setStoreValidationRules(): array
+    public function validateStoreInputs(): array
     {
-        return localizeRules(['title' => ['required', 'string']]);
+        return (new TitleH1StoreRequest)->validated();
     }
 
-    protected function setUpdateValidationRules(): array
+    public function validateUpdateInputs(): array
     {
-        return localizeRules(['title' => ['required', 'string']]);
+        return (new TitleH1UpdateRequest)->validated();
     }
 }

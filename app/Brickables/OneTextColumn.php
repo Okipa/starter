@@ -2,17 +2,19 @@
 
 namespace App\Brickables;
 
+use App\Http\Requests\Brickables\OneTextColumn\OneTextColumnStoreRequest;
+use App\Http\Requests\Brickables\OneTextColumn\OneTextColumnUpdateRequest;
 use Okipa\LaravelBrickables\Abstracts\Brickable;
 
 class OneTextColumn extends Brickable
 {
-    protected function setStoreValidationRules(): array
+    public function validateStoreInputs(): array
     {
-        return localizeRules(['text' => ['required', 'string']]);
+        return (new OneTextColumnStoreRequest)->validated();
     }
 
-    protected function setUpdateValidationRules(): array
+    public function validateUpdateInputs(): array
     {
-        return localizeRules(['text' => ['required', 'string']]);
+        return (new OneTextColumnUpdateRequest)->validated();
     }
 }
