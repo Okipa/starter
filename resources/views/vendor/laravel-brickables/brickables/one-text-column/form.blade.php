@@ -2,7 +2,7 @@
 @section('inputs')
     {{ textarea()->name('text')
         ->locales(supportedLocaleKeys())
-        ->prepend(false)
+        ->prepend(null)
         ->value(fn($locale) => translatedData($brick, 'data.text', $locale))
         ->componentClasses(['editor'])
         ->containerHtmlAttributes(['required']) }}

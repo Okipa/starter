@@ -2,13 +2,13 @@
 @section('inputs')
     {{ textarea()->name('text_left')
         ->locales(supportedLocaleKeys())
-        ->prepend(false)
+        ->prepend(null)
         ->value(fn($locale) => translatedData($brick, 'data.text_left', $locale))
         ->componentClasses(['editor'])
         ->containerHtmlAttributes(['required']) }}
     {{ textarea()->name('text_right')
         ->locales(supportedLocaleKeys())
-        ->prepend(false)->value(fn($locale) => translatedData($brick, 'data.text_right', $locale))
+        ->prepend(null)->value(fn($locale) => translatedData($brick, 'data.text_right', $locale))
         ->componentClasses(['editor'])
         ->containerHtmlAttributes(['required']) }}
 @endsection

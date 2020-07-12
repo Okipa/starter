@@ -12,12 +12,12 @@ class Carousel extends Brickable
 {
     public function validateStoreInputs(): array
     {
-        return (new CarouselStoreRequest)->validated();
+        return app(CarouselStoreRequest::class)->validated();
     }
 
     public function validateUpdateInputs(): array
     {
-        return (new CarouselUpdateRequest)->validated();
+        return app(CarouselUpdateRequest::class)->validated();
     }
 
     protected function setBrickModelClass(): string

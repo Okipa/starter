@@ -3,6 +3,7 @@
 namespace App\Models\News;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Spatie\Translatable\HasTranslations;
 
 class NewsCategory extends Model
@@ -25,10 +26,7 @@ class NewsCategory extends Model
      */
     protected $fillable = ['name'];
 
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
-     */
-    public function articles()
+    public function articles(): BelongsToMany
     {
         return $this->belongsToMany(NewsArticle::class, 'news_article_category')->withTimestamps();
     }

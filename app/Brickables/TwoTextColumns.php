@@ -10,11 +10,11 @@ class TwoTextColumns extends Brickable
 {
     public function validateStoreInputs(): array
     {
-        return (new TwoTextColumnsStoreRequest)->validated();
+        return app(TwoTextColumnsStoreRequest::class)->validated();
     }
 
     public function validateUpdateInputs(): array
     {
-        return (new TwoTextColumnsUpdateRequest)->validated();
+        return app(TwoTextColumnsUpdateRequest::class)->validated();
     }
 }

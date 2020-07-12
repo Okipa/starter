@@ -10,11 +10,11 @@ class OneTextColumn extends Brickable
 {
     public function validateStoreInputs(): array
     {
-        return (new OneTextColumnStoreRequest)->validated();
+        return app(OneTextColumnStoreRequest::class)->validated();
     }
 
     public function validateUpdateInputs(): array
     {
-        return (new OneTextColumnUpdateRequest)->validated();
+        return app(OneTextColumnUpdateRequest::class)->validated();
     }
 }

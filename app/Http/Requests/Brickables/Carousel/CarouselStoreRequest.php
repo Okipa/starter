@@ -9,7 +9,7 @@ class CarouselStoreRequest extends FormRequest
     public function rules(): array
     {
         /** @var \App\Models\Brickables\CarouselBrick $model */
-        $model = $this->getBrickModel();
+        $model = $this->brick->getBrickModel();
         $rules = [
             'full_width' => ['required', 'boolean'],
             'image' => array_merge(['required'], $model->getMediaValidationRules('slides')),

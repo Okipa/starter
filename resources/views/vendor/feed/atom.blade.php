@@ -24,11 +24,13 @@
                 <![CDATA[{!! $item->summary !!}]]>
             </summary>
             @if($item->__isset('enclosure'))
-              <enclosure url="{{ url($item->enclosure) }}" length="{{ $item->enclosureLength }}" type="{{ $item->enclosureType }}"/>
+            <enclosure url="{{ url($item->enclosure) }}" length="{{ $item->enclosureLength }}" type="{{ $item->enclosureType }}"/>
             @endif
+            @foreach($item->category as $category)
             <category type="html">
-                <![CDATA[{!! $item->category ?? '' !!}]]>
+                <![CDATA[{!! $category !!}]]>
             </category>
+            @endforeach
             <updated>{{ $item->updated->toRssString() }}</updated>
         </entry>
     @endforeach

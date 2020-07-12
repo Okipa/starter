@@ -22,11 +22,11 @@ class TwoTextImageColumns extends Brickable
 
     public function validateStoreInputs(): array
     {
-        return (new TwoTextImageColumnsStoreRequest)->validated();
+        return app(TwoTextImageColumnsStoreRequest::class)->validated();
     }
 
     public function validateUpdateInputs(): array
     {
-        return (new TwoTextImageColumnsUpdateRequest)->validated();
+        return app(TwoTextImageColumnsUpdateRequest::class)->validated();
     }
 }

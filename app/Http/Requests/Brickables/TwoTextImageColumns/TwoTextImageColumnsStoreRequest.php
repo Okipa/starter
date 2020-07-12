@@ -9,7 +9,7 @@ class TwoTextImageColumnsStoreRequest extends FormRequest
     public function rules(): array
     {
         /** @var \App\Models\Brickables\TwoTextImageColumnsBrick $model */
-        $model = $this->getBrickModel();
+        $model = $this->brick->getBrickModel();
         $rules = [
             'right_image' => array_merge(['required'], $model->getMediaValidationRules('images')),
             'invert_order' => ['required', 'boolean'],
