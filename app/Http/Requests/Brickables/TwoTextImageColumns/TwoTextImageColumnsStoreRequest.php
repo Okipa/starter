@@ -2,16 +2,18 @@
 
 namespace App\Http\Requests\Brickables\TwoTextImageColumns;
 
+use App\Models\Brickables\TwoTextImageColumnsBrick;
 use Illuminate\Foundation\Http\FormRequest;
 
 class TwoTextImageColumnsStoreRequest extends FormRequest
 {
     public function rules(): array
     {
-        /** @var \App\Models\Brickables\TwoTextImageColumnsBrick $model */
-        $model = $this->brick->getBrickModel();
         $rules = [
-            'right_image' => array_merge(['required'], $model->getMediaValidationRules('images')),
+            'right_image' => array_merge(
+                ['required'],
+                (new TwoTextImageColumnsBrick)->getMediaValidationRules('images')
+            ),
             'invert_order' => ['required', 'boolean'],
         ];
         $localizedRules = localizeRules(['text_left' => ['required', 'string']]);
@@ -19,7 +21,7 @@ class TwoTextImageColumnsStoreRequest extends FormRequest
         return array_merge($rules, $localizedRules);
     }
 
-    protected function prepareForValidation()
+    protected function prepareForValidation(): void
     {
         $this->merge(['invert_order' => (bool) $this->invert_order]);
     }

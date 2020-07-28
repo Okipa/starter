@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests\Brickables\Carousel;
 
+use App\Models\Brickables\CarouselBrick;
 use Illuminate\Foundation\Http\FormRequest;
 
 class CarouselUpdateRequest extends FormRequest
@@ -10,7 +11,7 @@ class CarouselUpdateRequest extends FormRequest
     {
         $rules = [
             'full_width' => ['required', 'boolean'],
-            'image' => $this->brick->brickable->getBrickModel()->getMediaValidationRules('slides'),
+            'image' => (new CarouselBrick)->getMediaValidationRules('slides'),
         ];
         $localizedRules = localizeRules([
             'label' => ['nullable', 'string', 'max:75'],

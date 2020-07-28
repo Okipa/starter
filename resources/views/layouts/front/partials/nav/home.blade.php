@@ -1,6 +1,6 @@
-<li class="nav-item{{ currentRouteIs('home') ? ' active' : null }}">
+<li class="nav-item{{ currentRouteIs('home.page.show') ? ' active' : null }}">
     <a class="nav-link"
-       href="{{ route('home') }}"
+       href="{{ route('home.page.show') }}"
        title="@lang('Home')">
         @lang('Home')
     </a>

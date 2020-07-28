@@ -22,7 +22,7 @@
                         {{ $exception->getMessage() }}
                     </p>
                 @endif
-                {{ buttonBack()->route('home')->label(__('Retry'))->containerClasses(['mt-5']) }}
+                {{ buttonBack()->route('home.page.show')->label(__('Retry'))->containerClasses(['mt-5']) }}
             </div>
         </div>
     </div>

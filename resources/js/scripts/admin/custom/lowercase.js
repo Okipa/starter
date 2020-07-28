@@ -1,4 +1,4 @@
-const $lowercaseElements = $('.lowercase');
+const $lowercaseElements = $('[data-lowercase]');
 
 window.triggerLowercaseElementsDetection = () => {
     $lowercaseElements.each((key, element) => {

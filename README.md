@@ -1,6 +1,6 @@
 <Todo : personalize readme>
 
-#  App base built with Laravel 7
+# App base built with Laravel 7
 
 | Develop | Master |
 |---|---|
@@ -52,14 +52,13 @@ Set your project domain resolution in your virtualhost: `sudo vim /etc/hosts`
 
 ### Project configuration and dependencies installation
 
-Execute the following commands:
-
+* `composer install --no-scripts --ignore-platform-reqs`
 * `cp .env.example .env`. Then set the environment variables according to your project needs.
 * `./vessel start`
 * `./vessel composer update`
 * `./vessel artisan key:generate`
 * `./vessel artisan storage:link`
-* `./vessel artisan migrate:fresh --seed`
+* `./vessel artisan migrate:refresh --seed`
 * `yarn install`
 * `yarn upgrade`
 * `yarn dev` or `yarn watch`

@@ -18,15 +18,15 @@ class SettingsSeeder extends Seeder
         // todo: customize settings and seeder image
         /** @var \App\Models\Settings\Settings $settings */
         $settings = (new Settings)->create([
-            'email'        => $this->faker->email,
+            'email' => $this->faker->email,
             'phone_number' => $this->faker->phoneNumber,
-            'address'      => $this->faker->address,
-            'zip_code'     => $this->faker->postcode,
-            'city'         => $this->faker->city,
-            'facebook'     => $this->faker->url,
-            'twitter'      => $this->faker->url,
-            'instagram'    => $this->faker->url,
-            'youtube'      => $this->faker->url,
+            'address' => $this->faker->address,
+            'zip_code' => $this->faker->postcode,
+            'city' => $this->faker->city,
+            'facebook' => $this->faker->url,
+            'twitter' => $this->faker->url,
+            'instagram' => $this->faker->url,
+            'youtube' => $this->faker->url,
         ]);
         $settings->addMedia(database_path('seeds/files/settings/icon-300-300.png'))
             ->preservingOriginal()

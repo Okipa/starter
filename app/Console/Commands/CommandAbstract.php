@@ -8,9 +8,9 @@ use InvalidArgumentException;
 
 abstract class CommandAbstract extends Command
 {
-    protected function log(string $message, string $level): void
+    protected function log(string $message, ?string $level = 'info'): void
     {
-        $acceptedLevels = ['success', 'info', 'error'];
+        $acceptedLevels = ['title', 'info', 'success', 'error'];
         if (! (in_array($level, $acceptedLevels))) {
             throw new InvalidArgumentException('Invalid level provided. Level should be one of these: '
                 . collect($acceptedLevels)->implode(', ') . '. ' . $level . ' given.');
@@ -19,14 +19,17 @@ abstract class CommandAbstract extends Command
             Log::debug($message);
         }
         switch ($level) {
-            case 'success':
-                $this->info($message);
+            case 'title':
+                $this->output->title($message);
                 break;
             case 'info':
-                $this->line($message);
+                $this->output->comment($message);
+                break;
+            case 'success':
+                $this->output->success($message);
                 break;
             case 'error':
-                $this->error($message);
+                $this->output->error($message);
                 break;
         }
     }

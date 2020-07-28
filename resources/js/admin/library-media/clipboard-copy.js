@@ -12,7 +12,6 @@ $('.clipboard-copy').click(function (e) {
     const libraryMediaId = $(this).data('libraryMediaId');
     const type = $(this).data('type');
     const locale = $(this).closest('.component-container').find('.component').data('locale');
-    console.log($(this).closest('.component-container'), locale);
     let route = app.libraryMedia.clipboardCopy.route;
     route = route.replace('__ID__', libraryMediaId);
     route = route.replace('__TYPE__', type);

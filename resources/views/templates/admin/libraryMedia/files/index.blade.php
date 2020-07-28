@@ -2,7 +2,10 @@
 @section('template')
     <h1>
         <i class="fas fa-photo-video fa-fw"></i>
-        @lang('breadcrumbs.orphan.index', ['entity' => __('Media library')])
+        @lang('breadcrumbs.parent.index', [
+            'parent' => __('Media library'),
+            'entity' => __('Files'),
+        ])
     </h1>
     <hr>
     <div class="card">

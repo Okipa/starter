@@ -42,11 +42,14 @@ class UsersTable extends AbstractTable
      */
     protected function columns(Table $table): void
     {
+        $table->column('id')->sortable();
         $table->column('thumb')->html(function (User $user) {
             return view('components.admin.table.image', ['image' => $user->getFirstMedia('avatars')]);
         });
         $table->column('first_name')->sortable(true)->searchable();
         $table->column('last_name')->sortable()->searchable();
         $table->column('email')->sortable()->searchable();
+        $table->column('created_at')->dateTimeFormat('d/m/Y H:i')->sortable();
+        $table->column('updated_at')->dateTimeFormat('d/m/Y H:i')->sortable();
     }
 }

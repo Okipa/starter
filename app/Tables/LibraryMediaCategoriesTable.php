@@ -41,9 +41,10 @@ class LibraryMediaCategoriesTable extends AbstractTable
      */
     protected function columns(Table $table): void
     {
+        $table->column('id')->sortable();
         $table->column('name')->stringLimit(30)->sortable()->searchable();
         $table->column()
-            ->title(__('Files count'))
+            ->title(__('Associated files'))
             ->link(fn(LibraryMediaCategory $libraryMediaCategory) => route('libraryMedia.files.index', [
                 'category_id' => $libraryMediaCategory->id,
             ]))
@@ -53,5 +54,7 @@ class LibraryMediaCategoriesTable extends AbstractTable
 
                 return trans_choice('[0,1]:count file|[2,*]:count files', $count, compact('count'));
             });
+        $table->column('created_at')->dateTimeFormat('d/m/Y H:i')->sortable();
+        $table->column('updated_at')->dateTimeFormat('d/m/Y H:i')->sortable(true, 'desc');
     }
 }

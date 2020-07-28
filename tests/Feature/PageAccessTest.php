@@ -8,13 +8,10 @@ use Tests\TestCase;
 class PageAccessTest extends TestCase
 {
     use DatabaseMigrations;
-    /**
-     * A basic test example.
-     *
-     * @return void
-     */
+
     public function testHomeAccess()
     {
+        $this->withoutMix();
         $this->artisan('db:seed --class=SettingsSeeder');
         $this->artisan('db:seed --class=HomePageSeeder');
         $this->artisan('db:seed --class=PagesSeeder');

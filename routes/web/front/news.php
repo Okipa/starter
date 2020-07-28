@@ -8,7 +8,7 @@ use App\Http\Controllers\Front\NewsPageController;
 Route::get(
     Lang::uri('news'),
     [NewsPageController::class, 'show']
-)->name('news');
+)->name('news.page.show');
 
 // articles
 Route::get(

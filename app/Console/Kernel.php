@@ -31,9 +31,7 @@ class Kernel extends ConsoleKernel
             $schedule->command('sitemap:generate')->twiceDaily();
             $schedule->command('auth:clear-resets')->daily();
             $schedule->command('telescope:prune')->daily();
-            // https://github.com/Okipa/laravel-stuck-jobs-notifier
             $schedule->command('queue:stuck:notify')->twiceDaily(10, 16);
-            // https://github.com/Okipa/laravel-supervisor-downtime-notifier
             $schedule->command('supervisor:downtime:notify')->everyFifteenMinutes();
         }
     }

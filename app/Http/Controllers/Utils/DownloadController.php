@@ -21,6 +21,6 @@ class DownloadController extends Controller
             'file' => $request->path,
         ]), 'error', __('Error'))->showConfirmButton();
 
-        return redirect()->route('home');
+        return redirect()->route('home.page.show');
     }
 }

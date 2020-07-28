@@ -81,28 +81,6 @@ yarn:nodev:
       - develop
       - tags
 
-resources:
-  stage: compile
-  image: node:12
-  dependencies:
-    - yarn
-    - composer:nodev
-  script:
-    - yarn production
-  artifacts:
-    expire_in: 1 day
-    paths:
-      - public/css/
-      - public/fonts/
-      - public/images/
-      - public/js/
-      - public/favicon.ico
-      - public/mix-manifest.json
-  only:
-    refs:
-      - develop
-      - tags
-
 resources:nodev:
   stage: compile
   image: node:12
@@ -130,7 +108,6 @@ phpunit:
   image: php:7.4-cli
   dependencies:
     - composer
-    - resources
   before_script:
     - apt update && apt install -y git libfreetype6-dev libjpeg62-turbo-dev libpng-dev exif
     - docker-php-ext-configure gd --with-freetype --with-jpeg

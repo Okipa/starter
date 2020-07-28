@@ -42,6 +42,7 @@ class NewsArticlesTable extends AbstractTable
      */
     protected function columns(Table $table): void
     {
+        $table->column('id')->sortable();
         $table->column('thumb')->html(function (NewsArticle $newsArticle) {
             return view('components.admin.table.image', ['image' => $newsArticle->getFirstMedia('illustrations')]);
         });
@@ -61,6 +62,8 @@ class NewsArticlesTable extends AbstractTable
             'components.admin.table.active',
             ['active' => $newsArticle->active]
         ));
-        $table->column('published_at')->dateTimeFormat('d/m/Y H:i')->sortable(true);
+        $table->column('created_at')->dateTimeFormat('d/m/Y H:i')->sortable();
+        $table->column('updated_at')->dateTimeFormat('d/m/Y H:i')->sortable();
+        $table->column('published_at')->dateTimeFormat('d/m/Y H:i')->sortable(true, 'desc');
     }
 }

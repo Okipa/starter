@@ -149,6 +149,7 @@ return [
     */
 
     'attributes' => [
+        'id' => 'ID',
         'email' => 'Email',
         'password' => 'Password',
         'new_password' => 'New password',

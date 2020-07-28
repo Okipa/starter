@@ -6,15 +6,15 @@
                 {{ config('app.name') }}
             </span>
             @if($termsOfServicePage = pages()->where('unique_key', 'terms_of_service_page')->first())
-                <a class="mx-3{{ currentUrlIs(route('page.show', $termsOfServicePage->slug)) ? ' active' : ' text-body' }}"
-                   href="{{ route('page.show', $termsOfServicePage->slug) }}"
+                <a class="mx-3{{ currentUrlIs(route('page.show', $termsOfServicePage)) ? ' active' : ' text-body' }}"
+                   href="{{ route('page.show', $termsOfServicePage) }}"
                    title="{{ $termsOfServicePage->nav_title }}">
                     {{ $termsOfServicePage->nav_title }}
                 </a>
             @endif
             @if($gdprPage = pages()->where('unique_key', 'gdpr_page')->first())
-                <a class="mx-3{{ currentUrlIs(route('page.show', $gdprPage->slug)) ? ' active' : ' text-body' }}"
-                   href="{{ route('page.show', $gdprPage->slug) }}"
+                <a class="mx-3{{ currentUrlIs(route('page.show', $gdprPage)) ? ' active' : ' text-body' }}"
+                   href="{{ route('page.show', $gdprPage) }}"
                    title="{{ $gdprPage->nav_title }}">
                     {{ $gdprPage->nav_title }}
                 </a>

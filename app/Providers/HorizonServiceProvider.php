@@ -31,13 +31,13 @@ class HorizonServiceProvider extends HorizonApplicationServiceProvider
      * This gate determines who can access Horizon in non-local environments.
      *
      * @return void
+     * @SuppressWarnings(PHPMD.UnusedLocalVariable)
      */
     protected function gate(): void
     {
         Gate::define('viewHorizon', function ($user) {
-            return in_array($user->email, [
-                // todo: authorize users to access in production
-            ]);
+            // todo: customize access in production
+            return auth()->check();
         });
     }
 }

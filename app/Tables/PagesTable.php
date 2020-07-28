@@ -39,7 +39,9 @@ class PagesTable extends AbstractTable
      */
     protected function columns(Table $table): void
     {
+        $table->column('id')->sortable(true);
         $table->column('unique_key')->sortable()->searchable();
+        $table->column('nav_title')->sortable()->searchable();
         $table->column()->title(__('Display'))->html(fn(Page $page) => view('components.admin.table.display', [
             'url' => route('page.show', $page->slug),
             'active' => $page->active,
@@ -47,7 +49,7 @@ class PagesTable extends AbstractTable
         $table->column('active')->sortable()->html(fn(Page $page) => view('components.admin.table.active', [
             'active' => $page->active,
         ]));
-        $table->column('updated_at')->dateTimeFormat('d/m/Y H:i')->sortable(true, 'desc');
         $table->column('created_at')->dateTimeFormat('d/m/Y H:i')->sortable();
+        $table->column('updated_at')->dateTimeFormat('d/m/Y H:i')->sortable();
     }
 }

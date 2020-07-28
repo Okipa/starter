@@ -2,7 +2,7 @@
 @php($slides = optional($brick)->getMedia('slides') ?: collect())
 @section('inputs')
     <h3>@lang('Carousel configuration')</h3>
-    {{ inputToggle()->name('full_width')->checked((bool) data_get($brick, 'data.full_width')) }}
+    {{ inputToggle()->name('full_width')->checked(data_get($brick, 'data.full_width')) }}
     <h3>@lang('New slide')</h3>
     {{ inputFile()->name('image')
         ->containerHtmlAttributes(['required'])

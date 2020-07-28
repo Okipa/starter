@@ -10,7 +10,7 @@ class PageStoreRequest extends AbstractSeoRequest
     public function rules(): array
     {
         $rules = [
-            'unique_key' => ['required', 'snakecase', 'unique:pages'],
+            'unique_key' => ['required', 'snakecase',  'max:255', 'unique:pages'],
             'active' => ['required', 'boolean'],
         ];
         $localizedRules = localizeRules([

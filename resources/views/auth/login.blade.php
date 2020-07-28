@@ -29,6 +29,6 @@
                 @lang('Create account')
             </a>
         </div>
-        {{ buttonBack()->route('home') }}
+        {{ buttonBack()->route('home.page.show') }}
     </form>
 @endsection

@@ -41,6 +41,9 @@ class NewsCategoriesTable extends AbstractTable
      */
     protected function columns(Table $table): void
     {
-        $table->column('name')->stringLimit(30)->sortable()->searchable();
+        $table->column('id')->sortable();
+        $table->column('name')->sortable()->searchable();
+        $table->column('created_at')->dateTimeFormat('d/m/Y H:i')->sortable();
+        $table->column('updated_at')->dateTimeFormat('d/m/Y H:i')->sortable(true);
     }
 }

@@ -7,7 +7,7 @@ use Spatie\Honeypot\ProtectAgainstSpam;
 Route::get(
     '/contact',
     [ContactPageController::class, 'show']
-)->name('contact');
+)->name('contact.page.show');
 Route::post(
     '/contact/message/send',
     [ContactPageController::class, 'sendMessage']

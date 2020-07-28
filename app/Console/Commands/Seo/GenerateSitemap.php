@@ -23,7 +23,7 @@ class GenerateSitemap extends CommandAbstract
 
     public function handle(): void
     {
-        $this->log('Started sitemap automated generation...', 'info');
+        $this->log('Started sitemap automated generation...', 'title');
         SitemapGenerator::create(config('app.url'))->writeToFile(public_path('sitemap.xml'));
         $this->log('Finished sitemap automated generation.', 'success');
     }

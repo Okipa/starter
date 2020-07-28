@@ -31,9 +31,7 @@ class SettingsController extends Controller
         /** @var \App\Models\Settings\Settings $settings */
         $settings = (new Settings)->firstOrFail();
         $settings->update($request->validated());
-        if ($request->remove_icon) {
-            $settings->clearMediaCollection('icons');
-        } elseif ($request->file('icon')) {
+        if ($request->file('icon')) {
             $settings->addMediaFromRequest('icon')->toMediaCollection('icons');
         }
         settings(true);

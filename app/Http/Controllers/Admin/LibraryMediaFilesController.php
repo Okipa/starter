@@ -26,7 +26,10 @@ class LibraryMediaFilesController extends Controller
     public function index(FilesIndexRequest $request): View
     {
         $table = (new LibraryMediaFilesTable($request))->setup();
-        SEOTools::setTitle(__('breadcrumbs.orphan.index', ['entity' => __('Media library')]));
+        SEOTools::setTitle(__('breadcrumbs.parent.index', [
+            'parent' => __('Media library'),
+            'entity' => __('Files'),
+        ]));
         (new FilesService)->injectJavascriptInView();
         $js = mix('/js/library-media/index.js');
 
@@ -146,7 +149,7 @@ class LibraryMediaFilesController extends Controller
                 }
                 $returnCode = Response::HTTP_OK;
                 $clipboardContent = trim(view(
-                    'components.admin.table.library-media.clipboard-copy.display-html',
+                    'components.admin.library-media.clipboard-copy.display-html',
                     compact('file', 'media', 'locale')
                 )->toHtml());
                 $message = __('Clipboard copy: :name - :type.', [
@@ -157,7 +160,7 @@ class LibraryMediaFilesController extends Controller
             case 'download':
                 $returnCode = Response::HTTP_OK;
                 $clipboardContent = trim(view(
-                    'components.admin.table.library-media.clipboard-copy.download-html',
+                    'components.admin.library-media.clipboard-copy.download-html',
                     compact('file', 'media', 'locale')
                 )->toHtml());
                 $message = __('Clipboard copy: :name - :type.', [

@@ -26,6 +26,6 @@
         {{ inputPassword()->name('password_confirmation')->containerHtmlAttributes(['required']) }}
         {{ submitValidate()->label(__('Save new password'))
             ->componentClasses(['btn', 'btn-block', 'btn-primary']) }}
-        {{ buttonCancel()->route('home')->containerClasses(['mt-3']) }}
+        {{ buttonCancel()->route('home.page.show')->containerClasses(['mt-3']) }}
     </form>
 @endsection

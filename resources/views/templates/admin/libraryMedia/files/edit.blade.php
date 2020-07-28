@@ -27,7 +27,7 @@
                 <h3>@lang('Media')</h3>
                 {{ inputFile()->name('media')
                     ->value(optional(optional($file)->getFirstMedia('medias'))->file_name)
-                    ->uploadedFile(fn() => trim(view('components.admin.table.library-media.thumb', ['file' => $file])))
+                    ->uploadedFile(fn() => trim(view('components.admin.library-media.thumb', ['file' => $file])))
                     ->showRemoveCheckbox(false)
                     ->containerHtmlAttributes(['required'])
                     ->caption((new \App\Models\LibraryMedia\LibraryMediaFile)->getMediaCaption('medias')) }}
@@ -38,29 +38,14 @@
                     ->containerHtmlAttributes(['required']) }}
                 {{ select()->name('category_id')
                     ->model($file)
-                    ->options((new \App\Models\LibraryMedia\LibraryMediaCategory)->get()->map(function($category){
-                        $array = $category->toArray();
-                        $array['name'] = $category->name;
-
-                        return $array;
-                    })->sortBy('name'), 'id', 'name')
+                    ->options((new \App\Models\LibraryMedia\LibraryMediaCategory)->orderBy('name')->get()->map(function(\App\Models\LibraryMedia\LibraryMediaCategory $category){
+                        return ['id' => $category->id, 'name' => $category->name];
+                    }), 'id', 'name')
                     ->componentClasses(['selector'])
                     ->containerHtmlAttributes(['required']) }}
                 @if($file)
                     <h3>@lang('Clipboard copy')</h3>
-                    {{ inputText()->name('url')
-                        ->label(__('URL'))
-                        ->prepend('<i class="fas fa-link fa-fw"></i>')
-                        ->value($file->getFirstMedia('medias')->getFullUrl())
-                        ->append(view('components.admin.library-media.url-copy-link', compact('file')))
-                        ->componentHtmlAttributes(['disabled']) }}
-                    {{ textarea()->name('html')
-                        ->locales(supportedLocaleKeys())
-                        ->label(__('library-media.labels.html'))
-                        ->prepend('<i class="fas fa-code fa-fw"></i>')
-                        ->value(fn($locale) => trim(view('components.admin.table.library-media.html-clipboard-content', ['file' => $file, 'locale' => $locale])))
-                        ->append(view('components.admin.library-media.html-copy-link', compact('file')))
-                        ->componentHtmlAttributes(['disabled']) }}
+                    @include('components.admin.library-media.clipboard-copy.buttons')
                 @endif
                 <div class="d-flex pt-4">
                     {{ buttonCancel()->route('libraryMedia.files.index')->containerClasses(['mr-2']) }}

@@ -20,14 +20,15 @@ return [
             'sudo' => true,
             'processes' => [
                 // todo: to customize
-                // 'laravel-queue-production-worker:*',
+                // 'laravel-horizon-starter-production:*',
+
             ]
         ],
-        'staging' => [
+        'preprod' => [
             'sudo' => true,
             'processes' => [
                 // todo: to customize
-                // 'laravel-queue-staging-worker:*',
+                // 'laravel-horizon-starter-preprod:*',
             ]
         ],
     ],

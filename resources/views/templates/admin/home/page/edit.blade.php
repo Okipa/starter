@@ -10,10 +10,14 @@
         @method('PUT')
         @include('components.common.form.notice')
         <div class="card">
-            <div class="card-header">
+            <div class="card-header d-flex justify-content-between">
                 <h2 class="m-0">
                     @lang('Data')
                 </h2>
+                {{ buttonLink()->route('home.page.show')
+                    ->prepend('<i class="fas fa-external-link-square-alt fa-fw"></i>')
+                    ->label(__('Display'))
+                    ->componentClasses(['btn-primary', 'new-window']) }}
             </div>
             <div class="card-body">
                 @include('components.admin.seo.meta', ['model' => $pageContent])

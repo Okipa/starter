@@ -28,7 +28,7 @@ class IdeHelperHandler extends CommandAbstract
 
             return;
         }
-        $this->log('Started IDE helpers generation...', 'info');
+        $this->log('Started IDE helpers generation...', 'title');
         $this->call('ide-helper:generate');
         $this->call('ide-helper:meta');
         $this->log('Finished IDE helpers generation.', 'success');

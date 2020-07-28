@@ -43,7 +43,7 @@ class LoginController extends Controller
     {
         alert()->toast(__('You have been logged out.'), 'success');
 
-        return redirect()->route('home');
+        return redirect()->route('home.page.show');
     }
 
     /**
