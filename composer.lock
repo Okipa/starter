@@ -3864,16 +3864,16 @@
         },
         {
             "name": "okipa/laravel-table",
-            "version": "3.0.0.x-dev",
+            "version": "3.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Okipa/laravel-table.git",
-                "reference": "ea5d9a0612a8e649441d7c96c4e12d0f3ad2f0df"
+                "reference": "1424d13b56e1fecf7b73b55b5e802d2b9b5065a9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Okipa/laravel-table/zipball/ea5d9a0612a8e649441d7c96c4e12d0f3ad2f0df",
-                "reference": "ea5d9a0612a8e649441d7c96c4e12d0f3ad2f0df",
+                "url": "https://api.github.com/repos/Okipa/laravel-table/zipball/1424d13b56e1fecf7b73b55b5e802d2b9b5065a9",
+                "reference": "1424d13b56e1fecf7b73b55b5e802d2b9b5065a9",
                 "shasum": ""
             },
             "require": {
@@ -3929,7 +3929,7 @@
                 "table",
                 "tables"
             ],
-            "time": "2020-08-17T19:20:36+00:00"
+            "time": "2020-08-17T19:42:45+00:00"
         },
         {
             "name": "opis/closure",
