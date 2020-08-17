@@ -19,7 +19,6 @@ class UsersTable extends AbstractTable
         return (new Table)->model(User::class)->routes([
             'index' => ['name' => 'users.index'],
             'create' => ['name' => 'user.create'],
-            'show' => ['name' => 'user.edit'],
             'edit' => ['name' => 'user.edit'],
             'destroy' => ['name' => 'user.destroy'],
         ])->disableRows(function (User $user) {
