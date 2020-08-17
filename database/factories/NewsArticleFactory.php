@@ -45,7 +45,7 @@ Ordered list :
 [Link](http://www.google.com).
 EOT;
 
-$images = ['seeds/files/news/article-2560-1440.jpg', 'seeds/files/news/article-2560-1769.jpg'];
+$images = ['1-2560x1440.jpg', '2-2560x1769.jpg'];
 
 $factory->define(NewsArticle::class, function (Faker $faker) use ($fakerFr, $fakerEn, $fakeText) {
     return [
@@ -68,8 +68,10 @@ $factory->afterMaking(NewsArticle::class, function (NewsArticle $page, Faker $fa
 $factory->afterCreating(
     NewsArticle::class,
     function (NewsArticle $newsArticle, Faker $faker) use ($fakerFr, $fakerEn, $images) {
-        $imageUrl = $images[array_rand($images, 1)];
-        $newsArticle->addMedia(database_path($imageUrl))->preservingOriginal()->toMediaCollection('illustrations');
+        $imagePath = $images[array_rand($images, 1)];
+        $newsArticle->addMedia(database_path('seeds/files/news/' . $imagePath))
+            ->preservingOriginal()
+            ->toMediaCollection('illustrations');
         $categoryIds = (new NewsCategory)->get()->random(rand(1, 2))->pluck('id');
         $newsArticle->categories()->sync($categoryIds);
         $newsArticle->saveSeoMeta([

@@ -15,6 +15,11 @@ use Illuminate\Support\Str;
 |
 */
 
+$images = [
+    '1-512x512.jpg', '2-512x512.jpg', '3-512x512.jpg', '4-512x512.jpg', '5-512x512.jpg', '6-512x512.jpg',
+    '7-512x512.jpg', '8-512x512.jpg', '9-512x512.jpg', '10-512x512.jpg',
+];
+
 $factory->define(User::class, function (Faker $faker) {
     return [
         'first_name' => $faker->firstName,
@@ -26,8 +31,9 @@ $factory->define(User::class, function (Faker $faker) {
     ];
 });
 
-$factory->afterCreating(User::class, function (User $user, Faker $faker) {
-    $user->addMedia(database_path('seeds/files/users/default-450-450.png'))
+$factory->afterCreating(User::class, function (User $user, Faker $faker) use ($images) {
+    $imagePath = $images[array_rand($images, 1)];
+    $user->addMedia(database_path('seeds/files/users/' . $imagePath))
         ->preservingOriginal()
-        ->toMediaCollection('avatars');
+        ->toMediaCollection('profile_pictures');
 });

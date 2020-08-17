@@ -16,8 +16,8 @@ class UsersService
      */
     public function saveAvatarFromRequest(Request $request, User $user): void
     {
-        if ($request->file('avatar')) {
-            $user->addMediaFromRequest('avatar')->toMediaCollection('avatars');
+        if ($request->file('profile_picture')) {
+            $user->addMediaFromRequest('profile_picture')->toMediaCollection('profile_pictures');
         } elseif ($request->method() !== 'PUT' || $request->remove_avatar) {
             $this->setDefaultAvatar($user);
         }
@@ -33,6 +33,6 @@ class UsersService
     {
         $user->addMedia(database_path('seeds/files/users/default-450-450.png'))
             ->preservingOriginal()
-            ->toMediaCollection('avatars');
+            ->toMediaCollection('profile_pictures');
     }
 }

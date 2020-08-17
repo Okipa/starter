@@ -44,7 +44,7 @@ class NewsArticlesTable extends AbstractTable
     {
         $table->column('id')->sortable();
         $table->column('thumb')->html(function (NewsArticle $newsArticle) {
-            return view('components.admin.table.image', ['image' => $newsArticle->getFirstMedia('illustrations')]);
+            return view('components.admin.table.thumb', ['image' => $newsArticle->getFirstMedia('illustrations')]);
         });
         $table->column('title')->stringLimit(50)->sortable()->searchable();
         $table->column()->title(__('Categories'))->html(function (NewsArticle $newsArticle) {
@@ -59,7 +59,7 @@ class NewsArticlesTable extends AbstractTable
             ['url' => route('news.article.show', $newsArticle->slug), 'active' => $newsArticle->active]
         ));
         $table->column('active')->sortable()->html(fn(NewsArticle $newsArticle) => view(
-            'components.admin.table.active',
+            'components.admin.table.bool',
             ['active' => $newsArticle->active]
         ));
         $table->column('created_at')->dateTimeFormat('d/m/Y H:i')->sortable();

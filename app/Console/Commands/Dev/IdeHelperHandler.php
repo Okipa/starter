@@ -29,7 +29,9 @@ class IdeHelperHandler extends CommandAbstract
             return;
         }
         $this->log('Started IDE helpers generation...', 'info');
+        $this->call('ide-helper:eloquent');
         $this->call('ide-helper:generate');
+        $this->call('ide-helper:model', ['--dir' => ['app/models'], '--nowrite' => true]);
         $this->call('ide-helper:meta');
         $this->log('Finished IDE helpers generation.', 'success');
     }

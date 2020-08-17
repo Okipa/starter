@@ -40,19 +40,19 @@ class User extends Authenticatable implements HasMedia, MustVerifyEmail
     /** @SuppressWarnings(PHPMD.UnusedLocalVariable) */
     public function registerMediaCollections(): void
     {
-        $this->addMediaCollection('avatars')
+        $this->addMediaCollection('profile_pictures')
             ->acceptsMimeTypes(['image/jpeg', 'image/png'])
             ->singleFile()
             ->registerMediaConversions(function (Media $media = null) {
-                $this->addMediaConversion('profile')
-                    ->fit(Manipulations::FIT_CROP, 260, 350)
+                $this->addMediaConversion('card')
+                    ->fit(Manipulations::FIT_CROP, 250, 250)
                     ->keepOriginalImageFormat()
                     ->nonQueued();
             });
     }
 
     /**
-     * @param \Spatie\MediaLibrary\MediaCollections\Models\Media $media
+     * @param \Spatie\MediaLibrary\MediaCollections\Models\Media|null $media
      *
      * @throws \Spatie\Image\Exceptions\InvalidManipulation
      * @SuppressWarnings(PHPMD.UnusedFormalParameter)
