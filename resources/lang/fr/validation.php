@@ -177,7 +177,7 @@ return [
         'instagram' => 'Page Instagram',
         'youtube' => 'Page Youtube',
         'google_tag_manager_id' => 'Identifiant Google Tag Manager',
-        'avatar' => 'Avatar',
+        'profile_picture' => 'Photo de profil',
         'illustration' => 'Illustration',
         'category_id' => 'Catégorie',
         'category_ids' => 'Catégories',

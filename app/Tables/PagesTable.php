@@ -46,7 +46,7 @@ class PagesTable extends AbstractTable
             'url' => route('page.show', $page->slug),
             'active' => $page->active,
         ]));
-        $table->column('active')->sortable()->html(fn(Page $page) => view('components.admin.table.active', [
+        $table->column('active')->sortable()->html(fn(Page $page) => view('components.admin.table.bool', [
             'active' => $page->active,
         ]));
         $table->column('created_at')->dateTimeFormat('d/m/Y H:i')->sortable();

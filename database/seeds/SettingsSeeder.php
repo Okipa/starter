@@ -28,7 +28,7 @@ class SettingsSeeder extends Seeder
             'instagram' => $this->faker->url,
             'youtube' => $this->faker->url,
         ]);
-        $settings->addMedia(database_path('seeds/files/settings/icon-300-300.png'))
+        $settings->addMedia(database_path('seeds/files/settings/1-300x300.png'))
             ->preservingOriginal()
             ->toMediaCollection('icons');
     }
