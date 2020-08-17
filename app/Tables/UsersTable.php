@@ -50,24 +50,7 @@ class UsersTable extends AbstractTable
         $table->column('first_name')->sortable()->searchable();
         $table->column('last_name')->sortable()->searchable();
         $table->column('email')->sortable()->searchable();
-        $table->column('email_verified_at')
-            ->title(__('Verified email'))
-            ->sortable()
-            ->html(fn(User $user) => view('components.admin.table.bool', ['active' => $user->email_verified_at]));
         $table->column('created_at')->dateTimeFormat('d/m/Y H:i')->sortable();
         $table->column('updated_at')->dateTimeFormat('d/m/Y H:i')->sortable();
-    }
-
-    /**
-     * Configure the table result lines.
-     *
-     * @param \Okipa\LaravelTable\Table $table
-     * @SuppressWarnings(PHPMD.UnusedFormalParameter)
-     */
-    protected function resultLines(Table $table): void
-    {
-        $table->result()
-            ->title(__('Total of users with unverified email'))
-            ->html(fn() => (new User)->where('email_verified_at', null)->count());
     }
 }
