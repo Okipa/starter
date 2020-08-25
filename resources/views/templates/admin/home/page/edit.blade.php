@@ -29,7 +29,7 @@
     </form>
     @if($pageContent)
         <div class="mt-3">
-            {{ Brickables::displayAdminPanel($pageContent) }}
+            {!! $pageContent->displayAdminPanel() !!}
         </div>
     @endif
 @endsection

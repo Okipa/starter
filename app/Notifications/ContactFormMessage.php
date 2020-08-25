@@ -13,15 +13,33 @@ class ContactFormMessage extends Notification implements ShouldQueue
 
     public int $tries = 3;
 
-    protected array $data;
+    protected string $firstName;
+
+    protected string $lastName;
+
+    protected string $email;
+
+    protected ?string $phoneNumber = null;
+
+    protected string $message;
 
     protected bool $isCopyToSender;
 
-    public function __construct(array $data, bool $isCopyToSender = false)
-    {
+    public function __construct(
+        string $firstName,
+        string $lastName,
+        string $email,
+        ?string $phoneNumber,
+        string $message,
+        bool $isCopyToSender = false
+    ) {
         $this->onQueue('high');
+        $this->firstName = $firstName;
+        $this->lastName = $lastName;
+        $this->email = $email;
+        $this->phoneNumber = $phoneNumber;
+        $this->message = $message;
         $this->isCopyToSender = $isCopyToSender;
-        $this->data = $data;
     }
 
     public function via(): array
@@ -33,21 +51,29 @@ class ContactFormMessage extends Notification implements ShouldQueue
     {
         $mailMessage = (new MailMessage)
             ->level('success')
-            ->subject($this->isCopyToSender ? __('Copy of your sent message') : __('New message from the contact form'))
-            ->line(__($this->isCopyToSender
-                ? 'Here is a copy of your message, sent from the contact form of :app.'
-                : 'This message has been sent to you from the contact form of :app.', ['app' => config('app.name')]))
+            ->subject($this->isCopyToSender
+                ? __('Copy of your sent message')
+                : __('New message from the contact form'));
+        if ($this->isCopyToSender) {
+            $mailMessage->greeting(__('Hello') . ' ' . $this->firstName . ' ' . $this->lastName . ',');
+        }
+        $mailMessage->line(__($this->isCopyToSender
+            ? 'Here is a copy of your message, sent from the contact form of :app.'
+            : 'This message has been sent to you from the contact form of :app.', ['app' => config('app.name')]))
             ->line(' ')
-            ->line('**' . __('validation.attributes.last_name') . ' :**  ' . $this->data['last_name'])
-            ->line('**' . __('validation.attributes.first_name') . ' :** ' . $this->data['first_name'])
-            ->line('**' . __('validation.attributes.email') . ' :** [' . $this->data['email']
-                . '](mailto:' . $this->data['email'] . ')');
-        if (data_get($this->data, 'phone_number')) {
-            $mailMessage->line('**' . __('Phone number:') . '**  [' . data_get($this->data, 'phone_number') . ']'
-                . '(tel:' . data_get($this->data, 'phone_number') . ')');
+            ->line('**' . __('validation.attributes.last_name') . ' :**  ' . $this->lastName)
+            ->line('**' . __('validation.attributes.first_name') . ' :** ' . $this->firstName)
+            ->line('**' . __('validation.attributes.email')
+                . ' :** [' . $this->email . '](mailto:' . $this->email . ')');
+        if ($this->phoneNumber) {
+            $mailMessage->line('**' . __('Phone number:') . '**  [' . $this->phoneNumber . ']'
+                . '(tel:' . $this->phoneNumber . ')');
         }
         $mailMessage->line('**' . __('validation.attributes.message') . ' :** «');
-        $mailMessage->line($this->data['message']);
+        $messageLines = explode('<br />', nl2br($this->message));
+        foreach (array_filter($messageLines) as $line) {
+            $mailMessage->line($line);
+        }
         $mailMessage->line(' »');
 
         return $mailMessage;

@@ -10,7 +10,7 @@ class UserUpdateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'avatar' => (new User)->getMediaValidationRules('avatars'),
+            'profile_picture' => (new User)->getMediaValidationRules('profile_pictures'),
             'remove_avatar' => ['required', 'boolean'],
             'first_name' => ['required', 'string', 'max:255'],
             'last_name' => ['required', 'string', 'max:255'],

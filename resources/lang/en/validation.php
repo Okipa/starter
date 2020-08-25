@@ -167,7 +167,7 @@ return [
         'meta_image' => 'Meta image',
         'phone_number' => 'Phone number',
         'message' => 'Message',
-        'avatar' => 'Avatar',
+        'profile_picture' => 'Profile picture',
         'thumb' => 'Thumb',
         'category_id' => 'Category',
         'category_ids' => 'Categories',

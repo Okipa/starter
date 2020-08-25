@@ -124,7 +124,7 @@ class LibraryMediaFile extends Model implements HasMedia
 
     public function getIsDisplayableAttribute(): bool
     {
-        return $this->type !== 'file';
+        return ! in_array($this->type, ['file', 'pdf']);
     }
 
     public function category(): BelongsTo
