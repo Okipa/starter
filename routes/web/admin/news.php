@@ -29,15 +29,15 @@ Route::post(
     [NewsCategoriesController::class, 'store']
 )->name('news.category.store');
 Route::get(
-    Lang::uri('news/category/edit/{category}'),
+    Lang::uri('news/category/{category}/edit'),
     [NewsCategoriesController::class, 'edit']
 )->name('news.category.edit');
 Route::put(
-    Lang::uri('news/category/update/{category}'),
+    Lang::uri('news/category/{category}/update'),
     [NewsCategoriesController::class, 'update']
 )->name('news.category.update');
 Route::delete(
-    Lang::uri('news/category/destroy/{category}'),
+    Lang::uri('news/category/{category}/destroy'),
     [NewsCategoriesController::class, 'destroy']
 )->name('news.category.destroy');
 
@@ -55,14 +55,14 @@ Route::post(
     [NewsArticlesController::class, 'store']
 )->name('news.article.store');
 Route::get(
-    Lang::uri('news/article/edit/{article}'),
+    Lang::uri('news/article/{article}/edit'),
     [NewsArticlesController::class, 'edit']
 )->name('news.article.edit');
 Route::put(
-    Lang::uri('news/article/update/{article}'),
+    Lang::uri('news/article/{article}/update'),
     [NewsArticlesController::class, 'update']
 )->name('news.article.update');
 Route::delete(
-    Lang::uri('news/article/destroy/{article}'),
+    Lang::uri('news/article/{article}/destroy'),
     [NewsArticlesController::class, 'destroy']
 )->name('news.article.destroy');

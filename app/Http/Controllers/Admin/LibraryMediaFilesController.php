@@ -111,12 +111,11 @@ class LibraryMediaFilesController extends Controller
      */
     public function destroy(LibraryMediaFile $file): RedirectResponse
     {
-        $name = $file->name;
         $file->delete();
 
         return back()->with('toast_success', __('notifications.orphan.destroyed', [
             'entity' => __('Media library'),
-            'name' => $name,
+            'name' => $file->name,
         ]));
     }
 

@@ -168,7 +168,7 @@ return [
         'phone_number' => 'Phone number',
         'message' => 'Message',
         'profile_picture' => 'Profile picture',
-        'thumb' => 'Thumb',
+        'thumb' => 'Thumbnail',
         'category_id' => 'Category',
         'category_ids' => 'Categories',
         'active' => 'Active',

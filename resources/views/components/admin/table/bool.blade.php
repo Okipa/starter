@@ -1,5 +1,5 @@
-@if($active)
-    <i class="fas fa-2x fa-check-circle text-success"></i>
+@if($bool)
+    <i class="fas fa-check text-success"></i>
 @else
-    <i class="fas fa-2x fa-times-circle text-danger"></i>
+    <i class="fas fa-times text-danger"></i>
 @endif

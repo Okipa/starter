@@ -50,29 +50,29 @@ EOT;
             'meta_title' => ['fr' => 'Accueil', 'en' => 'Home'],
             'meta_description' => ['fr' => $fakerFr->text(150), 'en' => $fakerEn->text(150)],
         ]);
-        /** @var \App\Models\Brickables\CarouselBrick $carouselBrick */
-        $carouselBrick = $pageContent->addBrick(Carousel::class, ['full_width' => true]);
-        $carouselBrick->addMedia(database_path('seeds/files/home/1-2251x1600.jpg'))
-            ->preservingOriginal()
-            ->withCustomProperties([
-                'label' => ['fr' => 'Titre #1', 'en' => 'Label #1'],
-                'caption' => ['fr' => 'Description #1', 'en' => 'Caption #1'],
-            ])
-            ->toMediaCollection('slides');
-        $carouselBrick->addMedia(database_path('seeds/files/home/2-2265x1500.jpg'))
-            ->preservingOriginal()
-            ->withCustomProperties([
-                'label' => ['fr' => 'Titre #2', 'en' => 'Label #2'],
-                'caption' => ['fr' => 'Description #2', 'en' => 'Caption #2'],
-            ])
-            ->toMediaCollection('slides');
-        $carouselBrick->addMedia(database_path('seeds/files/home/3-5306x3770.jpg'))
-            ->preservingOriginal()
-            ->withCustomProperties([
-                'label' => ['fr' => 'Titre #3', 'en' => 'Label #3'],
-                'caption' => ['fr' => 'Description #3', 'en' => 'Caption #3'],
-            ])
-            ->toMediaCollection('slides');
+//        /** @var \App\Models\Brickables\CarouselBrick $carouselBrick */
+//        $carouselBrick = $pageContent->addBrick(Carousel::class, ['full_width' => true]);
+//        $carouselBrick->addMedia(database_path('seeds/files/home/1-2251x1600.jpg'))
+//            ->preservingOriginal()
+//            ->withCustomProperties([
+//                'label' => ['fr' => 'Titre #1', 'en' => 'Label #1'],
+//                'caption' => ['fr' => 'Description #1', 'en' => 'Caption #1'],
+//            ])
+//            ->toMediaCollection('slides');
+//        $carouselBrick->addMedia(database_path('seeds/files/home/2-2265x1500.jpg'))
+//            ->preservingOriginal()
+//            ->withCustomProperties([
+//                'label' => ['fr' => 'Titre #2', 'en' => 'Label #2'],
+//                'caption' => ['fr' => 'Description #2', 'en' => 'Caption #2'],
+//            ])
+//            ->toMediaCollection('slides');
+//        $carouselBrick->addMedia(database_path('seeds/files/home/3-5306x3770.jpg'))
+//            ->preservingOriginal()
+//            ->withCustomProperties([
+//                'label' => ['fr' => 'Titre #3', 'en' => 'Label #3'],
+//                'caption' => ['fr' => 'Description #3', 'en' => 'Caption #3'],
+//            ])
+//            ->toMediaCollection('slides');
         $pageContent->addBrick(TitleH1::class, ['title' => ['fr' => 'Bienvenue', 'en' => 'Welcome']]);
         $pageContent->addBrick(OneTextColumn::class, ['text' => ['fr' => $fakeText, 'en' => $fakeText]]);
     }

@@ -103,12 +103,11 @@ class UsersController extends Controller
      */
     public function destroy(User $user): RedirectResponse
     {
-        $name = $user->name;
         $user->delete();
 
         return back()->with('toast_success', __('notifications.orphan.destroyed', [
             'entity' => __('Users'),
-            'name' => $name,
+            'name' => $user->name,
         ]));
     }
 

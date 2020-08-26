@@ -187,7 +187,7 @@ return [
         'meta_title' => 'Meta Title',
         'meta_description' => 'Meta Description',
         'meta_image' => 'Meta image',
-        'thumb' => 'Aperçu',
+        'thumb' => 'Vignette',
         'media' => 'Média',
         'message' => 'Message',
         'brickable_type' => 'Type brique',

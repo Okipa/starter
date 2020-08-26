@@ -16,15 +16,15 @@ Route::post(
     [UsersController::class, 'store']
 )->name('user.store');
 Route::get(
-    Lang::uri('user/edit/{user}'),
+    Lang::uri('user/{user}/edit'),
     [UsersController::class, 'edit']
 )->name('user.edit');
 Route::put(
-    Lang::uri('user/update/{user}'),
+    Lang::uri('user/{user}/update'),
     [UsersController::class, 'update']
 )->name('user.update');
 Route::delete(
-    Lang::uri('user/destroy/{user}'),
+    Lang::uri('user/{user}/destroy'),
     [UsersController::class, 'destroy']
 )->name('user.destroy');
 Route::get(

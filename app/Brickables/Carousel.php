@@ -20,16 +20,20 @@ class Carousel extends Brickable
         return app(CarouselUpdateRequest::class)->validated();
     }
 
-    protected function setBrickModelClass(): string
-    {
-        return CarouselBrick::class;
-    }
-
     protected function setBricksControllerClass(): string
     {
         return CarouselBricksController::class;
     }
 
+    protected function setBrickModelClass(): string
+    {
+        return CarouselBrick::class;
+    }
+
+    /**
+     * @return string|null
+     * @throws \Exception
+     */
     protected function setJsResourcePath(): ?string
     {
         return mix('/js/brickables/carousel.js');

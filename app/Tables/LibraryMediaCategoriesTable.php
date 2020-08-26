@@ -48,7 +48,6 @@ class LibraryMediaCategoriesTable extends AbstractTable
             ->link(fn(LibraryMediaCategory $libraryMediaCategory) => route('libraryMedia.files.index', [
                 'category_id' => $libraryMediaCategory->id,
             ]))
-            ->button()
             ->value(function (LibraryMediaCategory $libraryMediaCategory) {
                 $count = $libraryMediaCategory->files->count();
 

@@ -16,14 +16,14 @@ Route::post(
     [PagesController::class, 'store']
 )->name('page.store');
 Route::get(
-    Lang::uri('page/edit/{page}'),
+    Lang::uri('page/{page}/edit'),
     [PagesController::class, 'edit']
 )->name('page.edit');
 Route::put(
-    Lang::uri('page/update/{page}'),
+    Lang::uri('page/{page}/update'),
     [PagesController::class, 'update']
 )->name('page.update');
 Route::delete(
-    Lang::uri('page/destroy/{page}'),
+    Lang::uri('page/{page}/destroy'),
     [PagesController::class, 'destroy']
 )->name('page.destroy');

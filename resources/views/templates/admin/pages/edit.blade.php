@@ -18,10 +18,16 @@
         @endif()
         @include('components.common.form.notice')
         <div class="card">
-            <div class="card-header">
+            <div class="card-header d-flex justify-content-between">
                 <h2 class="m-0">
                     @lang('Data')
                 </h2>
+                @if(optional($page)->active)
+                    {{ buttonLink()->route('page.show', [$page->slug])
+                        ->prepend('<i class="fas fa-external-link-square-alt fa-fw"></i>')
+                        ->label(__('Display'))
+                        ->componentClasses(['btn-primary', 'new-window']) }}
+                @endif
             </div>
             <div class="card-body">
                 <h3>@lang('Navigation')</h3>
@@ -42,6 +48,7 @@
                     ->prepend(fn(string $locale) => route('page.show', '', false, $locale) . '/')
                     ->componentHtmlAttributes(['data-slugify', 'data-autofill-from' => '#text-nav-title'])
                     ->containerHtmlAttributes(['required']) }}
+                <h3>@lang('Publication')</h3>
                 {{ inputToggle()->name('active')->model($page) }}
                 @include('components.admin.seo.meta', ['model' => $page])
                 <div class="d-flex pt-4">
@@ -53,7 +60,7 @@
     </form>
     @if($page)
         <div class="mt-3">
-            {!! $pageContent->displayAdminPanel() !!}
+            {!! $page->displayAdminPanel() !!}
         </div>
     @endif
 @endsection

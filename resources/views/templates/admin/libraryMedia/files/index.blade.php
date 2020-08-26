@@ -22,12 +22,7 @@
                 {{ select()->name('category_id')
                     ->prepend('<i class="fas fa-tags fa-fw"></i>')
                     ->label(false)
-                    ->options((new \App\Models\LibraryMedia\LibraryMediaCategory)->get()->map(function($category){
-                        $array = $category->toArray();
-                        $array['name'] = $category->name;
-
-                        return $array;
-                    })->sortBy('name'), 'id', 'name')
+                    ->options((new App\Models\LibraryMedia\LibraryMediaCategory)->get()->map(fn(App\Models\LibraryMedia\LibraryMediaCategory $category) => ['id' => $category->id, 'name' => $category->name])->sortBy('name'), 'id', 'name')
                     ->selected('id', (int) $request->category_id)
                     ->componentClasses(['selector']) }}
                 {{ submitValidate()->prepend('<i class="fas fa-filter"></i>')->label(__('Filter'))->containerClasses(['ml-3']) }}

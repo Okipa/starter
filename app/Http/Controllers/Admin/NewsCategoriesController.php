@@ -76,13 +76,12 @@ class NewsCategoriesController extends Controller
 
     public function destroy(NewsCategory $category): RedirectResponse
     {
-        $name = $category->name;
         $category->delete();
 
         return back()->with('toast_success', __('notifications.parent.destroyed', [
             'parent' => __('News'),
             'entity' => __('Categories'),
-            'name' => $name,
+            'name' => $category->name,
         ]));
     }
 }

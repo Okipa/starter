@@ -38,9 +38,7 @@
                     ->containerHtmlAttributes(['required']) }}
                 {{ select()->name('category_id')
                     ->model($file)
-                    ->options((new \App\Models\LibraryMedia\LibraryMediaCategory)->orderBy('name')->get()->map(function(\App\Models\LibraryMedia\LibraryMediaCategory $category){
-                        return ['id' => $category->id, 'name' => $category->name];
-                    }), 'id', 'name')
+                    ->options((new App\Models\LibraryMedia\LibraryMediaCategory)->orderBy('name')->get()->map(fn(App\Models\LibraryMedia\LibraryMediaCategory $category) => ['id' => $category->id, 'name' => $category->name]), 'id', 'name')
                     ->componentClasses(['selector'])
                     ->containerHtmlAttributes(['required']) }}
                 @if($file)

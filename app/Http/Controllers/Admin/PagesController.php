@@ -90,13 +90,12 @@ class PagesController extends Controller
      */
     public function destroy(Page $page): RedirectResponse
     {
-        $name = $page->nav_title;
         $page->delete();
         pages(true);
 
         return back()->with('toast_success', __('notifications.orphan.destroyed', [
             'entity' => __('Pages'),
-            'name' => $name,
+            'name' => $page->nav_title,
         ]));
     }
 }

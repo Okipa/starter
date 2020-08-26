@@ -18,15 +18,15 @@ Route::post(
     [LibraryMediaCategoriesController::class, 'store']
 )->name('libraryMedia.category.store');
 Route::get(
-    Lang::uri('library/media/category/edit/{category}'),
+    Lang::uri('library/media/category/{category}/edit'),
     [LibraryMediaCategoriesController::class, 'edit']
 )->name('libraryMedia.category.edit');
 Route::put(
-    Lang::uri('library/media/category/update/{category}'),
+    Lang::uri('library/media/category/{category}/update'),
     [LibraryMediaCategoriesController::class, 'update']
 )->name('libraryMedia.category.update');
 Route::delete(
-    Lang::uri('library/media/category/destroy/{category}'),
+    Lang::uri('library/media/category/{category}/destroy'),
     [LibraryMediaCategoriesController::class, 'destroy']
 )->name('libraryMedia.category.destroy');
 
@@ -44,15 +44,15 @@ Route::post(
     [LibraryMediaFilesController::class, 'store']
 )->name('libraryMedia.file.store');
 Route::get(
-    Lang::uri('library/media/file/edit/{file}'),
+    Lang::uri('library/media/file/{file}/edit'),
     [LibraryMediaFilesController::class, 'edit']
 )->name('libraryMedia.file.edit');
 Route::put(
-    Lang::uri('library/media/file/update/{file}'),
+    Lang::uri('library/media/file/{file}/update'),
     [LibraryMediaFilesController::class, 'update']
 )->name('libraryMedia.file.update');
 Route::delete(
-    Lang::uri('library/media/file/destroy/{file}'),
+    Lang::uri('library/media/file/{file}/destroy'),
     [LibraryMediaFilesController::class, 'destroy']
 )->name('libraryMedia.file.destroy');
 Route::get(

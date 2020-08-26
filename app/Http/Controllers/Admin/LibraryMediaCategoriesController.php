@@ -76,13 +76,12 @@ class LibraryMediaCategoriesController extends Controller
 
     public function destroy(LibraryMediaCategory $category): RedirectResponse
     {
-        $name = $category->name;
         $category->delete();
 
         return back()->with('toast_success', __('notifications.parent.destroyed', [
             'parent' => __('Media library'),
             'entity' => __('Categories'),
-            'name' => $name,
+            'name' => $category->name,
         ]));
     }
 }

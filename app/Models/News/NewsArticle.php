@@ -18,8 +18,6 @@ class NewsArticle extends Seo implements HasMedia, Feedable
 {
     use HasTranslations;
 
-    public array $translatable = ['slug', 'title', 'description'];
-
     /**
      * The database table used by the model.
      *
@@ -33,6 +31,8 @@ class NewsArticle extends Seo implements HasMedia, Feedable
      * @var array
      */
     protected $fillable = ['title', 'slug', 'description', 'active', 'published_at'];
+
+    public array $translatable = ['slug', 'title', 'description'];
 
     /**
      * The attributes that should be cast to native types.

@@ -31,5 +31,7 @@
         "sweetalert2": "^9.5.4",
         "vue-template-compiler": "^2.6.11"
     },
-    "dependencies": {}
+    "dependencies": {
+        "jquery-ui-sortable": "^1.0.0"
+    }
 }

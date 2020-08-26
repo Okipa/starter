@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c6a44806cd8090621ac056b16249d8cb",
+    "content-hash": "541d5a02a3e29b8e3df57a5a75ea8bef",
     "packages": [
         {
             "name": "0.0.0/composer-include-files",
@@ -2405,26 +2405,26 @@
         },
         {
             "name": "laravel/slack-notification-channel",
-            "version": "v2.1.0",
+            "version": "v2.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/slack-notification-channel.git",
-                "reference": "d0a7f53342a5daa74e43e1b08dc8a7e83db152d8"
+                "reference": "98e0fe5c8dda645e6af914285af7b742e167462a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/slack-notification-channel/zipball/d0a7f53342a5daa74e43e1b08dc8a7e83db152d8",
-                "reference": "d0a7f53342a5daa74e43e1b08dc8a7e83db152d8",
+                "url": "https://api.github.com/repos/laravel/slack-notification-channel/zipball/98e0fe5c8dda645e6af914285af7b742e167462a",
+                "reference": "98e0fe5c8dda645e6af914285af7b742e167462a",
                 "shasum": ""
             },
             "require": {
                 "guzzlehttp/guzzle": "^6.0|^7.0",
-                "illuminate/notifications": "~5.8.0|^6.0|^7.0",
+                "illuminate/notifications": "~5.8.0|^6.0|^7.0|^8.0",
                 "php": "^7.1.3"
             },
             "require-dev": {
                 "mockery/mockery": "^1.0",
-                "phpunit/phpunit": "^7.0|^8.0"
+                "phpunit/phpunit": "^7.0|^8.0|^9.0"
             },
             "type": "library",
             "extra": {
@@ -2458,7 +2458,7 @@
                 "notifications",
                 "slack"
             ],
-            "time": "2020-06-30T20:34:53+00:00"
+            "time": "2020-08-25T18:21:34+00:00"
         },
         {
             "name": "laravel/telescope",
@@ -2589,27 +2589,27 @@
         },
         {
             "name": "laravel/ui",
-            "version": "v2.1.0",
+            "version": "v2.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/ui.git",
-                "reference": "da9350533d0da60d5dc42fb7de9c561c72129bba"
+                "reference": "fb1404f04ece6eee128e3fb750d3a1e064238b33"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/ui/zipball/da9350533d0da60d5dc42fb7de9c561c72129bba",
-                "reference": "da9350533d0da60d5dc42fb7de9c561c72129bba",
+                "url": "https://api.github.com/repos/laravel/ui/zipball/fb1404f04ece6eee128e3fb750d3a1e064238b33",
+                "reference": "fb1404f04ece6eee128e3fb750d3a1e064238b33",
                 "shasum": ""
             },
             "require": {
-                "illuminate/console": "^7.0",
-                "illuminate/filesystem": "^7.0",
-                "illuminate/support": "^7.0",
+                "illuminate/console": "^7.0|^8.0",
+                "illuminate/filesystem": "^7.0|^8.0",
+                "illuminate/support": "^7.0|^8.0",
                 "php": "^7.2.5"
             },
             "require-dev": {
                 "mockery/mockery": "^1.0",
-                "phpunit/phpunit": "^8.0"
+                "phpunit/phpunit": "^8.0|^9.0"
             },
             "type": "library",
             "extra": {
@@ -2640,7 +2640,7 @@
                 "laravel",
                 "ui"
             ],
-            "time": "2020-06-30T20:56:33+00:00"
+            "time": "2020-08-25T18:30:43+00:00"
         },
         {
             "name": "league/commonmark",
@@ -3865,16 +3865,16 @@
         },
         {
             "name": "okipa/laravel-table",
-            "version": "3.0.1",
+            "version": "3.0.2.x-dev",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Okipa/laravel-table.git",
-                "reference": "abf44f79207e925de6a568eeacadf24f378c21f5"
+                "reference": "ce5d8274ebb8a8a7fcfe3ae7737b3657174c1a57"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Okipa/laravel-table/zipball/abf44f79207e925de6a568eeacadf24f378c21f5",
-                "reference": "abf44f79207e925de6a568eeacadf24f378c21f5",
+                "url": "https://api.github.com/repos/Okipa/laravel-table/zipball/ce5d8274ebb8a8a7fcfe3ae7737b3657174c1a57",
+                "reference": "ce5d8274ebb8a8a7fcfe3ae7737b3657174c1a57",
                 "shasum": ""
             },
             "require": {
@@ -3930,7 +3930,7 @@
                 "table",
                 "tables"
             ],
-            "time": "2020-08-24T09:00:13+00:00"
+            "time": "2020-08-26T12:06:02+00:00"
         },
         {
             "name": "opis/closure",
@@ -6192,16 +6192,16 @@
         },
         {
             "name": "spatie/laravel-medialibrary",
-            "version": "8.5.1",
+            "version": "8.5.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/laravel-medialibrary.git",
-                "reference": "6e4d9369b53132ccc9cd889f01b53158940a58e3"
+                "reference": "92d3613133fa7b9f5207588d86b66f662b2dd38d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/laravel-medialibrary/zipball/6e4d9369b53132ccc9cd889f01b53158940a58e3",
-                "reference": "6e4d9369b53132ccc9cd889f01b53158940a58e3",
+                "url": "https://api.github.com/repos/spatie/laravel-medialibrary/zipball/92d3613133fa7b9f5207588d86b66f662b2dd38d",
+                "reference": "92d3613133fa7b9f5207588d86b66f662b2dd38d",
                 "shasum": ""
             },
             "require": {
@@ -6288,7 +6288,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2020-08-24T18:39:33+00:00"
+            "time": "2020-08-26T07:18:50+00:00"
         },
         {
             "name": "spatie/laravel-sitemap",

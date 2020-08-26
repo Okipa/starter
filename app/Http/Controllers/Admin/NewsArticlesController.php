@@ -50,9 +50,7 @@ class NewsArticlesController extends Controller
     {
         /** @var \App\Models\News\NewsArticle $article */
         $article = (new NewsArticle)->create($request->validated());
-        if ($request->file('illustration')) {
-            $article->addMediaFromRequest('illustration')->toMediaCollection('illustrations');
-        }
+        $article->addMediaFromRequest('illustration')->toMediaCollection('illustrations');
         $article->categories()->sync($request->category_ids);
         $article->saveSeoMetaFromRequest($request);
 
@@ -108,13 +106,12 @@ class NewsArticlesController extends Controller
      */
     public function destroy(NewsArticle $article): RedirectResponse
     {
-        $name = $article->title;
         $article->delete();
 
         return back()->with('toast_success', __('notifications.parent.destroyed', [
             'parent' => __('News'),
             'entity' => __('Articles'),
-            'name' => $name,
+            'name' => $article->title,
         ]));
     }
 }

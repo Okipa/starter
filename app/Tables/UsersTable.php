@@ -16,21 +16,20 @@ class UsersTable extends AbstractTable
      */
     protected function table(): Table
     {
-        return (new Table)->model(User::class)->routes([
-            'index' => ['name' => 'users.index'],
-            'create' => ['name' => 'user.create'],
-            'edit' => ['name' => 'user.edit'],
-            'destroy' => ['name' => 'user.destroy'],
-        ])->disableRows(function (User $user) {
-            return $user->id === auth()->id();
-        })->destroyConfirmationHtmlAttributes(function (User $user) {
-            return [
+        return (new Table)->model(User::class)
+            ->routes([
+                'index' => ['name' => 'users.index'],
+                'create' => ['name' => 'user.create'],
+                'edit' => ['name' => 'user.edit'],
+                'destroy' => ['name' => 'user.destroy'],
+            ])
+            ->disableRows(fn(User $user) => $user->id === auth()->id())
+            ->destroyConfirmationHtmlAttributes(fn(User $user) => [
                 'data-confirm' => __('notifications.orphan.destroyConfirm', [
                     'entity' => __('Users'),
                     'name' => $user->name,
                 ]),
-            ];
-        });
+            ]);
     }
 
     /**
