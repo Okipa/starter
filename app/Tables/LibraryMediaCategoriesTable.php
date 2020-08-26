@@ -16,20 +16,22 @@ class LibraryMediaCategoriesTable extends AbstractTable
      */
     protected function table(): Table
     {
-        return (new Table)->model(LibraryMediaCategory::class)->routes([
-            'index' => ['name' => 'libraryMedia.categories.index'],
-            'create' => ['name' => 'libraryMedia.category.create'],
-            'edit' => ['name' => 'libraryMedia.category.edit'],
-            'destroy' => ['name' => 'libraryMedia.category.destroy'],
-        ])->destroyConfirmationHtmlAttributes(function (LibraryMediaCategory $libraryMediaCategory) {
-            return [
-                'data-confirm' => __('notifications.parent.destroyConfirm', [
-                    'parent' => __('Media library'),
-                    'entity' => __('Categories'),
-                    'name' => $libraryMediaCategory->name,
-                ]),
-            ];
-        });
+        return (new Table)->model(LibraryMediaCategory::class)
+            ->routes([
+                'index' => ['name' => 'libraryMedia.categories.index'],
+                'create' => ['name' => 'libraryMedia.category.create'],
+                'edit' => ['name' => 'libraryMedia.category.edit'],
+                'destroy' => ['name' => 'libraryMedia.category.destroy'],
+            ])
+            ->destroyConfirmationHtmlAttributes(function (LibraryMediaCategory $libraryMediaCategory) {
+                return [
+                    'data-confirm' => __('notifications.parent.destroyConfirm', [
+                        'parent' => __('Media library'),
+                        'entity' => __('Categories'),
+                        'name' => $libraryMediaCategory->name,
+                    ]),
+                ];
+            });
     }
 
     /**

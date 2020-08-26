@@ -16,20 +16,22 @@ class NewsCategoriesTable extends AbstractTable
      */
     protected function table(): Table
     {
-        return (new Table)->model(NewsCategory::class)->routes([
-            'index' => ['name' => 'news.categories.index'],
-            'create' => ['name' => 'news.category.create'],
-            'edit' => ['name' => 'news.category.edit'],
-            'destroy' => ['name' => 'news.category.destroy'],
-        ])->destroyConfirmationHtmlAttributes(function (NewsCategory $category) {
-            return [
-                'data-confirm' => __('notifications.parent.destroyConfirm', [
-                    'parent' => __('News'),
-                    'entity' => __('Categories'),
-                    'name' => $category->name,
-                ]),
-            ];
-        });
+        return (new Table)->model(NewsCategory::class)
+            ->routes([
+                'index' => ['name' => 'news.categories.index'],
+                'create' => ['name' => 'news.category.create'],
+                'edit' => ['name' => 'news.category.edit'],
+                'destroy' => ['name' => 'news.category.destroy'],
+            ])
+            ->destroyConfirmationHtmlAttributes(function (NewsCategory $category) {
+                return [
+                    'data-confirm' => __('notifications.parent.destroyConfirm', [
+                        'parent' => __('News'),
+                        'entity' => __('Categories'),
+                        'name' => $category->name,
+                    ]),
+                ];
+            });
     }
 
     /**

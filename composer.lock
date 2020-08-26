@@ -3533,12 +3533,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Okipa/laravel-brickables.git",
-                "reference": "fbaa24d7b83b356f7fa948a3e84c04702e00ede6"
+                "reference": "644c041d6afe6609bd9ed97b9e3e8b73052493c3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Okipa/laravel-brickables/zipball/fbaa24d7b83b356f7fa948a3e84c04702e00ede6",
-                "reference": "fbaa24d7b83b356f7fa948a3e84c04702e00ede6",
+                "url": "https://api.github.com/repos/Okipa/laravel-brickables/zipball/644c041d6afe6609bd9ed97b9e3e8b73052493c3",
+                "reference": "644c041d6afe6609bd9ed97b9e3e8b73052493c3",
                 "shasum": ""
             },
             "require": {
@@ -3597,7 +3597,7 @@
                 "management",
                 "okipa"
             ],
-            "time": "2020-08-25T14:11:50+00:00"
+            "time": "2020-08-26T13:02:51+00:00"
         },
         {
             "name": "okipa/laravel-html-helper",
@@ -3865,16 +3865,16 @@
         },
         {
             "name": "okipa/laravel-table",
-            "version": "3.0.2.x-dev",
+            "version": "3.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Okipa/laravel-table.git",
-                "reference": "ce5d8274ebb8a8a7fcfe3ae7737b3657174c1a57"
+                "reference": "e39458031f5d4b208f0d4acba09ddf73558865b3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Okipa/laravel-table/zipball/ce5d8274ebb8a8a7fcfe3ae7737b3657174c1a57",
-                "reference": "ce5d8274ebb8a8a7fcfe3ae7737b3657174c1a57",
+                "url": "https://api.github.com/repos/Okipa/laravel-table/zipball/e39458031f5d4b208f0d4acba09ddf73558865b3",
+                "reference": "e39458031f5d4b208f0d4acba09ddf73558865b3",
                 "shasum": ""
             },
             "require": {
@@ -3930,7 +3930,7 @@
                 "table",
                 "tables"
             ],
-            "time": "2020-08-26T12:06:02+00:00"
+            "time": "2020-08-26T13:10:11+00:00"
         },
         {
             "name": "opis/closure",

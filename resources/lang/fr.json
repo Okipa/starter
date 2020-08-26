@@ -171,5 +171,6 @@
     "The entry :model > :brickable has been deleted.": "L'entrée :model > :brickable a été supprimée.",
     "Slides management will be available after the brick creation.": "La gestion des diapos sera accessible une fois la brique crée.",
     "Slides": "Diapos",
-    "Carousel": "Carrousel"
+    "Carousel": "Carrousel",
+    "No slides were added to this carousel.": "Aucune diapo n'a été ajoutée à ce carrousel."
 }

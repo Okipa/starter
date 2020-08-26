@@ -16,20 +16,22 @@ class NewsArticlesTable extends AbstractTable
      */
     protected function table(): Table
     {
-        return (new Table)->model(NewsArticle::class)->routes([
-            'index' => ['name' => 'news.articles.index'],
-            'create' => ['name' => 'news.article.create'],
-            'edit' => ['name' => 'news.article.edit'],
-            'destroy' => ['name' => 'news.article.destroy'],
-        ])->destroyConfirmationHtmlAttributes(function (NewsArticle $newsArticle) {
-            return [
-                'data-confirm' => __('notifications.parent.destroyConfirm', [
-                    'parent' => __('News'),
-                    'entity' => __('Articles'),
-                    'name' => $newsArticle->title,
-                ]),
-            ];
-        });
+        return (new Table)->model(NewsArticle::class)
+            ->routes([
+                'index' => ['name' => 'news.articles.index'],
+                'create' => ['name' => 'news.article.create'],
+                'edit' => ['name' => 'news.article.edit'],
+                'destroy' => ['name' => 'news.article.destroy'],
+            ])
+            ->destroyConfirmationHtmlAttributes(function (NewsArticle $newsArticle) {
+                return [
+                    'data-confirm' => __('notifications.parent.destroyConfirm', [
+                        'parent' => __('News'),
+                        'entity' => __('Articles'),
+                        'name' => $newsArticle->title,
+                    ]),
+                ];
+            });
     }
 
     /**
@@ -44,8 +46,8 @@ class NewsArticlesTable extends AbstractTable
         $table->column('id')->sortable();
         $table->column('thumb')->html(fn(NewsArticle $newsArticle) => view(
             'components.admin.table.thumb',
-            ['image' => $newsArticle->getFirstMedia('illustrations')])
-        );
+            ['image' => $newsArticle->getFirstMedia('illustrations')]
+        ));
         $table->column('title')->stringLimit(50)->sortable()->searchable();
         $table->column()
             ->title(__('Categories'))
