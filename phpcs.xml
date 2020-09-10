@@ -7,7 +7,6 @@
     <file>./tests</file>
     <arg name="colors"></arg>
     <rule ref="PSR1.Classes.ClassDeclaration.MissingNamespace">
-        <exclude-pattern>./database/*</exclude-pattern>
         <exclude-pattern>./tests/*</exclude-pattern>
     </rule>
     <rule ref="PSR2"/>

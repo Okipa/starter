@@ -1,22 +1,25 @@
 <?php
 
+namespace Database\Seeders;
+
 use App\Models\Users\User;
 use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Seeder;
 
 class UsersSeeder extends Seeder
 {
+    use HasFactory;
+
     public function run(): void
     {
-        factory(User::class)->create([
+        (new User)->factory()->make([
             'first_name' => 'Admin',
             'last_name' => 'STARTER',
             'email' => 'admin@starter.test',
             'email_verified_at' => Carbon::now(),
             'password' => Hash::make('secret'),
         ]);
-        for ($ii = 0; $ii <= 28; $ii++) {
-            factory(User::class)->create();
-        }
+        (new User)->factory()->count(29)->make();
     }
 }

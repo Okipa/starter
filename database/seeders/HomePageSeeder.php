@@ -1,5 +1,7 @@
 <?php
 
+namespace Database\Seeders;
+
 use App\Brickables\Carousel;
 use App\Brickables\OneTextColumn;
 use App\Brickables\TitleH1;

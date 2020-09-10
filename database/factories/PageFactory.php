@@ -1,26 +1,22 @@
 <?php
 
+namespace Database\Factories;
+
 use App\Brickables\OneTextColumn;
 use App\Brickables\TitleH1;
 use App\Models\Pages\Page;
-use Faker\Factory;
-use Faker\Generator as Faker;
+use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Str;
 
-/*
-|--------------------------------------------------------------------------
-| Model Factories
-|--------------------------------------------------------------------------
-|
-| This directory should contain each of the model factory definitions for
-| your application. Factories provide a convenient way to generate new
-| model instances for testing / seeding your application's database.
-|
-*/
+class PageFactory extends Factory
+{
+    protected string $model = Page::class;
 
-$fakerFr = Factory::create('fr_FR');
-$fakerEn = Factory::create('en_GB');
+    protected $fakerFr;
 
-$fakeText = <<<EOT
+    protected $fakerEn;
+
+    protected $fakeText = <<<EOT
 **Bold text.**
 
 *Italic text.*
@@ -45,33 +41,45 @@ Ordered list :
 [Link](http://www.google.com).
 EOT;
 
-$factory->define(Page::class, function (Faker $faker) use ($fakerFr, $fakerEn) {
-    return [
-        'unique_key' => null,
-        'slug' => null,
-        'nav_title' => ['fr' => $fakerFr->catchPhrase, 'en' => $fakerEn->catchPhrase],
-        'active' => true,
-    ];
-});
+    public function definition(): array
+    {
+        $this->fakerFr = $this->create('fr_FR');
+        $this->fakerEn = $this->create('en_GB');
 
-$factory->afterMaking(Page::class, function (Page $page, Faker $faker) {
-    $page->unique_key = $page->unique_key ?: Str::snake(Str::slug($page->getTranslation('nav_title', 'en'), '_'));
-    $page->slug = $page->slug
-        ?: [
-            'fr' => Str::slug($page->getTranslation('nav_title', 'fr')),
-            'en' => Str::slug($page->getTranslation('nav_title', 'en')),
+        return [
+            'unique_key' => null,
+            'slug' => null,
+            'nav_title' => ['fr' => $this->fakerFr->catchPhrase, 'en' => $this->fakerEn->catchPhrase],
+            'active' => true,
         ];
-});
+    }
 
-$factory->afterCreating(Page::class, function (Page $page, Faker $faker) use ($fakerFr, $fakerEn, $fakeText) {
-    $navTitle = [
-        'fr' => $page->getTranslation('nav_title', 'fr'),
-        'en' => $page->getTranslation('nav_title', 'en'),
-    ];
-    $page->addBrick(TitleH1::class, ['title' => $navTitle]);
-    $page->addBrick(OneTextColumn::class, ['text' => ['fr' => $fakeText, 'en' => $fakeText]]);
-    $page->saveSeoMeta([
-        'meta_title' => $navTitle,
-        'meta_description' => ['fr' => $fakerFr->text(150), 'en' => $fakerEn->text(150)],
-    ]);
-});
+    public function configure(): self
+    {
+        return $this->afterMaking(function (Page $page) {
+            $page->unique_key =
+                $page->unique_key ?: Str::snake(Str::slug($page->getTranslation('nav_title', 'en'), '_'));
+            $page->slug = $page->slug
+                ?: [
+                    'fr' => Str::slug($page->getTranslation('nav_title', 'fr')),
+                    'en' => Str::slug($page->getTranslation('nav_title', 'en')),
+                ];
+        })->afterCreating(function (Page $page) {
+            $navTitle = [
+                'fr' => $page->getTranslation('nav_title', 'fr'),
+                'en' => $page->getTranslation('nav_title', 'en'),
+            ];
+            $page->addBrick(TitleH1::class, ['title' => $navTitle]);
+            $page->addBrick(OneTextColumn::class, ['text' => ['fr' => $this->fakeText, 'en' => $this->fakeText]]);
+            $page->saveSeoMeta([
+                'meta_title' => $navTitle,
+                'meta_description' => ['fr' => $this->fakerFr->text(150), 'en' => $this->fakerEn->text(150)],
+            ]);
+        });
+    }
+}
+
+
+
+
+

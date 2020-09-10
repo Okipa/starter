@@ -1,26 +1,23 @@
 <?php
 
+namespace Database\Factories;
+
 use App\Models\News\NewsArticle;
 use App\Models\News\NewsCategory;
 use Carbon\Carbon;
-use Faker\Factory;
-use Faker\Generator as Faker;
+use Illuminate\Support\Str;
 
-/*
-|--------------------------------------------------------------------------
-| Model Factories
-|--------------------------------------------------------------------------
-|
-| This directory should contain each of the model factory definitions for
-| your application. Factories provide a convenient way to generate new
-| model instances for testing / seeding your application's database.
-|
-*/
+class NewsArticleFactory extends Factory
+{
+    protected string $model = NewsArticle::class;
 
-$fakerFr = Factory::create('fr_FR');
-$fakerEn = Factory::create('en_GB');
+    protected $fakerFr;
 
-$fakeText = <<<EOT
+    protected $fakerEn;
+
+    protected array $images = ['1-2560x1440.jpg', '2-2560x1769.jpg'];
+
+    protected $fakeText = <<<EOT
 **Bold text.**
 
 *Italic text.*
@@ -45,44 +42,47 @@ Ordered list :
 [Link](http://www.google.com).
 EOT;
 
-$images = ['1-2560x1440.jpg', '2-2560x1769.jpg'];
+    public function definition(): array
+    {
+        $this->fakerFr = $this->create('fr_FR');
+        $this->fakerEn = $this->create('en_GB');
 
-$factory->define(NewsArticle::class, function (Faker $faker) use ($fakerFr, $fakerEn, $fakeText) {
-    return [
-        'slug' => null,
-        'title' => ['fr' => $fakerFr->catchPhrase, 'en' => $fakerEn->catchPhrase],
-        'description' => ['fr' => $fakeText, 'en' => $fakeText],
-        'active' => true,
-        'published_at' => Carbon::now(),
-    ];
-});
-
-$factory->afterMaking(NewsArticle::class, function (NewsArticle $page, Faker $faker) {
-    $page->slug = $page->slug
-        ?: [
-            'fr' => Str::slug($page->getTranslation('title', 'fr')),
-            'en' => Str::slug($page->getTranslation('title', 'en')),
+        return [
+            'slug' => null,
+            'title' => ['fr' => $this->fakerFr->catchPhrase, 'en' => $this->fakerEn->catchPhrase],
+            'description' => ['fr' => $this->fakeText, 'en' => $this->fakeText],
+            'active' => true,
+            'published_at' => Carbon::now(),
         ];
-});
-
-$factory->afterCreating(
-    NewsArticle::class,
-    function (NewsArticle $newsArticle, Faker $faker) use ($fakerFr, $fakerEn, $images) {
-        $imagePath = $images[array_rand($images, 1)];
-        $newsArticle->addMedia(database_path('seeds/files/news/' . $imagePath))
-            ->preservingOriginal()
-            ->toMediaCollection('illustrations');
-        $categoryIds = (new NewsCategory)->get()->random(rand(1, 2))->pluck('id');
-        $newsArticle->categories()->sync($categoryIds);
-        $newsArticle->saveSeoMeta([
-            'meta_title' => [
-                'fr' => $newsArticle->getTranslation('title', 'fr'),
-                'en' => $newsArticle->getTranslation('title', 'en'),
-            ],
-            'meta_description' => [
-                'fr' => $fakerFr->text(150),
-                'en' => $fakerEn->text(150),
-            ],
-        ]);
     }
-);
+
+    public function configure(): self
+    {
+        return $this->afterMaking(function (NewsArticle $page) {
+            $page->slug = $page->slug
+                ?: [
+                    'fr' => Str::slug($page->getTranslation('title', 'fr')),
+                    'en' => Str::slug($page->getTranslation('title', 'en')),
+                ];
+        })->afterCreating(function (NewsArticle $newsArticle) {
+            $imagePath = $this->images[array_rand($this->images, 1)];
+            $newsArticle->addMedia(database_path('seeds/files/news/' . $imagePath))
+                ->preservingOriginal()
+                ->toMediaCollection('illustrations');
+            $categoryIds = (new NewsCategory)->get()->random(rand(1, 2))->pluck('id');
+            $newsArticle->categories()->sync($categoryIds);
+            $newsArticle->saveSeoMeta([
+                'meta_title' => [
+                    'fr' => $newsArticle->getTranslation('title', 'fr'),
+                    'en' => $newsArticle->getTranslation('title', 'en'),
+                ],
+                'meta_description' => [
+                    'fr' => $this->fakerFr->text(150),
+                    'en' => $this->fakerEn->text(150),
+                ],
+            ]);
+        }
+        );
+    }
+}
+
