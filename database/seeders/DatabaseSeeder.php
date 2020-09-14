@@ -2,17 +2,20 @@
 
 namespace Database\Seeders;
 
+use Illuminate\Cache\Console\ClearCommand;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\File;
+use Illuminate\Queue\Console\RestartCommand;
+use Laravel\Horizon\Console\TerminateCommand;
+use Spatie\MediaLibrary\MediaCollections\Commands\CleanCommand;
 
 class DatabaseSeeder extends Seeder
 {
     public function run(): void
     {
-        $this->command->call('cache:clear');
-        $this->command->call('queue:flush');
-        $this->command->call('queue:restart');
-        File::cleanDirectory(storage_path('app/public'));
+        $this->command->call(ClearCommand::class);
+        $this->command->call(TerminateCommand::class);
+        $this->command->call(RestartCommand::class);
+        $this->command->call(CleanCommand::class);
         $this->call(SettingsSeeder::class);
         $this->call(UsersSeeder::class);
         $this->call(PagesSeeder::class);

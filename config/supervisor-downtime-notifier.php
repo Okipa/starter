@@ -69,15 +69,20 @@ return [
      * The channels to which the notification will be sent.
      */
     // todo: to customize
-    'channels' => ['mail', 'slack', WebhookChannel::class],
+    'channels' => [
+        'mail',
+        //'slack',
+        //WebhookChannel::class
+    ],
 
     'mail' => ['to' => env('MONITORING_EMAIL_NOTIFICATIONS')],
 
     // todo: to customize
     'slack' => ['webhookUrl' => 'https://your-slack-webhook.slack.com'],
 
-    // rocket chat webhook example
+    // Rocket chat webhook example
     // todo: to customize
     'webhook' => ['url' => 'https://rocket.chat/hooks/1234/5678'],
+
 
 ];

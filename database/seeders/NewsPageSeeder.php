@@ -1,5 +1,7 @@
 <?php
 
+namespace Database\Seeders;
+
 use App\Brickables\OneTextColumn;
 use App\Brickables\TitleH1;
 use App\Models\Pages\TitleDescriptionPageContent;

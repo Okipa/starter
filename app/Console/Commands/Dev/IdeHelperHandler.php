@@ -3,19 +3,18 @@
 namespace App\Console\Commands\Dev;
 
 use App\Console\Commands\CommandAbstract;
-use Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider;
 
 class IdeHelperHandler extends CommandAbstract
 {
     /** @var string $table */
     protected $signature = 'ide-helper:handle';
 
-    /** @var string $description*/
+    /** @var string $description */
     protected $description = 'Handles ide-helper generation through composer.';
 
     public function handle(): void
     {
-        $ideHelperProvider = IdeHelperServiceProvider::class;
+        $ideHelperProvider = '\Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider';
         if (! in_array(app()->environment(), ['local', 'development']) && class_exists($ideHelperProvider)) {
             $this->log('IDE helpers generation is disabled.', 'error');
 

@@ -174,5 +174,21 @@
     "Carousel": "Carrousel",
     "No slides were added to this carousel.": "Aucune diapo n'a été ajoutée à ce carrousel.",
     "Invalid signature": "Signature non valide",
-    "Error ID:": "ID erreur :"
+    "Error ID:": "ID erreur :",
+    "Notification test:": "Test notification :",
+    "Exception test:": "Test exception :",
+    "[:app - :env] supervisor service is not started": "[:app - :env] service supervisor non démarré",
+    "We have detected that the supervisor service is not started on [:app - :env](:url).": "Nous avons détecté que le service supervisor n'est pas démarré sur [:app - :env](:url).",
+    "`[:app - :env]` supervisor service is not started on :url.": "`[:app - :env]` service supervisor non démarré sur :url.",
+    "Supervisor service is not started.": "Le service supervisor n'est pas démarré.",
+    "{1}[:app - :env] :count supervisor down process has been detected|[2,*][:app - :env] :count supervisor down processes have been detected": "{1}[:app - :env] :count processus supervisor défectueux a été détecté|[2,*][:app - :env] :count processus supervisor défectueux ont été détectés",
+    "{1}We have detected :count supervisor down process on [:app - :env](:url): \":processes\".|[2,*]We have detected :count supervisor down processes on [:app - :env](:url): \":processes\".": "{1}Nous avons détecté :count processus supervisor défectueux sur [:app - :env](:url): \":processes\".|[2,*]Nous avons détecté :count processus supervisor défectueux sur [:app - :env](:url): \":processes\".",
+    "Please check your down processes connecting to your server and executing the \"supervisorctl status\" command.": "Veuillez vérifier vos processus supervisor en vous connectant à votre serveur et en exécurant la commande \"supervisorctl status\".",
+    "{1}`[:app - :env]` :count supervisor down process has been detected on :url: \":processes\".|[2,*]`[:app - :env]` :count supervisor down processes have been detected on :url: \":processes\".": "{1}`[:app - :env]` :count processus supervisor défectueux a été détecté sur :url: \":processes\".|[2,*]`[:app - :env]` :count processus supervisor défectueux ont été détectés sur :url: \":processes\".",
+    "{1}:count supervisor down process has been detected: \":processes\".|[2,*]:count supervisor down processes have been detected: \":processes\".": "{1}:count processus supervisor défectueux a été détecté : \":processes\".|[2,*]:count processus supervisor défectueux ont été détectés : \":processes\".",
+    "{1}[:app - :env] :count job is stuck in queue|[2,*][:app - :env] :count jobs are stuck in queue": "{1}[:app - :env] :count tâche bloquée en file d'attente|[2,*][:app - :env] :count tâches bloquées en file d'attente",
+    "{1}We have detected that :count job is stuck in the [:app - :env](:url) queue since the :day at :hour.|[2,*]We have detected that :count jobs are stuck in the [:app - :env](:url) queue since the :day at :hour.": "{1} Nous avons détecté :count tâche bloquée en file d'attente sur [:app - :env](:url) depuis le :day à :hour.|[2,*]Nous avons détecté :count tâches bloquées en file d'attente sur [:app - :env](:url) depuis le :day à :hour.",
+    "Please check your stuck jobs connecting to your server and executing the \"php artisan queue:failed\" command.": "Veuillez vérifier vos tâches bloquées en vous connectant à votre serveur et en exécutant la commande \"php artisan queue:failed\".",
+    "{1}`[:app - :env]` :count job is stuck in the :url queue since the :day at :hour.|[2,*]`[:app - :env]` :count jobs are stuck in the :url queue since the :day at :hour.": "{1}`[:app - :env]` :count tâche est bloquée en file d'attente sur :url depuis le :day à :hour.|[2,*]`[:app - :env]` :count tâches sont bloquées en file d'attente sur :url depuis le :day à :hour.",
+    "{1}:count job is stuck in queue since the :day at :hour.|[2,*]:count jobs are stuck in queue since the :day at :hour.": "{1}:count tâche est bloquée en file d'attente depuis le :day à :hour.|[2,*]:count tâches sont bloquées en file d'attente depuis le :day à :hour."
 }
