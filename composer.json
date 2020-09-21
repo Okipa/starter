@@ -3,7 +3,7 @@
     "require": {
         "php": "^7.4",
         "ext-json": "*",
-        "artesaos/seotools": "^0.17.0",
+        "artesaos/seotools": "^0.19.0",
         "coderello/laravel-shared-data": "^3.0",
         "codezero/laravel-localized-routes": "^2.0",
         "codezero/laravel-unique-translation": "^2.0",
@@ -18,14 +18,14 @@
         "laravel/horizon": "^5.0",
         "laravel/telescope": "^4.0",
         "laravel/tinker": "^2.0",
-        "laravel/ui": "^2.0",
+        "laravel/ui": "^3.0",
         "okipa/laravel-bootstrap-components": "^3.0",
         "okipa/laravel-brickables": "^2.0",
         "okipa/laravel-medialibrary-ext": "^8.0",
-        "okipa/laravel-stuck-jobs-notifier": "^1.0",
-        "okipa/laravel-supervisor-downtime-notifier": "^1.0",
+        "okipa/laravel-stuck-jobs-notifier": "dev-laravel-8-support",
+        "okipa/laravel-supervisor-downtime-notifier": "dev-laravel-8-support",
         "okipa/laravel-table": "^3.0",
-        "plank/laravel-metable": "^2.0",
+        "plank/laravel-metable": "^3.0",
         "propaganistas/laravel-phone": "^4.0",
         "realrashid/sweet-alert": "^3.0",
         "sentry/sentry-laravel": "^1.0",
@@ -66,7 +66,7 @@
             "Database\\Seeders\\": "database/seeders/"
         },
         "classmap": [
-            "database/seeds",
+            "database/seeders",
             "database/factories"
         ],
         "files": [
@@ -93,7 +93,9 @@
             "@php artisan ide-helper:handle"
         ],
         "post-update-cmd": [
-            "@php artisan ide-helper:handle"
+            "@php artisan ide-helper:handle",
+            "@php artisan horizon:publish --ansi",
+            "@php artisan telescope:publish --ansi"
         ],
         "test": [
             "vendor/bin/phpcbf",

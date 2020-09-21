@@ -8,7 +8,8 @@ use Illuminate\Support\Str;
 
 class UserFactory extends Factory
 {
-    protected string $model = User::class;
+    /** @var string */
+    protected $model = User::class;
 
     protected array $images = [
         '1-512x512.jpg', '2-512x512.jpg', '3-512x512.jpg', '4-512x512.jpg', '5-512x512.jpg', '6-512x512.jpg',
@@ -31,10 +32,9 @@ class UserFactory extends Factory
     {
         return $this->afterCreating(function (User $user) {
             $imagePath = $this->images[array_rand($this->images, 1)];
-            $user->addMedia(database_path('seeds/files/users/' . $imagePath))
+            $user->addMedia(database_path('seeders/files/users/' . $imagePath))
                 ->preservingOriginal()
                 ->toMediaCollection('profile_pictures');
         });
     }
 }
-

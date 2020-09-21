@@ -31,7 +31,7 @@ class UsersService
      */
     public function setDefaultAvatar(User $user): void
     {
-        $user->addMedia(database_path('seeds/files/users/default-450-450.png'))
+        $user->addMedia(database_path('seeders/files/users/default-450-450.png'))
             ->preservingOriginal()
             ->toMediaCollection('profile_pictures');
     }

@@ -60,7 +60,7 @@ EOT;
             'caption' => ['fr' => 'Légende #1', 'en' => 'Caption #1'],
             'active' => true,
         ]);
-        $slide->addMedia(database_path('seeds/files/home/1-2251x1600.jpg'))
+        $slide->addMedia(database_path('seeders/files/home/1-2251x1600.jpg'))
             ->preservingOriginal()
             ->toMediaCollection('images');
         $slide = (new CarouselBrickSlide)->create([
@@ -69,7 +69,7 @@ EOT;
             'caption' => ['fr' => 'Légende #2', 'en' => 'Caption #2'],
             'active' => true,
         ]);
-        $slide->addMedia(database_path('seeds/files/home/2-2265x1500.jpg'))
+        $slide->addMedia(database_path('seeders/files/home/2-2265x1500.jpg'))
             ->preservingOriginal()
             ->toMediaCollection('images');
         $slide = (new CarouselBrickSlide)->create([
@@ -78,7 +78,7 @@ EOT;
             'caption' => ['fr' => 'Légende #3', 'en' => 'Caption #3'],
             'active' => true,
         ]);
-        $slide->addMedia(database_path('seeds/files/home/3-5306x3770.jpg'))
+        $slide->addMedia(database_path('seeders/files/home/3-5306x3770.jpg'))
             ->preservingOriginal()
             ->toMediaCollection('images');
         $pageContent->addBrick(TitleH1::class, ['title' => ['fr' => 'Bienvenue', 'en' => 'Welcome']]);

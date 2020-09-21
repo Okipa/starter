@@ -2,12 +2,12 @@
 
 namespace App\Http\Requests\News;
 
-use App\Http\Requests\AbstractSeoRequest;
+use App\Http\Requests\Abstracts\SeoRequest;
 use App\Models\News\NewsArticle;
 use Carbon\Carbon;
 use CodeZero\UniqueTranslation\UniqueTranslationRule;
 
-class ArticleStoreRequest extends AbstractSeoRequest
+class ArticleStoreRequest extends SeoRequest
 {
     public function rules(): array
     {

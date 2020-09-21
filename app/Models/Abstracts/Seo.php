@@ -17,7 +17,7 @@ abstract class Seo extends Metable implements HasMedia
 
     protected array $seoTags = ['meta_title', 'meta_description'];
 
-    /** @SuppressWarnings(PHPMD.UnusedLocalVariable) */
+    /** @SuppressWarnings(PHPMD.UnusedFormalParameter) */
     public function registerMediaCollections(): void
     {
         $this->addMediaCollection('seo')

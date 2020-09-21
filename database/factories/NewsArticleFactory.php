@@ -66,7 +66,7 @@ EOT;
                 ];
         })->afterCreating(function (NewsArticle $newsArticle) {
             $imagePath = $this->images[array_rand($this->images, 1)];
-            $newsArticle->addMedia(database_path('seeds/files/news/' . $imagePath))
+            $newsArticle->addMedia(database_path('seeders/files/news/' . $imagePath))
                 ->preservingOriginal()
                 ->toMediaCollection('illustrations');
             $categoryIds = (new NewsCategory)->get()->random(rand(1, 2))->pluck('id');

@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\Abstracts;
 
 use App\Models\Pages\PageContent;
 use Illuminate\Foundation\Http\FormRequest;
 
-abstract class AbstractSeoRequest extends FormRequest
+abstract class SeoRequest extends FormRequest
 {
     public function rules(): array
     {

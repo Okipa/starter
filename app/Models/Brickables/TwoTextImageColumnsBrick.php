@@ -14,7 +14,7 @@ class TwoTextImageColumnsBrick extends Brick implements HasMedia
     use InteractsWithMedia;
     use ExtendsMediaAbilities;
 
-    /** @SuppressWarnings(PHPMD.UnusedLocalVariable) */
+    /** @SuppressWarnings(PHPMD.UnusedFormalParameter) */
     public function registerMediaCollections(): void
     {
         $this->addMediaCollection('images')

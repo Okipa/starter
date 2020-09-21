@@ -7,6 +7,7 @@ use App\Notifications\ResetPassword;
 use App\Notifications\VerifyEmail;
 use Carbon\Carbon;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Okipa\MediaLibraryExt\ExtendsMediaAbilities;
@@ -18,7 +19,11 @@ use Spatie\WelcomeNotification\ReceivesWelcomeNotification;
 
 class User extends Authenticatable implements HasMedia, MustVerifyEmail
 {
-    use Notifiable, ReceivesWelcomeNotification, InteractsWithMedia, ExtendsMediaAbilities;
+    use HasFactory;
+    use Notifiable;
+    use ReceivesWelcomeNotification;
+    use InteractsWithMedia;
+    use ExtendsMediaAbilities;
 
     /** @var array $fillable */
     protected $fillable = ['first_name', 'last_name', 'email', 'phone_number', 'password'];
@@ -26,7 +31,7 @@ class User extends Authenticatable implements HasMedia, MustVerifyEmail
     /** @var array $hidden */
     protected $hidden = ['password', 'remember_token'];
 
-    /** @SuppressWarnings(PHPMD.UnusedLocalVariable) */
+    /** @SuppressWarnings(PHPMD.UnusedFormalParameter) */
     public function registerMediaCollections(): void
     {
         $this->addMediaCollection('profile_pictures')

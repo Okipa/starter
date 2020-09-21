@@ -29,7 +29,7 @@ class Settings extends Model implements HasMedia
         'google_tag_manager_id',
     ];
 
-    /** @SuppressWarnings(PHPMD.UnusedLocalVariable) */
+    /** @SuppressWarnings(PHPMD.UnusedFormalParameter) */
     public function registerMediaCollections(): void
     {
         $this->addMediaCollection('icons')

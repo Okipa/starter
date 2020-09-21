@@ -2,9 +2,9 @@
 
 namespace App\Http\Requests\Home;
 
-use App\Http\Requests\AbstractSeoRequest;
+use App\Http\Requests\Abstracts\SeoRequest;
 
-class HomePageUpdateRequest extends AbstractSeoRequest
+class HomePageUpdateRequest extends SeoRequest
 {
     //
 }

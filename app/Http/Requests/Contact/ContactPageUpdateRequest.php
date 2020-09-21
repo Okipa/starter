@@ -2,9 +2,9 @@
 
 namespace App\Http\Requests\Contact;
 
-use App\Http\Requests\AbstractSeoRequest;
+use App\Http\Requests\Abstracts\SeoRequest;
 
-class ContactPageUpdateRequest extends AbstractSeoRequest
+class ContactPageUpdateRequest extends SeoRequest
 {
     public function rules(): array
     {

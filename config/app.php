@@ -123,8 +123,6 @@ return [
 
     'cipher' => 'AES-256-CBC',
 
-    'force_https' => env('FORCE_HTTPS', false),
-
     /*
     |--------------------------------------------------------------------------
     | Autoloaded Service Providers
@@ -174,12 +172,7 @@ return [
         App\Providers\HorizonServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         App\Providers\TelescopeServiceProvider::class,
-
-        /*
-         * Created Service Providers...
-         */
-        App\Providers\SslServiceProvider::class,
-
+        
     ],
 
     /*

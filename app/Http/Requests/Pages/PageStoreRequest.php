@@ -2,10 +2,10 @@
 
 namespace App\Http\Requests\Pages;
 
-use App\Http\Requests\AbstractSeoRequest;
+use App\Http\Requests\Abstracts\SeoRequest;
 use CodeZero\UniqueTranslation\UniqueTranslationRule;
 
-class PageStoreRequest extends AbstractSeoRequest
+class PageStoreRequest extends SeoRequest
 {
     public function rules(): array
     {
