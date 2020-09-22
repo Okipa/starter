@@ -26,11 +26,11 @@
             <div class="card-body">
                 <h3>@lang('Media')</h3>
                 {{ inputFile()->name('media')
-                    ->value(optional(optional($file)->getFirstMedia('medias'))->file_name)
+                    ->value(optional(optional($file)->getFirstMedia('media'))->file_name)
                     ->uploadedFile(fn() => trim(view('components.admin.library-media.thumb', ['file' => $file])))
                     ->showRemoveCheckbox(false)
                     ->containerHtmlAttributes(['required'])
-                    ->caption((new \App\Models\LibraryMedia\LibraryMediaFile)->getMediaCaption('medias')) }}
+                    ->caption((new \App\Models\LibraryMedia\LibraryMediaFile)->getMediaCaption('media')) }}
                 <h3>@lang('File')</h3>
                 {{ inputText()->name('name')
                     ->locales(supportedLocaleKeys())

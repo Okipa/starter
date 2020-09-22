@@ -120,6 +120,7 @@
     "Associated files": "Fichiers associés",
     "[0,1]:count file|[2,*]:count files": "[0,1]:count fichier|[2,*]:count fichiers",
     "Maintenance in progress": "Maintenance en cours",
+    "Service currently unavailable.": "Service momentanément indisponible.",
     "Page not found": "Page non trouvée",
     "An unexpected error has occurred.": "Une erreur imprévue est survenue.",
     "Show": "Voir",

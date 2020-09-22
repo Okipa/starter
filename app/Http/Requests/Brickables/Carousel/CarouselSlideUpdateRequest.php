@@ -10,7 +10,7 @@ class CarouselSlideUpdateRequest extends FormRequest
     public function rules(): array
     {
         $rules = [
-            'image' => (new CarouselBrickSlide)->getMediaValidationRules('images'),
+            'image' => CarouselBrickSlide::getMediaValidationRules('images'),
             'active' => ['required', 'boolean'],
         ];
         $localizedRules = localizeRules([

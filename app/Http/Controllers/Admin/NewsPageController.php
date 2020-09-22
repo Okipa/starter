@@ -13,7 +13,7 @@ class NewsPageController extends Controller
 {
     public function edit(): View
     {
-        $pageContent = (new TitleDescriptionPageContent)->firstOrCreate(['unique_key' => 'news_page_content']);
+        $pageContent = TitleDescriptionPageContent::firstOrCreate(['unique_key' => 'news_page_content']);
         SEOTools::setTitle(__('breadcrumbs.orphan.edit', [
             'entity' => __('News'),
             'detail' => __('Page'),
@@ -30,8 +30,7 @@ class NewsPageController extends Controller
      */
     public function update(NewsPageUpdateRequest $request): RedirectResponse
     {
-        /** @var \App\Models\Pages\TitleDescriptionPageContent $pageContent */
-        $pageContent = (new TitleDescriptionPageContent)->where('unique_key', 'news_page_content')->firstOrFail();
+        $pageContent = TitleDescriptionPageContent::where('unique_key', 'news_page_content')->firstOrFail();
         $pageContent->saveSeoMetaFromRequest($request);
 
         return back()->with('toast_success', __('notifications.orphan.updated', [

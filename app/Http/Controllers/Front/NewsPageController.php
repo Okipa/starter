@@ -18,9 +18,9 @@ class NewsPageController extends Controller
      */
     public function show(ArticlesIndexRequest $request): View
     {
-        $pageContent = (new TitleDescriptionPageContent)->firstOrCreate(['unique_key' => 'news_page_content']);
+        $pageContent = TitleDescriptionPageContent::firstOrCreate(['unique_key' => 'news_page_content']);
         $pageContent->displaySeoMeta();
-        $query = (new NewsArticle)->with(['media', 'categories'])
+        $query = NewsArticle::with(['media', 'categories'])
             ->where('active', true)
             ->where('published_at', '<=', now())
             ->orderBy('published_at', 'desc');

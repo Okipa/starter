@@ -16,7 +16,10 @@ use Spatie\Translatable\HasTranslations;
 
 class CarouselBrickSlide extends Model implements HasMedia, Sortable
 {
-    use InteractsWithMedia, ExtendsMediaAbilities, SortableTrait, HasTranslations;
+    use InteractsWithMedia;
+    use ExtendsMediaAbilities;
+    use SortableTrait;
+    use HasTranslations;
 
     public array $sortable = ['order_column_name' => 'position', 'sort_when_creating' => true];
 

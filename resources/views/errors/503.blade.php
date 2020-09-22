@@ -17,11 +17,9 @@
                     <i class="fas fa-tools fa-fw"></i>
                     @lang('Maintenance in progress')
                 </h1>
-                @if($exception->getMessage())
-                    <p class="h5">
-                        {{ $exception->getMessage() }}
-                    </p>
-                @endif
+                <p class="h5">
+                    @lang('Service currently unavailable.')<br>
+                </p>
                 {{ buttonBack()->route('home.page.show')->label(__('Retry'))->containerClasses(['mt-5']) }}
             </div>
         </div>

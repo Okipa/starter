@@ -1,4 +1,4 @@
-@if($file && $media = $file->getFirstMedia('medias'))
+@if($file && $media = $file->getFirstMedia('media'))
     @if($file->can_be_previewed_in_popin)
         <a href="{{ $media->getUrl() }}" title="@lang('Preview') {{ $file->name }}" data-lity>
     @else

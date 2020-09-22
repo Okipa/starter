@@ -83,7 +83,7 @@ class LibraryMediaFilesTable extends AbstractTable
             ->title(__('MIME types'))
             ->html(fn(LibraryMediaFile $file) => '<a class="new-window" '
                 . 'href="https://slick.pl/kb/htaccess/complete-list-mime-types">'
-                . $file->getFirstMedia('medias')->mime_type . '</a>')
+                . $file->getFirstMedia('media')->mime_type . '</a>')
             ->sortable()
             ->searchable('media');
         $table->column()->title(__('Clipboard copy'))->html(fn(LibraryMediaFile $file) => view(

@@ -2,6 +2,7 @@
 
 namespace App\Models\LibraryMedia;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Support\Str;
@@ -14,7 +15,10 @@ use Spatie\Translatable\HasTranslations;
 
 class LibraryMediaFile extends Model implements HasMedia
 {
-    use HasTranslations, InteractsWithMedia, ExtendsMediaAbilities;
+    use hasFactory;
+    use HasTranslations;
+    use InteractsWithMedia;
+    use ExtendsMediaAbilities;
 
     public array $translatable = ['name'];
 
@@ -27,7 +31,7 @@ class LibraryMediaFile extends Model implements HasMedia
     /** @SuppressWarnings(PHPMD.UnusedFormalParameter) */
     public function registerMediaCollections(): void
     {
-        $this->addMediaCollection('medias')->withResponsiveImages()->acceptsMimeTypes([
+        $this->addMediaCollection('media')->withResponsiveImages()->acceptsMimeTypes([
             // todo: only keep mime types you need here
             // check complete list here : https://slick.pl/kb/htaccess/complete-list-mime-types/
             // image
@@ -92,7 +96,7 @@ class LibraryMediaFile extends Model implements HasMedia
 
     public function getTypeAttribute(): string
     {
-        $media = $this->getFirstMedia('medias');
+        $media = $this->getFirstMedia('media');
         if (Str::contains($media->mime_type, 'image')) {
             return 'image';
         } elseif (Str::contains($media->mime_type, 'pdf')) {

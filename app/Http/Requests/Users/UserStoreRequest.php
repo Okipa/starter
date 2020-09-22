@@ -10,7 +10,7 @@ class UserStoreRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'profile_picture' => (new User)->getMediaValidationRules('profile_pictures'),
+            'profile_picture' => User::getMediaValidationRules('profile_pictures'),
             'first_name' => ['required', 'string', 'max:255'],
             'last_name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'max:255', 'email:rfc,dns,spoof', 'unique:users'],

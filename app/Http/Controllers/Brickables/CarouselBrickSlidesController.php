@@ -36,7 +36,7 @@ class CarouselBrickSlidesController extends Controller
      */
     public function store(CarouselSlideStoreRequest $request, CarouselBrick $brick): RedirectResponse
     {
-        $slide = (new CarouselBrickSlide)->create(array_merge(
+        $slide = CarouselBrickSlide::create(array_merge(
             $request->validated(),
             ['brick_id' => $brick->id]
         ));
@@ -82,10 +82,10 @@ class CarouselBrickSlidesController extends Controller
     public function destroy(CarouselBrickSlide $slide): RedirectResponse
     {
         $slide->delete();
-        $orderedIds = (new CarouselBrickSlide)->where('brick_id', $slide->brick->id)
+        $orderedIds = CarouselBrickSlide::where('brick_id', $slide->brick->id)
             ->ordered()
             ->pluck('id');
-        (new CarouselBrickSlide)->setNewOrder($orderedIds);
+        CarouselBrickSlide::setNewOrder($orderedIds);
 
         return back()->with('toast_success', __('notifications.parent.destroyed', [
             'parent' => $slide->brick->model->getReadableClassName() . ' > ' . __('Carousel'),
@@ -96,7 +96,7 @@ class CarouselBrickSlidesController extends Controller
 
     public function reorganize(CarouselSlidesReorganizeRequest $request): JsonResponse
     {
-        (new CarouselBrickSlide)->setNewOrder($request->validated()['ordered_ids']);
+        CarouselBrickSlide::setNewOrder($request->validated()['ordered_ids']);
 
         return response()->json(['message' => 'La liste a été réorganisée.'], 200);
     }

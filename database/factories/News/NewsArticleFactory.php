@@ -1,23 +1,21 @@
 <?php
 
-namespace Database\Factories;
+namespace Database\Factories\News;
 
 use App\Models\News\NewsArticle;
 use App\Models\News\NewsCategory;
 use Carbon\Carbon;
 use Illuminate\Support\Str;
+use Illuminate\Database\Eloquent\Factories\Factory;
 
 class NewsArticleFactory extends Factory
 {
-    protected string $model = NewsArticle::class;
-
-    protected $fakerFr;
-
-    protected $fakerEn;
+    /** @var string */
+    protected $model = NewsArticle::class;
 
     protected array $images = ['1-2560x1440.jpg', '2-2560x1769.jpg'];
 
-    protected $fakeText = <<<EOT
+    protected string $markdownText = <<<EOT
 **Bold text.**
 
 *Italic text.*
@@ -44,13 +42,10 @@ EOT;
 
     public function definition(): array
     {
-        $this->fakerFr = $this->create('fr_FR');
-        $this->fakerEn = $this->create('en_GB');
-
         return [
             'slug' => null,
-            'title' => ['fr' => $this->fakerFr->catchPhrase, 'en' => $this->fakerEn->catchPhrase],
-            'description' => ['fr' => $this->fakeText, 'en' => $this->fakeText],
+            'title' => ['fr' => $this->faker->catchPhrase, 'en' => $this->faker->catchPhrase],
+            'description' => ['fr' => $this->markdownText, 'en' => $this->markdownText],
             'active' => true,
             'published_at' => Carbon::now(),
         ];
@@ -69,7 +64,7 @@ EOT;
             $newsArticle->addMedia(database_path('seeders/files/news/' . $imagePath))
                 ->preservingOriginal()
                 ->toMediaCollection('illustrations');
-            $categoryIds = (new NewsCategory)->get()->random(rand(1, 2))->pluck('id');
+            $categoryIds = NewsCategory::get()->random(random_int(1, 2))->pluck('id');
             $newsArticle->categories()->sync($categoryIds);
             $newsArticle->saveSeoMeta([
                 'meta_title' => [
@@ -77,12 +72,10 @@ EOT;
                     'en' => $newsArticle->getTranslation('title', 'en'),
                 ],
                 'meta_description' => [
-                    'fr' => $this->fakerFr->text(150),
-                    'en' => $this->fakerEn->text(150),
+                    'fr' => $this->faker->text(150),
+                    'en' => $this->faker->text(150),
                 ],
             ]);
-        }
-        );
+        });
     }
 }
-

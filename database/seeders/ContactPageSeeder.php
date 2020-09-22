@@ -17,12 +17,11 @@ class ContactPageSeeder extends Seeder
      */
     public function run(): void
     {
-        $fakerFr = Factory::create('fr_FR');
-        $fakerEn = Factory::create('en_GB');
-        $pageContent = (new TitleDescriptionPageContent)->create(['unique_key' => 'contact_page_content']);
+        $faker = Factory::create();
+        $pageContent = TitleDescriptionPageContent::create(['unique_key' => 'contact_page_content']);
         $pageContent->saveSeoMeta([
             'meta_title' => ['fr' => 'Nous contacter', 'en' => 'Contact us'],
-            'meta_description' => ['fr' => $fakerFr->text(150), 'en' => $fakerEn->text(150)],
+            'meta_description' => ['fr' => $faker->text(150), 'en' => $faker->text(150)],
         ]);
         $pageContent->addBrick(TitleH1::class, ['title' => ['fr' => 'Nous contacter', 'en' => 'Contact us']]);
         $pageContent->addBrick(OneTextColumn::class, [

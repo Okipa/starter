@@ -42,7 +42,7 @@ class NewsCategoriesController extends Controller
 
     public function store(CategoryStoreRequest $request): RedirectResponse
     {
-        $category = (new NewsCategory)->create($request->validated());
+        $category = NewsCategory::create($request->validated());
 
         return redirect()->route('news.categories.index')
             ->with('toast_success', __('notifications.parent.created', [

@@ -1,6 +1,6 @@
 <?php
 
-namespace Database\Factories;
+namespace Database\Factories\Pages;
 
 use App\Brickables\OneTextColumn;
 use App\Brickables\TitleH1;
@@ -10,13 +10,10 @@ use Illuminate\Support\Str;
 
 class PageFactory extends Factory
 {
-    protected string $model = Page::class;
+    /** @var string */
+    protected $model = Page::class;
 
-    protected $fakerFr;
-
-    protected $fakerEn;
-
-    protected $fakeText = <<<EOT
+    protected string $markdownText = <<<EOT
 **Bold text.**
 
 *Italic text.*
@@ -43,13 +40,10 @@ EOT;
 
     public function definition(): array
     {
-        $this->fakerFr = $this->create('fr_FR');
-        $this->fakerEn = $this->create('en_GB');
-
         return [
             'unique_key' => null,
             'slug' => null,
-            'nav_title' => ['fr' => $this->fakerFr->catchPhrase, 'en' => $this->fakerEn->catchPhrase],
+            'nav_title' => ['fr' => $this->faker->catchPhrase, 'en' => $this->faker->catchPhrase],
             'active' => true,
         ];
     }
@@ -57,8 +51,8 @@ EOT;
     public function configure(): self
     {
         return $this->afterMaking(function (Page $page) {
-            $page->unique_key =
-                $page->unique_key ?: Str::snake(Str::slug($page->getTranslation('nav_title', 'en'), '_'));
+            $page->unique_key = $page->unique_key
+                ?: Str::snake(Str::slug($page->getTranslation('nav_title', 'en'), '_'));
             $page->slug = $page->slug
                 ?: [
                     'fr' => Str::slug($page->getTranslation('nav_title', 'fr')),
@@ -70,16 +64,16 @@ EOT;
                 'en' => $page->getTranslation('nav_title', 'en'),
             ];
             $page->addBrick(TitleH1::class, ['title' => $navTitle]);
-            $page->addBrick(OneTextColumn::class, ['text' => ['fr' => $this->fakeText, 'en' => $this->fakeText]]);
+            $page->addBrick(OneTextColumn::class, [
+                'text' => [
+                    'fr' => $this->markdownText,
+                    'en' => $this->markdownText,
+                ],
+            ]);
             $page->saveSeoMeta([
                 'meta_title' => $navTitle,
-                'meta_description' => ['fr' => $this->fakerFr->text(150), 'en' => $this->fakerEn->text(150)],
+                'meta_description' => ['fr' => $this->faker->text(150), 'en' => $this->faker->text(150)],
             ]);
         });
     }
 }
-
-
-
-
-

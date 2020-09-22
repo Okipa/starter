@@ -43,7 +43,7 @@ class PagesController extends Controller
     public function store(PageStoreRequest $request): RedirectResponse
     {
         /** @var \App\Models\Pages\Page $page */
-        $page = (new Page)->create($request->validated());
+        $page = Page::create($request->validated());
         $page->saveSeoMetaFromRequest($request);
         pages(true);
 

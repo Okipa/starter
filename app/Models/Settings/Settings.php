@@ -11,7 +11,8 @@ use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
 class Settings extends Model implements HasMedia
 {
-    use InteractsWithMedia, ExtendsMediaAbilities;
+    use InteractsWithMedia;
+    use ExtendsMediaAbilities;
 
     /** @var string $table */
     protected $table = 'settings';

@@ -42,7 +42,7 @@ class LibraryMediaCategoriesController extends Controller
     public function store(CategoryStoreRequest $request): RedirectResponse
     {
         /** @var \App\Models\LibraryMedia\LibraryMediaCategory $category */
-        $category = (new LibraryMediaCategory)->create($request->validated());
+        $category = LibraryMediaCategory::create($request->validated());
 
         return redirect()->route('libraryMedia.categories.index')
             ->with('toast_success', __('notifications.parent.created', [

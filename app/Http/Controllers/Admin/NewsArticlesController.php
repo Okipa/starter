@@ -49,7 +49,7 @@ class NewsArticlesController extends Controller
     public function store(ArticleStoreRequest $request): RedirectResponse
     {
         /** @var \App\Models\News\NewsArticle $article */
-        $article = (new NewsArticle)->create($request->validated());
+        $article = NewsArticle::create($request->validated());
         $article->addMediaFromRequest('illustration')->toMediaCollection('illustrations');
         $article->categories()->sync($request->category_ids);
         $article->saveSeoMetaFromRequest($request);

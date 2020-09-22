@@ -13,7 +13,7 @@ class HomePageController extends Controller
 {
     public function edit(): View
     {
-        $pageContent = (new PageContent)->firstOrCreate(['unique_key' => 'home_page_content']);
+        $pageContent = PageContent::firstOrCreate(['unique_key' => 'home_page_content']);
         SEOTools::setTitle(__('breadcrumbs.orphan.edit', [
             'entity' => __('Home'),
             'detail' => __('Page'),
@@ -31,7 +31,7 @@ class HomePageController extends Controller
      */
     public function update(HomePageUpdateRequest $request): RedirectResponse
     {
-        $pageContent = (new PageContent)->where('unique_key', 'home_page_content')->firstOrFail();
+        $pageContent = PageContent::where('unique_key', 'home_page_content')->firstOrFail();
         $pageContent->saveSeoMetaFromRequest($request);
 
         return back()->with('toast_success', __('notifications.orphan.updated', [

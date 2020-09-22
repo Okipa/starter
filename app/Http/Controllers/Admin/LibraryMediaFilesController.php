@@ -54,8 +54,8 @@ class LibraryMediaFilesController extends Controller
     public function store(FileStoreRequest $request): RedirectResponse
     {
         /** @var \App\Models\LibraryMedia\LibraryMediaFile $file */
-        $file = (new LibraryMediaFile)->create($request->validated());
-        $file->addMediaFromRequest('media')->toMediaCollection('medias');
+        $file = LibraryMediaFile::create($request->validated());
+        $file->addMediaFromRequest('media')->toMediaCollection('media');
 
         return redirect()->route('libraryMedia.files.index')
             ->with('toast_success', __('notifications.orphan.created', [
@@ -94,7 +94,7 @@ class LibraryMediaFilesController extends Controller
     {
         $file->update($request->validated());
         if ($request->file('media')) {
-            $file->addMediaFromRequest('media')->toMediaCollection('medias');
+            $file->addMediaFromRequest('media')->toMediaCollection('media');
         }
 
         return back()->with('toast_success', __('notifications.orphan.updated', [
@@ -121,7 +121,7 @@ class LibraryMediaFilesController extends Controller
 
     public function clipboardContent(LibraryMediaFile $file, string $type, ?string $locale = null): JsonResponse
     {
-        $media = $file->getFirstMedia('medias');
+        $media = $file->getFirstMedia('media');
         if (! $media) {
             $returnCode = Response::HTTP_NOT_FOUND;
             $clipboardContent = null;
@@ -133,7 +133,7 @@ class LibraryMediaFilesController extends Controller
         switch ($type) {
             case 'url':
                 $returnCode = Response::HTTP_OK;
-                $clipboardContent = $file->getFirstMedia('medias')->getFullUrl();
+                $clipboardContent = $file->getFirstMedia('media')->getFullUrl();
                 $message = __('Clipboard copy: :name - :type.', [
                     'type' => __('URL'),
                     'name' => $file->getTranslation('name', $locale),

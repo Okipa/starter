@@ -3,6 +3,7 @@
 namespace App\Models\News;
 
 use App\Models\Abstracts\Seo;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
@@ -16,15 +17,16 @@ use Spatie\Translatable\HasTranslations;
 
 class NewsArticle extends Seo implements HasMedia, Feedable
 {
+    use HasFactory;
     use HasTranslations;
+
+    public array $translatable = ['slug', 'title', 'description'];
 
     /** @var string $table */
     protected $table = 'news_articles';
 
     /** @var array $fillable */
     protected $fillable = ['title', 'slug', 'description', 'active', 'published_at'];
-
-    public array $translatable = ['slug', 'title', 'description'];
 
     /** @var array $cast */
     protected $casts = ['active' => 'boolean', 'published_at' => 'datetime'];

@@ -10,7 +10,7 @@ abstract class SeoRequest extends FormRequest
     public function rules(): array
     {
         return array_merge([
-            'meta_image' => array_merge(['nullable'], (new PageContent)->getMediaValidationRules('seo')),
+            'meta_image' => array_merge(['nullable'], PageContent::getMediaValidationRules('seo')),
             'remove_meta_image' => ['required', 'boolean'],
         ], localizeRules([
             'meta_title' => ['required', 'string', 'max:255'],

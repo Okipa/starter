@@ -38,6 +38,6 @@ if (! function_exists('pages')) {
             cache()->forget('pages');
         }
 
-        return cache()->rememberForever('pages', fn() => (new Page)->where('active', true)->get());
+        return cache()->rememberForever('pages', fn() => Page::where('active', true)->get());
     }
 }

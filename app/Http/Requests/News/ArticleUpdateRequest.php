@@ -12,7 +12,7 @@ class ArticleUpdateRequest extends SeoRequest
     public function rules(): array
     {
         $rules = [
-            'illustration' => (new NewsArticle)->getMediaValidationRules('illustration'),
+            'illustration' => NewsArticle::getMediaValidationRules('illustration'),
             'category_ids' => ['required', 'array'],
             'category_ids.*' => ['required', 'integer', 'exists:news_categories,id'],
             'published_at' => ['required', 'date_format:Y-m-d H:i:s'],

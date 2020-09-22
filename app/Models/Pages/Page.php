@@ -3,13 +3,16 @@
 namespace App\Models\Pages;
 
 use App\Models\Abstracts\Seo;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Okipa\LaravelBrickables\Contracts\HasBrickables;
 use Okipa\LaravelBrickables\Traits\HasBrickablesTrait;
 use Spatie\Translatable\HasTranslations;
 
 class Page extends Seo implements HasBrickables
 {
-    use HasTranslations, HasBrickablesTrait;
+    use HasFactory;
+    use HasTranslations;
+    use HasBrickablesTrait;
 
     public array $translatable = ['slug', 'nav_title'];
 

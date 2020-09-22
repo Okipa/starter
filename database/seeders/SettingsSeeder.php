@@ -17,10 +17,9 @@ class SettingsSeeder extends Seeder
     public function run(): void
     {
         $this->faker = Factory::create(config('app.faker_locale'));
-        // todo: customize settings and seeder image
-        /** @var \App\Models\Settings\Settings $settings */
-        $settings = (new Settings)->create([
-            'email' => $this->faker->email,
+        // todo: to customize
+        $settings = Settings::create([
+            'email' => $this->faker->unique()->safeEmail,
             'phone_number' => $this->faker->phoneNumber,
             'address' => $this->faker->address,
             'zip_code' => $this->faker->postcode,
