@@ -27,7 +27,7 @@ class UsersTable extends AbstractTable
             ->destroyConfirmationHtmlAttributes(fn(User $user) => [
                 'data-confirm' => __('notifications.orphan.destroyConfirm', [
                     'entity' => __('Users'),
-                    'name' => $user->name,
+                    'name' => $user->full_name,
                 ]),
             ]);
     }

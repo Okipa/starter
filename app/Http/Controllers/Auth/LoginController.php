@@ -48,11 +48,11 @@ class LoginController extends Controller
 
     /**
      * @param \Illuminate\Http\Request $request
-     * @param User $user
+     * @param \App\Models\Users\User $user
      * @SuppressWarnings(PHPMD.UnusedFormalParameter)
      */
     protected function authenticated(Request $request, User $user): void
     {
-        alert()->toast(__('Welcome') . ' ' . $user->name . '.', 'success');
+        alert()->toast(__('Welcome') . ' ' . $user->full_name . '.', 'success');
     }
 }

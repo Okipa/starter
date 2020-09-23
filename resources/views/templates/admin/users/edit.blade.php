@@ -5,7 +5,7 @@
         $action = route('user.store');
     }
     if(Str::contains(request()->route()->getName(), 'user.edit')) {
-        $title = __('breadcrumbs.orphan.edit', ['entity' => __('Users'), 'detail' => $user->name]);
+        $title = __('breadcrumbs.orphan.edit', ['entity' => __('Users'), 'detail' => $user->full_name]);
             $action = route('user.update', $user);
     }
     if(Str::contains(request()->route()->getName(), 'user.profile.edit')) {

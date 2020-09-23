@@ -59,7 +59,7 @@ class User extends Authenticatable implements HasMedia, MustVerifyEmail
             ->nonQueued();
     }
 
-    public function getNameAttribute(): string
+    public function getFullNameAttribute(): string
     {
         return $this->first_name . ' ' . $this->last_name;
     }
