@@ -18,7 +18,7 @@
                     @lang('Maintenance in progress')
                 </h1>
                 <p class="h5">
-                    @lang('Service currently unavailable.')<br>
+                    @lang('Service currently unavailable.')
                 </p>
                 {{ buttonBack()->route('home.page.show')->label(__('Retry'))->containerClasses(['mt-5']) }}
             </div>
