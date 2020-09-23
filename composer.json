@@ -94,7 +94,10 @@
             "@php artisan ide-helper:handle"
         ],
         "post-update-cmd": [
-            "@php artisan ide-helper:handle",
+            "@php artisan ide-helper:eloquent",
+            "@php artisan ide-helper:generate",
+            "@php artisan ide-helper:model --dir=app/Models --nowrite",
+            "@php artisan ide-helper:meta",
             "@php artisan horizon:publish --ansi",
             "@php artisan telescope:publish --ansi"
         ],

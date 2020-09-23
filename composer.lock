@@ -3686,12 +3686,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Okipa/laravel-stuck-jobs-notifier.git",
-                "reference": "4ef9d36bc7fb604cba5d7f3026df2f7e8dde7608"
+                "reference": "5de9058f35c221d417a95866bda4cd3a6464a8d0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Okipa/laravel-stuck-jobs-notifier/zipball/4ef9d36bc7fb604cba5d7f3026df2f7e8dde7608",
-                "reference": "4ef9d36bc7fb604cba5d7f3026df2f7e8dde7608",
+                "url": "https://api.github.com/repos/Okipa/laravel-stuck-jobs-notifier/zipball/5de9058f35c221d417a95866bda4cd3a6464a8d0",
+                "reference": "5de9058f35c221d417a95866bda4cd3a6464a8d0",
                 "shasum": ""
             },
             "require": {
@@ -3751,7 +3751,7 @@
                 "queue",
                 "stuck"
             ],
-            "time": "2020-09-12T12:41:58+00:00"
+            "time": "2020-09-23T11:59:21+00:00"
         },
         {
             "name": "okipa/laravel-supervisor-downtime-notifier",
@@ -3759,12 +3759,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Okipa/laravel-supervisor-downtime-notifier.git",
-                "reference": "e90e5e5ed10ea019acee1cd4567d0c6a90d29cc6"
+                "reference": "4f204a815010800b9564c6d51b04c6d9538c1a30"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Okipa/laravel-supervisor-downtime-notifier/zipball/e90e5e5ed10ea019acee1cd4567d0c6a90d29cc6",
-                "reference": "e90e5e5ed10ea019acee1cd4567d0c6a90d29cc6",
+                "url": "https://api.github.com/repos/Okipa/laravel-supervisor-downtime-notifier/zipball/4f204a815010800b9564c6d51b04c6d9538c1a30",
+                "reference": "4f204a815010800b9564c6d51b04c6d9538c1a30",
                 "shasum": ""
             },
             "require": {
@@ -3827,7 +3827,7 @@
                 "worker",
                 "workers"
             ],
-            "time": "2020-09-12T12:45:58+00:00"
+            "time": "2020-09-23T11:58:51+00:00"
         },
         {
             "name": "okipa/laravel-table",
