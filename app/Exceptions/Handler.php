@@ -34,11 +34,6 @@ class Handler extends ExceptionHandler
     public function report(Throwable $exception): void
     {
         if (app()->bound('sentry') && $this->shouldReport($exception)) {
-            /** @var \App\Models\Users\User|null $user */
-            $user = auth()->user();
-            if ($user) {
-                app('sentry')->configureScope(fn(Scope $scope) => $scope->setUser($user->toArray()));
-            }
             app('sentry')->captureException($exception);
         }
         parent::report($exception);

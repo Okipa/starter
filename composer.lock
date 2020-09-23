@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "0101995112fb459daf4e5a79840f2ed9",
+    "content-hash": "39733c1375ebdeaf7d5e1dc182edaee1",
     "packages": [
         {
             "name": "0.0.0/composer-include-files",
@@ -2184,17 +2184,68 @@
             "time": "2020-09-14T08:43:34+00:00"
         },
         {
-            "name": "laravel/framework",
-            "version": "v8.5.0",
+            "name": "laravel-notification-channels/webhook",
+            "version": "2.1.0",
             "source": {
                 "type": "git",
-                "url": "https://github.com/laravel/framework.git",
-                "reference": "5a748eecae35fd453e0b1e4d4b6f4fadf0d3e7ac"
+                "url": "https://github.com/laravel-notification-channels/webhook.git",
+                "reference": "581d430eaeb6cd7cb56da705d38ba0af1cc5a72c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/5a748eecae35fd453e0b1e4d4b6f4fadf0d3e7ac",
-                "reference": "5a748eecae35fd453e0b1e4d4b6f4fadf0d3e7ac",
+                "url": "https://api.github.com/repos/laravel-notification-channels/webhook/zipball/581d430eaeb6cd7cb56da705d38ba0af1cc5a72c",
+                "reference": "581d430eaeb6cd7cb56da705d38ba0af1cc5a72c",
+                "shasum": ""
+            },
+            "require": {
+                "guzzlehttp/guzzle": "^6.2 || ^7.0",
+                "illuminate/notifications": "^6.0 || ^7.0 || ^8.0",
+                "illuminate/support": "^6.0 || ^7.0 || ^8.0",
+                "php": "^7.2.5"
+            },
+            "require-dev": {
+                "mockery/mockery": "^1.3",
+                "orchestra/testbench": "^4.0 || ^5.0 || ^6.0",
+                "phpunit/phpunit": "^9.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "NotificationChannels\\Webhook\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Marcel Pociot",
+                    "email": "m.pociot@gmail.com",
+                    "homepage": "http://www.marcelpociot.com"
+                },
+                {
+                    "name": "atymic",
+                    "email": "atymicq@gmail.com",
+                    "homepage": "https://atymic.dev"
+                }
+            ],
+            "description": "Webhook Notifications driver",
+            "homepage": "https://github.com/laravel-notification-channels/webhook",
+            "time": "2020-09-10T08:15:19+00:00"
+        },
+        {
+            "name": "laravel/framework",
+            "version": "v8.6.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/laravel/framework.git",
+                "reference": "a71952a6dba55de0bb11b5fbbd84874eda2a755c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/a71952a6dba55de0bb11b5fbbd84874eda2a755c",
+                "reference": "a71952a6dba55de0bb11b5fbbd84874eda2a755c",
                 "shasum": ""
             },
             "require": {
@@ -2344,20 +2395,20 @@
                 "framework",
                 "laravel"
             ],
-            "time": "2020-09-18T21:27:11+00:00"
+            "time": "2020-09-22T13:42:02+00:00"
         },
         {
             "name": "laravel/horizon",
-            "version": "v5.0.0",
+            "version": "v5.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/horizon.git",
-                "reference": "1093218e2bad6a5037389a72b4ecef19af763c10"
+                "reference": "09173d933845cb035eeee19ce8debf94b28bb717"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/horizon/zipball/1093218e2bad6a5037389a72b4ecef19af763c10",
-                "reference": "1093218e2bad6a5037389a72b4ecef19af763c10",
+                "url": "https://api.github.com/repos/laravel/horizon/zipball/09173d933845cb035eeee19ce8debf94b28bb717",
+                "reference": "09173d933845cb035eeee19ce8debf94b28bb717",
                 "shasum": ""
             },
             "require": {
@@ -2417,20 +2468,20 @@
                 "laravel",
                 "queue"
             ],
-            "time": "2020-09-08T15:23:07+00:00"
+            "time": "2020-09-22T16:21:33+00:00"
         },
         {
             "name": "laravel/telescope",
-            "version": "v4.0.0",
+            "version": "v4.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/telescope.git",
-                "reference": "ff4594284ad73e895070265a26e1c0538b984191"
+                "reference": "4bd0a8b01b889c7704cd0a1d04a849c8da993f43"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/telescope/zipball/ff4594284ad73e895070265a26e1c0538b984191",
-                "reference": "ff4594284ad73e895070265a26e1c0538b984191",
+                "url": "https://api.github.com/repos/laravel/telescope/zipball/4bd0a8b01b889c7704cd0a1d04a849c8da993f43",
+                "reference": "4bd0a8b01b889c7704cd0a1d04a849c8da993f43",
                 "shasum": ""
             },
             "require": {
@@ -2476,7 +2527,7 @@
                 "laravel",
                 "monitoring"
             ],
-            "time": "2020-09-08T14:55:22+00:00"
+            "time": "2020-09-22T16:49:01+00:00"
         },
         {
             "name": "laravel/tinker",
@@ -3154,16 +3205,16 @@
         },
         {
             "name": "nesbot/carbon",
-            "version": "2.40.0",
+            "version": "2.40.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/briannesbitt/Carbon.git",
-                "reference": "6c7646154181013ecd55e80c201b9fd873c6ee5d"
+                "reference": "d9a76d8b7eb0f97cf3a82529393245212f40ba3b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/6c7646154181013ecd55e80c201b9fd873c6ee5d",
-                "reference": "6c7646154181013ecd55e80c201b9fd873c6ee5d",
+                "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/d9a76d8b7eb0f97cf3a82529393245212f40ba3b",
+                "reference": "d9a76d8b7eb0f97cf3a82529393245212f40ba3b",
                 "shasum": ""
             },
             "require": {
@@ -3239,7 +3290,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2020-09-11T19:00:58+00:00"
+            "time": "2020-09-23T08:17:37+00:00"
         },
         {
             "name": "nicmart/tree",
@@ -4026,16 +4077,16 @@
         },
         {
             "name": "php-http/discovery",
-            "version": "1.11.0",
+            "version": "1.12.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-http/discovery.git",
-                "reference": "87b580cd54244512ba931fe1e3b0b506e5a00dd6"
+                "reference": "4366bf1bc39b663aa87459bd725501d2f1988b6c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/php-http/discovery/zipball/87b580cd54244512ba931fe1e3b0b506e5a00dd6",
-                "reference": "87b580cd54244512ba931fe1e3b0b506e5a00dd6",
+                "url": "https://api.github.com/repos/php-http/discovery/zipball/4366bf1bc39b663aa87459bd725501d2f1988b6c",
+                "reference": "4366bf1bc39b663aa87459bd725501d2f1988b6c",
                 "shasum": ""
             },
             "require": {
@@ -4087,7 +4138,7 @@
                 "message",
                 "psr7"
             ],
-            "time": "2020-09-22T06:59:55+00:00"
+            "time": "2020-09-22T13:31:04+00:00"
         },
         {
             "name": "php-http/httplug",

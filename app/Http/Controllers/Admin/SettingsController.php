@@ -15,7 +15,7 @@ class SettingsController extends Controller
     {
         SEOTools::setTitle(__('breadcrumbs.orphan.index', ['entity' => __('Settings')]));
 
-        return view('templates.admin.settings.edit', ['settings' => (new Settings)->with(['media'])->firstOrFail()]);
+        return view('templates.admin.settings.edit', ['settings' => Settings::with(['media'])->firstOrFail()]);
     }
 
     /**
@@ -29,7 +29,7 @@ class SettingsController extends Controller
     public function update(SettingsUpdateRequest $request): RedirectResponse
     {
         /** @var \App\Models\Settings\Settings $settings */
-        $settings = (new Settings)->firstOrFail();
+        $settings = Settings::firstOrFail();
         $settings->update($request->validated());
         if ($request->file('icon')) {
             $settings->addMediaFromRequest('icon')->toMediaCollection('icons');

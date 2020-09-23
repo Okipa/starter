@@ -1,7 +1,5 @@
 <?php
 
-use NotificationChannels\Webhook\WebhookChannel;
-
 return [
 
     /*
@@ -41,17 +39,23 @@ return [
     // todo: to customize
     'channels' => [
         'mail',
-        //'slack',
-        //WebhookChannel::class
+        // 'slack', // Requires laravel/slack-notification-channel package
+        NotificationChannels\Webhook\WebhookChannel::class,
     ],
 
-    'mail' => ['to' => env('MONITORING_EMAIL_NOTIFICATIONS')],
+    'mail' => [
+        'to' => env('MONITORING_EMAIL_NOTIFICATIONS'),
+    ],
 
     // todo: to customize
-    'slack' => ['webhookUrl' => 'https://your-slack-webhook.slack.com'],
+    'slack' => [
+        'webhookUrl' => 'https://your-slack-webhook.slack.com',
+    ],
 
     // Rocket chat webhook example
     // todo: to customize
-    'webhook' => ['url' => 'https://rocket.chat/hooks/1234/5678'],
+    'webhook' => [
+        'url' => 'https://rocket.chat/hooks/1234/5678',
+    ],
 
 ];

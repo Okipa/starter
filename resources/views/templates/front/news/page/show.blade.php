@@ -26,7 +26,7 @@
                     ->label(__('Filter'))
                     ->containerClasses(['ml-3', 'mb-0']) }}
                 @if(request()->has(['category_id']))
-                    {{ buttonBack()->route('news.articles.index')->label(__('Reset'))->containerClasses(['ml-3']) }}
+                    {{ buttonBack()->route('news.page.show')->label(__('Reset'))->containerClasses(['ml-3']) }}
                 @endif
             </form>
         </div>

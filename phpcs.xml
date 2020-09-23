@@ -8,6 +8,7 @@
     <arg name="colors"></arg>
     <rule ref="PSR1.Classes.ClassDeclaration.MissingNamespace">
         <exclude-pattern>./tests/*</exclude-pattern>
+        <exclude-pattern>./database/migrations/*</exclude-pattern>
     </rule>
     <rule ref="PSR2"/>
 </ruleset>
