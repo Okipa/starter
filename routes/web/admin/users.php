@@ -28,6 +28,6 @@ Route::delete(
     [UsersController::class, 'destroy']
 )->name('user.destroy');
 Route::get(
-    Lang::uri('user/profile/edit'),
+    Lang::uri('user/profile-information'),
     [UsersController::class, 'profile']
-)->name('user.profile.edit');
+)->name('profile.information');

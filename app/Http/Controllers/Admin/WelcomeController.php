@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace App\Http\Controllers\Admin;
 
+use App\Actions\Fortify\PasswordValidationRules;
 use Artesaos\SEOTools\Facades\SEOTools;
 use Illuminate\Auth\Events\Verified;
 use Illuminate\Foundation\Auth\User;
@@ -11,6 +12,8 @@ use Symfony\Component\HttpFoundation\Response;
 
 class WelcomeController extends \Spatie\WelcomeNotification\WelcomeController
 {
+    use PasswordValidationRules;
+
     public function showWelcomeForm(Request $request, User $user): View
     {
         SEOTools::setTitle(__('Welcome'));
@@ -21,10 +24,8 @@ class WelcomeController extends \Spatie\WelcomeNotification\WelcomeController
     public function savePassword(Request $request, User $user): Response
     {
         $response = parent::savePassword($request, $user);
-        if (! $request->user()->hasVerifiedEmail()) {
-            if ($request->user()->markEmailAsVerified()) {
-                event(new Verified($request->user()));
-            }
+        if (! $request->user()->hasVerifiedEmail() && $request->user()->markEmailAsVerified()) {
+            event(new Verified($request->user()));
         }
 
         return $response;
@@ -39,8 +40,6 @@ class WelcomeController extends \Spatie\WelcomeNotification\WelcomeController
 
     protected function rules(): array
     {
-        return [
-            'password' => ['required', 'string', 'min:' . config('security.password.constraint.min'), 'confirmed'],
-        ];
+        return ['password' => $this->passwordRules()];
     }
 }

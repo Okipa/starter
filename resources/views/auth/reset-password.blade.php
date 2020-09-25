@@ -16,13 +16,10 @@
     </h1>
     <form method="POST" class="w-100" action="{{ route('password.update') }}">
         @csrf
-        <input type="hidden" name="token" value="{{ $token }}">
+        <input type="hidden" name="token" value="{{ $request->route('token') }}">
         @include('components.common.form.notice')
         {{ inputEmail()->name('email')->componentHtmlAttributes(['autofocus'])->containerHtmlAttributes(['required']) }}
-        {{ inputPassword()->name('password')
-            ->caption(__('passwords.minLength', ['count' => config('security.password.constraint.min')]) . '<br/>'
-                . __('passwords.recommendation'))
-            ->containerHtmlAttributes(['required']) }}
+        {{ inputPassword()->name('password')->containerHtmlAttributes(['required']) }}
         {{ inputPassword()->name('password_confirmation')->containerHtmlAttributes(['required']) }}
         {{ submitValidate()->label(__('Save new password'))->componentClasses(['btn', 'btn-block', 'btn-primary']) }}
         {{ buttonBack()->route('login')->containerClasses(['mt-3']) }}

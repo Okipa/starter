@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Auth\WelcomeController;
+use App\Http\Controllers\Admin\WelcomeController;
 use Spatie\WelcomeNotification\WelcomesNewUsers;
 
 Route::get(

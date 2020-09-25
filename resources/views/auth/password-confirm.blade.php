@@ -21,11 +21,13 @@
         {{ inputPassword()->name('password')->containerHtmlAttributes(['required']) }}
         {{ submitValidate()->label(__('Confirm password'))
             ->componentClasses(['btn', 'btn-block', 'btn-primary']) }}
-        <div class="form-group d-block mt-3">
-            <a href="{{ route('password.request') }}">
-                @lang('Forgotten password')
-            </a>
-        </div>
+        @if(Laravel\Fortify\Features::enabled(Laravel\Fortify\Features::resetPasswords()))
+            <div class="form-group d-block mt-3">
+                <a href="{{ route('password.request') }}">
+                    @lang('Forgotten password')
+                </a>
+            </div>
+        @endif
         {{ buttonCancel() }}
     </form>
 @endsection

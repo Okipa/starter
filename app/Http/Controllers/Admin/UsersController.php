@@ -87,7 +87,7 @@ class UsersController extends Controller
         (new UsersService)->saveAvatarFromRequest($request, $user);
 
         return back()->with('toast_success', $user->id === Auth::id()
-            ? __('notifications.name.updated', ['name' => __('My profile')])
+            ? __('notifications.name.updated', ['name' => __('Profile information')])
             : __('notifications.orphan.updated', [
                 'entity' => __('Users'),
                 'name' => $user->full_name,
@@ -113,8 +113,8 @@ class UsersController extends Controller
     public function profile(): View
     {
         $user = auth()->user();
-        SEOTools::setTitle(__('My profile'));
+        SEOTools::setTitle(__('Profile information'));
 
-        return view('templates.admin.users.edit', compact('user'));
+        return view('templates.admin.users.profile', compact('user'));
     }
 }

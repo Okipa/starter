@@ -9,9 +9,11 @@ return [
     'destroy' => 'suppression',
     'login' => 'connexion',
     'logout' => 'deconnexion',
-    'password' => 'mot-de-passe',
-    'email' => 'email',
-    'reset' => 'reinitialisation',
+    'forgot-password' => 'oubli-mot-de-passe',
+    'reset-password' => 'reinitialisation-mot-de-passe',
+    'confirm-password' => 'confirmation-mot-de-passe',
+    'profile-information' => 'informations-profil',
+    'welcome' => 'bienvenue',
     'confirm' => 'confirmation',
     'verify' => 'verification',
     'register' => 'inscription',
@@ -34,8 +36,6 @@ return [
     'users' => 'utilisateurs',
     'user' => 'utilisateur',
     'parameters' => 'parametres',
-    'profile' => 'profil',
-    'welcome' => 'bienvenue',
     "send" => "envoi",
 
 ];

@@ -17,22 +17,12 @@
     <form method="POST" class="w-100">
         @csrf
         @include('components.common.form.notice')
-        {{ inputText()->name('first_name')
-            ->prepend('<i class="fas fa-user"></i>')
-            ->containerHtmlAttributes(['required']) }}
-        {{ inputText()->name('last_name')
-            ->prepend('<i class="fas fa-user"></i>')
-            ->containerHtmlAttributes(['required']) }}
-        {{ inputEmail()->name('email')
-            ->containerHtmlAttributes(['required']) }}
-        {{ inputPassword()->name('password')
-            ->caption(__('passwords.minLength', ['count' => config('security.password.constraint.min')]) . '<br/>'
-                . __('passwords.recommendation'))
-            ->containerHtmlAttributes(['required']) }}
-        {{ inputPassword()->name('password_confirmation')
-            ->containerHtmlAttributes(['required']) }}
-        {{ submitValidate()->label(__('Create account'))
-            ->componentClasses(['btn', 'btn-block', 'btn-primary']) }}
+        {{ inputText()->name('first_name')->prepend('<i class="fas fa-user"></i>')->containerHtmlAttributes(['required']) }}
+        {{ inputText()->name('last_name')->prepend('<i class="fas fa-user"></i>')->containerHtmlAttributes(['required']) }}
+        {{ inputEmail()->name('email')->containerHtmlAttributes(['required']) }}
+        {{ inputPassword()->name('password')->containerHtmlAttributes(['required']) }}
+        {{ inputPassword()->name('password_confirmation')->containerHtmlAttributes(['required']) }}
+        {{ submitValidate()->label(__('Create account'))->componentClasses(['btn', 'btn-block', 'btn-primary']) }}
         {{ buttonCancel()->route('login')->containerClasses(['mt-3']) }}
     </form>
 @endsection

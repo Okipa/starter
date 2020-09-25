@@ -11,13 +11,15 @@
             </span>
         </a>
         <div class="dropdown-menu dropdown-menu-right">
-            <a href="{{ route('user.profile.edit') }}"
-               class="dropdown-item {{ request()->route()->getName() === 'user.profile' ? 'active' : null }}"
-               title="@lang('My profile')">
-                <i class="fas fa-user-circle fa-fw"></i>
-                @lang('My profile')
-            </a>
-            <div class="dropdown-divider"></div>
+            @if(Laravel\Fortify\Features::enabled(Laravel\Fortify\Features::updateProfileInformation()))
+                <a href="{{ route('profile.information') }}"
+                   class="dropdown-item {{ request()->route()->getName() === 'profile.information' ? 'active' : null }}"
+                   title="@lang('Profile information')">
+                    <i class="fas fa-user-circle fa-fw"></i>
+                    @lang('Profile information')
+                </a>
+                <div class="dropdown-divider"></div>
+            @endif
             <form id="logout-form" class="p-0" action="{{ route('logout') }}" method="POST">
                 @csrf()
                 <button type="submit"
