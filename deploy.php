@@ -13,7 +13,7 @@ require 'recipe/laravel.php';
 
 $servers = [
     'preprod' => [
-        'host' => '<project-preprod-host>', // todo: to customize
+        'host' => '<project-preprod-host>', // Todo: to customize.
         'branch' => 'develop',
         'deploy_path' => '/var/www/preprod/web/site',
         'user' => 'preprod',
@@ -22,7 +22,7 @@ $servers = [
         'private_identity' => '~/.ssh/id_rsa',
     ],
     'production' => [
-        'host' => '<project-production-host>', // todo: to customize
+        'host' => '<project-production-host>', // Todo: to customize.
         'branch' => 'master',
         'deploy_path' => '/var/www/prod/web/site',
         'user' => 'prod',
@@ -37,7 +37,7 @@ $servers = [
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 set('bin/php', '/usr/bin/php7.4');
-set('repository', '<project-repository>'); // todo: to customize
+set('repository', '<project-repository>'); // Todo: to customize.
 set('keep_releases', 3);
 set('default_stage', 'preprod');
 set('allow_anonymous_stats', false);

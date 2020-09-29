@@ -17,7 +17,7 @@ class SettingsSeeder extends Seeder
     public function run(): void
     {
         $this->faker = Factory::create(config('app.faker_locale'));
-        // todo: to customize
+        // Todo: to customize.
         $settings = Settings::create([
             'email' => $this->faker->unique()->safeEmail,
             'phone_number' => $this->faker->phoneNumber,

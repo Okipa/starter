@@ -51,7 +51,7 @@ class UsersController extends Controller
             $request->validated(),
             ['password' => Hash::make($request->password ?: Str::random(8))]
         ));
-        (new UsersService)->saveAvatarFromRequest($request, $user);
+        (new UsersService)->saveProfilePictureFromRequest($request, $user);
         $additionalMessage = '';
         if (! $request->password) {
             $user->sendWelcomeNotification(now()->addMinutes(120));
@@ -84,10 +84,10 @@ class UsersController extends Controller
         $user->update($request->validated()['new_password']
             ? array_merge($request->validated(), ['password' => Hash::make($request->validated()['new_password'])])
             : Arr::except($request->validated(), 'password'));
-        (new UsersService)->saveAvatarFromRequest($request, $user);
+        (new UsersService)->saveProfilePictureFromRequest($request, $user);
 
         return back()->with('toast_success', $user->id === Auth::id()
-            ? __('notifications.name.updated', ['name' => __('Profile information')])
+            ? __('notifications.name.updated', ['name' => __('Profile')])
             : __('notifications.orphan.updated', [
                 'entity' => __('Users'),
                 'name' => $user->full_name,
@@ -108,13 +108,5 @@ class UsersController extends Controller
             'entity' => __('Users'),
             'name' => $user->full_name,
         ]));
-    }
-
-    public function profile(): View
-    {
-        $user = auth()->user();
-        SEOTools::setTitle(__('Profile information'));
-
-        return view('templates.admin.users.profile', compact('user'));
     }
 }

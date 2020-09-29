@@ -14,7 +14,7 @@
         <i class="fas fa-hand-spock fa-fw"></i>
         @lang('Welcome')
     </h1>
-    <form method="POST" class="w-100">
+    <form class="w-100" method="POST">
         @csrf
         <input type="hidden" name="email" value="{{ $user->email }}"/>
         @include('components.common.form.notice')

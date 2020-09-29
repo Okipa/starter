@@ -9,10 +9,8 @@ class AdminController extends Controller
 {
     public function index(): RedirectResponse
     {
-        // keep alert message with the redirection
-        if (session()->has('alert.config')) {
-            session()->flash('alert.config', session()->pull('alert.config'));
-        }
+        // Keep alert message when redirected.
+        session()->keep('alert.config');
 
         return redirect()->route('dashboard.index');
     }

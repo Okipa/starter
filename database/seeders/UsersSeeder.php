@@ -11,7 +11,7 @@ class UsersSeeder extends Seeder
 {
     public function run(): void
     {
-        // todo: to customize
+        // Todo: to customize.
         User::factory()->create([
             'first_name' => 'Admin',
             'last_name' => 'STARTER',

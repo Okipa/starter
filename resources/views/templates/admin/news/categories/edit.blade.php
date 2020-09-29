@@ -23,7 +23,7 @@
                 </h2>
             </div>
             <div class="card-body">
-                <h3>@lang('Identity')</h3>
+                <h3 class="card-title">@lang('Identity')</h3>
                 {{ inputText()->name('name')
                     ->locales(supportedLocaleKeys())
                     ->model($category)

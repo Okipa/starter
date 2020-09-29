@@ -17,7 +17,7 @@ return [
         'production' => [
             'sudo' => true,
             'processes' => [
-                // todo: to customize
+                // Todo: to customize.
                 // 'laravel-horizon-starter-production:*',
 
             ],
@@ -25,7 +25,7 @@ return [
         'preprod' => [
             'sudo' => true,
             'processes' => [
-                // todo: to customize
+                // Todo: to customize.
                 // 'laravel-horizon-starter-preprod:*',
             ],
         ],
@@ -66,7 +66,7 @@ return [
     /*
      * The channels to which the notification will be sent.
      */
-    // todo: to customize
+    // Todo: to customize.
     'channels' => [
         'mail',
         // 'slack', // Requires laravel/slack-notification-channel package
@@ -77,13 +77,13 @@ return [
         'to' => env('MONITORING_EMAIL_NOTIFICATIONS'),
     ],
 
-    // todo: to customize
+    // Todo: to customize.
     'slack' => [
         'webhookUrl' => 'https://your-slack-webhook.slack.com',
     ],
 
     // Rocket chat webhook example
-    // todo: to customize
+    // Todo: to customize.
     'webhook' => [
         'url' => 'https://rocket.chat/hooks/1234/5678',
     ],

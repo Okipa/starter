@@ -7,7 +7,7 @@
            data-toggle="dropdown"
            aria-haspopup="true"
            aria-expanded="false">
-            <i class="fas fa-language fa-fw"></i>
+            <i class="fas fa-language fa-fw{{ ! empty($dropdownLabelIconClasses) ? ' ' . implode(' ', $dropdownLabelIconClasses) : '' }}"></i>
             {{ strtoupper(app()->getLocale()) }}
         </a>
         <div class="dropdown-menu{{ ! empty($dropdownMenuClasses) ? ' ' . implode(' ', $dropdownMenuClasses) : '' }}"

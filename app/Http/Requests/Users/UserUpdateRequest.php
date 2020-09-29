@@ -2,18 +2,23 @@
 
 namespace App\Http\Requests\Users;
 
+use App\Actions\Fortify\PasswordValidationRules;
 use App\Models\Users\User;
+use App\Rules\PhoneInternational;
 use Illuminate\Foundation\Http\FormRequest;
 
 class UserUpdateRequest extends FormRequest
 {
+    use PasswordValidationRules;
+
     public function rules(): array
     {
         return [
             'profile_picture' => (new User)->getMediaValidationRules('profile_pictures'),
-            'remove_avatar' => ['required', 'boolean'],
+            'remove_profile_picture' => ['required', 'boolean'],
             'first_name' => ['required', 'string', 'max:255'],
             'last_name' => ['required', 'string', 'max:255'],
+            'phone_number' => ['nullable', 'string', 'max:255', new PhoneInternational],
             'email' => [
                 'required',
                 'string',
@@ -21,12 +26,12 @@ class UserUpdateRequest extends FormRequest
                 'max:255',
                 'unique:users,email,' . $this->user->id,
             ],
-            'new_password' => ['nullable', 'string', 'min:' . config('security.password.constraint.min'), 'confirmed'],
+            'new_password' => array_merge(['nullable'], $this->passwordRules()),
         ];
     }
 
     protected function prepareForValidation(): void
     {
-        $this->merge(['remove_avatar' => (bool) $this->remove_avatar]);
+        $this->merge(['remove_profile_picture' => (bool) $this->remove_profile_picture]);
     }
 }

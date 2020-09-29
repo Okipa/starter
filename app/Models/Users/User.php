@@ -10,6 +10,7 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Laravel\Fortify\TwoFactorAuthenticatable;
 use Okipa\MediaLibraryExt\ExtendsMediaAbilities;
 use Spatie\Image\Manipulations;
 use Spatie\MediaLibrary\HasMedia;
@@ -21,6 +22,7 @@ class User extends Authenticatable implements HasMedia, MustVerifyEmail
 {
     use HasFactory;
     use Notifiable;
+    use TwoFactorAuthenticatable;
     use ReceivesWelcomeNotification;
     use InteractsWithMedia;
     use ExtendsMediaAbilities;
@@ -29,7 +31,7 @@ class User extends Authenticatable implements HasMedia, MustVerifyEmail
     protected $fillable = ['first_name', 'last_name', 'email', 'phone_number', 'password'];
 
     /** @var array $hidden */
-    protected $hidden = ['password', 'remember_token'];
+    protected $hidden = ['password', 'remember_token', 'two_factor_recovery_codes', 'two_factor_secret'];
 
     /** @SuppressWarnings(PHPMD.UnusedFormalParameter) */
     public function registerMediaCollections(): void
@@ -38,6 +40,10 @@ class User extends Authenticatable implements HasMedia, MustVerifyEmail
             ->acceptsMimeTypes(['image/jpeg', 'image/png'])
             ->singleFile()
             ->registerMediaConversions(function (Media $media = null) {
+                $this->addMediaConversion('top-nav')
+                    ->fit(Manipulations::FIT_CROP, 20, 20)
+                    ->keepOriginalImageFormat()
+                    ->nonQueued();
                 $this->addMediaConversion('card')
                     ->fit(Manipulations::FIT_CROP, 250, 250)
                     ->keepOriginalImageFormat()

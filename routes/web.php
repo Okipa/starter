@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 // localized ***********************************************************************************************************
 Route::localized(function () {
 
+    // Todo: remove this block if your app is not multilingual.
     // fortify
     Route::group(['middleware' => config('fortify.middleware', ['web'])], static function () {
         require('web/fortify/login.php');
@@ -30,6 +31,7 @@ Route::localized(function () {
 
         // password reconfirm protection
         Route::middleware(['password.confirm'])->group(function () {
+            require('web/admin/profile.php');
             require('web/admin/users.php');
             require('web/admin/settings.php');
         });

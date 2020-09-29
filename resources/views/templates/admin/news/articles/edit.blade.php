@@ -30,7 +30,7 @@
                 @endif
             </div>
             <div class="card-body">
-                <h3>@lang('Media')</h3>
+                <h3 class="card-title">@lang('Media')</h3>
                 @php($image = optional($article)->getFirstMedia('illustrations'))
                 {{ inputFile()->name('illustration')
                     ->value(optional($image)->file_name)
@@ -38,7 +38,7 @@
                     ->showRemoveCheckbox(false)
                     ->containerHtmlAttributes(['required'])
                     ->caption((new \App\Models\News\NewsArticle)->getMediaCaption('illustrations')) }}
-                <h3>@lang('Identity')</h3>
+                <h3 class="card-title">@lang('Identity')</h3>
                 {{ inputText()->name('title')
                     ->locales(supportedLocaleKeys())
                     ->model($article)
@@ -49,7 +49,7 @@
                     ->prepend(fn(string $locale) => route('news.article.show', '', false, $locale) . '/')
                     ->componentHtmlAttributes(['data-kebabcase', 'data-autofill-from' => '#text-title'])
                     ->containerHtmlAttributes(['required']) }}
-                <h3>@lang('Information')</h3>
+                <h3 class="card-title">@lang('Information')</h3>
                 {{ select()->name('category_ids')
                     ->model($article)
                     ->prepend('<i class="fas fa-tags"></i>')
@@ -67,7 +67,7 @@
                     ->model($article)
                     ->prepend(null)
                     ->componentClasses(['editor']) }}
-                <h3>@lang('Publication')</h3>
+                <h3 class="card-title">@lang('Publication')</h3>
                 {{ inputText()->name('published_at')
                     ->value(($article ? $article->published_at : now())->format('d/m/Y H:i'))
                     ->prepend('<i class="fas fa-calendar-alt"></i>')

@@ -16,40 +16,51 @@
         @if($file)
             @method('PUT')
         @endif()
-        @include('components.common.form.notice')
-        <div class="card">
-            <div class="card-header">
-                <h2 class="m-0">
-                    @lang('Data')
-                </h2>
-            </div>
-            <div class="card-body">
-                <h3>@lang('Media')</h3>
-                {{ inputFile()->name('media')
-                    ->value(optional(optional($file)->getFirstMedia('media'))->file_name)
-                    ->uploadedFile(fn() => trim(view('components.admin.library-media.thumb', ['file' => $file])))
-                    ->showRemoveCheckbox(false)
-                    ->containerHtmlAttributes(['required'])
-                    ->caption((new App\Models\LibraryMedia\LibraryMediaFile)->getMediaCaption('media')) }}
-                <h3>@lang('File')</h3>
-                {{ inputText()->name('name')
-                    ->locales(supportedLocaleKeys())
-                    ->model($file)
-                    ->containerHtmlAttributes(['required']) }}
-                {{ select()->name('category_id')
-                    ->model($file)
-                    ->options((new App\Models\LibraryMedia\LibraryMediaCategory)->orderBy('name')->get()->map(fn(App\Models\LibraryMedia\LibraryMediaCategory $category) => ['id' => $category->id, 'name' => $category->name]), 'id', 'name')
-                    ->componentClasses(['selector'])
-                    ->containerHtmlAttributes(['required']) }}
-                @if($file)
-                    <h3>@lang('Clipboard copy')</h3>
-                    @include('components.admin.library-media.clipboard-copy.buttons')
-                @endif
-                <div class="d-flex pt-4">
-                    {{ buttonCancel()->route('libraryMedia.files.index')->containerClasses(['mr-2']) }}
-                    @if($file){{ submitUpdate() }}@else{{ submitCreate() }}@endif
+        <div class="d-flex">
+            {{ buttonBack()->route('libraryMedia.files.index')->containerClasses(['mr-3']) }}
+            @if($file){{ submitUpdate() }}@else{{ submitCreate() }}@endif
+        </div>
+        <p>
+            @include('components.common.form.notice')
+        </p>
+        <div class="card-columns">
+            <div class="card">
+                <div class="card-header">
+                    <h2 class="m-0">
+                        @lang('File')
+                    </h2>
+                </div>
+                <div class="card-body">
+                    {{ inputFile()->name('media')
+                        ->value(optional(optional($file)->getFirstMedia('media'))->file_name)
+                        ->uploadedFile(fn() => trim(view('components.admin.library-media.thumb', ['file' => $file])))
+                        ->showRemoveCheckbox(false)
+                        ->containerHtmlAttributes(['required'])
+                        ->caption((new App\Models\LibraryMedia\LibraryMediaFile)->getMediaCaption('media')) }}
+                    {{ inputText()->name('name')
+                        ->locales(supportedLocaleKeys())
+                        ->model($file)
+                        ->containerHtmlAttributes(['required']) }}
+                    {{ select()->name('category_id')
+                        ->model($file)
+                        ->options((new App\Models\LibraryMedia\LibraryMediaCategory)->orderBy('name')->get()->map(fn(App\Models\LibraryMedia\LibraryMediaCategory $category) => ['id' => $category->id, 'name' => $category->name]), 'id', 'name')
+                        ->componentClasses(['selector'])
+                        ->containerHtmlAttributes(['required']) }}
                 </div>
             </div>
+            @if($file)
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="m-0">
+                            @lang('Clipboard copy')
+                        </h2>
+                    </div>
+                    <div class="card-body">
+                        <p>@lang('Click on buttons below to copy the related content to your clipboard.')</p>
+                        @include('components.admin.library-media.clipboard-copy.buttons')
+                    </div>
+                </div>
+            @endif
         </div>
     </form>
 @endsection

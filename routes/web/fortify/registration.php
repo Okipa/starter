@@ -9,5 +9,5 @@ if (Features::enabled(Features::registration())) {
         ->name('register');
     Route::post(Lang::uri('/register'), [RegisteredUserController::class, 'store'])
         ->middleware(['guest'])
-        ->name('register.post');
+        ->name('register.store');
 }

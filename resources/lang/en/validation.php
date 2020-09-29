@@ -152,9 +152,10 @@ return [
         'id' => 'ID',
         'email' => 'Email',
         'password' => 'Password',
-        'new_password' => 'New password',
         'password_confirmation' => 'Password confirmation',
+        'new_password' => 'New password',
         'new_password_confirmation' => 'New password confirmation',
+        'current_password' => 'Current password',
         'remember' => 'Remember me',
         'first_name' => 'First name',
         'last_name' => 'Last name',
@@ -190,6 +191,8 @@ return [
         'google_tag_manager_id' => 'Google tag manager id',
         'brickable_type' => 'Brickable type',
         'nav_title' => 'Navigation title',
+        'code' => 'Code',
+        'recovery_code' => 'Recovery code',
     ],
 
 ];

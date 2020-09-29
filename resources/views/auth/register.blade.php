@@ -14,15 +14,15 @@
         <i class="fas fa-user-plus fa-fw"></i>
         @lang('Registration area')
     </h1>
-    <form method="POST" class="w-100">
+    @include('components.common.form.notice')
+    <form class="w-100" method="POST">
         @csrf
-        @include('components.common.form.notice')
         {{ inputText()->name('first_name')->prepend('<i class="fas fa-user"></i>')->containerHtmlAttributes(['required']) }}
         {{ inputText()->name('last_name')->prepend('<i class="fas fa-user"></i>')->containerHtmlAttributes(['required']) }}
         {{ inputEmail()->name('email')->containerHtmlAttributes(['required']) }}
         {{ inputPassword()->name('password')->containerHtmlAttributes(['required']) }}
         {{ inputPassword()->name('password_confirmation')->containerHtmlAttributes(['required']) }}
-        {{ submitValidate()->label(__('Create account'))->componentClasses(['btn', 'btn-block', 'btn-primary']) }}
-        {{ buttonCancel()->route('login')->containerClasses(['mt-3']) }}
+        {{ submitValidate()->label(__('Create account'))->componentClasses(['btn-block', 'btn-primary', 'form-group']) }}
+        {{ buttonCancel()->route('login') }}
     </form>
 @endsection

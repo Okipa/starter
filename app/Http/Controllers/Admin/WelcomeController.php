@@ -40,6 +40,6 @@ class WelcomeController extends \Spatie\WelcomeNotification\WelcomeController
 
     protected function rules(): array
     {
-        return ['password' => $this->passwordRules()];
+        return ['password' => array_merge(['required'], $this->passwordRules())];
     }
 }

@@ -1,4 +1,4 @@
-<h3>@lang('SEO')</h3>
+<h3 class="card-title">@lang('SEO')</h3>
 @php($metaImage = optional($model)->getFirstMedia('seo'))
 {{ inputFile()->name('meta_image')
     ->uploadedFile(fn() => view('components.admin.media.thumb', ['image' => $metaImage]))

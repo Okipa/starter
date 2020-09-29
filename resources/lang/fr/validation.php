@@ -152,9 +152,10 @@ return [
         'id' => 'ID',
         'email' => 'E-mail',
         'password' => 'Mot de passe',
-        'new_password' => 'Nouveau mot de passe',
         'password_confirmation' => 'Confirmation mot de passe',
+        'new_password' => 'Nouveau mot de passe',
         'new_password_confirmation' => 'Confirmation nouveau mot de passe',
+        'current_password' => 'Mot de passe actuel',
         'remember' => 'Se souvenir de moi',
         'first_name' => 'Prénom',
         'last_name' => 'NOM',
@@ -199,6 +200,8 @@ return [
         'label' => 'Label',
         'caption' => 'Légende',
         'full_width' => 'Pleine largeur',
+        'code' => 'Code',
+        'recovery_code' => 'Code de récupération',
     ],
 
 ];

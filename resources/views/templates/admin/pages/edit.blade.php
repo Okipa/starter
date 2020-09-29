@@ -30,7 +30,7 @@
                 @endif
             </div>
             <div class="card-body">
-                <h3>@lang('Navigation')</h3>
+                <h3 class="card-title">@lang('Navigation')</h3>
                 {{ inputText()->name('nav_title')
                     ->locales(supportedLocaleKeys())
                     ->model($page)
@@ -48,7 +48,7 @@
                     ->prepend(fn(string $locale) => route('page.show', '', false, $locale) . '/')
                     ->componentHtmlAttributes(['data-kebabcase', 'data-autofill-from' => '#text-nav-title'])
                     ->containerHtmlAttributes(['required']) }}
-                <h3>@lang('Publication')</h3>
+                <h3 class="card-title">@lang('Publication')</h3>
                 {{ inputToggle()->name('active')->model($page) }}
                 @include('components.admin.seo.meta', ['model' => $page])
                 <div class="d-flex pt-4">

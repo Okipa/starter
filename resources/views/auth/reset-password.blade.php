@@ -14,14 +14,14 @@
         <i class="fas fa-sync fa-fw"></i>
         @lang('Define new password')
     </h1>
+    @include('components.common.form.notice')
     <form method="POST" class="w-100" action="{{ route('password.update') }}">
         @csrf
         <input type="hidden" name="token" value="{{ $request->route('token') }}">
-        @include('components.common.form.notice')
         {{ inputEmail()->name('email')->componentHtmlAttributes(['autofocus'])->containerHtmlAttributes(['required']) }}
         {{ inputPassword()->name('password')->containerHtmlAttributes(['required']) }}
         {{ inputPassword()->name('password_confirmation')->containerHtmlAttributes(['required']) }}
-        {{ submitValidate()->label(__('Save new password'))->componentClasses(['btn', 'btn-block', 'btn-primary']) }}
-        {{ buttonBack()->route('login')->containerClasses(['mt-3']) }}
+        {{ submitValidate()->label(__('Save new password'))->componentClasses(['btn-block', 'btn-primary', 'form-group']) }}
+        {{ buttonBack()->route('login') }}
     </form>
 @endsection

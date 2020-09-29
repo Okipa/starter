@@ -8,6 +8,6 @@ Route::get(Lang::uri('/login'), [AuthenticatedSessionController::class, 'create'
 $limiter = config('fortify.limiters.login');
 Route::post(Lang::uri('/login'), [AuthenticatedSessionController::class, 'store'])
     ->middleware(array_filter(['guest', $limiter ? 'throttle:' . $limiter : null]))
-    ->name('login.post');
+    ->name('login.store');
 Route::post(Lang::uri('/logout'), [AuthenticatedSessionController::class, 'destroy'])
     ->name('logout');

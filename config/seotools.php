@@ -3,7 +3,7 @@
 /*** @see https://github.com/artesaos/seotools */
 
 $defaultTitle = env('APP_NAME', 'Laravel');
-$defaultDescription = 'App description.'; // todo: to customize
+$defaultDescription = 'App description.'; // Todo: to customize.
 // todo: also replace the default `resources/favicon.ico` by your app favicon
 
 return [
@@ -63,7 +63,7 @@ return [
          */
         'defaults' => [
             'card' => 'summary', // other possible values : summary_large_image / app / player
-            'site' => '@acid_solutions', // todo: to customize
+            'site' => '@acid_solutions', // Todo: to customize.
         ],
     ],
 

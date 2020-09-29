@@ -3,7 +3,7 @@
         <a class="nav-link new-window"
            href="/telescope"
            title="@lang('Debug assistant.')">
-            <i class="fas fa-binoculars fa-fw"></i>
+            <i class="fas fa-binoculars fa-fw text-success"></i>
             @lang('Telescope')
         </a>
     </li>

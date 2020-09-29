@@ -18,6 +18,9 @@ class FortifyServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
+        // Todo: remove this block if your app is not multilingual.
+        // Disabling default routes in order to handle multilingual routes in /routes/web/fortify/ directory.
+        // You can safely remove these routes and the line below if your app is not multilingual.
         Fortify::ignoreRoutes();
     }
 
@@ -28,14 +31,15 @@ class FortifyServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        // Views
+        // Customizing views.
         Fortify::loginView(fn() => view('auth.login'));
+        Fortify::twoFactorChallengeView(fn() => view('auth.two-factor-challenge'));
         Fortify::registerView(fn() => view('auth.register'));
         Fortify::requestPasswordResetLinkView(fn() => view('auth.forgot-password'));
         Fortify::resetPasswordView(fn($request) => view('auth.reset-password', compact('request')));
         Fortify::verifyEmailView(fn() => view('auth.verify-email'));
         Fortify::confirmPasswordView(fn() => view('auth.password-confirm'));
-        // Actions
+        // Customizing actions.
         Fortify::createUsersUsing(CreateNewUser::class);
         Fortify::updateUserProfileInformationUsing(UpdateUserProfileInformation::class);
         Fortify::updateUserPasswordsUsing(UpdateUserPassword::class);
