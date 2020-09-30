@@ -36,8 +36,8 @@
                         ->value(optional($profilePicture)->file_name)
                         ->uploadedFile(fn() => view('components.admin.media.thumb', ['image' => $profilePicture]))
                         ->caption((new \App\Models\Users\User)->getMediaCaption('profile_pictures')) }}
-                    {{ inputText()->name('last_name')->model($user)->containerHtmlAttributes(['required']) }}
-                    {{ inputText()->name('first_name')->model($user)->containerHtmlAttributes(['required']) }}
+                    {{ inputText()->name('last_name')->model($user)->componentHtmlAttributes(['required']) }}
+                    {{ inputText()->name('first_name')->model($user)->componentHtmlAttributes(['required']) }}
                 </div>
             </div>
             <div class="card">
@@ -48,7 +48,7 @@
                 </div>
                 <div class="card-body">
                     {{ inputTel()->name('phone_number')->model($user) }}
-                    {{ inputEmail()->name('email')->model($user)->containerHtmlAttributes(['required']) }}
+                    {{ inputEmail()->name('email')->model($user)->componentHtmlAttributes(['required']) }}
                 </div>
             </div>
             <div class="card">

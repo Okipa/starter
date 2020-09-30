@@ -27,7 +27,7 @@
                 {{ inputText()->name('name')
                     ->locales(supportedLocaleKeys())
                     ->model($category)
-                    ->containerHtmlAttributes(['required']) }}
+                    ->componentHtmlAttributes(['required']) }}
                 <div class="d-flex pt-4">
                     {{ buttonCancel()->route('news.categories.index')->containerClasses(['mr-2']) }}
                     @if($category){{ submitUpdate() }}@else{{ submitCreate() }}@endif

@@ -36,19 +36,18 @@
                     ->value(optional($image)->file_name)
                     ->uploadedFile(fn() => view('components.admin.media.thumb', ['image' => $image]))
                     ->showRemoveCheckbox(false)
-                    ->containerHtmlAttributes(['required'])
+                    ->componentHtmlAttributes(['required'])
                     ->caption((new \App\Models\News\NewsArticle)->getMediaCaption('illustrations')) }}
                 <h3 class="card-title">@lang('Identity')</h3>
                 {{ inputText()->name('title')
                     ->locales(supportedLocaleKeys())
                     ->model($article)
-                    ->containerHtmlAttributes(['required']) }}
+                    ->componentHtmlAttributes(['required']) }}
                 {{ inputText()->name('slug')
                     ->locales(supportedLocaleKeys())
                     ->model($article)
                     ->prepend(fn(string $locale) => route('news.article.show', '', false, $locale) . '/')
-                    ->componentHtmlAttributes(['data-kebabcase', 'data-autofill-from' => '#text-title'])
-                    ->containerHtmlAttributes(['required']) }}
+                    ->componentHtmlAttributes(['required', 'data-kebabcase', 'data-autofill-from' => '#text-title']) }}
                 <h3 class="card-title">@lang('Information')</h3>
                 {{ select()->name('category_ids')
                     ->model($article)
@@ -61,7 +60,7 @@
                     })->sortBy('name'), 'id', 'name')
                     ->multiple()
                     ->componentClasses(['selector'])
-                    ->containerHtmlAttributes(['required']) }}
+                    ->componentHtmlAttributes(['required']) }}
                 {{ textarea()->name('description')
                     ->locales(supportedLocaleKeys())
                     ->model($article)
@@ -72,7 +71,7 @@
                     ->value(($article ? $article->published_at : now())->format('d/m/Y H:i'))
                     ->prepend('<i class="fas fa-calendar-alt"></i>')
                     ->componentClasses(['datetime-picker'])
-                    ->containerHtmlAttributes(['required']) }}
+                    ->componentHtmlAttributes(['required']) }}
                 {{ inputToggle()->name('active')->model($article) }}
                 @include('components.admin.seo.meta', ['model' => $article])
                 <div class="d-flex pt-4">

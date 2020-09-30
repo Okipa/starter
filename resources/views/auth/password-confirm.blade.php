@@ -18,7 +18,8 @@
         @csrf
         @include('components.common.form.notice')
         <p>@lang('For security reasons, please confirm your password. You will not be asked for several hours.')</p>
-        {{ inputPassword()->name('password')->containerHtmlAttributes(['required']) }}
+        {{ inputPassword()->name('password')
+            ->componentHtmlAttributes(['required', 'autocomplete' => 'current-password']) }}
         {{ submitValidate()->label(__('Confirm password'))->componentClasses(['btn-block', 'btn-primary', 'form-group']) }}
         @if(Laravel\Fortify\Features::enabled(Laravel\Fortify\Features::resetPasswords()))
             <div class="form-group">

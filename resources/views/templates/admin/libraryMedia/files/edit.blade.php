@@ -35,17 +35,17 @@
                         ->value(optional(optional($file)->getFirstMedia('media'))->file_name)
                         ->uploadedFile(fn() => trim(view('components.admin.library-media.thumb', ['file' => $file])))
                         ->showRemoveCheckbox(false)
-                        ->containerHtmlAttributes(['required'])
+                        ->componentHtmlAttributes(['required'])
                         ->caption((new App\Models\LibraryMedia\LibraryMediaFile)->getMediaCaption('media')) }}
                     {{ inputText()->name('name')
                         ->locales(supportedLocaleKeys())
                         ->model($file)
-                        ->containerHtmlAttributes(['required']) }}
+                        ->componentHtmlAttributes(['required']) }}
                     {{ select()->name('category_id')
                         ->model($file)
                         ->options((new App\Models\LibraryMedia\LibraryMediaCategory)->orderBy('name')->get()->map(fn(App\Models\LibraryMedia\LibraryMediaCategory $category) => ['id' => $category->id, 'name' => $category->name]), 'id', 'name')
                         ->componentClasses(['selector'])
-                        ->containerHtmlAttributes(['required']) }}
+                        ->componentHtmlAttributes(['required']) }}
                 </div>
             </div>
             @if($file)

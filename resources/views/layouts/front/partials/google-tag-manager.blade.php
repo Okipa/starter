@@ -1,4 +1,7 @@
 @if($gtmId = settings()->google_tag_manager_id)
+    <link rel="preconnect dns-prefetch" href="https://www.googletagmanager.com" crossorigin>
+    <link rel="preconnect dns-prefetch" href="https://www.google-analytics.com" crossorigin>
+    <link rel="preconnect dns-prefetch" href="https://stats.g.doubleclick.net" crossorigin>
     <script>
         (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
                 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],

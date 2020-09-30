@@ -19,9 +19,11 @@
         <input type="hidden" name="email" value="{{ $user->email }}"/>
         @include('components.common.form.notice')
         <p>@lang('Welcome on :app ! To be able to login to your new account please define a secured password with the fields bellow.', ['app' => config('app.name')])</p>
-        {{ inputPassword()->name('password')->containerHtmlAttributes(['required']) }}
-        {{ inputPassword()->name('password_confirmation')->containerHtmlAttributes(['required']) }}
-        {{ submitValidate()->label(__('Save new password'))->componentClasses(['btn', 'btn-block', 'btn-primary']) }}
-        {{ buttonCancel()->route('home.page.show')->containerClasses(['mt-3']) }}
+        {{ inputPassword()->name('password')
+            ->componentHtmlAttributes(['required', 'autofocus', 'autocomplete' => 'new-password']) }}
+        {{ inputPassword()->name('password_confirmation')
+            ->componentHtmlAttributes(['required', 'autocomplete' => 'new-password']) }}
+        {{ submitValidate()->label(__('Save new password'))->componentClasses(['btn-block', 'btn-primary', 'form-group']) }}
+        {{ buttonCancel()->route('home.page.show') }}
     </form>
 @endsection

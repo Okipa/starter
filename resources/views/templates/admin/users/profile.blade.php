@@ -26,10 +26,18 @@
                         ->value(optional($profilePicture)->file_name)
                         ->uploadedFile(fn() => view('components.admin.media.thumb', ['image' => $profilePicture]))
                         ->caption((new \App\Models\Users\User)->getMediaCaption('profile_pictures')) }}
-                    {{ inputText()->name('last_name')->model($user)->containerHtmlAttributes(['required']) }}
-                    {{ inputText()->name('first_name')->model($user)->containerHtmlAttributes(['required']) }}
-                    {{ inputTel()->name('phone_number')->model($user) }}
-                    {{ inputEmail()->name('email')->model($user)->containerHtmlAttributes(['required']) }}
+                    {{ inputText()->name('last_name')
+                        ->model($user)
+                        ->componentHtmlAttributes(['required', 'autocomplete' => 'family-name']) }}
+                    {{ inputText()->name('first_name')
+                        ->model($user)
+                        ->componentHtmlAttributes(['required', 'autocomplete' => 'given-name']) }}
+                    {{ inputTel()->name('phone_number')
+                        ->model($user)
+                        ->componentHtmlAttributes(['autocomplete' => 'tel']) }}
+                    {{ inputEmail()->name('email')
+                        ->model($user)
+                        ->componentHtmlAttributes(['required', 'autocomplete' => 'email']) }}
                     @if($user){{ submitUpdate() }}@else{{ submitCreate() }}@endif
                 </form>
             </div>
@@ -46,9 +54,12 @@
                     <form method="POST" action="{{ route('password.update') }}">
                         @csrf
                         @method('PUT')
-                        {{ inputPassword()->name('current_password')->containerHtmlAttributes(['required']) }}
-                        {{ inputPassword()->name('new_password')->containerHtmlAttributes(['required']) }}
-                        {{ inputPassword()->name('new_password_confirmation')->containerHtmlAttributes(['required']) }}
+                        {{ inputPassword()->name('current_password')
+                            ->componentHtmlAttributes(['required', 'autocomplete' => 'current-password']) }}
+                        {{ inputPassword()->name('new_password')
+                            ->componentHtmlAttributes(['required', 'autocomplete' => 'new-password']) }}
+                        {{ inputPassword()->name('new_password_confirmation')
+                            ->componentHtmlAttributes(['required', 'autocomplete' => 'new-password']) }}
                         {{ submitUpdate() }}
                     </form>
                 </div>
@@ -133,7 +144,8 @@
                 </p>
                 <form method="POST" action="{{ route('profile.deleteAccount') }}">
                     @csrf
-                    {{ inputPassword()->name('password')->containerHtmlAttributes(['required']) }}
+                    {{ inputPassword()->name('password')
+                        ->componentHtmlAttributes(['required', 'autocomplete' => 'current-password']) }}
                     {{ submit()->prepend('<i class="fas fa-trash fa-fw"></i>')
                         ->label(__('Delete Account'))
                         ->componentClasses(['btn-danger'])

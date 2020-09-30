@@ -14,25 +14,28 @@
                             {{ inputText()->name('first_name')
                                 ->label(false)
                                 ->prepend('<i class="fas fa-user"></i>')
-                                ->containerHtmlAttributes(['required']) }}
+                                ->componentHtmlAttributes(['required', 'autofocus', 'autocomplete' => 'given-name']) }}
                         </div>
                         <div class="col-md-6">
                             {{ inputText()->name('last_name')
                                 ->label(false)
                                 ->prepend('<i class="fas fa-user"></i>')
-                                ->containerHtmlAttributes(['required']) }}
+                                ->componentHtmlAttributes(['required', 'autocomplete' => 'family-name']) }}
                         </div>
                         <div class="col-md-6">
-                            {{ inputEmail()->name('email')->label(false)->containerHtmlAttributes(['required']) }}
+                            {{ inputEmail()->name('email')
+                                ->label(false)
+                                ->componentHtmlAttributes(['required', 'autocomplete' => 'email']) }}
                         </div>
                         <div class="col-md-6">
-                            {{ inputTel()->name('phone_number')->label(false) }}
+                            {{ inputTel()->name('phone_number')
+                                ->label(false)
+                                ->componentHtmlAttributes(['autocomplete' => 'tel']) }}
                         </div>
                         <div class="col-md-12">
                             {{ textarea()->name('message')
                                 ->label(false)
-                                ->componentHtmlAttributes(['rows' => 5])
-                                ->containerHtmlAttributes(['required']) }}
+                                ->componentHtmlAttributes(['required', 'rows' => 5]) }}
                         </div>
                         <div class="col-md-8">
                             @include('components.common.form.notice')

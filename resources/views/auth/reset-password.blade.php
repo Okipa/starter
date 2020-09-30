@@ -18,9 +18,12 @@
     <form method="POST" class="w-100" action="{{ route('password.update') }}">
         @csrf
         <input type="hidden" name="token" value="{{ $request->route('token') }}">
-        {{ inputEmail()->name('email')->componentHtmlAttributes(['autofocus'])->containerHtmlAttributes(['required']) }}
-        {{ inputPassword()->name('password')->containerHtmlAttributes(['required']) }}
-        {{ inputPassword()->name('password_confirmation')->containerHtmlAttributes(['required']) }}
+        {{ inputEmail()->name('email')
+            ->componentHtmlAttributes(['required', 'autofocus', 'autocomplete' => 'username']) }}
+        {{ inputPassword()->name('password')
+            ->componentHtmlAttributes(['required', 'autocomplete' => 'new-password']) }}
+        {{ inputPassword()->name('password_confirmation')
+            ->componentHtmlAttributes(['required', 'autocomplete' => 'new-password']) }}
         {{ submitValidate()->label(__('Save new password'))->componentClasses(['btn-block', 'btn-primary', 'form-group']) }}
         {{ buttonBack()->route('login') }}
     </form>

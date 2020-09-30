@@ -5,10 +5,10 @@
         ->prepend(null)
         ->value(fn($locale) => translatedData($brick, 'data.text_left', $locale))
         ->componentClasses(['editor'])
-        ->containerHtmlAttributes(['required']) }}
+        ->componentHtmlAttributes(['required']) }}
     {{ textarea()->name('text_right')
         ->locales(supportedLocaleKeys())
         ->prepend(null)->value(fn($locale) => translatedData($brick, 'data.text_right', $locale))
         ->componentClasses(['editor'])
-        ->containerHtmlAttributes(['required']) }}
+        ->componentHtmlAttributes(['required']) }}
 @endsection

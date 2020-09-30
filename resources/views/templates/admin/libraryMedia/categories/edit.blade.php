@@ -33,7 +33,7 @@
                     {{ inputText()->name('name')
                         ->locales(supportedLocaleKeys())
                         ->model($category)
-                        ->containerHtmlAttributes(['required']) }}
+                        ->componentHtmlAttributes(['required']) }}
                 </div>
             </div>
         </div>

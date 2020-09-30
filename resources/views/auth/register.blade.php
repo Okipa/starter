@@ -17,11 +17,18 @@
     @include('components.common.form.notice')
     <form class="w-100" method="POST">
         @csrf
-        {{ inputText()->name('first_name')->prepend('<i class="fas fa-user"></i>')->containerHtmlAttributes(['required']) }}
-        {{ inputText()->name('last_name')->prepend('<i class="fas fa-user"></i>')->containerHtmlAttributes(['required']) }}
-        {{ inputEmail()->name('email')->containerHtmlAttributes(['required']) }}
-        {{ inputPassword()->name('password')->containerHtmlAttributes(['required']) }}
-        {{ inputPassword()->name('password_confirmation')->containerHtmlAttributes(['required']) }}
+        {{ inputText()->name('first_name')
+            ->prepend('<i class="fas fa-user"></i>')
+            ->componentHtmlAttributes(['required', 'autofocus', 'autocomplete' => 'given-name']) }}
+        {{ inputText()->name('last_name')
+            ->prepend('<i class="fas fa-user"></i>')
+            ->componentHtmlAttributes(['required', 'autocomplete' => 'family-name']) }}
+        {{ inputEmail()->name('email')
+            ->componentHtmlAttributes(['required', 'autocomplete' => 'email']) }}
+        {{ inputPassword()->name('password')
+            ->componentHtmlAttributes(['required', 'autocomplete' => 'new-password']) }}
+        {{ inputPassword()->name('password_confirmation')
+            ->componentHtmlAttributes(['required', 'autocomplete' => 'new-password']) }}
         {{ submitValidate()->label(__('Create account'))->componentClasses(['btn-block', 'btn-primary', 'form-group']) }}
         {{ buttonCancel()->route('login') }}
     </form>

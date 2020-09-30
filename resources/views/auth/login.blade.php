@@ -22,8 +22,10 @@
     <form class="w-100" method="POST">
         @csrf
         @include('components.common.form.notice')
-        {{ inputEmail()->name('email')->componentHtmlAttributes(['autofocus'])->containerHtmlAttributes(['required']) }}
-        {{ inputPassword()->name('password')->containerHtmlAttributes(['required']) }}
+        {{ inputEmail()->name('email')
+            ->componentHtmlAttributes(['required', 'autofocus', 'autocomplete' => 'email']) }}
+        {{ inputPassword()->name('password')
+            ->componentHtmlAttributes(['required', 'autocomplete' => 'current-password']) }}
         {{ inputToggle()->name('remember') }}
         {{ submitValidate()->label(__('Login'))->componentClasses(['btn-block', 'btn-primary', 'form-group']) }}
         @php

@@ -10,7 +10,7 @@
     ->locales(supportedLocaleKeys())
     ->value(fn($locale) => optional($model)->getMeta('meta_title', null, $locale))
     ->caption(__('Recommended length : around :count characters.', ['count' => 50]))
-    ->containerHtmlAttributes(['required']) }}
+    ->componentHtmlAttributes(['required']) }}
 {{ textarea()->name('meta_description')
     ->locales(supportedLocaleKeys())
     ->value(fn($locale) => optional($model)->getMeta('meta_description', null, $locale))

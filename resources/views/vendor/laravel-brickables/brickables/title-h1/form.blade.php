@@ -3,5 +3,5 @@
     {{ inputText()->name('title')
         ->locales(supportedLocaleKeys())
         ->prepend(null)->value(fn($locale) => translatedData($brick, 'data.title', $locale))
-        ->containerHtmlAttributes(['required']) }}
+        ->componentHtmlAttributes(['required']) }}
 @endsection

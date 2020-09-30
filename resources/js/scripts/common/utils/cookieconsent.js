@@ -1,4 +1,4 @@
-// doc available @ https://cookieconsent.insites.com/documentation/javascript-api
+// Doc available @ https://cookieconsent.insites.com/documentation/javascript-api
 window.cookieconsent.initialise({
     container: document.getElementById('layout'),
     content: {

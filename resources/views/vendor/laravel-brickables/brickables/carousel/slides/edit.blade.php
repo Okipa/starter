@@ -32,8 +32,8 @@
                     ->value(optional($image)->file_name)
                     ->uploadedFile(fn() => view('components.admin.media.thumb', ['image' => $image]))
                     ->showRemoveCheckbox(false)
-                    ->containerHtmlAttributes(['required'])
-                    ->caption((new \App\Models\Brickables\CarouselBrickSlide)->getMediaCaption('images')) }}
+                    ->caption((new App\Models\Brickables\CarouselBrickSlide)->getMediaCaption('images'))
+                    ->componentHtmlAttributes(['required']) }}
                 <h3>@lang('Content')</h3>
                 {{ inputText()->name('label')->model($slide)->locales(supportedLocaleKeys()) }}
                 {{ inputText()->name('caption')->model($slide)->locales(supportedLocaleKeys())->prepend('<i class="fas fa-align-left"></i>') }}

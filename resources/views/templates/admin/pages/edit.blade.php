@@ -34,20 +34,18 @@
                 {{ inputText()->name('nav_title')
                     ->locales(supportedLocaleKeys())
                     ->model($page)
-                    ->containerHtmlAttributes(['required']) }}
+                    ->componentHtmlAttributes(['required']) }}
                 @if(! $page)
                     {{ inputText()->name('unique_key')
                         ->model($page)
                         ->prepend('<i class="fas fa-key fa-fw"></i>')
-                        ->componentHtmlAttributes(['data-snakecase', 'data-autofill-from' => '#text-nav-title'])
-                        ->containerHtmlAttributes(['required'])}}
+                        ->componentHtmlAttributes(['required', 'data-snakecase', 'data-autofill-from' => '#text-nav-title']) }}
                 @endif
                 {{ inputText()->name('slug')
                     ->locales(supportedLocaleKeys())
                     ->model($page)
                     ->prepend(fn(string $locale) => route('page.show', '', false, $locale) . '/')
-                    ->componentHtmlAttributes(['data-kebabcase', 'data-autofill-from' => '#text-nav-title'])
-                    ->containerHtmlAttributes(['required']) }}
+                    ->componentHtmlAttributes(['required', 'data-kebabcase', 'data-autofill-from' => '#text-nav-title']) }}
                 <h3 class="card-title">@lang('Publication')</h3>
                 {{ inputToggle()->name('active')->model($page) }}
                 @include('components.admin.seo.meta', ['model' => $page])

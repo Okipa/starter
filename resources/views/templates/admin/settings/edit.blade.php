@@ -24,8 +24,8 @@
                     {{ inputFile()->name('icon')
                         ->value(optional($logo)->file_name)
                         ->uploadedFile(fn() => view('components.admin.media.thumb', ['image' => $logo]))
-                        ->caption($settings->getMediaCaption('icons'))
-                        ->containerHtmlAttributes(['required']) }}
+                        ->showRemoveCheckbox(false)
+                        ->caption($settings->getMediaCaption('icons')) }}
                 </div>
             </div>
             <div class="card">
@@ -45,11 +45,24 @@
                     </h2>
                 </div>
                 <div class="card-body">
-                    {{ inputEmail()->name('email')->model($settings)->containerHtmlAttributes(['required']) }}
-                    {{ inputTel()->name('phone_number')->model($settings)->containerHtmlAttributes(['required']) }}
-                    {{ inputText()->name('address')->model($settings)->prepend('<i class="fas fa-map-marker"></i>')->containerHtmlAttributes(['required']) }}
-                    {{ inputText()->name('zip_code')->model($settings)->prepend('<i class="fas fa-location-arrow"></i>')->containerHtmlAttributes(['required']) }}
-                    {{ inputText()->name('city')->model($settings)->prepend('<i class="fas fa-thumbtack"></i>')->containerHtmlAttributes(['required']) }}
+                    {{ inputEmail()->name('email')
+                        ->model($settings)
+                        ->componentHtmlAttributes(['required', 'autocomplete' => 'email']) }}
+                    {{ inputTel()->name('phone_number')
+                        ->model($settings)
+                        ->componentHtmlAttributes(['required', 'autocomplete' => 'tel']) }}
+                    {{ inputText()->name('address')
+                        ->model($settings)
+                        ->prepend('<i class="fas fa-map-marker"></i>')
+                        ->componentHtmlAttributes(['required', 'autocomplete' => 'street-address']) }}
+                    {{ inputText()->name('zip_code')
+                        ->model($settings)
+                        ->prepend('<i class="fas fa-location-arrow"></i>')
+                        ->componentHtmlAttributes(['required', 'autocomplete' => 'postal-code']) }}
+                    {{ inputText()->name('city')
+                        ->model($settings)
+                        ->prepend('<i class="fas fa-thumbtack"></i>')
+                        ->componentHtmlAttributes(['required', 'autocomplete' => 'locality']) }}
                 </div>
             </div>
             <div class="card">

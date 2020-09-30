@@ -147,7 +147,7 @@ phpunit:
   stage: test
   image: php:7.4-cli
   services:
-    - mysql:5.7
+    - mysql:8.0
   dependencies:
     - composer
   before_script:

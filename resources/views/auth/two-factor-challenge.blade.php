@@ -32,13 +32,11 @@
         @if(request()->recovery)
             {{ inputText()->prepend('<i class="fas fa-code"></i>')
                 ->name('recovery_code')
-                ->componentHtmlAttributes(['autofocus'])
-                ->containerHtmlAttributes(['required']) }}
+                ->componentHtmlAttributes(['required', 'autofocus', 'autocomplete' => 'one-time-code']) }}
         @else
             {{ inputText()->prepend('<i class="fas fa-code"></i>')
                 ->name('code')
-                ->componentHtmlAttributes(['autofocus'])
-                ->containerHtmlAttributes(['required']) }}
+                ->componentHtmlAttributes(['required', 'autofocus', 'autocomplete' => 'one-time-code']) }}
         @endif
         {{ submit()->prepend('<i class="fas fa-sign-in-alt fa-fw"></i>')
             ->label(__('Login'))
