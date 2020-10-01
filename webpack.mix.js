@@ -26,7 +26,7 @@ mix
     // admin
     .js('resources/js/templates/admin/brickables/carousel/edit.js', 'public/js/templates/admin/brickables/carousel')
     .js('resources/js/templates/admin/library-media/index.js', 'public/js/templates/admin/library-media')
-    .js('resources/js/templates/admin/library-media/edit.js', 'public/js/template/admin/library-media')
+    .js('resources/js/templates/admin/library-media/edit.js', 'public/js/templates/admin/library-media')
     // front
     //
     // brickables

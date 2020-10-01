@@ -22,6 +22,10 @@
 .card-columns {
     column-count: 1;
 
+    @include media-breakpoint-up(lg) {
+        column-count: 2;
+    }
+
     @include media-breakpoint-up(xl) {
         column-count: 3;
     }

@@ -20,7 +20,7 @@ const selectDate = (datePicker, $datePicker) => {
     }
 };
 window.triggerDatePickerElementsDetection = () => {
-    const $datePickers = $('.date-picker');
+    const $datePickers = $('[data-date-picker]');
     if ($datePickers.length) {
         _.each($datePickers, (item) => {
             const $datePicker = $(item);
@@ -47,7 +47,7 @@ const selectDateTime = (dateTimePicker, $dateTimePicker) => {
     }
 };
 window.triggerDateTimePickerElementsDetection = () => {
-    const $dateTimePickers = $('.datetime-picker');
+    const $dateTimePickers = $('[data-datetime-picker]');
     _.each($dateTimePickers, (item) => {
         const $dateTimePicker = $(item);
         const dateTimePicker = $dateTimePicker.datepicker({
@@ -75,7 +75,7 @@ const selectDateRange = (monthRangePicker, $monthRangePicker) => {
     instance.date = filledDates;
 };
 window.triggerMonthRangePickerElementsDetection = () => {
-    const $monthRangePickers = $('.month-range-picker');
+    const $monthRangePickers = $('[data-month-range-picker]');
     if ($monthRangePickers.length) {
         _.each($monthRangePickers, (item) => {
             const $monthRangePicker = $(item);

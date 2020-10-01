@@ -15,22 +15,33 @@
         @if($category)
             @method('PUT')
         @endif()
-        @include('components.common.form.notice')
-        <div class="card">
-            <div class="card-header">
-                <h2 class="m-0">
-                    @lang('Data')
-                </h2>
-            </div>
-            <div class="card-body">
-                <h3 class="card-title">@lang('Identity')</h3>
-                {{ inputText()->name('name')
-                    ->locales(supportedLocaleKeys())
-                    ->model($category)
-                    ->componentHtmlAttributes(['required']) }}
-                <div class="d-flex pt-4">
-                    {{ buttonCancel()->route('news.categories.index')->containerClasses(['mr-2']) }}
-                    @if($category){{ submitUpdate() }}@else{{ submitCreate() }}@endif
+        <div class="d-flex">
+            {{ buttonBack()->route('news.categories.index')->containerClasses(['mr-3']) }}
+            @if($category){{ submitUpdate() }}@else{{ submitCreate() }}@endif
+            @if(optional($category)->active)
+                {{ buttonLink()->route('news.category.show', [$category])
+                    ->prepend('<i class="fas fa-external-link-square-alt fa-fw"></i>')
+                    ->label(__('Display'))
+                    ->componentClasses(['btn-primary'])
+                    ->componentHtmlAttributes(['data-new-window'])
+                    ->containerClasses(['ml-3']) }}
+            @endif
+        </div>
+        <p>
+            @include('components.common.form.notice')
+        </p>
+        <div class="card-columns">
+            <div class="card">
+                <div class="card-header">
+                    <h2 class="m-0">
+                        @lang('Identity')
+                    </h2>
+                </div>
+                <div class="card-body">
+                    {{ inputText()->name('name')
+                        ->locales(supportedLocaleKeys())
+                        ->model($category)
+                        ->componentHtmlAttributes(['required']) }}
                 </div>
             </div>
         </div>

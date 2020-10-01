@@ -10,7 +10,7 @@ disableOptionsWithNoValue = ($select) => {
 };
 
 window.triggerSumoSelectDetection = () => {
-    const selectorElements = $('.selector');
+    const selectorElements = $('select[data-selector]');
     if (selectorElements.length) {
         $.SumoSelect = require('sumoselect');
         _.each(selectorElements, (select) => {

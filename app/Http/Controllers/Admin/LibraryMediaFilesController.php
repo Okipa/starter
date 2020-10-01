@@ -32,7 +32,7 @@ class LibraryMediaFilesController extends Controller
             'entity' => __('Files'),
         ]));
         (new FilesService)->injectJavascriptInView();
-        $js = mix('/js/templates/admin/library-media/index.js');
+        $js = mix('/js/templates/admin/library-media/edit.js');
 
         return view('templates.admin.libraryMedia.files.index', compact('table', 'request', 'js'));
     }

@@ -1,5 +1,5 @@
 window.triggerEditorElementsDetection = () => {
-    const editorElements = $('textarea.editor');
+    const editorElements = $('textarea[data-editor]');
     if (editorElements.length) {
         const EasyMde = require('easymde');
         editorElements.each((key, editor) => {

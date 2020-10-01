@@ -21,7 +21,7 @@
                     ->label(false)
                     ->options((new App\Models\LibraryMedia\LibraryMediaCategory)->get()->map(fn(App\Models\LibraryMedia\LibraryMediaCategory $category) => ['id' => $category->id, 'name' => $category->name])->sortBy('name'), 'id', 'name')
                     ->selected('id', (int) $request->category_id)
-                    ->componentClasses(['selector']) }}
+                    ->componentHtmlAttributes(['data-selector']) }}
                 {{ submitValidate()->prepend('<i class="fas fa-filter"></i>')->label(__('Filter'))->containerClasses(['ml-3']) }}
                 @if($request->has('category_id'))
                     {{ buttonCancel()->route('libraryMedia.files.index')->prepend('<i class="fas fa-undo"></i>')->label(__('Reset'))->containerClasses(['ml-3']) }}

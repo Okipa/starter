@@ -4,8 +4,7 @@
         ->locales(supportedLocaleKeys())
         ->prepend(null)
         ->value(fn($locale) => translatedData($brick, 'data.text_left', $locale))
-        ->componentClasses(['editor'])
-        ->componentHtmlAttributes(['required']) }}
+        ->componentHtmlAttributes(['required', 'data-editor']) }}
     @php($image = optional($brick)->getFirstMedia('images'))
     {{ inputFile()->name('image_right')
         ->value(optional($image)->file_name)

@@ -6,6 +6,7 @@
     {{ inputToggle()->name('full_width')->checked((bool) data_get($brick, 'data.full_width')) }}
 @endsection
 @section('append')
+    <hr>
     <div class="card mt-3">
         <div class="card-header">
             <h2 class="m-0">

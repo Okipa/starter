@@ -8,27 +8,24 @@
     <form method="POST" class="w-100" action="{{ route('news.page.update') }}" enctype="multipart/form-data">
         @csrf
         @method('PUT')
-        @include('components.common.form.notice')
-        <div class="card">
-            <div class="card-header d-flex justify-content-between">
-                <h2 class="m-0">
-                    @lang('Data')
-                </h2>
-                {{ buttonLink()->route('news.page.show')
-                    ->prepend('<i class="fas fa-external-link-square-alt fa-fw"></i>')
-                    ->label(__('Display'))
-                    ->componentClasses(['btn-primary'])
-                    ->componentHtmlAttributes(['data-new-window']) }}
-            </div>
-            <div class="card-body">
-                @include('components.admin.seo.meta', ['model' => $pageContent])
-                <div class="d-flex pt-4">
-                    {{ submitUpdate() }}
-                </div>
-            </div>
+        <div class="d-flex">
+            {{ submitUpdate() }}
+            {{ buttonLink()->route('news.page.show')
+                ->prepend('<i class="fas fa-external-link-square-alt fa-fw"></i>')
+                ->label(__('Display'))
+                ->componentClasses(['btn-success'])
+                ->componentHtmlAttributes(['data-new-window'])
+                ->containerClasses(['ml-3']) }}
+        </div>
+        <p>
+            @include('components.common.form.notice')
+        </p>
+        <div class="card-columns">
+            @include('components.admin.seo.meta', ['model' => $pageContent])
         </div>
     </form>
     @if($pageContent)
+        <hr class="mt-n1">
         <div class="mt-3">
             {!! $pageContent->displayAdminPanel() !!}
         </div>

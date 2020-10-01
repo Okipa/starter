@@ -23,7 +23,7 @@
                 {{ buttonLink()->route('page.show', [$page->slug])
                     ->prepend('<i class="fas fa-external-link-square-alt fa-fw"></i>')
                     ->label(__('Display'))
-                    ->componentClasses(['btn-info'])
+                    ->componentClasses(['btn-success'])
                     ->componentHtmlAttributes(['data-new-window'])
                     ->containerClasses(['ml-3']) }}
             @endif
@@ -56,6 +56,7 @@
                         ->componentHtmlAttributes(['required', 'data-kebabcase', 'data-autofill-from' => '#text-nav-title']) }}
                 </div>
             </div>
+            @include('components.admin.seo.meta', ['model' => $page])
             <div class="card">
                 <div class="card-header">
                     <h2 class="m-0">
@@ -66,10 +67,10 @@
                     {{ inputToggle()->name('active')->model($page) }}
                 </div>
             </div>
-            @include('components.admin.seo.meta', ['model' => $page])
         </div>
     </form>
     @if($page)
+        <hr class="mt-n1">
         <div class="mt-3">
             {!! $page->displayAdminPanel() !!}
         </div>

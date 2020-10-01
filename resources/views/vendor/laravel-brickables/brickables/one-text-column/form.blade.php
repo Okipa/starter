@@ -4,6 +4,5 @@
         ->locales(supportedLocaleKeys())
         ->prepend(null)
         ->value(fn($locale) => translatedData($brick, 'data.text', $locale))
-        ->componentClasses(['editor'])
-        ->componentHtmlAttributes(['required']) }}
+        ->componentHtmlAttributes(['required', 'data-editor']) }}
 @endsection

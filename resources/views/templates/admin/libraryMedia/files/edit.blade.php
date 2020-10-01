@@ -44,8 +44,7 @@
                     {{ select()->name('category_id')
                         ->model($file)
                         ->options((new App\Models\LibraryMedia\LibraryMediaCategory)->orderBy('name')->get()->map(fn(App\Models\LibraryMedia\LibraryMediaCategory $category) => ['id' => $category->id, 'name' => $category->name]), 'id', 'name')
-                        ->componentClasses(['selector'])
-                        ->componentHtmlAttributes(['required']) }}
+                        ->componentHtmlAttributes(['required', 'data-selector']) }}
                 </div>
             </div>
             @if($file)

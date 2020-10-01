@@ -58,13 +58,15 @@
                     </h2>
                 </div>
                 <div class="card-body">
-                    @if(currentRouteIs('user.create'))
-                        <p>
+                    <p>
+                        @if(currentRouteIs('user.create'))
                             <i class="fas fa-exclamation-triangle fa-fw text-warning"></i>
                             @lang('If no password is defined for this user, he will be emailed a password creation link.')
-                        </p>
-                    @endif
-                    {{ inputPassword()->name($user ? 'new_password' : 'password')->caption(__('passwords.fillForUpdate')) }}
+                        @else
+                            @lang('Only fill if you want to change the current password.')
+                        @endif
+                    </p>
+                    {{ inputPassword()->name($user ? 'new_password' : 'password') }}
                     {{ inputPassword()->name($user ? 'new_password_confirmation' : 'password_confirmation')->model($user) }}
                 </div>
             </div>
