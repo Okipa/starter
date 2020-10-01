@@ -17,7 +17,8 @@
                 {{ buttonLink()->route('contact.page.show')
                     ->prepend('<i class="fas fa-external-link-square-alt fa-fw"></i>')
                     ->label(__('Display'))
-                    ->componentClasses(['btn-primary', 'new-window']) }}
+                    ->componentClasses(['btn-primary'])
+                    ->componentHtmlAttributes(['data-new-window']) }}
             </div>
             <div class="card-body">
                 @include('components.admin.seo.meta', ['model' => $pageContent])

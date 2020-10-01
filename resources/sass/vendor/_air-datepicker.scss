@@ -1,0 +1,37 @@
+// Overrides
+$datepickerBorderRadius: $border-radius;
+$datepickerFontFamily: $font-family-base;
+$datepickerFontSize: $font-size-base;
+$datepickerTextColor: (
+    button: $primary,
+    otherMonth: $gray-300,
+    otherMonthInRange: $gray-600,
+    disabled: $gray-600,
+    currentDate: $primary,
+    common: $body-color,
+    dayNames: $primary,
+    navArrows: $link-color
+);
+$datepickerBG: (
+    selected: $primary,
+    selectedHover: darken($primary, 5),
+    inRange: rgba($gray-300, .1),
+    hover: $gray-300
+);
+
+$datepickerBorderColor: (
+    nav: $border-color,
+    inline: $border-color,
+    default: $border-color
+);
+
+// Imports
+@import "../../../node_modules/air-datepicker/src/sass/cell";
+@import "../../../node_modules/air-datepicker/src/sass/navigation";
+@import "../../../node_modules/air-datepicker/src/sass/datepicker";
+@import "../../../node_modules/air-datepicker/src/sass/timepicker";
+
+// Sass
+.datepicker--cell-day {
+    width: calc(100% / 7);
+}

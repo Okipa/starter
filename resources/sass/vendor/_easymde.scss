@@ -1,0 +1,21 @@
+// Imports
+@import '~easymde/dist/easymde.min.css';
+
+// Sass
+.editor-toolbar {
+    @extend .w-100;
+}
+
+.CodeMirror, .CodeMirror-scroll {
+    min-height: 100px;
+    @extend .w-100;
+}
+
+.editor-statusbar {
+    @extend .pl-0;
+    @extend .pr-0;
+
+    .lines {
+        @extend .ml-0;
+    }
+}

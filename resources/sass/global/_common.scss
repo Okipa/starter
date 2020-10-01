@@ -1,0 +1,20 @@
+// Styles and utility classes that will be used globally on both front and admin panel.
+
+// Utils
+@import '../utils/no-click';
+
+// Vendor
+@import '../vendor/fontawesome';
+@import '../vendor/laravel-bootstrap-components';
+@import '../vendor/sweetalert';
+@import '../vendor/cookieconsent';
+@import '../vendor/sumoselect';
+@import '../vendor/easymde';
+@import '../vendor/lity';
+@import '../vendor/air-datepicker';
+
+// Bootstrap overrides
+@import '../bootstrap-overrides/common/dropdown';
+@import '../bootstrap-overrides/common/form-group';
+@import '../bootstrap-overrides/common/link';
+@import '../bootstrap-overrides/common/file-input';

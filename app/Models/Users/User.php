@@ -37,16 +37,16 @@ class User extends Authenticatable implements HasMedia, MustVerifyEmail
     public function registerMediaCollections(): void
     {
         $this->addMediaCollection('profile_pictures')
-            ->acceptsMimeTypes(['image/jpeg', 'image/png'])
+            ->acceptsMimeTypes(['image/webp', 'image/jpeg', 'image/png'])
             ->singleFile()
             ->registerMediaConversions(function (Media $media = null) {
                 $this->addMediaConversion('top-nav')
                     ->fit(Manipulations::FIT_CROP, 20, 20)
-                    ->keepOriginalImageFormat()
+                    ->format('webp')
                     ->nonQueued();
                 $this->addMediaConversion('card')
                     ->fit(Manipulations::FIT_CROP, 250, 250)
-                    ->keepOriginalImageFormat()
+                    ->format('webp')
                     ->nonQueued();
             });
     }
@@ -61,7 +61,7 @@ class User extends Authenticatable implements HasMedia, MustVerifyEmail
     {
         $this->addMediaConversion('thumb')
             ->fit(Manipulations::FIT_CROP, 40, 40)
-            ->keepOriginalImageFormat()
+            ->format('webp')
             ->nonQueued();
     }
 

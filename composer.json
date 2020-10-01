@@ -32,6 +32,7 @@
         "sentry/sentry-laravel": "^1.0",
         "spatie/laravel-feed": "^3.0",
         "spatie/laravel-honeypot": "^2.0",
+        "spatie/laravel-medialibrary": "^8.9",
         "spatie/laravel-sitemap": "^5.0",
         "spatie/laravel-translatable": "^4.0",
         "spatie/laravel-welcome-notification": "^2.0",

@@ -13,10 +13,10 @@
     {{-- categories / sharing --}}
     <div class="container mt-2 mb-5">
         <div class="row">
-            <div class="col-sm-6 my-1 my-sm-0">
+            <div class="col-sm-6 my-n1 my-sm-0">
                 @if($article->categories->isNotEmpty())
                     @foreach($article->categories as $category)
-                        <a class="btn btn-secondary btn-sm"
+                        <a class="btn btn-secondary btn-sm my-1"
                            href="{{ route('news.page.show', ['category_id' => $category->id]) }}"
                            title="{{ $category->name }}">
                             {{ $category->name }}
@@ -26,33 +26,33 @@
             </div>
             <div class="col-sm-6 my-1 my-sm-0 text-sm-right">
                 <span class="fa-stack text-primary">
-                    <a class="new-window"
-                       href="https://twitter.com/home?status={{ request()->url() }}"
-                       title="@lang('Share on :name', ['name' => 'Twitter'])">
+                    <a href="https://twitter.com/home?status={{ request()->url() }}"
+                       title="@lang('Share on :name', ['name' => 'Twitter'])"
+                       data-new-window>
                         <i class="fas fa-circle fa-stack-2x"></i>
                         <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
                     </a>
                 </span>
                 <span class="fa-stack text-primary">
-                    <a class="new-window"
-                       href="https://www.linkedin.com/shareArticle?mini=true&url={{ request()->url() }}&title=&summary=&source={{ request()->getHttpHost() }}"
-                       title="@lang('Share on :name', ['name' => 'Linkedin'])">
+                    <a href="https://www.linkedin.com/shareArticle?mini=true&url={{ request()->url() }}&title=&summary=&source={{ request()->getHttpHost() }}"
+                       title="@lang('Share on :name', ['name' => 'Linkedin'])"
+                       data-new-window>
                         <i class="fas fa-circle fa-stack-2x"></i>
                         <i class="fab fa-linkedin-in fa-stack-1x fa-inverse"></i>
                     </a>
                 </span>
                 <span class="fa-stack text-primary">
-                    <a class="new-window"
-                       href="https://www.facebook.com/sharer/sharer.php?u={{ request()->url() }}"
-                       title="@lang('Share on :name', ['name' => 'Facebook'])">
+                    <a href="https://www.facebook.com/sharer/sharer.php?u={{ request()->url() }}"
+                       title="@lang('Share on :name', ['name' => 'Facebook'])"
+                       data-new-window>
                         <i class="fas fa-circle fa-stack-2x"></i>
                         <i class="fab fa-facebook-f fa-stack-1x fa-inverse"></i>
                     </a>
                 </span>
                 <span class="fa-stack text-primary">
-                    <a class="new-window"
-                       href="{{ route('feeds.news') }}"
-                       title="@lang(config('feed.feeds.news.title'))">
+                    <a href="{{ route('feeds.news') }}"
+                       title="@lang(config('feed.feeds.news.title'))"
+                       data-new-window>
                         <i class="fas fa-circle fa-stack-2x"></i>
                         <i class="fas fa-rss fa-stack-1x fa-inverse"></i>
                     </a>

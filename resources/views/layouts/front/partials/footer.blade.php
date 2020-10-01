@@ -21,22 +21,22 @@
             @endif
             <div class="mx-3">
                 @if($facebookUrl = settings()->facebook)
-                    <a class="new-window" href="{{ $facebookUrl }}" title="@lang('Facebook')">
+                    <a href="{{ $facebookUrl }}" title="@lang('Facebook')" data-new-window>
                         <i class="fab fa-facebook fa-fw"></i>
                     </a>
                 @endif
                 @if($twitterUrl = settings()->twitter)
-                    <a class="new-window" href="{{ $twitterUrl }}" title="@lang('Twitter')">
+                    <a href="{{ $twitterUrl }}" title="@lang('Twitter')" data-new-window>
                         <i class="fab fa-twitter fa-fw"></i>
                     </a>
                 @endif
                 @if($instagramUrl = settings()->instagram)
-                    <a class="new-window" href="{{ $instagramUrl }}" title="@lang('Instagram')">
+                    <a href="{{ $instagramUrl }}" title="@lang('Instagram')" data-new-window>
                         <i class="fab fa-instagram fa-fw"></i>
                     </a>
                 @endif
                 @if($youtubeUrl = settings()->youtube)
-                    <a class="new-window" href="{{ $youtubeUrl }}" title="@lang('Youtube')">
+                    <a href="{{ $youtubeUrl }}" title="@lang('Youtube')" data-new-window>
                         <i class="fab fa-youtube fa-fw"></i>
                     </a>
                 @endif

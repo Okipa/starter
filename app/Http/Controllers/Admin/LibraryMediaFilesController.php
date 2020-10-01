@@ -22,6 +22,7 @@ class LibraryMediaFilesController extends Controller
      *
      * @return \Illuminate\View\View
      * @throws \ErrorException
+     * @throws \Exception
      */
     public function index(FilesIndexRequest $request): View
     {
@@ -31,7 +32,7 @@ class LibraryMediaFilesController extends Controller
             'entity' => __('Files'),
         ]));
         (new FilesService)->injectJavascriptInView();
-        $js = mix('/js/library-media/index.js');
+        $js = mix('/js/templates/admin/library-media/index.js');
 
         return view('templates.admin.libraryMedia.files.index', compact('table', 'request', 'js'));
     }
@@ -77,7 +78,7 @@ class LibraryMediaFilesController extends Controller
             'detail' => $file->name,
         ]));
         (new FilesService)->injectJavascriptInView();
-        $js = mix('/js/library-media/edit.js');
+        $js = mix('/js/templates/admin/library-media/edit.js');
 
         return view('templates.admin.libraryMedia.files.edit', compact('file', 'js'));
     }

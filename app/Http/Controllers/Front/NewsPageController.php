@@ -28,7 +28,7 @@ class NewsPageController extends Controller
             $query->whereHas('categories', fn($category) => $category->where('id', $request->category_id));
         }
         $articles = $query->paginate(6)->appends($request->only('category_id'));
-        $css = mix('/css/news/index.css');
+        $css = mix('/css/templates/front/news/page/show.css');
 
         return view('templates.front.news.page.show', compact('pageContent', 'articles', 'css'));
     }

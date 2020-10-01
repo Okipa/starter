@@ -20,8 +20,7 @@ class PagesController extends Controller
             abort(404);
         }
         $page->displaySeoMeta();
-        $css = mix('/css/pages/show.css');
 
-        return view('templates.front.pages.show', compact('page', 'css'));
+        return view('templates.front.pages.show', compact('page'));
     }
 }

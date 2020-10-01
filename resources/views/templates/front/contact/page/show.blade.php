@@ -50,8 +50,8 @@
                         @if($termsOfServicePage && $gdprPage)
                             <div class="col-md-12 small mt-3">
                                 @lang('By clicking on the "Send" button, I acknowledge that I have read the :terms_of_service_page_link, :gdpr_page_link pages and that this data will be used in the context of the commercial relationship that may result from it.', [
-                                    'terms_of_service_page_link' => '<a class="new-window" href="' . route('page.show', $termsOfServicePage) . '" title="' . $termsOfServicePage->nav_title . '">' . $termsOfServicePage->nav_title . '</a>',
-                                    'gdpr_page_link' => '<a class="new-window" href="' . route('page.show', $gdprPage) . '" title="' . $gdprPage->nav_title . '">' . $gdprPage->nav_title . '</a>',
+                                    'terms_of_service_page_link' => '<a href="' . route('page.show', $termsOfServicePage) . '" title="' . $termsOfServicePage->nav_title . '" data-new-window>' . $termsOfServicePage->nav_title . '</a>',
+                                    'gdpr_page_link' => '<a href="' . route('page.show', $gdprPage) . '" title="' . $gdprPage->nav_title . '" data-new-window>' . $gdprPage->nav_title . '</a>',
                                 ])
                             </div>
                         @endif

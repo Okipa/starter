@@ -34,25 +34,25 @@ class Settings extends Model implements HasMedia
     public function registerMediaCollections(): void
     {
         $this->addMediaCollection('icons')
-            ->acceptsMimeTypes(['image/jpeg', 'image/png'])
+            ->acceptsMimeTypes(['image/webp', 'image/jpeg', 'image/png'])
             ->singleFile()
             ->registerMediaConversions(function (Media $media = null) {
                 $this->addMediaConversion('front')
                     ->fit(Manipulations::FIT_CROP, 70, 70)
-                    ->keepOriginalImageFormat()
+                    ->format('webp')
                     ->withResponsiveImages()
                     ->nonQueued();
                 $this->addMediaConversion('admin')
                     ->fit(Manipulations::FIT_CROP, 30, 30)
-                    ->keepOriginalImageFormat()
+                    ->format('webp')
                     ->nonQueued();
                 $this->addMediaConversion('mail')
                     ->fit(Manipulations::FIT_CROP, 50, 50)
-                    ->keepOriginalImageFormat()
+                    ->format('webp')
                     ->nonQueued();
                 $this->addMediaConversion('auth')
                     ->fit(Manipulations::FIT_CROP, 225, 225)
-                    ->keepOriginalImageFormat()
+                    ->format('webp')
                     ->withResponsiveImages()
                     ->nonQueued();
             });
@@ -68,7 +68,7 @@ class Settings extends Model implements HasMedia
     {
         $this->addMediaConversion('thumb')
             ->fit(Manipulations::FIT_CROP, 40, 40)
-            ->keepOriginalImageFormat()
+            ->format('webp')
             ->nonQueued();
     }
 

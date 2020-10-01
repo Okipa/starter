@@ -26,7 +26,8 @@
                     {{ buttonLink()->route('news.article.show', [$article->slug])
                         ->prepend('<i class="fas fa-external-link-square-alt fa-fw"></i>')
                         ->label(__('Display'))
-                        ->componentClasses(['btn-primary', 'new-window']) }}
+                        ->componentClasses(['btn-primary'])
+                        ->componentHtmlAttributes(['data-new-window']) }}
                 @endif
             </div>
             <div class="card-body">

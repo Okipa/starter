@@ -23,10 +23,10 @@ abstract class Seo extends Metable implements HasMedia
     {
         $this->addMediaCollection('seo')
             ->singleFile()
-            ->acceptsMimeTypes(['image/jpeg', 'image/png'])
+            ->acceptsMimeTypes(['image/webp', 'image/jpeg', 'image/png'])
             ->registerMediaConversions(fn(Media $media = null) => $this->addMediaConversion('image')
                 ->fit(Manipulations::FIT_CROP, 600, 600)
-                ->keepOriginalImageFormat()
+                ->format('webp')
                 ->nonQueued());
     }
 
@@ -40,7 +40,7 @@ abstract class Seo extends Metable implements HasMedia
     {
         $this->addMediaConversion('thumb')
             ->fit(Manipulations::FIT_CROP, 40, 40)
-            ->keepOriginalImageFormat()
+            ->format('webp')
             ->nonQueued();
     }
 

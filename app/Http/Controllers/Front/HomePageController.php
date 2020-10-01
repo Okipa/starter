@@ -16,8 +16,7 @@ class HomePageController extends Controller
     {
         $pageContent = PageContent::firstOrCreate(['unique_key' => 'home_page_content']);
         $pageContent->displaySeoMeta();
-        $css = mix('/css/home/page/show.css');
 
-        return view('templates.front.home.page.show', compact('pageContent', 'css'));
+        return view('templates.front.home.page.show', compact('pageContent'));
     }
 }

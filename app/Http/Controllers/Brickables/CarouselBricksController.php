@@ -16,6 +16,7 @@ class CarouselBricksController extends BricksController
      *
      * @return \Illuminate\View\View
      * @throws \ErrorException
+     * @throws \Exception
      */
     public function edit(Brick $brick, Request $request): View
     {
@@ -26,7 +27,7 @@ class CarouselBricksController extends BricksController
                 'reorganize_route' => route('brick.carousel.slides.reorganize'),
             ],
         ]);
-        $js = mix('/js/brickables/carousel/edit.js');
+        $js = mix('/js/templates/admin/brickables/carousel/edit.js');
         $view->with(compact('table', 'js'));
 
         return $view;

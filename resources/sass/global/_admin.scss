@@ -1,0 +1,28 @@
+// Styles and utility classes that will be used globally on the admin panel.
+
+// Fonts
+@import '../fonts/raleway';
+
+// Bootstrap
+@import '../bootstrap-overrides/admin/variables';
+@import '~bootstrap/scss/bootstrap';
+
+// Common global styles
+@import 'common';
+
+// Variables
+@import '../variables/admin';
+
+// Layouts
+@import '../layouts/admin/partials/nav';
+@import '../layouts/admin/layout';
+@import '../layouts/admin/template';
+
+// Sass
+.card-columns {
+    column-count: 1;
+
+    @include media-breakpoint-up(xl) {
+        column-count: 3;
+    }
+}

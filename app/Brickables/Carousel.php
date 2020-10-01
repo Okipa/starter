@@ -34,6 +34,15 @@ class Carousel extends Brickable
      * @return string|null
      * @throws \Exception
      */
+    protected function setCssResourcePath(): ?string
+    {
+        return mix('/css/brickables/carousel.css');
+    }
+
+    /**
+     * @return string|null
+     * @throws \Exception
+     */
     protected function setJsResourcePath(): ?string
     {
         return mix('/js/brickables/carousel.js');

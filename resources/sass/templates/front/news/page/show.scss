@@ -1,0 +1,15 @@
+// Template base
+@import '../../front-template-base';
+
+// Bootstrap
+@import '~bootstrap/scss/card';
+@import '~bootstrap/scss/mixins/pagination';
+@import '~bootstrap/scss/pagination';
+
+// Sass
+#news {
+
+    .description {
+        height: 3rem;
+    }
+}

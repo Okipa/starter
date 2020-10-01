@@ -4,9 +4,9 @@
         {!! $pageContent->displayBricks() !!}
     </div>
     <div class="container my-3">
-        <a class="new-window"
-           href="{{ route('feeds.news') }}"
-           title="@lang(config('feed.feeds.news.title'))">
+        <a href="{{ route('feeds.news') }}"
+           title="@lang(config('feed.feeds.news.title'))"
+           data-new-window>
             <span class="fa-stack text-primary">
                 <i class="fas fa-circle fa-stack-2x"></i>
                 <i class="fas fa-rss fa-stack-1x fa-inverse"></i>
@@ -45,17 +45,17 @@
                             <h2 class="h5 card-title">{{ $article->title }}</h2>
                             <p class="small mt-n2">{{ Carbon\Carbon::parse($article->published_at)->format('d/m/Y') }}</p>
                             @if($article->categories->isNotEmpty())
-                                <p class="card-text small">
+                                <div class="card-text small my-n1">
                                     @foreach($article->categories as $category)
-                                        <a class="btn btn-secondary btn-sm"
+                                        <a class="btn btn-secondary btn-sm my-1"
                                            href="{{ route('news.page.show', ['category_id' => $category->id]) }}"
                                            title="{{ $category->name }}">
                                             {{ $category->name }}
                                         </a>
                                     @endforeach
-                                </p>
+                                </div>
                             @endif
-                            <p class="card-text description">{!! Str::limit(strip_tags((new Parsedown)->text($article->description)), 500) !!}</p>
+                            <p class="card-text description mt-3">{!! Str::limit(strip_tags((new Parsedown)->text($article->description)), 500) !!}</p>
                             <a class="btn btn-primary"
                                href="{{ route('news.article.show', $article->slug) }}"
                                title="@lang('Know more')">

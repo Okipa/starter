@@ -1,6 +1,6 @@
 const mix = require('laravel-mix');
 
-// fix found here to avoid custom files versioning issue : https://github.com/JeffreyWay/laravel-mix/issues/1193
+// Fix found here to avoid custom files versioning issue : https://github.com/JeffreyWay/laravel-mix/issues/1193.
 mix.copyDirectoryOutsideMixWorkflow = function (from, to) {
     new File(from).copyTo(new File(to).path());
     return this;
@@ -21,30 +21,32 @@ mix
     .copy('resources/favicon.ico', 'public/favicon.ico')
     .copyDirectoryOutsideMixWorkflow('node_modules/@fortawesome/fontawesome-free/webfonts', 'public/fonts/fontawesome')
     .copyDirectoryOutsideMixWorkflow('resources/images', 'public/images')
+
     // js **************************************************************************************************************
     // admin
-    .js('resources/js/admin/brickables/carousel/edit.js', 'public/js/brickables/carousel')
-    .js('resources/js/admin/library-media/index.js', 'public/js/library-media')
-    .js('resources/js/admin/library-media/edit.js', 'public/js/library-media')
-    // brickables
-    .js('resources/js/scripts/brickables/carousel.js', 'public/js/brickables')
+    .js('resources/js/templates/admin/brickables/carousel/edit.js', 'public/js/templates/admin/brickables/carousel')
+    .js('resources/js/templates/admin/library-media/index.js', 'public/js/templates/admin/library-media')
+    .js('resources/js/templates/admin/library-media/edit.js', 'public/js/template/admin/library-media')
     // front
     //
+    // brickables
+    .js('resources/js/brickables/carousel.js', 'public/js/brickables')
     // base
-    .js('resources/js/scripts/admin/base.js', 'public/js/admin.js')
-    .js('resources/js/scripts/front/base.js', 'public/js/front.js')
+    .js('resources/js/global/admin.js', 'public/js/admin.js')
+    .js('resources/js/global/front.js', 'public/js/front.js')
+
     // sass ************************************************************************************************************
     // admin
     //
     // front
-    .sass('resources/sass/front/home/page/show.scss', 'public/css/home/page')
-    .sass('resources/sass/front/news/index.scss', 'public/css/news')
-    .sass('resources/sass/front/news/show.scss', 'public/css/news')
-    .sass('resources/sass/front/contact/page/show.scss', 'public/css/contact/page')
-    .sass('resources/sass/front/pages/show.scss', 'public/css/pages')
+    .sass('resources/sass/templates/front/news/page/show.scss', 'public/css/templates/front/news/page')
+    .sass('resources/sass/templates/front/contact/page/show.scss', 'public/css/templates/front/contact/page')
+    // brickables
+    .sass('resources/sass/brickables/carousel.scss', 'public/css/brickables')
     // base
-    .sass('resources/sass/styles/admin/_base.scss', 'public/css/admin.css')
-    .sass('resources/sass/styles/front/_base.scss', 'public/css/front.css')
+    .sass('resources/sass/global/_admin.scss', 'public/css/admin.css')
+    .sass('resources/sass/global/_front.scss', 'public/css/front.css')
+
     // config **********************************************************************************************************
     .options({processCssUrls: false})
     .autoload({

@@ -19,11 +19,11 @@ class TwoTextImageColumnsBrick extends Brick implements HasMedia
     {
         $this->addMediaCollection('images')
             ->singleFile()
-            ->acceptsMimeTypes(['image/jpeg', 'image/png'])
+            ->acceptsMimeTypes(['image/webp', 'image/jpeg', 'image/png'])
             ->registerMediaConversions(fn(Media $media = null) => $this->addMediaConversion('half')
                 ->fit(Manipulations::FIT_CROP, 540, 400)
                 ->withResponsiveImages()
-                ->keepOriginalImageFormat()
+                ->format('webp')
                 ->nonQueued());
     }
 
@@ -37,7 +37,7 @@ class TwoTextImageColumnsBrick extends Brick implements HasMedia
     {
         $this->addMediaConversion('thumb')
             ->fit(Manipulations::FIT_CROP, 40, 40)
-            ->keepOriginalImageFormat()
+            ->format('webp')
             ->nonQueued();
     }
 }

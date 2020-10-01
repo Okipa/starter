@@ -59,17 +59,17 @@ class NewsArticle extends Seo implements HasMedia, Feedable
         parent::registerMediaCollections();
         $this->addMediaCollection('illustrations')
             ->singleFile()
-            ->acceptsMimeTypes(['image/jpeg', 'image/png'])
+            ->acceptsMimeTypes(['image/webp', 'image/jpeg', 'image/png'])
             ->registerMediaConversions(function (Media $media = null) {
                 $this->addMediaConversion('cover')
                     ->fit(Manipulations::FIT_CROP, 1140, 500)
                     ->withResponsiveImages()
-                    ->keepOriginalImageFormat()
+                    ->format('webp')
                     ->nonQueued();
                 $this->addMediaConversion('card')
                     ->fit(Manipulations::FIT_CROP, 350, 250)
                     ->withResponsiveImages()
-                    ->keepOriginalImageFormat()
+                    ->format('webp')
                     ->nonQueued();
             });
     }
