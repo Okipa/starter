@@ -1,6 +1,6 @@
 <div class="d-flex">
     <a class="btn btn-secondary mr-2" href="{{ $adminPanelUrl }}" role="button">
-        <i class="fas fa-ban fa-fw"></i> @lang('Back')
+        <i class="fas fa-undo fa-fw"></i> @lang('Back')
     </a>
     <button class="btn btn-primary" type="submit">
         @if($brick)

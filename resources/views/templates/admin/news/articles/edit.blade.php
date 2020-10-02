@@ -23,7 +23,7 @@
                 {{ buttonLink()->route('news.article.show', [$article])
                     ->prepend('<i class="fas fa-external-link-square-alt fa-fw"></i>')
                     ->label(__('Display'))
-                    ->componentClasses(['btn-primary'])
+                    ->componentClasses(['btn-success'])
                     ->componentHtmlAttributes(['data-new-window'])
                     ->containerClasses(['ml-3']) }}
             @endif
@@ -63,6 +63,20 @@
                         ->componentHtmlAttributes(['required', 'data-selector']) }}
                 </div>
             </div>
+            <div class="card">
+                <div class="card-header">
+                    <h2 class="m-0">
+                        @lang('Content')
+                    </h2>
+                </div>
+                <div class="card-body">
+                    {{ textarea()->name('description')
+                        ->locales(supportedLocaleKeys())
+                        ->model($article)
+                        ->prepend(null)
+                        ->componentHtmlAttributes(['data-editor']) }}
+                </div>
+            </div>
             @include('components.admin.seo.meta', ['model' => $article])
             <div class="card">
                 <div class="card-header">
@@ -77,20 +91,6 @@
                         ->componentHtmlAttributes(['required', 'data-datetime-picker']) }}
                     {{ inputToggle()->name('active')->model($article) }}
                 </div>
-            </div>
-        </div>
-        <div class="card">
-            <div class="card-header">
-                <h2 class="m-0">
-                    @lang('Information')
-                </h2>
-            </div>
-            <div class="card-body">
-                {{ textarea()->name('description')
-                    ->locales(supportedLocaleKeys())
-                    ->model($article)
-                    ->prepend(null)
-                    ->componentHtmlAttributes(['data-editor']) }}
             </div>
         </div>
     </form>

@@ -22,7 +22,7 @@
                 {{ buttonLink()->route('news.category.show', [$category])
                     ->prepend('<i class="fas fa-external-link-square-alt fa-fw"></i>')
                     ->label(__('Display'))
-                    ->componentClasses(['btn-primary'])
+                    ->componentClasses(['btn-success'])
                     ->componentHtmlAttributes(['data-new-window'])
                     ->containerClasses(['ml-3']) }}
             @endif

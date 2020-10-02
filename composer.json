@@ -91,9 +91,6 @@
         "post-create-project-cmd": [
             "@php artisan key:generate --ansi"
         ],
-        "post-install-cmd": [
-            "@php artisan ide-helper:handle"
-        ],
         "post-update-cmd": [
             "@php artisan horizon:publish --ansi",
             "@php artisan telescope:publish --ansi",
