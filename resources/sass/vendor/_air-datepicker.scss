@@ -26,10 +26,10 @@ $datepickerBorderColor: (
 );
 
 // Imports
-@import "../../../node_modules/air-datepicker/src/sass/cell";
-@import "../../../node_modules/air-datepicker/src/sass/navigation";
-@import "../../../node_modules/air-datepicker/src/sass/datepicker";
-@import "../../../node_modules/air-datepicker/src/sass/timepicker";
+@import '~air-datepicker/src/sass/cell';
+@import '~air-datepicker/src/sass/navigation';
+@import '~air-datepicker/src/sass/datepicker';
+@import '~air-datepicker/src/sass/timepicker';
 
 // Sass
 .datepicker--cell-day {
