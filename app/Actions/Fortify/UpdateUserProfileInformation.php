@@ -51,7 +51,7 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
             ])->save();
             toast()->success(__('Your profile information have been saved.'));
         }
-        if(data_get($input, 'profile_picture') || $input['remove_profile_picture']) {
+        if (data_get($input, 'profile_picture') || $input['remove_profile_picture']) {
             $uploadedFiled = $input['remove_profile_picture'] ? null : data_get($input, 'profile_picture');
             (new UsersService)->saveAvatarFromUploadedFile($uploadedFiled, $user);
         }
