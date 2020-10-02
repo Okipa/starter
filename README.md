@@ -1,6 +1,6 @@
 <Todo : personalize readme>
 
-# App base built with Laravel 7
+# App base built with Laravel 8
 
 | Develop | Master |
 |---|---|
@@ -95,8 +95,8 @@ You can run these commands from your docker workspace, Node and Yarn are being i
 ## Debugging
 
 Laravel Telescope and Laravel Horizon are pre-installed:
-* To open the `telescope` dashboard,  go to `http://your-project.url/telescope`.
-* To open the `horizon` dashboard,  go to `http://your-project.url/horizon`.
+* To open the `telescope` dashboard, add `/telescope` to the base URL.
+* To open the `horizon` dashboard, add `/horizon` to the base URL.
 
 ## Changelog
 
