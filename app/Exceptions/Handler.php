@@ -33,9 +33,10 @@ class Handler extends ExceptionHandler
      */
     public function report(Throwable $exception): void
     {
-        if (app()->bound('sentry') && $this->shouldReport($exception)) {
+        if ($this->shouldReport($exception) && app()->bound('sentry')) {
             app('sentry')->captureException($exception);
         }
+
         parent::report($exception);
     }
 

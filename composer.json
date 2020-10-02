@@ -29,9 +29,9 @@
         "plank/laravel-metable": "^3.0",
         "propaganistas/laravel-phone": "^4.0",
         "realrashid/sweet-alert": "^3.0",
-        "sentry/sentry-laravel": "^1.0",
+        "sentry/sentry-laravel": "^2.0",
         "spatie/laravel-feed": "^3.0",
-        "spatie/laravel-honeypot": "^2.0",
+        "spatie/laravel-honeypot": "^3.0",
         "spatie/laravel-medialibrary": "^8.9",
         "spatie/laravel-sitemap": "^5.0",
         "spatie/laravel-translatable": "^4.0",
@@ -39,6 +39,7 @@
         "spatie/pdf-to-image": "^2.0"
     },
     "require-dev": {
+        "roave/security-advisories": "dev-master",
         "barryvdh/laravel-ide-helper": "^2.0",
         "beyondcode/laravel-dump-server": "^1.0",
         "facade/ignition": "^2.3.6",

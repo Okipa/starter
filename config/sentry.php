@@ -4,7 +4,7 @@ return [
 
     'dsn' => env('SENTRY_LARAVEL_DSN', env('SENTRY_DSN')),
 
-    // capture release as git sha
+    // Capture release as git sha
     'release' => env('APP_ENV') === 'production'
         ? trim(exec('git describe --tags --abbrev=0'))
         : trim(exec('git --git-dir ' . base_path('.git') . ' log --pretty="%h" -n1 HEAD')),
@@ -32,4 +32,5 @@ return [
     // @see: https://docs.sentry.io/error-reporting/configuration/?platform=php#send-default-pii
     'send_default_pii' => true,
 
+    'traces_sample_rate' => (float) env('SENTRY_TRACES_SAMPLE_RATE', 0.0)
 ];
