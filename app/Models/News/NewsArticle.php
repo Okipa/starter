@@ -33,7 +33,7 @@ class NewsArticle extends Seo implements HasMedia, Feedable
 
     public static function getFeedItems(): Collection
     {
-        return self::orderBy('published_at', 'desc')->with(['media', 'categories'])->get();
+        return (new self)->orderBy('published_at', 'desc')->with(['media', 'categories'])->get();
     }
 
     public function getRouteKey(): string
@@ -91,13 +91,12 @@ class NewsArticle extends Seo implements HasMedia, Feedable
         return FeedItem::create()->id((string) $this->id)
             ->title($this->title)
             ->summary(Str::limit(strip_tags((new Parsedown)->text($this->description))))
-            ->updated($this->updated_at)
-            ->link(route('news.article.show', $this->slug))
+            ->link(route('news.article.show', $this))
             ->author(config('app.name'))
             ->category($this->categories->pluck('name'))
-            ->enclosure($media->getUrl())
-            ->enclosureType($media->mime_type)
-            ->enclosureLength($media->size)
+            ->enclosure(optional($media)->getUrl())
+            ->enclosureType(optional($media)->mime_type)
+            ->enclosureLength(optional($media)->size)
             ->updated($this->updated_at);
     }
 }

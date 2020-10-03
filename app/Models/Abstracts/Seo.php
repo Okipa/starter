@@ -32,7 +32,7 @@ abstract class Seo extends Metable implements HasMedia
 
     /**
      * @SuppressWarnings(PHPMD.UnusedFormalParameter)
-     * @param \Spatie\MediaLibrary\MediaCollections\Models\Media $media
+     * @param \Spatie\MediaLibrary\MediaCollections\Models\Media|null $media
      *
      * @throws \Spatie\Image\Exceptions\InvalidManipulation
      */

@@ -5,7 +5,7 @@
     </div>
     <div class="container my-5">
         <div class="row">
-            <div class="col-md-8">
+            <div class="col-lg-8">
                 <form method="POST" action="{{ route('contact.sendMessage') }}">
                     @honeypot
                     @csrf()
@@ -71,7 +71,8 @@
                     </div>
                 </form>
             </div>
-            <div class="col-md-4">
+            <div class="col-lg-4">
+                <hr class="d-lg-none">
                 <div class="card">
                     <div class="card-header">
                         <h2 class="h4 m-0">
@@ -108,7 +109,7 @@
                                href="//maps.google.com/maps?q={{ str_replace([' ', ','], '+', $fullPostalAddress) }}"
                                data-lity>
                                 <i class="fas fa-search-location fa-fw"></i>
-                                @lang('Where to find us ?')
+                                @lang('See on the map')
                             </a>
                         </div>
                     @endif
