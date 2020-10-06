@@ -64,13 +64,11 @@ class NewsArticle extends Seo implements HasMedia, Feedable
                 $this->addMediaConversion('cover')
                     ->fit(Manipulations::FIT_CROP, 1140, 500)
                     ->withResponsiveImages()
-                    ->format('webp')
-                    ->nonQueued();
+                    ->format('webp');
                 $this->addMediaConversion('card')
                     ->fit(Manipulations::FIT_CROP, 350, 250)
                     ->withResponsiveImages()
-                    ->format('webp')
-                    ->nonQueued();
+                    ->format('webp');
             });
     }
 

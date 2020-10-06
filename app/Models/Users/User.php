@@ -42,12 +42,11 @@ class User extends Authenticatable implements HasMedia, MustVerifyEmail
             ->registerMediaConversions(function (Media $media = null) {
                 $this->addMediaConversion('top-nav')
                     ->fit(Manipulations::FIT_CROP, 20, 20)
-                    ->format('webp')
-                    ->nonQueued();
+                    ->format('webp');
                 $this->addMediaConversion('card')
                     ->fit(Manipulations::FIT_CROP, 250, 250)
-                    ->format('webp')
-                    ->nonQueued();
+                    ->withResponsiveImages()
+                    ->format('webp');
             });
     }
 
@@ -61,8 +60,7 @@ class User extends Authenticatable implements HasMedia, MustVerifyEmail
     {
         $this->addMediaConversion('thumb')
             ->fit(Manipulations::FIT_CROP, 40, 40)
-            ->format('webp')
-            ->nonQueued();
+            ->format('webp');
     }
 
     public function getFullNameAttribute(): string

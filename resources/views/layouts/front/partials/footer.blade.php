@@ -21,23 +21,23 @@
             @endif
             <div class="mx-3">
                 @if($facebookUrl = settings()->facebook)
-                    <a href="{{ $facebookUrl }}" title="@lang('Facebook')" data-new-window>
-                        <i class="fab fa-facebook fa-fw"></i>
+                    <a class="mx-2" href="{{ $facebookUrl }}" title="@lang('Facebook')" data-new-window>
+                        <i class="fab fa-facebook fa-2x fa-fw"></i>
                     </a>
                 @endif
                 @if($twitterUrl = settings()->twitter)
-                    <a href="{{ $twitterUrl }}" title="@lang('Twitter')" data-new-window>
-                        <i class="fab fa-twitter fa-fw"></i>
+                    <a class="mx-2" href="{{ $twitterUrl }}" title="@lang('Twitter')" data-new-window>
+                        <i class="fab fa-twitter fa-2x fa-fw"></i>
                     </a>
                 @endif
                 @if($instagramUrl = settings()->instagram)
-                    <a href="{{ $instagramUrl }}" title="@lang('Instagram')" data-new-window>
-                        <i class="fab fa-instagram fa-fw"></i>
+                    <a class="mx-2" href="{{ $instagramUrl }}" title="@lang('Instagram')" data-new-window>
+                        <i class="fab fa-instagram fa-2x fa-fw"></i>
                     </a>
                 @endif
                 @if($youtubeUrl = settings()->youtube)
-                    <a href="{{ $youtubeUrl }}" title="@lang('Youtube')" data-new-window>
-                        <i class="fab fa-youtube fa-fw"></i>
+                    <a class="mx-2" href="{{ $youtubeUrl }}" title="@lang('Youtube')" data-new-window>
+                        <i class="fab fa-youtube fa-2x fa-fw"></i>
                     </a>
                 @endif
             </div>

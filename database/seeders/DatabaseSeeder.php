@@ -16,6 +16,7 @@ class DatabaseSeeder extends Seeder
         $this->command->call(TerminateCommand::class);
         $this->command->call(RestartCommand::class);
         $this->command->call(CleanCommand::class);
+        config()->set('media-library.queue_conversions_by_default', true);
         $this->call(SettingsSeeder::class);
         $this->call(UsersSeeder::class);
         $this->call(PagesSeeder::class);

@@ -46,13 +46,11 @@ class CarouselBrickSlide extends Model implements HasMedia, Sortable
                 $this->addMediaConversion('containerized')
                     ->fit(Manipulations::FIT_CROP, 1110, 400)
                     ->withResponsiveImages()
-                    ->format('webp')
-                    ->nonQueued();
+                    ->format('webp');
                 $this->addMediaConversion('full')
                     ->fit(Manipulations::FIT_CROP, 2560, 700)
                     ->withResponsiveImages()
-                    ->format('webp')
-                    ->nonQueued();
+                    ->format('webp');
             });
     }
 
@@ -66,8 +64,7 @@ class CarouselBrickSlide extends Model implements HasMedia, Sortable
     {
         $this->addMediaConversion('thumb')
             ->fit(Manipulations::FIT_CROP, 40, 40)
-            ->format('webp')
-            ->nonQueued();
+            ->format('webp');
     }
 
     public function brick(): BelongsTo

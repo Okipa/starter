@@ -90,8 +90,7 @@ class LibraryMediaFile extends Model implements HasMedia
     {
         $this->addMediaConversion('thumb')
             ->fit(Manipulations::FIT_CROP, 40, 40)
-            ->format('webp')
-            ->nonQueued();
+            ->format('webp');
     }
 
     public function getTypeAttribute(): string

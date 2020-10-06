@@ -23,8 +23,7 @@ class TwoTextImageColumnsBrick extends Brick implements HasMedia
             ->registerMediaConversions(fn(Media $media = null) => $this->addMediaConversion('half')
                 ->fit(Manipulations::FIT_CROP, 540, 400)
                 ->withResponsiveImages()
-                ->format('webp')
-                ->nonQueued());
+                ->format('webp'));
     }
 
     /**
@@ -37,7 +36,6 @@ class TwoTextImageColumnsBrick extends Brick implements HasMedia
     {
         $this->addMediaConversion('thumb')
             ->fit(Manipulations::FIT_CROP, 40, 40)
-            ->format('webp')
-            ->nonQueued();
+            ->format('webp');
     }
 }
