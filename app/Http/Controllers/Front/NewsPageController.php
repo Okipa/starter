@@ -6,14 +6,14 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\News\ArticlesIndexRequest;
 use App\Models\News\NewsArticle;
 use App\Models\Pages\TitleDescriptionPageContent;
-use Illuminate\View\View;
+use Illuminate\Contracts\View\View;
 
 class NewsPageController extends Controller
 {
     /**
      * @param \App\Http\Requests\News\ArticlesIndexRequest $request
      *
-     * @return \Illuminate\View\View
+     * @return \Illuminate\Contracts\View\View
      * @throws \Exception
      */
     public function show(ArticlesIndexRequest $request): View

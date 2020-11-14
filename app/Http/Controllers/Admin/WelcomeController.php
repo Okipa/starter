@@ -7,7 +7,7 @@ use Artesaos\SEOTools\Facades\SEOTools;
 use Illuminate\Auth\Events\Verified;
 use Illuminate\Foundation\Auth\User;
 use Illuminate\Http\Request;
-use Illuminate\View\View;
+use Illuminate\Contracts\View\View;
 use Symfony\Component\HttpFoundation\Response;
 
 class WelcomeController extends \Spatie\WelcomeNotification\WelcomeController

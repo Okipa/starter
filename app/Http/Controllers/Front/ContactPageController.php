@@ -8,13 +8,13 @@ use App\Models\Logs\LogContactFormMessage;
 use App\Models\Pages\TitleDescriptionPageContent;
 use App\Notifications\ContactFormMessage;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\View\View;
+use Illuminate\Contracts\View\View;
 use Notification;
 
 class ContactPageController extends Controller
 {
     /**
-     * @return \Illuminate\View\View
+     * @return \Illuminate\Contracts\View\View
      * @throws \Exception
      */
     public function show(): View

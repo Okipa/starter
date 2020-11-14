@@ -10,17 +10,17 @@ use App\Services\News\CategoriesService;
 use App\Tables\NewsCategoriesTable;
 use Artesaos\SEOTools\Facades\SEOTools;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\View\View;
+use Illuminate\Contracts\View\View;
 
 class NewsCategoriesController extends Controller
 {
     /**
-     * @return \Illuminate\View\View
+     * @return \Illuminate\Contracts\View\View
      * @throws \ErrorException
      */
     public function index(): View
     {
-        $table = (new NewsCategoriesTable)->setup();
+        $table = app(NewsCategoriesTable::class)->setup();
         SEOTools::setTitle(__('breadcrumbs.parent.index', [
             'parent' => __('News'),
             'entity' => __('Categories'),

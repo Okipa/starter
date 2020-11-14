@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Brickables;
 use App\Tables\CarouselBrickSlidesTables;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use Illuminate\View\View;
+use Illuminate\Contracts\View\View;
 use Okipa\LaravelBrickables\Models\Brick;
 
 class CarouselBricksController extends BricksController
@@ -14,7 +14,7 @@ class CarouselBricksController extends BricksController
      * @param \Okipa\LaravelBrickables\Models\Brick $brick
      * @param \Illuminate\Http\Request $request
      *
-     * @return \Illuminate\View\View
+     * @return \Illuminate\Contracts\View\View
      * @throws \ErrorException
      * @throws \Exception
      */

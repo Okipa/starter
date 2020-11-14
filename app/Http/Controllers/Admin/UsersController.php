@@ -14,18 +14,18 @@ use Hash;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Str;
-use Illuminate\View\View;
+use Illuminate\Contracts\View\View;
 
 class UsersController extends Controller
 {
     /**
-     * @return \Illuminate\View\View
+     * @return \Illuminate\Contracts\View\View
      * @throws \ErrorException
      */
     public function index(): View
     {
         SEOTools::setTitle(__('breadcrumbs.orphan.index', ['entity' => __('Users')]));
-        $table = (new UsersTable)->setup();
+        $table = app(UsersTable::class)->setup();
 
         return view('templates.admin.users.index', compact('table'));
     }
@@ -51,7 +51,7 @@ class UsersController extends Controller
             $request->validated(),
             ['password' => Hash::make($request->password ?: Str::random(8))]
         ));
-        (new UsersService)->saveProfilePictureFromRequest($request, $user);
+        app(UsersService::class)->saveProfilePictureFromRequest($request, $user);
         $additionalMessage = '';
         if (! $request->password) {
             $user->sendWelcomeNotification(now()->addMinutes(120));
@@ -84,7 +84,7 @@ class UsersController extends Controller
         $user->update($request->validated()['new_password']
             ? array_merge($request->validated(), ['password' => Hash::make($request->validated()['new_password'])])
             : Arr::except($request->validated(), 'password'));
-        (new UsersService)->saveProfilePictureFromRequest($request, $user);
+        app(UsersService::class)->saveProfilePictureFromRequest($request, $user);
 
         return back()->with('toast_success', $user->id === Auth::id()
             ? __('notifications.name.updated', ['name' => __('Profile')])

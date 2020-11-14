@@ -49,7 +49,7 @@ class ContactFormMessage extends Notification implements ShouldQueue
 
     public function toMail(): MailMessage
     {
-        $mailMessage = (new MailMessage)
+        $mailMessage = (new MailMessage())
             ->level('success')
             ->subject($this->isCopyToSender
                 ? __('Copy of your sent message')

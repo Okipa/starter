@@ -16,7 +16,7 @@ class UsersTable extends AbstractTable
      */
     protected function table(): Table
     {
-        return (new Table)->model(User::class)
+        return (new Table())->model(User::class)
             ->routes([
                 'index' => ['name' => 'users.index'],
                 'create' => ['name' => 'user.create'],

@@ -31,7 +31,7 @@ class ResetPassword extends \Illuminate\Auth\Notifications\ResetPassword impleme
             return call_user_func(static::$toMailCallback, $notifiable, $this->token);
         }
 
-        return (new MailMessage)
+        return (new MailMessage())
             ->level('success')
             ->subject(__('Reset your password'))
             ->greeting(__('Hello') . ' ' . $notifiable->name . ',')

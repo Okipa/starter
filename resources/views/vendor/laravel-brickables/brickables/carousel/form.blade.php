@@ -3,7 +3,7 @@
     @lang('Carousel configuration')
 @endsection
 @section('inputs')
-    {{ inputToggle()->name('full_width')->checked((bool) data_get($brick, 'data.full_width')) }}
+    {{ inputSwitch()->name('full_width')->checked((bool) data_get($brick, 'data.full_width')) }}
 @endsection
 @section('append')
     <hr class="mt-n1">

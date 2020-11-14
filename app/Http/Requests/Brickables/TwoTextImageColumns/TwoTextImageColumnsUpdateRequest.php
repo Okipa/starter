@@ -10,7 +10,7 @@ class TwoTextImageColumnsUpdateRequest extends FormRequest
     public function rules(): array
     {
         $rules = [
-            'image_right' => (new TwoTextImageColumnsBrick)->getMediaValidationRules('images'),
+            'image_right' => app(TwoTextImageColumnsBrick::class)->getMediaValidationRules('images'),
             'invert_order' => ['required', 'boolean'],
         ];
         $localizedRules = localizeRules(['text_left' => ['required', 'string']]);

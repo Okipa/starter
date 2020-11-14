@@ -1,7 +1,7 @@
 @php
     $leftText = (new Parsedown)->text(translatedData($brick, 'data.text_left'));
     $rightImage = $brick->getFirstMedia('images');
-    $rightResponsiveImage = $rightImage->img('half', ['class' => 'w-100', 'alt' => $rightImage->name]);
+    $rightResponsiveImage = $rightImage->img('half', ['class' => 'w-100 h-auto', 'alt' => $rightImage->name]);
     $invertOrder = data_get($brick, 'data.invert_order');
 @endphp
 <div class="container">

@@ -26,7 +26,7 @@
             ->componentHtmlAttributes(['required', 'autofocus', 'autocomplete' => 'email']) }}
         {{ inputPassword()->name('password')
             ->componentHtmlAttributes(['required', 'autocomplete' => 'current-password']) }}
-        {{ inputToggle()->name('remember') }}
+        {{ inputSwitch()->name('remember') }}
         {{ submitValidate()->label(__('Login'))->componentClasses(['btn-block', 'btn-primary', 'form-group']) }}
         @php
             $registrationEnabled = Laravel\Fortify\Features::enabled(Laravel\Fortify\Features::registration());
