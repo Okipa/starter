@@ -5,7 +5,7 @@
         <div class="container mt-5">
             <div class="row">
                 <div class="col-12 mb-3">
-                    {!! $image->img('cover', ['class' => 'w-100', 'alt' => $image->name]) !!}
+                    {!! $image->img('cover', ['class' => 'w-100 h-auto', 'alt' => $image->name]) !!}
                 </div>
             </div>
         </div>
@@ -24,7 +24,7 @@
                     @endforeach
                 @endif
             </div>
-            <div class="col-sm-6 my-1 my-sm-0 text-sm-right">
+            <div class="col-sm-6 mt-3 mt-sm-0 text-sm-right">
                 <span class="fa-stack text-primary">
                     <a href="https://twitter.com/home?status={{ request()->url() }}"
                        title="@lang('Share on :name', ['name' => 'Twitter'])"

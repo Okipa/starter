@@ -15,10 +15,10 @@ class UserStoreRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'profile_picture' => (new User)->getMediaValidationRules('profile_pictures'),
+            'profile_picture' => app(User::class)->getMediaValidationRules('profile_pictures'),
             'first_name' => ['required', 'string', 'max:255'],
             'last_name' => ['required', 'string', 'max:255'],
-            'phone_number' => ['nullable', 'string', 'max:255', new PhoneInternational],
+            'phone_number' => ['nullable', 'string', 'max:255', new PhoneInternational()],
             'email' => ['required', 'string', 'max:255', 'email:rfc,dns,spoof', Rule::unique(User::class)],
             'password' => $this->passwordRules(),
         ];

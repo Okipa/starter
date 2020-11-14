@@ -7,7 +7,7 @@ use App\Http\Requests\Settings\SettingsUpdateRequest;
 use App\Models\Settings\Settings;
 use Artesaos\SEOTools\Facades\SEOTools;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\View\View;
+use Illuminate\Contracts\View\View;
 
 class SettingsController extends Controller
 {

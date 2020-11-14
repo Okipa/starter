@@ -28,7 +28,7 @@ class CarouselBrickSlidesTables extends AbstractTable
      */
     protected function table(): Table
     {
-        return (new Table)->identifier('carousel-brick-slides-table')
+        return (new Table())->identifier('carousel-brick-slides-table')
             ->model(CarouselBrickSlide::class)
             ->routes([
                 'index' => [

@@ -13,7 +13,7 @@
         <div class="carousel-inner">
             @foreach($slides as $key => $slide)
                 <div class="carousel-item{{ $loop->first ? ' active' : null }}">
-                    {!! $slide->getFirstMedia('images')->img($conversionName, ['class' => 'w-100', 'alt' => $slide->name]) !!}
+                    {!! $slide->getFirstMedia('images')->img($conversionName, ['class' => 'w-100 h-auto', 'alt' => $slide->name]) !!}
                     @php
                         $label = $slide->label;
                         $caption = $slide->caption;

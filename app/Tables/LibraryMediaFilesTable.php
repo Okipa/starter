@@ -25,7 +25,7 @@ class LibraryMediaFilesTable extends AbstractTable
      */
     protected function table(): Table
     {
-        return (new Table)->model(LibraryMediaFile::class)
+        return (new Table())->model(LibraryMediaFile::class)
             ->routes([
                 'index' => ['name' => 'libraryMedia.files.index'],
                 'create' => ['name' => 'libraryMedia.file.create'],

@@ -12,7 +12,10 @@ class ArticleStoreRequest extends SeoRequest
     public function rules(): array
     {
         $rules = [
-            'illustration' => array_merge(['required'], (new NewsArticle)->getMediaValidationRules('illustration')),
+            'illustration' => array_merge(
+                ['required'],
+                app(NewsArticle::class)->getMediaValidationRules('illustration')
+            ),
             'category_ids' => ['required', 'array'],
             'category_ids.*' => ['required', 'integer', 'exists:' . NewsArticle::class . ',id'],
             'published_at' => ['required', 'date_format:Y-m-d H:i:s'],

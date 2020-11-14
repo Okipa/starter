@@ -16,7 +16,7 @@ class LibraryMediaCategoriesTable extends AbstractTable
      */
     protected function table(): Table
     {
-        return (new Table)->model(LibraryMediaCategory::class)
+        return (new Table())->model(LibraryMediaCategory::class)
             ->routes([
                 'index' => ['name' => 'libraryMedia.categories.index'],
                 'create' => ['name' => 'libraryMedia.category.create'],

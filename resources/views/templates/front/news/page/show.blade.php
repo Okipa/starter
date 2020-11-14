@@ -37,7 +37,7 @@
                     <div class="card">
                         @if($image = $article->getFirstMedia('illustrations'))
                             <div>
-                                {!! $image->img('card', ['class' => 'w-100 card-img-top', 'alt' => $article->title]) !!}
+                                {!! $image->img('card', ['class' => 'w-100 h-auto card-img-top', 'alt' => $article->title]) !!}
                             </div>
                         @endif
                         <div class="card-body">

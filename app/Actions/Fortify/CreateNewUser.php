@@ -37,7 +37,7 @@ class CreateNewUser implements CreatesNewUsers
             'email' => $input['email'],
             'password' => Hash::make($input['password']),
         ]);
-        (new UsersService)->saveAvatarFromUploadedFile(null, $user);
+        app(UsersService::class)->saveAvatarFromUploadedFile(null, $user);
 
         return $user;
     }

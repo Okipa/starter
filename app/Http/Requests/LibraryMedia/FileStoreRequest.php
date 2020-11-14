@@ -11,7 +11,7 @@ class FileStoreRequest extends FormRequest
     {
         $rules = [
             'category_id' => ['required', 'integer', 'exists:' . LibraryMediaFile::class . ',id'],
-            'media' => array_merge(['required'], (new LibraryMediaFile)->getMediaValidationRules('media')),
+            'media' => array_merge(['required'], app(LibraryMediaFile::class)->getMediaValidationRules('media')),
         ];
         $localizedRules = localizeRules(['name' => ['required', 'string', 'max:255']]);
 

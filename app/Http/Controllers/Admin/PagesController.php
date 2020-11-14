@@ -10,17 +10,17 @@ use App\Tables\PagesTable;
 use Artesaos\SEOTools\Facades\SEOTools;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Arr;
-use Illuminate\View\View;
+use Illuminate\Contracts\View\View;
 
 class PagesController extends Controller
 {
     /**
-     * @return \Illuminate\View\View
+     * @return \Illuminate\Contracts\View\View
      * @throws \ErrorException
      */
     public function index(): View
     {
-        $table = (new PagesTable)->setup();
+        $table = app(PagesTable::class)->setup();
         SEOTools::setTitle(__('breadcrumbs.orphan.index', ['entity' => __('Pages')]));
 
         return view('templates.admin.pages.index', compact('table'));

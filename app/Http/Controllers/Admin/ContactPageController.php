@@ -7,7 +7,7 @@ use App\Http\Requests\Contact\ContactPageUpdateRequest;
 use App\Models\Pages\TitleDescriptionPageContent;
 use Artesaos\SEOTools\Facades\SEOTools;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\View\View;
+use Illuminate\Contracts\View\View;
 
 class ContactPageController extends Controller
 {

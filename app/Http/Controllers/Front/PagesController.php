@@ -4,14 +4,14 @@ namespace App\Http\Controllers\Front;
 
 use App\Http\Controllers\Controller;
 use App\Models\Pages\Page;
-use Illuminate\View\View;
+use Illuminate\Contracts\View\View;
 
 class PagesController extends Controller
 {
     /**
      * @param \App\Models\Pages\Page $page
      *
-     * @return \Illuminate\View\View
+     * @return \Illuminate\Contracts\View\View
      * @throws \Exception
      */
     public function show(Page $page): View

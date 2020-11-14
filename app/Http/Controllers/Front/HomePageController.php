@@ -4,12 +4,12 @@ namespace App\Http\Controllers\Front;
 
 use App\Http\Controllers\Controller;
 use App\Models\Pages\PageContent;
-use Illuminate\View\View;
+use Illuminate\Contracts\View\View;
 
 class HomePageController extends Controller
 {
     /**
-     * @return \Illuminate\View\View
+     * @return \Illuminate\Contracts\View\View
      * @throws \Exception
      */
     public function show(): View
