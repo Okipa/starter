@@ -57,7 +57,7 @@ class Handler extends ExceptionHandler
      * @return \Symfony\Component\HttpFoundation\Response
      * @throws \Throwable
      */
-    public function render($request, Throwable $exception)
+    public function render($request, Throwable $exception): \Symfony\Component\HttpFoundation\Response
     {
         // Convert all non-http exceptions to a proper 500 http exception
         // if we don't do this exceptions are shown as a default template
@@ -82,7 +82,7 @@ class Handler extends ExceptionHandler
      *
      * @return \Illuminate\Http\Response
      */
-    protected function invalid($request, ValidationException $exception)
+    protected function invalid($request, ValidationException $exception): \Illuminate\Http\Response
     {
         if (! $request->expectsJson()) {
             toast(__('Invalid fields have been detected.'), 'error');
