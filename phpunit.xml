@@ -21,6 +21,7 @@
             <file>./app/Http/Kernel.php</file>
             <directory>./app/Http/Middleware</directory>
             <directory>./app/Providers</directory>
+            <directory>./database/migrations</directory>
         </exclude>
     </coverage>
     <php>
