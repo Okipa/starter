@@ -13,14 +13,14 @@ use Artesaos\SEOTools\Facades\SEOTools;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Response;
-use Illuminate\View\View;
+use Illuminate\Contracts\View\View;
 
 class LibraryMediaFilesController extends Controller
 {
     /**
      * @param \App\Http\Requests\LibraryMedia\FilesIndexRequest $request
      *
-     * @return \Illuminate\View\View
+     * @return \Illuminate\Contracts\View\View
      * @throws \ErrorException
      * @throws \Exception
      */
@@ -31,7 +31,7 @@ class LibraryMediaFilesController extends Controller
             'parent' => __('Media library'),
             'entity' => __('Files'),
         ]));
-        (new FilesService)->injectJavascriptInView();
+        app(FilesService::class)->injectJavascriptInView();
         $js = mix('/js/templates/admin/library-media/edit.js');
 
         return view('templates.admin.libraryMedia.files.index', compact('table', 'request', 'js'));
@@ -68,7 +68,7 @@ class LibraryMediaFilesController extends Controller
     /**
      * @param \App\Models\LibraryMedia\LibraryMediaFile $file
      *
-     * @return \Illuminate\View\View
+     * @return \Illuminate\Contracts\View\View
      * @throws \Exception
      */
     public function edit(LibraryMediaFile $file): View
@@ -77,7 +77,7 @@ class LibraryMediaFilesController extends Controller
             'entity' => __('Media library'),
             'detail' => $file->name,
         ]));
-        (new FilesService)->injectJavascriptInView();
+        app(FilesService::class)->injectJavascriptInView();
         $js = mix('/js/templates/admin/library-media/edit.js');
 
         return view('templates.admin.libraryMedia.files.edit', compact('file', 'js'));

@@ -27,11 +27,14 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
     {
         $input = array_merge($input, ['remove_profile_picture' => (bool) data_get($input, 'remove_profile_picture')]);
         Validator::make($input, [
-            'profile_picture' => array_merge(['nullable'], (new User)->getMediaValidationRules('profile_pictures')),
+            'profile_picture' => array_merge(
+                ['nullable'],
+                app(User::class)->getMediaValidationRules('profile_pictures')
+            ),
             'remove_profile_picture' => ['required', 'boolean'],
             'first_name' => ['required', 'string', 'max:255'],
             'last_name' => ['required', 'string', 'max:255'],
-            'phone_number' => ['nullable', 'string', 'max:255', new PhoneInternational],
+            'phone_number' => ['nullable', 'string', 'max:255', new PhoneInternational()],
             'email' => [
                 'required',
                 'string',
@@ -53,7 +56,7 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
         }
         if (data_get($input, 'profile_picture') || $input['remove_profile_picture']) {
             $uploadedFiled = $input['remove_profile_picture'] ? null : data_get($input, 'profile_picture');
-            (new UsersService)->saveAvatarFromUploadedFile($uploadedFiled, $user);
+            app(UsersService::class)->saveAvatarFromUploadedFile($uploadedFiled, $user);
         }
     }
 

@@ -26,7 +26,7 @@ class VerifyEmail extends \Illuminate\Auth\Notifications\VerifyEmail implements 
             return call_user_func(static::$toMailCallback, $notifiable);
         }
 
-        return (new MailMessage)
+        return (new MailMessage())
             ->level('success')
             ->subject(__('Confirm your email address'))
             ->greeting(__('Hello') . ' ' . $notifiable->name . ',')

@@ -18,7 +18,7 @@ class NewsArticlesTable extends AbstractTable
      */
     protected function table(): Table
     {
-        return (new Table)->model(NewsArticle::class)
+        return (new Table())->model(NewsArticle::class)
             ->routes([
                 'index' => ['name' => 'news.articles.index'],
                 'create' => ['name' => 'news.article.create'],

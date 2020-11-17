@@ -75,7 +75,7 @@ class User extends Authenticatable implements HasMedia, MustVerifyEmail
 
     public function sendEmailVerificationNotification(): void
     {
-        $this->notify((new VerifyEmail)->locale(app()->getLocale()));
+        $this->notify((new VerifyEmail())->locale(app()->getLocale()));
     }
 
     public function sendWelcomeNotification(Carbon $validUntil): void

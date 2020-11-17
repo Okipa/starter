@@ -58,7 +58,7 @@
                     </h2>
                 </div>
                 <div class="card-body">
-                    {{ inputToggle()->name('active')->model($slide) }}
+                    {{ inputSwitch()->name('active')->model($slide) }}
                 </div>
             </div>
         </div>

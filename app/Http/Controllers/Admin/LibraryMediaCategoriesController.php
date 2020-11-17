@@ -9,17 +9,17 @@ use App\Models\LibraryMedia\LibraryMediaCategory;
 use App\Tables\LibraryMediaCategoriesTable;
 use Artesaos\SEOTools\Facades\SEOTools;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\View\View;
+use Illuminate\Contracts\View\View;
 
 class LibraryMediaCategoriesController extends Controller
 {
     /**
-     * @return \Illuminate\View\View
+     * @return \Illuminate\Contracts\View\View
      * @throws \ErrorException
      */
     public function index(): View
     {
-        $table = (new LibraryMediaCategoriesTable)->setup();
+        $table = app(LibraryMediaCategoriesTable::class)->setup();
         SEOTools::setTitle(__('breadcrumbs.parent.index', [
             'parent' => __('Media library'),
             'entity' => __('Categories'),

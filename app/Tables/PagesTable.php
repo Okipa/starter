@@ -16,7 +16,7 @@ class PagesTable extends AbstractTable
      */
     protected function table(): Table
     {
-        return (new Table)->model(Page::class)
+        return (new Table())->model(Page::class)
             ->routes([
                 'index' => ['name' => 'pages.index'],
                 'create' => ['name' => 'page.create'],

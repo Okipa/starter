@@ -7,7 +7,7 @@ use App\Http\Requests\News\NewsPageUpdateRequest;
 use App\Models\Pages\TitleDescriptionPageContent;
 use Artesaos\SEOTools\Facades\SEOTools;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\View\View;
+use Illuminate\Contracts\View\View;
 
 class NewsPageController extends Controller
 {

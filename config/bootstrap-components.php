@@ -7,8 +7,9 @@ return [
      * Here you can override them. Make sure your custom component extends the overridden one.
      */
     'components' => [
-        // form
-        'text' => Okipa\LaravelBootstrapComponents\Components\Form\InputText::class,
+        // Form
+        'text' => Okipa\LaravelBootstrapComponents\Components\Form\InputText
+::class,
         'email' => Okipa\LaravelBootstrapComponents\Components\Form\InputEmail::class,
         'password' => Okipa\LaravelBootstrapComponents\Components\Form\InputPassword::class,
         'url' => Okipa\LaravelBootstrapComponents\Components\Form\InputUrl::class,
@@ -21,19 +22,21 @@ return [
         'file' => Okipa\LaravelBootstrapComponents\Components\Form\InputFile::class,
         'checkbox' => Okipa\LaravelBootstrapComponents\Components\Form\InputCheckbox::class,
         'switch' => Okipa\LaravelBootstrapComponents\Components\Form\InputSwitch::class,
-        'radio' => Okipa\LaravelBootstrapComponents\Components\Form\InputRadio::class,
+        'radio' => Okipa\LaravelBootstrapComponents\Components\Form\InputRadio
+::class,
         'textarea' => Okipa\LaravelBootstrapComponents\Components\Form\Textarea::class,
         'select' => Okipa\LaravelBootstrapComponents\Components\Form\Select::class,
-        // buttons
+        // Buttons
         'submit' => Okipa\LaravelBootstrapComponents\Components\Buttons\Submit::class,
         'create' => Okipa\LaravelBootstrapComponents\Components\Buttons\SubmitCreate::class,
-        'update' => Okipa\LaravelBootstrapComponents\Components\Buttons\SubmitUpdate::class,
+        'update' => Okipa\LaravelBootstrapComponents\Components\Buttons\SubmitUpdate
+::class,
         'validate' => Okipa\LaravelBootstrapComponents\Components\Buttons\SubmitValidate::class,
         'button' => Okipa\LaravelBootstrapComponents\Components\Buttons\Button::class,
         'link' => Okipa\LaravelBootstrapComponents\Components\Buttons\ButtonLink::class,
         'back' => Okipa\LaravelBootstrapComponents\Components\Buttons\ButtonBack::class,
         'cancel' => Okipa\LaravelBootstrapComponents\Components\Buttons\ButtonCancel::class,
-        // media
+        // Media
         'image' => App\Components\Media\Image::class,
         'audio' => Okipa\LaravelBootstrapComponents\Components\Media\Audio::class,
         'video' => Okipa\LaravelBootstrapComponents\Components\Media\Video::class,
