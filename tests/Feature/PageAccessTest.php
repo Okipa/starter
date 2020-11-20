@@ -12,7 +12,7 @@ class PageAccessTest extends TestCase
     use RefreshDatabase;
 
     /** @test */
-    public function it_can_access_to_home_page()
+    public function it_can_access_to_home_page(): void
     {
         $this->withoutMix();
         $this->artisan('db:seed --class=SettingsSeeder');
@@ -21,7 +21,7 @@ class PageAccessTest extends TestCase
     }
 
     /** @test */
-    public function it_can_access_to_news_page()
+    public function it_can_access_to_news_page(): void
     {
         $this->withoutMix();
         $this->artisan('db:seed --class=SettingsSeeder');
@@ -32,7 +32,7 @@ class PageAccessTest extends TestCase
     }
 
     /** @test */
-    public function it_can_access_to_contact_page()
+    public function it_can_access_to_contact_page(): void
     {
         $this->withoutMix();
         $this->artisan('db:seed --class=SettingsSeeder');
