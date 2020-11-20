@@ -1,3 +1,13 @@
+@if (session('status') === 'two-factor-authentication-enabled')
+    @php
+        alert()->html(__('Success'), __('Two factor authentication has been enabled.'), 'success')->showConfirmButton()
+    @endphp
+@endif
+@if (session('status') === 'two-factor-authentication-disabled')
+    @php
+        alert()->html(__('Success'), __('Two factor authentication has been disabled.'), 'success')->showConfirmButton()
+    @endphp
+@endif
 @extends('layouts.admin.full')
 @section('template')
     <h1>

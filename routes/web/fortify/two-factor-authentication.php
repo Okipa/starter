@@ -24,15 +24,12 @@ if (Features::enabled(Features::twoFactorAuthentication())) {
     Route::delete(Lang::uri('/user/two-factor-authentication'), [TwoFactorAuthenticationController::class, 'destroy'])
         ->middleware($twoFactorMiddleware)
         ->name('two-factor.deactivate');
-    // Deactivated unused Livewire routes
-//    if (config('fortify.views', true)) {
-//    Route::get(Lang::uri('/user/two-factor-qr-code'), [TwoFactorQrCodeController::class, 'show'])
-//        ->middleware($twoFactorMiddleware)
-//        ->name('two-factor.qr');
-//    Route::get(Lang::uri('/user/two-factor-recovery-codes'), [RecoveryCodeController::class, 'index'])
-//        ->middleware($twoFactorMiddleware)
-//        ->name('two-factor.recovery');
-//    }
+    Route::get(Lang::uri('/user/two-factor-qr-code'), [TwoFactorQrCodeController::class, 'show'])
+        ->middleware($twoFactorMiddleware)
+        ->name('two-factor.qr');
+    Route::get(Lang::uri('/user/two-factor-recovery-codes'), [RecoveryCodeController::class, 'index'])
+        ->middleware($twoFactorMiddleware)
+        ->name('two-factor.recovery');
     Route::post(Lang::uri('/user/two-factor-recovery-codes'), [RecoveryCodeController::class, 'store'])
         ->middleware($twoFactorMiddleware)
         ->name('two-factor.recovery.regen');

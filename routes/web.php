@@ -2,24 +2,30 @@
 
 use Illuminate\Support\Facades\Route;
 
-// localized ***********************************************************************************************************
+// Localized ***********************************************************************************************************
 Route::localized(function () {
 
-    // Todo: remove this block and the routes php files if your app is not multilingual.
+    // Todo: you can remove this block and the routes php files if your app is not multilingual.
     // Todo: Also remove the `Fortify::ignoreRoutes();` line in the `App\Providers\FortifyServiceProvider`.
-    // fortify
-    Route::group(['middleware' => config('fortify.middleware', ['web'])], static function () {
-        require('web/fortify/login.php');
-        require('web/fortify/registration.php');
-        require('web/fortify/password-reset.php');
-        require('web/fortify/email-verification.php');
-        require('web/fortify/profile-information.php');
-        require('web/fortify/passwords.php');
-        require('web/fortify/password-confirmation.php');
-        require('web/fortify/two-factor-authentication.php');
+    // Fortify
+    Route::group([
+        'namespace' => 'Laravel\Fortify\Http\Controllers',
+        'domain' => config('fortify.domain', null),
+        'prefix' => config('fortify.path'),
+    ], function () {
+        Route::group(['middleware' => config('fortify.middleware', ['web'])], static function () {
+            require('web/fortify/login.php');
+            require('web/fortify/registration.php');
+            require('web/fortify/password-reset.php');
+            require('web/fortify/email-verification.php');
+            require('web/fortify/profile-information.php');
+            require('web/fortify/passwords.php');
+            require('web/fortify/password-confirmation.php');
+            require('web/fortify/two-factor-authentication.php');
+        });
     });
 
-    // admin
+    // Admin
     Route::prefix('admin')->middleware(['auth', 'verified'])->group(function () {
         require('web/admin/admin.php');
         require('web/admin/dashboard.php');
@@ -30,7 +36,7 @@ Route::localized(function () {
         require('web/admin/brickables.php');
         require('web/admin/libraryMedia.php');
 
-        // password reconfirm protection
+        // Password reconfirm protection
         Route::middleware(['password.confirm'])->group(function () {
             require('web/admin/profile.php');
             require('web/admin/users.php');
@@ -38,7 +44,7 @@ Route::localized(function () {
         });
     });
 
-    // front
+    // Front
     require('web/front/home.php');
     require('web/front/news.php');
     require('web/front/contact.php');
@@ -47,9 +53,9 @@ Route::localized(function () {
     require('web/front/welcome.php');
 });
 
-// not localized *******************************************************************************************************
+// Not localized *******************************************************************************************************
 
-// utils
+// Utils
 require('web/utils/seo.php');
 require('web/utils/download.php');
 

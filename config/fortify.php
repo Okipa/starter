@@ -65,6 +65,21 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | Fortify Routes Prefix / Subdomain
+    |--------------------------------------------------------------------------
+    |
+    | Here you may specify which prefix Fortify will assign to the all routes
+    | that it registers with the application. If necessary, you may change
+    | subdomain under which all of the Fortify routes will be available.
+    |
+    */
+
+    'path' => 'admin',
+
+    'domain' => null,
+
+    /*
+    |--------------------------------------------------------------------------
     | Fortify Routes Middleware
     |--------------------------------------------------------------------------
     |
@@ -118,7 +133,7 @@ return [
     'features' => [
         Features::registration(),
         Features::resetPasswords(),
-         Features::emailVerification(),
+        Features::emailVerification(),
         Features::updateProfileInformation(),
         Features::updatePasswords(),
         Features::twoFactorAuthentication([

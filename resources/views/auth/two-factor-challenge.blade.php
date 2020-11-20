@@ -1,10 +1,10 @@
+@if(session('status'))
+    @php
+        alert()->html(__('Success'), session('status'), 'success')->showConfirmButton();
+    @endphp
+@endif
 @extends('layouts.admin.auth')
 @section('content')
-    @if(session('status'))
-        @php
-            alert()->html(__('Success'), session('status'), 'success')->showConfirmButton();
-        @endphp
-    @endif
     @include('components.common.multilingual.lang-switcher', [
         'containerClasses' => ['text-right', 'mb-3'],
         'dropdownLabelClasses' => ['btn', 'btn-link'],
