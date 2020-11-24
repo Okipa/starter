@@ -361,22 +361,22 @@
         },
         {
             "name": "coderello/laravel-shared-data",
-            "version": "3.0.0",
+            "version": "3.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/coderello/laravel-shared-data.git",
-                "reference": "3efc56e04868dab6f9abf3dfedfb719d69f4631f"
+                "reference": "2ece664f901a70b66a616a31119280e647f9f7ed"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/coderello/laravel-shared-data/zipball/3efc56e04868dab6f9abf3dfedfb719d69f4631f",
-                "reference": "3efc56e04868dab6f9abf3dfedfb719d69f4631f",
+                "url": "https://api.github.com/repos/coderello/laravel-shared-data/zipball/2ece664f901a70b66a616a31119280e647f9f7ed",
+                "reference": "2ece664f901a70b66a616a31119280e647f9f7ed",
                 "shasum": ""
             },
             "require": {
                 "ext-json": "*",
                 "illuminate/support": "^6.0|^7.0|^8.0",
-                "php": "^7.3"
+                "php": "^7.3|^8.0"
             },
             "require-dev": {
                 "orchestra/testbench": "^4.0|^5.0|^6.0"
@@ -404,9 +404,9 @@
             "description": "Package for sharing data from Laravel to JavaScript.",
             "support": {
                 "issues": "https://github.com/coderello/laravel-shared-data/issues",
-                "source": "https://github.com/coderello/laravel-shared-data/tree/3.0.0"
+                "source": "https://github.com/coderello/laravel-shared-data/tree/3.1.0"
             },
-            "time": "2020-09-09T07:58:12+00:00"
+            "time": "2020-11-18T11:39:06+00:00"
         },
         {
             "name": "codezero/browser-locale",
@@ -2438,23 +2438,23 @@
         },
         {
             "name": "laravel-notification-channels/webhook",
-            "version": "2.1.0",
+            "version": "2.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-notification-channels/webhook.git",
-                "reference": "581d430eaeb6cd7cb56da705d38ba0af1cc5a72c"
+                "reference": "f5ca721da97e4b4cce6bf969197e48f83c480c2c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-notification-channels/webhook/zipball/581d430eaeb6cd7cb56da705d38ba0af1cc5a72c",
-                "reference": "581d430eaeb6cd7cb56da705d38ba0af1cc5a72c",
+                "url": "https://api.github.com/repos/laravel-notification-channels/webhook/zipball/f5ca721da97e4b4cce6bf969197e48f83c480c2c",
+                "reference": "f5ca721da97e4b4cce6bf969197e48f83c480c2c",
                 "shasum": ""
             },
             "require": {
                 "guzzlehttp/guzzle": "^6.2 || ^7.0",
                 "illuminate/notifications": "^6.0 || ^7.0 || ^8.0",
                 "illuminate/support": "^6.0 || ^7.0 || ^8.0",
-                "php": "^7.2.5"
+                "php": "^7.2.5 || ^8.0"
             },
             "require-dev": {
                 "mockery/mockery": "^1.3",
@@ -2487,22 +2487,22 @@
             "homepage": "https://github.com/laravel-notification-channels/webhook",
             "support": {
                 "issues": "https://github.com/laravel-notification-channels/webhook/issues",
-                "source": "https://github.com/laravel-notification-channels/webhook/tree/2.1.0"
+                "source": "https://github.com/laravel-notification-channels/webhook/tree/2.2.0"
             },
-            "time": "2020-09-10T08:15:19+00:00"
+            "time": "2020-11-23T22:39:49+00:00"
         },
         {
             "name": "laravel/fortify",
-            "version": "v1.7.1",
+            "version": "v1.7.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/fortify.git",
-                "reference": "b2430958fa93883ab0e5f0caf486ef3688711608"
+                "reference": "1333184e4797de9f6fe5891e4b6f07919a151289"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/fortify/zipball/b2430958fa93883ab0e5f0caf486ef3688711608",
-                "reference": "b2430958fa93883ab0e5f0caf486ef3688711608",
+                "url": "https://api.github.com/repos/laravel/fortify/zipball/1333184e4797de9f6fe5891e4b6f07919a151289",
+                "reference": "1333184e4797de9f6fe5891e4b6f07919a151289",
                 "shasum": ""
             },
             "require": {
@@ -2552,20 +2552,20 @@
                 "issues": "https://github.com/laravel/fortify/issues",
                 "source": "https://github.com/laravel/fortify"
             },
-            "time": "2020-11-13T13:55:54+00:00"
+            "time": "2020-11-24T16:52:33+00:00"
         },
         {
             "name": "laravel/framework",
-            "version": "v8.15.0",
+            "version": "v8.16.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "22e4182fa0885dea3772106c3b6df705b7c7363e"
+                "reference": "0be6761601feb3cc1f51ac04b5cc5fbdde7928c1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/22e4182fa0885dea3772106c3b6df705b7c7363e",
-                "reference": "22e4182fa0885dea3772106c3b6df705b7c7363e",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/0be6761601feb3cc1f51ac04b5cc5fbdde7928c1",
+                "reference": "0be6761601feb3cc1f51ac04b5cc5fbdde7928c1",
                 "shasum": ""
             },
             "require": {
@@ -2638,7 +2638,7 @@
                 "illuminate/view": "self.version"
             },
             "require-dev": {
-                "aws/aws-sdk-php": "^3.0",
+                "aws/aws-sdk-php": "^3.155",
                 "doctrine/dbal": "^2.6|^3.0",
                 "filp/whoops": "^2.8",
                 "guzzlehttp/guzzle": "^6.5.5|^7.0.1",
@@ -2651,7 +2651,7 @@
                 "symfony/cache": "^5.1"
             },
             "suggest": {
-                "aws/aws-sdk-php": "Required to use the SQS queue driver, DynamoDb failed job storage and SES mail driver (^3.0).",
+                "aws/aws-sdk-php": "Required to use the SQS queue driver, DynamoDb failed job storage and SES mail driver (^3.155).",
                 "doctrine/dbal": "Required to rename columns and drop SQLite columns (^2.6|^3.0).",
                 "ext-ftp": "Required to use the Flysystem FTP driver.",
                 "ext-gd": "Required to use Illuminate\\Http\\Testing\\FileFactory::image().",
@@ -2719,20 +2719,20 @@
                 "issues": "https://github.com/laravel/framework/issues",
                 "source": "https://github.com/laravel/framework"
             },
-            "time": "2020-11-17T14:53:20+00:00"
+            "time": "2020-11-24T16:13:01+00:00"
         },
         {
             "name": "laravel/horizon",
-            "version": "v5.4.0",
+            "version": "v5.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/horizon.git",
-                "reference": "d08d10ee12f53b7ba2cbb938eb23857e93fe51d3"
+                "reference": "66743f65a55a71f52b5308de1a09fe5fd8453bcb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/horizon/zipball/d08d10ee12f53b7ba2cbb938eb23857e93fe51d3",
-                "reference": "d08d10ee12f53b7ba2cbb938eb23857e93fe51d3",
+                "url": "https://api.github.com/repos/laravel/horizon/zipball/66743f65a55a71f52b5308de1a09fe5fd8453bcb",
+                "reference": "66743f65a55a71f52b5308de1a09fe5fd8453bcb",
                 "shasum": ""
             },
             "require": {
@@ -2794,9 +2794,9 @@
             ],
             "support": {
                 "issues": "https://github.com/laravel/horizon/issues",
-                "source": "https://github.com/laravel/horizon/tree/v5.4.0"
+                "source": "https://github.com/laravel/horizon/tree/v5.5.0"
             },
-            "time": "2020-11-03T16:55:40+00:00"
+            "time": "2020-11-24T17:09:52+00:00"
         },
         {
             "name": "laravel/telescope",
@@ -3801,12 +3801,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Okipa/laravel-brickables.git",
-                "reference": "8e2980f89868a756f55148201532a3ecc92bac1a"
+                "reference": "e4d9a518885bea58936cf0ac8b2d11f4caffe628"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Okipa/laravel-brickables/zipball/8e2980f89868a756f55148201532a3ecc92bac1a",
-                "reference": "8e2980f89868a756f55148201532a3ecc92bac1a",
+                "url": "https://api.github.com/repos/Okipa/laravel-brickables/zipball/e4d9a518885bea58936cf0ac8b2d11f4caffe628",
+                "reference": "e4d9a518885bea58936cf0ac8b2d11f4caffe628",
                 "shasum": ""
             },
             "require": {
@@ -3868,7 +3868,7 @@
                 "issues": "https://github.com/Okipa/laravel-brickables/issues",
                 "source": "https://github.com/Okipa/laravel-brickables/tree/php8-support"
             },
-            "time": "2020-11-14T15:39:53+00:00"
+            "time": "2020-11-22T20:33:33+00:00"
         },
         {
             "name": "okipa/laravel-html-helper",
@@ -4005,21 +4005,21 @@
         },
         {
             "name": "okipa/laravel-stuck-jobs-notifier",
-            "version": "2.0.0",
+            "version": "2.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Okipa/laravel-stuck-jobs-notifier.git",
-                "reference": "e0aaf589be5cb9ea7433111445f9d38728c8664f"
+                "reference": "9aa00d4d9db1b5d449809f00e1e763779ac48023"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Okipa/laravel-stuck-jobs-notifier/zipball/e0aaf589be5cb9ea7433111445f9d38728c8664f",
-                "reference": "e0aaf589be5cb9ea7433111445f9d38728c8664f",
+                "url": "https://api.github.com/repos/Okipa/laravel-stuck-jobs-notifier/zipball/9aa00d4d9db1b5d449809f00e1e763779ac48023",
+                "reference": "9aa00d4d9db1b5d449809f00e1e763779ac48023",
                 "shasum": ""
             },
             "require": {
                 "illuminate/support": "^7.0||^8.0",
-                "php": "^7.4"
+                "php": "^7.4||^8.0"
             },
             "require-dev": {
                 "laravel-notification-channels/webhook": "^2.0",
@@ -4076,27 +4076,27 @@
             ],
             "support": {
                 "issues": "https://github.com/Okipa/laravel-stuck-jobs-notifier/issues",
-                "source": "https://github.com/Okipa/laravel-stuck-jobs-notifier/tree/2.0.0"
+                "source": "https://github.com/Okipa/laravel-stuck-jobs-notifier/tree/2.1.0"
             },
-            "time": "2020-09-25T08:36:42+00:00"
+            "time": "2020-11-24T18:19:03+00:00"
         },
         {
             "name": "okipa/laravel-supervisor-downtime-notifier",
-            "version": "2.0.0",
+            "version": "2.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Okipa/laravel-supervisor-downtime-notifier.git",
-                "reference": "226461be9378186e2ed1fc0dbfea0f5c3bc7fe9e"
+                "reference": "23b2a9cb96923fe5e3258cd92456d0d41fba2af1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Okipa/laravel-supervisor-downtime-notifier/zipball/226461be9378186e2ed1fc0dbfea0f5c3bc7fe9e",
-                "reference": "226461be9378186e2ed1fc0dbfea0f5c3bc7fe9e",
+                "url": "https://api.github.com/repos/Okipa/laravel-supervisor-downtime-notifier/zipball/23b2a9cb96923fe5e3258cd92456d0d41fba2af1",
+                "reference": "23b2a9cb96923fe5e3258cd92456d0d41fba2af1",
                 "shasum": ""
             },
             "require": {
                 "illuminate/support": "^7.0||^8.0",
-                "php": "^7.4"
+                "php": "^7.4||^8.0"
             },
             "require-dev": {
                 "laravel-notification-channels/webhook": "^2.0",
@@ -4156,9 +4156,9 @@
             ],
             "support": {
                 "issues": "https://github.com/Okipa/laravel-supervisor-downtime-notifier/issues",
-                "source": "https://github.com/Okipa/laravel-supervisor-downtime-notifier/tree/2.0.0"
+                "source": "https://github.com/Okipa/laravel-supervisor-downtime-notifier/tree/2.1.0"
             },
-            "time": "2020-09-25T08:29:45+00:00"
+            "time": "2020-11-24T18:10:32+00:00"
         },
         {
             "name": "okipa/laravel-table",
@@ -6038,16 +6038,16 @@
         },
         {
             "name": "spatie/browsershot",
-            "version": "3.40.3",
+            "version": "3.41.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/browsershot.git",
-                "reference": "321f0d8ec8e303d145968ebece9fa1ebf2497864"
+                "reference": "2cc87d4dad788b372549cf856c773a7e5a8fcace"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/browsershot/zipball/321f0d8ec8e303d145968ebece9fa1ebf2497864",
-                "reference": "321f0d8ec8e303d145968ebece9fa1ebf2497864",
+                "url": "https://api.github.com/repos/spatie/browsershot/zipball/2cc87d4dad788b372549cf856c773a7e5a8fcace",
+                "reference": "2cc87d4dad788b372549cf856c773a7e5a8fcace",
                 "shasum": ""
             },
             "require": {
@@ -6092,7 +6092,7 @@
             ],
             "support": {
                 "issues": "https://github.com/spatie/browsershot/issues",
-                "source": "https://github.com/spatie/browsershot/tree/3.40.3"
+                "source": "https://github.com/spatie/browsershot/tree/3.41.0"
             },
             "funding": [
                 {
@@ -6100,7 +6100,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2020-11-12T16:31:59+00:00"
+            "time": "2020-11-18T08:51:42+00:00"
         },
         {
             "name": "spatie/crawler",
@@ -6304,16 +6304,16 @@
         },
         {
             "name": "spatie/image-optimizer",
-            "version": "1.3.0",
+            "version": "1.3.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/image-optimizer.git",
-                "reference": "f87f8328ca5bfabb3811241f5d35f17e146f7f83"
+                "reference": "b622d0cf29f57d7735d49f2b62471e6b788cb291"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/image-optimizer/zipball/f87f8328ca5bfabb3811241f5d35f17e146f7f83",
-                "reference": "f87f8328ca5bfabb3811241f5d35f17e146f7f83",
+                "url": "https://api.github.com/repos/spatie/image-optimizer/zipball/b622d0cf29f57d7735d49f2b62471e6b788cb291",
+                "reference": "b622d0cf29f57d7735d49f2b62471e6b788cb291",
                 "shasum": ""
             },
             "require": {
@@ -6352,9 +6352,9 @@
             ],
             "support": {
                 "issues": "https://github.com/spatie/image-optimizer/issues",
-                "source": "https://github.com/spatie/image-optimizer/tree/1.3.0"
+                "source": "https://github.com/spatie/image-optimizer/tree/1.3.1"
             },
-            "time": "2020-11-10T13:45:49+00:00"
+            "time": "2020-11-20T11:36:11+00:00"
         },
         {
             "name": "spatie/laravel-feed",
@@ -6513,16 +6513,16 @@
         },
         {
             "name": "spatie/laravel-medialibrary",
-            "version": "9.1.3",
+            "version": "9.1.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/laravel-medialibrary.git",
-                "reference": "bac9c3180343d478f59eac8f69bebfe37b66dd29"
+                "reference": "3c09714188bfcb08640f2d73ae95ea2d80105d6c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/laravel-medialibrary/zipball/bac9c3180343d478f59eac8f69bebfe37b66dd29",
-                "reference": "bac9c3180343d478f59eac8f69bebfe37b66dd29",
+                "url": "https://api.github.com/repos/spatie/laravel-medialibrary/zipball/3c09714188bfcb08640f2d73ae95ea2d80105d6c",
+                "reference": "3c09714188bfcb08640f2d73ae95ea2d80105d6c",
                 "shasum": ""
             },
             "require": {
@@ -6601,7 +6601,7 @@
             ],
             "support": {
                 "issues": "https://github.com/spatie/laravel-medialibrary/issues",
-                "source": "https://github.com/spatie/laravel-medialibrary/tree/9.1.3"
+                "source": "https://github.com/spatie/laravel-medialibrary/tree/9.1.7"
             },
             "funding": [
                 {
@@ -6613,7 +6613,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2020-11-12T12:59:59+00:00"
+            "time": "2020-11-24T07:45:21+00:00"
         },
         {
             "name": "spatie/laravel-sitemap",
@@ -6687,27 +6687,26 @@
         },
         {
             "name": "spatie/laravel-translatable",
-            "version": "4.5.2",
+            "version": "4.6.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/laravel-translatable.git",
-                "reference": "73e5c922a0004967e6be2bf73e36780af4090155"
+                "reference": "5900d6002a5795712058a04c7ca7c2c44b3e0850"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/laravel-translatable/zipball/73e5c922a0004967e6be2bf73e36780af4090155",
-                "reference": "73e5c922a0004967e6be2bf73e36780af4090155",
+                "url": "https://api.github.com/repos/spatie/laravel-translatable/zipball/5900d6002a5795712058a04c7ca7c2c44b3e0850",
+                "reference": "5900d6002a5795712058a04c7ca7c2c44b3e0850",
                 "shasum": ""
             },
             "require": {
-                "illuminate/database": "~5.8.0|^6.0|^7.0|^8.0",
-                "illuminate/support": "~5.8.0|^6.0|^7.0|^8.0",
-                "php": "^7.2"
+                "illuminate/database": "^6.0|^7.0|^8.0",
+                "illuminate/support": "^6.0|^7.0|^8.0",
+                "php": "^7.2|^8.0"
             },
             "require-dev": {
-                "friendsofphp/php-cs-fixer": "^2.16",
-                "mockery/mockery": "^1.3",
-                "orchestra/testbench": "~3.8.0|^4.0|^5.0|^6.0"
+                "mockery/mockery": "^1.4",
+                "orchestra/testbench": "^4.0|^5.0|^6.0"
             },
             "type": "library",
             "extra": {
@@ -6758,7 +6757,7 @@
             ],
             "support": {
                 "issues": "https://github.com/spatie/laravel-translatable/issues",
-                "source": "https://github.com/spatie/laravel-translatable/tree/4.5.2"
+                "source": "https://github.com/spatie/laravel-translatable/tree/4.6.0"
             },
             "funding": [
                 {
@@ -6766,7 +6765,7 @@
                     "type": "custom"
                 }
             ],
-            "time": "2020-10-22T13:52:25+00:00"
+            "time": "2020-11-19T14:19:29+00:00"
         },
         {
             "name": "spatie/laravel-welcome-notification",
@@ -10725,16 +10724,16 @@
         },
         {
             "name": "fakerphp/faker",
-            "version": "v1.11.0",
+            "version": "v1.12.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/FakerPHP/Faker.git",
-                "reference": "f228dc5112bafc14c77d40a2acc0c48058e184b0"
+                "reference": "9aa6c9e289860951e6b4d010c7a841802d015cd8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/FakerPHP/Faker/zipball/f228dc5112bafc14c77d40a2acc0c48058e184b0",
-                "reference": "f228dc5112bafc14c77d40a2acc0c48058e184b0",
+                "url": "https://api.github.com/repos/FakerPHP/Faker/zipball/9aa6c9e289860951e6b4d010c7a841802d015cd8",
+                "reference": "9aa6c9e289860951e6b4d010c7a841802d015cd8",
                 "shasum": ""
             },
             "require": {
@@ -10771,9 +10770,9 @@
             ],
             "support": {
                 "issues": "https://github.com/FakerPHP/Faker/issues",
-                "source": "https://github.com/FakerPHP/Faker/tree/v1.11.0"
+                "source": "https://github.com/FakerPHP/Faker/tree/v1.12.0"
             },
-            "time": "2020-11-15T20:27:00+00:00"
+            "time": "2020-11-23T09:33:08+00:00"
         },
         {
             "name": "filp/whoops",
@@ -11754,16 +11753,16 @@
         },
         {
             "name": "phpstan/phpstan",
-            "version": "0.12.56",
+            "version": "0.12.57",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpstan/phpstan.git",
-                "reference": "007fd5d700c41e1bb27795fae15a2383f8fa4ba1"
+                "reference": "f9909d1d0c44b4cbaf72babcf80e8f14d6fdd55b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/007fd5d700c41e1bb27795fae15a2383f8fa4ba1",
-                "reference": "007fd5d700c41e1bb27795fae15a2383f8fa4ba1",
+                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/f9909d1d0c44b4cbaf72babcf80e8f14d6fdd55b",
+                "reference": "f9909d1d0c44b4cbaf72babcf80e8f14d6fdd55b",
                 "shasum": ""
             },
             "require": {
@@ -11794,7 +11793,7 @@
             "description": "PHPStan - PHP Static Analysis Tool",
             "support": {
                 "issues": "https://github.com/phpstan/phpstan/issues",
-                "source": "https://github.com/phpstan/phpstan/tree/0.12.56"
+                "source": "https://github.com/phpstan/phpstan/tree/0.12.57"
             },
             "funding": [
                 {
@@ -11810,7 +11809,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2020-11-16T22:59:18+00:00"
+            "time": "2020-11-21T12:53:28+00:00"
         },
         {
             "name": "phpunit/php-code-coverage",
@@ -12289,12 +12288,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Roave/SecurityAdvisories.git",
-                "reference": "a7ebffcf8b453dcf36a9461cb7845885cb95d315"
+                "reference": "563faed0e5e24a5b639fbd30d8f3921bb11fccc0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/a7ebffcf8b453dcf36a9461cb7845885cb95d315",
-                "reference": "a7ebffcf8b453dcf36a9461cb7845885cb95d315",
+                "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/563faed0e5e24a5b639fbd30d8f3921bb11fccc0",
+                "reference": "563faed0e5e24a5b639fbd30d8f3921bb11fccc0",
                 "shasum": ""
             },
             "conflict": {
@@ -12324,7 +12323,7 @@
                 "composer/composer": "<=1-alpha.11",
                 "contao-components/mediaelement": ">=2.14.2,<2.21.1",
                 "contao/core": ">=2,<3.5.39",
-                "contao/core-bundle": ">=4,<4.4.52|>=4.5,<4.9.6|= 4.10.0",
+                "contao/core-bundle": "= 4.10.0|>=4,<4.4.52|>=4.5,<4.9.6",
                 "contao/listing-bundle": ">=4,<4.4.8",
                 "datadog/dd-trace": ">=0.30,<0.30.2",
                 "david-garcia/phpwhois": "<=4.3.1",
@@ -12340,8 +12339,8 @@
                 "doctrine/orm": ">=2,<2.4.8|>=2.5,<2.5.1",
                 "dolibarr/dolibarr": "<11.0.4",
                 "dompdf/dompdf": ">=0.6,<0.6.2",
-                "drupal/core": ">=7,<7.73|>=8,<8.8.10|>=8.9,<8.9.6|>=9,<9.0.6",
-                "drupal/drupal": ">=7,<7.73|>=8,<8.8.10|>=8.9,<8.9.6|>=9,<9.0.6",
+                "drupal/core": ">=7,<7.74|>=8,<8.8.11|>=8.9,<8.9.9|>=9,<9.0.8",
+                "drupal/drupal": ">=7,<7.74|>=8,<8.8.11|>=8.9,<8.9.9|>=9,<9.0.8",
                 "endroid/qr-code-bundle": "<3.4.2",
                 "enshrined/svg-sanitize": "<0.13.1",
                 "erusev/parsedown": "<1.7.2",
@@ -12394,7 +12393,7 @@
                 "magento/magento1ee": ">=1,<1.14.4.3",
                 "magento/product-community-edition": ">=2,<2.2.10|>=2.3,<2.3.2-p.2",
                 "marcwillmann/turn": "<0.3.3",
-                "mediawiki/core": ">=1.31,<1.31.9|>=1.32,<1.32.4|>=1.33,<1.33.3|>=1.34,<1.34.3|>=1.34.99,<1.35",
+                "mediawiki/core": ">=1.27,<1.27.6|>=1.29,<1.29.3|>=1.30,<1.30.2|>=1.31,<1.31.9|>=1.32,<1.32.6|>=1.32.99,<1.33.3|>=1.33.99,<1.34.3|>=1.34.99,<1.35",
                 "mittwald/typo3_forum": "<1.2.1",
                 "monolog/monolog": ">=1.8,<1.12",
                 "namshi/jose": "<2.2",
@@ -12402,8 +12401,8 @@
                 "nette/nette": ">=2,<2.0.19|>=2.1,<2.1.13",
                 "nystudio107/craft-seomatic": "<3.3",
                 "nzo/url-encryptor-bundle": ">=4,<4.3.2|>=5,<5.0.1",
-                "october/backend": ">=1.0.319,<1.0.467",
-                "october/cms": ">=1.0.319,<1.0.466",
+                "october/backend": ">=1.0.319,<1.0.470",
+                "october/cms": "= 1.0.469|>=1.0.319,<1.0.469",
                 "october/october": ">=1.0.319,<1.0.466",
                 "october/rain": ">=1.0.319,<1.0.468",
                 "onelogin/php-saml": "<2.10.4",
@@ -12416,13 +12415,14 @@
                 "padraic/humbug_get_contents": "<1.1.2",
                 "pagarme/pagarme-php": ">=0,<3",
                 "paragonie/random_compat": "<2",
+                "passbolt/passbolt_api": "<2.11",
                 "paypal/merchant-sdk-php": "<3.12",
                 "pear/archive_tar": "<1.4.4",
                 "personnummer/personnummer": "<3.0.2",
                 "phpfastcache/phpfastcache": ">=5,<5.0.13",
                 "phpmailer/phpmailer": "<6.1.6",
                 "phpmussel/phpmussel": ">=1,<1.6",
-                "phpmyadmin/phpmyadmin": "<4.9.2",
+                "phpmyadmin/phpmyadmin": "<4.9.6|>=5,<5.0.3",
                 "phpoffice/phpexcel": "<1.8.2",
                 "phpoffice/phpspreadsheet": "<1.8",
                 "phpunit/phpunit": ">=4.8.19,<4.8.28|>=5.0.10,<5.6.3",
@@ -12519,12 +12519,12 @@
                 "titon/framework": ">=0,<9.9.99",
                 "truckersmp/phpwhois": "<=4.3.1",
                 "twig/twig": "<1.38|>=2,<2.7",
-                "typo3/cms": ">=6.2,<6.2.30|>=7,<7.6.32|>=8,<8.7.30|>=9,<9.5.20|>=10,<10.4.6",
-                "typo3/cms-core": ">=8,<8.7.30|>=9,<9.5.20|>=10,<10.4.6",
+                "typo3/cms": ">=6.2,<6.2.30|>=7,<7.6.32|>=8,<8.7.38|>=9,<9.5.23|>=10,<10.4.10",
+                "typo3/cms-core": ">=8,<8.7.38|>=9,<9.5.23|>=10,<10.4.10",
                 "typo3/flow": ">=1,<1.0.4|>=1.1,<1.1.1|>=2,<2.0.1|>=2.3,<2.3.16|>=3,<3.0.10|>=3.1,<3.1.7|>=3.2,<3.2.7|>=3.3,<3.3.5",
                 "typo3/neos": ">=1.1,<1.1.3|>=1.2,<1.2.13|>=2,<2.0.4",
                 "typo3/phar-stream-wrapper": ">=1,<2.1.1|>=3,<3.1.1",
-                "typo3fluid/fluid": ">=2,<2.0.5|>=2.1,<2.1.4|>=2.2,<2.2.1|>=2.3,<2.3.5|>=2.4,<2.4.1|>=2.5,<2.5.5|>=2.6,<2.6.1",
+                "typo3fluid/fluid": ">=2,<2.0.8|>=2.1,<2.1.7|>=2.2,<2.2.4|>=2.3,<2.3.7|>=2.4,<2.4.4|>=2.5,<2.5.11|>=2.6,<2.6.10",
                 "ua-parser/uap-php": "<3.8",
                 "usmanhalalit/pixie": "<1.0.3|>=2,<2.0.2",
                 "verot/class.upload.php": "<=1.0.3|>=2,<=2.0.4",
@@ -12598,7 +12598,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2020-11-16T22:01:59+00:00"
+            "time": "2020-11-23T21:01:44+00:00"
         },
         {
             "name": "sebastian/cli-parser",

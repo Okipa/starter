@@ -32,6 +32,17 @@ class PageAccessTest extends TestCase
     }
 
     /** @test */
+    public function it_can_access_to_news_detail_page(): void
+    {
+        $this->withoutMix();
+        $this->artisan('db:seed --class=SettingsSeeder');
+        $this->artisan('db:seed --class=NewsPageSeeder');
+        NewsCategory::factory()->create();
+        $news = NewsArticle::factory()->create();
+        $this->get(route('news.article.show', $news))->assertStatus(200);
+    }
+
+    /** @test */
     public function it_can_access_to_contact_page(): void
     {
         $this->withoutMix();

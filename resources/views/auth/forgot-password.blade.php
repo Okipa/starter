@@ -26,7 +26,6 @@
         @csrf
         @include('components.common.form.notice')
         {{ inputEmail()->name('email')
-            ->caption(__('Fill in your email to receive instructions for resetting your password.'))
             ->componentHtmlAttributes(['required', 'autofocus', 'autocomplete' => 'email']) }}
         {{ submit()->prepend('<i class="fas fa-paper-plane fa-fw"></i>')
             ->label(__('Send reset email'))

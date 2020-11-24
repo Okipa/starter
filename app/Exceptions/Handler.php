@@ -82,7 +82,7 @@ class Handler extends ExceptionHandler
      *
      * @return \Illuminate\Http\Response
      */
-    protected function invalid($request, ValidationException $exception): \Illuminate\Http\Response
+    protected function invalid($request, ValidationException $exception)
     {
         if (! $request->expectsJson()) {
             toast(__('Invalid fields have been detected.'), 'error');
