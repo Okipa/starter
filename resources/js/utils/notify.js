@@ -7,7 +7,7 @@ const notify = swal.mixin({
     buttonsStyling: false,
 });
 
-const alert = notify.mixin({
+const popin = notify.mixin({
     showConfirmButton: true,
     showCancelButton: false,
     allowOutsideClick: false,
@@ -29,12 +29,13 @@ if (app.swalConfig) {
 
 // Alerts notifications
 notify.loading = (html = app.sweetalert.loading, title = app.sweetalert.please_wait, config = {}) => {
-    return alert.fire({
+    return swal.fire({
         icon: 'info',
         title,
         html,
         showConfirmButton: false,
         showCancelButton: false,
+        allowOutsideClick: false,
         timerProgressBar: true,
         onBeforeOpen: () => {
             swal.showLoading();
@@ -44,7 +45,7 @@ notify.loading = (html = app.sweetalert.loading, title = app.sweetalert.please_w
 };
 
 notify.info = (html, title, config = {}) => {
-    return alert.fire({
+    return popin.fire({
         icon: 'info',
         title,
         html,
@@ -53,7 +54,7 @@ notify.info = (html, title, config = {}) => {
 };
 
 notify.question = (html, title, config = {}) => {
-    return alert.fire({
+    return popin.fire({
         icon: 'question',
         title,
         html,
@@ -62,7 +63,7 @@ notify.question = (html, title, config = {}) => {
 };
 
 notify.confirm = (html, title = app.sweetalert.confirm_request, config = {}) => {
-    return alert.fire({
+    return popin.fire({
         icon: 'warning',
         title,
         html,
@@ -72,7 +73,7 @@ notify.confirm = (html, title = app.sweetalert.confirm_request, config = {}) => 
 };
 
 notify.error = (html = app.sweetalert.unexpected, title = app.sweetalert.error, config = {}) => {
-    return alert.fire({
+    return popin.fire({
         icon: 'error',
         title: title,
         html: html,
@@ -88,6 +89,7 @@ notify.toastInfo = (title, html) => {
         html
     });
 };
+
 notify.toastWarning = (title, html) => {
     return toast.fire({
         icon: 'warning',
@@ -95,6 +97,7 @@ notify.toastWarning = (title, html) => {
         html
     });
 };
+
 notify.toastSuccess = (title, html) => {
     return toast.fire({
         icon: 'success',
@@ -102,6 +105,7 @@ notify.toastSuccess = (title, html) => {
         html
     });
 };
+
 notify.toastError = (title, html) => {
     return toast.fire({
         icon: 'error',
