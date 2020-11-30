@@ -51,7 +51,6 @@ EOT;
             'meta_title' => ['fr' => 'Accueil', 'en' => 'Home'],
             'meta_description' => ['fr' => $faker->text(150), 'en' => $faker->text(150)],
         ]);
-        /** @var \App\Models\Brickables\CarouselBrick $carouselBrick */
         $carouselBrick = $pageContent->addBrick(Carousel::class, ['full_width' => true]);
         $slide = CarouselBrickSlide::create([
             'brick_id' => $carouselBrick->id,

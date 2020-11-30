@@ -1,7 +1,8 @@
 <!-- Todo: personalize readme -->
 <!-- Todo: search every `Todo:` occurrence in starter and customize what needs to be. -->
 
-# App base built with Laravel 8
+# Web app prebuilt base on Laravel 8, PHP 7.4 and MySQL 8
+
 
 | Develop | Master |
 |---|---|
@@ -57,13 +58,13 @@ Set your project domain resolution in your virtualhost: `sudo vim /etc/hosts`.
 * `composer install --no-scripts --ignore-platform-reqs`
 * `cp .env.example .env`. Then set the environment variables according to your project needs.
 * `./vessel start`
-* `./vessel composer update`
 * `./vessel artisan key:generate`
 * `./vessel artisan storage:link`
-* `./vessel artisan migrate:refresh --seed`
 * `yarn install`
 * `yarn upgrade`
 * `yarn dev` or `yarn watch`
+* `./vessel composer update`
+* `./vessel artisan migrate:refresh --seed`
 
 ## Docker
 
