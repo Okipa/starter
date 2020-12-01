@@ -35,19 +35,19 @@
                     @csrf
                     @method('PUT')
                     @php($profilePicture = optional($user)->getFirstMedia('profile_pictures'))
-{{--                    {{ inputFile()->name('profile_picture')--}}
-{{--                        ->value(optional($profilePicture)->file_name)--}}
-{{--                        ->uploadedFile(fn() => view('components.admin.media.thumb', ['image' => $profilePicture]))--}}
-{{--                        ->caption((new \App\Models\Users\User)->getMediaCaption('profile_pictures')) }}--}}
-{{--                    {{ inputText()->name('last_name')--}}
-{{--                        ->model($user)--}}
-{{--                        ->componentHtmlAttributes(['required', 'autocomplete' => 'family-name']) }}--}}
-{{--                    {{ inputText()->name('first_name')--}}
-{{--                        ->model($user)--}}
-{{--                        ->componentHtmlAttributes(['required', 'autocomplete' => 'given-name']) }}--}}
-{{--                    {{ inputTel()->name('phone_number')--}}
-{{--                        ->model($user)--}}
-{{--                        ->componentHtmlAttributes(['autocomplete' => 'tel']) }}--}}
+                    {{ inputFile()->name('profile_picture')
+                        ->value(optional($profilePicture)->file_name)
+                        ->uploadedFile(fn() => view('components.admin.media.thumb', ['image' => $profilePicture]))
+                        ->caption(app(App\Models\Users\User::class)->getMediaCaption('profile_pictures')) }}
+                    {{ inputText()->name('last_name')
+                        ->model($user)
+                        ->componentHtmlAttributes(['required', 'autocomplete' => 'family-name']) }}
+                    {{ inputText()->name('first_name')
+                        ->model($user)
+                        ->componentHtmlAttributes(['required', 'autocomplete' => 'given-name']) }}
+                    {{ inputTel()->name('phone_number')
+                        ->model($user)
+                        ->componentHtmlAttributes(['autocomplete' => 'tel']) }}
                     {{ inputEmail()->name('email')
                         ->model($user)
                         ->componentHtmlAttributes(['required', 'autocomplete' => 'email']) }}
