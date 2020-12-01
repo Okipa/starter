@@ -16,7 +16,7 @@
     </div>
     <div class="container my-3">
         <div class="row">
-            <form class="col d-flex align-items-end">
+            <form class="col d-flex align-items-end" novalidate>
                 {{ select()->name('category_id')
                     ->options(App\Models\News\NewsCategory::orderBy('name')->get()->map(fn(App\Models\News\NewsCategory $category) => ['id' => $category->id, 'name' => $category->name]), 'id', 'name')
                     ->selected('id', (int) request()->category_id)

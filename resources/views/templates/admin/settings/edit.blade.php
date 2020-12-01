@@ -5,7 +5,11 @@
         @lang('breadcrumbs.orphan.index', ['entity' => __('Settings')])
     </h1>
     <hr>
-    <form method="POST" class="w-100" action="{{ route('settings.update') }}" enctype="multipart/form-data">
+    <form class="w-100"
+          method="POST"
+          action="{{ route('settings.update') }}"
+          enctype="multipart/form-data"
+          novalidate>
         @csrf
         @method('PUT')
         {{ submitUpdate() }}

@@ -15,7 +15,7 @@
         @lang('Registration area')
     </h1>
     @include('components.common.form.notice')
-    <form class="w-100" method="POST">
+    <form class="w-100" method="POST" novalidate>
         @csrf
         {{ inputText()->name('first_name')
             ->prepend('<i class="fas fa-user"></i>')

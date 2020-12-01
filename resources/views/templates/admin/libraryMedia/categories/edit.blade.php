@@ -9,8 +9,9 @@
         @endif
     </h1>
     <hr>
-    <form action="{{ $category ? route('libraryMedia.category.update', $category) : route('libraryMedia.category.store') }}"
-          method="POST">
+    <form method="POST"
+          action="{{ $category ? route('libraryMedia.category.update', $category) : route('libraryMedia.category.store') }}"
+          novalidate>
         @csrf
         @if($category)
             @method('PUT')

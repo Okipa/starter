@@ -12,7 +12,9 @@
             </h2>
         </div>
         <div class="card-body">
-            <form action="{{ route('libraryMedia.files.index') }}" class="d-flex justify-content-end">
+            <form class="d-flex justify-content-end"
+                  action="{{ route('libraryMedia.files.index') }}"
+                  novalidate>
                 @foreach($request->except('category_id') as $name => $value)
                     <input type="hidden" name="{{ $name }}" value="{{ $value }}">
                 @endforeach

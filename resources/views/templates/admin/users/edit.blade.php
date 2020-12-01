@@ -9,9 +9,10 @@
         @endif
     </h1>
     <hr>
-    <form action="{{ $user ? route('user.update', $user) : route('user.store') }}"
-          method="POST"
-          enctype="multipart/form-data">
+    <form method="POST"
+          action="{{ $user ? route('user.update', $user) : route('user.store') }}"
+          enctype="multipart/form-data"
+          novalidate>
         @csrf
         @if($user)
             @method('PUT')

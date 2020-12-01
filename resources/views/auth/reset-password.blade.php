@@ -15,7 +15,7 @@
         @lang('Define new password')
     </h1>
     @include('components.common.form.notice')
-    <form method="POST" class="w-100" action="{{ route('password.update') }}">
+    <form class="w-100" method="POST" action="{{ route('password.update') }}" novalidate>
         @csrf
         <input type="hidden" name="token" value="{{ $request->route('token') }}">
         {{ inputEmail()->name('email')

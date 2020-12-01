@@ -19,7 +19,7 @@
         <i class="fas fa-sign-in-alt fa-fw"></i>
         @lang('Sign in area')
     </h1>
-    <form class="w-100" method="POST">
+    <form class="w-100" method="POST" novalidate>
         @csrf
         @include('components.common.form.notice')
         {{ inputEmail()->name('email')

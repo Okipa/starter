@@ -27,7 +27,7 @@
             @lang('Please confirm access to your account by entering the authentication code provided by your authenticator application.')
         @endif
     </p>
-    <form class="w-100" method="POST">
+    <form class="w-100" method="POST" novalidate>
         @csrf
         @if(request()->recovery)
             {{ inputText()->prepend('<i class="fas fa-code"></i>')

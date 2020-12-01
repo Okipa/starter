@@ -16,11 +16,12 @@
         @endif
     </h1>
     <hr>
-    <form action="{{ $slide
-        ? route('brick.carousel.slide.update', $slide)
-        : route('brick.carousel.slide.store', ['brick' => $brick, 'admin_panel_url' => request()->admin_panel_url]) }}"
-          method="POST"
-          enctype="multipart/form-data">
+    <form method="POST"
+          action="{{ $slide
+            ? route('brick.carousel.slide.update', $slide)
+            : route('brick.carousel.slide.store', ['brick' => $brick, 'admin_panel_url' => request()->admin_panel_url]) }}"
+          enctype="multipart/form-data"
+          novalidate>
         @csrf
         @if($slide)
             @method('PUT')

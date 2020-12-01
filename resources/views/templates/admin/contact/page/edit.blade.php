@@ -5,7 +5,11 @@
         @lang('breadcrumbs.orphan.edit', ['entity' => __('Contact'), 'detail' => __('Page')])
     </h1>
     <hr>
-    <form method="POST" class="w-100" action="{{ route('contact.page.update') }}" enctype="multipart/form-data">
+    <form class="w-100"
+          method="POST"
+          action="{{ route('contact.page.update') }}"
+          enctype="multipart/form-data"
+          novalidate>
         @csrf
         @method('PUT')
         <div class="d-flex">

@@ -21,7 +21,8 @@
         <div class="card-body">
             <form method="POST"
                   action="{{ $brick ? $brickable->getUpdateRoute($brick) : $brickable->getStoreRoute() }}"
-                  enctype="multipart/form-data">
+                  enctype="multipart/form-data"
+                  novalidate>
                 @csrf
                 @if($brick)@method('PUT')@endif
                 <input type="hidden" name="model_id" value="{{ $model->id }}">

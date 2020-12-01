@@ -14,7 +14,7 @@
         <i class="fas fa-hand-spock fa-fw"></i>
         @lang('Welcome')
     </h1>
-    <form class="w-100" method="POST">
+    <form class="w-100" method="POST" novalidate>
         @csrf
         <input type="hidden" name="email" value="{{ $user->email }}"/>
         @include('components.common.form.notice')

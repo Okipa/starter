@@ -11,7 +11,8 @@
     <hr>
     <form action="{{ $file ? route('libraryMedia.file.update', $file) : route('libraryMedia.file.store') }}"
           method="POST"
-          enctype="multipart/form-data">
+          enctype="multipart/form-data"
+          novalidate>
         @csrf
         @if($file)
             @method('PUT')

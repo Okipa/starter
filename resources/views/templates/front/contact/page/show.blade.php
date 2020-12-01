@@ -6,7 +6,9 @@
     <div class="container my-5">
         <div class="row">
             <div class="col-lg-8">
-                <form method="POST" action="{{ route('contact.sendMessage') }}">
+                <form method="POST"
+                      action="{{ route('contact.sendMessage') }}"
+                      novalidate>
                     @honeypot
                     @csrf()
                     <div class="form-row">

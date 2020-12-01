@@ -1,4 +1,7 @@
-<form class="ml-1" role="form" method="POST" action="{{ $brick->brickable->getDestroyRoute($brick) }}">
+<form class="ml-1"
+      method="POST"
+      action="{{ $brick->brickable->getDestroyRoute($brick) }}"
+      novalidate>
     @csrf
     @method('DELETE')
     <input type="hidden" name="admin_panel_url" value="{{ url()->current() }}#bricks-admin-panel">

@@ -20,7 +20,7 @@
                 </a>
                 <div class="dropdown-divider"></div>
             @endif
-            <form id="logout-form" class="p-0" action="{{ route('logout') }}" method="POST">
+            <form id="logout-form" class="p-0" method="POST" action="{{ route('logout') }}" novalidate>
                 @csrf()
                 <button type="submit"
                         class="dropdown-item btn btn-link"

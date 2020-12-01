@@ -14,7 +14,7 @@
         <i class="fas fa-shield-alt fa-fw"></i>
         @lang('Password verification')
     </h1>
-    <form class="w-100" method="POST">
+    <form class="w-100" method="POST" novalidate>
         @csrf
         @include('components.common.form.notice')
         <p>@lang('For security reasons, please confirm your password. You will not be asked for several hours.')</p>

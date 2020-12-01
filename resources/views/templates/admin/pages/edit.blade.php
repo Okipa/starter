@@ -9,9 +9,10 @@
         @endif
     </h1>
     <hr>
-    <form action="{{ $page ? route('page.update', $page) : route('page.store') }}"
-          method="POST"
-          enctype="multipart/form-data">
+    <form method="POST"
+          action="{{ $page ? route('page.update', $page) : route('page.store') }}"
+          enctype="multipart/form-data"
+          novalidate>
         @csrf
         @if($page)
             @method('PUT')
