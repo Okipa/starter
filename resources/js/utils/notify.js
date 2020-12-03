@@ -1,5 +1,5 @@
 // Notifications config
-const notify = swal.mixin({
+const notify = Swal.mixin({
     customClass: {
         confirmButton: 'btn btn-primary mx-2',
         cancelButton: 'btn btn-secondary mx-2'
@@ -11,8 +11,8 @@ const popin = notify.mixin({
     showConfirmButton: true,
     showCancelButton: false,
     allowOutsideClick: false,
-    confirmButtonText: app.sweetalert.confirm,
-    cancelButtonText: app.sweetalert.cancel,
+    confirmButtonText: app.notify.confirm,
+    cancelButtonText: app.notify.cancel,
 });
 
 const toast = notify.mixin({
@@ -28,8 +28,8 @@ if (app.swalConfig) {
 }
 
 // Alerts notifications
-notify.loading = (html = app.sweetalert.loading, title = app.sweetalert.please_wait, config = {}) => {
-    return swal.fire({
+notify.loading = (html = app.notify.loading, title = app.notify.please_wait, config = {}) => {
+    return Swal.fire({
         icon: 'info',
         title,
         html,
@@ -38,7 +38,7 @@ notify.loading = (html = app.sweetalert.loading, title = app.sweetalert.please_w
         allowOutsideClick: false,
         timerProgressBar: true,
         onBeforeOpen: () => {
-            swal.showLoading();
+            Swal.showLoading();
         },
         ...config
     });
@@ -62,7 +62,7 @@ notify.question = (html, title, config = {}) => {
     });
 };
 
-notify.confirm = (html, title = app.sweetalert.confirm_request, config = {}) => {
+notify.confirm = (html, title = app.notify.confirm_request, config = {}) => {
     return popin.fire({
         icon: 'warning',
         title,
@@ -72,7 +72,7 @@ notify.confirm = (html, title = app.sweetalert.confirm_request, config = {}) => 
     });
 };
 
-notify.error = (html = app.sweetalert.unexpected, title = app.sweetalert.error, config = {}) => {
+notify.error = (html = app.notify.unexpected, title = app.notify.error, config = {}) => {
     return popin.fire({
         icon: 'error',
         title: title,

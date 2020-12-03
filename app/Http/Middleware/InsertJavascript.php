@@ -21,7 +21,7 @@ class InsertJavascript
         $gdprPage = pages()->where('unique_key', 'gdpr_page')->first();
         share([
             'locale' => app()->getLocale(),
-            'sweetalert' => __('sweetalert'),
+            'notify' => __('notify'),
             'cookieConsent' => __('cookieconsent'),
             'gdprPage' => ['route' => $gdprPage ? route('page.show', $gdprPage) : null],
         ]);

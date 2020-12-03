@@ -33,7 +33,9 @@ mix
     .js('resources/js/brickables/carousel.js', 'public/js/brickables')
     // base
     .js('resources/js/global/admin.js', 'public/js/admin.js')
+    .scripts(['vendor/realrashid/sweet-alert/resources/js/sweetalert.all.js', 'public/js/admin.js'], 'public/js/admin.js')
     .js('resources/js/global/front.js', 'public/js/front.js')
+    .scripts(['vendor/realrashid/sweet-alert/resources/js/sweetalert.all.js', 'public/js/front.js'], 'public/js/front.js')
 
     // sass ************************************************************************************************************
     // admin
@@ -66,10 +68,9 @@ mix
         axios: ['axios'],
         jquery: ['$', 'jQuery', 'window.jQuery'],
         'popper.js': ['Popper'],
-        'sweetalert2': ['swal'],
         cookieconsent: ['cookieconsent', 'window.cookieconsent']
     })
-    .extract(['bootstrap', 'lodash', 'axios', 'jquery', 'popper.js', 'sweetalert2', 'cookieconsent'])
+    .extract(['bootstrap', 'lodash', 'axios', 'jquery', 'popper.js', 'cookieconsent'])
     .sourceMaps()
     .version([
         'public/images/',
