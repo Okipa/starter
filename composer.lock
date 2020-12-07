@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "92e84d9c26a407acb18b2d10d2ac4af6",
+    "content-hash": "9a23320202bccc9b0712286ec301a04d",
     "packages": [
         {
             "name": "0.0.0/composer-include-files",
@@ -3729,16 +3729,16 @@
         },
         {
             "name": "okipa/laravel-bootstrap-components",
-            "version": "4.0.0",
+            "version": "dev-livewire-support",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Okipa/laravel-bootstrap-components.git",
-                "reference": "740161efdbc7213dbb964a53ed39d16e7ceea84c"
+                "reference": "348315257b9f527bf38b6e39ce6c54f327ecbde6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Okipa/laravel-bootstrap-components/zipball/740161efdbc7213dbb964a53ed39d16e7ceea84c",
-                "reference": "740161efdbc7213dbb964a53ed39d16e7ceea84c",
+                "url": "https://api.github.com/repos/Okipa/laravel-bootstrap-components/zipball/348315257b9f527bf38b6e39ce6c54f327ecbde6",
+                "reference": "348315257b9f527bf38b6e39ce6c54f327ecbde6",
                 "shasum": ""
             },
             "require": {
@@ -3750,7 +3750,7 @@
             "require-dev": {
                 "nunomaduro/larastan": "^0.6",
                 "orchestra/testbench": "^5.0||^6.0",
-                "phpmd/phpmd": "^2.8",
+                "phpmd/phpmd": "^2.9",
                 "squizlabs/php_codesniffer": "^3.5"
             },
             "type": "library",
@@ -3796,9 +3796,19 @@
             ],
             "support": {
                 "issues": "https://github.com/Okipa/laravel-bootstrap-components/issues",
-                "source": "https://github.com/Okipa/laravel-bootstrap-components/tree/4.0.0"
+                "source": "https://github.com/Okipa/laravel-bootstrap-components/tree/livewire-support"
             },
-            "time": "2020-11-14T15:37:57+00:00"
+            "funding": [
+                {
+                    "url": "https://paypal.me/arthurlorent",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://ko-fi.com/arthurlorent",
+                    "type": "ko_fi"
+                }
+            ],
+            "time": "2020-12-07T10:53:02+00:00"
         },
         {
             "name": "okipa/laravel-brickables",
@@ -6903,16 +6913,16 @@
         },
         {
             "name": "spatie/robots-txt",
-            "version": "1.0.9",
+            "version": "1.0.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/robots-txt.git",
-                "reference": "e4672f270dc33dab91dca07999cc87dba2bd6c51"
+                "reference": "8802a2bee670b3c13cfd21ede0322f72b3efb711"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/robots-txt/zipball/e4672f270dc33dab91dca07999cc87dba2bd6c51",
-                "reference": "e4672f270dc33dab91dca07999cc87dba2bd6c51",
+                "url": "https://api.github.com/repos/spatie/robots-txt/zipball/8802a2bee670b3c13cfd21ede0322f72b3efb711",
+                "reference": "8802a2bee670b3c13cfd21ede0322f72b3efb711",
                 "shasum": ""
             },
             "require": {
@@ -6948,9 +6958,9 @@
             ],
             "support": {
                 "issues": "https://github.com/spatie/robots-txt/issues",
-                "source": "https://github.com/spatie/robots-txt/tree/1.0.9"
+                "source": "https://github.com/spatie/robots-txt/tree/1.0.10"
             },
-            "time": "2020-11-27T11:00:03+00:00"
+            "time": "2020-12-07T11:10:49+00:00"
         },
         {
             "name": "spatie/temporary-directory",
@@ -14079,6 +14089,7 @@
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
+        "okipa/laravel-bootstrap-components": 20,
         "roave/security-advisories": 20
     },
     "prefer-stable": true,

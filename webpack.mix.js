@@ -33,9 +33,7 @@ mix
     .js('resources/js/brickables/carousel.js', 'public/js/brickables')
     // Base
     .js('resources/js/global/admin.js', 'public/js/admin.js')
-    .scripts(['vendor/realrashid/sweet-alert/resources/js/sweetalert.all.js', 'public/js/admin.js'], 'public/js/admin.js')
     .js('resources/js/global/front.js', 'public/js/front.js')
-    .scripts(['vendor/realrashid/sweet-alert/resources/js/sweetalert.all.js', 'public/js/front.js'], 'public/js/front.js')
 
     // SASS ************************************************************************************************************
     // Admin

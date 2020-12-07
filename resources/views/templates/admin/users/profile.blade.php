@@ -10,6 +10,7 @@
 @endif
 @extends('layouts.admin.full')
 @section('template')
+    {{ dd($errors->has('email')) }}
     <h1>
         <i class="fas fa-user fa-fw"></i>
         @lang('Profile')

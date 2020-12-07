@@ -1,4 +1,5 @@
 .swal2-success {
+    border-color: $success !important;
 
     [class^='swal2-x-mark-line'] {
         background-color: $success !important;
@@ -6,6 +7,7 @@
 }
 
 .swal2-error {
+    border-color: $danger !important;
 
     [class^='swal2-x-mark-line'] {
         background-color: $danger !important;
@@ -13,6 +15,7 @@
 }
 
 .swal2-info {
+    border-color: $info !important;
 
     [class^='swal2-x-mark-line'] {
         background-color: $info !important;
@@ -20,6 +23,7 @@
 }
 
 .swal2-question {
+    border-color: $info !important;
 
     [class^='swal2-x-mark-line'] {
         background-color: $info !important;
@@ -27,6 +31,7 @@
 }
 
 .swal2-warning {
+    border-color: $warning !important;
 
     [class^='swal2-x-mark-line'] {
         background-color: $warning !important;

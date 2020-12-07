@@ -22,11 +22,6 @@ const toast = notify.mixin({
     showConfirmButton: false,
 });
 
-// Notifications triggering from session
-if (app.swalConfig) {
-    notify.fire(app.swalConfig);
-}
-
 // Alerts notifications
 notify.loading = (html = app.notify.loading, title = app.notify.please_wait, config = {}) => {
     return Swal.fire({
