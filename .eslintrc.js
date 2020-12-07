@@ -11,7 +11,7 @@ module.exports = {
     },
     'globals': {
         '_': true,
-        'swal': true,
+        'Swal': true,
         'app': true,
         '$': true,
         'moment': true,
