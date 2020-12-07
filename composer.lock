@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "9a23320202bccc9b0712286ec301a04d",
+    "content-hash": "e3b2edc9a880f9fa4121f910304b41f7",
     "packages": [
         {
             "name": "0.0.0/composer-include-files",
@@ -3729,16 +3729,16 @@
         },
         {
             "name": "okipa/laravel-bootstrap-components",
-            "version": "dev-livewire-support",
+            "version": "5.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Okipa/laravel-bootstrap-components.git",
-                "reference": "4626720ddfffabdc786ec8801714a001a102c0e0"
+                "reference": "5e4bc20cfb00565bf56d3c56e8d1d0cc0a23214a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Okipa/laravel-bootstrap-components/zipball/4626720ddfffabdc786ec8801714a001a102c0e0",
-                "reference": "4626720ddfffabdc786ec8801714a001a102c0e0",
+                "url": "https://api.github.com/repos/Okipa/laravel-bootstrap-components/zipball/5e4bc20cfb00565bf56d3c56e8d1d0cc0a23214a",
+                "reference": "5e4bc20cfb00565bf56d3c56e8d1d0cc0a23214a",
                 "shasum": ""
             },
             "require": {
@@ -3796,7 +3796,7 @@
             ],
             "support": {
                 "issues": "https://github.com/Okipa/laravel-bootstrap-components/issues",
-                "source": "https://github.com/Okipa/laravel-bootstrap-components/tree/livewire-support"
+                "source": "https://github.com/Okipa/laravel-bootstrap-components/tree/5.0.0"
             },
             "funding": [
                 {
@@ -3808,7 +3808,7 @@
                     "type": "ko_fi"
                 }
             ],
-            "time": "2020-12-07T13:23:06+00:00"
+            "time": "2020-12-07T16:39:35+00:00"
         },
         {
             "name": "okipa/laravel-brickables",
@@ -14089,7 +14089,6 @@
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
-        "okipa/laravel-bootstrap-components": 20,
         "roave/security-advisories": 20
     },
     "prefer-stable": true,

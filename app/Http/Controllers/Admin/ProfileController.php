@@ -33,7 +33,7 @@ class ProfileController
         if (! Hash::check($request->password, Auth::user()->password)) {
             throw ValidationException::withMessages([
                 'password' => [__('This password does not match our records.')],
-            ]);
+            ])->errorBag('deleteAccount');
         }
         $user = Auth::user();
         Auth::logout();

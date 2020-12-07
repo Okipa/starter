@@ -177,7 +177,8 @@
                       novalidate>
                     @csrf
                     {{ inputPassword()->name('password')
-                        ->componentHtmlAttributes(['required', 'autocomplete' => 'current-password']) }}
+                        ->componentHtmlAttributes(['required', 'autocomplete' => 'current-password'])
+                        ->errorBag('deleteAccount') }}
                     {{ submit()->prepend('<i class="fas fa-trash fa-fw"></i>')
                         ->label(__('Delete Account'))
                         ->componentClasses(['btn-danger'])

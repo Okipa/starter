@@ -8,6 +8,7 @@ return [
     'confirm' => 'Confirm',
     'cancel' => 'Cancel',
     'error' => 'Error',
+    'invalid' => 'Invalid fields have been detected.',
     'unexpected' => 'An unexpected error has occurred.',
 
 ];

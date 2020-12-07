@@ -20,7 +20,7 @@
         "laravel/horizon": "^5.0",
         "laravel/telescope": "^4.0",
         "laravel/tinker": "^2.5",
-        "okipa/laravel-bootstrap-components": "dev-livewire-support",
+        "okipa/laravel-bootstrap-components": "^5.0",
         "okipa/laravel-brickables": "^2.1",
         "okipa/laravel-medialibrary-ext": "^9.0",
         "okipa/laravel-stuck-jobs-notifier": "^2.0",
