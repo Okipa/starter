@@ -10,7 +10,6 @@
 @endif
 @extends('layouts.admin.full')
 @section('template')
-    {{ dd($errors->has('email')) }}
     <h1>
         <i class="fas fa-user fa-fw"></i>
         @lang('Profile')
@@ -39,19 +38,24 @@
                     {{ inputFile()->name('profile_picture')
                         ->value(optional($profilePicture)->file_name)
                         ->uploadedFile(fn() => view('components.admin.media.thumb', ['image' => $profilePicture]))
-                        ->caption(app(App\Models\Users\User::class)->getMediaCaption('profile_pictures')) }}
+                        ->caption(app(App\Models\Users\User::class)->getMediaCaption('profile_pictures'))
+                        ->errorBag('updateProfileInformation') }}
                     {{ inputText()->name('last_name')
                         ->model($user)
-                        ->componentHtmlAttributes(['required', 'autocomplete' => 'family-name']) }}
+                        ->componentHtmlAttributes(['required', 'autocomplete' => 'family-name'])
+                        ->errorBag('updateProfileInformation') }}
                     {{ inputText()->name('first_name')
                         ->model($user)
-                        ->componentHtmlAttributes(['required', 'autocomplete' => 'given-name']) }}
+                        ->componentHtmlAttributes(['required', 'autocomplete' => 'given-name'])
+                        ->errorBag('updateProfileInformation') }}
                     {{ inputTel()->name('phone_number')
                         ->model($user)
-                        ->componentHtmlAttributes(['autocomplete' => 'tel']) }}
+                        ->componentHtmlAttributes(['autocomplete' => 'tel'])
+                        ->errorBag('updateProfileInformation') }}
                     {{ inputEmail()->name('email')
                         ->model($user)
-                        ->componentHtmlAttributes(['required', 'autocomplete' => 'email']) }}
+                        ->componentHtmlAttributes(['required', 'autocomplete' => 'email'])
+                        ->errorBag('updateProfileInformation') }}
                     @if($user){{ submitUpdate() }}@else{{ submitCreate() }}@endif
                 </form>
             </div>
@@ -71,11 +75,14 @@
                         @csrf
                         @method('PUT')
                         {{ inputPassword()->name('current_password')
-                            ->componentHtmlAttributes(['required', 'autocomplete' => 'current-password']) }}
+                            ->componentHtmlAttributes(['required', 'autocomplete' => 'current-password'])
+                            ->errorBag('updatePassword') }}
                         {{ inputPassword()->name('new_password')
-                            ->componentHtmlAttributes(['required', 'autocomplete' => 'new-password']) }}
+                            ->componentHtmlAttributes(['required', 'autocomplete' => 'new-password'])
+                            ->errorBag('updatePassword') }}
                         {{ inputPassword()->name('new_password_confirmation')
-                            ->componentHtmlAttributes(['required', 'autocomplete' => 'new-password']) }}
+                            ->componentHtmlAttributes(['required', 'autocomplete' => 'new-password'])
+                            ->errorBag('updatePassword') }}
                         {{ submitUpdate() }}
                     </form>
                 </div>
