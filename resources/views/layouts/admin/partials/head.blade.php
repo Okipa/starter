@@ -10,5 +10,4 @@
     @isset($css)<link href="{{ $css }}" rel="stylesheet"/>@endisset
     @brickablesCss
     @if(app()->environment() !== 'production'){!! SEO::generate() !!}@else{!! SEO::generate(true) !!}@endif
-    @shared
 </head>

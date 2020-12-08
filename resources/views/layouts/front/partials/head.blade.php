@@ -11,6 +11,5 @@
     @brickablesCss
     @include('feed::links')
     @if(app()->environment() !== 'production'){!! SEO::generate() !!}@else{!! SEO::generate(true) !!}@endif
-    @shared
     @include('layouts.front.partials.google-tag-manager')
 </head>
