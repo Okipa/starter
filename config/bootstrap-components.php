@@ -2,7 +2,7 @@
 
 return [
 
-    /*
+    /**
      * The fully qualified class name of the components.
      * Here you can override them. Make sure your custom component extends the overridden one.
      */
@@ -42,28 +42,24 @@ return [
         'video' => Okipa\LaravelBootstrapComponents\Components\Media\Video::class,
     ],
 
-    /*
-    * Form components specific configuration.
-    */
+    /** Form components specific configuration. */
     'form' => [
-        /*
+        /**
          * The fully qualified class name of the multilingual resolver.
          * You can override it. Make sure your custom resolver extends this one.
          */
         'multilingualResolver' => App\Components\Form\Multilingual\Resolver::class,
 
-        /*
+        /**
          * Whether the form component label is positioned above the component itself.
          * If not positioned above, the label will be positioned under the input
          * (may be useful for bootstrap 4 floating labels).
          */
         'labelPositionedAbove' => true,
 
-        /*
-         * Whether the form component should display its success or failure status.
-         */
+        /** Whether the form component should display its success or failure status. */
         'formValidation' => [
-            'displaySuccess' => false,
+            'displaySuccess' => true,
             'displayFailure' => true,
         ],
     ],
