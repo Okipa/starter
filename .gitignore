@@ -1,9 +1,12 @@
-# node
+# Composer
+/vendor
+
+# Node
 /node_modules
 /npm-debug.log
 /yarn-error.log
 
-# public
+# Public
 /public/css
 /public/fonts
 /public/images
@@ -14,28 +17,32 @@
 /public/sitemap.xml
 /public/storage
 
-# storage
+# Storage
 /storage/*.key
 /storage/media-library
 
-# composer
-/vendor
-
-# ide
+# IDE
 /.idea
 /.phpstorm.meta.php
 /_ide_helper.php
 /_ide_helper_models.php
 
-# laravel
+# Laravel
 .env
+compiled.php
+down
+events.scanned.php
+maintenance.php
 
-# homestead
+# Homestead
 Homestead.json
 Homestead.yaml
 
-#testing
+# Testing
 .phpunit.result.cache
+
+# Docker
+docker-compose.override.yml
 
 # MacOS
 **/.DS_Store

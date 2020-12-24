@@ -11,11 +11,10 @@ use Parsedown;
 use Spatie\Feed\Feedable;
 use Spatie\Feed\FeedItem;
 use Spatie\Image\Manipulations;
-use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 use Spatie\Translatable\HasTranslations;
 
-class NewsArticle extends Seo implements HasMedia, Feedable
+class NewsArticle extends Seo implements Feedable
 {
     use HasFactory;
     use HasTranslations;
@@ -33,7 +32,10 @@ class NewsArticle extends Seo implements HasMedia, Feedable
 
     public static function getFeedItems(): Collection
     {
-        return app(self::class)->orderBy('published_at', 'desc')->with(['media', 'categories'])->get();
+        return app(self::class)->where('published_at', '<=', now())
+            ->orderBy('published_at', 'desc')
+            ->with(['media', 'categories'])
+            ->get();
     }
 
     public function getRouteKey(): string

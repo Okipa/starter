@@ -13,8 +13,8 @@ abstract class TestCase extends BaseTestCase
     {
         parent::setUp();
         // We store files in a testing directory.
-        Storage::fake('public');
+        Storage::fake('local');
         // We config spatie/laravel-medialibrary to store files in testing directory.
-        config()->set('media-library.disk_name', 'public');
+        config()->set('media-library.disk_name', 'local');
     }
 }
