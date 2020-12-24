@@ -4,7 +4,6 @@ namespace App\Exceptions;
 
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Illuminate\Validation\ValidationException;
-use Sentry\State\Scope;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\HttpException;
 use Throwable;
@@ -45,6 +44,7 @@ class Handler extends ExceptionHandler
      * Register the exception handling callbacks for the application.
      *
      * @return void
+     * @SuppressWarnings(PHPMD.UnusedFormalParameter)
      */
     public function register(): void
     {
@@ -81,16 +81,16 @@ class Handler extends ExceptionHandler
      * Convert a validation exception into a response.
      *
      * @param \Illuminate\Http\Request $request
-     * @param \Illuminate\Validation\ValidationException $e
+     * @param \Illuminate\Validation\ValidationException $exception
      *
      * @return \Illuminate\Http\Response
      */
-    protected function invalid($request, ValidationException $e)
+    protected function invalid($request, ValidationException $exception)
     {
         if (! $request->expectsJson()) {
             toast(__('notify.invalid'), 'error');
         }
 
-        return parent::invalid($request, $e);
+        return parent::invalid($request, $exception);
     }
 }
