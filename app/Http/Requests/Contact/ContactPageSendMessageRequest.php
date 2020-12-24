@@ -13,7 +13,7 @@ class ContactPageSendMessageRequest extends FormRequest
             'last_name' => ['required', 'string', 'max:255'],
             'first_name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'max:255', 'email:rfc,dns,spoof'],
-            'phone_number' => ['string', 'max:255', new PhoneInternational()],
+            'phone_number' => ['nullable', 'string', 'max:255', new PhoneInternational()],
             'message' => ['required', 'string', 'max:65535'],
         ];
     }
