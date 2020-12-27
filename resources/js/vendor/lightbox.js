@@ -1,7 +1,4 @@
-GLightbox({
-    selector: '[data-gallery]',
-    zoomable: false
-});
+// Individual lightbox
 _.each(document.querySelectorAll('[data-lightbox]'), (item) => {
     item.addEventListener('click', function (e) {
         e.preventDefault();
@@ -11,4 +8,9 @@ _.each(document.querySelectorAll('[data-lightbox]'), (item) => {
         });
         lightbox.open();
     });
+});
+// Gallery
+GLightbox({
+    selector: '[data-gallery]',
+    zoomable: false
 });

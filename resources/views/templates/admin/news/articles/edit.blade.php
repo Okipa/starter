@@ -32,7 +32,7 @@
         <p>
             @include('components.common.form.notice')
         </p>
-        <div class="row" data-masonry='{"percentPosition": true}'>
+        <div class="row">
             <div class="col-lg-6">
                 <div class="card">
                     <div class="card-header">
