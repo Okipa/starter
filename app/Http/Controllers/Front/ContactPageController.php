@@ -53,6 +53,6 @@ class ContactPageController extends Controller
             ))->locale(app()->getLocale()));
         LogContactFormMessage::create(['data' => $request->validated()]);
 
-        return back()->with('toast_success', __('Your message have been sent, thank you for your interest.'));
+        return back()->with('toast_success', __('Your message has been sent, we have emailed you a copy.'));
     }
 }
