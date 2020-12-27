@@ -5,11 +5,12 @@
     <meta content="{{ csrf_token() }}" name="csrf-token"/>
     <link rel="shortcut icon" href="{{ mix('/favicon.ico') }}" type="image/x-icon">
     <link rel="icon" href="{{ mix('/favicon.ico') }}" type="image/x-icon">
+    <link rel="preconnect dns-prefetch" href="https://fonts.googleapis.com" crossorigin> {{-- Todo: to remove if no Google font import is made. --}}
     <link href="{{ mix('css/front.css') }}" rel="stylesheet"/>
     @isset($css)<link href="{{ $css }}" rel="stylesheet"/>@endisset
-    <link rel="preconnect dns-prefetch" href="https://fonts.googleapis.com" crossorigin> {{-- Todo: to remove if no Google font import is made. --}}
+    @livewireStyles
     @brickablesCss
-    @include('feed::links')
     @if(app()->environment() !== 'production'){!! SEO::generate() !!}@else{!! SEO::generate(true) !!}@endif
+    @include('feed::links')
     @include('layouts.front.partials.google-tag-manager')
 </head>

@@ -5,7 +5,7 @@ require('../vendor/jquery');
 require('../vendor/axios');
 require('../vendor/cookieconsent');
 require('../utils/notify');
-require('../vendor/lity');
+require('../vendor/lightbox');
 require('../vendor/moment');
 require('../vendor/air-datepicker');
 

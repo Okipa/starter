@@ -6,6 +6,6 @@ class Image extends \Okipa\LaravelBootstrapComponents\Components\Media\Image
 {
     protected function setLinkHtmlAttributes(): array
     {
-        return ['data-lity'];
+        return ['data-lightbox'];
     }
 }

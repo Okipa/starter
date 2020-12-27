@@ -66,9 +66,9 @@ mix
         axios: ['axios'],
         jquery: ['$', 'jQuery', 'window.jQuery'],
         'popper.js': ['Popper'],
-        cookieconsent: ['cookieconsent', 'window.cookieconsent']
+        cookieconsent: ['cookieconsent', 'window.cookieconsent'],
     })
-    .extract(['bootstrap', 'lodash', 'axios', 'jquery', 'popper.js', 'cookieconsent'])
+    .extract(['bootstrap', 'lodash', 'axios', 'jquery', 'popper.js', 'cookieconsent', 'masonry-layout', 'glightbox'])
     .sourceMaps()
     .version([
         'public/images/',

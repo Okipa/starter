@@ -1,4 +1,3 @@
-
 <?php
 
 return [
@@ -195,6 +194,7 @@ return [
         'nav_title' => 'Navigation title',
         'code' => 'Code',
         'recovery_code' => 'Recovery code',
+        'text' => 'Text',
     ],
 
 ];

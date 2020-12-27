@@ -39,6 +39,5 @@ return [
     'users' => 'utilisateurs',
     'user' => 'utilisateur',
     'parameters' => 'parametres',
-    "send" => "envoi",
 
 ];
