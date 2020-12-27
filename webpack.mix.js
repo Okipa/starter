@@ -67,8 +67,9 @@ mix
         jquery: ['$', 'jQuery', 'window.jQuery'],
         'popper.js': ['Popper'],
         cookieconsent: ['cookieconsent', 'window.cookieconsent'],
+        glightbox: ['GLightbox', 'window.GLightbox'],
     })
-    .extract(['bootstrap', 'lodash', 'axios', 'jquery', 'popper.js', 'cookieconsent', 'masonry-layout', 'glightbox'])
+    .extract(['bootstrap', 'lodash', 'axios', 'jquery', 'popper.js', 'cookieconsent', 'glightbox'])
     .sourceMaps()
     .version([
         'public/images/',

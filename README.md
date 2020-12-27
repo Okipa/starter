@@ -1,16 +1,13 @@
-<!-- Todo: personalize readme -->
 <!-- Todo: search every `Todo:` occurrence in starter and customize what needs to be. -->
 
 # Web app prebuilt base on Laravel 8, PHP 7.4 and MySQL 8
 
-
-| Develop | Master |
-|---|---|
-| `<build-status-badge>` | `<build-status-badge>` |
-| `<coverage-report-badge>` | `<coverage-report-badge>` |
+<!-- Todo: replace by project badges -->
+`<build-status-badge>` `<coverage-report-badge>`
 
 ## Team
 
+<!-- Todo: replace by project team members -->
 * Lead dev: [Okipa](https://github.com/Okipa)
 * Quality: [Okipa](https://github.com/Okipa)
 * Management: [Okipa](https://github.com/Okipa)
@@ -42,41 +39,41 @@
 
 ### Import and git setup
 
+<!-- Todo: set git repo URL -->
 Clone the project from `<project-repository-url>`.
 
 ### DNS setup
 
 Set your project domain resolution in your virtualhost: `sudo vim /etc/hosts`.
 
+<!-- Todo: Replace `starter.test` by your project local DNS -->
 ```sh
     # add these lines in your /etc/hosts file
-    <project-local-ip>   <project-local-dns>
+    127.0.0.1   starter.test
 ```
 
 ### Project configuration and dependencies installation
 
-* `composer install --no-scripts --ignore-platform-reqs`
 * `cp .env.example .env`. Then set the environment variables according to your project needs.
-* `./vessel start`
-* `./vessel artisan key:generate`
-* `./vessel artisan storage:link`
+* `composer install --no-scripts --ignore-platform-reqs`
+* `sail up -d`
+* `sail artisan key:generate`
+* `sail artisan storage:link`
 * `yarn install`
 * `yarn upgrade`
 * `yarn dev` or `yarn watch`
-* `./vessel composer update`
-* `./vessel artisan migrate:refresh --seed`
+* `sail composer update`
+* `sail artisan migrate:refresh --seed`
 
 ## Docker
 
-This project uses [Vessel](https://vessel.shippingdocker.com).
+This project uses a Docker local development environment provided by [Laravel Sail](https://laravel.com/docs/sail).
 
-Vessel offers a useful bash file containing multiple shortcuts for your Docker environment. You can still run pure `docker` or `docker-compose` commands from the project directory.
-
-See how to use it on the [official documentation](https://vessel.shippingdocker.com/docs/everyday-usage).
+See how to use it on the [official documentation](https://laravel.com/docs/sail#executing-sail-commands).
 
 ## Database
 
-Execute a database reset with the following command: `./vessel artisan migrate:refresh --seed`. This will execute all migrations and seeds.
+Execute a database reset with the following command: `sail artisan migrate:refresh --seed`. This will execute all migrations and seeds.
 
 ## Building resources
 
@@ -87,13 +84,19 @@ You can run these commands from your docker workspace, Node and Yarn are being i
 * `yarn prod` (does merge **and** minify).
 * `yarn watch` (recompile automatically when a change is being detected in a resource file).
 
+## Previewing emails
+
+Laravel Sail provides Mailhog to intercept and render emails in a web interface.
+
+You can access the Mailhog interface at http://localhost:8025 when Laravel Sail is running.
+
 ## IDE helper
 
-To manually generate IDE helper files, run the following command: `./vessel composer ide-helper`.
+To manually generate IDE helper files, run the following command: `sail composer ide-helper`.
 
 ## Testing
 
-To launch the project test, run the following command: `./vessel composer test`.
+To launch the project test, run the following command: `sail composer test`.
 
 ## Debugging
 

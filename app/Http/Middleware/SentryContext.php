@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Sentry\State\Scope;
 
 use function Sentry\configureScope;
@@ -22,8 +23,8 @@ class SentryContext
     {
         if (app()->bound('sentry')) {
             configureScope(function (Scope $scope): void {
-                if (auth()->check()) {
-                    $scope->setUser(auth()->user()->toArray());
+                if (Auth::check()) {
+                    $scope->setUser(Auth::user()->toArray());
                 }
                 $scope->setExtra('session', session()->all());
             });

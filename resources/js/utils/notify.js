@@ -17,7 +17,7 @@ const popin = notify.mixin({
 const toast = notify.mixin({
     toast: true,
     position: 'top-end',
-    timer: 10000,
+    timer: 8000,
     showConfirmButton: false,
     showCloseButton: true
 });
@@ -60,6 +60,11 @@ notify.confirm = (html, title = app.notify.confirm_request, config = {}) => {
         ...config
     });
 };
+
+// Firing from session
+if(app.session_notify_config) {
+    notify.fire(app.session_notify_config);
+}
 
 // Toast
 notify.toastSuccess = (title, html, config) => {

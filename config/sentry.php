@@ -13,6 +13,7 @@ return [
     'environment' => env('APP_ENV'),
 
     'breadcrumbs' => [
+
         // Capture Laravel logs in breadcrumbs
         'logs' => true,
 
