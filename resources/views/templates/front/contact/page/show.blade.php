@@ -109,7 +109,7 @@
                         <div class="card-footer">
                             <a class="h5"
                                href="//maps.google.com/maps?q={{ str_replace([' ', ','], '+', $fullPostalAddress) }}"
-                               data-lity>
+                               data-lightbox>
                                 <i class="fas fa-search-location fa-fw"></i>
                                 @lang('See on the map')
                             </a>
