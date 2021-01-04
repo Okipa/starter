@@ -108,7 +108,7 @@
                     @if($fullPostalAddress = settings()->full_postal_address)
                         <div class="card-footer">
                             <a class="h5"
-                               href="//maps.google.com/maps?q={{ str_replace([' ', ','], '+', $fullPostalAddress) }}"
+                               href="https://www.google.com/maps/embed/v1/place?key={{ config('services.google.key') }}&q={{ str_replace([' ', ','], '+', $fullPostalAddress) }}"
                                data-lightbox>
                                 <i class="fas fa-search-location fa-fw"></i>
                                 @lang('See on the map')

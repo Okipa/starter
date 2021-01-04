@@ -3,7 +3,7 @@
     "require": {
         "php": "^7.4",
         "ext-json": "*",
-        "artesaos/seotools": "^0.19.0",
+        "artesaos/seotools": "^0.20.0",
         "coderello/laravel-shared-data": "^3.0",
         "codezero/laravel-localized-routes": "^2.4",
         "codezero/laravel-unique-translation": "^3.0",
