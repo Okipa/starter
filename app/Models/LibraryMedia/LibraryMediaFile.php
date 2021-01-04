@@ -33,30 +33,30 @@ class LibraryMediaFile extends Model implements HasMedia
     {
         $this->addMediaCollection('media')->withResponsiveImages()->acceptsMimeTypes([
             // Todo: to customize.
-            // check complete list here : https://slick.pl/kb/htaccess/complete-list-mime-types/
-            // image
+            // Check complete list here : https://slick.pl/kb/htaccess/complete-list-mime-types/
+            // Image
             'image/jpeg',
             'image/png',
-            // pdf
+            // PDF
             'application/pdf',
-            // libre office
+            // Libre Office
             'application/vnd.oasis.opendocument.presentation',
             'application/vnd.oasis.opendocument.spreadsheet',
             'application/vnd.oasis.opendocument.text',
-            // open office
+            // Open Office
             'application/vnd.sun.xml.calc',
             'application/vnd.sun.xml.draw',
             'application/vnd.sun.xml.impress',
             'application/vnd.sun.xml.math',
             'application/vnd.sun.xml.writer',
-            // microsoft office
+            // Microsoft Office
             'application/vnd.ms-excel',
             'application/vnd.openxmlformats-officedocument.presentationml.presentation',
             'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
             'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
             'application/vnd.ms-powerpoint',
             'application/x-mspublisher',
-            // audio
+            // Audio
             'audio/wav',
             'audio/wave',
             'audio/x-wav',
@@ -64,14 +64,11 @@ class LibraryMediaFile extends Model implements HasMedia
             'audio/mpeg',
             'audio/mpeg3',
             'audio/mp3',
-            'audio/x-flac',
             'audio/ogg',
-            'audio/webm',
-            'audio/3gpp2',
             'audio/aiff',
             'audio/x-aiff',
             'audio/x-flac',
-            // video
+            // Video
             'video/webm',
             'video/ogg',
             'video/mp4',
@@ -98,15 +95,18 @@ class LibraryMediaFile extends Model implements HasMedia
         $media = $this->getFirstMedia('media');
         if (Str::contains($media->mime_type, 'image')) {
             return 'image';
-        } elseif (Str::contains($media->mime_type, 'pdf')) {
-            return 'pdf';
-        } elseif (Str::contains($media->mime_type, 'audio')) {
-            return 'audio';
-        } elseif (Str::contains($media->mime_type, 'video')) {
-            return 'video';
-        } else {
-            return 'file';
         }
+        if (Str::contains($media->mime_type, 'pdf')) {
+            return 'pdf';
+        }
+        if (Str::contains($media->mime_type, 'audio')) {
+            return 'audio';
+        }
+        if (Str::contains($media->mime_type, 'video')) {
+            return 'video';
+        }
+
+        return 'file';
     }
 
     public function getIconAttribute(): string
