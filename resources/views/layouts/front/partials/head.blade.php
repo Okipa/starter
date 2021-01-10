@@ -8,8 +8,9 @@
     <link rel="preconnect dns-prefetch" href="https://fonts.googleapis.com" crossorigin> {{-- Todo: to remove if no Google font import is made. --}}
     @include('feed::links')
     @if(app()->environment() !== 'production'){!! SEO::generate() !!}@else{!! SEO::generate(true) !!}@endif
+    @include('layouts.front.partials.google-tag-manager')
     <link href="{{ mix('css/front.css') }}" rel="stylesheet"/>
     @isset($css)<link href="{{ $css }}" rel="stylesheet"/>@endisset
     @brickablesCss
-    @include('layouts.front.partials.google-tag-manager')
+    @livewireStyles
 </head>

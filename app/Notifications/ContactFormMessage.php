@@ -31,7 +31,7 @@ class ContactFormMessage extends Notification implements ShouldQueue
         string $email,
         ?string $phoneNumber,
         string $message,
-        bool $isCopyToSender = false
+        bool $isCopyToSender
     ) {
         $this->onQueue('high');
         $this->firstName = $firstName;

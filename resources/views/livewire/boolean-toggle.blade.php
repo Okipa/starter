@@ -3,8 +3,8 @@
         ->name($field)
         ->model($model)
         ->label(null)
-        ->componentHtmlAttributes(array_filter([
+        ->componentHtmlAttributes([
             'wire:key' => uniqid('bool-toggle-' . $model->id, true),
             'wire:click' => 'toggle',
-        ])) }}
+        ]) }}
 </div>

@@ -4,5 +4,6 @@
 <script src="{{ mix('/js/vendor.js') }}"></script>
 <script src="{{ mix('/js/front.js') }}"></script>
 @brickablesJs
+@livewireScripts
 @isset($js)<script src="{{ $js }}"></script>@endisset
 @stack('scripts')

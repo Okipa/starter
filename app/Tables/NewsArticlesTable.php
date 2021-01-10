@@ -26,15 +26,13 @@ class NewsArticlesTable extends AbstractTable
                 'edit' => ['name' => 'news.article.edit'],
                 'destroy' => ['name' => 'news.article.destroy'],
             ])
-            ->destroyConfirmationHtmlAttributes(function (NewsArticle $article) {
-                return [
-                    'data-confirm' => __('notifications.parent.destroyConfirm', [
-                        'parent' => __('News'),
-                        'entity' => __('Articles'),
-                        'name' => $article->title,
-                    ]),
-                ];
-            });
+            ->destroyConfirmationHtmlAttributes(fn(NewsArticle $article) => [
+                'data-confirm' => __('notifications.parent.destroyConfirm', [
+                    'parent' => __('News'),
+                    'entity' => __('Articles'),
+                    'name' => $article->title,
+                ]),
+            ]);
     }
 
     /**
@@ -68,7 +66,7 @@ class NewsArticlesTable extends AbstractTable
             ->html(fn(NewsArticle $article) => Livewire::mount('boolean-toggle', [
                 'model' => $article,
                 'field' => 'active',
-                'componentClassToRefresh' => get_class($this)
+                'componentClassToRefresh' => get_class($this),
             ])->html());
         $table->column('created_at')->dateTimeFormat('d/m/Y H:i')->sortable();
         $table->column('updated_at')->dateTimeFormat('d/m/Y H:i')->sortable();
