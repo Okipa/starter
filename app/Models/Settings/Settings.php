@@ -2,6 +2,7 @@
 
 namespace App\Models\Settings;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Okipa\MediaLibraryExt\ExtendsMediaAbilities;
 use Spatie\Image\Manipulations;
@@ -11,6 +12,7 @@ use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
 class Settings extends Model implements HasMedia
 {
+    use HasFactory;
     use InteractsWithMedia;
     use ExtendsMediaAbilities;
 

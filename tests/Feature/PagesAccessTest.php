@@ -4,6 +4,7 @@ namespace Tests\Feature;
 
 use App\Models\News\NewsArticle;
 use App\Models\News\NewsCategory;
+use App\Models\Settings\Settings;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
@@ -15,7 +16,7 @@ class PagesAccessTest extends TestCase
     {
         parent::setUp();
         $this->withoutMix();
-        $this->artisan('db:seed --class=SettingsSeeder');
+        Settings::factory()->create();
     }
 
     /** @test */

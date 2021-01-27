@@ -19,7 +19,7 @@ if (! function_exists('settings')) {
             cache()->forget('settings');
         }
 
-        return cache()->rememberForever('settings', fn() => Settings::with(['media'])->firstOrFail());
+        return cache()->rememberForever('settings', fn() => Settings::with(['media'])->sole());
     }
 }
 
