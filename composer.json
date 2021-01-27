@@ -39,9 +39,9 @@
         "spatie/pdf-to-image": "^2.1"
     },
     "require-dev": {
-        "roave/security-advisories": "dev-master",
         "barryvdh/laravel-ide-helper": "^2.0",
         "beyondcode/laravel-dump-server": "^1.7",
+        "brianium/paratest": "^6.1",
         "facade/ignition": "^2.5",
         "fakerphp/faker": "^1.9.1",
         "laravel/sail": "^1.0.1",
@@ -50,6 +50,7 @@
         "nunomaduro/larastan": "^0.6",
         "phpmd/phpmd": "^2.0",
         "phpunit/phpunit": "^9.3.3",
+        "roave/security-advisories": "dev-master",
         "squizlabs/php_codesniffer": "^3.0"
     },
     "config": {
@@ -109,7 +110,7 @@
             "vendor/bin/phpcs",
             "vendor/bin/phpmd app,config,database,routes text phpmd.xml",
             "vendor/bin/phpstan analyse --memory-limit=-1 --error-format=table",
-            "vendor/bin/phpunit -d --memory-limit=-1 --testdox --coverage-text"
+            "@php artisan test --parallel"
         ]
     },
     "minimum-stability": "dev",

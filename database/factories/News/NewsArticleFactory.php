@@ -60,10 +60,6 @@ EOT;
                     'en' => Str::slug($page->getTranslation('title', 'en')),
                 ];
         })->afterCreating(function (NewsArticle $newsArticle) {
-            $imagePath = $this->images[array_rand($this->images, 1)];
-            $newsArticle->addMedia(database_path('seeders/files/news/' . $imagePath))
-                ->preservingOriginal()
-                ->toMediaCollection('illustrations');
             $categoryIds = NewsCategory::inRandomOrder()->get()->first()->pluck('id');
             $newsArticle->categories()->sync($categoryIds);
             $newsArticle->saveSeoMeta([
@@ -76,6 +72,16 @@ EOT;
                     'en' => $this->faker->text(150),
                 ],
             ]);
+        });
+    }
+
+    public function withMedia(): self
+    {
+        return $this->afterCreating(function (NewsArticle $newsArticle) {
+            $imagePath = $this->images[array_rand($this->images, 1)];
+            $newsArticle->addMedia(database_path('seeders/files/news/' . $imagePath))
+                ->preservingOriginal()
+                ->toMediaCollection('illustrations');
         });
     }
 }

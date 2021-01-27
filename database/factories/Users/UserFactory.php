@@ -29,7 +29,7 @@ class UserFactory extends Factory
         ];
     }
 
-    public function configure(): self
+    public function withMedia(): self
     {
         return $this->afterCreating(function (User $user) {
             $imagePath = $this->images[array_rand($this->images, 1)];
