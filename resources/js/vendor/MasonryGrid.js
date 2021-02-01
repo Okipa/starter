@@ -1,4 +1,4 @@
-// More information on https://github.com/desandro/masonry
+// For more information: https://github.com/desandro/masonry
 
 import Masonry from 'masonry-layout';
 import {each} from 'lodash';

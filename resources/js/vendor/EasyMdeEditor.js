@@ -1,4 +1,4 @@
-// More information on https://github.com/Ionaru/easy-markdown-editor
+// For more information: https://github.com/Ionaru/easy-markdown-editor
 
 import EasyMDE from 'easymde';
 import {each} from 'lodash';

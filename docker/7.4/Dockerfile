@@ -29,7 +29,7 @@ RUN apt-get update \
        php7.4-msgpack php7.4-igbinary php7.4-ldap \
        php7.4-redis \
        # Additional dependencies #######################################################################################
-       language-pack-fr exif ghostscript php8.0-imagick \
+       language-pack-fr exif ghostscript php7.4-imagick mysql-client \
     && php -r "readfile('http://getcomposer.org/installer');" | php -- --install-dir=/usr/bin/ --filename=composer \
     && curl -sL https://deb.nodesource.com/setup_15.x | bash - \
     && apt-get install -y nodejs \

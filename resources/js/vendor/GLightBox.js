@@ -1,4 +1,4 @@
-// More information on https://github.com/biati-digital/glightbox
+// For more information: https://github.com/biati-digital/glightbox
 
 import GLightbox from 'glightbox';
 import {each} from 'lodash';

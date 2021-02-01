@@ -29,7 +29,10 @@ services:
   #     networks:
   #         - sail
   mysql:
-    image: 'mysql:8.0'
+    build:
+      context: ./docker/mysql
+      dockerfile: Dockerfile
+    image: "${COMPOSE_PROJECT_NAME}/mysql"
     ports:
       - '${FORWARD_DB_PORT:-3306}:3306'
     environment:

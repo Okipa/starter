@@ -1,4 +1,4 @@
-// More information on https://cookieconsent.insites.com/documentation/javascript-api
+// For more information: https://github.com/osano/cookieconsent
 
 export default class CookieConsent {
 

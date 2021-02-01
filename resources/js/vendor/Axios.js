@@ -1,4 +1,4 @@
-// More information on https://github.com/axios/axios
+// For more information: https://github.com/axios/axios
 
 export default class Axios {
 

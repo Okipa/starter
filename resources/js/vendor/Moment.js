@@ -1,4 +1,4 @@
-// More information on https://momentjs.com/
+// For more information: https://github.com/moment/moment
 
 import * as moment from 'moment';
 

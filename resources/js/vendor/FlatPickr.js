@@ -1,4 +1,4 @@
-// More information on https://github.com/flatpickr/flatpickr
+// For more information: https://github.com/flatpickr/flatpickr
 import flatpickr from 'flatpickr';
 import {French} from 'flatpickr/dist/l10n/fr.js';
 

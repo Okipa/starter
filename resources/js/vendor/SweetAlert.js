@@ -1,4 +1,4 @@
-// More information on https://github.com/sweetalert2/sweetalert2
+// For more information: https://github.com/sweetalert2/sweetalert2
 
 const baseConfig = Swal.mixin({
     customClass: {

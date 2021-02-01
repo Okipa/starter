@@ -1,4 +1,4 @@
-// More information on https://github.com/lukasoppermann/html5sortable
+// For more information: https://github.com/lukasoppermann/html5sortable
 
 import {each, get} from 'lodash';
 import axios from 'axios';
