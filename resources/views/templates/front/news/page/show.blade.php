@@ -18,12 +18,15 @@
         <div class="row">
             <form class="col d-flex align-items-end" novalidate>
                 {{ select()->name('category_id')
-                    ->options(App\Models\News\NewsCategory::orderBy('name')->get()->map(fn(App\Models\News\NewsCategory $category) => ['id' => $category->id, 'name' => $category->name]), 'id', 'name')
+                    ->options(App\Models\News\NewsCategory::orderBy('name')->get()->map(fn(App\Models\News\NewsCategory $category) => [
+                        'id' => $category->id,
+                        'name' => $category->name
+                    ]), 'id', 'name')
                     ->selected('id', (int) request()->category_id)
                     ->containerClasses(['mb-0']) }}
                 {{ submitValidate()->prepend('<i class="fas fa-filter fa-fw"></i>')
                     ->label(__('Filter'))
-                    ->containerClasses(['ml-3', 'mb-0']) }}
+                    ->containerClasses(['ml-3']) }}
                 @if(request()->has(['category_id']))
                     {{ buttonBack()->route('news.page.show')->label(__('Reset'))->containerClasses(['ml-3']) }}
                 @endif

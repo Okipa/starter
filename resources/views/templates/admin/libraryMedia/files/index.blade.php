@@ -15,7 +15,7 @@
             {{ select()->name('category_id')
                 ->prepend('<i class="fas fa-tags fa-fw"></i>')
                 ->label(false)
-                ->options((new App\Models\LibraryMedia\LibraryMediaCategory)->get()->map(fn(App\Models\LibraryMedia\LibraryMediaCategory $category) => [
+                ->options(App\Models\LibraryMedia\LibraryMediaCategory::get()->map(fn(App\Models\LibraryMedia\LibraryMediaCategory $category) => [
                     'id' => $category->id,
                     'name' => $category->name
                 ])->sortBy('name'), 'id', 'name')

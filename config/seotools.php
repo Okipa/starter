@@ -4,7 +4,7 @@
 
 $defaultTitle = env('APP_NAME', 'Laravel');
 $defaultDescription = 'App description.'; // Todo: to customize.
-// todo: also replace the default `resources/favicon.ico` by your app favicon
+// ToDo: also replace the default `resources/favicon.ico` by your app favicon
 
 return [
 

@@ -10,6 +10,6 @@ class FilesIndexRequest extends FormRequest
 {
     public function rules(): array
     {
-        return ['category_id' => ['integer', Rule::exists(LibraryMediaCategory::class, 'id')]];
+        return ['category_id' => ['nullable', 'integer', Rule::exists(LibraryMediaCategory::class, 'id')]];
     }
 }
