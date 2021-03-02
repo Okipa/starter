@@ -12,8 +12,7 @@ module.exports = {
     'globals': {
         'Swal': true,
         'app': true,
-        '$': true,
-        'cookieconsent': true
+        '$': true
     },
     'rules': {
         'max-len': [2, 120],

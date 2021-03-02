@@ -59,10 +59,9 @@ mix
     })
     .autoload({
         jquery: ['$', 'jQuery', 'window.jQuery'],
-        'popper.js': ['Popper', 'window.Popper'],
-        cookieconsent: ['cookieconsent', 'window.cookieconsent']
+        'popper.js': ['Popper', 'window.Popper']
     })
-    .extract(['bootstrap', 'jquery', 'popper.js', 'cookieconsent'])
+    .extract(['bootstrap', 'jquery', 'popper.js'])
     .sourceMaps()
     .version([
         'public/images/',

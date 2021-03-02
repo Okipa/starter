@@ -41,7 +41,7 @@ class Kernel extends HttpKernel
             \App\Http\Middleware\LocalizeTime::class,
             \App\Http\Middleware\GenerateSeoMeta::class,
             \RealRashid\SweetAlert\ToSweetAlert::class,
-            \App\Http\Middleware\InsertJavascript::class,
+            \App\Http\Middleware\ShareJavascriptToView::class,
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
         ],
         'api' => [

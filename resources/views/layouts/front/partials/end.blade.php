@@ -1,4 +1,5 @@
 @shared
+@include('components.common.cookies.cookie-consent')
 @include('layouts.front.partials.google-tag-manager')
 @include('sweetalert::alert')
 <script src="{{ mix('/js/manifest.js') }}"></script>
