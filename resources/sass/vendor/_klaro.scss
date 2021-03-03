@@ -1,0 +1,12 @@
+#klaro {
+
+    .cookie-modal,
+    .context-notice,
+    .cookie-notice {
+
+        .cm-btn {
+            @include button-size($btn-padding-y-sm, $btn-padding-x-sm, $btn-font-size-sm, $btn-line-height-sm, $btn-border-radius-sm);
+        }
+    }
+
+}

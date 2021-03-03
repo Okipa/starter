@@ -19,11 +19,11 @@
                     {{ $gdprPage->nav_title }}
                 </a>
             @endif
-            <a id="changePreferences"
+            <a id="change-cookie-preferences"
                class="mx-3 text-body"
-               href="#"
-               title="{{ __('Change cookie preferences') }}">
-                {{ __('Change cookie preferences') }}
+               href=""
+               title="{{ __('My cookie preferences') }}">
+                {{ __('My cookie preferences') }}
             </a>
             <div class="mx-3">
                 @if($facebookUrl = settings()->facebook)

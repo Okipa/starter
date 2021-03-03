@@ -30,5 +30,7 @@
         "sass": "^1.32.0",
         "sass-loader": "8.*"
     },
-    "dependencies": {}
+    "dependencies": {
+        "klaro": "^0.7.15"
+    }
 }

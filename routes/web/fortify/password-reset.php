@@ -18,5 +18,5 @@ if (Features::enabled(Features::resetPasswords())) {
         ->name('password.email');
     Route::post(Lang::uri('/reset-password'), [NewPasswordController::class, 'store'])
         ->middleware(['guest'])
-        ->name('password.update');
+        ->name('password.reset.update');
 }

@@ -242,5 +242,6 @@
     "The :attribute must be at least :length characters and contain at least one special character.": "Le champ :attribute doit comporter au moins :length caractères et contenir au moins un caractère spécial.",
     "The :attribute must be at least :length characters and contain at least one number.": "Le champ :attribute doit comporter au moins :length caractères et contenir au moins un chiffre.",
     "The :attribute must be at least :length characters and contain at least one uppercase character.": "Le champ :attribute doit comporter au moins :length caractères et contenir au moins une majuscule.",
-    "The :attribute field is an invalid number. In case of foreign number, prefix it with an international calling code (e.g. +49 for Germany).": "Le champ :attribute est un numéro invalide. En cas de numéro étranger, le préfixer par un indicatif téléphonique international (exemple : +49 pour l'Allemagne)."
+    "The :attribute field is an invalid number. In case of foreign number, prefix it with an international calling code (e.g. +49 for Germany).": "Le champ :attribute est un numéro invalide. En cas de numéro étranger, le préfixer par un indicatif téléphonique international (exemple : +49 pour l'Allemagne).",
+    "My cookie preferences": "Mes préférences cookies"
 }
