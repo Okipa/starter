@@ -22,6 +22,7 @@
         "html5sortable": "^0.10.0",
         "jquery": "^3.5.0",
         "jquery-ui-sortable": "^1.0.0",
+        "klaro": "^0.7.15",
         "laravel-mix": "^6.0.6",
         "lodash": "^4.17.19",
         "masonry-layout": "^4.2.2",
@@ -30,7 +31,5 @@
         "sass": "^1.32.0",
         "sass-loader": "8.*"
     },
-    "dependencies": {
-        "klaro": "^0.7.15"
-    }
+    "dependencies": {}
 }
