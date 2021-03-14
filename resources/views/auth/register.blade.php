@@ -1,9 +1,9 @@
 @extends('layouts.admin.auth')
 @section('content')
     @include('components.common.multilingual.lang-switcher', [
-        'containerClasses' => ['text-right', 'mb-3'],
+        'containerClasses' => ['text-end', 'mb-3'],
         'dropdownLabelClasses' => ['btn', 'btn-link'],
-        'dropdownMenuClasses' => ['dropdown-menu-right']
+        'dropdownMenuClasses' => ['dropdown-menu-end']
     ])
     @if($icon = settings()->getFirstMedia('icons'))
         <div class="mx-auto mb-4">

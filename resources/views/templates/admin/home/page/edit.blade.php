@@ -18,7 +18,7 @@
                 ->label(__('Display'))
                 ->componentClasses(['btn-success'])
                 ->componentHtmlAttributes(['target' => '_blank'])
-                ->containerClasses(['ml-3']) }}
+                ->containerClasses(['ms-3']) }}
         </div>
         <x-common.forms.notice class="mt-3"/>
         <div class="row mb-n3" data-masonry>

@@ -54,7 +54,7 @@
         </div>
     @endunless
 @elseif(request()->is('admin/*') || request()->is('*/admin/*'))
-    <i class="fas fa-info-circle fa-fw text-info mr-1"></i>
+    <i class="fas fa-info-circle fa-fw text-info me-1"></i>
     {{ __('No slides were added to this carousel.') }}
 @endif
 

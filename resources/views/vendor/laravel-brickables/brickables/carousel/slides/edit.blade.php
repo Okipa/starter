@@ -27,7 +27,7 @@
             @method('PUT')
         @endif
         <div class="d-flex">
-            {{ buttonBack()->route('brick.edit', ['brick' => $brick, 'admin_panel_url' => request()->admin_panel_url])->containerClasses(['mr-3']) }}
+            {{ buttonBack()->route('brick.edit', ['brick' => $brick, 'admin_panel_url' => request()->admin_panel_url])->containerClasses(['me-3']) }}
             @if($slide){{ submitUpdate() }}@else{{ submitCreate() }}@endif
         </div>
         <x-common.forms.notice class="mt-3"/>

@@ -2,15 +2,15 @@
     <div class="dropdown">
         <a href=""
            class="dropdown-toggle nav-link"
-           data-toggle="dropdown"
+           data-bs-toggle="dropdown"
            aria-haspopup="true"
            aria-expanded="false">
-            {{ auth()->user()->getFirstMedia('profile_pictures')->img('top-nav', ['class' => 'rounded-circle mr-1']) }}
+            {{ auth()->user()->getFirstMedia('profile_pictures')->img('top-nav', ['class' => 'rounded-circle me-1']) }}
             <span class="d-none d-xl-inline">
                 {{ auth()->user()->full_name }}
             </span>
         </a>
-        <div class="dropdown-menu dropdown-menu-right">
+        <div class="dropdown-menu dropdown-menu-end">
             @if(Laravel\Fortify\Features::enabled(Laravel\Fortify\Features::updateProfileInformation()))
                 <a href="{{ route('profile.edit') }}"
                    class="dropdown-item{{ currentRouteIs('profile.edit') ? ' active' : null }}"

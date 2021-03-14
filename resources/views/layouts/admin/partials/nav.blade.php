@@ -1,13 +1,13 @@
 <nav id="navbar" class="navbar navbar-expand-xl navbar-dark bg-dark w-100">
-    <a class="navbar-brand d-flex align-items-center pl-3 pr-3" href="{{ route('admin.index') }}">
+    <a class="navbar-brand d-flex align-items-center ps-3 pe-3" href="{{ route('admin.index') }}">
         @if($icon = settings()->getFirstMedia('icons'))
             {{ $icon('admin') }}
         @endif
-        <span class="{{ $icon ? 'pl-2' : null }}">{{ config('app.name') }}</span>
+        <span class="{{ $icon ? 'ps-2' : null }}">{{ config('app.name') }}</span>
     </a>
-    <button class="navbar-toggler navbar-toggler-right collapsed"
+    <button class="navbar-toggler navbar-toggler-end collapsed"
             type="button"
-            data-toggle="collapse"
+            data-bs-toggle="collapse"
             data-target="#sidenav"
             aria-controls="sidenav"
             aria-expanded="false"

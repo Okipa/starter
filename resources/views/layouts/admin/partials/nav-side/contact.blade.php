@@ -7,7 +7,7 @@
     <a class="nav-link{{ $subMenuActive ? ' active' : null }}"
        href="#contact-menu"
        title="{{ __('Contact') }}"
-       data-toggle="collapse"
+       data-bs-toggle="collapse"
        role="button"
        aria-expanded="false"
        aria-controls="contact-menu">

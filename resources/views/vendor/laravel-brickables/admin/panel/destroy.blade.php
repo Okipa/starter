@@ -1,4 +1,4 @@
-<form class="ml-1"
+<form class="ms-1"
       method="POST"
       action="{{ $brick->brickable->getDestroyRoute($brick) }}"
       novalidate>

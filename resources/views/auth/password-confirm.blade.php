@@ -6,8 +6,8 @@
         @endphp
     @endif
     @include('components.common.multilingual.lang-switcher', [
-        'containerClasses' => ['text-right', 'mb-3'],
-        'dropdownClass' => ['dropdown-menu-right'],
+        'containerClasses' => ['text-end', 'mb-3'],
+        'dropdownClass' => ['dropdown-menu-end'],
         'labelClass' => ['btn', 'btn-link']
     ])
     @if($icon = settings()->getFirstMedia('icons'))

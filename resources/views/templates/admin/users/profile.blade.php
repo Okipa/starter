@@ -123,7 +123,7 @@
                                     ->componentClasses(['btn-secondary'])
                                     ->componentHtmlAttributes(['data-confirm' => __('Are you sure you want to regenerate recovery codes?')]) }}
                             </form>
-                            <form class="ml-3"
+                            <form class="ms-3"
                                   method="POST"
                                   action="{{ route('two-factor.deactivate') }}"
                                   novalidate>

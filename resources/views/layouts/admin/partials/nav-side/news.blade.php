@@ -15,7 +15,7 @@
     <a class="nav-link{{ $subMenuActive ? ' active' : null }}"
        href="#news-menu"
        title="{{ __('News') }}"
-       data-toggle="collapse"
+       data-bs-toggle="collapse"
        role="button"
        aria-expanded="false"
        aria-controls="news-menu">

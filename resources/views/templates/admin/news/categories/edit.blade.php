@@ -17,7 +17,7 @@
             @method('PUT')
         @endif
         <div class="d-flex">
-            {{ buttonBack()->route('news.categories.index')->containerClasses(['mr-3']) }}
+            {{ buttonBack()->route('news.categories.index')->containerClasses(['me-3']) }}
             @if($category){{ submitUpdate() }}@else{{ submitCreate() }}@endif
             @if(optional($category)->active)
                 {{ buttonLink()->route('news.category.show', [$category])
@@ -25,7 +25,7 @@
                     ->label(__('Display'))
                     ->componentClasses(['btn-success'])
                     ->componentHtmlAttributes(['target' => '_blank'])
-                    ->containerClasses(['ml-3']) }}
+                    ->containerClasses(['ms-3']) }}
             @endif
         </div>
         <x-common.forms.notice class="mt-3"/>

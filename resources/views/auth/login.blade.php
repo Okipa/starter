@@ -6,16 +6,16 @@
 @extends('layouts.admin.auth')
 @section('content')
     @include('components.common.multilingual.lang-switcher', [
-        'containerClasses' => ['text-right', 'mb-3'],
+        'containerClasses' => ['text-end', 'mb-3'],
         'dropdownLabelClasses' => ['btn', 'btn-link'],
-        'dropdownMenuClasses' => ['dropdown-menu-right']
+        'dropdownMenuClasses' => ['dropdown-menu-end']
     ])
     @if($icon = settings()->getFirstMedia('icons'))
         <div class="mx-auto mb-4">
             {{ $icon('auth') }}
         </div>
     @endif
-    <h1 class="h3 mb-3 font-weight-normal">
+    <h1 class="h3 mb-3 fw-normal">
         <i class="fas fa-sign-in-alt fa-fw"></i>
         {{ __('Sign in area') }}
     </h1>

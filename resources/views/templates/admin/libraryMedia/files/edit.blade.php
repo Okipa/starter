@@ -18,7 +18,7 @@
             @method('PUT')
         @endif
         <div class="d-flex">
-            {{ buttonBack()->route('libraryMedia.files.index')->containerClasses(['mr-3']) }}
+            {{ buttonBack()->route('libraryMedia.files.index')->containerClasses(['me-3']) }}
             @if($file){{ submitUpdate() }}@else{{ submitCreate() }}@endif
         </div>
         <x-common.forms.notice class="mt-3"/>

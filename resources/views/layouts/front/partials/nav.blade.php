@@ -8,7 +8,7 @@
         </a>
         <button class="navbar-toggler"
                 type="button"
-                data-toggle="collapse"
+                data-bs-toggle="collapse"
                 data-target="#navbarToggler"
                 aria-controls="navbarToggler"
                 aria-expanded="false"
@@ -16,7 +16,7 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarToggler">
-            <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+            <ul class="navbar-nav me-auto mt-2 mt-lg-0">
                 @include('layouts.front.partials.nav.home')
                 @include('layouts.front.partials.nav.news')
                 @include('layouts.front.partials.nav.contact')

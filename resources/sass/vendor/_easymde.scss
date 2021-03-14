@@ -19,10 +19,10 @@ textarea.is-valid + .EasyMDEContainer .CodeMirror {
 }
 
 .editor-statusbar {
-    @extend .pl-0;
-    @extend .pr-0;
+    @extend .ps-0;
+    @extend .pe-0;
 
     .lines {
-        @extend .ml-0;
+        @extend .ms-0;
     }
 }

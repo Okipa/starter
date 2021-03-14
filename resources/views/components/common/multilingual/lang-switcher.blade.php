@@ -4,7 +4,7 @@
            class="dropdown-toggle{{ ! empty($dropdownLabelClasses) ? ' ' . implode(' ', $dropdownLabelClasses) : '' }}"
            href=""
            title="{{ __('Language') }}"
-           data-toggle="dropdown"
+           data-bs-toggle="dropdown"
            aria-haspopup="true"
            aria-expanded="false">
             <i class="fas fa-language fa-fw{{ ! empty($dropdownLabelIconClasses) ? ' ' . implode(' ', $dropdownLabelIconClasses) : '' }}"></i>

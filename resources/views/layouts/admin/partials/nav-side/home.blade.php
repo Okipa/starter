@@ -9,7 +9,7 @@
     <a class="nav-link{{ $subMenuActive ? ' active' : null }}"
        href="#home-menu"
        title="{{ __('Home') }}"
-       data-toggle="collapse"
+       data-bs-toggle="collapse"
        role="button"
        aria-expanded="false"
        aria-controls="home-menu">

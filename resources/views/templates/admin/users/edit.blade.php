@@ -18,7 +18,7 @@
             @method('PUT')
         @endif
         <div class="d-flex">
-            {{ buttonBack()->route('users.index')->containerClasses(['mr-3']) }}
+            {{ buttonBack()->route('users.index')->containerClasses(['me-3']) }}
             @if($user){{ submitUpdate() }}@else{{ submitCreate() }}@endif
         </div>
         <x-common.forms.notice class="mt-3"/>

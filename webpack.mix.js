@@ -61,7 +61,7 @@ mix
         jquery: ['$', 'jQuery', 'window.jQuery'],
         'popper.js': ['Popper', 'window.Popper']
     })
-    .extract(['bootstrap', 'jquery', 'popper.js'])
+    .extract(['jquery', 'popper.js'])
     .sourceMaps()
     .version([
         'public/images/',

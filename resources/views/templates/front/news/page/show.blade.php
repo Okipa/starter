@@ -26,9 +26,9 @@
                     ->containerClasses(['mb-0']) }}
                 {{ submitValidate()->prepend('<i class="fas fa-filter fa-fw"></i>')
                     ->label(__('Filter'))
-                    ->containerClasses(['ml-3']) }}
+                    ->containerClasses(['ms-3']) }}
                 @if(request()->has(['category_id']))
-                    {{ buttonBack()->route('news.page.show')->label(__('Reset'))->containerClasses(['ml-3']) }}
+                    {{ buttonBack()->route('news.page.show')->label(__('Reset'))->containerClasses(['ms-3']) }}
                 @endif
             </form>
         </div>

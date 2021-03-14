@@ -42,7 +42,7 @@
                         <div class="col-md-8">
                             <x-common.forms.notice/>
                         </div>
-                        <div class="col-md-4 text-right">
+                        <div class="col-md-4 text-end">
                             {{ submit()->prepend('<i class="fas fa-paper-plane fa-fw"></i>')->label(__('Send')) }}
                         </div>
                         @php
@@ -88,19 +88,19 @@
                         </h3>
                         @if($phoneNumber = settings()->phone_number)
                             <p class="d-flex align-items-start">
-                                <span class="mr-1"><i class="fas fa-phone-alt fa-fw"></i></span>
+                                <span class="me-1"><i class="fas fa-phone-alt fa-fw"></i></span>
                                 {{ $phoneNumber }}
                             </p>
                         @endif
                         @if($email = settings()->email)
                             <p class="d-flex align-items-start">
-                                <span class="mr-1"><i class="fas fa-at fa-fw"></i></span>
+                                <span class="me-1"><i class="fas fa-at fa-fw"></i></span>
                                 {{ $email }}
                             </p>
                         @endif
                         @if($fullPostalAddress = settings()->full_postal_address)
                             <p class="d-flex align-items-start">
-                                <span class="mr-1"><i class="fas fa-compass fa-fw"></i></span>
+                                <span class="me-1"><i class="fas fa-compass fa-fw"></i></span>
                                 {{ $fullPostalAddress }}
                             </p>
                         @endif

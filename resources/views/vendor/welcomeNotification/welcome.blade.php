@@ -1,8 +1,8 @@
 @extends('layouts.admin.auth')
 @section('content')
     @include('components.common.multilingual.lang-switcher', [
-        'containerClasses' => ['text-right'],
-        'dropdownClass' => ['dropdown-menu-right'],
+        'containerClasses' => ['text-end'],
+        'dropdownClass' => ['dropdown-menu-end'],
         'labelClass' => ['btn', 'btn-link']
     ])
     @if($icon = settings()->getFirstMedia('icons'))

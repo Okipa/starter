@@ -5,15 +5,15 @@
             <div class="text-center">
                 <div class="mx-auto mb-4">
                     @include('components.common.multilingual.lang-switcher', [
-                        'containerClasses' => ['text-right'],
+                        'containerClasses' => ['text-end'],
                         'dropdownLabelClasses' => ['btn', 'btn-link'],
-                        'dropdownMenuClasses' => ['dropdown-menu-right']
+                        'dropdownMenuClasses' => ['dropdown-menu-end']
                     ])
                     @if($icon = settings()->getFirstMedia('icons'))
                         {{ $icon('auth') }}
                     @endif
                 </div>
-                <h1 class="h3 font-weight-normal text-danger mt-3">
+                <h1 class="h3 fw-normal text-danger mt-3">
                     <i class="far fa-times-circle fa-fw"></i>
                     {{ __($exception->getMessage()) }}
                 </h1>

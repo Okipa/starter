@@ -22,9 +22,9 @@
                 ->selected('id', (int) $request->category_id)
                 ->componentHtmlAttributes(['data-selector'])
                 ->containerClasses([]) }}
-            {{ submitValidate()->prepend('<i class="fas fa-filter"></i>')->label(__('Filter'))->containerClasses(['ml-3']) }}
+            {{ submitValidate()->prepend('<i class="fas fa-filter"></i>')->label(__('Filter'))->containerClasses(['ms-3']) }}
             @if($request->has('category_id'))
-                {{ buttonCancel()->route('libraryMedia.files.index')->prepend('<i class="fas fa-undo"></i>')->label(__('Reset'))->containerClasses(['ml-3']) }}
+                {{ buttonCancel()->route('libraryMedia.files.index')->prepend('<i class="fas fa-undo"></i>')->label(__('Reset'))->containerClasses(['ms-3']) }}
             @endif
         </form>
         {{ $table }}
