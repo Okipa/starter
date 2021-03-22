@@ -30,7 +30,7 @@ class ArticleUpdateRequest extends SeoRequest
                 'string',
                 'slug',
                 'max:255',
-                UniqueTranslationRule::for('news_articles')->ignore($this->article->id),
+                UniqueTranslationRule::for(NewsArticle::class)->ignore($this->article),
             ],
             'description' => ['nullable', 'string', 'max:4294967295'],
         ]);

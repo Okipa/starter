@@ -40,7 +40,7 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
                 'string',
                 'max:255',
                 'email:rfc,dns,spoof',
-                Rule::unique('users')->ignore($user->id),
+                Rule::unique('users')->ignore($user),
             ],
         ])->validateWithBag('updateProfileInformation');
         if ($input['email'] !== $user->email && $user instanceof MustVerifyEmail) {

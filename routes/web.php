@@ -41,6 +41,7 @@ Route::localized(function () {
             require('web/admin/profile.php');
             require('web/admin/users.php');
             require('web/admin/settings.php');
+            require('web/admin/cookies.php');
         });
     });
 

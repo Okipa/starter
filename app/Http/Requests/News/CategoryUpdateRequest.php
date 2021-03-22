@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests\News;
 
+use App\Models\News\NewsCategory;
 use CodeZero\UniqueTranslation\UniqueTranslationRule;
 use Illuminate\Foundation\Http\FormRequest;
 
@@ -14,7 +15,7 @@ class CategoryUpdateRequest extends FormRequest
                 'required',
                 'string',
                 'max:255',
-                UniqueTranslationRule::for('news_categories')->ignore($this->category->id),
+                UniqueTranslationRule::for(NewsCategory::class)->ignore($this->category),
             ],
         ]);
     }
