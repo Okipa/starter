@@ -1,7 +1,7 @@
 @extends('layouts.admin.full')
 @section('template')
     <h1>
-        <i class="fas fa-cookie-bite fa-fw"></i>
+        <i class="fas fa-laptop-code fa-fw"></i>
         @if($cookieService)
             {{ __('breadcrumbs.parent.edit', ['parent' => __('Cookies'), 'entity' => __('Services'), 'detail' => $cookieService->title]) }}
         @else
@@ -35,15 +35,17 @@
                         ->multiple()
                         ->componentHtmlAttributes(['required', 'data-selector'])
                         ->caption(__('Define in which categories this service will be classified. A service can be attached to one or more categories.')) }}
+                    {{ inputText()->name('unique_key')
+                        ->model($cookieService)
+                        ->componentHtmlAttributes(['required', 'data-kebabcase'])
+                        ->caption(__('The unique service key, which is used to associate the user consent with a third-party script in order to enable or disable it accordingly to the user choice.')) }}
                     {{ inputText()->name('title')
                         ->locales(supportedLocaleKeys())
                         ->model($cookieService)
-                        ->componentHtmlAttributes(['required'])
-                        ->caption(__('The displayed service title on the user consent pop-in.')) }}
-                    {{ inputText()->name('unique_key')
-                        ->model($cookieService)
-                        ->componentHtmlAttributes(['required', 'data-kebabcase', 'data-autofill-from' => '#text-title'])
-                        ->caption(__('The unique service name, which is used to associate the user consent with a third-party script in order to activate/deactivate it accordingly to the user consent.')) }}
+                        ->componentHtmlAttributes(['required']) }}
+                    {{ textarea()->name('description')
+                        ->locales(supportedLocaleKeys())
+                        ->model($cookieService) }}
                     {{ inputSwitch()->name('required')
                         ->model($cookieService)
                         ->caption(__('Whether this service is required by you app and should not be allowed to be shutdown.')) }}
@@ -63,8 +65,8 @@
                     </p>
                     {{ textarea()->name('cookies')
                         ->model($cookieService)
-                        ->value(json_encode($cookieService->cookies, JSON_PRETTY_PRINT|JSON_THROW_ON_ERROR))
-                        ->componentHtmlAttributes(['rows' => 20])
+                        ->value($cookieService ? json_encode($cookieService->cookies, JSON_PRETTY_PRINT|JSON_THROW_ON_ERROR) : null)
+                        ->componentHtmlAttributes(['required', 'rows' => 20])
                         ->caption(__('This configuration must be declared in a valid JSON format.')) }}
                 </x-admin.forms.card>
             </div>

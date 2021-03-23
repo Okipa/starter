@@ -1,13 +1,12 @@
 <?php
 
+use App\Models\Cookies\CookieService;
 use App\Models\Pages\Page;
 use App\Models\Settings\Settings;
 use Illuminate\Support\Collection;
 
 if (! function_exists('settings')) {
     /**
-     * Get and cache settings.
-     *
      * @param bool $clearCache
      *
      * @return \App\Models\Settings\Settings
@@ -25,8 +24,6 @@ if (! function_exists('settings')) {
 
 if (! function_exists('pages')) {
     /**
-     * Get and cache pages.
-     *
      * @param bool $clearCache
      *
      * @return \Illuminate\Support\Collection
@@ -39,5 +36,25 @@ if (! function_exists('pages')) {
         }
 
         return cache()->rememberForever('pages', fn() => Page::where('active', true)->get());
+    }
+}
+
+if (! function_exists('cookieServices')) {
+    /**
+     * @param bool $clearCache
+     *
+     * @return \Illuminate\Support\Collection
+     * @throws \Exception
+     */
+    function cookieServices(bool $clearCache = false): Collection
+    {
+        if ($clearCache) {
+            cache()->forget('cookie_services');
+        }
+
+        return cache()->rememberForever(
+            'cookie_services',
+            fn() => CookieService::with('categories')->where('active', true)->ordered()->get()
+        );
     }
 }

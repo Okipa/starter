@@ -6,7 +6,7 @@ use App\Models\LibraryMedia\LibraryMediaCategory;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
-class FilesIndexRequest extends FormRequest
+class LibraryMediaFilesIndexRequest extends FormRequest
 {
     public function rules(): array
     {

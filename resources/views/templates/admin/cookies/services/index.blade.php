@@ -1,7 +1,7 @@
 @extends('layouts.admin.full')
 @section('template')
     <h1>
-        <i class="fas fa-cookie-bite fa-fw"></i>
+        <i class="fas fa-laptop-code fa-fw"></i>
         {{ __('breadcrumbs.parent.index', ['parent' => __('Cookies'), 'entity' => __('Services')]) }}
     </h1>
     <hr>

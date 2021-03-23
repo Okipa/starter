@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Front;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\News\ArticlesIndexRequest;
+use App\Http\Requests\News\NewsArticlesIndexRequest;
 use App\Models\News\NewsArticle;
 use App\Models\Pages\TitleDescriptionPageContent;
 use Illuminate\Contracts\View\View;
@@ -11,12 +11,12 @@ use Illuminate\Contracts\View\View;
 class NewsPageController extends Controller
 {
     /**
-     * @param \App\Http\Requests\News\ArticlesIndexRequest $request
+     * @param \App\Http\Requests\News\NewsArticlesIndexRequest $request
      *
      * @return \Illuminate\Contracts\View\View
      * @throws \Exception
      */
-    public function show(ArticlesIndexRequest $request): View
+    public function show(NewsArticlesIndexRequest $request): View
     {
         $pageContent = TitleDescriptionPageContent::firstOrCreate(['unique_key' => 'news_page_content']);
         $pageContent->displaySeoMeta();

@@ -7,7 +7,7 @@ use App\Models\LibraryMedia\LibraryMediaFile;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
-class FileUpdateRequest extends FormRequest
+class LibraryMediaFileStoreRequest extends FormRequest
 {
     /**
      * @return array
@@ -17,7 +17,7 @@ class FileUpdateRequest extends FormRequest
     {
         $rules = [
             'category_id' => ['required', 'integer', Rule::exists(LibraryMediaCategory::class, 'id')],
-            'media' => app(LibraryMediaFile::class)->getMediaValidationRules('media'),
+            'media' => array_merge(['required'], app(LibraryMediaFile::class)->getMediaValidationRules('media')),
         ];
         $localizedRules = localizeRules(['name' => ['required', 'string', 'max:255']]);
 

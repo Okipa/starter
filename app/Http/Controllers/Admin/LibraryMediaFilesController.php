@@ -3,9 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\LibraryMedia\FilesIndexRequest;
-use App\Http\Requests\LibraryMedia\FileStoreRequest;
-use App\Http\Requests\LibraryMedia\FileUpdateRequest;
+use App\Http\Requests\LibraryMedia\LibraryMediaFilesIndexRequest;
+use App\Http\Requests\LibraryMedia\LibraryMediaFileStoreRequest;
+use App\Http\Requests\LibraryMedia\LibraryMediaFileUpdateRequest;
 use App\Models\LibraryMedia\LibraryMediaFile;
 use App\Services\LibraryMedia\FilesService;
 use App\Tables\LibraryMediaFilesTable;
@@ -18,13 +18,13 @@ use Illuminate\Contracts\View\View;
 class LibraryMediaFilesController extends Controller
 {
     /**
-     * @param \App\Http\Requests\LibraryMedia\FilesIndexRequest $request
+     * @param \App\Http\Requests\LibraryMedia\LibraryMediaFilesIndexRequest $request
      *
      * @return \Illuminate\Contracts\View\View
      * @throws \ErrorException
      * @throws \Exception
      */
-    public function index(FilesIndexRequest $request): View
+    public function index(LibraryMediaFilesIndexRequest $request): View
     {
         $table = (new LibraryMediaFilesTable($request))->setup();
         SEOTools::setTitle(__('breadcrumbs.parent.index', [
@@ -46,13 +46,13 @@ class LibraryMediaFilesController extends Controller
     }
 
     /**
-     * @param \App\Http\Requests\LibraryMedia\FileStoreRequest $request
+     * @param \App\Http\Requests\LibraryMedia\LibraryMediaFileStoreRequest $request
      *
      * @return \Illuminate\Http\RedirectResponse
      * @throws \Spatie\MediaLibrary\MediaCollections\Exceptions\FileDoesNotExist
      * @throws \Spatie\MediaLibrary\MediaCollections\Exceptions\FileIsTooBig
      */
-    public function store(FileStoreRequest $request): RedirectResponse
+    public function store(LibraryMediaFileStoreRequest $request): RedirectResponse
     {
         $file = LibraryMediaFile::create($request->validated());
         $file->addMediaFromRequest('media')->toMediaCollection('media');
@@ -84,13 +84,13 @@ class LibraryMediaFilesController extends Controller
 
     /**
      * @param \App\Models\LibraryMedia\LibraryMediaFile $file
-     * @param \App\Http\Requests\LibraryMedia\FileUpdateRequest $request
+     * @param \App\Http\Requests\LibraryMedia\LibraryMediaFileUpdateRequest $request
      *
      * @return \Illuminate\Http\RedirectResponse
      * @throws \Spatie\MediaLibrary\MediaCollections\Exceptions\FileDoesNotExist
      * @throws \Spatie\MediaLibrary\MediaCollections\Exceptions\FileIsTooBig
      */
-    public function update(FileUpdateRequest $request, LibraryMediaFile $file): RedirectResponse
+    public function update(LibraryMediaFileUpdateRequest $request, LibraryMediaFile $file): RedirectResponse
     {
         $file->update($request->validated());
         if ($request->file('media')) {

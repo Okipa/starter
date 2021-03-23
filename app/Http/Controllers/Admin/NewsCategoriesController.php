@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\News\CategoryStoreRequest;
-use App\Http\Requests\News\CategoryUpdateRequest;
+use App\Http\Requests\News\CookieCategoryStoreRequest;
+use App\Http\Requests\News\CookieCategoryUpdateRequest;
 use App\Models\News\NewsCategory;
 use App\Tables\NewsCategoriesTable;
 use Artesaos\SEOTools\Facades\SEOTools;
@@ -39,7 +39,7 @@ class NewsCategoriesController extends Controller
         return view('templates.admin.news.categories.edit', compact('category'));
     }
 
-    public function store(CategoryStoreRequest $request): RedirectResponse
+    public function store(CookieCategoryStoreRequest $request): RedirectResponse
     {
         $category = NewsCategory::create($request->validated());
 
@@ -62,7 +62,7 @@ class NewsCategoriesController extends Controller
         return view('templates.admin.news.categories.edit', compact('category'));
     }
 
-    public function update(CategoryUpdateRequest $request, NewsCategory $category): RedirectResponse
+    public function update(CookieCategoryUpdateRequest $request, NewsCategory $category): RedirectResponse
     {
         $category->update($request->validated());
 

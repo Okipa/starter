@@ -21,7 +21,7 @@ class PageStoreRequest extends SeoRequest
                 'string',
                 'slug',
                 'max:255',
-                UniqueTranslationRule::for('pages'),
+                UniqueTranslationRule::for(app(Page::class)->getTable()),
             ],
             'nav_title' => ['required', 'string', 'max:255'],
         ]);

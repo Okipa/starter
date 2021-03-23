@@ -6,7 +6,7 @@ use App\Models\News\NewsCategory;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
-class ArticlesIndexRequest extends FormRequest
+class NewsArticlesIndexRequest extends FormRequest
 {
     public function rules(): array
     {

@@ -10,7 +10,6 @@ use App\Tables\CookieServicesTable;
 use Artesaos\SEOTools\Facades\SEOTools;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
 
 class CookieServicesController extends Controller
 {
@@ -40,9 +39,16 @@ class CookieServicesController extends Controller
         return view('templates.admin.cookies.services.edit', compact('cookieService'));
     }
 
+    /**
+     * @param \App\Http\Requests\LibraryMedia\CookieServiceStoreRequest $request
+     *
+     * @return \Illuminate\Http\RedirectResponse
+     * @throws \Exception
+     */
     public function store(CookieServiceStoreRequest $request): RedirectResponse
     {
         $cookieService = CookieService::create($request->validated());
+        cookieServices(true);
 
         return redirect()->route('news.categories.index')
             ->with('toast_success', __('crud.parent.created', [
@@ -63,9 +69,17 @@ class CookieServicesController extends Controller
         return view('templates.admin.cookies.services.edit', compact('cookieService'));
     }
 
+    /**
+     * @param \App\Http\Requests\LibraryMedia\CookieServiceUpdateRequest $request
+     * @param \App\Models\Cookies\CookieService $cookieService
+     *
+     * @return \Illuminate\Http\RedirectResponse
+     * @throws \Exception
+     */
     public function update(CookieServiceUpdateRequest $request, CookieService $cookieService): RedirectResponse
     {
         $cookieService->update($request->validated());
+        cookieServices(true);
 
         return back()->with('toast_success', __('crud.parent.updated', [
             'parent' => __('Cookies'),

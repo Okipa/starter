@@ -13,7 +13,7 @@ class CreateBricksTable extends Migration
             $table->morphs('model');
             $table->string('brickable_type');
             $table->json('data');
-            $table->unsignedInteger('position')->nullable();
+            $table->unsignedInteger('position');
             $table->timestamps();
         });
     }

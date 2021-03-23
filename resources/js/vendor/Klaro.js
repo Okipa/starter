@@ -2,6 +2,8 @@
 
 import * as klaro from 'klaro';
 
+console.log(app.cookie_services);
+
 // Example of config available here: /node_modules/klaro/dist/config.js
 const klaroConfig = {
     version: '0.7.*',

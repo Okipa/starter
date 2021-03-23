@@ -44,10 +44,12 @@ class CarouselBrickSlidesTables extends AbstractTable
                     'params' => ['admin_panel_url' => $this->adminPanelUrl],
                 ],
                 'destroy' => ['name' => 'brick.carousel.slide.destroy'],
-            ])->query(function (Builder $query) {
+            ])
+            ->query(function (Builder $query) {
                 $query->where('brick_id', $this->carouselBrick->id);
                 $query->ordered();
-            })->destroyConfirmationHtmlAttributes(function (CarouselBrickSlide $slide) {
+            })
+            ->destroyConfirmationHtmlAttributes(function (CarouselBrickSlide $slide) {
                 return [
                     'data-confirm' => __('crud.parent.destroy_confirm', [
                         'parent' => $this->carouselBrick->model->getReadableClassName() . ' > ' . __('Carousel'),
@@ -55,7 +57,9 @@ class CarouselBrickSlidesTables extends AbstractTable
                         'name' => $slide->label,
                     ]),
                 ];
-            })->rowsNumber(null)->activateRowsNumberDefinition(false);
+            })
+            ->rowsNumber(null)
+            ->activateRowsNumberDefinition(false);
     }
 
     /**

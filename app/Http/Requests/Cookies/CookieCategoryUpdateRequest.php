@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Requests\LibraryMedia;
+namespace App\Http\Requests\Cookies;
 
-use App\Models\Cookies\CookieService;
+use App\Models\Cookies\CookieCategory;
 use CodeZero\UniqueTranslation\UniqueTranslationRule;
 use Illuminate\Foundation\Http\FormRequest;
 
-class CookieServiceUpdateRequest extends FormRequest
+class CookieCategoryUpdateRequest extends FormRequest
 {
     public function rules(): array
     {
@@ -15,8 +15,9 @@ class CookieServiceUpdateRequest extends FormRequest
                 'required',
                 'string',
                 'max:255',
-                UniqueTranslationRule::for(app(CookieService::class)->getTable())->ignore($this->cookieService->id),
+                UniqueTranslationRule::for(app(CookieCategory::class)->getTable())->ignore($this->cookieCategory->id),
             ],
+            'description' => ['nullable', 'string', 'max:4294967295'],
         ]);
     }
 }

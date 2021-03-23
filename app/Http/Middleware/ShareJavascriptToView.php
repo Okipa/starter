@@ -2,6 +2,7 @@
 
 namespace App\Http\Middleware;
 
+use App\Models\Cookies\CookieService;
 use Closure;
 use Illuminate\Http\Request;
 
@@ -16,7 +17,7 @@ class ShareJavascriptToView
      * @return mixed
      * @throws \Exception
      */
-    public function handle(Request $request, Closure $next)
+    public function handle(Request $request, Closure $next): mixed
     {
         $gdprPage = pages()->where('unique_key', 'gdpr_page')->first();
         share([
@@ -24,6 +25,7 @@ class ShareJavascriptToView
             'locale' => app()->getLocale(),
             'notify' => __('notify'),
             'gdpr_page_url' => $gdprPage ? route('page.show', $gdprPage) : null,
+            'cookie_services' => cookieServices(),
         ]);
 
         return $next($request);

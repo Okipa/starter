@@ -41,5 +41,7 @@ return [
     'parameters' => 'parametres',
     'send' => 'envoi',
     'reorder' => 'reorganiser',
+    'cookie' => 'cookie',
+    'services' => 'services'
 
 ];

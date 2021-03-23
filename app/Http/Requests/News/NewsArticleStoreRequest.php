@@ -9,7 +9,7 @@ use Carbon\Carbon;
 use CodeZero\UniqueTranslation\UniqueTranslationRule;
 use Illuminate\Validation\Rule;
 
-class ArticleStoreRequest extends SeoRequest
+class NewsArticleStoreRequest extends SeoRequest
 {
     /**
      * @return array
@@ -33,7 +33,7 @@ class ArticleStoreRequest extends SeoRequest
                 'string',
                 'slug',
                 'max:255',
-                UniqueTranslationRule::for('news_articles'),
+                UniqueTranslationRule::for(app(NewsArticle::class)->getTable()),
             ],
             'description' => ['nullable', 'string', 'max:4294967295'],
         ]);

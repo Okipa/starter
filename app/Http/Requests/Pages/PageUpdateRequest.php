@@ -17,7 +17,7 @@ class PageUpdateRequest extends SeoRequest
                 'string',
                 'slug',
                 'max:255',
-                UniqueTranslationRule::for(Page::class)->ignore($this->page),
+                UniqueTranslationRule::for(app(Page::class)->getTable())->ignore($this->page->id),
             ],
             'nav_title' => ['required', 'string', 'max:255'],
         ]);

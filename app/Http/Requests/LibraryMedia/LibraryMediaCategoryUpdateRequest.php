@@ -6,7 +6,7 @@ use App\Models\LibraryMedia\LibraryMediaCategory;
 use CodeZero\UniqueTranslation\UniqueTranslationRule;
 use Illuminate\Foundation\Http\FormRequest;
 
-class CategoryUpdateRequest extends FormRequest
+class LibraryMediaCategoryUpdateRequest extends FormRequest
 {
     public function rules(): array
     {
@@ -15,7 +15,7 @@ class CategoryUpdateRequest extends FormRequest
                 'required',
                 'string',
                 'max:255',
-                UniqueTranslationRule::for(LibraryMediaCategory::class)->ignore($this->category),
+                UniqueTranslationRule::for(app(LibraryMediaCategory::class)->getTable())->ignore($this->libraryMediaCategory->id),
             ],
         ]);
     }

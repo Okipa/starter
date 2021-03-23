@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Http\Requests\News;
+namespace App\Http\Requests\LibraryMedia;
 
+use App\Models\LibraryMedia\LibraryMediaCategory;
 use CodeZero\UniqueTranslation\UniqueTranslationRule;
 use Illuminate\Foundation\Http\FormRequest;
 
-class CategoryStoreRequest extends FormRequest
+class LibraryMediaCategoryStoreRequest extends FormRequest
 {
     public function rules(): array
     {
@@ -14,7 +15,7 @@ class CategoryStoreRequest extends FormRequest
                 'required',
                 'string',
                 'max:255',
-                UniqueTranslationRule::for('news_categories'),
+                UniqueTranslationRule::for(app(LibraryMediaCategory::class)->getTable()),
             ],
         ]);
     }
