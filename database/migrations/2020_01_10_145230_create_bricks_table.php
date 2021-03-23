@@ -6,10 +6,7 @@ use Illuminate\Support\Facades\Schema;
 
 class CreateBricksTable extends Migration
 {
-    /**
-     * Run the migrations.
-     */
-    public function up()
+    public function up(): void
     {
         Schema::create('bricks', function (Blueprint $table) {
             $table->id();
@@ -21,10 +18,7 @@ class CreateBricksTable extends Migration
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
-    public function down()
+    public function down(): void
     {
         Schema::dropIfExists('bricks');
     }

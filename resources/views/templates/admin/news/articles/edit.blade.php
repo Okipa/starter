@@ -52,6 +52,7 @@
                     {{ select()->name('category_ids')
                         ->model($article)
                         ->prepend('<i class="fas fa-tags"></i>')
+                        ->disablePlaceholder()
                         ->options(App\Models\News\NewsCategory::get()->map(fn(App\Models\News\NewsCategory $category) => [
                             'id' => $category->id,
                             'name' => $category->name

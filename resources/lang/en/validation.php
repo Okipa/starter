@@ -204,6 +204,9 @@ return [
         'full_width' => 'Full width',
         'code' => 'Code',
         'recovery_code' => 'Recovery code',
+        'required' => 'Required',
+        'enabled_by_default' => 'Enabled by default',
+        'cookies' => 'Cookies',
     ],
 
 ];

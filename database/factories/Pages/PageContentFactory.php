@@ -15,12 +15,7 @@ class PageContentFactory extends Factory
     /** @var string */
     protected $model = PageContent::class;
 
-    protected array $titles = [
-        'home_page_content' => [
-            'fr' => 'Bienvenue',
-            'en' => 'Welcome',
-        ],
-    ];
+    protected array $titles = ['home_page_content' => ['fr' => 'Bienvenue', 'en' => 'Welcome']];
 
     protected array $descriptions = [
         'home_page_content' => [

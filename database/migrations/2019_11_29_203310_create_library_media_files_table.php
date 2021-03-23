@@ -6,12 +6,7 @@ use Illuminate\Support\Facades\Schema;
 
 class CreateLibraryMediaFilesTable extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
-    public function up()
+    public function up(): void
     {
         Schema::create('library_media_files', function (Blueprint $table) {
             $table->id();
@@ -23,12 +18,7 @@ class CreateLibraryMediaFilesTable extends Migration
         });
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
-    public function down()
+    public function down(): void
     {
         Schema::dropIfExists('library_media_files');
     }

@@ -4,19 +4,20 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateLogContactFormMessagesTable extends Migration
+class CreateCookieCategoriesTable extends Migration
 {
     public function up(): void
     {
-        Schema::create('log_contact_form_messages', function (Blueprint $table) {
+        Schema::create('cookie_categories', function (Blueprint $table) {
             $table->id();
-            $table->json('data');
+            $table->json('title');
+            $table->json('description');
             $table->timestamps();
         });
     }
 
     public function down(): void
     {
-        Schema::dropIfExists('log_contact_form_messages');
+        Schema::dropIfExists('cookie_categories');
     }
 }

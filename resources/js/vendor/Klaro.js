@@ -2,15 +2,36 @@
 
 import * as klaro from 'klaro';
 
+// Example of config available here: /node_modules/klaro/dist/config.js
 const klaroConfig = {
+    version: '0.7.*',
+    elementID: 'klaro',
     styling: {
         theme: ['light', 'bottom', 'left']
     },
-    default: true,
+    noAutoLoad: false,
+    htmlTexts: true,
+    embedded: false,
+    groupByPurpose: true,
+    storageMethod: 'cookie',
+    cookieName: 'klaro',
+    cookieExpiresAfterDays: 120,
+    cookieDomain: '.' + app.domain,
+    default: false,
+    mustConsent: false,
     acceptAll: true,
+    hideDeclineAll: false,
     hideLearnMore: false,
+    noticeAsModal: false,
     disablePoweredBy: true,
+    //additionalClass: 'my-klaro',
     lang: app.locale,
+    // You can overwrite existing translations and add translations for your
+    // service descriptions and purposes. See `src/translations/` for a full
+    // list of translations that can be overwritten:
+    // https://github.com/KIProtect/klaro/tree/master/src/translations
+    // Example config that shows how to overwrite translations:
+    // https://github.com/KIProtect/klaro/blob/master/src/configs/i18n.js
     translations: {
         zz: {
             privacyPolicyUrl: app.gdpr_page_url,

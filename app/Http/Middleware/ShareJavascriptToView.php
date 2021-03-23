@@ -20,6 +20,7 @@ class ShareJavascriptToView
     {
         $gdprPage = pages()->where('unique_key', 'gdpr_page')->first();
         share([
+            'domain' => request()->getHost(),
             'locale' => app()->getLocale(),
             'notify' => __('notify'),
             'gdpr_page_url' => $gdprPage ? route('page.show', $gdprPage) : null,

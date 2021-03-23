@@ -205,6 +205,9 @@ return [
         'full_width' => 'Pleine largeur',
         'code' => 'Code',
         'recovery_code' => 'Code de récupération',
+        'required' => 'Obligatoire',
+        'enabled_by_default' => 'Activé par défaut',
+        'cookies' => 'Cookies',
     ],
 
 ];
