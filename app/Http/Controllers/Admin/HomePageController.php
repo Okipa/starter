@@ -13,7 +13,7 @@ class HomePageController extends Controller
 {
     public function edit(): View
     {
-        $pageContent = PageContent::firstOrCreate(['unique_key' => 'home_page_content']);
+        $pageContent = PageContent::where('unique_key', 'home_page_content')->sole();
         SEOTools::setTitle(__('breadcrumbs.orphan.edit', [
             'entity' => __('Home'),
             'detail' => __('Page'),

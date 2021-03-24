@@ -14,7 +14,8 @@ class HomePageController extends Controller
      */
     public function show(): View
     {
-        $pageContent = PageContent::firstOrCreate(['unique_key' => 'home_page_content']);
+        /** @var \App\Models\Pages\PageContent $pageContent */
+        $pageContent = PageContent::where('unique_key', 'home_page_content')->sole();
         $pageContent->displaySeoMeta();
 
         return view('templates.front.home.page.show', compact('pageContent'));

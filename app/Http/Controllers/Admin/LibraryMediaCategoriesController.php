@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\LibraryMedia\CookieServiceStoreRequest;
-use App\Http\Requests\LibraryMedia\CookieServiceUpdateRequest;
+use App\Http\Requests\LibraryMedia\LibraryMediaCategoryStoreRequest;
+use App\Http\Requests\LibraryMedia\LibraryMediaCategoryUpdateRequest;
 use App\Models\LibraryMedia\LibraryMediaCategory;
 use App\Tables\LibraryMediaCategoriesTable;
 use Artesaos\SEOTools\Facades\SEOTools;
@@ -39,7 +39,7 @@ class LibraryMediaCategoriesController extends Controller
         return view('templates.admin.library-media.categories.edit', compact('libraryMediaCategory'));
     }
 
-    public function store(CookieServiceStoreRequest $request): RedirectResponse
+    public function store(LibraryMediaCategoryStoreRequest $request): RedirectResponse
     {
         $libraryMediaCategory = LibraryMediaCategory::create($request->validated());
 
@@ -63,7 +63,7 @@ class LibraryMediaCategoriesController extends Controller
     }
 
     public function update(
-        CookieServiceUpdateRequest $request,
+        LibraryMediaCategoryUpdateRequest $request,
         LibraryMediaCategory $libraryMediaCategory
     ): RedirectResponse {
         $libraryMediaCategory->update($request->validated());

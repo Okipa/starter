@@ -34,7 +34,7 @@ class CookieServicesTable extends AbstractTable
                 'edit' => ['name' => 'cookie.service.edit'],
                 'destroy' => ['name' => 'cookie.service.destroy'],
             ])
-            ->query(function(Builder $query){
+            ->query(function (Builder $query) {
                 if ($this->request->has('category_id')) {
                     $query->whereHas(
                         'categories',
@@ -72,6 +72,12 @@ class CookieServicesTable extends AbstractTable
                     return $cookieCategory;
                 })
                 ->implode('title', ', '));
+        $table->column('active')
+            ->sortable()
+            ->html(fn(CookieService $cookieService) => view(
+                'components.admin.table.bool',
+                ['bool' => $cookieService->active]
+            ));
         $table->column('created_at')->dateTimeFormat('d/m/Y H:i')->sortable();
         $table->column('updated_at')->dateTimeFormat('d/m/Y H:i')->sortable(true, 'desc');
     }

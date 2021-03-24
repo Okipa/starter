@@ -15,7 +15,8 @@ class LibraryMediaCategoryUpdateRequest extends FormRequest
                 'required',
                 'string',
                 'max:255',
-                UniqueTranslationRule::for(app(LibraryMediaCategory::class)->getTable())->ignore($this->libraryMediaCategory->id),
+                UniqueTranslationRule::for(app(LibraryMediaCategory::class)->getTable())
+                    ->ignore($this->libraryMediaCategory->id),
             ],
         ]);
     }

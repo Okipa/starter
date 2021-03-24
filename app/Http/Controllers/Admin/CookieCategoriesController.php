@@ -56,7 +56,7 @@ class CookieCategoriesController extends Controller
             ->with('toast_success', __('crud.parent.created', [
                 'parent' => __('Cookies'),
                 'entity' => __('Categories'),
-                'name' => $cookieCategory->name,
+                'name' => $cookieCategory->title,
             ]));
     }
 
@@ -65,7 +65,7 @@ class CookieCategoriesController extends Controller
         SEOTools::setTitle(__('breadcrumbs.parent.edit', [
             'parent' => __('Cookies'),
             'entity' => __('Categories'),
-            'detail' => $cookieCategory->name,
+            'detail' => $cookieCategory->title,
         ]));
 
         return view('templates.admin.cookies.categories.edit', compact('cookieCategory'));
@@ -86,7 +86,7 @@ class CookieCategoriesController extends Controller
         return back()->with('toast_success', __('crud.parent.updated', [
             'parent' => __('Cookies'),
             'entity' => __('Categories'),
-            'name' => $cookieCategory->name,
+            'name' => $cookieCategory->title,
         ]));
     }
 

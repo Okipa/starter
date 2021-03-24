@@ -1,45 +1,58 @@
 // For more information: https://github.com/kiprotect/klaro
 
 import * as klaro from 'klaro';
-import {each, map} from 'lodash';
+import {each, flatten, isArray, map} from 'lodash';
 
-let translations = {
-    zz: {
-        privacyPolicyUrl: app.gdpr_page_url
-    },
-    fr: {
-        decline: 'Refuser tout',
-        ok: 'Accepter tout',
-        acceptSelected: 'Enregistrer sélection'
-    },
-    en: {
-        decline: 'Decline all',
-        ok: 'Accept all',
-        acceptSelected: 'Save selection'
-    }
+const getTranslations = () => {
+    let translations = {
+        zz: {
+            privacyPolicyUrl: app.gdpr_page_url,
+            purposes: {}
+        },
+        fr: {
+            decline: 'Refuser tout',
+            ok: 'Accepter tout',
+            acceptSelected: 'Enregistrer sélection'
+        },
+        en: {
+            decline: 'Decline all',
+            ok: 'Accept all',
+            acceptSelected: 'Save selection'
+        }
+    };
+    each(app.cookie_categories, (cookieCategory) => {
+        translations.zz['purposes'][cookieCategory.unique_key] = {
+            title: cookieCategory.title[app.locale],
+            description: cookieCategory.description[app.locale]
+        };
+    });
+
+    return translations;
 };
 
-let services = [];
-
-each(app.cookie_categories, (cookieCategory) => {
-    translations.zz['purposes'] = {};
-    translations.zz['purposes'][cookieCategory.unique_key] = {
-        title: cookieCategory.title[app.locale],
-        description: cookieCategory.description[app.locale]
-    };
-    each(cookieCategory.services, (service) => {
-        console.log(service);
+const getServices = () => {
+    const services = [];
+    each(flatten(map(app.cookie_categories, 'services')), (cookieService) => {
+        // Replacing regex contained in string into real regex
+        each(cookieService.cookies, (cookie, key) => {
+            if (isArray(cookie)) {
+                cookieService.cookies[key] = new RegExp(cookie);
+            }
+        });
         services.push({
-            name: service.unique_key,
-            title: service.title[app.locale],
-            description: service.description[app.locale] || null,
-            purposes: map(service.categories, 'unique_key'),
-            cookies: service.cookies
+            name: cookieService.unique_key,
+            title: cookieService.title[app.locale],
+            description: cookieService.description[app.locale] || null,
+            purposes: map(cookieService.categories, 'unique_key'),
+            required: cookieService.required,
+            default: cookieService.enabled_by_default,
+            cookies: cookieService.cookies
         });
     });
-});
+    console.log(services);
 
-console.log(services);
+    return services;
+};
 
 // Example of config available here: /node_modules/klaro/dist/config.js
 const klaroConfig = {
@@ -68,27 +81,11 @@ const klaroConfig = {
     // You can overwrite existing translations and add translations for your
     // service descriptions and purposes. See `src/translations/` for a full
     // list of translations that can be overwritten:
-    // https://github.com/KIProtect/klaro/tree/master/src/translations
+    // https://github.com/kiprotect/klaro/tree/master/src/translations
     // Example config that shows how to overwrite translations:
-    // https://github.com/KIProtect/klaro/blob/master/src/configs/i18n.js
-    translations,
-    services: [
-        {
-            name: 'google-tag-manager',
-            title: 'Google Tag Manager',
-            purposes: ['statistic'],
-            cookies: [
-                // ToDo: set cookies to delete in case of refusal for preprod and production instances.
-                // For more information:
-                // https://developers.google.com/analytics/devguides/collection/analyticsjs/cookie-usage
-                [/^_ga.*$/, '/', 'starter.test'],
-                [/^_gid.*$/, '/', 'starter.test'],
-                [/^_gat.*$/, '/', 'starter.test'],
-                [/^_gac.*$/, '/', 'starter.test'],
-                [/^AMP_TOKEN.*$/, '/', 'starter.test']
-            ]
-        }
-    ]
+    // https://github.com/kiprotect/klaro/blob/master/dist/configs/i18n.js
+    translations: getTranslations(),
+    services: getServices()
 };
 
 export default class Klaro {

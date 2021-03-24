@@ -13,7 +13,7 @@ class ContactPageController extends Controller
 {
     public function edit(): View
     {
-        $pageContent = TitleDescriptionPageContent::firstOrCreate(['unique_key' => 'contact_page_content']);
+        $pageContent = TitleDescriptionPageContent::where('unique_key', 'contact_page_content')->sole();
         SEOTools::setTitle(__('breadcrumbs.orphan.edit', [
             'entity' => __('Contact'),
             'detail' => __('Page'),
