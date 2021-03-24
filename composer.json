@@ -54,16 +54,6 @@
         "phpunit/phpunit": "^9.3.3",
         "squizlabs/php_codesniffer": "^3.0"
     },
-    "config": {
-        "optimize-autoloader": true,
-        "preferred-install": "dist",
-        "sort-packages": true
-    },
-    "extra": {
-        "laravel": {
-            "dont-discover": []
-        }
-    },
     "autoload": {
         "psr-4": {
             "App\\": "app/",
@@ -113,6 +103,16 @@
             "vendor/bin/phpstan analyse --memory-limit=2G",
             "@php artisan test --parallel --colors --coverage-text"
         ]
+    },
+    "extra": {
+        "laravel": {
+            "dont-discover": []
+        }
+    },
+    "config": {
+        "optimize-autoloader": true,
+        "preferred-install": "dist",
+        "sort-packages": true
     },
     "minimum-stability": "dev",
     "prefer-stable": true
