@@ -1,8 +1,9 @@
 <?php
 
-use App\Models\Cookies\CookieService;
+use App\Models\Cookies\CookieCategory;
 use App\Models\Pages\Page;
 use App\Models\Settings\Settings;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Support\Collection;
 
 if (! function_exists('settings')) {
@@ -39,22 +40,24 @@ if (! function_exists('pages')) {
     }
 }
 
-if (! function_exists('cookieServices')) {
+if (! function_exists('cookieCategories')) {
     /**
      * @param bool $clearCache
      *
      * @return \Illuminate\Support\Collection
      * @throws \Exception
      */
-    function cookieServices(bool $clearCache = false): Collection
+    function cookieCategories(bool $clearCache = false): Collection
     {
         if ($clearCache) {
-            cache()->forget('cookie_services');
+            cache()->forget('cookie_categories');
         }
 
         return cache()->rememberForever(
-            'cookie_services',
-            fn() => CookieService::with('categories')->where('active', true)->ordered()->get()
+            'cookie_categories',
+            fn() => CookieCategory::with([
+                'services' => fn(BelongsToMany $services) => $services->with(['categories'])->where('active', true),
+            ])->whereHas('services')->ordered()->get()
         );
     }
 }

@@ -65,8 +65,8 @@
                     </p>
                     {{ textarea()->name('cookies')
                         ->model($cookieService)
-                        ->value($cookieService ? json_encode($cookieService->cookies, JSON_PRETTY_PRINT|JSON_THROW_ON_ERROR) : null)
-                        ->componentHtmlAttributes(['required', 'rows' => 20])
+                        ->value($cookieService?->cookies ? json_encode($cookieService->cookies, JSON_PRETTY_PRINT|JSON_THROW_ON_ERROR) : '')
+                        ->componentHtmlAttributes(['rows' => 20])
                         ->caption(__('This configuration must be declared in a valid JSON format.')) }}
                 </x-admin.forms.card>
             </div>

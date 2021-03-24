@@ -27,16 +27,10 @@ class CookieServiceFactory extends Factory
         ];
     }
 
-    public function withCategories(?array $categoryTitles): self
+    public function withCategories(?array $categoryUniqueKeys): self
     {
-        return $this->afterCreating(function (CookieService $cookieService) use ($categoryTitles) {
-            $query = CookieCategory::query();
-            foreach (supportedLocaleKeys() as $localeKey) {
-                foreach ($categoryTitles as $categoryTitle) {
-                    $query->orWhereJsonContains('title->' . $localeKey, $categoryTitle);
-                }
-            }
-            $categories = $query->get();
+        return $this->afterCreating(function (CookieService $cookieService) use ($categoryUniqueKeys) {
+            $categories = CookieCategory::whereIn('unique_key', $categoryUniqueKeys)->get();
             $cookieService->categories()->sync($categories->pluck('id'));
         });
     }

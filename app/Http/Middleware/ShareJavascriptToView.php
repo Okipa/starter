@@ -25,7 +25,7 @@ class ShareJavascriptToView
             'locale' => app()->getLocale(),
             'notify' => __('notify'),
             'gdpr_page_url' => $gdprPage ? route('page.show', $gdprPage) : null,
-            'cookie_services' => cookieServices(),
+            'cookie_categories' => cookieCategories(),
         ]);
 
         return $next($request);

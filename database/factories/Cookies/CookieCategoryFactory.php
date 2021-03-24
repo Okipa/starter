@@ -4,6 +4,7 @@ namespace Database\Factories\Cookies;
 
 use App\Models\Cookies\CookieCategory;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Str;
 
 class CookieCategoryFactory extends Factory
 {
@@ -12,8 +13,11 @@ class CookieCategoryFactory extends Factory
 
     public function definition(): array
     {
+        $titles = ['fr' => $this->faker->catchPhrase, 'en' => $this->faker->catchPhrase];
+
         return [
-            'title' => ['fr' => $this->faker->catchPhrase, 'en' => $this->faker->catchPhrase],
+            'unique_key' => Str::slug($titles['en']),
+            'title' => $titles,
             'description' => ['fr' => $this->faker->realText(), 'en' => $this->faker->realText()],
         ];
     }

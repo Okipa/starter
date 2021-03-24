@@ -24,6 +24,9 @@
         <div class="row mb-n3" data-masonry>
             <div class="col-xl-6 mb-3">
                 <x-admin.forms.card title="{{ __('Identity') }}">
+                    {{ inputText()->name('unique_key')
+                        ->model($cookieCategory)
+                        ->componentHtmlAttributes(['required', 'data-kebabcase']) }}
                     {{ inputText()->name('title')
                         ->locales(supportedLocaleKeys())
                         ->model($cookieCategory)

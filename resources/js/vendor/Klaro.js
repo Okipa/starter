@@ -1,8 +1,45 @@
 // For more information: https://github.com/kiprotect/klaro
 
 import * as klaro from 'klaro';
+import {each, map} from 'lodash';
 
-console.log(app.cookie_services);
+let translations = {
+    zz: {
+        privacyPolicyUrl: app.gdpr_page_url
+    },
+    fr: {
+        decline: 'Refuser tout',
+        ok: 'Accepter tout',
+        acceptSelected: 'Enregistrer sélection'
+    },
+    en: {
+        decline: 'Decline all',
+        ok: 'Accept all',
+        acceptSelected: 'Save selection'
+    }
+};
+
+let services = [];
+
+each(app.cookie_categories, (cookieCategory) => {
+    translations.zz['purposes'] = {};
+    translations.zz['purposes'][cookieCategory.unique_key] = {
+        title: cookieCategory.title[app.locale],
+        description: cookieCategory.description[app.locale]
+    };
+    each(cookieCategory.services, (service) => {
+        console.log(service);
+        services.push({
+            name: service.unique_key,
+            title: service.title[app.locale],
+            description: service.description[app.locale] || null,
+            purposes: map(service.categories, 'unique_key'),
+            cookies: service.cookies
+        });
+    });
+});
+
+console.log(services);
 
 // Example of config available here: /node_modules/klaro/dist/config.js
 const klaroConfig = {
@@ -34,26 +71,12 @@ const klaroConfig = {
     // https://github.com/KIProtect/klaro/tree/master/src/translations
     // Example config that shows how to overwrite translations:
     // https://github.com/KIProtect/klaro/blob/master/src/configs/i18n.js
-    translations: {
-        zz: {
-            privacyPolicyUrl: app.gdpr_page_url,
-        },
-        fr: {
-            decline: 'Refuser tout',
-            ok: 'Accepter tout',
-            acceptSelected: 'Enregistrer sélection'
-        },
-        en: {
-            decline: 'Decline all',
-            ok: 'Accept all',
-            acceptSelected: 'Save selection'
-        }
-    },
+    translations,
     services: [
         {
             name: 'google-tag-manager',
             title: 'Google Tag Manager',
-            purposes: ['analytics'],
+            purposes: ['statistic'],
             cookies: [
                 // ToDo: set cookies to delete in case of refusal for preprod and production instances.
                 // For more information:

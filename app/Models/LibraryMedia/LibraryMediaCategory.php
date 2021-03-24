@@ -12,13 +12,13 @@ class LibraryMediaCategory extends Model
     use hasFactory;
     use HasTranslations;
 
-    public array $translatable = ['name'];
+    public array $translatable = ['title'];
 
     /** @var string*/
     protected $table = 'library_media_categories';
 
     /** @var array */
-    protected $fillable = ['name'];
+    protected $fillable = ['title'];
 
     public function files(): HasMany
     {

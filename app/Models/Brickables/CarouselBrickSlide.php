@@ -33,7 +33,6 @@ class CarouselBrickSlide extends Model implements HasMedia, Sortable
         'brick_id',
         'label',
         'caption',
-        'position',
         'active',
     ];
 

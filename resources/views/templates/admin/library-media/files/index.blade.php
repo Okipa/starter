@@ -15,16 +15,24 @@
             {{ select()->name('category_id')
                 ->prepend('<i class="fas fa-tags fa-fw"></i>')
                 ->label(false)
-                ->options(App\Models\LibraryMedia\LibraryMediaCategory::get()->map(fn(App\Models\LibraryMedia\LibraryMediaCategory $category) => [
-                    'id' => $category->id,
-                    'name' => $category->name
-                ])->sortBy('name'), 'id', 'name')
-                ->selected('id', (int) $request->category_id)
+                ->disablePlaceholder()
+                ->options(App\Models\LibraryMedia\LibraryMediaCategory::get()
+                    ->map(fn(App\Models\LibraryMedia\LibraryMediaCategory $libraryMediaCategory) => [
+                        'id' => $libraryMediaCategory->id,
+                        'title' => $libraryMediaCategory->title
+                    ])
+                    ->sortBy('title'), 'id', 'title')
+                ->selectOptions('id', (int) $request->category_id)
                 ->componentHtmlAttributes(['data-selector'])
                 ->containerClasses([]) }}
-            {{ submitValidate()->prepend('<i class="fas fa-filter"></i>')->label(__('Filter'))->containerClasses(['ml-3']) }}
+            {{ submitValidate()->prepend('<i class="fas fa-filter"></i>')
+                ->label(__('Filter'))
+                ->containerClasses(['ml-3']) }}
             @if($request->has('category_id'))
-                {{ buttonCancel()->route('libraryMedia.files.index')->prepend('<i class="fas fa-undo"></i>')->label(__('Reset'))->containerClasses(['ml-3']) }}
+                {{ buttonCancel()->route('libraryMedia.files.index')
+                    ->prepend('<i class="fas fa-undo"></i>')
+                    ->label(__('Reset'))
+                    ->containerClasses(['ml-3']) }}
             @endif
         </form>
         {{ $table }}

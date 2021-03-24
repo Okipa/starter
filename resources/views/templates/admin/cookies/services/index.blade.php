@@ -16,6 +16,35 @@
             {{ __('You will also find all the necessary information about GDPR law on this resource:') }}
             <a href="https://gdpr.eu" title="GDPR" target="_blank" rel="noopener">https://gdpr.eu</a>.
         </p>
+        <form class="d-flex justify-content-end m-0"
+              action="{{ route('cookie.services.index') }}"
+              novalidate>
+            @foreach($request->except('category_id') as $name => $value)
+                <input type="hidden" name="{{ $name }}" value="{{ $value }}">
+            @endforeach
+            {{ select()->name('category_id')
+                ->prepend('<i class="fas fa-tags fa-fw"></i>')
+                ->label(false)
+                ->disablePlaceholder()
+                ->options(App\Models\Cookies\CookieCategory::get()
+                    ->map(fn(App\Models\Cookies\CookieCategory $cookieCategory) => [
+                        'id' => $cookieCategory->id,
+                        'name' => $cookieCategory->title
+                    ])
+                    ->sortBy('title'), 'id', 'name')
+                ->selectOptions('id', (int) $request->category_id)
+                ->componentHtmlAttributes(['data-selector'])
+                ->containerClasses([]) }}
+            {{ submitValidate()->prepend('<i class="fas fa-filter"></i>')
+                ->label(__('Filter'))
+                ->containerClasses(['ml-3']) }}
+            @if($request->has('category_id'))
+                {{ buttonCancel()->route('cookie.services.index')
+                    ->prepend('<i class="fas fa-undo"></i>')
+                    ->label(__('Reset'))
+                    ->containerClasses(['ml-3']) }}
+            @endif
+        </form>
         {{ $table }}
     </x-admin.forms.card>
 @endsection

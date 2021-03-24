@@ -34,7 +34,7 @@ class LibraryMediaFilesController extends Controller
         app(FilesService::class)->injectJavascriptInView();
         $js = mix('/js/templates/admin/library-media/edit.js');
 
-        return view('templates.admin.libraryMedia.files.index', compact('table', 'request', 'js'));
+        return view('templates.admin.library-media.files.index', compact('table', 'request', 'js'));
     }
 
     public function create(): View
@@ -42,7 +42,7 @@ class LibraryMediaFilesController extends Controller
         $file = null;
         SEOTools::setTitle(__('breadcrumbs.orphan.create', ['entity' => __('Media library')]));
 
-        return view('templates.admin.libraryMedia.files.edit', compact('file'));
+        return view('templates.admin.library-media.files.edit', compact('file'));
     }
 
     /**
@@ -79,7 +79,7 @@ class LibraryMediaFilesController extends Controller
         app(FilesService::class)->injectJavascriptInView();
         $js = mix('/js/templates/admin/library-media/edit.js');
 
-        return view('templates.admin.libraryMedia.files.edit', compact('file', 'js'));
+        return view('templates.admin.library-media.files.edit', compact('file', 'js'));
     }
 
     /**

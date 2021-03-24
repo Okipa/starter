@@ -3,8 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\LibraryMedia\CookieServiceStoreRequest;
-use App\Http\Requests\LibraryMedia\CookieServiceUpdateRequest;
+use App\Http\Requests\Cookies\CookieServicesIndexRequest;
+use App\Http\Requests\Cookies\CookieServiceStoreRequest;
+use App\Http\Requests\Cookies\CookieServiceUpdateRequest;
 use App\Models\Cookies\CookieService;
 use App\Tables\CookieServicesTable;
 use Artesaos\SEOTools\Facades\SEOTools;
@@ -14,18 +15,20 @@ use Illuminate\Http\RedirectResponse;
 class CookieServicesController extends Controller
 {
     /**
+     * @param \App\Http\Requests\Cookies\CookieServicesIndexRequest $request
+     *
      * @return \Illuminate\Contracts\View\View
      * @throws \ErrorException
      */
-    public function index(): View
+    public function index(CookieServicesIndexRequest $request): View
     {
-        $table = app(CookieServicesTable::class)->setup();
+        $table = app(CookieServicesTable::class, compact('request'))->setup();
         SEOTools::setTitle(__('breadcrumbs.parent.index', [
             'parent' => __('Cookies'),
             'entity' => __('Services'),
         ]));
 
-        return view('templates.admin.cookies.services.index', compact('table'));
+        return view('templates.admin.cookies.services.index', compact('table', 'request'));
     }
 
     public function create(): View
@@ -40,7 +43,7 @@ class CookieServicesController extends Controller
     }
 
     /**
-     * @param \App\Http\Requests\LibraryMedia\CookieServiceStoreRequest $request
+     * @param \App\Http\Requests\Cookies\CookieServiceStoreRequest $request
      *
      * @return \Illuminate\Http\RedirectResponse
      * @throws \Exception
@@ -48,7 +51,7 @@ class CookieServicesController extends Controller
     public function store(CookieServiceStoreRequest $request): RedirectResponse
     {
         $cookieService = CookieService::create($request->validated());
-        cookieServices(true);
+        cookieCategories(true);
 
         return redirect()->route('news.categories.index')
             ->with('toast_success', __('crud.parent.created', [
@@ -70,7 +73,7 @@ class CookieServicesController extends Controller
     }
 
     /**
-     * @param \App\Http\Requests\LibraryMedia\CookieServiceUpdateRequest $request
+     * @param \App\Http\Requests\Cookies\CookieServiceUpdateRequest $request
      * @param \App\Models\Cookies\CookieService $cookieService
      *
      * @return \Illuminate\Http\RedirectResponse
@@ -79,7 +82,7 @@ class CookieServicesController extends Controller
     public function update(CookieServiceUpdateRequest $request, CookieService $cookieService): RedirectResponse
     {
         $cookieService->update($request->validated());
-        cookieServices(true);
+        cookieCategories(true);
 
         return back()->with('toast_success', __('crud.parent.updated', [
             'parent' => __('Cookies'),
@@ -88,9 +91,16 @@ class CookieServicesController extends Controller
         ]));
     }
 
+    /**
+     * @param \App\Models\Cookies\CookieService $cookieService
+     *
+     * @return \Illuminate\Http\RedirectResponse
+     * @throws \Exception
+     */
     public function destroy(CookieService $cookieService): RedirectResponse
     {
         $cookieService->delete();
+        cookieCategories(true);
 
         return back()->with('toast_success', __('crud.parent.destroyed', [
             'parent' => __('Cookies'),

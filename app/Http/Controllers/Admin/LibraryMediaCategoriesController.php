@@ -8,8 +8,8 @@ use App\Http\Requests\LibraryMedia\CookieServiceUpdateRequest;
 use App\Models\LibraryMedia\LibraryMediaCategory;
 use App\Tables\LibraryMediaCategoriesTable;
 use Artesaos\SEOTools\Facades\SEOTools;
-use Illuminate\Http\RedirectResponse;
 use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
 
 class LibraryMediaCategoriesController extends Controller
 {
@@ -25,62 +25,64 @@ class LibraryMediaCategoriesController extends Controller
             'entity' => __('Categories'),
         ]));
 
-        return view('templates.admin.libraryMedia.categories.index', compact('table'));
+        return view('templates.admin.library-media.categories.index', compact('table'));
     }
 
     public function create(): View
     {
-        $category = null;
+        $libraryMediaCategory = null;
         SEOTools::setTitle(__('breadcrumbs.parent.create', [
             'parent' => __('Media library'),
             'entity' => __('Categories'),
         ]));
 
-        return view('templates.admin.libraryMedia.categories.edit', compact('category'));
+        return view('templates.admin.library-media.categories.edit', compact('libraryMediaCategory'));
     }
 
     public function store(CookieServiceStoreRequest $request): RedirectResponse
     {
-        $category = LibraryMediaCategory::create($request->validated());
+        $libraryMediaCategory = LibraryMediaCategory::create($request->validated());
 
-        return redirect()->route('libraryMedia.categories.index')
+        return redirect()->route('library-media.categories.index')
             ->with('toast_success', __('crud.parent.created', [
                 'parent' => __('Media library'),
                 'entity' => __('Categories'),
-                'name' => $category->name,
+                'name' => $libraryMediaCategory->title,
             ]));
     }
 
-    public function edit(LibraryMediaCategory $category): View
+    public function edit(LibraryMediaCategory $libraryMediaCategory): View
     {
         SEOTools::setTitle(__('breadcrumbs.parent.edit', [
             'parent' => __('Media library'),
             'entity' => __('Categories'),
-            'detail' => $category->name,
+            'detail' => $libraryMediaCategory->title,
         ]));
 
-        return view('templates.admin.libraryMedia.categories.edit', compact('category'));
+        return view('templates.admin.library-media.categories.edit', compact('libraryMediaCategory'));
     }
 
-    public function update(CookieServiceUpdateRequest $request, LibraryMediaCategory $category): RedirectResponse
-    {
-        $category->update($request->validated());
+    public function update(
+        CookieServiceUpdateRequest $request,
+        LibraryMediaCategory $libraryMediaCategory
+    ): RedirectResponse {
+        $libraryMediaCategory->update($request->validated());
 
         return back()->with('toast_success', __('crud.parent.updated', [
             'parent' => __('Media library'),
             'entity' => __('Categories'),
-            'name' => $category->name,
+            'name' => $libraryMediaCategory->title,
         ]));
     }
 
-    public function destroy(LibraryMediaCategory $category): RedirectResponse
+    public function destroy(LibraryMediaCategory $libraryMediaCategory): RedirectResponse
     {
-        $category->delete();
+        $libraryMediaCategory->delete();
 
         return back()->with('toast_success', __('crud.parent.destroyed', [
             'parent' => __('Media library'),
             'entity' => __('Categories'),
-            'name' => $category->name,
+            'name' => $libraryMediaCategory->title,
         ]));
     }
 }

@@ -22,7 +22,7 @@
                         'id' => $category->id,
                         'name' => $category->name
                     ]), 'id', 'name')
-                    ->selected('id', (int) request()->category_id)
+                    ->selectOptions('id', (int) request()->category_id)
                     ->containerClasses(['mb-0']) }}
                 {{ submitValidate()->prepend('<i class="fas fa-filter fa-fw"></i>')
                     ->label(__('Filter'))

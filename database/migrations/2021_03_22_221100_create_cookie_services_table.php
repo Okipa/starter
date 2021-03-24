@@ -15,10 +15,9 @@ class CreateCookieServicesTable extends Migration
             $table->json('title');
             // ToDo: change column type with monolingual app
             $table->json('description')->nullable();
-            $table->json('cookies');
+            $table->json('cookies')->nullable();
             $table->boolean('required');
             $table->boolean('enabled_by_default');
-            $table->unsignedInteger('position');
             $table->boolean('active');
             $table->timestamps();
         });

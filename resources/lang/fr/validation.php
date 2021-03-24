@@ -185,7 +185,7 @@ return [
         'illustration' => 'Illustration',
         'category_id' => 'Catégorie',
         'category_ids' => 'Catégories',
-        'category_name' => 'Catégorie',
+        'category_title' => 'Catégorie',
         'published_at' => 'Date publication',
         'position' => 'Position',
         'meta_title' => 'Meta Title',

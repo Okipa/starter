@@ -9,15 +9,12 @@ use Spatie\EloquentSortable\Sortable;
 use Spatie\EloquentSortable\SortableTrait;
 use Spatie\Translatable\HasTranslations;
 
-class CookieService extends Model implements Sortable
+class CookieService extends Model
 {
     use HasFactory;
     use HasTranslations;
-    use SortableTrait;
 
     public array $translatable = ['title', 'description'];
-
-    public array $sortable = ['order_column_name' => 'position', 'sort_when_creating' => true];
 
     /** @var string */
     protected $table = 'cookie_services';
@@ -30,7 +27,6 @@ class CookieService extends Model implements Sortable
         'cookies',
         'required',
         'enabled_by_default',
-        'position',
         'active',
     ];
 

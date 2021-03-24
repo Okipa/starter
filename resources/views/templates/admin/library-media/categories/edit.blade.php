@@ -3,7 +3,7 @@
     <h1>
         <i class="fas fa-tags fa-fw"></i>
         @if($category)
-            {{ __('breadcrumbs.parent.edit', ['parent' => __('Media library'), 'entity' => __('Categories'), 'detail' => $category->name]) }}
+            {{ __('breadcrumbs.parent.edit', ['parent' => __('Media library'), 'entity' => __('Categories'), 'detail' => $category->title]) }}
         @else
             {{ __('breadcrumbs.parent.create', ['parent' => __('Media library'), 'entity' => __('Categories')]) }}
         @endif
@@ -24,7 +24,7 @@
         <div class="row mb-n3" data-masonry>
             <div class="col-xl-6 mb-3">
                 <x-admin.forms.card title="{{ __('Identity') }}">
-                    {{ inputText()->name('name')
+                    {{ inputText()->name('title')
                         ->locales(supportedLocaleKeys())
                         ->model($category)
                         ->componentHtmlAttributes(['required']) }}

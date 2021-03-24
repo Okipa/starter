@@ -2,6 +2,7 @@
 
 namespace App\Tables;
 
+use App\Http\Requests\Cookies\CookieServicesIndexRequest;
 use App\Models\Cookies\CookieCategory;
 use App\Models\Cookies\CookieService;
 use Illuminate\Database\Eloquent\Builder;
@@ -11,6 +12,13 @@ use Okipa\LaravelTable\Table;
 
 class CookieServicesTable extends AbstractTable
 {
+    protected CookieServicesIndexRequest $request;
+
+    public function __construct(CookieServicesIndexRequest $request)
+    {
+        $this->request = $request;
+    }
+
     /**
      * Configure the table itself.
      *
@@ -26,7 +34,14 @@ class CookieServicesTable extends AbstractTable
                 'edit' => ['name' => 'cookie.service.edit'],
                 'destroy' => ['name' => 'cookie.service.destroy'],
             ])
-            ->query(fn(Builder $query) => $query->ordered())
+            ->query(function(Builder $query){
+                if ($this->request->has('category_id')) {
+                    $query->whereHas(
+                        'categories',
+                        fn(Builder $categories) => $categories->where('id', $this->request->category_id)
+                    );
+                }
+            })
             ->destroyConfirmationHtmlAttributes(fn(CookieService $cookieService) => [
                 'data-confirm' => __('crud.parent.destroy_confirm', [
                     'parent' => __('Cookies'),
@@ -45,9 +60,9 @@ class CookieServicesTable extends AbstractTable
      */
     protected function columns(Table $table): void
     {
-        $table->column('id');
-        $table->column('unique_key');
-        $table->column('title');
+        $table->column('id')->sortable();
+        $table->column('unique_key')->sortable()->searchable();
+        $table->column('title')->sortable()->searchable();
         $table->column()
             ->title(__('Categories'))
             ->value(fn(CookieService $cookieService) => $cookieService->categories
@@ -57,10 +72,7 @@ class CookieServicesTable extends AbstractTable
                     return $cookieCategory;
                 })
                 ->implode('title', ', '));
-        $table->column('position')->html(fn(CookieService $cookieService) => '<span class="d-none id">'
-            . $cookieService->id . '</span>'
-            . '<span class="position">' . $cookieService->position . '</span>');
-        $table->column('created_at')->dateTimeFormat('d/m/Y H:i');
-        $table->column('updated_at')->dateTimeFormat('d/m/Y H:i');
+        $table->column('created_at')->dateTimeFormat('d/m/Y H:i')->sortable();
+        $table->column('updated_at')->dateTimeFormat('d/m/Y H:i')->sortable(true, 'desc');
     }
 }

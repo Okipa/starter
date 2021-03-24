@@ -163,7 +163,7 @@ return [
         'first_name' => 'First name',
         'last_name' => 'Last name',
         'name' => 'Name',
-        'category_name' => 'Category',
+        'category_title' => 'Category',
         'title' => 'Title',
         'description' => 'Description',
         'meta_title' => 'Meta title',

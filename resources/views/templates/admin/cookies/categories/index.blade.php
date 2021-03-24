@@ -7,8 +7,15 @@
     <hr>
     <x-admin.forms.card title="{{ __('List') }}">
         <p>
-            {{ __('Cookie categories are gathering cookie services with similar purpose in order to allow users to easily identify them.') }}
+            {{ __('Cookie categories are gathering cookie services with similar purpose in order to allow users to easily identify them.') }}<br>
+            {{ __('Only non-empty categories will be displayed on the user consent pop-in.') }}
         </p>
-        {{ $table }}
+        @include('components.admin.table.drag-and-drop')
+        <div data-sortable
+             data-draggable-container="#cookie-categories-table tbody"
+             data-draggable-items="tr"
+             data-reorder-url="{{ route('cookie.categories.reorder') }}">
+            {{ $table }}
+        </div>
     </x-admin.forms.card>
 @endsection

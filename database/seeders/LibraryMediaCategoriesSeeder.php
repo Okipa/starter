@@ -9,8 +9,8 @@ class LibraryMediaCategoriesSeeder extends Seeder
 {
     public function run(): void
     {
-        LibraryMediaCategory::factory()->create(['name' => ['fr' => 'Accueil', 'en' => 'Home']]);
-        LibraryMediaCategory::factory()->create(['name' => ['fr' => 'Actualités', 'en' => 'News']]);
+        LibraryMediaCategory::factory()->create(['title' => ['fr' => 'Accueil', 'en' => 'Home']]);
+        LibraryMediaCategory::factory()->create(['title' => ['fr' => 'Actualités', 'en' => 'News']]);
         LibraryMediaCategory::factory()->count(5)->create();
     }
 }
