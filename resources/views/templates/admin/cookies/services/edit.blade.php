@@ -48,10 +48,10 @@
                         ->model($cookieService) }}
                     {{ inputSwitch()->name('required')
                         ->model($cookieService)
-                        ->caption(__('Whether this service is required by you app and should not be allowed to be shutdown.')) }}
+                        ->caption(__('Define whether this service is required by your application and should not be allowed to be disabled.')) }}
                     {{ inputSwitch()->name('enabled_by_default')
                         ->model($cookieService)
-                        ->caption(__('Whether this service is enabled by default, before asking users if they want to activate it or not.')) }}
+                        ->caption(__('Define whether this service is enabled by default, before asking users if they want to activate it or not.')) }}
                 </x-admin.forms.card>
             </div>
             <div class="col-xl-6 mb-3">
@@ -60,7 +60,7 @@
                         {{ __('Configure the cookies which are used by this service. If this service use is refused, these cookies will automatically be deleted.') }}
                     </p>
                     <p>
-                        {{ __('To help you to decide how to configure this, an example is avaiblable here:') }}
+                        {{ __('To help you to configure this, an example is avaiblable here:') }}
                         <a href="https://heyklaro.com/docs/integration/annotated-configuration" target="_blank" rel="noopener">https://heyklaro.com/docs/integration/annotated-configuration</a>.
                     </p>
                     {{ textarea()->name('cookies')
