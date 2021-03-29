@@ -53,7 +53,7 @@ class CookieServicesController extends Controller
         $cookieService = CookieService::create($request->validated());
         cookieCategories(true);
 
-        return redirect()->route('news.categories.index')
+        return redirect()->route('cookie.services.index')
             ->with('toast_success', __('crud.parent.created', [
                 'parent' => __('Cookies'),
                 'entity' => __('Services'),

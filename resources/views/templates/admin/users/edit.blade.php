@@ -24,7 +24,7 @@
         <x-common.forms.notice class="mt-3"/>
         <div class="row mb-n3" data-masonry>
             <div class="col-xl-6 mb-3">
-                <x-admin.forms.card title="{{ __('Identity') }}">
+                <x-admin.forms.card title="{{ __('Civil status') }}">
                     @php($profilePicture = optional($user)->getFirstMedia('profile_pictures'))
                     {{ inputFile()->name('profile_picture')
                         ->value(optional($profilePicture)->file_name)

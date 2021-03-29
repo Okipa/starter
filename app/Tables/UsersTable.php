@@ -3,6 +3,7 @@
 namespace App\Tables;
 
 use App\Models\Users\User;
+use Illuminate\Support\Facades\Auth;
 use Okipa\LaravelTable\Abstracts\AbstractTable;
 use Okipa\LaravelTable\Table;
 
@@ -23,7 +24,7 @@ class UsersTable extends AbstractTable
                 'edit' => ['name' => 'user.edit'],
                 'destroy' => ['name' => 'user.destroy'],
             ])
-            ->disableRows(fn(User $user) => $user->id === auth()->id())
+            ->disableRows(fn(User $user) => $user->id === Auth::id())
             ->destroyConfirmationHtmlAttributes(fn(User $user) => [
                 'data-confirm' => __('crud.orphan.destroy_confirm', [
                     'entity' => __('Users'),
@@ -42,9 +43,9 @@ class UsersTable extends AbstractTable
     protected function columns(Table $table): void
     {
         $table->column('id')->sortable();
-        $table->column('thumb')->html(function (User $user) {
-            return view('components.admin.media.thumb', ['image' => $user->getFirstMedia('profile_pictures')]);
-        });
+        $table->column('thumb')->html(fn(User $user) => view('components.admin.media.thumb', [
+            'image' => $user->getFirstMedia('profile_pictures'),
+        ]));
         $table->column('first_name')->stringLimit(25)->sortable()->searchable();
         $table->column('last_name')->stringLimit(25)->sortable()->searchable();
         $table->column('email')->stringLimit(25)->sortable()->searchable();

@@ -259,5 +259,6 @@
     "Define whether this service is enabled by default, before asking users if they want to activate it or not.": "Définissez si ce service est activé par défaut, avant de demander aux utilisateurs s'ils souhaitent l'activer ou non.",
     "Configure the cookies which are used by this service. If this service use is refused, these cookies will automatically be deleted.": "Configurez les cookies qui sont utilisés par ce service. Si l'utilisation de ce service est refusée, ces cookies seront automatiquement supprimés.",
     "To help you to configure this, an example is avaiblable here:": "Pour vous aider à configurer cela, un exemple est disponible ici:",
-    "This configuration must be declared in a valid JSON format.": "Cette configuration doit être déclarée dans un format JSON valide."
+    "This configuration must be declared in a valid JSON format.": "Cette configuration doit être déclarée dans un format JSON valide.",
+    "Civil status": "État civil"
 }
