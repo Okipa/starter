@@ -35,7 +35,7 @@ $servers = [
 // Servers configuration
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-set('bin/php', '/usr/bin/php7.4');
+set('bin/php', '/usr/bin/php8.0');
 set('repository', '<project-repository>'); // Todo: to customize.
 set('keep_releases', 3);
 set('default_stage', 'preprod');
@@ -125,19 +125,19 @@ task('project:dependencies_check', function () {
         'gifsicle',
         'exif',
         'ghostscript',
-        'php7.4',
-        'php7.4-cli',
-        'php7.4-fpm',
-        'php7.4-common',
-        'php7.4-bcmath',
-        'php7.4-mbstring',
-        'php7.4-intl',
-        'php7.4-xml',
-        'php7.4-mysql',
-        'php7.4-opcache',
-        'php7.4-gd',
-        'php7.4-curl',
-        'php7.4-zip',
+        'php8.0',
+        'php8.0-cli',
+        'php8.0-fpm',
+        'php8.0-common',
+        'php8.0-bcmath',
+        'php8.0-mbstring',
+        'php8.0-intl',
+        'php8.0-xml',
+        'php8.0-mysql',
+        'php8.0-opcache',
+        'php8.0-gd',
+        'php8.0-curl',
+        'php8.0-zip',
     ];
     foreach ($dependencies as $dependency) {
         $output = run('dpkg-query --show --showformat=\'${db:Status-Status}\n\' \'' . $dependency . '\'');
@@ -150,7 +150,7 @@ task('project:dependencies_check', function () {
 task('server:resources:reload', function () {
     $output = run('sudo service nginx reload');
     writeln('<info>' . $output . '</info>');
-    $output = run('sudo service php7.4-fpm restart');
+    $output = run('sudo service php8.0-fpm restart');
     writeln('<info>' . $output . '</info>');
 })->desc('Reloading the server resources');
 

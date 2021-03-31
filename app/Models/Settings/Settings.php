@@ -36,15 +36,15 @@ class Settings extends Model implements HasMedia
     /** @SuppressWarnings(PHPMD.UnusedFormalParameter) */
     public function registerMediaCollections(): void
     {
-        $this->addMediaCollection('icons')
+        $this->addMediaCollection('logo_rounded')
             ->acceptsMimeTypes(['image/webp', 'image/jpeg', 'image/png'])
             ->singleFile()
             ->registerMediaConversions(function (Media $media = null) {
-                $this->addMediaConversion('front')
+                $this->addMediaConversion('nav_front')
                     ->fit(Manipulations::FIT_CROP, 70, 70)
                     ->withResponsiveImages()
                     ->format('webp');
-                $this->addMediaConversion('admin')
+                $this->addMediaConversion('nav_admin')
                     ->fit(Manipulations::FIT_CROP, 30, 30)
                     ->format('webp');
                 $this->addMediaConversion('mail')

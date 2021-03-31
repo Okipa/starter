@@ -9,9 +9,7 @@
                         'dropdownLabelClasses' => ['btn', 'btn-link'],
                         'dropdownMenuClasses' => ['dropdown-menu-right']
                     ])
-                    @if($icon = settings()->getFirstMedia('icons'))
-                        {{ $icon('auth') }}
-                    @endif
+                    {{ settings()->getFirstMedia('logo_rounded')->img('auth', ['alt' => config('app.name')]) }}
                 </div>
                 <h1 class="h3 font-weight-normal text-danger mt-3">
                     <i class="fas fa-exclamation-triangle fa-fw"></i>

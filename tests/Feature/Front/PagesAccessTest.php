@@ -49,6 +49,7 @@ class PagesAccessTest extends TestCase
     public function it_can_access_to_contact_page(): void
     {
         PageContent::create(['unique_key' => 'contact_page_content']);
-        $this->get(route('news.page.show'))->assertStatus(200);
+        $news = NewsArticle::factory()->create();
+        $this->get(route('news.page.show', $news))->assertStatus(200);
     }
 }

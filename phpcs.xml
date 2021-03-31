@@ -3,6 +3,7 @@
     <description>PSR-12 code style validation</description>
     <!-- Included directories -->
     <file>app</file>
+    <file>config</file>
     <file>database</file>
     <file>routes</file>
     <file>tests</file>
@@ -23,6 +24,7 @@
         <exclude-pattern>./tests/*</exclude-pattern>
     </rule>
     <rule ref="Generic.Files.LineLength">
+        <exclude-pattern>./config/*</exclude-pattern>
         <exclude-pattern>./tests/*</exclude-pattern>
     </rule>
     <rule ref="PSR12"/>

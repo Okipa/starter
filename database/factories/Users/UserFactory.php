@@ -29,12 +29,10 @@ class UserFactory extends Factory
         return $this->state(static fn() => ['email_verified_at' => null]);
     }
 
-    public function withMedia(): Factory
+    public function withMedia(string $mediaPath = null): Factory
     {
-        return $this->afterCreating(function (User $user) {
-            $user->addMedia($this->faker->image(null, 250, 250, null, true, true, 'User'))
-                ->preservingOriginal()
-                ->toMediaCollection('profile_pictures');
-        });
+        return $this->afterCreating(fn(User $user) => $user->addMedia($mediaPath ?: $this->faker->image(null, 250, 250))
+            ->preservingOriginal()
+            ->toMediaCollection('profile_pictures'));
     }
 }

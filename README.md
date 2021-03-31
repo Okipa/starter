@@ -33,6 +33,7 @@
 ### Requirements
 
 * Git
+* Composer v2
 * Docker Community Edition: https://docs.docker.com/install
 * Latest Node stable version
 * Latest Yarn stable version

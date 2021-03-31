@@ -22,8 +22,9 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
      * @throws \Illuminate\Validation\ValidationException
      * @throws \Spatie\MediaLibrary\MediaCollections\Exceptions\FileDoesNotExist
      * @throws \Spatie\MediaLibrary\MediaCollections\Exceptions\FileIsTooBig
+     * @throws \Okipa\MediaLibraryExt\Exceptions\CollectionNotFound
      */
-    public function update($user, array $input): void
+    public function update(mixed $user, array $input): void
     {
         $input = array_merge($input, ['remove_profile_picture' => (bool) data_get($input, 'remove_profile_picture')]);
         Validator::make($input, [
@@ -68,7 +69,7 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
      *
      * @return void
      */
-    protected function updateVerifiedUser($user, array $input): void
+    protected function updateVerifiedUser(mixed $user, array $input): void
     {
         $user->forceFill([
             'first_name' => $input['first_name'],

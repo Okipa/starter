@@ -24,13 +24,12 @@ class SettingsFactory extends Factory
         ];
     }
 
-    public function withMedia(): Factory
+    public function withMedia(array $media = []): Factory
     {
-        return $this->afterCreating(function (Settings $settings) {
-            // Todo: customize logo.
-            $settings->addMedia(resource_path('images/logo-starter.png'))
+        return $this->afterCreating(function (Settings $settings) use ($media) {
+            $settings->addMedia(data_get($media, 'logo_rounded') ?: $this->faker->image(null, 250, 250))
                 ->preservingOriginal()
-                ->toMediaCollection('icons');
+                ->toMediaCollection('logo_rounded');
         });
     }
 }

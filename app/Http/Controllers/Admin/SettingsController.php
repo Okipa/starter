@@ -31,8 +31,8 @@ class SettingsController extends Controller
         /** @var \App\Models\Settings\Settings $settings */
         $settings = Settings::sole();
         $settings->update($request->validated());
-        if ($request->file('icon')) {
-            $settings->addMediaFromRequest('icon')->toMediaCollection('icons');
+        if ($request->file('logo_rounded')) {
+            $settings->addMediaFromRequest('logo_rounded')->toMediaCollection('logo_rounded');
         }
         settings(true);
 
