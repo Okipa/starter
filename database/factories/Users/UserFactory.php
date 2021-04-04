@@ -24,12 +24,12 @@ class UserFactory extends Factory
         ];
     }
 
-    public function unverified(): Factory
+    public function unverified(): self
     {
         return $this->state(static fn() => ['email_verified_at' => null]);
     }
 
-    public function withMedia(string $mediaPath = null): Factory
+    public function withMedia(string $mediaPath = null): self
     {
         return $this->afterCreating(fn(User $user) => $user->addMedia($mediaPath ?: $this->faker->image(null, 250, 250))
             ->preservingOriginal()

@@ -15,6 +15,10 @@ parameters:
     ignoreErrors:
         - '#Call to an undefined method Illuminate\\Http\\Request::validated\(\)#'
         - '#Call to an undefined method Illuminate\\Database\\Eloquent\\Builder::ordered\(\)#'
+        - '#Call to an undefined method Illuminate\\Database\\Eloquent\\Factories\\Factory::withMedia\(\)#'
+        - '#Call to an undefined method Illuminate\\Database\\Eloquent\\Factories\\Factory::home\(\)#'
+        - '#Call to an undefined method Illuminate\\Database\\Eloquent\\Factories\\Factory::news\(\)#'
+        - '#Call to an undefined method Illuminate\\Database\\Eloquent\\Factories\\Factory::contact\(\)#'
 
     excludePaths:
         - ./*/*/FileToBeExcluded.php

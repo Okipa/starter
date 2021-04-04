@@ -46,7 +46,7 @@ EOT;
         ];
     }
 
-    public function configure(): Factory
+    public function configure(): self
     {
         return $this->afterMaking(function (Page $page) {
             $page->unique_key = $page->unique_key
@@ -59,7 +59,7 @@ EOT;
         });
     }
 
-    public function withSeoMeta(): Factory
+    public function withSeoMeta(): self
     {
         return $this->afterCreating(function (Page $page) {
             $page->saveSeoMeta([
@@ -75,7 +75,7 @@ EOT;
         });
     }
 
-    public function withBricks(): Factory
+    public function withBricks(): self
     {
         return $this->afterCreating(function (Page $page) {
             $page->addBrick(TitleH1::class, [

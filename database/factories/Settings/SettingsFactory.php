@@ -24,12 +24,12 @@ class SettingsFactory extends Factory
         ];
     }
 
-    public function withMedia(array $media = []): Factory
+    public function withMedia(array $media = []): self
     {
         return $this->afterCreating(function (Settings $settings) use ($media) {
-            $settings->addMedia(data_get($media, 'logo_square') ?: $this->faker->image(null, 250, 250))
+            $settings->addMedia(data_get($media, 'logo_squared') ?: $this->faker->image(null, 250, 250))
                 ->preservingOriginal()
-                ->toMediaCollection('logo_square');
+                ->toMediaCollection('logo_squared');
         });
     }
 }

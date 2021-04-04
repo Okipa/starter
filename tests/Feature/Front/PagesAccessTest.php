@@ -17,20 +17,20 @@ class PagesAccessTest extends TestCase
     {
         parent::setUp();
         $this->withoutMix();
-        Settings::factory()->create();
+        Settings::factory()->withMedia()->create();
     }
 
     /** @test */
     public function it_can_access_to_home_page(): void
     {
-        PageContent::create(['unique_key' => 'home_page_content']);
+        PageContent::factory()->home()->create();
         $this->get(route('home.page.show'))->assertStatus(200);
     }
 
     /** @test */
     public function it_can_access_to_news_page(): void
     {
-        PageContent::create(['unique_key' => 'news_page_content']);
+        PageContent::factory()->news()->create();
         NewsCategory::factory()->create();
         NewsArticle::factory()->create();
         $this->get(route('news.page.show'))->assertStatus(200);
@@ -39,7 +39,6 @@ class PagesAccessTest extends TestCase
     /** @test */
     public function it_can_access_to_news_detail_page(): void
     {
-        PageContent::create(['unique_key' => 'news_page_content']);
         NewsCategory::factory()->create();
         $news = NewsArticle::factory()->create();
         $this->get(route('news.article.show', $news))->assertStatus(200);
@@ -48,8 +47,7 @@ class PagesAccessTest extends TestCase
     /** @test */
     public function it_can_access_to_contact_page(): void
     {
-        PageContent::create(['unique_key' => 'contact_page_content']);
-        $news = NewsArticle::factory()->create();
-        $this->get(route('news.page.show', $news))->assertStatus(200);
+        PageContent::factory()->contact()->create();
+        $this->get(route('contact.page.show'))->assertStatus(200);
     }
 }

@@ -171,7 +171,7 @@ return [
         'slug' => 'Slug',
         'description' => 'Description',
         'active' => 'Activation',
-        'logo_square' => 'Logo arrondi',
+        'logo_squared' => 'Logo carré',
         'phone_number' => 'Téléphone',
         'address' => 'Adresse',
         'zip_code' => 'Code postal',

@@ -36,7 +36,7 @@ class Settings extends Model implements HasMedia
     /** @SuppressWarnings(PHPMD.UnusedFormalParameter) */
     public function registerMediaCollections(): void
     {
-        $this->addMediaCollection('logo_square')
+        $this->addMediaCollection('logo_squared')
             ->acceptsMimeTypes(['image/webp', 'image/jpeg', 'image/png'])
             ->singleFile()
             ->registerMediaConversions(function (Media $media = null) {

@@ -22,7 +22,7 @@ class LibraryMediaFileFactory extends Factory
         ];
     }
 
-    public function image(): Factory
+    public function image(): self
     {
         return $this->afterCreating(function (LibraryMediaFile $file) {
             $file->addMedia($this->faker->image())
@@ -30,7 +30,7 @@ class LibraryMediaFileFactory extends Factory
         });
     }
 
-    public function pdf(): Factory
+    public function pdf(): self
     {
         return $this->afterCreating(function (LibraryMediaFile $file) {
             $file->addMedia(resource_path('dummy/file.pdf'))
@@ -39,7 +39,7 @@ class LibraryMediaFileFactory extends Factory
         });
     }
 
-    public function video(): Factory
+    public function video(): self
     {
         return $this->afterCreating(function (LibraryMediaFile $file) {
             $file->addMedia(resource_path('dummy/video.mp4'))
@@ -48,7 +48,7 @@ class LibraryMediaFileFactory extends Factory
         });
     }
 
-    public function audio(): Factory
+    public function audio(): self
     {
         return $this->afterCreating(function (LibraryMediaFile $file) {
             $file->addMedia(resource_path('dummy/audio.mp3'))
@@ -57,7 +57,7 @@ class LibraryMediaFileFactory extends Factory
         });
     }
 
-    public function doc(): Factory
+    public function doc(): self
     {
         return $this->afterCreating(function (LibraryMediaFile $file) {
             $file->addMedia(resource_path('dummy/doc.odt'))
@@ -66,7 +66,7 @@ class LibraryMediaFileFactory extends Factory
         });
     }
 
-    public function withCategory(): Factory
+    public function withCategory(): self
     {
         return $this->afterMaking(function (LibraryMediaFile $file) {
             $categories = LibraryMediaCategory::get();

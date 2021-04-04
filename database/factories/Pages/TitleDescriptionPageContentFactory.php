@@ -38,21 +38,21 @@ class TitleDescriptionPageContentFactory extends PageContentFactory
         ]
     ];
 
-    public function news(): Factory
+    public function news(): self
     {
         return $this->afterMaking(function (TitleDescriptionPageContent $content) {
             $content->unique_key = 'news_page_content';
         });
     }
 
-    public function contact(): Factory
+    public function contact(): self
     {
         return $this->afterMaking(function (TitleDescriptionPageContent $content) {
             $content->unique_key = 'contact_page_content';
         });
     }
 
-    public function withBricks(): Factory
+    public function withBricks(): self
     {
         return $this->afterCreating(function (TitleDescriptionPageContent $content) {
             $content->addBrick(TitleH1::class, [

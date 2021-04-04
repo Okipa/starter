@@ -6,7 +6,7 @@
         'labelClass' => ['btn', 'btn-link']
     ])
     <div class="mx-auto mb-4">
-        {{ settings()->getFirstMedia('logo_square')->img('auth', ['alt' => config('app.name')]) }}
+        {{ settings()->getFirstMedia('logo_squared')->img('auth', ['alt' => config('app.name')]) }}
     </div>
     <h1 class="h3 mb-3 font-weight-normal">
         <i class="fas fa-sync fa-fw"></i>

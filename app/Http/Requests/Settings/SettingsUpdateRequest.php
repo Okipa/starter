@@ -15,7 +15,7 @@ class SettingsUpdateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'logo_square' => settings()->getMediaValidationRules('logo_square'),
+            'logo_squared' => settings()->getMediaValidationRules('logo_squared'),
             'email' => ['required', 'string', 'max:255', 'email:rfc,dns,spoof'],
             'phone_number' => ['required', 'string', 'max:255', new PhoneInternational()],
             'address' => ['required', 'string', 'max:255'],
