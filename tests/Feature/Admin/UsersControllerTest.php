@@ -22,7 +22,7 @@ class UsersControllerTest extends TestCase
         parent::setUp();
         $this->withoutMix();
         $this->withoutMiddleware([RequirePassword::class]);
-        Settings::factory()->create();
+        Settings::factory()->withMedia()->create();
     }
 
     /** @test */
@@ -35,6 +35,7 @@ class UsersControllerTest extends TestCase
             ->get(route('users.index'))
             ->assertOk()
             ->assertSeeInOrder([
+                // Users data should be displayed in table columns.
                 $user2->id,
                 $user2->getFirstMediaUrl('profile_pictures', 'thumb'),
                 Str::limit($user2->first_name, 25),
@@ -59,6 +60,7 @@ class UsersControllerTest extends TestCase
         $this->actingAs($user)->get(route('user.create'))
             ->assertOk()
             ->assertSeeInOrder([
+                // Headings and form action should confirm we are on create page.
                 'fas fa-user fa-fw',
                 __('breadcrumbs.orphan.create', ['entity' => __('Users')]),
                 route('user.store'),
@@ -68,8 +70,8 @@ class UsersControllerTest extends TestCase
     /** @test */
     public function it_can_store_user(): void
     {
-        $user = User::factory()->withMedia()->create();
-        $this->actingAs($user)
+        $authUser = User::factory()->withMedia()->create();
+        $this->actingAs($authUser)
             ->post(route('user.store'), [
                 'profile_picture' => UploadedFile::fake()->image('profile-picture.webp', 250, 250),
                 'first_name' => 'First name test',
@@ -85,7 +87,8 @@ class UsersControllerTest extends TestCase
                 'name' => 'First name test Last name test',
             ]))
             ->assertRedirect(route('users.index'));
-        $createdUser = User::latest('id');
+        $createdUser = User::latest('id')->first();
+        // New user should have been stored.
         $this->assertDatabaseHas(app(User::class)->getTable(), [
             'id' => $createdUser->id,
             'first_name' => 'First name test',
@@ -93,7 +96,9 @@ class UsersControllerTest extends TestCase
             'phone_number' => '0240506070',
             'email' => 'test@email.fr',
         ]);
+        // Password should be correct.
         self::assertTrue(Hash::check('password', $createdUser->fresh()->password));
+        // Profile picture should have been stored.
         $this->assertDatabaseHas(app(Media::class)->getTable(), [
             'model_id' => $createdUser->id,
             'model_type' => User::class,
@@ -110,9 +115,11 @@ class UsersControllerTest extends TestCase
         $this->actingAs($authUser)->get(route('user.edit', $editedUser))
             ->assertOk()
             ->assertSeeInOrder([
+                // Headings and form action should confirm we are on edit page.
                 'fas fa-user fa-fw',
                 __('breadcrumbs.orphan.edit', ['entity' => __('Users'), 'detail' => $editedUser->full_name]),
                 route('user.update', $editedUser),
+                // User data should be displayed.
                 $editedUser->getFirstMediaUrl('profile_pictures', 'thumb'),
                 $editedUser->getFirstMedia('profile_pictures')->file_name,
                 $editedUser->last_name,
@@ -126,11 +133,11 @@ class UsersControllerTest extends TestCase
     /** @test */
     public function it_can_update_user(): void
     {
-        $authUser = User::factory()->withMedia()->create();
-        $updatedUser = User::factory()->withMedia()->create();
+        $authUser = User::factory()->create();
+        $updatedUser = User::factory()->create();
         $this->actingAs($authUser)
             ->put(route('user.update', $updatedUser), [
-                'remove__profile_picture' => true,
+                'profile_picture' => UploadedFile::fake()->image('profile-picture.webp', 250, 250),
                 'first_name' => 'First name test',
                 'last_name' => 'Last name test',
                 'phone_number' => '0240506070',
@@ -144,6 +151,7 @@ class UsersControllerTest extends TestCase
                 'name' => 'First name test Last name test',
             ]))
             ->assertRedirect(route('user.edit', $updatedUser));
+        // User data should have been updated.
         $this->assertDatabaseHas(app(User::class)->getTable(), [
             'id' => $updatedUser->id,
             'first_name' => 'First name test',
@@ -151,12 +159,44 @@ class UsersControllerTest extends TestCase
             'phone_number' => '0240506070',
             'email' => 'test@email.fr',
         ]);
+        // Password should have been updated.
         self::assertTrue(Hash::check('password', $updatedUser->fresh()->password));
+        // Profile picture should have been updated.
         $this->assertDatabaseHas(app(Media::class)->getTable(), [
             'model_id' => $updatedUser->id,
             'model_type' => User::class,
             'collection_name' => 'profile_pictures',
-            'file_name' => 'anonymouse-picture.webp',
+            'file_name' => 'profile-picture.webp',
+        ]);
+    }
+
+    /** @test */
+    public function it_can_set_back_default_profile_picture_when_removing_it(): void
+    {
+        $authUser = User::factory()->create();
+        $updatedUser = User::factory()->create();
+        $this->actingAs($authUser)
+            ->put(route('user.update', $updatedUser), [
+                // Uploaded profile picture should be ignored when user want to remove it.
+                'profile_picture' => UploadedFile::fake()->image('profile-picture.webp', 250, 250),
+                'remove_profile_picture' => true,
+                'first_name' => 'First name test',
+                'last_name' => 'Last name test',
+                'phone_number' => '0240506070',
+                'email' => 'test@email.fr',
+            ])
+            ->assertSessionHasNoErrors()
+            ->assertSessionHas('toast_success', __('crud.orphan.updated', [
+                'entity' => __('Users'),
+                'name' => 'First name test Last name test',
+            ]))
+            ->assertRedirect(route('user.edit', $updatedUser));
+        // Profile picture should have been update to default one.
+        $this->assertDatabaseHas(app(Media::class)->getTable(), [
+            'model_id' => $updatedUser->id,
+            'model_type' => User::class,
+            'collection_name' => 'profile_pictures',
+            'file_name' => 'anonymous-user.png',
         ]);
     }
 
@@ -174,6 +214,7 @@ class UsersControllerTest extends TestCase
                 'name' => $destroyedUser->full_name,
             ]))
             ->assertRedirect(route('users.index'));
+        // User should have been deleted.
         $this->assertDatabaseMissing(app(User::class)->getTable(), ['id' => $destroyedUser->id]);
     }
 }

@@ -85,7 +85,7 @@ EOT;
         return $this->afterCreating(function (NewsArticle $newsArticle) {
             $illustrationsCount = random_int(1, 3);
             for ($ii = 1; $ii <= $illustrationsCount; $ii++) {
-                $newsArticle->addMedia($this->faker->image(null, 1140, 500, null, true, true, 'News'))
+                $newsArticle->addMedia($this->faker->image(null, 1140, 500))
                     ->toMediaCollection('illustrations');
             }
         });

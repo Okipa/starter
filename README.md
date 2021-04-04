@@ -32,9 +32,9 @@
 
 ### Requirements
 
-* Git
-* Composer v2
-* Docker Community Edition: https://docs.docker.com/install
+* Latest Git stable version
+* Latest Composer stable version
+* Latest Docker Community Edition stable version: https://docs.docker.com/install
 * Latest Node stable version
 * Latest Yarn stable version
 

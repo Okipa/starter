@@ -183,7 +183,7 @@ return [
         'updated_at' => 'Updated at',
         'created_at' => 'Created at',
         'media' => 'Media',
-        'logo_rounded' => 'Logo rounded',
+        'logo_square' => 'Logo rounded',
         'address' => 'Address',
         'zip_code' => 'Zip code',
         'city' => 'City',

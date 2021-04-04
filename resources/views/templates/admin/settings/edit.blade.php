@@ -16,12 +16,12 @@
         <div class="row mb-n3" data-masonry>
             <div class="col-xl-6 mb-3">
                 <x-admin.forms.card title="{{ __('Media') }}">
-                    @php($logo = $settings->getFirstMedia('logo_rounded'))
-                    {{ inputFile()->name('logo_rounded')
+                    @php($logo = $settings->getFirstMedia('logo_square'))
+                    {{ inputFile()->name('logo_square')
                         ->value(optional($logo)->file_name)
                         ->uploadedFile(fn() => view('components.admin.media.thumb', ['image' => $logo]))
                         ->showRemoveCheckbox(false)
-                        ->caption($settings->getMediaCaption('logo_rounded')) }}
+                        ->caption($settings->getMediaCaption('logo_square')) }}
                 </x-admin.forms.card>
             </div>
             <div class="col-xl-6 mb-3">

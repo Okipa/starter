@@ -149,7 +149,8 @@ phpunit:
     MYSQL_PASSWORD: secret
     DB_HOST: mysql
   services:
-    - mysql:8.0
+    - name: mysql:8.0
+      command: [ "--default-authentication-plugin=mysql_native_password" ]
   dependencies:
     - composer
   before_script:

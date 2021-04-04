@@ -9,7 +9,7 @@
                         'dropdownLabelClasses' => ['btn', 'btn-link'],
                         'dropdownMenuClasses' => ['dropdown-menu-right']
                     ])
-                    {{ settings()->getFirstMedia('logo_rounded')->img('auth', ['alt' => config('app.name')]) }}
+                    {{ settings()->getFirstMedia('logo_square')->img('auth', ['alt' => config('app.name')]) }}
                 </div>
                 <h1 class="h3 font-weight-normal text-info mt-3">
                     <i class="fas fa-tools fa-fw"></i>

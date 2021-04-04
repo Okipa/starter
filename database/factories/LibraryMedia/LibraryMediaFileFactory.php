@@ -25,7 +25,7 @@ class LibraryMediaFileFactory extends Factory
     public function image(): Factory
     {
         return $this->afterCreating(function (LibraryMediaFile $file) {
-            $file->addMedia($this->faker->image(null, 640, 480, null, true, true, 'Media'))
+            $file->addMedia($this->faker->image())
                 ->toMediaCollection('media');
         });
     }

@@ -27,9 +27,9 @@ class SettingsFactory extends Factory
     public function withMedia(array $media = []): Factory
     {
         return $this->afterCreating(function (Settings $settings) use ($media) {
-            $settings->addMedia(data_get($media, 'logo_rounded') ?: $this->faker->image(null, 250, 250))
+            $settings->addMedia(data_get($media, 'logo_square') ?: $this->faker->image(null, 250, 250))
                 ->preservingOriginal()
-                ->toMediaCollection('logo_rounded');
+                ->toMediaCollection('logo_square');
         });
     }
 }

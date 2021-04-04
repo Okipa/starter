@@ -11,7 +11,7 @@
         'dropdownMenuClasses' => ['dropdown-menu-right']
     ])
     <div class="mx-auto mb-4">
-        {{ settings()->getFirstMedia('logo_rounded')->img('auth', ['alt' => config('app.name')]) }}
+        {{ settings()->getFirstMedia('logo_square')->img('auth', ['alt' => config('app.name')]) }}
     </div>
     <h1 class="h3 mb-3 font-weight-normal">
         <i class="fas fa-sign-in-alt fa-fw"></i>

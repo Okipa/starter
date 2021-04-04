@@ -100,7 +100,7 @@ EOT,
                     ],
                     'active' => true,
                 ]);
-                $slide->addMedia($this->faker->image(null, 2560, 700, null, true, true, 'Slide'))
+                $slide->addMedia($this->faker->image(null, 2560, 700))
                     ->toMediaCollection('images');
             }
             $content->addBrick(TitleH1::class, [

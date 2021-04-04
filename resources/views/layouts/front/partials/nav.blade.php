@@ -1,8 +1,8 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container">
         <a class="navbar-brand" href="{{ route('home.page.show') }}" title="{{ config('app.name') }}">
-            {{ settings()->getFirstMedia('logo_rounded')->img('front_nav', ['alt' => config('app.name')]) }}
-            {{ config('app.name') }}
+            {{ settings()->getFirstMedia('logo_square')->img('nav_front', ['alt' => config('app.name')]) }}
+            <span class="pl-2">{{ config('app.name') }}</span>
         </a>
         <button class="navbar-toggler"
                 type="button"
