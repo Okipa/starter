@@ -80,7 +80,7 @@ class UsersController extends Controller
      */
     public function update(User $user, UserUpdateRequest $request): RedirectResponse
     {
-        $user->update(data_get($request->validated(),'new_password')
+        $user->update(data_get($request->validated(), 'new_password')
             ? array_merge($request->validated(), ['password' => Hash::make($request->validated()['new_password'])])
             : Arr::except($request->validated(), 'new_password'));
         app(UsersService::class)->saveProfilePictureFromRequest($request, $user);
