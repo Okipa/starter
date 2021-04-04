@@ -70,7 +70,7 @@ class UsersControllerTest extends TestCase
     /** @test */
     public function it_can_store_user(): void
     {
-        $authUser = User::factory()->withMedia()->create();
+        $authUser = User::factory()->create();
         $this->actingAs($authUser)
             ->post(route('user.store'), [
                 'profile_picture' => UploadedFile::fake()->image('profile-picture.webp', 250, 250),
