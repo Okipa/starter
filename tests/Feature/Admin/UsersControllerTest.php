@@ -4,11 +4,14 @@ namespace Tests\Feature\Admin;
 
 use App\Models\Settings\Settings;
 use App\Models\Users\User;
+use App\Notifications\InitializePassword;
 use Carbon\Carbon;
 use Illuminate\Auth\Middleware\RequirePassword;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Notification;
+use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Str;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 use Tests\TestCase;
@@ -104,6 +107,57 @@ class UsersControllerTest extends TestCase
             'model_type' => User::class,
             'collection_name' => 'profile_pictures',
             'file_name' => 'profile-picture.webp',
+        ]);
+    }
+
+    /** @test */
+    public function it_can_store_user_without_password_and_send_invitation_email_to_create_it(): void
+    {
+        Notification::fake();
+        $authUser = User::factory()->create();
+        $now = now();
+        Carbon::setTestNow($now);
+        $this->actingAs($authUser)
+            ->post(route('user.store'), [
+                'profile_picture' => UploadedFile::fake()->image('profile-picture.webp', 250, 250),
+                'first_name' => 'First name test',
+                'last_name' => 'Last name test',
+                'phone_number' => '0240506070',
+                'email' => 'test@email.fr',
+            ])
+            ->assertSessionHasNoErrors()
+            ->assertSessionHas('toast_success', __('crud.orphan.created', [
+                    'entity' => __('Users'),
+                    'name' => 'First name test Last name test',
+                ]) . ' ' . __('A password creation link has been sent.'))
+            ->assertRedirect(route('users.index'));
+        $createdUser = User::latest('id')->first();
+        // Notification should have been sent.
+        Notification::assertSentTo($createdUser, InitializePassword::class, static fn(
+            InitializePassword $notification,
+            array $channels,
+            User $notifiable
+        ) => $notification->toMail($createdUser) // Manual execution of the `toMail` method.
+            && $notification->locale === config('app.locale')
+            && $notification->queue === 'high'
+            && $notification->user->is($createdUser)
+            && $notification->showWelcomeFormUrl === URL::signedRoute(
+                'password.welcome',
+                ['user' => $createdUser->id],
+                $now->copy()->addMinutes(120)
+            )
+            && $notification->validUntil->equalTo($now->copy()->addMinutes(120))
+            && $channels === ['mail']
+            && $notifiable->is($createdUser));
+        Notification::assertTimesSent(1, InitializePassword::class);
+        // New user should have been stored.
+        $this->assertDatabaseHas(app(User::class)->getTable(), [
+            'id' => $createdUser->id,
+            'first_name' => 'First name test',
+            'last_name' => 'Last name test',
+            'phone_number' => '0240506070',
+            'email' => 'test@email.fr',
+            'welcome_valid_until' => $now->addMinutes(120)->toDateTimeString(),
         ]);
     }
 

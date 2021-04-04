@@ -53,7 +53,7 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
                 'phone_number' => $input['phone_number'],
                 'email' => $input['email'],
             ])->save();
-            toast()->success(__('crud.orphan.updated', ['entity' => __('Profile'), 'name' => $user->full_name]));
+            toast()->success(__('Your profile information have been saved.'));
         }
         if (data_get($input, 'profile_picture') || $input['remove_profile_picture']) {
             $uploadedFiled = $input['remove_profile_picture'] ? null : data_get($input, 'profile_picture');

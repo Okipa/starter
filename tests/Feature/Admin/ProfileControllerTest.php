@@ -8,6 +8,7 @@ use App\Notifications\VerifyEmail;
 use Illuminate\Auth\Middleware\RequirePassword;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Http\UploadedFile;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Notification;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 use Tests\TestCase;
@@ -33,7 +34,7 @@ class ProfileControllerTest extends TestCase
             ->assertSeeInOrder([
                 // Headings and form actions should confirm we are on profile edit page.
                 'fas fa-user fa-fw',
-                __('breadcrumbs.orphan.edit', ['entity' => __('Profile'), 'detail' => $authUser->full_name]),
+                __('Profile'),
                 route('profile.update'),
                 // User data should be displayed.
                 $authUser->getFirstMediaUrl('profile_pictures', 'thumb'),
@@ -42,6 +43,7 @@ class ProfileControllerTest extends TestCase
                 $authUser->first_name,
                 $authUser->phone_number,
                 $authUser->email,
+                // Other form actions should be present.
                 route('password.update'),
                 route('two-factor.activate'),
                 route('profile.deleteAccount'),
@@ -50,7 +52,7 @@ class ProfileControllerTest extends TestCase
     }
 
     /** @test */
-    public function it_can_update_profile(): void
+    public function it_can_update_user_profile(): void
     {
         $authUser = User::factory()->create();
         $this->actingAs($authUser)
@@ -66,7 +68,7 @@ class ProfileControllerTest extends TestCase
             ->assertSessionHas('alert')
             ->assertRedirect(route('profile.edit'));
         self::assertEquals(
-            __('crud.orphan.updated', ['entity' => __('Profile'), 'name' => 'First name test Last name test']),
+            __('Your profile information have been saved.'),
             json_decode(session()->get('alert.config'), true, 512, JSON_THROW_ON_ERROR)['title']
         );
         // User data should have been updated.
@@ -87,7 +89,7 @@ class ProfileControllerTest extends TestCase
     }
 
     /** @test */
-    public function it_can_set_back_default_profile_picture_when_removing_it(): void
+    public function it_can_set_back_default_profile_picture_when_user_remove_it(): void
     {
         $authUser = User::factory()->create();
         $this->actingAs($authUser)
@@ -104,11 +106,7 @@ class ProfileControllerTest extends TestCase
             ->assertSessionHasNoErrors()
             ->assertSessionHas('alert')
             ->assertRedirect(route('profile.edit'));
-        self::assertEquals(
-            __('crud.orphan.updated', ['entity' => __('Profile'), 'name' => 'First name test Last name test']),
-            json_decode(session()->get('alert.config'), true, 512, JSON_THROW_ON_ERROR)['title']
-        );
-        // Profile picture should have been update to default one.
+        // Profile picture should have been updated to default one.
         $this->assertDatabaseHas(app(Media::class)->getTable(), [
             'model_id' => $authUser->id,
             'model_type' => User::class,
@@ -118,7 +116,7 @@ class ProfileControllerTest extends TestCase
     }
 
     /** @test */
-    public function it_can_pass_account_to_unverified_email_status_when_updating_email_address(): void
+    public function it_can_pass_user_account_to_unverified_email_status_when_updating_email_address(): void
     {
         Notification::fake();
         $authUser = User::factory()->create();
@@ -131,7 +129,7 @@ class ProfileControllerTest extends TestCase
                 'email' => 'test@email.fr',
             ])
             ->assertSessionHasNoErrors()
-            ->assertRedirect(route('verification.notice'));
+            ->assertRedirect(route('profile.edit'));
         // User data should have been updated.
         $this->assertDatabaseHas(app(User::class)->getTable(), [
             'id' => $authUser->id,
@@ -141,6 +139,48 @@ class ProfileControllerTest extends TestCase
             'email' => 'test@email.fr',
             'email_verified_at' => null,
         ]);
-        Notification::assertSentToTimes($authUser, VerifyEmail::class);
+        Notification::assertSentTo($authUser, VerifyEmail::class, static fn(
+            VerifyEmail $notification,
+            array $channels,
+            User $notifiable
+        ) => $notification->locale === config('app.locale')
+            && $notification->queue === 'high'
+            && $channels === ['mail']
+            && $notifiable->is($authUser));
+        Notification::assertTimesSent(1, VerifyEmail::class);
+    }
+
+    /** @test */
+    public function it_can_update_user_password(): void
+    {
+        $authUser = User::factory()->create();
+        $this->actingAs($authUser)
+            ->from(route('profile.edit'))
+            ->put(route('password.update'), [
+                'current_password' => 'secret',
+                'new_password' => 'password',
+                'new_password_confirmation' => 'password',
+            ])
+            ->assertSessionHasNoErrors()
+            ->assertSessionHas('alert')
+            ->assertRedirect(route('profile.edit'));
+        self::assertEquals(
+            __('Your new password has been saved.'),
+            json_decode(session()->get('alert.config'), true, 512, JSON_THROW_ON_ERROR)['title']
+        );
+        self::assertTrue(Hash::check('password', $authUser->fresh()->password));
+    }
+
+    /** @test */
+    public function it_can_delete_user_account(): void
+    {
+        $authUser = User::factory()->create();
+        $this->actingAs($authUser)
+            ->from(route('profile.edit'))
+            ->post(route('profile.deleteAccount'), ['password' => 'secret'])
+            ->assertSessionHasNoErrors()
+            ->assertSessionHas('success', __('Your account has been deleted.'))
+            ->assertRedirect(route('home.page.show'));
+        $this->assertDeleted(app(User::class)->getTable(), ['id' => $authUser->id]);
     }
 }

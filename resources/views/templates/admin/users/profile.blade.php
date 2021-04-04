@@ -12,7 +12,7 @@
 @section('template')
     <h1>
         <i class="fas fa-user fa-fw"></i>
-        {{ __('breadcrumbs.orphan.edit', ['entity' => __('Profile'), 'detail' => Auth::user()->full_name]) }}
+        {{ __('Profile') }}
     </h1>
     <hr>
     {{ buttonBack()->route('users.index') }}
