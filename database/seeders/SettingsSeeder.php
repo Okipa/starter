@@ -10,10 +10,10 @@ class SettingsSeeder extends Seeder
     public function run(): void
     {
         Settings::factory()
-            // Todo: customize logo.
+            // ToDo: customize logo.
             ->withMedia(['logo_square' => resource_path('seeds/logo-starter.png')])
             ->create([
-                // Todo: set custom settings.
+                // ToDo: set custom settings.
             ]);
     }
 }

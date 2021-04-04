@@ -5,8 +5,8 @@ use Illuminate\Support\Facades\Route;
 // Localized ***********************************************************************************************************
 Route::localized(function () {
 
-    // Todo: you can remove this block and all the `fortify` route php files if your app is not multilingual.
-    // Todo: Also remove the `Fortify::ignoreRoutes();` line in the `App\Providers\FortifyServiceProvider`.
+    // ToDo: you can remove this block and all the `fortify` route php files if your app is not multilingual.
+    // ToDo: Also remove the `Fortify::ignoreRoutes();` line in the `App\Providers\FortifyServiceProvider`.
     // Fortify
     Route::group([
         'namespace' => 'Laravel\Fortify\Http\Controllers',

@@ -36,7 +36,7 @@ return [
     /*
      * The channels to which the notification will be sent.
      */
-    // Todo: to customize.
+    // ToDo: to customize.
     'channels' => [
         'mail',
         // 'slack', // Requires laravel/slack-notification-channel package
@@ -47,13 +47,13 @@ return [
         'to' => env('MONITORING_EMAIL_NOTIFICATIONS'),
     ],
 
-    // Todo: to customize.
+    // ToDo: to customize.
     'slack' => [
         'webhookUrl' => 'https://your-slack-webhook.slack.com',
     ],
 
     // Rocket chat webhook example
-    // Todo: to customize.
+    // ToDo: to customize.
     'webhook' => [
         'url' => 'https://rocket.chat/hooks/1234/5678',
     ],

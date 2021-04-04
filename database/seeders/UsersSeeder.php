@@ -11,7 +11,7 @@ class UsersSeeder extends Seeder
 {
     public function run(): void
     {
-        // Todo: to customize.
+        // ToDo: to customize.
         User::factory()->withMedia(resource_path('seeds/anonymous-user.png'))->create([
             'first_name' => 'Admin',
             'last_name' => 'STARTER',
