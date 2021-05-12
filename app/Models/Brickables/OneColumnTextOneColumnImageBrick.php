@@ -9,7 +9,7 @@ use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
-class TwoTextImageColumnsBrick extends Brick implements HasMedia
+class OneColumnTextOneColumnImageBrick extends Brick implements HasMedia
 {
     use InteractsWithMedia;
     use ExtendsMediaAbilities;

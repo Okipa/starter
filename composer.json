@@ -16,7 +16,7 @@
         "intervention/validation": "^2.4",
         "laravel-notification-channels/webhook": "^2.1",
         "laravel/fortify": "^1.5",
-        "laravel/framework": "^8.12",
+        "laravel/framework": "^8.40",
         "laravel/horizon": "^5.0",
         "laravel/telescope": "^4.0",
         "laravel/tinker": "^2.5",

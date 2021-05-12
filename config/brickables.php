@@ -17,10 +17,12 @@ return [
      */
     'registered' => [
         App\Brickables\Carousel::class,
-        App\Brickables\TitleH1::class,
+        App\Brickables\Title::class,
         App\Brickables\OneTextColumn::class,
         App\Brickables\TwoTextColumns::class,
-        App\Brickables\TwoTextImageColumns::class,
+        App\Brickables\ThreeTextColumns::class,
+        App\Brickables\OneColumnTextOneColumnImage::class,
+        App\Brickables\ColoredBackgroundContainer::class,
         // add your own brickables here ...
     ],
 

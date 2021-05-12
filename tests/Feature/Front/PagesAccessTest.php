@@ -5,7 +5,6 @@ namespace Tests\Feature\Front;
 use App\Models\News\NewsArticle;
 use App\Models\News\NewsCategory;
 use App\Models\PageContents\PageContent;
-use App\Models\PageContents\TitleDescriptionPageContent;
 use App\Models\Settings\Settings;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
@@ -31,7 +30,7 @@ class PagesAccessTest extends TestCase
     /** @test */
     public function it_can_access_to_news_page(): void
     {
-        TitleDescriptionPageContent::factory()->news()->create();
+        PageContent::factory()->news()->create();
         NewsCategory::factory()->create();
         NewsArticle::factory()->create();
         $this->get(route('news.page.show'))->assertOk();

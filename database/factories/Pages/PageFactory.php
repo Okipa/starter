@@ -3,7 +3,7 @@
 namespace Database\Factories\Pages;
 
 use App\Brickables\OneTextColumn;
-use App\Brickables\TitleH1;
+use App\Brickables\Title;
 use App\Models\Pages\Page;
 use Database\Factories\Traits\HasBricks;
 use Database\Factories\Traits\HasSeoMeta;

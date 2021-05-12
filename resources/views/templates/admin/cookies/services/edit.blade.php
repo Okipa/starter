@@ -33,7 +33,7 @@
                             'title' => $category->title
                         ])->sortBy('name'), 'id', 'title')
                         ->multiple()
-                        ->componentHtmlAttributes(['required', 'data-selector'])
+                        ->componentHtmlAttributes(['required'])
                         ->caption(__('Define in which categories this service will be classified. A service can be attached to one or more categories.')) }}
                     {{ inputText()->name('unique_key')
                         ->model($cookieService)

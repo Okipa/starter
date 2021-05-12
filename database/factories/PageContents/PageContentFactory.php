@@ -26,4 +26,18 @@ class PageContentFactory extends Factory
             $content->unique_key = 'home_page_content';
         });
     }
+
+    public function news(): self
+    {
+        return $this->afterMaking(function (PageContent $content) {
+            $content->unique_key = 'news_page_content';
+        });
+    }
+
+    public function contact(): self
+    {
+        return $this->afterMaking(function (PageContent $content) {
+            $content->unique_key = 'contact_page_content';
+        });
+    }
 }

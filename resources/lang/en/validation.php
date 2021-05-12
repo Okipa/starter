@@ -208,6 +208,8 @@ return [
         'required' => 'Required',
         'enabled_by_default' => 'Enabled by default',
         'cookies' => 'Cookies',
+        'background_color' => 'Background color',
+        'alignment' => 'Alignment',
     ],
 
 ];

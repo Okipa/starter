@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Requests\Brickables\TwoTextImageColumns;
+namespace App\Http\Requests\Brickables\OneColumnTextOneColumnImage;
 
-use App\Models\Brickables\TwoTextImageColumnsBrick;
+use App\Models\Brickables\OneColumnTextOneColumnImageBrick;
 use Illuminate\Foundation\Http\FormRequest;
 
-class TwoTextImageColumnsUpdateRequest extends FormRequest
+class OneColumnTextOneColumnImageUpdateRequest extends FormRequest
 {
     /**
      * @return array
@@ -14,7 +14,7 @@ class TwoTextImageColumnsUpdateRequest extends FormRequest
     public function rules(): array
     {
         $rules = [
-            'image_right' => app(TwoTextImageColumnsBrick::class)->getMediaValidationRules('images'),
+            'image_right' => app(OneColumnTextOneColumnImageBrick::class)->getMediaValidationRules('images'),
             'invert_order' => ['required', 'boolean'],
         ];
         $localizedRules = localizeRules(['text_left' => ['required', 'string']]);

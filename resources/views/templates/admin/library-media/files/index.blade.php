@@ -23,13 +23,12 @@
                     ])
                     ->sortBy('title'), 'id', 'title')
                 ->selectOptions('id', (int) $request->category_id)
-                ->componentHtmlAttributes(['data-selector'])
                 ->containerClasses([]) }}
             {{ submitValidate()->prepend('<i class="fas fa-filter"></i>')
                 ->label(__('Filter'))
                 ->containerClasses(['ml-3']) }}
             @if($request->has('category_id'))
-                {{ buttonCancel()->route('libraryMedia.files.index')
+                {{ buttonBack()->route('libraryMedia.files.index')
                     ->prepend('<i class="fas fa-undo"></i>')
                     ->label(__('Reset'))
                     ->containerClasses(['ml-3']) }}

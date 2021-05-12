@@ -62,7 +62,7 @@
                             'name' => $category->name
                         ])->sortBy('name'), 'id', 'name')
                         ->multiple()
-                        ->componentHtmlAttributes(['required', 'data-selector']) }}
+                        ->componentHtmlAttributes(['required']) }}
                 </x-admin.forms.card>
             </div>
             <div class="col-xl-6 mb-3">

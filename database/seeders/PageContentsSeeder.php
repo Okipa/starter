@@ -2,13 +2,23 @@
 
 namespace Database\Seeders;
 
+use App\Brickables\Title;
+use App\Brickables\TwoTextColumns;
+use App\Models\Brickables\ColoredBackgroundContainerBrick;
 use App\Models\PageContents\PageContent;
-use App\Models\PageContents\TitleDescriptionPageContent;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Str;
 
 class PageContentsSeeder extends Seeder
 {
+    public function __construct(protected \Faker\Generator $faker)
+    {
+    }
+
     /**
+     * @throws \Okipa\LaravelBrickables\Exceptions\BrickableCannotBeHandledException
+     * @throws \Okipa\LaravelBrickables\Exceptions\InvalidBrickableClassException
+     * @throws \Okipa\LaravelBrickables\Exceptions\NotRegisteredBrickableClassException
      * @throws \Spatie\MediaLibrary\MediaCollections\Exceptions\FileDoesNotExist
      * @throws \Spatie\MediaLibrary\MediaCollections\Exceptions\FileIsTooBig
      */
@@ -16,19 +26,39 @@ class PageContentsSeeder extends Seeder
     {
         PageContent::factory()->home()
             ->withCarouselBrick()
-            ->withTitleH1Brick()
+            ->withTitleBrick()
             ->withOneTextColumnBrick()
+            ->withColoredBackgroundContainerBrick(function (
+                ColoredBackgroundContainerBrick $coloredBackgroundContainerBrick
+            ) {
+                $coloredBackgroundContainerBrick->addBrick(Title::class, [
+                    'type' => 'h2',
+                    'title' => [
+                        'fr' => Str::title($this->faker->words(random_int(1, 3), true)),
+                        'en' => Str::title($this->faker->words(random_int(1, 3), true)),
+                    ],
+                ]);
+                $coloredBackgroundContainerBrick->addBrick(TwoTextColumns::class, [
+                    'text_left' => ['fr' => $this->faker->realText(500), 'en' => $this->faker->realText(500)],
+                    'text_right' => ['fr' => $this->faker->realText(500), 'en' => $this->faker->realText(500)],
+                ]);
+            })
+            ->withTitleBrick('h2')
+            ->withOneColumnTextOneColumnImageBrick()
+            ->withOneColumnTextOneColumnImageBrick(invertOrder: true)
+            ->withOneColumnTextOneColumnImageBrick()
+            ->withOneColumnTextOneColumnImageBrick(invertOrder: true)
             ->withSeoMeta()
             ->create();
-        TitleDescriptionPageContent::factory()
+        PageContent::factory()
             ->news()
-            ->withTitleH1Brick()
-            ->withOneTextColumnBrick()
+            ->withTitleBrick()
+            ->withThreeTextColumnsBrick()
             ->withSeoMeta()
             ->create();
-        TitleDescriptionPageContent::factory()
+        PageContent::factory()
             ->contact()
-            ->withTitleH1Brick()
+            ->withTitleBrick()
             ->withOneTextColumnBrick()
             ->withSeoMeta()
             ->create();

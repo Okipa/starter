@@ -3,7 +3,7 @@
 namespace Tests\Feature\Front;
 
 use App\Models\Logs\LogContactFormMessage;
-use App\Models\PageContents\TitleDescriptionPageContent;
+use App\Models\PageContents\PageContent;
 use App\Models\Pages\Page;
 use App\Models\Settings\Settings;
 use App\Notifications\ContactFormMessage;
@@ -26,8 +26,8 @@ class ContactPageControllerTest extends TestCase
     public function it_can_display_contact_page(): void
     {
         $settings = Settings::factory()->withMedia()->create();
-        TitleDescriptionPageContent::factory()->contact()
-            ->withTitleH1Brick()
+        PageContent::factory()->contact()
+            ->withTitleBrick()
             ->withOneTextColumnBrick()
             ->withSeoMeta()
             ->create();

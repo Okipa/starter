@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Requests\Brickables\TwoTextImageColumns;
+namespace App\Http\Requests\Brickables\OneColumnTextOneColumnImage;
 
-use App\Models\Brickables\TwoTextImageColumnsBrick;
+use App\Models\Brickables\OneColumnTextOneColumnImageBrick;
 use Illuminate\Foundation\Http\FormRequest;
 
-class TwoTextImageColumnsStoreRequest extends FormRequest
+class OneColumnTextOneColumnImageStoreRequest extends FormRequest
 {
     /**
      * @return array
@@ -16,7 +16,7 @@ class TwoTextImageColumnsStoreRequest extends FormRequest
         $rules = [
             'image_right' => array_merge(
                 ['required'],
-                app(TwoTextImageColumnsBrick::class)->getMediaValidationRules('images')
+                app(OneColumnTextOneColumnImageBrick::class)->getMediaValidationRules('images')
             ),
             'invert_order' => ['required', 'boolean'],
         ];

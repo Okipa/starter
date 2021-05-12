@@ -38,7 +38,7 @@
                     {{ select()->name('category_id')
                         ->model($file)
                         ->options((new App\Models\LibraryMedia\LibraryMediaCategory)->orderBy('name')->get()->map(fn(App\Models\LibraryMedia\LibraryMediaCategory $libraryMediaCategory) => ['id' => $category->id, 'name' => $category->name]), 'id', 'name')
-                        ->componentHtmlAttributes(['required', 'data-selector']) }}
+                        ->componentHtmlAttributes(['required']) }}
                 </x-admin.forms.card>
             </div>
             @if($file)
