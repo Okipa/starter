@@ -210,6 +210,8 @@ return [
         'cookies' => 'Cookies',
         'background_color' => 'Background color',
         'alignment' => 'Alignment',
+        'type' => 'Type',
+        'style' => 'Style',
     ],
 
 ];

@@ -3,7 +3,6 @@
 namespace App\Models\Pages;
 
 use App\Brickables\Carousel;
-use App\Brickables\Title;
 use App\Models\Traits\HasSeoMeta;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -29,7 +28,6 @@ class Page extends Model implements HasMedia, HasBrickables
 
     public array $brickables = [
         'number_of_bricks' => [
-            Title::class => ['min' => 1, 'max' => 1],
             Carousel::class => ['max' => 1],
         ],
     ];

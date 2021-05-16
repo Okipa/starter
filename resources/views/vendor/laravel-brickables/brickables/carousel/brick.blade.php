@@ -4,6 +4,19 @@
     $fullWidth = data_get($brick, 'data.full_width');
     $conversionName = $fullWidth ? 'full' : 'containerized';
 @endphp
+@if(request()->is('admin/*') || request()->is('*/admin/*'))
+    @unless($fullWidth)
+        <div class="container">
+            <div class="row">
+    @endunless
+        <div class="mb-2">
+            <i class="fas fa-info-circle fa-fw text-info"></i> {{ $fullWidth ? __('Full width') : __('Container width') }}.
+        </div>
+    @unless($fullWidth)
+            </div>
+        </div>
+    @endunless
+@endif
 @if($slides->isNotEmpty())
     @unless($fullWidth)
         <div class="container">
@@ -54,7 +67,17 @@
         </div>
     @endunless
 @elseif(request()->is('admin/*') || request()->is('*/admin/*'))
-    <i class="fas fa-info-circle fa-fw text-info mr-1"></i>
-    {{ __('No slides were added to this carousel.') }}
+    @unless($fullWidth)
+        <div class="container">
+            <div class="row">
+    @endunless
+        <div>
+            <i class="fas fa-info-circle fa-fw text-info"></i>
+            {{ __('No slides were added to this carousel.') }}
+        </div>
+    @unless($fullWidth)
+            </div>
+        </div>
+    @endunless
 @endif
 

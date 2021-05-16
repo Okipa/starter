@@ -1,9 +1,7 @@
 @extends('layouts.front.full')
 @section('template')
-    <div class="mt-5 mb-4">
-        {!! $pageContent->displayBricks() !!}
-    </div>
-    <div class="container my-3">
+    {!! $pageContent->displayBricks() !!}
+    <div class="container">
         <a href="{{ route('feeds.news') }}"
            title="{{ __(config('feed.feeds.news.title')) }}"
            target="_blank">
@@ -14,7 +12,7 @@
             {{ __(config('feed.feeds.news.title')) }}
         </a>
     </div>
-    <div class="container my-3">
+    <div class="container">
         <div class="row">
             <form class="col d-flex align-items-end" novalidate>
                 {{ select()->name('category_id')

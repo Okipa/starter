@@ -2,17 +2,15 @@
 
 namespace Database\Seeders;
 
-use App\Brickables\Title;
-use App\Brickables\TwoTextColumns;
-use App\Models\Brickables\ColoredBackgroundContainerBrick;
 use App\Models\PageContents\PageContent;
+use Database\Factories\Brickables\ColoredBackgroundContainerBrickFactory;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Str;
 
 class PageContentsSeeder extends Seeder
 {
     public function __construct(protected \Faker\Generator $faker)
     {
+        //
     }
 
     /**
@@ -27,23 +25,11 @@ class PageContentsSeeder extends Seeder
         PageContent::factory()->home()
             ->withCarouselBrick()
             ->withTitleBrick()
-            ->withOneTextColumnBrick()
-            ->withColoredBackgroundContainerBrick(function (
-                ColoredBackgroundContainerBrick $coloredBackgroundContainerBrick
-            ) {
-                $coloredBackgroundContainerBrick->addBrick(Title::class, [
-                    'type' => 'h2',
-                    'title' => [
-                        'fr' => Str::title($this->faker->words(random_int(1, 3), true)),
-                        'en' => Str::title($this->faker->words(random_int(1, 3), true)),
-                    ],
-                ]);
-                $coloredBackgroundContainerBrick->addBrick(TwoTextColumns::class, [
-                    'text_left' => ['fr' => $this->faker->realText(500), 'en' => $this->faker->realText(500)],
-                    'text_right' => ['fr' => $this->faker->realText(500), 'en' => $this->faker->realText(500)],
-                ]);
-            })
-            ->withTitleBrick('h2')
+            ->withTwoTextColumnsBrick()
+            ->withColoredBackgroundContainerBrick(fn(ColoredBackgroundContainerBrickFactory $factory) => $factory
+                ->withTitleBrick('h2', 'h2')
+                ->withOneTextColumnBrick())
+            ->withTitleBrick('h3', 'h3')
             ->withOneColumnTextOneColumnImageBrick()
             ->withOneColumnTextOneColumnImageBrick(invertOrder: true)
             ->withOneColumnTextOneColumnImageBrick()

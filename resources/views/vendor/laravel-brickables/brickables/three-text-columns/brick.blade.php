@@ -1,5 +1,5 @@
 <div class="container">
-    <div class="row">
+    <div class="row mb-n3">
         <div class="col-md-4 text">
             {!! (new Parsedown)->text(translatedData($brick, 'data.text_left')) !!}
         </div>

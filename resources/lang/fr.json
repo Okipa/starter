@@ -85,7 +85,7 @@
     "Welcome on :app ! To be able to login to your new account please define a secured password with the fields bellow.": "Bienvenue sur :app ! Pour pouvoir vous connecter à votre nouveau compte, merci de définir un mot de passe sécurisé à l'aide des champs ci-dessous.",
     "Data": "Données",
     "Brick data": "Données brique",
-    "Carousel configuration": "Configuration caroussel",
+    "Carousel": "Caroussel",
     "New slide": "Nouvelle diapo",
     "Content bricks": "Briques contenu",
     "Add": "Ajouter",
@@ -170,7 +170,6 @@
     "The entry :model > :brickable has been deleted.": "L'entrée :model > :brickable a été supprimée.",
     "Slides management will be available after the brick creation.": "La gestion des diapos sera accessible une fois la brique crée.",
     "Slides": "Diapos",
-    "Carousel": "Carrousel",
     "No slides were added to this carousel.": "Aucune diapo n'a été ajoutée à ce carrousel.",
     "Invalid signature": "Signature non valide",
     "Error ID:": "ID erreur :",
@@ -270,5 +269,8 @@
     "Left": "Gauche",
     "Center": "Centré",
     "Right": "Droite",
-    "Spread": "Étalé"
+    "Spread": "Étalé",
+    "Full width": "Pleine largeur",
+    "Container width": "Largeur du conteneur",
+    "A h1 title has already been created.": "Un titre h1 a déjà été créé."
 }

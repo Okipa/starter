@@ -49,7 +49,6 @@ const getServices = () => {
             cookies: cookieService.cookies || {}
         });
     });
-    console.log(services);
 
     return services;
 };

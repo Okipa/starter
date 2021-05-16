@@ -1,6 +1,6 @@
 @extends('laravel-brickables::admin.form.layout')
 @section('title')
-    {{ __('Carousel configuration') }}
+    {{ __('Carousel') }}
 @endsection
 @section('inputs')
     {{ inputSwitch()->name('full_width')->checked((bool) data_get($brick, 'data.full_width')) }}

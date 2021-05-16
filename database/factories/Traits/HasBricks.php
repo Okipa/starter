@@ -10,6 +10,7 @@ use App\Brickables\ThreeTextColumns;
 use App\Brickables\Title;
 use App\Brickables\TwoTextColumns;
 use App\Models\Brickables\CarouselBrickSlide;
+use App\Models\Brickables\ColoredBackgroundContainerBrick;
 use Closure;
 use Illuminate\Support\Str;
 use Okipa\LaravelBrickables\Contracts\HasBrickables;
@@ -50,6 +51,31 @@ trait HasBricks
 
     /**
      * @param string $type
+     * @param string $style
+     * @param array $title
+     *
+     * @return $this
+     * @throws \Okipa\LaravelBrickables\Exceptions\BrickableCannotBeHandledException
+     * @throws \Okipa\LaravelBrickables\Exceptions\InvalidBrickableClassException
+     * @throws \Okipa\LaravelBrickables\Exceptions\NotRegisteredBrickableClassException
+     */
+    public function withTitleBrick(string $type = 'h1', string $style = 'h1', array $title = []): self
+    {
+        return $this->afterCreating(function (HasBrickables $model) use ($type, $style, $title) {
+            $data = [
+                'type' => Title::TYPES[$type]['key'],
+                'style' => Title::STYLES[$style]['key'],
+            ];
+            foreach (supportedLocaleKeys() as $localeKey) {
+                $data['title'][$localeKey] = data_get($title, $localeKey)
+                    ?: Str::title($this->faker->words(random_int(1, 3), true));
+            }
+            $model->addBrick(Title::class, $data);
+        });
+    }
+
+    /**
+     * @param string $type
      * @param array $title
      *
      * @return $this
@@ -58,7 +84,7 @@ trait HasBricks
      * @throws \Okipa\LaravelBrickables\Exceptions\NotRegisteredBrickableClassException
      * @throws \Exception
      */
-    public function withTitleBrick(string $type = 'h1', array $title = []): self
+    public function withTitleSecondaryBrick(string $type = 'h2', array $title = []): self
     {
         return $this->afterCreating(function (HasBrickables $model) use ($type, $title) {
             $data = ['type' => Title::TYPES[$type]['key']];
@@ -147,12 +173,15 @@ trait HasBricks
      * @throws \Spatie\MediaLibrary\MediaCollections\Exceptions\FileDoesNotExist
      * @throws \Spatie\MediaLibrary\MediaCollections\Exceptions\FileIsTooBig
      */
-    public function withOneColumnTextOneColumnImageBrick(array $text = [], string $image = null, bool $invertOrder = false): self
-    {
+    public function withOneColumnTextOneColumnImageBrick(
+        array $text = [],
+        string $image = null,
+        bool $invertOrder = false
+    ): self {
         return $this->afterCreating(function (HasBrickables $model) use ($text, $image, $invertOrder) {
             $data = ['invert_order' => $invertOrder];
             foreach (supportedLocaleKeys() as $localeKey) {
-                $data['text'][$localeKey] = data_get($text, $localeKey) ?: $this->faker->realText(500);
+                $data['text_left'][$localeKey] = data_get($text, $localeKey) ?: $this->faker->realText(500);
             }
             $oneColumnTextOneColumnImage = $model->addBrick(OneColumnTextOneColumnImage::class, $data);
             /** @var \Spatie\MediaLibrary\HasMedia $oneColumnTextOneColumnImage */
@@ -178,12 +207,14 @@ trait HasBricks
         string $alignment = 'left',
     ): self {
         return $this->afterCreating(function (HasBrickables $model) use ($backgroundColor, $alignment, $addSubBricks) {
-            /** @var \App\Models\Brickables\ColoredBackgroundContainerBrick $coloredBackgroundContainerBrick */
-            $coloredBackgroundContainerBrick = $model->addBrick(ColoredBackgroundContainer::class, [
-                'background_color' => ColoredBackgroundContainer::BACKGROUND_COLORS[$backgroundColor]['key'],
-                'alignment' => ColoredBackgroundContainer::ALIGNMENTS[$alignment]['key'],
+            $factory = ColoredBackgroundContainerBrick::factory()->relatedToModel($model);
+            $factory = $addSubBricks($factory);
+            $factory->create([
+                'data' => [
+                    'background_color' => ColoredBackgroundContainer::BACKGROUND_COLORS[$backgroundColor]['key'],
+                    'alignment' => ColoredBackgroundContainer::ALIGNMENTS[$alignment]['key'],
+                ]
             ]);
-            $addSubBricks($coloredBackgroundContainerBrick);
         });
     }
 }

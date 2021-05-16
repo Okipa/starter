@@ -211,6 +211,8 @@ return [
         'cookies' => 'Cookies',
         'background_color' => 'Couleur de fond',
         'alignment' => 'Alignement',
+        'type' => 'Type',
+        'style' => 'Style',
     ],
 
 ];

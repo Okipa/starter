@@ -10,7 +10,7 @@
             </div>
         </div>
     @endif
-    {{-- categories / sharing --}}
+    {{-- Categories / Sharing --}}
     <div class="container mt-2 mb-5">
         <div class="row">
             <div class="col-sm-6 my-n1 my-sm-0">
