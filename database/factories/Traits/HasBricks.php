@@ -6,11 +6,14 @@ use App\Brickables\Carousel;
 use App\Brickables\ColoredBackgroundContainer;
 use App\Brickables\OneColumnTextOneColumnImage;
 use App\Brickables\OneTextColumn;
+use App\Brickables\Spacer;
 use App\Brickables\ThreeTextColumns;
 use App\Brickables\Title;
 use App\Brickables\TwoTextColumns;
 use App\Models\Brickables\CarouselBrickSlide;
 use App\Models\Brickables\ColoredBackgroundContainerBrick;
+use App\View\Components\Front\Spacer as SpacerComponent;
+use App\View\Components\Front\Title as TitleComponent;
 use Closure;
 use Illuminate\Support\Str;
 use Okipa\LaravelBrickables\Contracts\HasBrickables;
@@ -63,8 +66,8 @@ trait HasBricks
     {
         return $this->afterCreating(function (HasBrickables $model) use ($type, $style, $title) {
             $data = [
-                'type' => Title::TYPES[$type]['key'],
-                'style' => Title::STYLES[$style]['key'],
+                'type' => TitleComponent::TYPES[$type]['key'],
+                'style' => TitleComponent::STYLES[$style]['key'],
             ];
             foreach (supportedLocaleKeys() as $localeKey) {
                 $data['title'][$localeKey] = data_get($title, $localeKey)
@@ -87,7 +90,7 @@ trait HasBricks
     public function withTitleSecondaryBrick(string $type = 'h2', array $title = []): self
     {
         return $this->afterCreating(function (HasBrickables $model) use ($type, $title) {
-            $data = ['type' => Title::TYPES[$type]['key']];
+            $data = ['type' => TitleComponent::TYPES[$type]['key']];
             foreach (supportedLocaleKeys() as $localeKey) {
                 $data['title'][$localeKey] = data_get($title, $localeKey)
                     ?: Str::title($this->faker->words(random_int(1, 3), true));
@@ -191,16 +194,6 @@ trait HasBricks
         });
     }
 
-    /**
-     * @param \Closure $addSubBricks
-     * @param string $backgroundColor
-     * @param string $alignment
-     *
-     * @return $this
-     * @throws \Okipa\LaravelBrickables\Exceptions\BrickableCannotBeHandledException
-     * @throws \Okipa\LaravelBrickables\Exceptions\InvalidBrickableClassException
-     * @throws \Okipa\LaravelBrickables\Exceptions\NotRegisteredBrickableClassException
-     */
     public function withColoredBackgroundContainerBrick(
         Closure $addSubBricks,
         string $backgroundColor = 'gray_light',
@@ -213,8 +206,23 @@ trait HasBricks
                 'data' => [
                     'background_color' => ColoredBackgroundContainer::BACKGROUND_COLORS[$backgroundColor]['key'],
                     'alignment' => ColoredBackgroundContainer::ALIGNMENTS[$alignment]['key'],
-                ]
+                ],
             ]);
+        });
+    }
+
+    /**
+     * @param string $type
+     *
+     * @return $this
+     * @throws \Okipa\LaravelBrickables\Exceptions\BrickableCannotBeHandledException
+     * @throws \Okipa\LaravelBrickables\Exceptions\InvalidBrickableClassException
+     * @throws \Okipa\LaravelBrickables\Exceptions\NotRegisteredBrickableClassException
+     */
+    public function withSpacerBrick(string $type): self
+    {
+        return $this->afterCreating(function (HasBrickables $model) use ($type) {
+            $model->addBrick(Spacer::class, ['type' => SpacerComponent::TYPES[$type]['key']]);
         });
     }
 }

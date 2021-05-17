@@ -5,17 +5,13 @@
     $conversionName = $fullWidth ? 'full' : 'containerized';
 @endphp
 @if(request()->is('admin/*') || request()->is('*/admin/*'))
-    @unless($fullWidth)
-        <div class="container">
-            <div class="row">
-    @endunless
-        <div class="mb-2">
-            <i class="fas fa-info-circle fa-fw text-info"></i> {{ $fullWidth ? __('Full width') : __('Container width') }}.
-        </div>
-    @unless($fullWidth)
+    <div class="container">
+        <div class="row">
+            <div class="my-3">
+                <i class="fas fa-info-circle fa-fw text-info"></i> {{ __($brick->brickable->getLabel()) }} - {{ __('Full width:') }} {{ $fullWidth ? __('Yes') : __('No') }}.
             </div>
         </div>
-    @endunless
+    </div>
 @endif
 @if($slides->isNotEmpty())
     @unless($fullWidth)

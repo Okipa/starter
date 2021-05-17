@@ -1,3 +1,12 @@
+@if(request()->is('admin/*') || request()->is('*/admin/*'))
+    <div class="container">
+        <div class="row">
+            <div class="col my-3">
+                <i class="fas fa-info-circle fa-fw text-info"></i> {{ __($brick->brickable->getLabel()) }}.
+            </div>
+        </div>
+    </div>
+@endif
 <div class="container">
     <div class="row mb-n3">
         <div class="col-md-6 text">

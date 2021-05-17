@@ -11,6 +11,7 @@ class ColoredBackgroundContainerUpdateRequest extends FormRequest
     public function rules(): array
     {
         return [
+            'full_width' => ['required', 'boolean'],
             'background_color' => [
                 'required',
                 'string',
@@ -22,5 +23,10 @@ class ColoredBackgroundContainerUpdateRequest extends FormRequest
                 Rule::in(array_keys(ColoredBackgroundContainer::ALIGNMENTS)),
             ],
         ];
+    }
+
+    protected function prepareForValidation(): void
+    {
+        $this->merge(['full_width' => (bool) $this->full_width]);
     }
 }

@@ -99,6 +99,18 @@ resources:nodev:
       - develop
       - tags
 
+security:
+  stage: test
+  image: php:8.0-cli
+  dependencies:
+    - composer
+  script:
+    - composer update --dry-run roave/security-advisories
+  except:
+    refs:
+      - develop
+      - tags
+
 phpcs:
   stage: test
   image: php:8.0-cli

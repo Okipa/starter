@@ -270,7 +270,19 @@
     "Center": "Centré",
     "Right": "Droite",
     "Spread": "Étalé",
-    "Full width": "Pleine largeur",
+    "Full width:": "Pleine largeur :",
+    "Yes": "Oui",
+    "No": "Non",
     "Container width": "Largeur du conteneur",
-    "A h1 title has already been created.": "Un titre h1 a déjà été créé."
+    "Spacer": "Espacement",
+    "Extra large": "Très important",
+    "Large": "Important",
+    "Medium": "Moyen",
+    "Small": "Petit",
+    "Extra small": "Très petit",
+    "Type:": "Type :",
+    "Style:": "Style :",
+    "Alignment:": "Alignement :",
+    "Background color:": "Couleur de fond :",
+    "Invert order:": "Inversement ordre :"
 }

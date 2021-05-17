@@ -13,6 +13,8 @@ export default class EasyMdeEditor {
                 spellChecker: false,
                 hideIcons: ['image'],
                 showIcons: ['table'],
+                maxHeight: '300px',
+                scrollbarStyle: 'null',
                 status: [
                     'lines',
                     'words',

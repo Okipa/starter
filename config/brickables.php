@@ -23,6 +23,7 @@ return [
         App\Brickables\ThreeTextColumns::class,
         App\Brickables\OneColumnTextOneColumnImage::class,
         App\Brickables\ColoredBackgroundContainer::class,
+        App\Brickables\Spacer::class,
         // add your own brickables here ...
     ],
 

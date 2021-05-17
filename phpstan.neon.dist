@@ -22,8 +22,6 @@ parameters:
         - '#Call to an undefined method Illuminate\\Database\\Eloquent\\Factories\\Factory::withCategories\(\)#'
         - '#Call to an undefined method Illuminate\\Database\\Eloquent\\Factories\\Factory::twoFactorAuthenticationActivated\(\)#'
         - '#Call to an undefined method Spatie\\Image\\Manipulations::withResponsiveImages\(\)#'
-        - '#Call to an undefined method Illuminate\\Database\\Eloquent\\Relations\\BelongsToMany::where\(\)#'
-        - '#Call to an undefined method Illuminate\\Database\\Query\\Builder::withTimestamps\(\)#'
 
     excludePaths:
         - ./*/*/FileToBeExcluded.php
