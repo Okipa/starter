@@ -1,9 +1,7 @@
 @extends('layouts.front.full')
 @section('template')
-    <div class="mt-5 mb-4">
-        {!! $pageContent->displayBricks() !!}
-    </div>
-    <div class="container my-5">
+    {!! $pageContent->displayBricks() !!}
+    <div class="container">
         <div class="row">
             <div class="col-lg-8">
                 <form method="POST"
@@ -119,4 +117,5 @@
             </div>
         </div>
     </div>
+    <x-front.spacer typeKey="xl"/>
 @endsection

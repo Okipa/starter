@@ -4,15 +4,6 @@
     $fullWidth = data_get($brick, 'data.full_width');
     $conversionName = $fullWidth ? 'full' : 'containerized';
 @endphp
-@if(request()->is('admin/*') || request()->is('*/admin/*'))
-    <div class="container">
-        <div class="row">
-            <div class="my-3">
-                <i class="fas fa-info-circle fa-fw text-info"></i> {{ __($brick->brickable->getLabel()) }} - {{ __('Full width:') }} {{ $fullWidth ? __('Yes') : __('No') }}.
-            </div>
-        </div>
-    </div>
-@endif
 @if($slides->isNotEmpty())
     @unless($fullWidth)
         <div class="container">

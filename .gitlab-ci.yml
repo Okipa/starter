@@ -9,6 +9,7 @@ composer:
   stage: build
   image: composer:latest
   script:
+    - composer update roave/security-advisories --dry-run --ignore-platform-reqs
     - composer install --optimize-autoloader --no-progress --no-scripts --ignore-platform-reqs
   artifacts:
     expire_in: 1 day
@@ -27,6 +28,7 @@ composer:nodev:
   stage: build
   image: composer:latest
   script:
+    - composer update roave/security-advisories --dry-run --ignore-platform-reqs
     - composer install --optimize-autoloader --no-progress --no-scripts --ignore-platform-reqs --no-dev
   artifacts:
     expire_in: 1 day
@@ -95,18 +97,6 @@ resources:nodev:
       - public/favicon.ico
       - public/mix-manifest.json
   only:
-    refs:
-      - develop
-      - tags
-
-security:
-  stage: test
-  image: php:8.0-cli
-  dependencies:
-    - composer
-  script:
-    - composer update --dry-run roave/security-advisories
-  except:
     refs:
       - develop
       - tags

@@ -2,8 +2,6 @@
 
 namespace Database\Factories\Pages;
 
-use App\Brickables\OneTextColumn;
-use App\Brickables\Title;
 use App\Models\Pages\Page;
 use Database\Factories\Traits\HasBricks;
 use Database\Factories\Traits\HasSeoMeta;
@@ -21,7 +19,7 @@ class PageFactory extends Factory
     public function definition(): array
     {
         return [
-            'nav_title' => ['fr' => $this->faker->catchPhrase, 'en' => $this->faker->catchPhrase],
+            'nav_title' => ['fr' => $this->faker->unique()->catchPhrase, 'en' => $this->faker->unique()->catchPhrase],
             'active' => true,
         ];
     }

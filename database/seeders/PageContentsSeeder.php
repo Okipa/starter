@@ -8,11 +8,6 @@ use Illuminate\Database\Seeder;
 
 class PageContentsSeeder extends Seeder
 {
-    public function __construct(protected \Faker\Generator $faker)
-    {
-        //
-    }
-
     /**
      * @throws \Okipa\LaravelBrickables\Exceptions\BrickableCannotBeHandledException
      * @throws \Okipa\LaravelBrickables\Exceptions\InvalidBrickableClassException
@@ -22,6 +17,7 @@ class PageContentsSeeder extends Seeder
      */
     public function run(): void
     {
+        // Home page
         PageContent::factory()->home()
             ->withCarouselBrick()
             ->withSpacerBrick('lg')
@@ -39,25 +35,33 @@ class PageContentsSeeder extends Seeder
             ->withTitleBrick('h3', 'h3')
             ->withSpacerBrick('sm')
             ->withOneColumnTextOneColumnImageBrick()
-            ->withSpacerBrick('sm')
+            ->withSpacerBrick('xs')
             ->withOneColumnTextOneColumnImageBrick(invertOrder: true)
-            ->withSpacerBrick('sm')
+            ->withSpacerBrick('xs')
             ->withOneColumnTextOneColumnImageBrick()
-            ->withSpacerBrick('sm')
+            ->withSpacerBrick('xs')
             ->withOneColumnTextOneColumnImageBrick(invertOrder: true)
             ->withSpacerBrick('xl')
             ->withSeoMeta()
             ->create();
+        // News articles list page
         PageContent::factory()
             ->news()
+            ->withSpacerBrick('xl')
             ->withTitleBrick()
+            ->withSpacerBrick('sm')
             ->withThreeTextColumnsBrick()
+            ->withSpacerBrick('lg')
             ->withSeoMeta()
             ->create();
+        // Contact page
         PageContent::factory()
             ->contact()
+            ->withSpacerBrick('xl')
             ->withTitleBrick()
+            ->withSpacerBrick('sm')
             ->withOneTextColumnBrick()
+            ->withSpacerBrick('lg')
             ->withSeoMeta()
             ->create();
     }

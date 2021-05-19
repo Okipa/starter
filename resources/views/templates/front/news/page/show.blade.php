@@ -2,37 +2,43 @@
 @section('template')
     {!! $pageContent->displayBricks() !!}
     <div class="container">
-        <a href="{{ route('feeds.news') }}"
-           title="{{ __(config('feed.feeds.news.title')) }}"
-           target="_blank">
-            <span class="fa-stack text-primary">
-                <i class="fas fa-circle fa-stack-2x"></i>
-                <i class="fas fa-rss fa-stack-1x fa-inverse"></i>
-            </span>
-            {{ __(config('feed.feeds.news.title')) }}
-        </a>
-    </div>
-    <div class="container">
         <div class="row">
-            <form class="col d-flex align-items-end" novalidate>
-                {{ select()->name('category_id')
-                    ->options(App\Models\News\NewsCategory::orderBy('name')->get()->map(fn(App\Models\News\NewsCategory $category) => [
-                        'id' => $category->id,
-                        'name' => $category->name
-                    ]), 'id', 'name')
-                    ->selectOptions('id', (int) request()->category_id)
-                    ->containerClasses(['mb-0']) }}
-                {{ submitValidate()->prepend('<i class="fas fa-filter fa-fw"></i>')
-                    ->label(__('Filter'))
-                    ->containerClasses(['ml-3']) }}
-                @if(request()->has(['category_id']))
-                    {{ buttonBack()->route('news.page.show')->label(__('Reset'))->containerClasses(['ml-3']) }}
-                @endif
-            </form>
+            <div class="col-md-6">
+                {{-- Filters --}}
+                <form class="d-flex align-items-end" novalidate>
+                    {{ select()->name('category_id')
+                        ->options(App\Models\News\NewsCategory::orderBy('name')->get()->map(fn(App\Models\News\NewsCategory $category) => [
+                            'id' => $category->id,
+                            'name' => $category->name
+                        ]), 'id', 'name')
+                        ->selectOptions('id', (int) request()->category_id)
+                        ->containerClasses(['mb-0']) }}
+                    {{ submitValidate()->prepend('<i class="fas fa-filter fa-fw"></i>')
+                        ->label(__('Filter'))
+                        ->containerClasses(['ml-3']) }}
+                    @if(request()->has(['category_id']))
+                        {{ buttonBack()->route('news.page.show')->label(__('Reset'))->containerClasses(['ml-3']) }}
+                    @endif
+                </form>
+            </div>
+            <div class="col-md-6 mt-3 d-flex justify-content-md-end align-items-end">
+                {{-- RSS --}}
+                <a href="{{ route('feeds.news') }}"
+                   title="{{ __(config('feed.feeds.news.title')) }}"
+                   target="_blank">
+                    <span class="fa-stack text-primary">
+                        <i class="fas fa-circle fa-stack-2x"></i>
+                        <i class="fas fa-rss fa-stack-1x fa-inverse"></i>
+                    </span>
+                    {{ __(config('feed.feeds.news.title')) }}
+                </a>
+            </div>
         </div>
     </div>
-    <div class="container mt-3 mb-5">
-        <div class="row">
+    <x-front.spacer typeKey="xs"/>
+    {{-- Articles --}}
+    <div class="container">
+        <div class="row my-n3">
             @foreach($articles as $article)
                 <div class="col-sm-6 col-lg-4 my-3">
                     <div class="card">
@@ -70,4 +76,5 @@
             </div>
         </div>
     </div>
+    <x-front.spacer typeKey="xl"/>
 @endsection

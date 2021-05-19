@@ -6,6 +6,7 @@ use App\Models\PageContents\PageContent;
 use Database\Factories\Traits\HasBricks;
 use Database\Factories\Traits\HasSeoMeta;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Str;
 
 class PageContentFactory extends Factory
 {
@@ -17,7 +18,7 @@ class PageContentFactory extends Factory
 
     public function definition(): array
     {
-        return [];
+        return ['unique_key' => Str::snake($this->faker->slug)];
     }
 
     public function home(): self

@@ -1,14 +1,10 @@
-@php
-    $type = App\View\Components\Front\Spacer::TYPES[$brick['data']['type']];
-@endphp
 @if(request()->is('admin/*') || request()->is('*/admin/*'))
     <div class="container">
-        <div class="row">
-            <div class="col my-3">
-                <i class="fas fa-info-circle fa-fw text-info"></i> {{ __($brick->brickable->getLabel()) }} - {{ __('Type:') }} {{ __($type['label']) }}.
-            </div>
+        <div class="py-3">
+            <i class="fas fa-arrows-alt-v fa-fw"></i>
+            {{ __(App\View\Components\Front\Spacer::TYPES[$brick['data']['type']]['label']) }} {{ strtolower(__($brick->brickable->getLabel())) }}.
         </div>
     </div>
 @else
-    <x-front.spacer :typeKey="$type['key']"/>
+    <x-front.spacer :typeKey="$brick['data']['type']"/>
 @endif

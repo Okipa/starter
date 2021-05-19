@@ -1,17 +1,26 @@
 @extends('layouts.front.full')
 @section('template')
-    {{-- cover --}}
+    {{-- Cover --}}
     @if($image = $article->getFirstMedia('illustrations'))
-        <div class="container mt-5">
+        <div class="container">
             <div class="row">
-                <div class="col-12 mb-3">
+                <div class="col-12">
                     {!! $image->img('cover', ['class' => 'img-fluid', 'alt' => $image->name]) !!}
                 </div>
             </div>
         </div>
     @endif
+    <x-front.spacer typeKey="xxs"/>
+    {{-- Back button --}}
+    <div class="container">
+        <a href="route('news.page.show')" title="{{ __('Back') }}">
+            <i class="fas fa-chevron-left fa-fw"></i>
+            {{ __('Back') }}
+        </a>
+    </div>
+    <x-front.spacer typeKey="lg"/>
     {{-- Categories / Sharing --}}
-    <div class="container mt-2 mb-5">
+    <div class="container">
         <div class="row">
             <div class="col-sm-6 my-n1 my-sm-0">
                 @if($article->categories->isNotEmpty())
@@ -64,30 +73,17 @@
             </div>
         </div>
     </div>
-    {{-- title --}}
-    <div class="container my-5">
-        <div class="row">
-            <div class="col-12">
-                <h1 class="mb-4">{{ $article->title }}</h1>
-                <hr>
-            </div>
-        </div>
-    </div>
-    {{-- description --}}
-    <div class="container my-5">
-        <div class="row">
+    <x-front.spacer typeKey="xxs"/>
+    {{-- Title --}}
+    <x-front.title typeKey="h1" styleKey="h1" :title="$article->title"/>
+    <x-front.spacer typeKey="sm"/>
+    {{-- Description --}}
+    <div class="container">
+        <div class="row mb-n3">
             <div class="col-12 text">
                 {!! (new Parsedown)->text($article->description) !!}
             </div>
         </div>
     </div>
-    <div class="container my-5">
-        <div class="row">
-            <div class="col-12 text">
-                {{ buttonLink()->route('news.page.show')
-                    ->prepend('<i class="fas fa-chevron-left fa-fw"></i>')
-                    ->label(__('Back')) }}
-            </div>
-        </div>
-    </div>
+    <x-front.spacer typeKey="xl"/>
 @endsection

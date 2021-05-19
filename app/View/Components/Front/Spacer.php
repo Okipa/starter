@@ -13,6 +13,7 @@ class Spacer extends Component
         'md' => ['key' => 'md', 'label' => 'Medium', 'classes' => 'mb-3 mb-md-4 pb-3 pb-md-4'],
         'sm' => ['key' => 'sm', 'label' => 'Small', 'classes' => 'mb-2 mb-md-3 pb-3 pb-md-4'],
         'xs' => ['key' => 'xs', 'label' => 'Extra small', 'classes' => 'mb-2 mb-md-3 pb-2 pb-md-3'],
+        'xxs' => ['key' => 'xxs', 'label' => 'Ultra small', 'classes' => 'mb-1 mb-md-2 pb-1 pb-md-2'],
     ];
 
     public array $type;
