@@ -33,7 +33,7 @@
                 {{ __('Page') }}
             </a>
         </li>
-        {{-- categories --}}
+        {{-- Categories --}}
         <li class="nav-item">
             <a class="nav-link{{ $newsCategoriesActive ? ' active' : null }}"
                href="{{ route('news.categories.index') }}"
@@ -42,7 +42,7 @@
                 {{ __('Categories') }}
             </a>
         </li>
-        {{-- articles --}}
+        {{-- Articles --}}
         <li class="nav-item">
             <a class="nav-link{{ $newsArticlesActive ? ' active' : null }}"
                href="{{ route('news.articles.index') }}"

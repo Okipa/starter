@@ -12,6 +12,6 @@ Route::get(
 
 // articles
 Route::get(
-    Lang::uri('news/{article}'),
+    Lang::uri('news/{article:slug}'),
     [NewsArticlesController::class, 'show']
 )->name('news.article.show');

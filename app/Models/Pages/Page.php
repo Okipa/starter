@@ -2,21 +2,37 @@
 
 namespace App\Models\Pages;
 
-use App\Models\Abstracts\Seo;
+use App\Brickables\Carousel;
+use App\Models\Traits\HasSeoMeta;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 use Okipa\LaravelBrickables\Contracts\HasBrickables;
 use Okipa\LaravelBrickables\Traits\HasBrickablesTrait;
+use Okipa\MediaLibraryExt\ExtendsMediaAbilities;
+use Spatie\Image\Manipulations;
+use Spatie\MediaLibrary\HasMedia;
+use Spatie\MediaLibrary\InteractsWithMedia;
+use Spatie\MediaLibrary\MediaCollections\Models\Media;
 use Spatie\Translatable\HasTranslations;
 
-class Page extends Seo implements HasBrickables
+class Page extends Model implements HasMedia, HasBrickables
 {
     use HasFactory;
     use HasTranslations;
+    use InteractsWithMedia;
+    use ExtendsMediaAbilities;
     use HasBrickablesTrait;
+    use HasSeoMeta;
 
     public array $translatable = ['slug', 'nav_title'];
 
-    /** @var string*/
+    public array $brickables = [
+        'number_of_bricks' => [
+            Carousel::class => ['max' => 1],
+        ],
+    ];
+
+    /** @var string */
     protected $table = 'pages';
 
     /** @var array */
@@ -25,20 +41,29 @@ class Page extends Seo implements HasBrickables
     /** @var array */
     protected $casts = ['active' => 'boolean'];
 
-    public function getRouteKey(): string
+    public function resolveRouteBinding($value, $field = null): Model|null
     {
-        return $this->getTranslation('slug', app()->getLocale());
+        return multilingual() && $field
+            ? self::where($field . '->' . app()->getLocale(), $value)->first()
+            : parent::resolveRouteBinding($value, $field);
+    }
+
+    /** @SuppressWarnings(PHPMD.UnusedFormalParameter) */
+    public function registerMediaCollections(): void
+    {
+        $this->registerSeoMetaMediaCollection();
     }
 
     /**
-     * @param mixed $value
-     * @param null $field
-     *
-     * @return \App\Models\Pages\Page|null
      * @SuppressWarnings(PHPMD.UnusedFormalParameter)
+     * @param \Spatie\MediaLibrary\MediaCollections\Models\Media|null $media
+     *
+     * @throws \Spatie\Image\Exceptions\InvalidManipulation
      */
-    public function resolveRouteBinding($value, $field = null): ?Page
+    public function registerMediaConversions(Media $media = null): void
     {
-        return $this->where('slug->' . app()->getLocale(), $value)->first();
+        $this->addMediaConversion('thumb')
+            ->fit(Manipulations::FIT_CROP, 40, 40)
+            ->format('webp');
     }
 }

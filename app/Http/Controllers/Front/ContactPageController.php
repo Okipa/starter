@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Front;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Contact\ContactPageSendMessageRequest;
 use App\Models\Logs\LogContactFormMessage;
-use App\Models\Pages\TitleDescriptionPageContent;
+use App\Models\PageContents\PageContent;
 use App\Notifications\ContactFormMessage;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
@@ -19,7 +19,8 @@ class ContactPageController extends Controller
      */
     public function show(): View
     {
-        $pageContent = TitleDescriptionPageContent::firstOrCreate(['unique_key' => 'contact_page_content']);
+        /** @var \App\Models\PageContents\PageContent $pageContent */
+        $pageContent = PageContent::where('unique_key', 'contact_page_content')->sole();
         $pageContent->displaySeoMeta();
         $css = mix('/css/templates/front/contact/page/show.css');
 
@@ -42,7 +43,7 @@ class ContactPageController extends Controller
                 $request->validated()['phone_number'],
                 $request->validated()['message'],
             ))->locale(app()->getLocale()));
-        Notification::route('mail', settings()->email)
+        Notification::route('mail', $request->validated()['email'])
             ->notify((new ContactFormMessage(
                 $request->validated()['first_name'],
                 $request->validated()['last_name'],

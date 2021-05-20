@@ -6,6 +6,7 @@
         <div id="layout" class="d-flex flex-grow-1 position-relative">
             @yield('template')
         </div>
+        @include('layouts.front.partials.cookies-management-policy')
         @include('layouts.front.partials.end')
     </body>
 @endsection

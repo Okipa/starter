@@ -27,7 +27,7 @@ class FortifyServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        // Todo: remove this block if your app is not multilingual.
+        // ToDo: remove this block if your app is not multilingual.
         // Disabling default routes in order to handle multilingual routes in /routes/web/fortify/ directory.
         // You can safely remove these routes and the line below if your app is not multilingual.
         Fortify::ignoreRoutes();

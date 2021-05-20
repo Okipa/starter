@@ -22,55 +22,63 @@ class LibraryMediaFileFactory extends Factory
         ];
     }
 
-    public function image(): Factory
+    public function withCategory(LibraryMediaCategory $category = null): self
     {
-        return $this->afterCreating(function (LibraryMediaFile $file) {
-            $file->addMedia($this->faker->image(null, 640, 480, null, true, true, 'Media'))
-                ->toMediaCollection('media');
+        return $this->state(fn() => [
+            'category_id' => $category->id ?? LibraryMediaCategory::inRandomOrder()->get()->first()->id,
+        ]);
+    }
+
+    public function image(string $image = null): self
+    {
+        return $this->afterCreating(function (LibraryMediaFile $file) use ($image) {
+            $image
+                ? $file->addMedia($image)->preservingOriginal()->toMediaCollection('media')
+                : $file->addMedia($this->faker->image())->toMediaCollection('media');
         });
     }
 
-    public function pdf(): Factory
+    public function pdf(string $pdf = null): self
     {
-        return $this->afterCreating(function (LibraryMediaFile $file) {
-            $file->addMedia(resource_path('dummy/file.pdf'))
+        return $this->afterCreating(function (LibraryMediaFile $file) use ($pdf) {
+            $pdf
+                ? $file->addMedia($pdf)->preservingOriginal()->toMediaCollection('media')
+                : $file->addMedia(resource_path('dummy/file.pdf'))
                 ->preservingOriginal()
                 ->toMediaCollection('media');
         });
     }
 
-    public function video(): Factory
+    public function video(string $video = null): self
     {
-        return $this->afterCreating(function (LibraryMediaFile $file) {
-            $file->addMedia(resource_path('dummy/video.mp4'))
+        return $this->afterCreating(function (LibraryMediaFile $file) use ($video) {
+            $video
+                ? $file->addMedia($video)->preservingOriginal()->toMediaCollection('media')
+                : $file->addMedia(resource_path('dummy/video.mp4'))
                 ->preservingOriginal()
                 ->toMediaCollection('media');
         });
     }
 
-    public function audio(): Factory
+    public function audio(string $audio = null): self
     {
-        return $this->afterCreating(function (LibraryMediaFile $file) {
-            $file->addMedia(resource_path('dummy/audio.mp3'))
+        return $this->afterCreating(function (LibraryMediaFile $file) use ($audio) {
+            $audio
+                ? $file->addMedia($audio)->preservingOriginal()->toMediaCollection('media')
+                : $file->addMedia(resource_path('dummy/audio.mp3'))
                 ->preservingOriginal()
                 ->toMediaCollection('media');
         });
     }
 
-    public function doc(): Factory
+    public function doc(string $doc = null): self
     {
-        return $this->afterCreating(function (LibraryMediaFile $file) {
-            $file->addMedia(resource_path('dummy/doc.odt'))
+        return $this->afterCreating(function (LibraryMediaFile $file) use ($doc) {
+            $doc
+                ? $file->addMedia($doc)->preservingOriginal()->toMediaCollection('media')
+                : $file->addMedia(resource_path('dummy/doc.odt'))
                 ->preservingOriginal()
                 ->toMediaCollection('media');
-        });
-    }
-
-    public function withCategory(): Factory
-    {
-        return $this->afterMaking(function (LibraryMediaFile $file) {
-            $categories = LibraryMediaCategory::get();
-            $file->category_id = $categories->random(1)->first()->id;
         });
     }
 }

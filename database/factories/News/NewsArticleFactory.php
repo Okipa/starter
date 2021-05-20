@@ -50,7 +50,7 @@ EOT;
         ];
     }
 
-    public function configure(): Factory
+    public function configure(): self
     {
         return $this->afterMaking(function (NewsArticle $page) {
             $page->slug = $page->slug
@@ -72,7 +72,7 @@ EOT;
         });
     }
 
-    public function withCategory(): Factory
+    public function withCategory(): self
     {
         return $this->afterCreating(function (NewsArticle $newsArticle) {
             $categoryId = NewsCategory::get()->random(1)->pluck('id');
@@ -80,12 +80,12 @@ EOT;
         });
     }
 
-    public function withMedia(): Factory
+    public function withMedia(): self
     {
         return $this->afterCreating(function (NewsArticle $newsArticle) {
             $illustrationsCount = random_int(1, 3);
             for ($ii = 1; $ii <= $illustrationsCount; $ii++) {
-                $newsArticle->addMedia($this->faker->image(null, 1140, 500, null, true, true, 'News'))
+                $newsArticle->addMedia($this->faker->image(null, 1140, 500))
                     ->toMediaCollection('illustrations');
             }
         });

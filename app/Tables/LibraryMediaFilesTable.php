@@ -2,17 +2,17 @@
 
 namespace App\Tables;
 
+use App\Http\Requests\LibraryMedia\LibraryMediaFilesIndexRequest;
 use App\Models\LibraryMedia\LibraryMediaFile;
 use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Http\Request;
 use Okipa\LaravelTable\Abstracts\AbstractTable;
 use Okipa\LaravelTable\Table;
 
 class LibraryMediaFilesTable extends AbstractTable
 {
-    protected Request $request;
+    protected LibraryMediaFilesIndexRequest $request;
 
-    public function __construct(Request $request)
+    public function __construct(LibraryMediaFilesIndexRequest $request)
     {
         $this->request = $request;
     }
@@ -41,8 +41,8 @@ class LibraryMediaFilesTable extends AbstractTable
             ->query(function (Builder $query) {
                 $query->select('library_media_files.*');
                 $query->addSelect(multilingual()
-                    ? 'library_media_categories.name->' . app()->getLocale() . ' as category_name'
-                    : 'library_media_categories.name as category_name');
+                    ? 'library_media_categories.title->' . app()->getLocale() . ' as category_title'
+                    : 'library_media_categories.title as category_title');
                 $query->addSelect('media.mime_type');
                 $query->join('media', 'media.model_id', '=', 'library_media_files.id');
                 $query->join(
@@ -72,11 +72,11 @@ class LibraryMediaFilesTable extends AbstractTable
         $table->column('thumb')
             ->html(fn(LibraryMediaFile $file) => view('components.admin.library-media.thumb', compact('file')));
         $table->column('name')->stringLimit(25)->sortable()->searchable();
-        $table->column('category_name')
+        $table->column('category_title')
             ->link(fn(LibraryMediaFile $file) => route('libraryMedia.files.index', [
                 'category_id' => $file->category->id,
             ]))
-            ->value(fn(LibraryMediaFile $file) => $file->category->name)
+            ->value(fn(LibraryMediaFile $file) => $file->category->title)
             ->stringLimit(25)
             ->sortable();
         $table->column('mime_type')

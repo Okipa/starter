@@ -1,10 +1,9 @@
 {
-    "name": "ACID-Solutions/starter",
-    "description": "Web app prebuilt base on Laravel 8, PHP 8.0 and MySQL 8.0",
-    "license": "proprietary",
+    "name": "todo/todo",
+    "description": "todo/todo",
+    "license": "todo",
     "require": {
         "php": "^8.0",
-        "ext-json": "*",
         "artesaos/seotools": "^0.20.0",
         "coderello/laravel-shared-data": "^3.0",
         "codezero/laravel-localized-routes": "^2.4",
@@ -17,7 +16,7 @@
         "intervention/validation": "^2.4",
         "laravel-notification-channels/webhook": "^2.1",
         "laravel/fortify": "^1.5",
-        "laravel/framework": "^8.12",
+        "laravel/framework": "^8.40",
         "laravel/horizon": "^5.0",
         "laravel/telescope": "^4.0",
         "laravel/tinker": "^2.5",
@@ -32,10 +31,10 @@
         "realrashid/sweet-alert": "^3.2",
         "sentry/sentry-laravel": "^2.0",
         "spatie/laravel-feed": "^3.0",
-        "spatie/laravel-honeypot": "^3.0.1",
+        "spatie/laravel-honeypot": "^4.0",
         "spatie/laravel-medialibrary": "^9.0",
         "spatie/laravel-sitemap": "^6.0",
-        "spatie/laravel-translatable": "^4.6",
+        "spatie/laravel-translatable": "^5.0",
         "spatie/laravel-welcome-notification": "^2.1",
         "spatie/pdf-to-image": "^2.1"
     },
@@ -54,16 +53,6 @@
         "phpstan/phpstan-mockery": "^0.12.11",
         "phpunit/phpunit": "^9.3.3",
         "squizlabs/php_codesniffer": "^3.0"
-    },
-    "config": {
-        "optimize-autoloader": true,
-        "preferred-install": "dist",
-        "sort-packages": true
-    },
-    "extra": {
-        "laravel": {
-            "dont-discover": []
-        }
     },
     "autoload": {
         "psr-4": {
@@ -108,12 +97,23 @@
             "@php artisan ide-helper:meta"
         ],
         "test": [
+            "composer update --dry-run roave/security-advisories",
             "vendor/bin/phpcbf",
             "vendor/bin/phpcs",
-            "vendor/bin/phpmd app,config,database,routes text phpmd.xml",
+            "vendor/bin/phpmd app,config,database,routes,tests text phpmd.xml",
             "vendor/bin/phpstan analyse --memory-limit=2G",
-            "@php artisan test --parallel --colors --coverage-text"
+            "@php artisan test --parallel --colors --no-coverage"
         ]
+    },
+    "extra": {
+        "laravel": {
+            "dont-discover": []
+        }
+    },
+    "config": {
+        "optimize-autoloader": true,
+        "preferred-install": "dist",
+        "sort-packages": true
     },
     "minimum-stability": "dev",
     "prefer-stable": true

@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Route;
 
 Brickables::routes();
 
-// carousel slides
+// Carousel slides
 Route::get(
     Lang::uri('brick/carousel/{brick}/slide/create'),
     [CarouselBrickSlidesController::class, 'create']

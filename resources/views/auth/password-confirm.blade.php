@@ -10,11 +10,9 @@
         'dropdownClass' => ['dropdown-menu-end'],
         'labelClass' => ['btn', 'btn-link']
     ])
-    @if($icon = settings()->getFirstMedia('icons'))
-        <div class="mx-auto mb-4">
-            {{ $icon('auth') }}
-        </div>
-    @endif
+    <div class="mx-auto mb-4">
+        {{ settings()->getFirstMedia('logo_squared')->img('auth', ['alt' => config('app.name')]) }}
+    </div>
     <h1 class="h3 mb-3 font-weight-normal">
         <i class="fas fa-shield-alt fa-fw"></i>
         {{ __('Password verification') }}

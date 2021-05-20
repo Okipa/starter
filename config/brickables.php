@@ -16,11 +16,14 @@ return [
      * Brickables will not be available for use if they are not declared here.
      */
     'registered' => [
-        App\Brickables\TitleH1::class,
+        App\Brickables\Carousel::class,
+        App\Brickables\Title::class,
         App\Brickables\OneTextColumn::class,
         App\Brickables\TwoTextColumns::class,
-        App\Brickables\TwoTextImageColumns::class,
-        App\Brickables\Carousel::class,
+        App\Brickables\ThreeTextColumns::class,
+        App\Brickables\OneColumnTextOneColumnImage::class,
+        App\Brickables\ColoredBackgroundContainer::class,
+        App\Brickables\Spacer::class,
         // add your own brickables here ...
     ],
 

@@ -6,9 +6,6 @@ use Illuminate\Database\Migrations\Migration;
 
 class CreateSettingsTable extends Migration
 {
-    /**
-     * Run the migrations.
-     */
     public function up()
     {
         Schema::create('settings', function (Blueprint $table) {
@@ -18,10 +15,10 @@ class CreateSettingsTable extends Migration
             $table->string('address')->nullable();
             $table->string('zip_code')->nullable();
             $table->string('city')->nullable();
-            $table->string('facebook')->nullable();
-            $table->string('twitter')->nullable();
-            $table->string('instagram')->nullable();
-            $table->string('youtube')->nullable();
+            $table->string('facebook_url')->nullable();
+            $table->string('twitter_url')->nullable();
+            $table->string('instagram_url')->nullable();
+            $table->string('youtube_url')->nullable();
             $table->string('google_tag_manager_id')->nullable();
             $table->timestamps();
         });

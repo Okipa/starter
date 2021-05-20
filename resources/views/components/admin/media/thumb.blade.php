@@ -1,6 +1,6 @@
 @if($image)
     {{ image()->src($image->getUrl('thumb'))
         ->linkUrl($image->getUrl())
-        ->linkTitle($image->name)
+        ->linkTitle($image->file_name)
         ->componentClasses(['rounded-circle']) }}
 @endif

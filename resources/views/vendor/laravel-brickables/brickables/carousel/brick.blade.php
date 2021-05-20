@@ -54,7 +54,17 @@
         </div>
     @endunless
 @elseif(request()->is('admin/*') || request()->is('*/admin/*'))
-    <i class="fas fa-info-circle fa-fw text-info me-1"></i>
-    {{ __('No slides were added to this carousel.') }}
+    @unless($fullWidth)
+        <div class="container">
+            <div class="row">
+    @endunless
+        <div>
+            <i class="fas fa-info-circle fa-fw text-info"></i>
+            {{ __('No slides were added to this carousel.') }}
+        </div>
+    @unless($fullWidth)
+            </div>
+        </div>
+    @endunless
 @endif
 

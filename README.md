@@ -1,13 +1,13 @@
-<!-- Todo: search every `Todo:` occurrence in starter and customize what needs to be. -->
+<!-- ToDo: search every `ToDo:` occurrence in starter and customize what needs to be. -->
 
 # Web app prebuilt base on Laravel 8, PHP 8.0 and MySQL 8.0
 
-<!-- Todo: replace by project badges -->
+<!-- ToDo: replace by project badges -->
 `<build-status-badge>` `<coverage-report-badge>`
 
 ## Team
 
-<!-- Todo: replace by project team members -->
+<!-- ToDo: replace by project team members -->
 * Lead dev: [Okipa](https://github.com/Okipa)
 * Quality: [Okipa](https://github.com/Okipa)
 * Management: [Okipa](https://github.com/Okipa)
@@ -32,21 +32,22 @@
 
 ### Requirements
 
-* Git
-* Docker Community Edition: https://docs.docker.com/install
+* Latest Git stable version
+* Latest Composer stable version
+* Latest Docker Community Edition stable version: https://docs.docker.com/install
 * Latest Node stable version
 * Latest Yarn stable version
 
 ### Import and git setup
 
-<!-- Todo: set git repo URL -->
-Clone the project from `<project-repository-url>`.
+<!-- ToDo: set git repo URL -->
+Clone the project from <project-repository-url>.
 
 ### DNS setup
 
 Set your project domain resolution in your virtualhost: `sudo vim /etc/hosts`.
 
-<!-- Todo: Replace `starter.test` by your project local DNS -->
+<!-- ToDo: Replace `starter.test` by your project local DNS -->
 ```sh
     # Add these lines in your /etc/hosts file
     127.0.0.1   starter.test

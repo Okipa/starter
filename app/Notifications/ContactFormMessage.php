@@ -13,17 +13,17 @@ class ContactFormMessage extends Notification implements ShouldQueue
 
     public int $tries = 3;
 
-    protected string $firstName;
+    public string $firstName;
 
-    protected string $lastName;
+    public string $lastName;
 
-    protected string $email;
+    public string $email;
 
-    protected ?string $phoneNumber = null;
+    public ?string $phoneNumber = null;
 
-    protected string $message;
+    public string $message;
 
-    protected bool $isCopyToSender;
+    public bool $isCopyToSender;
 
     public function __construct(
         string $firstName,

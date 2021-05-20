@@ -31,7 +31,7 @@
         <x-common.forms.notice class="mt-3"/>
         <div class="row mb-n3" data-masonry>
             <div class="col-xl-6 mb-3">
-                <x-admin.forms.card title="{{ __('Identity') }}">
+                <x-admin.forms.card title="{{ __('Informations') }}">
                     {{ inputText()->name('name')
                         ->locales(supportedLocaleKeys())
                         ->model($category)

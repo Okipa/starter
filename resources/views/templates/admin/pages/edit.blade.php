@@ -3,9 +3,9 @@
     <h1>
         <i class="fas fa-file-alt fa-fw"></i>
         @if($page)
-            {{ __('breadcrumbs.orphan.edit', ['entity' => __('Pages'), 'detail' => $page->nav_title]) }}
+            {{ __('breadcrumbs.orphan.edit', ['entity' => __('Free pages'), 'detail' => $page->nav_title]) }}
         @else
-            {{ __('breadcrumbs.orphan.create', ['entity' => __('Pages')]) }}
+            {{ __('breadcrumbs.orphan.create', ['entity' => __('Free pages')]) }}
         @endif
     </h1>
     <hr>

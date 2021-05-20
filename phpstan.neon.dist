@@ -15,6 +15,14 @@ parameters:
     ignoreErrors:
         - '#Call to an undefined method Illuminate\\Http\\Request::validated\(\)#'
         - '#Call to an undefined method Illuminate\\Database\\Eloquent\\Builder::ordered\(\)#'
+        - '#Call to an undefined method Illuminate\\Database\\Eloquent\\Factories\\Factory::withMedia\(\)#'
+        - '#Call to an undefined method Illuminate\\Database\\Eloquent\\Factories\\Factory::home\(\)#'
+        - '#Call to an undefined method Illuminate\\Database\\Eloquent\\Factories\\Factory::news\(\)#'
+        - '#Call to an undefined method Illuminate\\Database\\Eloquent\\Factories\\Factory::contact\(\)#'
+        - '#Call to an undefined method Illuminate\\Database\\Eloquent\\Factories\\Factory::withCategories\(\)#'
+        - '#Call to an undefined method Illuminate\\Database\\Eloquent\\Factories\\Factory::withTitleBrick\(\)#'
+        - '#Call to an undefined method Illuminate\\Database\\Eloquent\\Factories\\Factory::twoFactorAuthenticationActivated\(\)#'
+        - '#Call to an undefined method Spatie\\Image\\Manipulations::withResponsiveImages\(\)#'
 
     excludePaths:
         - ./*/*/FileToBeExcluded.php

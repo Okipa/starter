@@ -14,7 +14,7 @@ class LibraryMediaCategoryFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => [
+            'title' => [
                 'fr' => Str::title($this->faker->word),
                 'en' => Str::title($this->faker->word),
             ],

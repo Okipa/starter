@@ -3,13 +3,13 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\News\CategoryStoreRequest;
-use App\Http\Requests\News\CategoryUpdateRequest;
+use App\Http\Requests\News\NewsCategoryStoreRequest;
+use App\Http\Requests\News\NewsCategoryUpdateRequest;
 use App\Models\News\NewsCategory;
 use App\Tables\NewsCategoriesTable;
 use Artesaos\SEOTools\Facades\SEOTools;
-use Illuminate\Http\RedirectResponse;
 use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
 
 class NewsCategoriesController extends Controller
 {
@@ -39,7 +39,7 @@ class NewsCategoriesController extends Controller
         return view('templates.admin.news.categories.edit', compact('category'));
     }
 
-    public function store(CategoryStoreRequest $request): RedirectResponse
+    public function store(NewsCategoryStoreRequest $request): RedirectResponse
     {
         $category = NewsCategory::create($request->validated());
 
@@ -62,7 +62,7 @@ class NewsCategoriesController extends Controller
         return view('templates.admin.news.categories.edit', compact('category'));
     }
 
-    public function update(CategoryUpdateRequest $request, NewsCategory $category): RedirectResponse
+    public function update(NewsCategoryUpdateRequest $request, NewsCategory $category): RedirectResponse
     {
         $category->update($request->validated());
 
@@ -73,6 +73,12 @@ class NewsCategoriesController extends Controller
         ]));
     }
 
+    /**
+     * @param \App\Models\News\NewsCategory $category
+     *
+     * @return \Illuminate\Http\RedirectResponse
+     * @throws \Exception
+     */
     public function destroy(NewsCategory $category): RedirectResponse
     {
         $category->delete();

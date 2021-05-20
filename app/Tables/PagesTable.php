@@ -25,7 +25,7 @@ class PagesTable extends AbstractTable
             ])
             ->destroyConfirmationHtmlAttributes(fn(Page $page) => [
                 'data-confirm' => __('crud.orphan.destroy_confirm', [
-                    'entity' => __('Pages'),
+                    'entity' => __('Free pages'),
                     'name' => $page->slug,
                 ]),
             ]);

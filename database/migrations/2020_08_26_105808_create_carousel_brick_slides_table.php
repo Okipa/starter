@@ -6,12 +6,7 @@ use Illuminate\Support\Facades\Schema;
 
 class CreateCarouselBrickSlidesTable extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
-    public function up()
+    public function up(): void
     {
         Schema::create('carousel_brick_slides', function (Blueprint $table) {
             $table->id();
@@ -27,12 +22,7 @@ class CreateCarouselBrickSlidesTable extends Migration
         });
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
-    public function down()
+    public function down(): void
     {
         Schema::dropIfExists('carousel_brick_slides');
     }

@@ -32,7 +32,7 @@
         <x-common.forms.notice class="mt-3"/>
         <div class="row mb-n3" data-masonry>
             <div class="col-xl-6 mb-3">
-                <x-admin.forms.card title="{{ __('Identity') }}">
+                <x-admin.forms.card title="{{ __('Media') }}">
                     @php($image = optional($article)->getFirstMedia('illustrations'))
                     {{ inputFile()->name('illustration')
                         ->value(optional($image)->file_name)
@@ -40,6 +40,10 @@
                         ->showRemoveCheckbox(false)
                         ->componentHtmlAttributes(['required'])
                         ->caption((new App\Models\News\NewsArticle)->getMediaCaption('illustrations')) }}
+                </x-admin.forms.card>
+            </div>
+            <div class="col-xl-6 mb-3">
+                <x-admin.forms.card title="{{ __('Information') }}">
                     {{ inputText()->name('title')
                         ->locales(supportedLocaleKeys())
                         ->model($article)
@@ -52,12 +56,13 @@
                     {{ select()->name('category_ids')
                         ->model($article)
                         ->prepend('<i class="fas fa-tags"></i>')
+                        ->disablePlaceholder()
                         ->options(App\Models\News\NewsCategory::get()->map(fn(App\Models\News\NewsCategory $category) => [
                             'id' => $category->id,
                             'name' => $category->name
                         ])->sortBy('name'), 'id', 'name')
                         ->multiple()
-                        ->componentHtmlAttributes(['required', 'data-selector']) }}
+                        ->componentHtmlAttributes(['required']) }}
                 </x-admin.forms.card>
             </div>
             <div class="col-xl-6 mb-3">

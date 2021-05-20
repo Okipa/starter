@@ -9,9 +9,7 @@
                         'dropdownLabelClasses' => ['btn', 'btn-link'],
                         'dropdownMenuClasses' => ['dropdown-menu-end']
                     ])
-                    @if($icon = settings()->getFirstMedia('icons'))
-                        {{ $icon('auth') }}
-                    @endif
+                    {{ settings()->getFirstMedia('logo_squared')->img('auth', ['alt' => config('app.name')]) }}
                 </div>
                 <h1 class="h3 fw-normal text-danger mt-3">
                     <i class="far fa-times-circle fa-fw"></i>

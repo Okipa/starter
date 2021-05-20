@@ -42,28 +42,14 @@ if (! function_exists('supportedLocaleKeys')) {
 }
 
 if (! function_exists('currentLocale')) {
-    /**
-     * Get current configuration locale.
-     *
-     * @return array|string
-     */
-    function currentLocale()
+    function currentLocale(): array|string
     {
         return supportedLocales()[app()->getLocale()];
     }
 }
 
 if (! function_exists('translate')) {
-    /**
-     * Get translated data.
-     *
-     * @param mixed $target
-     * @param string|array|int|null $key
-     * @param string|null $locale
-     *
-     * @return array|string
-     */
-    function translatedData($target, $key = null, string $locale = null)
+    function translatedData(mixed $target, $key = null, string $locale = null): array|string|null
     {
         $data = $key ? data_get($target, $key) : $target;
         $locale = $locale ?: app()->getLocale();
@@ -73,13 +59,6 @@ if (! function_exists('translate')) {
 }
 
 if (! function_exists('localizeRules')) {
-    /**
-     * Translate rules for each activated language.
-     *
-     * @param array $rules
-     *
-     * @return array
-     */
     function localizeRules(array $rules): array
     {
         if (! multilingual()) {

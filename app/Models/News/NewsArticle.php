@@ -2,22 +2,29 @@
 
 namespace App\Models\News;
 
-use App\Models\Abstracts\Seo;
+use App\Models\Traits\HasSeoMeta;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
+use Okipa\MediaLibraryExt\ExtendsMediaAbilities;
 use Parsedown;
 use Spatie\Feed\Feedable;
 use Spatie\Feed\FeedItem;
 use Spatie\Image\Manipulations;
+use Spatie\MediaLibrary\HasMedia;
+use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 use Spatie\Translatable\HasTranslations;
 
-class NewsArticle extends Seo implements Feedable
+class NewsArticle extends Model implements HasMedia, Feedable
 {
     use HasFactory;
     use HasTranslations;
+    use InteractsWithMedia;
+    use ExtendsMediaAbilities;
+    use HasSeoMeta;
 
     public array $translatable = ['slug', 'title', 'description'];
 
@@ -38,27 +45,29 @@ class NewsArticle extends Seo implements Feedable
             ->get();
     }
 
-    public function getRouteKey(): string
+    public function resolveRouteBinding($value, $field = null): Model|null
     {
-        return $this->getTranslation('slug', app()->getLocale());
+        return multilingual() && $field
+            ? self::where($field . '->' . app()->getLocale(), $value)->first()
+            : parent::resolveRouteBinding($value, $field);
     }
 
     /**
-     * @param mixed $value
-     * @param null $field
-     *
-     * @return \App\Models\News\NewsArticle|null
      * @SuppressWarnings(PHPMD.UnusedFormalParameter)
+     * @param \Spatie\MediaLibrary\MediaCollections\Models\Media|null $media
+     *
+     * @throws \Spatie\Image\Exceptions\InvalidManipulation
      */
-    public function resolveRouteBinding($value, $field = null): ?NewsArticle
+    public function registerMediaConversions(Media $media = null): void
     {
-        return $this->where('slug->' . app()->getLocale(), $value)->first();
+        $this->addMediaConversion('thumb')
+            ->fit(Manipulations::FIT_CROP, 40, 40)
+            ->format('webp');
     }
 
     /** @SuppressWarnings(PHPMD.UnusedFormalParameter) */
     public function registerMediaCollections(): void
     {
-        parent::registerMediaCollections();
         $this->addMediaCollection('illustrations')
             ->singleFile()
             ->acceptsMimeTypes(['image/webp', 'image/jpeg', 'image/png'])
@@ -72,6 +81,7 @@ class NewsArticle extends Seo implements Feedable
                     ->withResponsiveImages()
                     ->format('webp');
             });
+        $this->registerSeoMetaMediaCollection();
     }
 
     public function categories(): BelongsToMany

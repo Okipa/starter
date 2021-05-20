@@ -23,12 +23,12 @@ class LibraryMediaCategoriesTable extends AbstractTable
                 'edit' => ['name' => 'libraryMedia.category.edit'],
                 'destroy' => ['name' => 'libraryMedia.category.destroy'],
             ])
-            ->destroyConfirmationHtmlAttributes(function (LibraryMediaCategory $category) {
+            ->destroyConfirmationHtmlAttributes(function (LibraryMediaCategory $libraryMediaCategory) {
                 return [
                     'data-confirm' => __('crud.parent.destroy_confirm', [
                         'parent' => __('Media library'),
                         'entity' => __('Categories'),
-                        'name' => $category->name,
+                        'name' => $libraryMediaCategory->title,
                     ]),
                 ];
             });
@@ -44,14 +44,14 @@ class LibraryMediaCategoriesTable extends AbstractTable
     protected function columns(Table $table): void
     {
         $table->column('id')->sortable();
-        $table->column('name')->stringLimit(25)->sortable()->searchable();
+        $table->column('title')->stringLimit(25)->sortable()->searchable();
         $table->column()
             ->title(__('Associated files'))
-            ->link(fn(LibraryMediaCategory $category) => route('libraryMedia.files.index', [
-                'category_id' => $category->id,
+            ->link(fn(LibraryMediaCategory $libraryMediaCategory) => route('libraryMedia.files.index', [
+                'category_id' => $libraryMediaCategory->id,
             ]))
-            ->value(function (LibraryMediaCategory $category) {
-                $count = $category->files->count();
+            ->value(function (LibraryMediaCategory $libraryMediaCategory) {
+                $count = $libraryMediaCategory->files->count();
 
                 return trans_choice('[0,1]:count file|[2,*]:count files', $count, compact('count'));
             });

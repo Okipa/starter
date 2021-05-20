@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\News\ArticleStoreRequest;
-use App\Http\Requests\News\ArticleUpdateRequest;
+use App\Http\Requests\News\NewsArticleStoreRequest;
+use App\Http\Requests\News\NewsArticleUpdateRequest;
 use App\Models\News\NewsArticle;
 use App\Tables\NewsArticlesTable;
 use Artesaos\SEOTools\Facades\SEOTools;
@@ -40,13 +40,13 @@ class NewsArticlesController extends Controller
     }
 
     /**
-     * @param \App\Http\Requests\News\ArticleStoreRequest $request
+     * @param \App\Http\Requests\News\NewsArticleStoreRequest $request
      *
      * @return \Illuminate\Http\RedirectResponse
      * @throws \Spatie\MediaLibrary\MediaCollections\Exceptions\FileDoesNotExist
      * @throws \Spatie\MediaLibrary\MediaCollections\Exceptions\FileIsTooBig
      */
-    public function store(ArticleStoreRequest $request): RedirectResponse
+    public function store(NewsArticleStoreRequest $request): RedirectResponse
     {
         /** @var \App\Models\News\NewsArticle $article */
         $article = NewsArticle::create($request->validated());
@@ -75,13 +75,13 @@ class NewsArticlesController extends Controller
 
     /**
      * @param \App\Models\News\NewsArticle $article
-     * @param \App\Http\Requests\News\ArticleUpdateRequest $request
+     * @param \App\Http\Requests\News\NewsArticleUpdateRequest $request
      *
      * @return \Illuminate\Http\RedirectResponse
      * @throws \Spatie\MediaLibrary\MediaCollections\Exceptions\FileDoesNotExist
      * @throws \Spatie\MediaLibrary\MediaCollections\Exceptions\FileIsTooBig
      */
-    public function update(ArticleUpdateRequest $request, NewsArticle $article): RedirectResponse
+    public function update(NewsArticleUpdateRequest $request, NewsArticle $article): RedirectResponse
     {
         $article->update($request->validated());
         if ($request->file('illustration')) {

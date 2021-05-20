@@ -10,12 +10,10 @@
         'dropdownLabelClasses' => ['btn', 'btn-link'],
         'dropdownMenuClasses' => ['dropdown-menu-end']
     ])
-    @if($icon = settings()->getFirstMedia('icons'))
-        <div class="mx-auto mb-4">
-            {{ $icon('auth') }}
-        </div>
-    @endif
-    <h1 class="h3 mb-3 fw-normal">
+    <div class="mx-auto mb-4">
+        {{ settings()->getFirstMedia('logo_squared')->img('auth', ['alt' => config('app.name')]) }}
+    </div>
+    <h1 class="h3 mb-3 font-weight-normal">
         <i class="fas fa-sign-in-alt fa-fw"></i>
         {{ __('Sign in area') }}
     </h1>

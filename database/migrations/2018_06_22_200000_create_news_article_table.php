@@ -6,12 +6,7 @@ use Illuminate\Support\Facades\Schema;
 
 class CreateNewsArticleTable extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
-    public function up()
+    public function up(): void
     {
         Schema::create('news_articles', function (Blueprint $table) {
             $table->id();
@@ -27,12 +22,7 @@ class CreateNewsArticleTable extends Migration
         });
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
-    public function down()
+    public function down(): void
     {
         Schema::dropIfExists('news_articles');
     }

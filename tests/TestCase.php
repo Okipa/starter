@@ -16,5 +16,6 @@ abstract class TestCase extends BaseTestCase
         Storage::fake('local');
         // We config spatie/laravel-medialibrary to store files in testing directory.
         config()->set('media-library.disk_name', 'local');
+        $this->withoutExceptionHandling();
     }
 }

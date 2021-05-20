@@ -29,7 +29,7 @@ class UserUpdateRequest extends FormRequest
                 'string',
                 'email:rfc,dns,spoof',
                 'max:255',
-                Rule::unique(User::class)->ignore($this->user->id),
+                Rule::unique(User::class)->ignore($this->user),
             ],
             'new_password' => array_merge(['nullable'], $this->passwordRules()),
         ];
