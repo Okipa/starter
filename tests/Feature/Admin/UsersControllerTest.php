@@ -306,6 +306,6 @@ class UsersControllerTest extends TestCase
             ]))
             ->assertRedirect(route('users.index'));
         // User is deleted.
-        $this->assertDatabaseMissing(app(User::class)->getTable(), ['id' => $destroyedUser->id]);
+        $this->assertDeleted(app(User::class)->getTable(), ['id' => $destroyedUser->id]);
     }
 }

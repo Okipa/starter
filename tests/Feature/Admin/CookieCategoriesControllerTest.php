@@ -200,9 +200,9 @@ class CookieCategoriesControllerTest extends TestCase
             ]))
             ->assertRedirect(route('cookie.categories.index'));
         // Cookie category is deleted.
-        $this->assertDatabaseMissing(app(CookieCategory::class)->getTable(), ['id' => $cookieCategory->id]);
+        $this->assertDeleted(app(CookieCategory::class)->getTable(), ['id' => $cookieCategory->id]);
         // Cookie category/service relation is deleted.
-        $this->assertDatabaseMissing('cookie_service_category', [
+        $this->assertDeleted('cookie_service_category', [
             'cookie_service_id' => $cookieService->id,
             'Cookie_category_id' => $cookieCategory->id,
         ]);
