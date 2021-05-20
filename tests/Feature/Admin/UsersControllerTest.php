@@ -101,8 +101,8 @@ class UsersControllerTest extends TestCase
                 'last_name' => 'Last name test',
                 'phone_number' => '0240506070',
                 'email' => 'test@email.fr',
-                'password' => 'password',
-                'password_confirmation' => 'password',
+                'password' => 'WP8Z91wd4G28dFC|',
+                'password_confirmation' => 'WP8Z91wd4G28dFC|',
             ])
             ->assertSessionHasNoErrors()
             ->assertSessionHas('toast_success', __('crud.orphan.created', [
@@ -120,7 +120,7 @@ class UsersControllerTest extends TestCase
             'email' => 'test@email.fr',
         ]);
         // New password is correct.
-        self::assertTrue(Hash::check('password', $createdUser->fresh()->password));
+        self::assertTrue(Hash::check('WP8Z91wd4G28dFC|', $createdUser->fresh()->password));
         // New profile picture is attached.
         $this->assertDatabaseHas(app(Media::class)->getTable(), [
             'model_id' => $createdUser->id,
@@ -230,8 +230,8 @@ class UsersControllerTest extends TestCase
                 'last_name' => 'Last name test',
                 'phone_number' => '0240506070',
                 'email' => 'test@email.fr',
-                'new_password' => 'password',
-                'new_password_confirmation' => 'password',
+                'new_password' => 'WP8Z91wd4G28dFC|',
+                'new_password_confirmation' => 'WP8Z91wd4G28dFC|',
             ])
             ->assertSessionHasNoErrors()
             ->assertSessionHas('toast_success', __('crud.orphan.updated', [
@@ -248,7 +248,7 @@ class UsersControllerTest extends TestCase
             'email' => 'test@email.fr',
         ]);
         // Password is updated.
-        self::assertTrue(Hash::check('password', $updatedUser->fresh()->password));
+        self::assertTrue(Hash::check('WP8Z91wd4G28dFC|', $updatedUser->fresh()->password));
         // Profile picture is updated.
         $this->assertDatabaseHas(app(Media::class)->getTable(), [
             'model_id' => $updatedUser->id,

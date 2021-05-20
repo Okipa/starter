@@ -191,38 +191,48 @@ class CookieServicesControllerTest extends TestCase
             'enabled_by_default' => true,
             'active' => true,
         ]);
+        $localizedTitles = [];
+        $localizedDescriptions = [];
+        foreach (supportedLocaleKeys() as $localeKey) {
+            $localizedTitles[] = e($cookieService->getTranslation('title', $localeKey));
+            $localizedDescriptions[] = e($cookieService->getTranslation('description', $localeKey));
+        }
         $this->actingAs($authUser)->get(route('cookie.service.edit', $cookieService))
             ->assertOk()
-            ->assertSeeInOrder([
-                // Heading
-                '<i class="fas fa-laptop-code fa-fw"></i>',
-                e(__('breadcrumbs.parent.edit', [
-                    'parent' => __('Cookies'),
-                    'entity' => __('Services'),
-                    'detail' => $cookieService->title,
-                ])),
-                // Form and actions
-                'method="POST"',
-                'action="' . route('cookie.service.update', $cookieService) . '"',
-                'novalidate>',
-                csrf_field(),
-                method_field('PUT'),
-                'href="' . route('cookie.services.index') . '"',
-                __('Back'),
-                __('Update'),
-                // Cookie category data
-                '<option value="' . $cookieCategory->id . '" selected="selected">' . e($cookieCategory->title) . '</option>',
-                $cookieService->unique_key,
-                e($cookieService->title),
-                e($cookieService->description),
-                'name="required" checked="checked"',
-                'name="enabled_by_default" checked="checked"',
-                e(json_encode($cookieService->cookies, JSON_PRETTY_PRINT | JSON_THROW_ON_ERROR)),
-                'name="active" checked="checked"',
-            ], false);
+            ->assertSeeInOrder(array_merge(
+                [
+                    // Heading
+                    '<i class="fas fa-laptop-code fa-fw"></i>',
+                    e(__('breadcrumbs.parent.edit', [
+                        'parent' => __('Cookies'),
+                        'entity' => __('Services'),
+                        'detail' => $cookieService->title,
+                    ])),
+                    // Form and actions
+                    'method="POST"',
+                    'action="' . route('cookie.service.update', $cookieService) . '"',
+                    'novalidate>',
+                    csrf_field(),
+                    method_field('PUT'),
+                    'href="' . route('cookie.services.index') . '"',
+                    __('Back'),
+                    __('Update'),
+                    // Cookie service data
+                    '<option value="' . $cookieCategory->id . '" selected="selected">',
+                    $cookieService->unique_key,
+                ],
+                $localizedTitles,
+                $localizedDescriptions,
+                [
+                    'name="required" checked="checked"',
+                    'name="enabled_by_default" checked="checked"',
+                    e(json_encode($cookieService->cookies, JSON_PRETTY_PRINT | JSON_THROW_ON_ERROR)),
+                    'name="active" checked="checked"',
+                ]
+            ), false);
     }
 
-        /** @test */
+    /** @test */
     public function it_can_update_cookie_service(): void
     {
         Settings::factory()->create();
@@ -281,7 +291,7 @@ class CookieServicesControllerTest extends TestCase
         ]);
     }
 
-        /** @test */
+    /** @test */
     public function it_can_delete_cookie_service(): void
     {
         Settings::factory()->create();

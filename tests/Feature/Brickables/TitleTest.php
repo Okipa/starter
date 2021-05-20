@@ -18,7 +18,6 @@ class TitleTest extends TestCase
     {
         parent::setUp();
         $this->withoutMix();
-        $this->withoutExceptionHandling();
     }
 
     /** @test */

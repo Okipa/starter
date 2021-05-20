@@ -20,6 +20,7 @@ parameters:
         - '#Call to an undefined method Illuminate\\Database\\Eloquent\\Factories\\Factory::news\(\)#'
         - '#Call to an undefined method Illuminate\\Database\\Eloquent\\Factories\\Factory::contact\(\)#'
         - '#Call to an undefined method Illuminate\\Database\\Eloquent\\Factories\\Factory::withCategories\(\)#'
+        - '#Call to an undefined method Illuminate\\Database\\Eloquent\\Factories\\Factory::withTitleBrick\(\)#'
         - '#Call to an undefined method Illuminate\\Database\\Eloquent\\Factories\\Factory::twoFactorAuthenticationActivated\(\)#'
         - '#Call to an undefined method Spatie\\Image\\Manipulations::withResponsiveImages\(\)#'
 

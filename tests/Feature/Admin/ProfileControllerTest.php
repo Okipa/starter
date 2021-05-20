@@ -208,8 +208,8 @@ class ProfileControllerTest extends TestCase
             ->from(route('profile.edit'))
             ->put(route('user-password.update'), [
                 'current_password' => 'secret',
-                'new_password' => 'password',
-                'new_password_confirmation' => 'password',
+                'new_password' => 'WP8Z91wd4G28dFC|',
+                'new_password_confirmation' => 'WP8Z91wd4G28dFC|',
             ])
             ->assertSessionHasNoErrors()
             ->assertSessionHas('alert')
@@ -223,7 +223,7 @@ class ProfileControllerTest extends TestCase
             json_decode(session()->get('alert.config'), true, 512, JSON_THROW_ON_ERROR)['title']
         );
         // Password is updated.
-        self::assertTrue(Hash::check('password', $authUser->fresh()->password));
+        self::assertTrue(Hash::check('WP8Z91wd4G28dFC|', $authUser->fresh()->password));
     }
 
     /** @test */

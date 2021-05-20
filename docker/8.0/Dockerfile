@@ -42,7 +42,9 @@ RUN apt-get update \
     && sed -i 's/<policy domain="coder" rights="none" pattern="PDF" \/>/<policy domain="coder" rights="read|write" pattern="PDF" \/>/g' /etc/ImageMagick-6/policy.xml
 
 RUN pecl channel-update https://pecl.php.net/channel.xml \
-    && pecl install swoole
+    && pecl install swoole \
+    && pecl clear-cache \
+    && rm -rf /tmp/* /var/tmp/*
 
 RUN setcap "cap_net_bind_service=+ep" /usr/bin/php8.0
 

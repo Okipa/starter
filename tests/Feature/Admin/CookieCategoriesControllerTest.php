@@ -95,7 +95,10 @@ class CookieCategoriesControllerTest extends TestCase
         }
         // Cache is cleared and regenerated after creation.
         Cache::shouldReceive('forget')->once()->with('cookie_categories')->andReturn(true);
-        Cache::shouldReceive('rememberForever')->once()->with('cookie_categories', Closure::class)->andReturn(collect());
+        Cache::shouldReceive('rememberForever')
+            ->once()
+            ->with('cookie_categories', Closure::class)
+            ->andReturn(collect());
         $this->actingAs($authUser)
             ->post(route('cookie.category.store'), $data)
             ->assertSessionHasNoErrors()
@@ -120,9 +123,15 @@ class CookieCategoriesControllerTest extends TestCase
         Settings::factory()->withMedia()->create();
         $authUser = User::factory()->withMedia()->create();
         $cookieCategory = CookieCategory::factory()->create();
+        $localizedTitles = [];
+        $localizedDescriptions = [];
+        foreach (supportedLocaleKeys() as $localeKey) {
+            $localizedTitles[] = e($cookieCategory->getTranslation('title', $localeKey));
+            $localizedDescriptions[] = e($cookieCategory->getTranslation('description', $localeKey));
+        }
         $this->actingAs($authUser)->get(route('cookie.category.edit', $cookieCategory))
             ->assertOk()
-            ->assertSeeInOrder([
+            ->assertSeeInOrder(array_merge([
                 // Heading
                 '<i class="fas fa-tags fa-fw"></i>',
                 e(__('breadcrumbs.parent.edit', [
@@ -141,9 +150,7 @@ class CookieCategoriesControllerTest extends TestCase
                 __('Update'),
                 // Cookie category data
                 $cookieCategory->unique_key,
-                e($cookieCategory->title),
-                e($cookieCategory->description),
-            ], false);
+            ], $localizedTitles, $localizedDescriptions), false);
     }
 
     /** @test */
@@ -159,7 +166,10 @@ class CookieCategoriesControllerTest extends TestCase
         }
         // Cache is cleared and regenerated after update.
         Cache::shouldReceive('forget')->once()->with('cookie_categories')->andReturn(true);
-        Cache::shouldReceive('rememberForever')->once()->with('cookie_categories', Closure::class)->andReturn(collect());
+        Cache::shouldReceive('rememberForever')
+            ->once()
+            ->with('cookie_categories', Closure::class)
+            ->andReturn(collect());
         $this->actingAs($authUser)
             ->from(route('cookie.category.edit', $cookieCategory))
             ->put(route('cookie.category.update', $cookieCategory), $data)
@@ -188,7 +198,10 @@ class CookieCategoriesControllerTest extends TestCase
         $cookieService = CookieService::factory()->withCategories([$cookieCategory->unique_key])->create();
         // Cache is cleared and regenerated after deletion.
         Cache::shouldReceive('forget')->once()->with('cookie_categories')->andReturn(true);
-        Cache::shouldReceive('rememberForever')->once()->with('cookie_categories', Closure::class)->andReturn(collect());
+        Cache::shouldReceive('rememberForever')
+            ->once()
+            ->with('cookie_categories', Closure::class)
+            ->andReturn(collect());
         $this->actingAs($authUser)
             ->from(route('cookie.categories.index'))
             ->delete(route('cookie.category.destroy', $cookieCategory))

@@ -107,13 +107,17 @@ class ContactPageControllerTest extends TestCase
         Settings::factory()->create();
         $authUser = User::factory()->create();
         $contactPage = PageContent::factory()->contact()->create();
+        $data = [
+            // Uploaded meta image is ignored when instruction to remove it is given.
+            'meta_image' => UploadedFile::fake()->image('meta-image.webp', 600, 600),
+            'remove_meta_image' => true,
+        ];
+        foreach (supportedLocaleKeys() as $localeKey) {
+            $data['meta_title'][$localeKey] = 'Meta title test ' . $localeKey;
+        }
         $this->actingAs($authUser)
             ->from(route('contact.page.edit'))
-            ->put(route('contact.page.update'), [
-                // Uploaded meta image is ignored when instruction to remove it is given.
-                'meta_image' => UploadedFile::fake()->image('meta-image.webp', 600, 600),
-                'remove_meta_image' => true,
-            ]);
+            ->put(route('contact.page.update'), $data);
         // Meta image is deleted.
         $this->assertDeleted(app(Media::class)->getTable(), [
             'model_id' => $contactPage->id,
