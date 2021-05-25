@@ -36,12 +36,12 @@
                 ->containerClasses([]) }}
             {{ submitValidate()->prepend('<i class="fas fa-filter"></i>')
                 ->label(__('Filter'))
-                ->containerClasses(['ml-3']) }}
+                ->containerClasses(['ms-3']) }}
             @if($request->has('category_id'))
                 {{ buttonBack()->route('cookie.services.index')
                     ->prepend('<i class="fas fa-undo"></i>')
                     ->label(__('Reset'))
-                    ->containerClasses(['ml-3']) }}
+                    ->containerClasses(['ms-3']) }}
             @endif
         </form>
         {{ $table }}

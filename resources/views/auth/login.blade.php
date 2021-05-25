@@ -25,13 +25,13 @@
         {{ inputPassword()->name('password')
             ->componentHtmlAttributes(['required', 'autocomplete' => 'current-password']) }}
         {{ inputSwitch()->name('remember') }}
-        {{ submitValidate()->label(__('Log in'))->componentClasses(['btn-block', 'btn-primary', 'form-group']) }}
+        {{ submitValidate()->label(__('Log in'))->componentClasses(['btn-primary', 'mb-3'])->containerClasses(['d-grid']) }}
         @php
             $registrationEnabled = Laravel\Fortify\Features::enabled(Laravel\Fortify\Features::registration());
             $resetPasswordsEnabled = Laravel\Fortify\Features::enabled(Laravel\Fortify\Features::resetPasswords());
         @endphp
         @if($registrationEnabled || $resetPasswordsEnabled)
-            <div class="d-flex justify-content-between form-group">
+            <div class="d-flex justify-content-between mb-3">
                 @if($registrationEnabled)
                     <a href="{{ route('register') }}" title="{{ __('Create account') }}">
                         {{ __('Create account') }}

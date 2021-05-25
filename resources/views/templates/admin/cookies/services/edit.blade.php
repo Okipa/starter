@@ -17,7 +17,7 @@
             @method('PUT')
         @endif
         <div class="d-flex">
-            {{ buttonBack()->route('cookie.services.index')->containerClasses(['mr-3']) }}
+            {{ buttonBack()->route('cookie.services.index')->containerClasses(['me-3']) }}
             @if($cookieService){{ submitUpdate() }}@else{{ submitCreate() }}@endif
         </div>
         <x-common.forms.notice class="mt-3"/>

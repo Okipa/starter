@@ -23,9 +23,11 @@
         <p>{{ __('For security reasons, please confirm your password. You will not be asked for several hours.') }}</p>
         {{ inputPassword()->name('password')
             ->componentHtmlAttributes(['required', 'autocomplete' => 'current-password']) }}
-        {{ submitValidate()->label(__('Confirm password'))->componentClasses(['btn-block', 'btn-primary', 'form-group']) }}
+        {{ submitValidate()->label(__('Confirm password'))
+            ->componentClasses(['btn-primary', 'mb-3'])
+            ->containerClasses(['d-grid']) }}
         @if(Laravel\Fortify\Features::enabled(Laravel\Fortify\Features::resetPasswords()))
-            <div class="form-group">
+            <div class="mb-3">
                 <a href="{{ route('password.request') }}">
                     {{ __('Forgotten password') }}
                 </a>

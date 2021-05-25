@@ -27,7 +27,8 @@
             ->componentHtmlAttributes(['required', 'autofocus', 'autocomplete' => 'email']) }}
         {{ submit()->prepend('<i class="fas fa-paper-plane fa-fw"></i>')
             ->label(__('Send reset email'))
-            ->componentClasses(['btn-block', 'btn-primary', 'form-group']) }}
+            ->componentClasses(['btn-primary', 'mb-3'])
+            ->containerClasses(['d-grid']) }}
         {{ buttonCancel()->route('login') }}
     </form>
 @endsection

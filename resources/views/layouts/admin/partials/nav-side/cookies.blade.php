@@ -11,7 +11,7 @@
     <a class="nav-link{{ $subMenuActive ? ' active' : null }}"
        href="#cookies-menu"
        title="{{ __('Cookies') }}"
-       data-toggle="collapse"
+       data-bs-toggle="collapse"
        role="button"
        aria-expanded="false"
        aria-controls="cookies-menu">
