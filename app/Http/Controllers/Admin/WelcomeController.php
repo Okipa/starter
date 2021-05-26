@@ -8,12 +8,11 @@ use Illuminate\Auth\Events\Verified;
 use Illuminate\Foundation\Auth\User;
 use Illuminate\Http\Request;
 use Illuminate\Contracts\View\View;
+use Illuminate\Validation\Rules\Password;
 use Symfony\Component\HttpFoundation\Response;
 
 class WelcomeController extends \Spatie\WelcomeNotification\WelcomeController
 {
-    use PasswordValidationRules;
-
     public function showWelcomeForm(Request $request, User $user): View
     {
         SEOTools::setTitle(__('Welcome'));
@@ -40,6 +39,6 @@ class WelcomeController extends \Spatie\WelcomeNotification\WelcomeController
 
     protected function rules(): array
     {
-        return ['password' => array_merge(['required'], $this->passwordRules())];
+        return ['password' => ['required', Password::defaults()]];
     }
 }

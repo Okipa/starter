@@ -2,16 +2,14 @@
 
 namespace App\Http\Requests\Users;
 
-use App\Actions\Fortify\PasswordValidationRules;
 use App\Models\Users\User;
 use App\Rules\PhoneInternational;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
+use Illuminate\Validation\Rules\Password;
 
 class UserStoreRequest extends FormRequest
 {
-    use PasswordValidationRules;
-
     /**
      * @return array
      * @throws \Okipa\MediaLibraryExt\Exceptions\CollectionNotFound
@@ -24,7 +22,7 @@ class UserStoreRequest extends FormRequest
             'last_name' => ['required', 'string', 'max:255'],
             'phone_number' => ['nullable', 'string', 'max:255', new PhoneInternational()],
             'email' => ['required', 'string', 'max:255', 'email:rfc,dns,spoof', Rule::unique(User::class)],
-            'password' => $this->passwordRules(),
+            'password' => Password::defaults(),
         ];
     }
 }

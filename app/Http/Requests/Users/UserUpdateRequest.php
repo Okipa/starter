@@ -2,16 +2,14 @@
 
 namespace App\Http\Requests\Users;
 
-use App\Actions\Fortify\PasswordValidationRules;
 use App\Models\Users\User;
 use App\Rules\PhoneInternational;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
+use Illuminate\Validation\Rules\Password;
 
 class UserUpdateRequest extends FormRequest
 {
-    use PasswordValidationRules;
-
     /**
      * @return array
      * @throws \Okipa\MediaLibraryExt\Exceptions\CollectionNotFound
@@ -31,7 +29,7 @@ class UserUpdateRequest extends FormRequest
                 'max:255',
                 Rule::unique(User::class)->ignore($this->user),
             ],
-            'new_password' => array_merge(['nullable'], $this->passwordRules()),
+            'new_password' => ['nullable', Password::defaults()],
         ];
     }
 
