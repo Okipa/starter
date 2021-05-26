@@ -5,6 +5,8 @@ namespace Database\Seeders;
 use App\Models\News\NewsCategory;
 use Illuminate\Database\Seeder;
 
+// Todo: update this seeder if your app is not multilingual.
+
 class NewsCategoriesSeeder extends Seeder
 {
     public function run(): void

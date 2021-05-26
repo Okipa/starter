@@ -93,6 +93,7 @@ return [
     |
     */
 
+    // Todo: update to `fr` is your app is not multilingual.
     'fallback_locale' => 'en',
 
     /*

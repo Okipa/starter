@@ -45,10 +45,12 @@
             <div class="col-xl-6 mb-3">
                 <x-admin.forms.card title="{{ __('Information') }}">
                     {{ inputText()->name('title')
+                        // Todo: remove the line below if your app is not multilingual.
                         ->locales(supportedLocaleKeys())
                         ->model($article)
                         ->componentHtmlAttributes(['required']) }}
                     {{ inputText()->name('slug')
+                        // Todo: remove the line below if your app is not multilingual.
                         ->locales(supportedLocaleKeys())
                         ->model($article)
                         ->prepend(fn(string $locale) => route('news.article.show', '', false, $locale) . '/')
@@ -68,6 +70,7 @@
             <div class="col-xl-6 mb-3">
                 <x-admin.forms.card title="{{ __('Content') }}">
                     {{ textarea()->name('description')
+                        // Todo: remove the line below if your app is not multilingual.
                         ->locales(supportedLocaleKeys())
                         ->model($article)
                         ->prepend(null)

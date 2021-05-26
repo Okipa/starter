@@ -32,6 +32,7 @@
                         ->componentHtmlAttributes(['required'])
                         ->caption((new App\Models\LibraryMedia\LibraryMediaFile)->getMediaCaption('media')) }}
                     {{ inputText()->name('name')
+                        // Todo: remove the line below if your app is not multilingual.
                         ->locales(supportedLocaleKeys())
                         ->model($file)
                         ->componentHtmlAttributes(['required']) }}

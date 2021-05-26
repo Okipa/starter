@@ -34,6 +34,7 @@
             <div class="col-xl-6 mb-3">
                 <x-admin.forms.card title="{{ __('Navigation') }}">
                     {{ inputText()->name('nav_title')
+                        // Todo: remove the line below if your app is not multilingual.
                         ->locales(supportedLocaleKeys())
                         ->model($page)
                         ->componentHtmlAttributes(['required']) }}
@@ -44,8 +45,10 @@
                             ->componentHtmlAttributes(['required', 'data-snakecase', 'data-autofill-from' => '#text-nav-title']) }}
                     @endif
                     {{ inputText()->name('slug')
+                        // Todo: remove the line below if your app is not multilingual.
                         ->locales(supportedLocaleKeys())
                         ->model($page)
+                        // ToDo: remove localization if your app is not multilingual
                         ->prepend(fn(string $locale) => route('page.show', '', false, $locale) . '/')
                         ->componentHtmlAttributes(['required', 'data-kebabcase', 'data-autofill-from' => '#text-nav-title']) }}
                 </x-admin.forms.card>

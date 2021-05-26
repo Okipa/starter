@@ -58,8 +58,7 @@ class ProfileControllerTest extends TestCase
                 __('Update'),
                 // 2FA activation form
                 'method="POST"',
-                'action="' . route('two-factor.activate') . '"', // ToDo: replace by the lines below if app is monolingual.
-                //'action="' . url(config('fortify.prefix') . '/user/two-factor-authentication') . '"',
+                'action="' . route('two-factor.enable') . '"',
                 'novalidate>',
                 csrf_field(),
                 __('Enable'),
@@ -82,14 +81,12 @@ class ProfileControllerTest extends TestCase
         $this->actingAs($authUser)->get(route('profile.edit'))->assertSeeInOrder([
             // 2FA recovery codes regeneration form
             'method="POST"',
-            'action="' . route('two-factor.recovery.regen') . '"', // ToDo: replace by the lines below if app is monolingual.
-            //'action="' . url(config('fortify.prefix') . '/user/two-factor-recovery-codes') . '"',
+            'action="' . route('two-factor.recovery-codes') . '"',
             'novalidate>',
             csrf_field(),
             // 2FA deactivation form
             'method="POST"',
-            'action="' . route('two-factor.deactivate') . '"', // ToDo: replace by the lines below if app is monolingual.
-            //'action="' . url(config('fortify.prefix') . '/user/two-factor-authentication') . '"',
+            'action="' . route('two-factor.disable') . '"',
             'novalidate>',
             csrf_field(),
             method_field('DELETE'),
@@ -233,8 +230,7 @@ class ProfileControllerTest extends TestCase
         $authUser = User::factory()->create();
         $this->actingAs($authUser)
             ->from(route('profile.edit'))
-            ->post(route('two-factor.activate')) // ToDo: replace by the lines below if app is monolingual.
-            //->post(url(config('fortify.prefix') . '/user/two-factor-authentication'))
+            ->post(route('two-factor.enable'))
             ->assertSessionHasNoErrors()
             ->assertSessionHas('status', 'two-factor-authentication-enabled')
             ->assertRedirect(route('profile.edit'));
@@ -249,8 +245,7 @@ class ProfileControllerTest extends TestCase
         $authUser = User::factory()->twoFactorAuthenticationActivated()->create();
         $this->actingAs($authUser)
             ->from(route('profile.edit'))
-            ->post(route('two-factor.recovery.regen')) // ToDo: replace by the lines below if app is monolingual.
-            //->post(url(config('fortify.prefix') . '/user/two-factor-recovery-codes'))
+            ->post(route('two-factor.recovery-codes'))
             ->assertSessionHasNoErrors()
             ->assertSessionHas('status', 'recovery-codes-generated')
             ->assertRedirect(route('profile.edit'));
@@ -264,8 +259,7 @@ class ProfileControllerTest extends TestCase
         $authUser = User::factory()->twoFactorAuthenticationActivated()->create();
         $this->actingAs($authUser)
             ->from(route('profile.edit'))
-            ->delete(route('two-factor.deactivate')) // ToDo: replace by the lines below if app is monolingual.
-            //->delete(url(config('fortify.prefix') . '/user/two-factor-authentication'))
+            ->delete(route('two-factor.disable'))
             ->assertSessionHasNoErrors()
             ->assertSessionHas('status', 'two-factor-authentication-disabled')
             ->assertRedirect(route('profile.edit'));

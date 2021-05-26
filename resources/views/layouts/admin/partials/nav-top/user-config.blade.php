@@ -1,3 +1,4 @@
+{{-- ToDo: replace `currentRouteIs` by `Route::is` if your app is not multilingual --}}
 <li class="nav-item{{ currentRouteIs('profile.edit') ? ' active' : null }}">
     <div class="dropdown">
         <a href=""
@@ -13,6 +14,7 @@
         <div class="dropdown-menu dropdown-menu-right">
             @if(Laravel\Fortify\Features::enabled(Laravel\Fortify\Features::updateProfileInformation()))
                 <a href="{{ route('profile.edit') }}"
+                   {{-- ToDo: replace `currentRouteIs` by `Route::is` if your app is not multilingual --}}
                    class="dropdown-item{{ currentRouteIs('profile.edit') ? ' active' : null }}"
                    title="{{ __('Profile') }}">
                     <i class="fas fa-user-circle fa-fw"></i>

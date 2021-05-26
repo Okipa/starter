@@ -22,11 +22,12 @@ trait HasMeta
         }
     }
 
+    // Todo: remove `$locale` argument if your app is not multilingual.
     public function getMeta(string $key, $default = null, string $locale = null): array|string|null
     {
-        $locale = $locale ?? app()->getLocale();
+        // Todo: replace the lines below by `return $this->traitGetMeta($key, $default)` if your app is not multilingual.
         $meta = $this->traitGetMeta($key, $default);
 
-        return translatedData($meta, null, $locale);
+        return translatedData($meta, null, $locale ?? app()->getLocale());
     }
 }

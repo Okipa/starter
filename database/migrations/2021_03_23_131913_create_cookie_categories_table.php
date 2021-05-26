@@ -11,9 +11,9 @@ class CreateCookieCategoriesTable extends Migration
         Schema::create('cookie_categories', function (Blueprint $table) {
             $table->id();
             $table->string('unique_key')->unique();
-            // ToDo: change column type with monolingual app
+            // ToDo: change column type if your app is not multilingual
             $table->json('title');
-            // ToDo: change column type with monolingual app
+            // ToDo: change column type if your app is not multilingual
             $table->json('description')->nullable();
             $table->unsignedInteger('position');
             $table->timestamps();

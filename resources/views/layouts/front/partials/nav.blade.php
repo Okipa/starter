@@ -19,6 +19,7 @@
                 @include('layouts.front.partials.nav.news')
                 @include('layouts.front.partials.nav.contact')
             </ul>
+            {{-- ToDo: remove this block if your app is not multilingual --}}
             <ul class="navbar-nav">
                 @include('layouts.front.partials.nav.language')
             </ul>

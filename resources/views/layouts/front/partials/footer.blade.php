@@ -6,6 +6,7 @@
                 {{ config('app.name') }}
             </span>
             @if($termsOfServicePage = pages()->where('unique_key', 'terms_of_service_page')->first())
+                {{-- ToDo: replace `currentUrlIs($url)` by `Request::url() === $url` if your app is not multilingual --}}
                 <a class="mx-3{{ currentUrlIs(route('page.show', $termsOfServicePage)) ? ' active' : ' text-body' }}"
                    href="{{ route('page.show', $termsOfServicePage) }}"
                    title="{{ $termsOfServicePage->nav_title }}">
@@ -13,6 +14,7 @@
                 </a>
             @endif
             @if($gdprPage = pages()->where('unique_key', 'gdpr_page')->first())
+                {{-- ToDo: replace `currentUrlIs($url)` by `Request::url() === $url` if your app is not multilingual --}}
                 <a class="mx-3{{ currentUrlIs(route('page.show', $gdprPage)) ? ' active' : ' text-body' }}"
                    href="{{ route('page.show', $gdprPage) }}"
                    title="{{ $gdprPage->nav_title }}">

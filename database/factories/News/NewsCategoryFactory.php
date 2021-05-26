@@ -6,6 +6,8 @@ use App\Models\News\NewsCategory;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
 
+// Todo: update this factory if your app is not multilingual.
+
 class NewsCategoryFactory extends Factory
 {
     /** @var string */

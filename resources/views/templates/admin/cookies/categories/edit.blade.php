@@ -28,10 +28,12 @@
                         ->model($cookieCategory)
                         ->componentHtmlAttributes(['required', 'data-snakecase']) }}
                     {{ inputText()->name('title')
+                        // Todo: remove the line below if your app is not multilingual.
                         ->locales(supportedLocaleKeys())
                         ->model($cookieCategory)
                         ->componentHtmlAttributes(['required']) }}
                     {{ inputText()->name('description')
+                        // Todo: remove the line below if your app is not multilingual.
                         ->locales(supportedLocaleKeys())
                         ->model($cookieCategory) }}
                 </x-admin.forms.card>

@@ -67,6 +67,7 @@ class TitleTest extends TestCase
             'type' => 'h1',
             'style' => 'h1',
         ];
+        // ToDo: convert in monolingual if your app is not multilingual.
         foreach (supportedLocaleKeys() as $localeKey) {
             $data['title'][$localeKey] = 'Title test ' . $localeKey;
         }
@@ -87,6 +88,7 @@ class TitleTest extends TestCase
             'data->type' => 'h1',
             'data->style' => 'h1',
         ];
+        // ToDo: convert in monolingual if your app is not multilingual.
         foreach (supportedLocaleKeys() as $localeKey) {
             $databaseData["data->title->$localeKey"] = $data['title'][$localeKey];
         }
@@ -101,6 +103,7 @@ class TitleTest extends TestCase
         $pageContent = PageContent::factory()->withTitleBrick()->create();
         $editedBrick = $pageContent->getFirstBrick();
         $localizedTitles = [];
+        // ToDo: convert in monolingual if your app is not multilingual.
         foreach (supportedLocaleKeys() as $localeKey) {
             $localizedTitles[] = $editedBrick->data['title'][$localeKey];
         }
@@ -147,6 +150,7 @@ class TitleTest extends TestCase
             'type' => 'h2',
             'style' => 'h2',
         ];
+        // ToDo: convert in monolingual if your app is not multilingual.
         foreach (supportedLocaleKeys() as $localeKey) {
             $data['title'][$localeKey] = 'Title test ' . $localeKey;
         }
@@ -167,6 +171,7 @@ class TitleTest extends TestCase
             'data->type' => 'h2',
             'data->style' => 'h2',
         ];
+        // ToDo: convert in monolingual if your app is not multilingual.
         foreach (supportedLocaleKeys() as $localeKey) {
             $databaseData["data->title->$localeKey"] = $data['title'][$localeKey];
         }
@@ -200,6 +205,7 @@ class TitleTest extends TestCase
         $pageContent = PageContent::factory()->home()->withTitleBrick()->create();
         $titleBrick = $pageContent->getFirstBrick();
         $this->get(route('home.page.show'))->assertOk()->assertSee([
+            // ToDo: replace `translatedData` by `data_get` if your app is not multilingual.
             '<h1 class="h1 text-primary m-0">' . translatedData($titleBrick, 'data.title') . '</h1>',
         ], false);
     }

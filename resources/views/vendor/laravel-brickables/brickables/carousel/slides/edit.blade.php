@@ -41,8 +41,15 @@
                         ->showRemoveCheckbox(false)
                         ->caption((new App\Models\Brickables\CarouselBrickSlide)->getMediaCaption('images'))
                         ->componentHtmlAttributes(['required']) }}
-                    {{ inputText()->name('label')->model($slide)->locales(supportedLocaleKeys()) }}
-                    {{ inputText()->name('caption')->model($slide)->locales(supportedLocaleKeys())->prepend('<i class="fas fa-align-left"></i>') }}
+                    {{ inputText()->name('label')
+                        ->model($slide)
+                        // Todo: remove the line below if your app is not multilingual.
+                        ->locales(supportedLocaleKeys()) }}
+                    {{ inputText()->name('caption')
+                        ->model($slide)
+                        // Todo: remove the line below if your app is not multilingual.
+                        ->locales(supportedLocaleKeys())
+                        ->prepend('<i class="fas fa-align-left"></i>') }}
                 </x-admin.forms.card>
             </div>
             <div class="col-xl-6 mb-3">

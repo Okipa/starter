@@ -9,6 +9,7 @@ class FilesService
         share([
             'libraryMedia' => [
                 'clipboardCopy' => [
+                    // Todo: remove `__LOCALE__` if your app is not multilingual.
                     'route' => route('libraryMedia.file.clipboardContent', ['__ID__', '__TYPE__', '__LOCALE__']),
                 ],
             ],

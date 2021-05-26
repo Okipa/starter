@@ -5,6 +5,8 @@ namespace Database\Seeders;
 use App\Models\LibraryMedia\LibraryMediaCategory;
 use Illuminate\Database\Seeder;
 
+// Todo: update this seeder if your app is not multilingual.
+
 class LibraryMediaCategoriesSeeder extends Seeder
 {
     public function run(): void

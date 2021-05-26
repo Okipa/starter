@@ -48,7 +48,7 @@ if (! function_exists('currentLocale')) {
     }
 }
 
-if (! function_exists('translate')) {
+if (! function_exists('translatedData')) {
     function translatedData(mixed $target, $key = null, string $locale = null): array|string|null
     {
         $data = $key ? data_get($target, $key) : $target;

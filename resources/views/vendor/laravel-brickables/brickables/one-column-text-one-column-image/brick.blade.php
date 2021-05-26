@@ -1,4 +1,5 @@
 @php
+    // ToDo: replace `translatedData` by `data_get` if your app is not multilingual.
     $leftText = (new Parsedown)->text(translatedData($brick, 'data.text_left'));
     $rightImage = $brick->getFirstMedia('images');
     $rightResponsiveImage = $rightImage->img('half', ['class' => 'img-fluid', 'alt' => $rightImage->name]);

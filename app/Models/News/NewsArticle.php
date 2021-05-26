@@ -45,11 +45,10 @@ class NewsArticle extends Model implements HasMedia, Feedable
             ->get();
     }
 
+    // Todo: to remove if your app is not multilingual.
     public function resolveRouteBinding($value, $field = null): Model|null
     {
-        return multilingual() && $field
-            ? self::where($field . '->' . app()->getLocale(), $value)->first()
-            : parent::resolveRouteBinding($value, $field);
+        return $this->where($field ? $field . '->' . app()->getLocale() : $this->getRouteKeyName(), $value)->first();
     }
 
     /**

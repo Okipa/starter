@@ -1,3 +1,4 @@
+{{-- Todo: remove this component if your app is not multilingual --}}
 @if(multilingual())
     <div class="dropdown{{ ! empty($containerClasses) ? ' ' . implode(' ', $containerClasses) : '' }}">
         <a id="language-selector"

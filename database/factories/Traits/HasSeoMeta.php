@@ -5,6 +5,8 @@ namespace Database\Factories\Traits;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 
+// Todo: update this trait if your app is not multilingual.
+
 trait HasSeoMeta
 {
     public function withSeoMeta(string $image = null, array $title = null, array $description = null): self

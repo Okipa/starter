@@ -29,13 +29,14 @@ class ContactPageControllerTest extends TestCase
         Settings::factory()->withMedia()->create();
         $authUser = User::factory()->withMedia()->create();
         $contactPage = PageContent::factory()->contact()->withSeoMeta()->create();
+        // ToDo: convert in monolingual if your app is not multilingual.
         // Translated SEO data
-        $translatedSeoData = [];
+        $seoData = [];
         foreach (supportedLocaleKeys() as $localeKey) {
-            $translatedSeoData[] = $contactPage->getMeta('meta_title', null, $localeKey);
+            $seoData[] = $contactPage->getMeta('meta_title', null, $localeKey);
         }
         foreach (supportedLocaleKeys() as $localeKey) {
-            $translatedSeoData[] = $contactPage->getMeta('meta_description', null, $localeKey);
+            $seoData[] = $contactPage->getMeta('meta_description', null, $localeKey);
         }
         $this->actingAs($authUser)->get(route('contact.page.edit'))->assertOk()->assertSeeInOrder(array_merge([
             // Heading
@@ -54,7 +55,7 @@ class ContactPageControllerTest extends TestCase
             // Non-translated SEO data
             $contactPage->getFirstMediaUrl('seo', 'thumb'),
             $contactPage->getFirstMedia('seo')->file_name,
-        ], $translatedSeoData), false);
+        ], $seoData), false);
     }
 
     /** @test */
@@ -64,6 +65,7 @@ class ContactPageControllerTest extends TestCase
         $authUser = User::factory()->create();
         $contactPage = PageContent::factory()->contact()->create();
         $data = ['meta_image' => UploadedFile::fake()->image('meta-image.webp', 600, 600)];
+        // ToDo: convert in monolingual if your app is not multilingual.
         foreach (supportedLocaleKeys() as $localeKey) {
             $data['meta_title'][$localeKey] = 'Meta title test ' . $localeKey;
             $data['meta_description'][$localeKey] = 'Meta title test ' . $localeKey;
@@ -112,6 +114,7 @@ class ContactPageControllerTest extends TestCase
             'meta_image' => UploadedFile::fake()->image('meta-image.webp', 600, 600),
             'remove_meta_image' => true,
         ];
+        // ToDo: convert in monolingual if your app is not multilingual.
         foreach (supportedLocaleKeys() as $localeKey) {
             $data['meta_title'][$localeKey] = 'Meta title test ' . $localeKey;
         }

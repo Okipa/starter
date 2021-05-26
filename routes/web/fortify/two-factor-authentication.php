@@ -36,5 +36,5 @@ if (Features::enabled(Features::twoFactorAuthentication())) {
         ->name('two-factor.recovery');
     Route::post(Lang::uri('/user/two-factor-recovery-codes'), [RecoveryCodeController::class, 'store'])
         ->middleware($twoFactorMiddleware)
-        ->name('two-factor.recovery.regen');
+        ->name('two-factor.recovery-codes');
 }

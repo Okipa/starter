@@ -1,5 +1,7 @@
 <?php
 
+// Todo: remove this file if your app is not multilingual.
+
 return [
 
     /**

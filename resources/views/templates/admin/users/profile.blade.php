@@ -120,7 +120,7 @@
                         </div>
                         <div class="d-flex mt-3">
                             <form method="POST"
-                                  action="{{ route('two-factor.recovery.regen') }}"
+                                  action="{{ route('two-factor.recovery-codes') }}"
                                   novalidate>
                                 @csrf
                                 {{ submit()->prepend('<i class="fas fa-redo fa-fw"></i>')
@@ -130,9 +130,7 @@
                             </form>
                             <form class="ml-3"
                                   method="POST"
-                                  action="{{ route('two-factor.deactivate') }}"
-                                  {{-- ToDo: replace form action by the one below if app is monolingual --}}
-                                  {{--action="{{ url(config('fortify.prefix') . '/user/two-factor-recovery-codes') }}"--}}
+                                  action="{{ route('two-factor.disable') }}"
                                   novalidate>
                                 @csrf
                                 @method('DELETE')
@@ -144,9 +142,7 @@
                         </div>
                     @else
                         <form method="POST"
-                              action="{{ route('two-factor.activate') }}"
-                              {{-- ToDo: replace form action by the one below if app is monolingual --}}
-                              {{--action="{{ url(config('fortify.prefix') . '/user/two-factor-authentication') }}"--}}
+                              action="{{ route('two-factor.enable') }}"
                               novalidate>
                             @csrf
                             {{ submit()->prepend('<i class="fas fa-check fa-fw"></i>')

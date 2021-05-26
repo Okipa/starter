@@ -1,8 +1,10 @@
 @extends('laravel-brickables::admin.form.layout')
 @section('inputs')
     {{ textarea()->name('text_left')
+        // Todo: remove the line below if your app is not multilingual.
         ->locales(supportedLocaleKeys())
         ->prepend(null)
+        // ToDo: remove localization if your app is not multilingual.
         ->value(fn($locale) => translatedData($brick, 'data.text_left', $locale))
         ->componentHtmlAttributes(['required', 'data-editor']) }}
     @php($image = optional($brick)->getFirstMedia('images'))

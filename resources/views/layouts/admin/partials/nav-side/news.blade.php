@@ -1,4 +1,5 @@
 @php
+    // ToDo: replace `currentRouteIs` by `Route::is` if your app is not multilingual
     $newsPageActive = currentRouteIs('news.page.edit')
         || optional(Brickables::getModelFromRequest())->unique_key === 'news_page_content';
     $newsCategoriesActive = currentRouteIs('news.categories.index')

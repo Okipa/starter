@@ -18,7 +18,9 @@
         ->selectOptions('key', data_get($brick, 'data.style'))
         ->componentHtmlAttributes(['required']) }}
     {{ inputText()->name('title')
+        // Todo: remove the line below if your app is not multilingual.
         ->locales(supportedLocaleKeys())
+        // ToDo: replace `translatedData` by `data_get` if your app is not multilingual.
         ->value(fn($locale) => translatedData($brick, 'data.title', $locale))
         ->componentHtmlAttributes(['required']) }}
 @endsection

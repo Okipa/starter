@@ -43,6 +43,7 @@
             <div class="col-xl-6 mb-3">
                 <x-admin.forms.card title="{{ __('Security') }}">
                     <p>
+                        {{-- ToDo: replace `currentRouteIs` by `Route::is` if your app is not multilingual --}}
                         @if(currentRouteIs('user.create'))
                             <i class="fas fa-exclamation-triangle fa-fw text-warning"></i>
                             {{ __('If no password is defined for this user, he will be emailed a password creation link.') }}

@@ -12,7 +12,7 @@ class CreateLibraryMediaFilesTable extends Migration
             $table->id();
             $table->unsignedBigInteger('category_id');
             $table->foreign('category_id')->references('id')->on('library_media_categories')->onDelete('CASCADE');
-            // ToDo: change column type with monolingual app
+            // ToDo: change column type if your app is not multilingual
             $table->json('name');
             $table->timestamps();
         });

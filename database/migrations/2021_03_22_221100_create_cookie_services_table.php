@@ -11,9 +11,9 @@ class CreateCookieServicesTable extends Migration
         Schema::create('cookie_services', function (Blueprint $table) {
             $table->id();
             $table->string('unique_key')->unique();
-            // ToDo: change column type with monolingual app
+            // ToDo: change column type if your app is not multilingual
             $table->json('title');
-            // ToDo: change column type with monolingual app
+            // ToDo: change column type if your app is not multilingual
             $table->json('description')->nullable();
             $table->json('cookies')->nullable();
             $table->boolean('required');

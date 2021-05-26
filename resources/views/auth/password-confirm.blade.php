@@ -5,6 +5,7 @@
             toast(__('notify.invalid'), 'error');
         @endphp
     @endif
+    {{-- Todo: remove this component call if your app is not multilingual --}}
     @include('components.common.multilingual.lang-switcher', [
         'containerClasses' => ['text-right', 'mb-3'],
         'dropdownClass' => ['dropdown-menu-right'],

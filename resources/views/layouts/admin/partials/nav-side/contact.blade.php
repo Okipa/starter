@@ -1,4 +1,5 @@
 @php
+    // ToDo: replace `currentRouteIs` by `Route::is` if your app is not multilingual
     $contactPageActive = currentRouteIs('contact.page.edit')
         || optional(Brickables::getModelFromRequest())->unique_key === 'contact_page_content';
     $subMenuActive = $contactPageActive;

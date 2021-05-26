@@ -4,6 +4,7 @@
         <div class="row">
             <div class="text-center">
                 <div class="mx-auto mb-4">
+                    {{-- Todo: remove this component call if your app is not multilingual --}}
                     @include('components.common.multilingual.lang-switcher', [
                         'containerClasses' => ['text-right'],
                         'dropdownLabelClasses' => ['btn', 'btn-link'],

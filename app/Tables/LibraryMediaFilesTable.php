@@ -40,9 +40,9 @@ class LibraryMediaFilesTable extends AbstractTable
             ])
             ->query(function (Builder $query) {
                 $query->select('library_media_files.*');
-                $query->addSelect(multilingual()
-                    ? 'library_media_categories.title->' . app()->getLocale() . ' as category_title'
-                    : 'library_media_categories.title as category_title');
+                // Todo: replace select by `'library_media_categories.title as category_title'`
+                // if your app is not multilingual.
+                $query->addSelect('library_media_categories.title->' . app()->getLocale() . ' as category_title');
                 $query->addSelect('media.mime_type');
                 $query->join('media', 'media.model_id', '=', 'library_media_files.id');
                 $query->join(

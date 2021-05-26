@@ -25,6 +25,7 @@
             <div class="col-xl-6 mb-3">
                 <x-admin.forms.card title="{{ __('Information') }}">
                     {{ inputText()->name('title')
+                        // Todo: remove the line below if your app is not multilingual.
                         ->locales(supportedLocaleKeys())
                         ->model($category)
                         ->componentHtmlAttributes(['required']) }}

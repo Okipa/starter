@@ -1,5 +1,6 @@
 @extends('layouts.admin.auth')
 @section('content')
+    {{-- Todo: remove this component call if your app is not multilingual --}}
     @include('components.common.multilingual.lang-switcher', [
         'containerClasses' => ['text-right'],
         'dropdownClass' => ['dropdown-menu-right'],

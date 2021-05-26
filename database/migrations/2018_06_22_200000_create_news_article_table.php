@@ -10,11 +10,11 @@ class CreateNewsArticleTable extends Migration
     {
         Schema::create('news_articles', function (Blueprint $table) {
             $table->id();
-            // ToDo: change column type with monolingual app
+            // ToDo: change column type if your app is not multilingual
             $table->json('title');
-            // ToDo: change column type with monolingual app
+            // ToDo: change column type if your app is not multilingual
             $table->json('slug');
-            // ToDo: change column type with monolingual app
+            // ToDo: change column type if your app is not multilingual
             $table->json('description')->nullable();
             $table->boolean('active');
             $table->dateTime('published_at');

@@ -6,6 +6,8 @@ use App\Models\Cookies\CookieCategory;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
 
+// Todo: update this factory if your app is not multilingual.
+
 class CookieCategoryFactory extends Factory
 {
     /** @var string */
@@ -13,11 +15,11 @@ class CookieCategoryFactory extends Factory
 
     public function definition(): array
     {
-        $titles = ['fr' => $this->faker->unique()->catchPhrase, 'en' => $this->faker->unique()->catchPhrase];
+        $title = ['fr' => $this->faker->unique()->catchPhrase, 'en' => $this->faker->unique()->catchPhrase];
 
         return [
-            'unique_key' => Str::slug($titles['en']),
-            'title' => $titles,
+            'unique_key' => Str::slug($title['en']),
+            'title' => $title,
             'description' => ['fr' => $this->faker->realText(), 'en' => $this->faker->realText()],
         ];
     }

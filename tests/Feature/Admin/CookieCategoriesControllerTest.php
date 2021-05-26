@@ -89,6 +89,7 @@ class CookieCategoriesControllerTest extends TestCase
         Settings::factory()->create();
         $authUser = User::factory()->create();
         $data = ['unique_key' => 'unique_key_test'];
+        // ToDo: convert in monolingual if your app is not multilingual.
         foreach (supportedLocaleKeys() as $localeKey) {
             $data['title'][$localeKey] = 'Title test ' . $localeKey;
             $data['description'][$localeKey] = 'Description test ' . $localeKey;
@@ -110,6 +111,7 @@ class CookieCategoriesControllerTest extends TestCase
             ->assertRedirect(route('cookie.categories.index'));
         // New cookie category is created.
         $databaseData = ['unique_key' => 'unique_key_test', 'position' => 1];
+        // ToDo: convert in monolingual if your app is not multilingual.
         foreach (supportedLocaleKeys() as $localeKey) {
             $databaseData["title->$localeKey"] = $data['title'][$localeKey];
             $databaseData["description->$localeKey"] = $data['description'][$localeKey];
@@ -123,6 +125,7 @@ class CookieCategoriesControllerTest extends TestCase
         Settings::factory()->withMedia()->create();
         $authUser = User::factory()->withMedia()->create();
         $cookieCategory = CookieCategory::factory()->create();
+        // ToDo: convert in monolingual if your app is not multilingual.
         $localizedTitles = [];
         $localizedDescriptions = [];
         foreach (supportedLocaleKeys() as $localeKey) {
@@ -150,6 +153,7 @@ class CookieCategoriesControllerTest extends TestCase
                 __('Update'),
                 // Cookie category data
                 $cookieCategory->unique_key,
+                // ToDo: convert in monolingual if your app is not multilingual.
             ], $localizedTitles, $localizedDescriptions), false);
     }
 
@@ -160,6 +164,7 @@ class CookieCategoriesControllerTest extends TestCase
         $authUser = User::factory()->create();
         $cookieCategory = CookieCategory::factory()->create();
         $data = ['unique_key' => 'unique_key_test'];
+        // ToDo: convert in monolingual if your app is not multilingual.
         foreach (supportedLocaleKeys() as $localeKey) {
             $data['title'][$localeKey] = 'Title test ' . $localeKey;
             $data['description'][$localeKey] = 'Description test ' . $localeKey;
@@ -182,6 +187,7 @@ class CookieCategoriesControllerTest extends TestCase
             ->assertRedirect(route('cookie.category.edit', $cookieCategory));
         // New cookie category is created.
         $databaseData = ['id' => $cookieCategory->id, 'unique_key' => 'unique_key_test', 'position' => 1];
+        // ToDo: convert in monolingual if your app is not multilingual.
         foreach (supportedLocaleKeys() as $localeKey) {
             $databaseData["title->$localeKey"] = $data['title'][$localeKey];
             $databaseData["description->$localeKey"] = $data['description'][$localeKey];

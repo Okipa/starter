@@ -40,10 +40,12 @@
                         ->componentHtmlAttributes(['required', 'data-snakecase'])
                         ->caption(__('The unique service key, which is used to associate the user consent with a third-party script in order to enable or disable it accordingly to the user choice.')) }}
                     {{ inputText()->name('title')
+                        // Todo: remove the line below if your app is not multilingual.
                         ->locales(supportedLocaleKeys())
                         ->model($cookieService)
                         ->componentHtmlAttributes(['required']) }}
                     {{ textarea()->name('description')
+                        // Todo: remove the line below if your app is not multilingual.
                         ->locales(supportedLocaleKeys())
                         ->model($cookieService) }}
                     {{ inputSwitch()->name('required')

@@ -18,6 +18,8 @@ use Closure;
 use Illuminate\Support\Str;
 use Okipa\LaravelBrickables\Contracts\HasBrickables;
 
+// Todo: update this trait if your app is not multilingual.
+
 trait HasBricks
 {
     /**

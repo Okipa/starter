@@ -140,6 +140,7 @@ class CookieServicesControllerTest extends TestCase
             'enabled_by_default' => true,
             'active' => true,
         ];
+        // ToDo: convert in monolingual if your app is not multilingual.
         foreach (supportedLocaleKeys() as $localeKey) {
             $data['title'][$localeKey] = 'Title test ' . $localeKey;
             $data['description'][$localeKey] = 'Description test ' . $localeKey;
@@ -169,6 +170,7 @@ class CookieServicesControllerTest extends TestCase
             'active' => true,
         ];
         self::assertSame($cookieService->cookies, ['cookie_test']);
+        // ToDo: convert in monolingual if your app is not multilingual.
         foreach (supportedLocaleKeys() as $localeKey) {
             $databaseData["title->$localeKey"] = $data['title'][$localeKey];
             $databaseData["description->$localeKey"] = $data['description'][$localeKey];
@@ -191,6 +193,7 @@ class CookieServicesControllerTest extends TestCase
             'enabled_by_default' => true,
             'active' => true,
         ]);
+        // ToDo: convert in monolingual if your app is not multilingual.
         $localizedTitles = [];
         $localizedDescriptions = [];
         foreach (supportedLocaleKeys() as $localeKey) {
@@ -251,6 +254,7 @@ class CookieServicesControllerTest extends TestCase
             'enabled_by_default' => true,
             'active' => true,
         ];
+        // ToDo: convert in monolingual if your app is not multilingual.
         foreach (supportedLocaleKeys() as $localeKey) {
             $data['title'][$localeKey] = 'Title test ' . $localeKey;
             $data['description'][$localeKey] = 'Description test ' . $localeKey;
@@ -280,6 +284,7 @@ class CookieServicesControllerTest extends TestCase
             'active' => true,
         ];
         self::assertSame($cookieService->fresh()->cookies, ['cookie_test']);
+        // ToDo: convert in monolingual if your app is not multilingual.
         foreach (supportedLocaleKeys() as $localeKey) {
             $databaseData["title->$localeKey"] = $data['title'][$localeKey];
             $databaseData["description->$localeKey"] = $data['description'][$localeKey];
