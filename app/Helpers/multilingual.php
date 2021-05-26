@@ -1,17 +1,5 @@
 <?php
 
-if (! function_exists('multilingual')) {
-    /**
-     * Check if the app is in multilingual mode.
-     *
-     * @return bool
-     */
-    function multilingual(): bool
-    {
-        return count(supportedLocaleKeys()) > 1;
-    }
-}
-
 if (! function_exists('supportedLocales')) {
     /**
      * Get supported locales.
@@ -61,9 +49,6 @@ if (! function_exists('translatedData')) {
 if (! function_exists('localizeRules')) {
     function localizeRules(array $rules): array
     {
-        if (! multilingual()) {
-            return $rules;
-        }
         $localizedRules = [];
         foreach ($rules as $ruleKey => $ruleDetails) {
             foreach (supportedLocaleKeys() as $locale) {

@@ -6,7 +6,8 @@
 @foreach(supportedLocaleKeys() as $localeKey)
     @if($file->can_be_displayed_on_page)
         {{ button()->prepend('<i class="fas fa-code fa-fw"></i>')
-            ->label(__('HTML Display') . (multilingual() ? ' (' . strtoupper($localeKey). ')' : ''))
+            // ToDo: remove localization if your app is not multilingual
+            ->label(__('HTML Display') . ' (' . strtoupper($localeKey). ')')
             ->componentClasses(['btn-outline-primary',  'btn-sm', 'm-1', 'clipboard-copy'])
             ->componentHtmlAttributes([
                 'data-library-media-id' => $file->id,
@@ -15,7 +16,8 @@
             ]) }}
     @endif
     {{ button()->prepend('<i class="fas fa-code fa-fw"></i>')
-        ->label(__('HTML Download') . (multilingual() ? ' (' . strtoupper($localeKey). ')' : ''))
+        // ToDo: remove localization if your app is not multilingual
+        ->label(__('HTML Download') . ' (' . strtoupper($localeKey). ')')
         ->componentClasses(['btn-outline-primary',  'btn-sm', 'm-1', 'clipboard-copy'])
         ->componentHtmlAttributes([
             'data-library-media-id' => $file->id,
