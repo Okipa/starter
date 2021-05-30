@@ -4,16 +4,15 @@
         <div class="row">
             <div class="text-center">
                 <div class="mx-auto mb-4">
+                    {{-- Todo: remove this component call if your app is not multilingual --}}
                     @include('components.common.multilingual.lang-switcher', [
                         'containerClasses' => ['text-end'],
                         'dropdownLabelClasses' => ['btn', 'btn-link'],
                         'dropdownMenuClasses' => ['dropdown-menu-end']
                     ])
-                    @if($icon = settings()->getFirstMedia('icons'))
-                        {{ $icon('auth') }}
-                    @endif
+                    {{ settings()->getFirstMedia('logo_squared')->img('auth', ['alt' => config('app.name')]) }}
                 </div>
-                <h1 class="h3 font-weight-normal text-info mt-3">
+                <h1 class="h3 text-info mt-3">
                     <i class="fas fa-tools fa-fw"></i>
                     {{ __('Maintenance in progress') }}
                 </h1>

@@ -2,11 +2,19 @@
 
 namespace App\Http\Requests\Pages;
 
-use App\Http\Requests\Abstracts\SeoRequest;
+use App\Http\Requests\Traits\HasSeoMeta;
+use App\Models\Pages\Page;
 use CodeZero\UniqueTranslation\UniqueTranslationRule;
+use Illuminate\Foundation\Http\FormRequest;
 
-class PageUpdateRequest extends SeoRequest
+class PageUpdateRequest extends FormRequest
 {
+    use HasSeoMeta;
+
+    /**
+     * @return array
+     * @throws \Okipa\MediaLibraryExt\Exceptions\CollectionNotFound
+     */
     public function rules(): array
     {
         $rules = ['active' => ['required', 'boolean']];
@@ -16,17 +24,17 @@ class PageUpdateRequest extends SeoRequest
                 'string',
                 'slug',
                 'max:255',
-                UniqueTranslationRule::for('pages')->ignore($this->page->id),
+                UniqueTranslationRule::for(app(Page::class)->getTable())->ignore($this->page->id),
             ],
             'nav_title' => ['required', 'string', 'max:255'],
         ]);
 
-        return array_merge($rules, $localizedRules, parent::rules());
+        return array_merge($rules, $localizedRules, $this->seoMetaRules());
     }
 
     protected function prepareForValidation(): void
     {
-        parent::prepareForValidation();
         $this->merge(['active' => (bool) $this->active]);
+        $this->prepareSeoMetaRules();
     }
 }

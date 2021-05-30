@@ -26,25 +26,25 @@ class Settings extends Model implements HasMedia
         'address',
         'zip_code',
         'city',
-        'facebook',
-        'twitter',
-        'instagram',
-        'youtube',
+        'facebook_url',
+        'twitter_url',
+        'instagram_url',
+        'youtube_url',
         'google_tag_manager_id',
     ];
 
     /** @SuppressWarnings(PHPMD.UnusedFormalParameter) */
     public function registerMediaCollections(): void
     {
-        $this->addMediaCollection('icons')
+        $this->addMediaCollection('logo_squared')
             ->acceptsMimeTypes(['image/webp', 'image/jpeg', 'image/png'])
             ->singleFile()
             ->registerMediaConversions(function (Media $media = null) {
-                $this->addMediaConversion('front')
+                $this->addMediaConversion('nav_front')
                     ->fit(Manipulations::FIT_CROP, 70, 70)
                     ->withResponsiveImages()
                     ->format('webp');
-                $this->addMediaConversion('admin')
+                $this->addMediaConversion('nav_admin')
                     ->fit(Manipulations::FIT_CROP, 30, 30)
                     ->format('webp');
                 $this->addMediaConversion('mail')

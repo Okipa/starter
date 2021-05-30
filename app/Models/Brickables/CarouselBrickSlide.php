@@ -33,7 +33,6 @@ class CarouselBrickSlide extends Model implements HasMedia, Sortable
         'brick_id',
         'label',
         'caption',
-        'position',
         'active',
     ];
 
@@ -45,7 +44,7 @@ class CarouselBrickSlide extends Model implements HasMedia, Sortable
             ->acceptsMimeTypes(['image/webp', 'image/jpeg', 'image/png'])
             ->registerMediaConversions(function (Media $media = null) {
                 $this->addMediaConversion('containerized')
-                    ->fit(Manipulations::FIT_CROP, 1110, 400)
+                    ->fit(Manipulations::FIT_CROP, 1140, 400)
                     ->withResponsiveImages()
                     ->format('webp');
                 $this->addMediaConversion('full')

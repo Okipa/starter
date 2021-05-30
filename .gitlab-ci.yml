@@ -9,6 +9,7 @@ composer:
   stage: build
   image: composer:latest
   script:
+    - composer update roave/security-advisories --dry-run --ignore-platform-reqs
     - composer install --optimize-autoloader --no-progress --no-scripts --ignore-platform-reqs
   artifacts:
     expire_in: 1 day
@@ -27,6 +28,7 @@ composer:nodev:
   stage: build
   image: composer:latest
   script:
+    - composer update roave/security-advisories --dry-run --ignore-platform-reqs
     - composer install --optimize-autoloader --no-progress --no-scripts --ignore-platform-reqs --no-dev
   artifacts:
     expire_in: 1 day
@@ -117,7 +119,7 @@ phpmd:
   dependencies:
     - composer
   script:
-    - vendor/bin/phpmd app,config,database,routes text phpmd.xml
+    - vendor/bin/phpmd app,config,database,routes,tests text phpmd.xml
   except:
     refs:
       - develop
@@ -149,11 +151,12 @@ phpunit:
     MYSQL_PASSWORD: secret
     DB_HOST: mysql
   services:
-    - mysql:8.0
+    - name: mysql:8.0
+      command: [ "--default-authentication-plugin=mysql_native_password" ]
   dependencies:
     - composer
   before_script:
-    # Uncomment image management dependencies for feature testing purpose if necessary.
+    # ToDo: uncomment image management dependencies for feature testing purpose if necessary.
     - apt update && apt install -y git libicu-dev default-mysql-client #libfreetype6-dev libjpeg62-turbo-dev libpng-dev libwebp-dev exif
     - echo 'memory_limit = 1024M' >> /usr/local/etc/php/conf.d/docker-php-memlimit.ini
     #- docker-php-ext-configure gd --enable-gd --with-freetype --with-jpeg --with-webp
@@ -219,7 +222,7 @@ preprod:
     - *install_deployer
     - *ssh_init
     - *permissions_update
-    - vendor/bin/dep deploy preprod -vv
+    - /usr/local/bin/dep deploy preprod -vv
     - *check_returned_http_code
   environment:
     name: preprod
@@ -242,7 +245,7 @@ production:
     - *install_deployer
     - *ssh_init
     - *permissions_update
-    - vendor/bin/dep deploy production -vv
+    - /usr/local/bin/dep deploy production -vv
     - *check_returned_http_code
   environment:
     name: production

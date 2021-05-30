@@ -1,11 +1,13 @@
 <?php
 
+// ToDo: remove this file after having reported all route translations (when necessary) if your app is not multilingual.
+
 return [
 
     'create' => 'creation',
     'store' => 'enregistrement',
     'edit' => 'edition',
-    'update' => 'mise-a-jour',
+    'update' => 'modification',
     'destroy' => 'suppression',
     'login' => 'connexion',
     'two-factor-challenge' => 'double-authentification',
@@ -41,5 +43,7 @@ return [
     'parameters' => 'parametres',
     'send' => 'envoi',
     'reorder' => 'reorganiser',
+    'cookie' => 'cookie',
+    'services' => 'services'
 
 ];

@@ -25,7 +25,7 @@ class PagesTable extends AbstractTable
             ])
             ->destroyConfirmationHtmlAttributes(fn(Page $page) => [
                 'data-confirm' => __('crud.orphan.destroy_confirm', [
-                    'entity' => __('Pages'),
+                    'entity' => __('Free pages'),
                     'name' => $page->slug,
                 ]),
             ]);
@@ -44,13 +44,12 @@ class PagesTable extends AbstractTable
         $table->column('unique_key')->sortable()->searchable();
         $table->column('nav_title')->stringLimit(25)->sortable()->searchable();
         $table->column()->title(__('Display'))->html(fn(Page $page) => view('components.admin.table.display', [
-            'url' => route('page.show', $page->slug),
+            'url' => route('page.show', $page),
             'active' => $page->active,
         ]));
-        $table->column('active')->sortable()->html(fn(Page $page) => view(
-            'components.admin.table.bool',
-            ['bool' => $page->active]
-        ));
+        $table->column('active')
+            ->sortable()
+            ->html(fn(Page $page) => view('components.admin.table.bool', ['bool' => $page->active]));
         $table->column('created_at')->dateTimeFormat('d/m/Y H:i')->sortable();
         $table->column('updated_at')->dateTimeFormat('d/m/Y H:i')->sortable(true, 'desc');
     }

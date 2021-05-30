@@ -29,7 +29,7 @@ RUN apt-get update \
        php8.0-msgpack php8.0-igbinary php8.0-ldap \
        php8.0-redis \
        # Additional dependencies #######################################################################################
-       language-pack-fr exif ghostscript php8.0-imagick mysql-client \
+       language-pack-fr exif ghostscript mysql-client php8.0-imagick php8.0-pcov \
     && php -r "readfile('http://getcomposer.org/installer');" | php -- --install-dir=/usr/bin/ --filename=composer \
     && curl -sL https://deb.nodesource.com/setup_15.x | bash - \
     && apt-get install -y nodejs \
@@ -40,6 +40,11 @@ RUN apt-get update \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* \
     # Additional instructions ##########################################################################################
     && sed -i 's/<policy domain="coder" rights="none" pattern="PDF" \/>/<policy domain="coder" rights="read|write" pattern="PDF" \/>/g' /etc/ImageMagick-6/policy.xml
+
+RUN pecl channel-update https://pecl.php.net/channel.xml \
+    && pecl install swoole \
+    && pecl clear-cache \
+    && rm -rf /tmp/* /var/tmp/*
 
 RUN setcap "cap_net_bind_service=+ep" /usr/bin/php8.0
 

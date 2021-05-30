@@ -1,4 +1,5 @@
 <li class="nav-item">
+    {{-- ToDo: replace `currentRouteIs` by `Route::is` if your app is not multilingual --}}
     <a class="nav-link{{ currentRouteIs('users.index')
         || currentRouteIs('user.create')
         || currentRouteIs('user.edit') ? ' active' : null }}"

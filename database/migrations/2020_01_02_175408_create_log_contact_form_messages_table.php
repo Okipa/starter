@@ -6,12 +6,7 @@ use Illuminate\Support\Facades\Schema;
 
 class CreateLogContactFormMessagesTable extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
-    public function up()
+    public function up(): void
     {
         Schema::create('log_contact_form_messages', function (Blueprint $table) {
             $table->id();
@@ -20,12 +15,7 @@ class CreateLogContactFormMessagesTable extends Migration
         });
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
-    public function down()
+    public function down(): void
     {
         Schema::dropIfExists('log_contact_form_messages');
     }

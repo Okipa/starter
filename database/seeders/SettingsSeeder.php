@@ -9,8 +9,11 @@ class SettingsSeeder extends Seeder
 {
     public function run(): void
     {
-        Settings::factory()->withMedia()->create([
-            // Todo: set custom settings.
-        ]);
+        Settings::factory()
+            // ToDo: customize logo.
+            ->withMedia(['logo_squared' => resource_path('seeds/logo-starter.png')])
+            ->create([
+                // ToDo: set custom settings.
+            ]);
     }
 }

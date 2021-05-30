@@ -3,6 +3,11 @@
         alert()->html(__('Success'), __('Two factor authentication has been enabled.'), 'success')->showConfirmButton()
     @endphp
 @endif
+@if (session('status') === 'recovery-codes-generated')
+    @php
+        alert()->html(__('Success'), __('Two factor recovery codes have been generated.'), 'success')->showConfirmButton()
+    @endphp
+@endif
 @if (session('status') === 'two-factor-authentication-disabled')
     @php
         alert()->html(__('Success'), __('Two factor authentication has been disabled.'), 'success')->showConfirmButton()
@@ -12,10 +17,9 @@
 @section('template')
     <h1>
         <i class="fas fa-user fa-fw"></i>
-        {{ __('Profile') }}
+        {{ __('breadcrumbs.orphan.index', ['entity' => __('Profile')]) }}
     </h1>
     <hr>
-    {{ buttonBack()->route('users.index') }}
     <x-common.forms.notice class="mt-3"/>
     <div class="row mb-n3" data-masonry>
         <div class="col-xl-6 mb-3">
@@ -24,7 +28,7 @@
                     {{ __('Update your account\'s profile and contact information.') }}
                 </p>
                 <form method="POST"
-                      action="{{ route('profile.update') }}"
+                      action="{{ route('user-profile-information.update') }}"
                       enctype="multipart/form-data"
                       novalidate>
                     @csrf
@@ -62,7 +66,7 @@
                         {{ __('Ensure your account is using a long, random password to stay secure.') }}
                     </p>
                     <form method="POST"
-                          action="{{ route('password.update') }}"
+                          action="{{ route('user-password.update') }}"
                           novalidate>
                         @csrf
                         @method('PUT')
@@ -71,6 +75,7 @@
                             ->errorBag('updatePassword') }}
                         {{ inputPassword()->name('new_password')
                             ->componentHtmlAttributes(['required', 'autocomplete' => 'new-password'])
+                            ->containerHtmlAttributes(['data-password-strength-meter'])
                             ->errorBag('updatePassword') }}
                         {{ inputPassword()->name('new_password_confirmation')
                             ->componentHtmlAttributes(['required', 'autocomplete' => 'new-password'])
@@ -115,7 +120,7 @@
                         </div>
                         <div class="d-flex mt-3">
                             <form method="POST"
-                                  action="{{ route('two-factor.recovery.regen') }}"
+                                  action="{{ route('two-factor.recovery-codes') }}"
                                   novalidate>
                                 @csrf
                                 {{ submit()->prepend('<i class="fas fa-redo fa-fw"></i>')
@@ -125,7 +130,7 @@
                             </form>
                             <form class="ms-3"
                                   method="POST"
-                                  action="{{ route('two-factor.deactivate') }}"
+                                  action="{{ route('two-factor.disable') }}"
                                   novalidate>
                                 @csrf
                                 @method('DELETE')
@@ -137,7 +142,7 @@
                         </div>
                     @else
                         <form method="POST"
-                              action="{{ route('two-factor.activate') }}"
+                              action="{{ route('two-factor.enable') }}"
                               novalidate>
                             @csrf
                             {{ submit()->prepend('<i class="fas fa-check fa-fw"></i>')

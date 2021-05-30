@@ -16,12 +16,12 @@
         <div class="row mb-n3" data-masonry>
             <div class="col-xl-6 mb-3">
                 <x-admin.forms.card title="{{ __('Media') }}">
-                    @php($logo = $settings->getFirstMedia('icons'))
-                    {{ inputFile()->name('icon')
+                    @php($logo = $settings->getFirstMedia('logo_squared'))
+                    {{ inputFile()->name('logo_squared')
                         ->value(optional($logo)->file_name)
                         ->uploadedFile(fn() => view('components.admin.media.thumb', ['image' => $logo]))
                         ->showRemoveCheckbox(false)
-                        ->caption($settings->getMediaCaption('icons')) }}
+                        ->caption($settings->getMediaCaption('logo_squared')) }}
                 </x-admin.forms.card>
             </div>
             <div class="col-xl-6 mb-3">
@@ -48,10 +48,10 @@
             </div>
             <div class="col-xl-6 mb-3">
                 <x-admin.forms.card title="{{ __('Links') }}">
-                    {{ inputText()->name('facebook')->model($settings)->prepend('<i class="fab fa-facebook"></i>') }}
-                    {{ inputText()->name('twitter')->model($settings)->prepend('<i class="fab fa-twitter"></i>') }}
-                    {{ inputText()->name('instagram')->model($settings)->prepend('<i class="fab fa-instagram"></i>') }}
-                    {{ inputText()->name('youtube')->model($settings)->prepend('<i class="fab fa-youtube"></i>') }}
+                    {{ inputText()->name('facebook_url')->model($settings)->prepend('<i class="fab fa-facebook"></i>') }}
+                    {{ inputText()->name('twitter_url')->model($settings)->prepend('<i class="fab fa-twitter"></i>') }}
+                    {{ inputText()->name('instagram_url')->model($settings)->prepend('<i class="fab fa-instagram"></i>') }}
+                    {{ inputText()->name('youtube_url')->model($settings)->prepend('<i class="fab fa-youtube"></i>') }}
                 </x-admin.forms.card>
             </div>
             <div class="col-xl-6 mb-3">

@@ -2,51 +2,31 @@
 
 namespace Database\Factories\Pages;
 
-use App\Brickables\OneTextColumn;
-use App\Brickables\TitleH1;
 use App\Models\Pages\Page;
+use Database\Factories\Traits\HasBricks;
+use Database\Factories\Traits\HasSeoMeta;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
 
+// Todo: update this factory if your app is not multilingual.
+
 class PageFactory extends Factory
 {
+    use HasSeoMeta;
+    use HasBricks;
+
     /** @var string */
     protected $model = Page::class;
-
-    protected string $markdownText = <<<EOT
-**Bold text.**
-
-*Italic text.*
-
-# Title 1
-## Title 2
-### Title 3
-#### Title 4
-##### Title 5
-###### Title 6
-
-> Quote.
-
-Unordered list :
-* Item 1.
-* Item 2.
-
-Ordered list :
-1. Item 1.
-2. Item 2.
-
-[Link](http://www.google.com).
-EOT;
 
     public function definition(): array
     {
         return [
-            'nav_title' => ['fr' => $this->faker->catchPhrase, 'en' => $this->faker->catchPhrase],
+            'nav_title' => ['fr' => $this->faker->unique()->catchPhrase, 'en' => $this->faker->unique()->catchPhrase],
             'active' => true,
         ];
     }
 
-    public function configure(): Factory
+    public function configure(): self
     {
         return $this->afterMaking(function (Page $page) {
             $page->unique_key = $page->unique_key
@@ -56,40 +36,6 @@ EOT;
                     'fr' => Str::slug($page->getTranslation('nav_title', 'fr')),
                     'en' => Str::slug($page->getTranslation('nav_title', 'en')),
                 ];
-        });
-    }
-
-    public function withSeoMeta(): Factory
-    {
-        return $this->afterCreating(function (Page $page) {
-            $page->saveSeoMeta([
-                'meta_title' => [
-                    'fr' => $page->getTranslation('nav_title', 'fr'),
-                    'en' => $page->getTranslation('nav_title', 'en'),
-                ],
-                'meta_description' => [
-                    'fr' => $this->faker->text(150),
-                    'en' => $this->faker->text(150)
-                ],
-            ]);
-        });
-    }
-
-    public function withBricks(): Factory
-    {
-        return $this->afterCreating(function (Page $page) {
-            $page->addBrick(TitleH1::class, [
-                'title' => [
-                    'fr' => $page->getTranslation('nav_title', 'fr'),
-                    'en' => $page->getTranslation('nav_title', 'en'),
-                ],
-            ]);
-            $page->addBrick(OneTextColumn::class, [
-                'text' => [
-                    'fr' => $this->markdownText,
-                    'en' => $this->markdownText,
-                ],
-            ]);
         });
     }
 }

@@ -6,20 +6,15 @@ use Illuminate\Support\Facades\Schema;
 
 class CreateCarouselBrickSlidesTable extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
-    public function up()
+    public function up(): void
     {
         Schema::create('carousel_brick_slides', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('brick_id');
             $table->foreign('brick_id')->references('id')->on('bricks')->onDelete('cascade');
-            // ToDo: change column type with monolingual app
+            // ToDo: change column type if your app is not multilingual
             $table->json('label');
-            // ToDo: change column type with monolingual app
+            // ToDo: change column type if your app is not multilingual
             $table->json('caption');
             $table->unsignedInteger('position');
             $table->boolean('active');
@@ -27,12 +22,7 @@ class CreateCarouselBrickSlidesTable extends Migration
         });
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
-    public function down()
+    public function down(): void
     {
         Schema::dropIfExists('carousel_brick_slides');
     }

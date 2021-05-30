@@ -3,6 +3,7 @@ import EasyMdeEditor from '../vendor/EasyMdeEditor';
 import MasonryGrid from '../vendor/MasonryGrid';
 import Html5Sortable from '../vendor/Html5Sortable';
 import FlatPickr from '../vendor/FlatPickr';
+import PasswordStrengthMeter from '../vendor/PasswordStrengthMeter';
 import ConfirmationRequest from '../utils/ConfirmationRequest';
 import AutoFillInputFrom from '../utils/AutoFillInputFrom';
 import LowerCaseInputValue from '../utils/LowerCaseInputValue';
@@ -22,6 +23,7 @@ EasyMdeEditor.init();
 MasonryGrid.init();
 Html5Sortable.init();
 FlatPickr.init();
+PasswordStrengthMeter.init();
 
 // Utils
 ConfirmationRequest.init();

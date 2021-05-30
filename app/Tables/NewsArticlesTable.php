@@ -60,7 +60,7 @@ class NewsArticlesTable extends AbstractTable
             })->implode('name', ', '));
         $table->column()->title(__('Display'))->html(fn(NewsArticle $article) => view(
             'components.admin.table.display',
-            ['url' => route('news.article.show', $article->slug), 'active' => $article->active]
+            ['url' => route('news.article.show', $article), 'active' => $article->active]
         ));
         $table->column('active')
             ->sortable()

@@ -2,28 +2,11 @@
 
 use Illuminate\Support\Facades\Route;
 
+// ToDo: globally remove all `Lang::uri()` usage if your app is not multilingual.
+
+// ToDo: remove localized group if your app is not multilingual.
 // Localized ***********************************************************************************************************
 Route::localized(function () {
-
-    // Todo: you can remove this block and all the `fortify` route php files if your app is not multilingual.
-    // Todo: Also remove the `Fortify::ignoreRoutes();` line in the `App\Providers\FortifyServiceProvider`.
-    // Fortify
-    Route::group([
-        'namespace' => 'Laravel\Fortify\Http\Controllers',
-        'domain' => config('fortify.domain'),
-        'prefix' => config('fortify.prefix'),
-    ], function () {
-        Route::group(['middleware' => config('fortify.middleware', ['web'])], static function () {
-            require('web/fortify/login.php');
-            require('web/fortify/registration.php');
-            require('web/fortify/password-reset.php');
-            require('web/fortify/email-verification.php');
-            require('web/fortify/profile-information.php');
-            require('web/fortify/passwords.php');
-            require('web/fortify/password-confirmation.php');
-            require('web/fortify/two-factor-authentication.php');
-        });
-    });
 
     // Admin
     Route::prefix('admin')->middleware(['auth', 'verified'])->group(function () {
@@ -41,6 +24,7 @@ Route::localized(function () {
             require('web/admin/profile.php');
             require('web/admin/users.php');
             require('web/admin/settings.php');
+            require('web/admin/cookies.php');
         });
     });
 
@@ -58,5 +42,6 @@ Route::localized(function () {
 // Utils
 require('web/utils/seo.php');
 
+// ToDo: remove this route if your app is not multilingual.
 // 404 fallback catch: do not not place any route declaration under this one ******************************************
 require('web/utils/fallback.php');

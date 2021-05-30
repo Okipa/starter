@@ -16,13 +16,15 @@ class ShareJavascriptToView
      * @return mixed
      * @throws \Exception
      */
-    public function handle(Request $request, Closure $next)
+    public function handle(Request $request, Closure $next): mixed
     {
         $gdprPage = pages()->where('unique_key', 'gdpr_page')->first();
         share([
+            'domain' => request()->getHost(),
             'locale' => app()->getLocale(),
             'notify' => __('notify'),
             'gdpr_page_url' => $gdprPage ? route('page.show', $gdprPage) : null,
+            'cookie_categories' => cookieCategories(),
         ]);
 
         return $next($request);

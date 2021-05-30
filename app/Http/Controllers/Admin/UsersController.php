@@ -9,12 +9,11 @@ use App\Models\Users\User;
 use App\Services\Users\UsersService;
 use App\Tables\UsersTable;
 use Artesaos\SEOTools\Facades\SEOTools;
-use Auth;
 use Hash;
+use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Str;
-use Illuminate\Contracts\View\View;
 
 class UsersController extends Controller
 {
@@ -81,17 +80,15 @@ class UsersController extends Controller
      */
     public function update(User $user, UserUpdateRequest $request): RedirectResponse
     {
-        $user->update($request->validated()['new_password']
+        $user->update(data_get($request->validated(), 'new_password')
             ? array_merge($request->validated(), ['password' => Hash::make($request->validated()['new_password'])])
-            : Arr::except($request->validated(), 'password'));
+            : Arr::except($request->validated(), 'new_password'));
         app(UsersService::class)->saveProfilePictureFromRequest($request, $user);
 
-        return back()->with('toast_success', $user->id === Auth::id()
-            ? __('crud.name.updated', ['name' => __('Profile')])
-            : __('crud.orphan.updated', [
-                'entity' => __('Users'),
-                'name' => $user->full_name,
-            ]));
+        return back()->with('toast_success', __('crud.orphan.updated', [
+            'entity' => __('Users'),
+            'name' => $user->full_name,
+        ]));
     }
 
     /**

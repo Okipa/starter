@@ -1,0 +1,12 @@
+#change-cookie-preferences {
+    right: unset;
+    filter: drop-shadow(0 0 5px rgba(0, 0, 0, 0.5));
+
+    &:hover {
+
+        .fa-circle {
+            color: $primary;
+            @include transition();
+        }
+    }
+}

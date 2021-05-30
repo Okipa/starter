@@ -6,20 +6,15 @@ use Illuminate\Support\Facades\Schema;
 
 class CreateNewsArticleTable extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
-    public function up()
+    public function up(): void
     {
         Schema::create('news_articles', function (Blueprint $table) {
             $table->id();
-            // ToDo: change column type with monolingual app
+            // ToDo: change column type if your app is not multilingual
             $table->json('title');
-            // ToDo: change column type with monolingual app
+            // ToDo: change column type if your app is not multilingual
             $table->json('slug');
-            // ToDo: change column type with monolingual app
+            // ToDo: change column type if your app is not multilingual
             $table->json('description')->nullable();
             $table->boolean('active');
             $table->dateTime('published_at');
@@ -27,12 +22,7 @@ class CreateNewsArticleTable extends Migration
         });
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
-    public function down()
+    public function down(): void
     {
         Schema::dropIfExists('news_articles');
     }

@@ -5,18 +5,43 @@ namespace Database\Seeders;
 use App\Models\Pages\Page;
 use Illuminate\Database\Seeder;
 
+// Todo: update this seeder if your app is not multilingual.
+
 class PagesSeeder extends Seeder
 {
+    /** @throws \Exception */
     public function run(): void
     {
-        Page::factory()->withBricks()->withSeoMeta()->create([
-            'unique_key' => 'terms_of_service_page',
-            'nav_title' => ['fr' => 'CGU et mentions légales', 'en' => 'Terms and legal notice'],
-        ]);
-        Page::factory()->withBricks()->withSeoMeta()->create([
-            'unique_key' => 'gdpr_page',
-            'nav_title' => ['fr' => 'Vie privée et RGPD', 'en' => 'Privacy policy and GDPR'],
-        ]);
-        Page::factory()->withBricks()->withSeoMeta()->count(3)->create();
+        Page::factory()
+            ->withSpacerBrick('xl')
+            ->withTitleBrick()
+            ->withSpacerBrick('sm')
+            ->withOneTextColumnBrick()
+            ->withSpacerBrick('xl')
+            ->withSeoMeta()
+            ->create([
+                'unique_key' => 'terms_of_service_page',
+                'nav_title' => ['fr' => 'CGU et mentions légales', 'en' => 'Terms and legal notice'],
+            ]);
+        Page::factory()
+            ->withSpacerBrick('xl')
+            ->withTitleBrick()
+            ->withSpacerBrick('sm')
+            ->withOneTextColumnBrick()
+            ->withSpacerBrick('xl')
+            ->withSeoMeta()
+            ->create([
+                'unique_key' => 'gdpr_page',
+                'nav_title' => ['fr' => 'Vie privée et RGPD', 'en' => 'Privacy policy and GDPR'],
+            ]);
+        Page::factory()
+            ->withSpacerBrick('xl')
+            ->withTitleBrick()
+            ->withSpacerBrick('sm')
+            ->withOneTextColumnBrick()
+            ->withSpacerBrick('xl')
+            ->withSeoMeta()
+            ->count(3)
+            ->create();
     }
 }

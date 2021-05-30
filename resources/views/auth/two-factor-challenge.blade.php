@@ -5,16 +5,15 @@
 @endif
 @extends('layouts.admin.auth')
 @section('content')
+    {{-- Todo: remove this component call if your app is not multilingual --}}
     @include('components.common.multilingual.lang-switcher', [
         'containerClasses' => ['text-end', 'mb-3'],
         'dropdownLabelClasses' => ['btn', 'btn-link'],
         'dropdownMenuClasses' => ['dropdown-menu-end']
     ])
-    @if($icon = settings()->getFirstMedia('icons'))
-        <div class="mx-auto mb-4">
-            {{ $icon('auth') }}
-        </div>
-    @endif
+    <div class="mx-auto mb-4">
+        {{ settings()->getFirstMedia('logo_squared')->img('auth', ['alt' => config('app.name')]) }}
+    </div>
     <h1 class="h3 mb-3 font-weight-normal">
         <i class="fas fa-sign-in-alt fa-fw"></i>
         {{ __('Two Factor Authentication') }}

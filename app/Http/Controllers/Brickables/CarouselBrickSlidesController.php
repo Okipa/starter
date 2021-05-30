@@ -98,6 +98,6 @@ class CarouselBrickSlidesController extends Controller
     {
         CarouselBrickSlide::setNewOrder($request->validated()['ordered_ids']);
 
-        return response()->json(['message' => __('The list has been reordered.')], 200);
+        return response()->json(['message' => __('The list has been reordered.')]);
     }
 }

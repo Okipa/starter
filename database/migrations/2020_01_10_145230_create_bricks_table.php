@@ -6,25 +6,19 @@ use Illuminate\Support\Facades\Schema;
 
 class CreateBricksTable extends Migration
 {
-    /**
-     * Run the migrations.
-     */
-    public function up()
+    public function up(): void
     {
         Schema::create('bricks', function (Blueprint $table) {
             $table->id();
             $table->morphs('model');
             $table->string('brickable_type');
             $table->json('data');
-            $table->unsignedInteger('position')->nullable();
+            $table->unsignedInteger('position');
             $table->timestamps();
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
-    public function down()
+    public function down(): void
     {
         Schema::dropIfExists('bricks');
     }

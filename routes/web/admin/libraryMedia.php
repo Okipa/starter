@@ -56,6 +56,7 @@ Route::delete(
     [LibraryMediaFilesController::class, 'destroy']
 )->name('libraryMedia.file.destroy');
 Route::get(
+    // ToDo: remove `/{locale?}` from the route if your app is not multilingual.
     Lang::uri('library/media/files/clipboard/content/{file}/{type}/{locale?}'),
     [LibraryMediaFilesController::class, 'clipboardContent']
 )->name('libraryMedia.file.clipboardContent');

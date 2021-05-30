@@ -21,7 +21,7 @@ class PagesController extends Controller
     public function index(): View
     {
         $table = app(PagesTable::class)->setup();
-        SEOTools::setTitle(__('breadcrumbs.orphan.index', ['entity' => __('Pages')]));
+        SEOTools::setTitle(__('breadcrumbs.orphan.index', ['entity' => __('Free pages')]));
 
         return view('templates.admin.pages.index', compact('table'));
     }
@@ -29,7 +29,7 @@ class PagesController extends Controller
     public function create(): View
     {
         $page = null;
-        SEOTools::setTitle(__('breadcrumbs.orphan.create', ['entity' => __('Pages')]));
+        SEOTools::setTitle(__('breadcrumbs.orphan.create', ['entity' => __('Free pages')]));
 
         return view('templates.admin.pages.edit', compact('page'));
     }
@@ -48,7 +48,7 @@ class PagesController extends Controller
         pages(true);
 
         return redirect()->route('pages.index')->with('toast_success', __('crud.orphan.created', [
-            'entity' => __('Pages'),
+            'entity' => __('Free pages'),
             'name' => $page->nav_title,
         ]));
     }
@@ -56,7 +56,7 @@ class PagesController extends Controller
     public function edit(Page $page): View
     {
         SEOTools::setTitle(__('breadcrumbs.orphan.edit', [
-            'entity' => __('Pages'),
+            'entity' => __('Free pages'),
             'detail' => $page->nav_title,
         ]));
 
@@ -77,7 +77,7 @@ class PagesController extends Controller
         pages(true);
 
         return redirect()->route('page.edit', $page)->with('toast_success', __('crud.orphan.updated', [
-            'entity' => __('Pages'),
+            'entity' => __('Free pages'),
             'name' => $page->nav_title,
         ]));
     }
@@ -94,7 +94,7 @@ class PagesController extends Controller
         pages(true);
 
         return back()->with('toast_success', __('crud.orphan.destroyed', [
-            'entity' => __('Pages'),
+            'entity' => __('Free pages'),
             'name' => $page->nav_title,
         ]));
     }

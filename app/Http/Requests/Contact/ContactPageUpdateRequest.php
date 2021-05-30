@@ -2,17 +2,24 @@
 
 namespace App\Http\Requests\Contact;
 
-use App\Http\Requests\Abstracts\SeoRequest;
+use App\Http\Requests\Traits\HasSeoMeta;
+use Illuminate\Foundation\Http\FormRequest;
 
-class ContactPageUpdateRequest extends SeoRequest
+class ContactPageUpdateRequest extends FormRequest
 {
+    use HasSeoMeta;
+
+    /**
+     * @return array
+     * @throws \Okipa\MediaLibraryExt\Exceptions\CollectionNotFound
+     */
     public function rules(): array
     {
-        $localizedRules = localizeRules([
-            'title' => ['required', 'string', 'max:255'],
-            'description' => ['string', 'max:65535'],
-        ]);
+        return $this->seoMetaRules();
+    }
 
-        return array_merge($localizedRules, parent::rules());
+    public function prepareForValidation(): void
+    {
+        $this->prepareSeoMetaRules();
     }
 }

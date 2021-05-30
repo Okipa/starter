@@ -24,7 +24,7 @@
         <x-common.forms.notice class="mt-3"/>
         <div class="row mb-n3" data-masonry>
             <div class="col-xl-6 mb-3">
-                <x-admin.forms.card title="{{ __('Identity') }}">
+                <x-admin.forms.card title="{{ __('Civil status') }}">
                     @php($profilePicture = optional($user)->getFirstMedia('profile_pictures'))
                     {{ inputFile()->name('profile_picture')
                         ->value(optional($profilePicture)->file_name)
@@ -43,6 +43,7 @@
             <div class="col-xl-6 mb-3">
                 <x-admin.forms.card title="{{ __('Security') }}">
                     <p>
+                        {{-- ToDo: replace `currentRouteIs` by `Route::is` if your app is not multilingual --}}
                         @if(currentRouteIs('user.create'))
                             <i class="fas fa-exclamation-triangle fa-fw text-warning"></i>
                             {{ __('If no password is defined for this user, he will be emailed a password creation link.') }}
@@ -50,7 +51,7 @@
                             {{ __('Only fill if you want to change the current password.') }}
                         @endif
                     </p>
-                    {{ inputPassword()->name($user ? 'new_password' : 'password') }}
+                    {{ inputPassword()->name($user ? 'new_password' : 'password')->containerHtmlAttributes(['data-password-strength-meter']) }}
                     {{ inputPassword()->name($user ? 'new_password_confirmation' : 'password_confirmation')->model($user) }}
                 </x-admin.forms.card>
             </div>

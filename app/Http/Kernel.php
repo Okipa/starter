@@ -76,6 +76,7 @@ class Kernel extends HttpKernel
      */
     protected $middlewarePriority = [
         \Illuminate\Session\Middleware\StartSession::class,
+        // ToDo: Remove the line below if your app is not multilingual.
         \CodeZero\LocalizedRoutes\Middleware\SetLocale::class,
         \Illuminate\View\Middleware\ShareErrorsFromSession::class,
         \Illuminate\Contracts\Auth\Middleware\AuthenticatesRequests::class,

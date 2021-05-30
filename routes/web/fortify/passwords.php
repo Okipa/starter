@@ -6,5 +6,5 @@ use Laravel\Fortify\Http\Controllers\PasswordController;
 if (Features::enabled(Features::updatePasswords())) {
     Route::put(Lang::uri('/user/password'), [PasswordController::class, 'update'])
         ->middleware(['auth'])
-        ->name('password.update');
+        ->name('user-password.update');
 }

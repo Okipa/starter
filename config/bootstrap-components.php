@@ -8,8 +8,7 @@ return [
      */
     'components' => [
         // Form
-        'text' => Okipa\LaravelBootstrapComponents\Components\Form\InputText
-::class,
+        'text' => Okipa\LaravelBootstrapComponents\Components\Form\InputText::class,
         'email' => Okipa\LaravelBootstrapComponents\Components\Form\InputEmail::class,
         'password' => Okipa\LaravelBootstrapComponents\Components\Form\InputPassword::class,
         'url' => Okipa\LaravelBootstrapComponents\Components\Form\InputUrl::class,
@@ -22,15 +21,13 @@ return [
         'file' => Okipa\LaravelBootstrapComponents\Components\Form\InputFile::class,
         'checkbox' => Okipa\LaravelBootstrapComponents\Components\Form\InputCheckbox::class,
         'switch' => Okipa\LaravelBootstrapComponents\Components\Form\InputSwitch::class,
-        'radio' => Okipa\LaravelBootstrapComponents\Components\Form\InputRadio
-::class,
+        'radio' => Okipa\LaravelBootstrapComponents\Components\Form\InputRadio::class,
         'textarea' => Okipa\LaravelBootstrapComponents\Components\Form\Textarea::class,
         'select' => Okipa\LaravelBootstrapComponents\Components\Form\Select::class,
         // Buttons
         'submit' => Okipa\LaravelBootstrapComponents\Components\Buttons\Submit::class,
         'create' => Okipa\LaravelBootstrapComponents\Components\Buttons\SubmitCreate::class,
-        'update' => Okipa\LaravelBootstrapComponents\Components\Buttons\SubmitUpdate
-::class,
+        'update' => Okipa\LaravelBootstrapComponents\Components\Buttons\SubmitUpdate::class,
         'validate' => Okipa\LaravelBootstrapComponents\Components\Buttons\SubmitValidate::class,
         'button' => Okipa\LaravelBootstrapComponents\Components\Buttons\Button::class,
         'link' => Okipa\LaravelBootstrapComponents\Components\Buttons\ButtonLink::class,

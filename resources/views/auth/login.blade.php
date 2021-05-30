@@ -5,23 +5,23 @@
 @endif
 @extends('layouts.admin.auth')
 @section('content')
+    {{-- Todo: remove this component call if your app is not multilingual --}}
     @include('components.common.multilingual.lang-switcher', [
         'containerClasses' => ['text-end', 'mb-3'],
         'dropdownLabelClasses' => ['btn', 'btn-link'],
         'dropdownMenuClasses' => ['dropdown-menu-end']
     ])
-    @if($icon = settings()->getFirstMedia('icons'))
-        <div class="mx-auto mb-4">
-            {{ $icon('auth') }}
-        </div>
-    @endif
-    <h1 class="h3 mb-3 fw-normal">
+    <div class="mx-auto mb-4">
+        {{ settings()->getFirstMedia('logo_squared')->img('auth', ['alt' => config('app.name')]) }}
+    </div>
+    <h1 class="h3 mb-3">
         <i class="fas fa-sign-in-alt fa-fw"></i>
         {{ __('Sign in area') }}
     </h1>
     <form method="POST" novalidate>
         @csrf
         <x-common.forms.notice class="mt-3"/>
+        <x-form::input type="email" name="email" autofocus autocomplete="email" required/>
         {{ inputEmail()->name('email')
             ->componentHtmlAttributes(['required', 'autofocus', 'autocomplete' => 'email']) }}
         {{ inputPassword()->name('password')

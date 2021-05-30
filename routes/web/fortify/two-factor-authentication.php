@@ -10,11 +10,14 @@ if (Features::enabled(Features::twoFactorAuthentication())) {
     $twoFactorLimiter = config('fortify.limiters.two-factor');
     if (config('fortify.views', true)) {
         Route::get(Lang::uri('/two-factor-challenge'), [TwoFactorAuthenticatedSessionController::class, 'create'])
-            ->middleware(['guest'])
+            ->middleware(['guest:' . config('fortify.guard')])
             ->name('two-factor.login');
     }
     Route::post(Lang::uri('/two-factor-challenge'), [TwoFactorAuthenticatedSessionController::class, 'store'])
-        ->middleware(array_filter(['guest', $twoFactorLimiter ? 'throttle:' . $twoFactorLimiter : null]))
+        ->middleware(array_filter([
+            'guest:' . config('fortify.guard'),
+            $twoFactorLimiter ? 'throttle:' . $twoFactorLimiter : null,
+        ]))
         ->name('two-factor.login.store');
     $twoFactorMiddleware = Features::optionEnabled(Features::twoFactorAuthentication(), 'confirmPassword')
         ? ['auth', 'password.confirm']
@@ -33,5 +36,5 @@ if (Features::enabled(Features::twoFactorAuthentication())) {
         ->name('two-factor.recovery');
     Route::post(Lang::uri('/user/two-factor-recovery-codes'), [RecoveryCodeController::class, 'store'])
         ->middleware($twoFactorMiddleware)
-        ->name('two-factor.recovery.regen');
+        ->name('two-factor.recovery-codes');
 }

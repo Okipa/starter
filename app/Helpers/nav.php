@@ -10,6 +10,6 @@ if (! function_exists('currentRouteIs')) {
 if (! function_exists('currentUrlIs')) {
     function currentUrlIs(string $url): bool
     {
-        return request()->url() === $url;
+        return Request::url() === $url;
     }
 }

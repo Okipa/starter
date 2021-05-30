@@ -1,4 +1,5 @@
 @php
+    // ToDo: replace `currentRouteIs` by `Route::is` if your app is not multilingual.
     $homePageActive = currentRouteIs('home.page.edit')
         || optional(Brickables::getModelFromRequest())->unique_key === 'home_page_content'
         || currentRouteIs('brick.carousel.slide.create')

@@ -6,27 +6,17 @@ use Illuminate\Support\Facades\Schema;
 
 class CreateLibraryMediaCategoriesTable extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
-    public function up()
+    public function up(): void
     {
         Schema::create('library_media_categories', function (Blueprint $table) {
             $table->id();
-            // ToDo: change column type with monolingual app
-            $table->json('name');
+            // ToDo: change column type if your app is not multilingual
+            $table->json('title');
             $table->timestamps();
         });
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
-    public function down()
+    public function down(): void
     {
         Schema::dropIfExists('library_media_categories');
     }

@@ -17,20 +17,20 @@ class SettingsFactory extends Factory
             'address' => $this->faker->address,
             'zip_code' => $this->faker->postcode,
             'city' => $this->faker->city,
-            'facebook' => $this->faker->url,
-            'twitter' => $this->faker->url,
-            'instagram' => $this->faker->url,
-            'youtube' => $this->faker->url,
+            'facebook_url' => $this->faker->unique()->url,
+            'twitter_url' => $this->faker->unique()->url,
+            'instagram_url' => $this->faker->unique()->url,
+            'youtube_url' => $this->faker->unique()->url,
+            'google_tag_manager_id' => $this->faker->uuid,
         ];
     }
 
-    public function withMedia(): Factory
+    public function withMedia(array $media = null): self
     {
-        return $this->afterCreating(function (Settings $settings) {
-            // Todo: customize logo.
-            $settings->addMedia(resource_path('images/logo-starter.png'))
+        return $this->afterCreating(function (Settings $settings) use ($media) {
+            $settings->addMedia(data_get($media, 'logo_squared') ?: $this->faker->image(null, 250, 250))
                 ->preservingOriginal()
-                ->toMediaCollection('icons');
+                ->toMediaCollection('logo_squared');
         });
     }
 }

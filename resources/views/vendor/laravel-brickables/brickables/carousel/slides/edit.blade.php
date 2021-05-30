@@ -33,7 +33,7 @@
         <x-common.forms.notice class="mt-3"/>
         <div class="row mb-n3" data-masonry>
             <div class="col-xl-6 mb-3">
-                <x-admin.forms.card title="{{ __('Identity') }}">
+                <x-admin.forms.card title="{{ __('Information') }}">
                     @php($image = optional($slide)->getFirstMedia('images'))
                     {{ inputFile()->name('image')
                         ->value(optional($image)->file_name)
@@ -41,8 +41,15 @@
                         ->showRemoveCheckbox(false)
                         ->caption((new App\Models\Brickables\CarouselBrickSlide)->getMediaCaption('images'))
                         ->componentHtmlAttributes(['required']) }}
-                    {{ inputText()->name('label')->model($slide)->locales(supportedLocaleKeys()) }}
-                    {{ inputText()->name('caption')->model($slide)->locales(supportedLocaleKeys())->prepend('<i class="fas fa-align-left"></i>') }}
+                    {{ inputText()->name('label')
+                        ->model($slide)
+                        // Todo: remove the line below if your app is not multilingual.
+                        ->locales(supportedLocaleKeys()) }}
+                    {{ inputText()->name('caption')
+                        ->model($slide)
+                        // Todo: remove the line below if your app is not multilingual.
+                        ->locales(supportedLocaleKeys())
+                        ->prepend('<i class="fas fa-align-left"></i>') }}
                 </x-admin.forms.card>
             </div>
             <div class="col-xl-6 mb-3">

@@ -28,13 +28,11 @@ class UsersService
      * @throws \Spatie\MediaLibrary\MediaCollections\Exceptions\FileDoesNotExist
      * @throws \Spatie\MediaLibrary\MediaCollections\Exceptions\FileIsTooBig
      */
-    public function saveAvatarFromUploadedFile(?UploadedFile $file, User $user)
+    public function saveAvatarFromUploadedFile(?UploadedFile $file, User $user): void
     {
-        if ($file) {
-            $user->addMedia($file)->toMediaCollection('profile_pictures');
-        } else {
-            $this->setDefaultAvatar($user);
-        }
+        $file
+            ? $user->addMedia($file)->toMediaCollection('profile_pictures')
+            : $this->setDefaultAvatar($user);
     }
 
     /**
@@ -45,7 +43,7 @@ class UsersService
      */
     public function setDefaultAvatar(User $user): void
     {
-        $user->addMedia(database_path('seeders/files/users/default-450-450.png'))
+        $user->addMedia(resource_path('seeds/anonymous-user.png'))
             ->preservingOriginal()
             ->toMediaCollection('profile_pictures');
     }

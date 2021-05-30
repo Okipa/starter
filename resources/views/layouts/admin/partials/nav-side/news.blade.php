@@ -1,4 +1,5 @@
 @php
+    // ToDo: replace `currentRouteIs` by `Route::is` if your app is not multilingual
     $newsPageActive = currentRouteIs('news.page.edit')
         || optional(Brickables::getModelFromRequest())->unique_key === 'news_page_content';
     $newsCategoriesActive = currentRouteIs('news.categories.index')
@@ -33,7 +34,7 @@
                 {{ __('Page') }}
             </a>
         </li>
-        {{-- categories --}}
+        {{-- Categories --}}
         <li class="nav-item">
             <a class="nav-link{{ $newsCategoriesActive ? ' active' : null }}"
                href="{{ route('news.categories.index') }}"
@@ -42,7 +43,7 @@
                 {{ __('Categories') }}
             </a>
         </li>
-        {{-- articles --}}
+        {{-- Articles --}}
         <li class="nav-item">
             <a class="nav-link{{ $newsArticlesActive ? ' active' : null }}"
                href="{{ route('news.articles.index') }}"

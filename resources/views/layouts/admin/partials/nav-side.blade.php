@@ -10,9 +10,8 @@
         <hr class="w-100">
         @include('layouts.admin.partials.nav-side.users')
         @include('layouts.admin.partials.nav-side.settings')
-        {{-- separator --}}
+        @include('layouts.admin.partials.nav-side.cookies')
         <hr class="w-100">
-        {{-- back to the front --}}
         <li class="nav-item">
             <a class="nav-link"
                href="{{ route('home.page.show') }}"

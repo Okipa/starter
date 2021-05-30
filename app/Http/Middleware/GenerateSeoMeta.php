@@ -21,13 +21,13 @@ class GenerateSeoMeta
      */
     public function handle(Request $request, Closure $next)
     {
+        // ToDo: replace this entire block by `SEO::opengraph()->addProperty('locale', 'fr_FR')`
+        // if your app is not multilingual.
         SEO::opengraph()->addProperty('locale', currentLocale()['regional']);
-        if (multilingual()) {
-            foreach (supportedLocaleKeys() as $localeKey) {
-                SEO::metatags()->addAlternateLanguage($localeKey, Route::localizedUrl($localeKey));
-            }
-            SEO::opengraph()->addProperty('locale:alternate', Arr::pluck(supportedLocales(), 'regional'));
+        foreach (supportedLocaleKeys() as $localeKey) {
+            SEO::metatags()->addAlternateLanguage($localeKey, Route::localizedUrl($localeKey));
         }
+        SEO::opengraph()->addProperty('locale:alternate', Arr::pluck(supportedLocales(), 'regional'));
 
         return $next($request);
     }
