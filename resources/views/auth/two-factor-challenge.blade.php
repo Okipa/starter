@@ -39,8 +39,9 @@
         @endif
         {{ submit()->prepend('<i class="fas fa-sign-in-alt fa-fw"></i>')
             ->label(__('Log in'))
-            ->componentClasses(['btn-block', 'btn-primary', 'form-group']) }}
-        <div class="d-flex form-group">
+            ->componentClasses(['btn-primary', 'mb-3'])
+            ->containerClasses(['d-grid']) }}
+        <div class="d-flex mb-3">
             @if(request()->recovery)
                 <a href="{{ route(Request::route()->getName()) }}" title="{{ __('Use an authentication code') }}">
                     <i class="fas fa-exchange-alt fa-fw"></i>

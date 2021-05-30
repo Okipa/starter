@@ -1,5 +1,5 @@
 <nav id="navbar" class="navbar navbar-expand-xl navbar-dark bg-dark w-100">
-    <a class="navbar-brand d-flex align-items-center pl-3 pr-3" href="{{ route('admin.index') }}">
+    <a class="navbar-brand d-flex align-items-center ps-3 pe-3" href="{{ route('admin.index') }}">
         {{ settings()->getFirstMedia('logo_squared')->img('nav_admin', ['alt' => config('app.name')]) }}
         <span class="ps-2">{{ config('app.name') }}</span>
     </a>

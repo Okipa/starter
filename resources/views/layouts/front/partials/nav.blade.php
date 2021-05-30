@@ -2,7 +2,7 @@
     <div class="container">
         <a class="navbar-brand" href="{{ route('home.page.show') }}" title="{{ config('app.name') }}">
             {{ settings()->getFirstMedia('logo_squared')->img('nav_front', ['alt' => config('app.name')]) }}
-            <span class="pl-2">{{ config('app.name') }}</span>
+            <span class="ps-2">{{ config('app.name') }}</span>
         </a>
         <button class="navbar-toggler"
                 type="button"

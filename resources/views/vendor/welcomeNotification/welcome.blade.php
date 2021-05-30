@@ -23,7 +23,9 @@
             ->containerHtmlAttributes(['data-password-strength-meter']) }}
         {{ inputPassword()->name('password_confirmation')
             ->componentHtmlAttributes(['required', 'autocomplete' => 'new-password']) }}
-        {{ submitValidate()->label(__('Save new password'))->componentClasses(['btn-block', 'btn-primary', 'form-group']) }}
+        {{ submitValidate()->label(__('Save new password'))
+            ->componentClasses(['btn-primary', 'mb-3'])
+            ->containerClasses(['d-grid']) }}
         {{ buttonCancel()->route('home.page.show') }}
     </form>
 @endsection
