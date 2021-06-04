@@ -44,7 +44,7 @@ class PagesTable extends AbstractTable
         $table->column('unique_key')->sortable()->searchable();
         $table->column('nav_title')->stringLimit(25)->sortable()->searchable();
         $table->column()->title(__('Display'))->html(fn(Page $page) => view('components.admin.table.display', [
-            'url' => route('page.show', $page),
+            'url' => route('page.show', [$page]),
             'active' => $page->active,
         ]));
         $table->column('active')

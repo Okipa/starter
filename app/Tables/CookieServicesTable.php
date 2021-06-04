@@ -35,6 +35,7 @@ class CookieServicesTable extends AbstractTable
                 'destroy' => ['name' => 'cookie.service.destroy'],
             ])
             ->query(function (Builder $query) {
+                $query->with(['categories']);
                 if ($this->request->has('category_id')) {
                     $query->whereHas(
                         'categories',

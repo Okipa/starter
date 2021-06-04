@@ -1,10 +1,7 @@
-# Todo:
-
 <!-- ToDo: Search every `ToDo:` occurrence in starter and customize what needs to be -->
 <!-- ToDo: Remove `spatie/laravel-translatable` package if your app is not multilingual -->
 <!-- ToDo: Remove `codezero/laravel-localized-routes` package if your app is not multilingual -->
 <!-- ToDo: Remove `codezero/laravel-unique-translation` package if your app is not multilingual -->
-
 # Web app prebuilt base on Laravel 8, PHP 8.0 and MySQL 8.0
 
 <!-- ToDo: replace by project badges -->

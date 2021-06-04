@@ -32,7 +32,7 @@
         "propaganistas/laravel-phone": "^4.0",
         "realrashid/sweet-alert": "^3.2",
         "sentry/sentry-laravel": "^2.0",
-        "spatie/laravel-feed": "^3.0",
+        "spatie/laravel-feed": "^4.0",
         "spatie/laravel-honeypot": "^4.0",
         "spatie/laravel-medialibrary": "^9.0",
         "spatie/laravel-sitemap": "^6.0",

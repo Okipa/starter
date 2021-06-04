@@ -25,7 +25,7 @@ class CookieCategoriesTable extends AbstractTable
                 'edit' => ['name' => 'cookie.category.edit'],
                 'destroy' => ['name' => 'cookie.category.destroy'],
             ])
-            ->query(fn(Builder $query) => $query->ordered())
+            ->query(fn(Builder $query) => $query->with(['services'])->ordered())
             ->destroyConfirmationHtmlAttributes(fn(CookieCategory $cookieCategory) => [
                 'data-confirm' => __('crud.parent.destroy_confirm', [
                     'parent' => __('Cookies'),

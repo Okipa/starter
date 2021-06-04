@@ -39,6 +39,7 @@ class LibraryMediaFilesTable extends AbstractTable
                 ]),
             ])
             ->query(function (Builder $query) {
+                $query->with('media', 'category');
                 $query->select('library_media_files.*');
                 // Todo: replace select by `'library_media_categories.title as category_title'`
                 // if your app is not multilingual.

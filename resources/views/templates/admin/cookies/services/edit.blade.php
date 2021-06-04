@@ -62,7 +62,7 @@
                         {{ __('Configure the cookies which are used by this service. If this service use is refused, these cookies will automatically be deleted.') }}
                     </p>
                     <p>
-                        {{ __('To help you to configure this, an example is avaiblable here:') }}
+                        {{ __('To help you to configure this, an example is available here:') }}
                         <a href="https://heyklaro.com/docs/integration/annotated-configuration" target="_blank" rel="noopener">https://heyklaro.com/docs/integration/annotated-configuration</a>.
                     </p>
                     {{ textarea()->name('cookies')

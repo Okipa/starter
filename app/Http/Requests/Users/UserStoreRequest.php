@@ -22,7 +22,7 @@ class UserStoreRequest extends FormRequest
             'last_name' => ['required', 'string', 'max:255'],
             'phone_number' => ['nullable', 'string', 'max:255', new PhoneInternational()],
             'email' => ['required', 'string', 'max:255', 'email:rfc,dns,spoof', Rule::unique(User::class)],
-            'password' => Password::defaults(),
+            'password' => ['nullable', Password::defaults()],
         ];
     }
 }

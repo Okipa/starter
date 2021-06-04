@@ -3,6 +3,7 @@
 namespace App\Tables;
 
 use App\Models\Users\User;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\Auth;
 use Okipa\LaravelTable\Abstracts\AbstractTable;
 use Okipa\LaravelTable\Table;
@@ -24,6 +25,7 @@ class UsersTable extends AbstractTable
                 'edit' => ['name' => 'user.edit'],
                 'destroy' => ['name' => 'user.destroy'],
             ])
+            ->query(fn(Builder $query) => $query->with(['media']))
             ->disableRows(fn(User $user) => $user->id === Auth::id())
             ->destroyConfirmationHtmlAttributes(fn(User $user) => [
                 'data-confirm' => __('crud.orphan.destroy_confirm', [

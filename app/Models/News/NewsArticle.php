@@ -97,11 +97,13 @@ class NewsArticle extends Model implements HasMedia, Feedable
     {
         $media = $this->getFirstMedia('illustrations');
 
-        return FeedItem::create()->id((string) $this->id)
+        return FeedItem::create()
+            ->id((string) $this->id)
             ->title($this->title)
             ->summary(Str::limit(strip_tags((new Parsedown())->text($this->description))))
             ->link(route('news.article.show', [$this]))
-            ->author(config('app.name'))
+            ->authorName(config('app.name'))
+            ->authorEmail(settings()->email)
             ->category($this->categories->pluck('name'))
             ->enclosure(optional($media)->getUrl())
             ->enclosureType(optional($media)->mime_type)

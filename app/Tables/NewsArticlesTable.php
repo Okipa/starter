@@ -4,6 +4,7 @@ namespace App\Tables;
 
 use App\Models\News\NewsArticle;
 use App\Models\News\NewsCategory;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Str;
 use Okipa\LaravelTable\Abstracts\AbstractTable;
 use Okipa\LaravelTable\Table;
@@ -25,6 +26,7 @@ class NewsArticlesTable extends AbstractTable
                 'edit' => ['name' => 'news.article.edit'],
                 'destroy' => ['name' => 'news.article.destroy'],
             ])
+            ->query(fn(Builder $query) => $query->with(['media', 'categories']))
             ->destroyConfirmationHtmlAttributes(function (NewsArticle $article) {
                 return [
                     'data-confirm' => __('crud.parent.destroy_confirm', [
@@ -60,7 +62,7 @@ class NewsArticlesTable extends AbstractTable
             })->implode('name', ', '));
         $table->column()->title(__('Display'))->html(fn(NewsArticle $article) => view(
             'components.admin.table.display',
-            ['url' => route('news.article.show', $article), 'active' => $article->active]
+            ['url' => route('news.article.show', [$article]), 'active' => $article->active]
         ));
         $table->column('active')
             ->sortable()

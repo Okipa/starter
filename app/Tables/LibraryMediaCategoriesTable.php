@@ -3,6 +3,7 @@
 namespace App\Tables;
 
 use App\Models\LibraryMedia\LibraryMediaCategory;
+use Illuminate\Database\Eloquent\Builder;
 use Okipa\LaravelTable\Abstracts\AbstractTable;
 use Okipa\LaravelTable\Table;
 
@@ -23,6 +24,7 @@ class LibraryMediaCategoriesTable extends AbstractTable
                 'edit' => ['name' => 'libraryMedia.category.edit'],
                 'destroy' => ['name' => 'libraryMedia.category.destroy'],
             ])
+            ->query(fn(Builder $query) => $query->with(['files']))
             ->destroyConfirmationHtmlAttributes(function (LibraryMediaCategory $libraryMediaCategory) {
                 return [
                     'data-confirm' => __('crud.parent.destroy_confirm', [

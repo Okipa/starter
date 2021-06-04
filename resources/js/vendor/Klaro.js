@@ -22,7 +22,11 @@ const getTranslations = () => {
     };
     each(app.cookie_categories, (cookieCategory) => {
         translations.zz['purposes'][cookieCategory.unique_key] = {
+            // ToDo: replace `cookieCategory.title[app.locale]` by `cookieCategory.title`
+            // if your app is not multilingual.
             title: cookieCategory.title[app.locale],
+            // ToDo: replace `cookieCategory.description[app.locale]` by `cookieCategory.description`
+            // if your app is not multilingual.
             description: cookieCategory.description[app.locale]
         };
     });
@@ -41,7 +45,11 @@ const getServices = () => {
         });
         services.push({
             name: cookieService.unique_key,
+            // ToDo: replace `cookieService.title[app.locale]` by `cookieService.title`
+            // if your app is not multilingual.
             title: cookieService.title[app.locale],
+            // ToDo: replace `cookieService.description[app.locale]` by `cookieService.description`
+            // if your app is not multilingual.
             description: cookieService.description[app.locale] || null,
             purposes: map(cookieService.categories, 'unique_key'),
             required: cookieService.required,

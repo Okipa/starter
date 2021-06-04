@@ -36,6 +36,9 @@ class CarouselBrickSlide extends Model implements HasMedia, Sortable
         'active',
     ];
 
+    /** @var array */
+    protected $with = ['media'];
+
     /** @SuppressWarnings(PHPMD.UnusedFormalParameter) */
     public function registerMediaCollections(): void
     {

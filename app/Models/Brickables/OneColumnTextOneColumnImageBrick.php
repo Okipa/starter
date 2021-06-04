@@ -14,6 +14,9 @@ class OneColumnTextOneColumnImageBrick extends Brick implements HasMedia
     use InteractsWithMedia;
     use ExtendsMediaAbilities;
 
+    /** @var array */
+    protected $with = ['media'];
+
     /** @SuppressWarnings(PHPMD.UnusedFormalParameter) */
     public function registerMediaCollections(): void
     {
