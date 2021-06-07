@@ -32,7 +32,7 @@ class NewsArticleUpdateRequest extends FormRequest
                 'string',
                 'slug',
                 'max:255',
-                UniqueTranslationRule::for(app(NewsArticle::class)->getTable())->ignore($this->newsArticle->id),
+                UniqueTranslationRule::for(app(NewsArticle::class)->getTable())->ignore($this->article->id),
             ],
             'description' => ['nullable', 'string', 'max:4294967295'],
         ]);
