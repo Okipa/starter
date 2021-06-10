@@ -1,7 +1,7 @@
 @extends('laravel-brickables::admin.form.layout')
 @section('inputs')
     {{ select()->name('type')
-        ->options(App\View\Components\Front\Title::TYPES, 'key', 'label')
+        // ToDo: remove array_map if your app is not multilingual.
         ->options(array_map(static fn(array $type) => [
             'key' => $type['key'],
             'label' => __($type['label'])
@@ -10,7 +10,7 @@
         ->componentHtmlAttributes(['required']) }}
     {{ select()->name('style')
         ->prepend('<i class="fas fa-paint-brush"></i>')
-        ->options(App\View\Components\Front\Title::STYLES, 'key', 'label')
+        // ToDo: remove array_map if your app is not multilingual.
         ->options(array_map(static fn(array $type) => [
             'key' => $type['key'],
             'label' => __($type['label'])

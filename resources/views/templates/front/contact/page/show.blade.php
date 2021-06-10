@@ -1,6 +1,7 @@
 @extends('layouts.front.full')
 @section('template')
     {!! $pageContent->displayBricks() !!}
+    @brickableResourcesCompute
     <div class="container">
         <div class="row">
             <div class="col-lg-8">
