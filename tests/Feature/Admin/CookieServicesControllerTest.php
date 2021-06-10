@@ -169,7 +169,7 @@ class CookieServicesControllerTest extends TestCase
             'enabled_by_default' => true,
             'active' => true,
         ];
-        self::assertSame($cookieService->cookies, ['cookie_test']);
+        self::assertEquals(['cookie_test'], $cookieService->cookies);
         // ToDo: convert in monolingual if your app is not multilingual.
         foreach (supportedLocaleKeys() as $localeKey) {
             $databaseData["title->$localeKey"] = $data['title'][$localeKey];
@@ -283,7 +283,7 @@ class CookieServicesControllerTest extends TestCase
             'enabled_by_default' => true,
             'active' => true,
         ];
-        self::assertSame($cookieService->fresh()->cookies, ['cookie_test']);
+        self::assertEquals(['cookie_test'], $cookieService->fresh()->cookies);
         // ToDo: convert in monolingual if your app is not multilingual.
         foreach (supportedLocaleKeys() as $localeKey) {
             $databaseData["title->$localeKey"] = $data['title'][$localeKey];

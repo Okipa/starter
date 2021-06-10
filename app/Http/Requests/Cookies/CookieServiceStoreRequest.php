@@ -15,7 +15,7 @@ class CookieServiceStoreRequest extends FormRequest
         $rules = [
             'category_ids' => ['required', 'array', Rule::in(CookieCategory::pluck('id'))],
             'unique_key' => ['required', 'snakecase', 'max:255', Rule::unique(CookieService::class)],
-            'cookies' => ['nullable'],
+            'cookies' => ['nullable', 'json'],
             'required' => ['required', 'boolean'],
             'enabled_by_default' => ['required', 'boolean'],
             'active' => ['required', 'boolean'],
@@ -33,13 +33,9 @@ class CookieServiceStoreRequest extends FormRequest
         return array_merge($rules, $localizedRules);
     }
 
-    /** @throws \JsonException */
     public function prepareForValidation(): void
     {
         $this->merge([
-            'cookies' => $this->get('cookies')
-                ? json_decode($this->get('cookies'), true, 512, JSON_THROW_ON_ERROR)
-                : null,
             'required' => (bool) $this->required,
             'enabled_by_default' => (bool) $this->enabled_by_default,
             'active' => (bool) $this->active,

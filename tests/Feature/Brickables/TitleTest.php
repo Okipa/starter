@@ -74,8 +74,7 @@ class TitleTest extends TestCase
         $this->actingAs($authUser)
             ->post(route('brick.store'), $data)
             ->assertSessionHasNoErrors()
-            ->assertSessionHas('toast_success', __('crud.parent.created', [
-                'parent' => $pageContent->getReadableClassName(),
+            ->assertSessionHas('toast_success', __('crud.orphan.created', [
                 'entity' => __('Content bricks'),
                 'name' => app(Title::class)->getLabel(),
             ]))
@@ -157,8 +156,7 @@ class TitleTest extends TestCase
         $this->actingAs($authUser)
             ->put(route('brick.update', $editedBrick), $data)
             ->assertSessionHasNoErrors()
-            ->assertSessionHas('toast_success', __('crud.parent.updated', [
-                'parent' => $pageContent->getReadableClassName(),
+            ->assertSessionHas('toast_success', __('crud.orphan.updated', [
                 'entity' => __('Content bricks'),
                 'name' => app(Title::class)->getLabel(),
             ]))
@@ -188,8 +186,7 @@ class TitleTest extends TestCase
         $this->actingAs($authUser)
             ->delete(route('brick.destroy', $destroyedBrick), ['admin_panel_url' => url('/')])
             ->assertSessionHasNoErrors()
-            ->assertSessionHas('toast_success', __('crud.parent.destroyed', [
-                'parent' => $pageContent->getReadableClassName(),
+            ->assertSessionHas('toast_success', __('crud.orphan.destroyed', [
                 'entity' => __('Content bricks'),
                 'name' => app(Title::class)->getLabel(),
             ]))
