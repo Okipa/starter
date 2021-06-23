@@ -4,7 +4,7 @@ namespace Database\Factories\Traits;
 
 use App\Brickables\Carousel;
 use App\Brickables\ColoredBackgroundContainer;
-use App\Brickables\OneColumnTextOneColumnImage;
+use App\Brickables\OneTextColumnOneImageColumn;
 use App\Brickables\OneTextColumn;
 use App\Brickables\Spacer;
 use App\Brickables\ThreeTextColumns;
@@ -178,7 +178,7 @@ trait HasBricks
      * @throws \Spatie\MediaLibrary\MediaCollections\Exceptions\FileDoesNotExist
      * @throws \Spatie\MediaLibrary\MediaCollections\Exceptions\FileIsTooBig
      */
-    public function withOneColumnTextOneColumnImageBrick(
+    public function withOneTextColumnOneImageColumnBrick(
         array $text = [],
         string $image = null,
         bool $invertOrder = false
@@ -188,7 +188,7 @@ trait HasBricks
             foreach (supportedLocaleKeys() as $localeKey) {
                 $data['text_left'][$localeKey] = data_get($text, $localeKey) ?: $this->faker->realText(500);
             }
-            $oneColumnTextOneColumnImage = $model->addBrick(OneColumnTextOneColumnImage::class, $data);
+            $oneColumnTextOneColumnImage = $model->addBrick(OneTextColumnOneImageColumn::class, $data);
             /** @var \Spatie\MediaLibrary\HasMedia $oneColumnTextOneColumnImage */
             $oneColumnTextOneColumnImage->addMedia($image ?: $this->faker->image(null, 540, 400))
                 ->preservingOriginal()

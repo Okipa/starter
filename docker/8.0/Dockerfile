@@ -31,7 +31,7 @@ RUN apt-get update \
        # Additional dependencies #######################################################################################
        language-pack-fr exif ghostscript mysql-client php8.0-imagick php8.0-pcov \
     && php -r "readfile('http://getcomposer.org/installer');" | php -- --install-dir=/usr/bin/ --filename=composer \
-    && curl -sL https://deb.nodesource.com/setup_15.x | bash - \
+    && curl -sL https://deb.nodesource.com/setup_16.x | bash - \
     && apt-get install -y nodejs \
     && apt-get install -y mysql-client \
     && apt-get install -y postgresql-client \
