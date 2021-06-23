@@ -1,6 +1,6 @@
 # Changelog
 
-## [1.0.1](compare-with-previous-version-link)
+## [1.0.1](https://github.com/ACID-Solutions/starter/compare/1.0.0...1.0.1)
 
 2021-06-23
 
@@ -9,3 +9,7 @@
 * Added missing translation for current_password rule : https://github.com/laravel/laravel/releases/tag/v8.5.20
 * Changed `OneColumnTextOneColumnImage` to `OneTextColumnOneImageColumn` to be consistent with other brickable names
 * Inverted `withSeoMeta` method arguments order to position the title as first argument as it is the most used argument
+
+## [1.0.0](https://github.com/ACID-Solutions/starter/releases/tag/1.0.0)
+
+* First release
