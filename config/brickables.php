@@ -21,10 +21,10 @@ return [
         App\Brickables\OneTextColumn::class,
         App\Brickables\TwoTextColumns::class,
         App\Brickables\ThreeTextColumns::class,
-        App\Brickables\OneColumnTextOneColumnImage::class,
+        App\Brickables\OneTextColumnOneImageColumn::class,
         App\Brickables\ColoredBackgroundContainer::class,
         App\Brickables\Spacer::class,
-        // add your own brickables here ...
+        // Add your own brickables here ...
     ],
 
 ];

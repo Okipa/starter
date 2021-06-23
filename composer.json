@@ -10,6 +10,7 @@
         "codezero/laravel-unique-translation": "^3.0",
         "doctrine/dbal": "^2.0",
         "erusev/parsedown": "^1.0",
+        "fakerphp/faker": "^1.9.1",
         "fideloper/proxy": "^4.4",
         "fruitcake/laravel-cors": "^1.0",
         "guzzlehttp/guzzle": "^7.0.1",
@@ -28,7 +29,7 @@
         "okipa/laravel-table": "^4.0.1",
         "plank/laravel-metable": "^5.0",
         "propaganistas/laravel-phone": "^4.0",
-        "realrashid/sweet-alert": "^3.2",
+        "realrashid/sweet-alert": "^4.0",
         "sentry/sentry-laravel": "^2.0",
         "spatie/laravel-feed": "^4.0",
         "spatie/laravel-honeypot": "^4.0",
@@ -36,7 +37,6 @@
         "spatie/laravel-sitemap": "^6.0",
         "spatie/laravel-translatable": "^5.0",
         "spatie/laravel-welcome-notification": "^2.1",
-        "fakerphp/faker": "^1.9.1",
         "spatie/pdf-to-image": "^2.1"
     },
     "require-dev": {
