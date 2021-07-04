@@ -26,16 +26,11 @@
             {{ __('Please confirm access to your account by entering the authentication code provided by your authenticator application.') }}
         @endif
     </p>
-    <form method="POST" novalidate>
-        @csrf
+    <x-form::form method="POST">
         @if(request()->recovery)
-            {{ inputText()->prepend('<i class="fas fa-code"></i>')
-                ->name('recovery_code')
-                ->componentHtmlAttributes(['required', 'autofocus', 'autocomplete' => 'one-time-code']) }}
+            <x-form::input name="last_name" autofocus autocomplete="one-time-code" required/>
         @else
-            {{ inputText()->prepend('<i class="fas fa-code"></i>')
-                ->name('code')
-                ->componentHtmlAttributes(['required', 'autofocus', 'autocomplete' => 'one-time-code']) }}
+            <x-form::input name="code" autofocus autocomplete="one-time-code" required/>
         @endif
         {{ submit()->prepend('<i class="fas fa-sign-in-alt fa-fw"></i>')
             ->label(__('Log in'))
@@ -55,5 +50,5 @@
             @endif
         </div>
         {{ buttonBack()->route('home.page.show') }}
-    </form>
+    </x-form::form>
 @endsection

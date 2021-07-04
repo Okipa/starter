@@ -14,22 +14,21 @@
         {{ __('Registration area') }}
     </h1>
     <x-common.forms.notice class="mt-3"/>
-    <form method="POST" novalidate>
-        @csrf
-        {{ inputText()->name('first_name')
-            ->prepend('<i class="fas fa-user"></i>')
-            ->componentHtmlAttributes(['required', 'autofocus', 'autocomplete' => 'given-name']) }}
-        {{ inputText()->name('last_name')
-            ->prepend('<i class="fas fa-user"></i>')
-            ->componentHtmlAttributes(['required', 'autocomplete' => 'family-name']) }}
-        {{ inputEmail()->name('email')
-            ->componentHtmlAttributes(['required', 'autocomplete' => 'email']) }}
-        {{ inputPassword()->name('password')
-            ->componentHtmlAttributes(['required', 'autocomplete' => 'new-password'])
-            ->containerHtmlAttributes(['data-password-strength-meter']) }}
-        {{ inputPassword()->name('password_confirmation')
-            ->componentHtmlAttributes(['required', 'autocomplete' => 'new-password']) }}
-        {{ submitValidate()->label(__('Create account'))->componentClasses(['btn-primary', 'mb-3'])->containerClasses(['d-grid']) }}
-        {{ buttonCancel()->route('login') }}
-    </form>
+    <x-form::form method="POST">
+        <x-form::input name="first_name" autofocus autocomplete="given-name" required/>
+        <x-form::input name="last_name" autocomplete="family-name" required/>
+        <x-form::input type="email" name="email" autocomplete="email" required/>
+        <x-form::input type="password" name="password" autocomplete="new-password" data-password-strength-meter required/>
+        <x-form::input type="password" name="password_confirmation" autocomplete="new-password" required/>
+        <div class="d-grid mb-3">
+            <x-form::button.submit>
+                <i class="fas fa-check fa-fw"></i>
+                {{ __('Create account') }}
+            </x-form::button.submit>
+        </div>
+        <x-form::button.link class="btn-secondary" href="{{ route('login') }}">
+            <i class="fas fa-ban fa-fw"></i>
+            {{ __('Cancel') }}
+        </x-form::button.link>
+    </x-form::form>
 @endsection

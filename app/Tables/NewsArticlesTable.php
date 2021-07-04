@@ -4,6 +4,7 @@ namespace App\Tables;
 
 use App\Models\News\NewsArticle;
 use App\Models\News\NewsCategory;
+use App\View\Components\Admin\Media\Thumb;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Str;
 use Okipa\LaravelTable\Abstracts\AbstractTable;
@@ -48,10 +49,9 @@ class NewsArticlesTable extends AbstractTable
     protected function columns(Table $table): void
     {
         $table->column('id')->sortable();
-        $table->column('thumb')->html(fn(NewsArticle $article) => view(
-            'components.admin.media.thumb',
-            ['image' => $article->getFirstMedia('illustrations')]
-        ));
+        $table->column('thumb')->html(fn(NewsArticle $article) => app(Thumb::class)->render()->with([
+            'media' => $article->getFirstMedia('illustrations'),
+        ]));
         $table->column('title')->stringLimit(25)->sortable()->searchable();
         $table->column()
             ->title(__('Categories'))

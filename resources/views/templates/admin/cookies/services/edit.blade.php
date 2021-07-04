@@ -9,13 +9,9 @@
         @endif
     </h1>
     <hr>
-    <form method="POST"
+    <x-form::form method="{{ $cookieService ? 'PUT' : 'POST' }}"
           action="{{ $cookieService ? route('cookie.service.update', $cookieService) : route('cookie.service.store') }}"
-          novalidate>
-        @csrf
-        @if($cookieService)
-            @method('PUT')
-        @endif
+          :bind="$cookieService">
         <div class="d-flex">
             {{ buttonBack()->route('cookie.services.index')->containerClasses(['me-3']) }}
             @if($cookieService){{ submitUpdate() }}@else{{ submitCreate() }}@endif
@@ -35,15 +31,13 @@
                         ->multiple()
                         ->componentHtmlAttributes(['required'])
                         ->caption(__('Define in which categories this service will be classified. A service can be attached to one or more categories.')) }}
-                    {{ inputText()->name('unique_key')
-                        ->model($cookieService)
-                        ->componentHtmlAttributes(['required', 'data-snakecase'])
-                        ->caption(__('The unique service key, which is used to associate the user consent with a third-party script in order to enable or disable it accordingly to the user choice.')) }}
-                    {{ inputText()->name('title')
-                        // Todo: remove the line below if your app is not multilingual.
-                        ->locales(supportedLocaleKeys())
-                        ->model($cookieService)
-                        ->componentHtmlAttributes(['required']) }}
+                    <x-form::input name="unique_key"
+                                   :caption="__('The unique service key, which is used to associate the user consent with a third-party script in order to enable or disable it accordingly to the user choice.')"
+                                   data-snakecase
+                                   required/>
+                    <x-form::input name="title"
+                                   :locales="supportedLocaleKeys()"
+                                   required/>
                     {{ textarea()->name('description')
                         // Todo: remove the line below if your app is not multilingual.
                         ->locales(supportedLocaleKeys())
@@ -78,5 +72,5 @@
                 </x-admin.forms.card>
             </div>
         </div>
-    </form>
+    </x-form::form>
 @endsection

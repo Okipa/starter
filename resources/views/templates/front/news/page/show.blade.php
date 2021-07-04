@@ -6,7 +6,7 @@
         <div class="row">
             <div class="col-md-6">
                 {{-- Filters --}}
-                <form class="d-flex align-items-end" novalidate>
+                <x-form class="d-flex align-items-end" :bind="request()">
                     {{ select()->name('category_id')
                         ->options(App\Models\News\NewsCategory::orderBy('name')->get()->map(fn(App\Models\News\NewsCategory $category) => [
                             'id' => $category->id,
@@ -20,7 +20,7 @@
                     @if(request()->has(['category_id']))
                         {{ buttonBack()->route('news.page.show')->label(__('Reset'))->containerClasses(['ms-3']) }}
                     @endif
-                </form>
+                </x-form>
             </div>
             <div class="col-md-6 mt-3 d-flex justify-content-md-end align-items-end">
                 {{-- RSS --}}

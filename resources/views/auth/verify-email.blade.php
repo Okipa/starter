@@ -27,8 +27,7 @@
     <p>
         {{ __('If you didn\'t receive the email, we will gladly send you another.') }}
     </p>
-    <form method="POST" action="{{ route('verification.send') }}" novalidate>
-        @csrf
+    <x-form::form method="POST" action="{{ route('verification.send') }}">
         {{ submit()->prepend('<i class="fas fa-paper-plane fa-fw"></i>')->label(__('Resend Verification Email')) }}
-    </form>
+    </x-form::form>
 @endsection

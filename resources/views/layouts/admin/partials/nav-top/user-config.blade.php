@@ -22,8 +22,7 @@
                 </a>
                 <div class="dropdown-divider"></div>
             @endif
-            <form id="logout-form" class="p-0" method="POST" action="{{ route('logout') }}" novalidate>
-                @csrf()
+            <x-form::form id="logout-form" method="POST" action="{{ route('logout') }}">
                 <button type="submit"
                         class="dropdown-item btn btn-link"
                         title="{{ __('Logout') }}"
@@ -31,7 +30,7 @@
                     <i class="fas fa-sign-out-alt fa-fw"></i>
                     {{ __('Logout') }}
                 </button>
-            </form>
+            </x-form::form>
         </div>
     </div>
 </li>

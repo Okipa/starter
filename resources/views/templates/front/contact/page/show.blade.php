@@ -2,47 +2,35 @@
 @section('template')
     {!! $pageContent->displayBricks() !!}
     @brickableResourcesCompute
-    <div class="container">
+    <div class="container" xmlns:x-form="http://www.w3.org/1999/html">
         <div class="row">
             <div class="col-lg-8">
-                <form method="POST"
-                      action="{{ route('contact.sendMessage') }}"
-                      novalidate>
+                <x-form::form method="POST" action="{{ route('contact.sendMessage') }}">
                     <x-honeypot/>
-                    @csrf()
                     <div class="form-row">
                         <div class="col-md-6">
-                            {{ inputText()->name('first_name')
-                                ->label(false)
-                                ->prepend('<i class="fas fa-user"></i>')
-                                ->componentHtmlAttributes(['required', 'autofocus', 'autocomplete' => 'given-name']) }}
+                            <x-form::input name="first_name" autofocus autocomplete="given-name" required/>
                         </div>
                         <div class="col-md-6">
-                            {{ inputText()->name('last_name')
-                                ->label(false)
-                                ->prepend('<i class="fas fa-user"></i>')
-                                ->componentHtmlAttributes(['required', 'autocomplete' => 'family-name']) }}
+                            <x-form::input name="last_name" autofocus autocomplete="family-name" required/>
                         </div>
                         <div class="col-md-6">
-                            {{ inputEmail()->name('email')
-                                ->label(false)
-                                ->componentHtmlAttributes(['required', 'autocomplete' => 'email']) }}
+                            <x-form::input type="email" name="email" autocomplete="email" required/>
                         </div>
                         <div class="col-md-6">
-                            {{ inputTel()->name('phone_number')
-                                ->label(false)
-                                ->componentHtmlAttributes(['autocomplete' => 'tel']) }}
+                            <x-form::input type="tel" name="phone_number" autocomplete="tel"/>
                         </div>
                         <div class="col-md-12">
-                            {{ textarea()->name('message')
-                                ->label(false)
-                                ->componentHtmlAttributes(['required', 'rows' => 5]) }}
+                            <x-form::textarea name="message" rows="5" required/>
                         </div>
                         <div class="col-md-8">
                             <x-common.forms.notice/>
                         </div>
                         <div class="col-md-4 text-end">
-                            {{ submit()->prepend('<i class="fas fa-paper-plane fa-fw"></i>')->label(__('Send')) }}
+                            <x-form::button.submit>
+                                <i class="fas fa-paper-plane fa-fw"></i>
+                                {{ __('Send') }}
+                            </x-form::button.submit>
                         </div>
                         @php
                             $termsOfServicePage = pages()->where('unique_key', 'terms_of_service_page')->first();
@@ -70,7 +58,7 @@
                             </div>
                         @endif
                     </div>
-                </form>
+                </x-form::form>
             </div>
             <div class="col-lg-4">
                 <hr class="d-lg-none">

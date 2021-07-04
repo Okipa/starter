@@ -9,13 +9,9 @@
         @endif
     </h1>
     <hr>
-    <form method="POST"
-          action="{{ $category ? route('libraryMedia.category.update', $category) : route('libraryMedia.category.store') }}"
-          novalidate>
-        @csrf
-        @if($category)
-            @method('PUT')
-        @endif
+    <x-form::form method="{{ $category ? 'PUT' : 'POST' }}"
+                  action="{{ $category ? route('libraryMedia.category.update', $category) : route('libraryMedia.category.store') }}"
+                  :bind="$category">
         <div class="d-flex">
             {{ buttonBack()->route('libraryMedia.categories.index')->containerClasses(['me-3']) }}
             @if($category){{ submitUpdate() }}@else{{ submitCreate() }}@endif
@@ -24,13 +20,9 @@
         <div class="row mb-n3" data-masonry>
             <div class="col-xl-6 mb-3">
                 <x-admin.forms.card title="{{ __('Information') }}">
-                    {{ inputText()->name('title')
-                        // Todo: remove the line below if your app is not multilingual.
-                        ->locales(supportedLocaleKeys())
-                        ->model($category)
-                        ->componentHtmlAttributes(['required']) }}
+                    <x-form::input name="title" :locales="supportedLocaleKeys()" required/>
                 </x-admin.forms.card>
             </div>
         </div>
-    </form>
+    </x-form::form>
 @endsection

@@ -16,16 +16,12 @@
         @endif
     </h1>
     <hr>
-    <form method="POST"
-          action="{{ $slide
-            ? route('brick.carousel.slide.update', $slide)
-            : route('brick.carousel.slide.store', ['brick' => $brick, 'admin_panel_url' => request()->admin_panel_url]) }}"
-          enctype="multipart/form-data"
-          novalidate>
-        @csrf
-        @if($slide)
-            @method('PUT')
-        @endif
+    <x-form::form method="{{ $slide ? 'PUT' : 'POST' }}"
+                  action="{{ $slide
+                    ? route('brick.carousel.slide.update', $slide)
+                    : route('brick.carousel.slide.store', ['brick' => $brick, 'admin_panel_url' => request()->admin_panel_url]) }}"
+                  :bind="$slide"
+                  enctype="multipart/form-data">
         <div class="d-flex">
             {{ buttonBack()->route('brick.edit', ['brick' => $brick, 'admin_panel_url' => request()->admin_panel_url])->containerClasses(['me-3']) }}
             @if($slide){{ submitUpdate() }}@else{{ submitCreate() }}@endif
@@ -41,15 +37,8 @@
                         ->showRemoveCheckbox(false)
                         ->caption((new App\Models\Brickables\CarouselBrickSlide)->getMediaCaption('images'))
                         ->componentHtmlAttributes(['required']) }}
-                    {{ inputText()->name('label')
-                        ->model($slide)
-                        // Todo: remove the line below if your app is not multilingual.
-                        ->locales(supportedLocaleKeys()) }}
-                    {{ inputText()->name('caption')
-                        ->model($slide)
-                        // Todo: remove the line below if your app is not multilingual.
-                        ->locales(supportedLocaleKeys())
-                        ->prepend('<i class="fas fa-align-left"></i>') }}
+                    <x-form::input name="label" :locales="supportedLocaleKeys()"/>
+                    <x-form::input name="caption" :locales="supportedLocaleKeys()"/>
                 </x-admin.forms.card>
             </div>
             <div class="col-xl-6 mb-3">
@@ -58,5 +47,5 @@
                 </x-admin.forms.card>
             </div>
         </div>
-    </form>
+    </x-form::form>
 @endsection

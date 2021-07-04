@@ -9,13 +9,9 @@
         @endif
     </h1>
     <hr>
-    <form method="POST"
+    <x-form::form method="{{ $cookieCategory ? 'PUT' : 'POST' }}"
           action="{{ $cookieCategory ? route('cookie.category.update', $cookieCategory) : route('cookie.category.store') }}"
-          novalidate>
-        @csrf
-        @if($cookieCategory)
-            @method('PUT')
-        @endif
+          :bind="$cookieCategory">
         <div class="d-flex">
             {{ buttonBack()->route('cookie.categories.index')->containerClasses(['me-3']) }}
             @if($cookieCategory){{ submitUpdate() }}@else{{ submitCreate() }}@endif
@@ -24,20 +20,14 @@
         <div class="row mb-n3" data-masonry>
             <div class="col-xl-6 mb-3">
                 <x-admin.forms.card title="{{ __('Information') }}">
-                    {{ inputText()->name('unique_key')
-                        ->model($cookieCategory)
-                        ->componentHtmlAttributes(['required', 'data-snakecase']) }}
-                    {{ inputText()->name('title')
-                        // Todo: remove the line below if your app is not multilingual.
-                        ->locales(supportedLocaleKeys())
-                        ->model($cookieCategory)
-                        ->componentHtmlAttributes(['required']) }}
-                    {{ inputText()->name('description')
+                    <x-form::input name="unique_key" data-snakecase required/>
+                    <x-form::input name="title" :locales="supportedLocaleKeys()" required/>
+                    {{ textarea()->name('description')
                         // Todo: remove the line below if your app is not multilingual.
                         ->locales(supportedLocaleKeys())
                         ->model($cookieCategory) }}
                 </x-admin.forms.card>
             </div>
         </div>
-    </form>
+    </x-form::form>
 @endsection

@@ -13,8 +13,7 @@
         <i class="fas fa-hand-spock fa-fw"></i>
         {{ __('Welcome') }}
     </h1>
-    <form method="POST" novalidate>
-        @csrf
+    <x-form::form method="POST">
         <input type="hidden" name="email" value="{{ $user->email }}"/>
         <x-common.forms.notice class="mt-3"/>
         <p>{{ __('Welcome on :app ! To be able to login to your new account please define a secured password with the fields bellow.', ['app' => config('app.name')]) }}</p>
@@ -27,5 +26,5 @@
             ->componentClasses(['btn-primary', 'mb-3'])
             ->containerClasses(['d-grid']) }}
         {{ buttonCancel()->route('home.page.show') }}
-    </form>
+    </x-form::form>
 @endsection

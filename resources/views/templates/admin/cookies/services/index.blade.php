@@ -16,9 +16,7 @@
             {{ __('You will also find all the necessary information about GDPR law on this resource:') }}
             <a href="https://gdpr.eu" title="GDPR" target="_blank" rel="noopener">https://gdpr.eu</a>.
         </p>
-        <form class="d-flex justify-content-end m-0"
-              action="{{ route('cookie.services.index') }}"
-              novalidate>
+        <x-form::form class="d-flex justify-content-end m-0" action="{{ route('cookie.services.index') }}" :bind="$request">
             @foreach($request->except('category_id') as $name => $value)
                 <input type="hidden" name="{{ $name }}" value="{{ $value }}">
             @endforeach
@@ -43,7 +41,7 @@
                     ->label(__('Reset'))
                     ->containerClasses(['ms-3']) }}
             @endif
-        </form>
+        </x-form::form>
         {{ $table }}
     </x-admin.forms.card>
 @endsection

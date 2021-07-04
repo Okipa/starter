@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Brickables;
 use Illuminate\Http\Request;
 use Okipa\LaravelBrickables\Models\Brick;
 
-class TwoTextImageBricksController extends BricksController
+class OneTextColumnOneImageColumnBricksController extends BricksController
 {
     /**
      * @param \Illuminate\Http\Request $request
@@ -17,7 +17,7 @@ class TwoTextImageBricksController extends BricksController
      */
     protected function stored(Request $request, Brick $brick): void
     {
-        /** @var \App\Models\Brickables\OneColumnTextOneColumnImageBrick $brick */
+        /** @var \App\Models\Brickables\OneTextColumnOneImageColumnBrick $brick */
         $brick->addMediaFromRequest('image_right')->toMediaCollection('images');
     }
 
@@ -31,7 +31,7 @@ class TwoTextImageBricksController extends BricksController
     protected function updated(Request $request, Brick $brick): void
     {
         if ($request->file('image_right')) {
-            /** @var \App\Models\Brickables\OneColumnTextOneColumnImageBrick $brick */
+            /** @var \App\Models\Brickables\OneTextColumnOneImageColumnBrick $brick */
             $brick->addMediaFromRequest('image_right')->toMediaCollection('images');
         }
     }

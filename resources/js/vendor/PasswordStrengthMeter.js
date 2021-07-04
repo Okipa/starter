@@ -13,12 +13,12 @@ const insertStrengthMeterBarInContainer = (container) => {
 export default class PasswordStrengthMeter {
 
     static init() {
-        const passwordInputContainers = document.querySelectorAll('[data-password-strength-meter]');
-        if(passwordInputContainers.length < 1) {
+        const passwordInputs = document.querySelectorAll('[data-password-strength-meter]');
+        if (passwordInputs.length < 1) {
             return false;
         }
-        each(passwordInputContainers, (passwordInputContainer) => {
-            const passwordInput = passwordInputContainer.querySelector('input[type="password"]');
+        each(passwordInputs, (passwordInput) => {
+            const passwordInputContainer = passwordInput.closest('.component-container');
             insertStrengthMeterBarInContainer(passwordInputContainer);
             let bar = passwordInputContainer.querySelector('.password-meter-bar');
             passwordInput.addEventListener('keyup', () => {

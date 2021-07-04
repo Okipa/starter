@@ -9,14 +9,10 @@
         @endif
     </h1>
     <hr>
-    <form action="{{ $file ? route('libraryMedia.file.update', $file) : route('libraryMedia.file.store') }}"
-          method="POST"
-          enctype="multipart/form-data"
-          novalidate>
-        @csrf
-        @if($file)
-            @method('PUT')
-        @endif
+    <x-form::form method="{{ $file ? 'PUT' : 'POST' }}"
+                  action="{{ $file ? route('libraryMedia.file.update', $file) : route('libraryMedia.file.store') }}"
+                  :bind="$file"
+                  enctype="multipart/form-data">
         <div class="d-flex">
             {{ buttonBack()->route('libraryMedia.files.index')->containerClasses(['me-3']) }}
             @if($file){{ submitUpdate() }}@else{{ submitCreate() }}@endif
@@ -31,11 +27,7 @@
                         ->showRemoveCheckbox(false)
                         ->componentHtmlAttributes(['required'])
                         ->caption((new App\Models\LibraryMedia\LibraryMediaFile)->getMediaCaption('media')) }}
-                    {{ inputText()->name('name')
-                        // Todo: remove the line below if your app is not multilingual.
-                        ->locales(supportedLocaleKeys())
-                        ->model($file)
-                        ->componentHtmlAttributes(['required']) }}
+                    <x-form::input name="name" :locales="supportedLocaleKeys()" required/>
                     {{ select()->name('category_id')
                         ->model($file)
                         ->options((new App\Models\LibraryMedia\LibraryMediaCategory)->orderBy('name')->get()->map(fn(App\Models\LibraryMedia\LibraryMediaCategory $libraryMediaCategory) => ['id' => $category->id, 'name' => $category->name]), 'id', 'name')
@@ -49,5 +41,5 @@
                 </x-admin.forms.card>
             @endif
         </div>
-    </form>
+    </x-form::form>
 @endsection

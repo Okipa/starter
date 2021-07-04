@@ -6,9 +6,9 @@
     </h1>
     <hr>
     <x-admin.forms.card title="{{ __('List') }}">
-        <form class="d-flex justify-content-end m-0"
-              action="{{ route('libraryMedia.files.index') }}"
-              novalidate>
+        <x-form::form class="d-flex justify-content-end m-0"
+                      action="{{ route('libraryMedia.files.index') }}"
+                      :bind="$request">
             @foreach($request->except('category_id') as $name => $value)
                 <input type="hidden" name="{{ $name }}" value="{{ $value }}">
             @endforeach
@@ -33,7 +33,7 @@
                     ->label(__('Reset'))
                     ->containerClasses(['ms-3']) }}
             @endif
-        </form>
+        </x-form::form>
         {{ $table }}
     </x-admin.forms.card>
 @endsection

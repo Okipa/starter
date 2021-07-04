@@ -9,14 +9,10 @@
         @endif
     </h1>
     <hr>
-    <form method="POST"
+    <x-form::form method="{{ $page ? 'PUT' : 'POST' }}"
           action="{{ $page ? route('page.update', $page) : route('page.store') }}"
-          enctype="multipart/form-data"
-          novalidate>
-        @csrf
-        @if($page)
-            @method('PUT')
-        @endif
+          :bind="$page"
+          enctype="multipart/form-data">
         <div class="d-flex">
             {{ buttonBack()->route('pages.index')->containerClasses(['me-3']) }}
             @if($page){{ submitUpdate() }}@else{{ submitCreate() }}@endif
@@ -33,24 +29,16 @@
         <div class="row mb-n3" data-masonry>
             <div class="col-xl-6 mb-3">
                 <x-admin.forms.card title="{{ __('Navigation') }}">
-                    {{ inputText()->name('nav_title')
-                        // Todo: remove the line below if your app is not multilingual.
-                        ->locales(supportedLocaleKeys())
-                        ->model($page)
-                        ->componentHtmlAttributes(['required']) }}
-                    @if(! $page)
-                        {{ inputText()->name('unique_key')
-                            ->model($page)
-                            ->prepend('<i class="fas fa-key fa-fw"></i>')
-                            ->componentHtmlAttributes(['required', 'data-snakecase', 'data-autofill-from' => '#text-nav-title']) }}
-                    @endif
-                    {{ inputText()->name('slug')
-                        // Todo: remove the line below if your app is not multilingual.
-                        ->locales(supportedLocaleKeys())
-                        ->model($page)
-                        // ToDo: remove localization if your app is not multilingual
-                        ->prepend(fn(string $locale) => route('page.show', '', false, $locale) . '/')
-                        ->componentHtmlAttributes(['required', 'data-kebabcase', 'data-autofill-from' => '#text-nav-title']) }}
+                    <x-form::input name="nav_title" :locales="supportedLocaleKeys()" required/>
+                    @unless($page)
+                        <x-form::input name="unique_key" data-autofill-from="#text-nav-title" data-snakecase required/>
+                    @endunless
+                    <x-form::input name="slug"
+                                   :locales="supportedLocaleKeys()"
+                                   :prepend="fn(string $locale) => route('page.show', '', false, $locale) . '/'"
+                                   data-autofill-from="#text-nav-title"
+                                   data-kebabcase
+                                   required/>
                 </x-admin.forms.card>
             </div>
             <div class="col-xl-6 mb-3">
@@ -62,7 +50,7 @@
                 </x-admin.forms.card>
             </div>
         </div>
-    </form>
+    </x-form::form>
     <hr>
     @if($page)
         {!! $page->displayAdminPanel() !!}

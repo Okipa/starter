@@ -5,12 +5,7 @@
         {{ __('breadcrumbs.orphan.edit', ['entity' => __('News'), 'detail' => __('Page')]) }}
     </h1>
     <hr>
-    <form method="POST"
-          action="{{ route('news.page.update') }}"
-          enctype="multipart/form-data"
-          novalidate>
-        @csrf
-        @method('PUT')
+    <x-form::form method="PUT" action="{{ route('news.page.update') }}" enctype="multipart/form-data">
         <div class="d-flex">
             {{ submitUpdate() }}
             {{ buttonLink()->route('news.page.show')
@@ -26,7 +21,7 @@
                 <x-admin.forms.seo-meta-card :model="$pageContent"/>
             </div>
         </div>
-    </form>
+    </x-form::form>
     <hr>
     @if($pageContent)
         {!! $pageContent->displayAdminPanel() !!}

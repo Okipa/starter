@@ -1,7 +1,12 @@
 <!-- ToDo: Search every `ToDo:` occurrence in starter and customize what needs to be -->
-<!-- ToDo: Remove `spatie/laravel-translatable` package if your app is not multilingual -->
-<!-- ToDo: Remove `codezero/laravel-localized-routes` package if your app is not multilingual -->
-<!-- ToDo: Remove `codezero/laravel-unique-translation` package if your app is not multilingual -->
+
+<!-- ToDo: Execute the following actions if your app is not multilingual -->
+<!-- * Remove `spatie/laravel-translatable` package -->
+<!-- * Remove `codezero/laravel-localized-routes` package -->
+<!-- * Remove `codezero/laravel-unique-translation` -->
+<!-- * Remove every `:locales` attributes on blade views -->
+<!-- * Remove `currentRouteIs` helper and replace each use by `Route::is` -->
+
 # Web app prebuilt base on Laravel 8, PHP 8.0 and MySQL 8.0
 
 <!-- ToDo: replace by project badges -->
