@@ -1,8 +1,7 @@
 @yield('prepend')
 <x-form::form method="{{ $brick ? 'PUT' : 'POST' }}"
               action="{{ $brick ? $brickable->getUpdateRoute($brick) : $brickable->getStoreRoute() }}"
-              {{-- ToDo: replace `translatedData` by `data_get` if your app is not multilingual --}}
-              :bind="translatedData($brick, 'data', $locale)"
+              :bind="translatedData($brick, 'data', app()->getLocale())"
               enctype="multipart/form-data">
     <input type="hidden" name="model_id" value="{{ $model->id }}">
     <input type="hidden" name="model_type" value="{{ get_class($model) }}">

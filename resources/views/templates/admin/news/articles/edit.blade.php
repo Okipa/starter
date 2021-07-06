@@ -37,7 +37,7 @@
                     {{-- {{ inputCheckbox()->name('remove_logo_squared') }}--}}
                     <x-form::input type="file"
                                    name="illustration"
-                                   :caption="app(\App\Models\News\NewsArticle::class)->getMediaCaption('illustrations')"/>
+                                   :caption="app(App\Models\News\NewsArticle::class)->getMediaCaption('illustrations')"/>
                 </x-admin.forms.card>
             </div>
             <div class="col-xl-6 mb-3">

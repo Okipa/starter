@@ -4,6 +4,7 @@ namespace App\Tables;
 
 use App\Http\Requests\LibraryMedia\LibraryMediaFilesIndexRequest;
 use App\Models\LibraryMedia\LibraryMediaFile;
+use App\View\Components\Admin\Media\Thumb;
 use Illuminate\Database\Eloquent\Builder;
 use Okipa\LaravelTable\Abstracts\AbstractTable;
 use Okipa\LaravelTable\Table;
