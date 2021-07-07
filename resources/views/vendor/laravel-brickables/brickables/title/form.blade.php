@@ -1,21 +1,21 @@
 @extends('laravel-brickables::admin.form.layout')
-@section('inputs')
-    {{ select()->name('type')
-        // ToDo: remove array_map if your app is not multilingual.
-        ->options(array_map(static fn(array $type) => [
-            'key' => $type['key'],
-            'label' => __($type['label'])
-        ], App\View\Components\Front\Title::TYPES), 'key', 'label')
-        ->selectOptions('key', data_get($brick, 'data.type'))
-        ->componentHtmlAttributes(['required']) }}
-    {{ select()->name('style')
-        ->prepend('<i class="fas fa-paint-brush"></i>')
-        // ToDo: remove array_map if your app is not multilingual.
-        ->options(array_map(static fn(array $type) => [
-            'key' => $type['key'],
-            'label' => __($type['label'])
-        ], App\View\Components\Front\Title::STYLES), 'key', 'label')
-        ->selectOptions('key', data_get($brick, 'data.style'))
-        ->componentHtmlAttributes(['required']) }}
-    <x-form::input name="title" :locales="supportedLocaleKeys()" required/>
+@section('form_body')
+    <x-common.forms.notice class="mt-3"/>
+    <div class="row mb-n3" data-masonry>
+        <div class="col-xl-6 mb-3">
+            <x-admin.forms.card title="Configuration">
+                @bind($brick->data)
+                    <x-form::select name="type"
+                                    :options="array_map(fn($type) => __($type['label']), App\View\Components\Front\Title::TYPES)"
+                                    multiple
+                                    required/>
+                    <x-form::select name="style"
+                                    :options="array_map(fn($type) => __($type['label']), App\View\Components\Front\Title::STYLES)"
+                                    multiple
+                                    required/>
+                    <x-form::input name="title" :locales="supportedLocaleKeys()" required/>
+                @endbind()
+            </x-admin.forms.card>
+        </div>
+    </div>
 @endsection

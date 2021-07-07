@@ -1,13 +1,12 @@
 @yield('prepend')
 <x-form::form method="{{ $brick ? 'PUT' : 'POST' }}"
               action="{{ $brick ? $brickable->getUpdateRoute($brick) : $brickable->getStoreRoute() }}"
-              :bind="translatedData($brick, 'data', app()->getLocale())"
               enctype="multipart/form-data">
     <input type="hidden" name="model_id" value="{{ $model->id }}">
     <input type="hidden" name="model_type" value="{{ get_class($model) }}">
     <input type="hidden" name="brickable_type" value="{{ get_class($brickable) }}">
     <input type="hidden" name="admin_panel_url" value="{{ $adminPanelUrl }}">
-    @if(View::hasSection('actions'))
+    @hasSection('actions')
         @yield('actions')
     @else
         @include('laravel-brickables::admin.form.actions')
@@ -21,7 +20,7 @@
                 <div class="card">
                     <div class="card-header">
                         <h2 class="m-0">
-                            @if(View::hasSection('title'))
+                            @hasSection('title')
                                 @yield('title')
                             @else
                                 {{ __('Brick data') }}
