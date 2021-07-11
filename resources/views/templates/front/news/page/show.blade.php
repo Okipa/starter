@@ -4,25 +4,26 @@
     @brickableResourcesCompute
     <div class="container">
         <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-6 align-items-center">
                 {{-- Filters --}}
-                <x-form class="d-flex align-items-end" :bind="request()">
-                    {{ select()->name('category_id')
-                        ->options(App\Models\News\NewsCategory::orderBy('name')->get()->map(fn(App\Models\News\NewsCategory $category) => [
-                            'id' => $category->id,
-                            'name' => $category->name
-                        ]), 'id', 'name')
-                        ->selectOptions('id', (int) request()->category_id)
-                        ->containerClasses(['mb-0']) }}
-                    {{ submitValidate()->prepend('<i class="fas fa-filter fa-fw"></i>')
-                        ->label(__('Filter'))
-                        ->containerClasses(['ms-3']) }}
+                <x-form::form class="d-flex" :bind="request()">
+                    <x-form::select class="mb-n3"
+                                    name="category_id"
+                                    hideLabel
+                                    :options="App\Models\News\NewsCategory::pluck('title', 'id')->sortBy('title')->toArray()"/>
+                    <x-form::button.submit class="btn-primary ms-3">
+                        <i class="fas fa-filter fa-fw"></i>
+                        {{ __('Filter') }}
+                    </x-form::button.submit>
                     @if(request()->has(['category_id']))
-                        {{ buttonBack()->route('news.page.show')->label(__('Reset'))->containerClasses(['ms-3']) }}
+                        <x-form::button.link class="btn-secondary ms-3" :href="route('news.page.show')">
+                            <i class="fas fa-undo fa-fw"></i>
+                            {{ __('Reset') }}
+                        </x-form::button.link>
                     @endif
-                </x-form>
+                </x-form::form>
             </div>
-            <div class="col-md-6 mt-3 d-flex justify-content-md-end align-items-end">
+            <div class="col-md-6 d-flex justify-content-md-end">
                 {{-- RSS --}}
                 <a href="{{ route('feeds.news') }}"
                    title="{{ __(config('feed.feeds.news.title')) }}"

@@ -28,10 +28,12 @@
                 <i class="fas fa-filter fa-fw"></i>
                 {{ __('Filter') }}
             </x-form::button.submit>
-            <x-form::button.link class="btn-secondary ms-3" :href="route('cookie.services.index')">
-                <i class="fas fa-undo fa-fw"></i>
-                {{ __('Reset') }}
-            </x-form::button.link>
+            @if($request->has(['category_id']))
+                <x-form::button.link class="btn-secondary ms-3" :href="route('cookie.services.index')">
+                    <i class="fas fa-undo fa-fw"></i>
+                    {{ __('Reset') }}
+                </x-form::button.link>
+            @endif
         </x-form::form>
         {{ $table }}
     </x-admin.forms.card>
