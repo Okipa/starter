@@ -7,9 +7,9 @@
         // ToDo: remove localization if your app is not multilingual.
         ->value(fn($locale) => translatedData($brick, 'data.text_left', $locale))
         ->componentHtmlAttributes(['required', 'data-editor']) }}
-    @php($image = optional($brick)->getFirstMedia('images'))
+    @php($image = $brick?->getFirstMedia('images'))
     {{ inputFile()->name('image_right')
-        ->value(optional($image)->file_name)
+        ->value($image?->file_name)
         ->uploadedFile(fn() => view('components.admin.media.thumb', ['image' => $image]))
         ->showRemoveCheckbox(false)
         ->caption($brickable->getBrickModel()->getMediaCaption('images'))

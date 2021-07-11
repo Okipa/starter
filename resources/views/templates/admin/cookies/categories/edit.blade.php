@@ -9,12 +9,18 @@
         @endif
     </h1>
     <hr>
-    <x-form::form method="{{ $cookieCategory ? 'PUT' : 'POST' }}"
-          action="{{ $cookieCategory ? route('cookie.category.update', $cookieCategory) : route('cookie.category.store') }}"
+    <x-form::form :method="$cookieCategory ? 'PUT' : 'POST'"
+          :action="$cookieCategory ? route('cookie.category.update', $cookieCategory) : route('cookie.category.store')"
           :bind="$cookieCategory">
         <div class="d-flex">
-            {{ buttonBack()->route('cookie.categories.index')->containerClasses(['me-3']) }}
-            @if($cookieCategory){{ submitUpdate() }}@else{{ submitCreate() }}@endif
+            <x-form::button.link class="btn-secondary me-3" :href="route('cookie.categories.index')">
+                <i class="fas fa-undo fa-fw"></i>
+                {{ __('Back') }}
+            </x-form::button.link>
+            <x-form::button.submit>
+                <i class="fas fa-save fa-fw"></i>
+                {{ __('Save') }}
+            </x-form::button.submit>
         </div>
         <x-common.forms.notice class="mt-3"/>
         <div class="row mb-n3" data-masonry>
@@ -22,10 +28,7 @@
                 <x-admin.forms.card title="{{ __('Information') }}">
                     <x-form::input name="unique_key" data-snakecase required/>
                     <x-form::input name="title" :locales="supportedLocaleKeys()" required/>
-                    {{ textarea()->name('description')
-                        // Todo: remove the line below if your app is not multilingual.
-                        ->locales(supportedLocaleKeys())
-                        ->model($cookieCategory) }}
+                    <x-form::textarea name="description" :locales="supportedLocaleKeys()"/>
                 </x-admin.forms.card>
             </div>
         </div>

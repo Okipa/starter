@@ -5,7 +5,7 @@
     <div class="container" xmlns:x-form="http://www.w3.org/1999/html">
         <div class="row">
             <div class="col-lg-8">
-                <x-form::form method="POST" action="{{ route('contact.sendMessage') }}">
+                <x-form::form method="POST" :action="route('contact.sendMessage')">
                     <x-honeypot/>
                     <div class="form-row">
                         <div class="col-md-6">

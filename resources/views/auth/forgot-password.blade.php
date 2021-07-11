@@ -21,7 +21,7 @@
     <p>
         {{ __('Forgot your password? No problem. Just let us know your email address and we will email you a password reset link that will allow you to choose a new one.') }}
     </p>
-    <x-form::form method="POST" action="{{ route('password.email') }}">
+    <x-form::form method="POST" :action="route('password.email')">
         <x-common.forms.notice class="mt-3"/>
         <x-form::input type="email" name="email" autofocus autocomplete="email" required/>
         <div class="d-grid mb-3">

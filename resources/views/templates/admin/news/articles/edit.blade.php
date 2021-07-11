@@ -9,8 +9,8 @@
         @endif
     </h1>
     <hr>
-    <x-form::form method="{{ $article ? 'PUT' : 'POST' }}"
-          action="{{ $article ? route('news.article.update', $article) : route('news.article.store') }}"
+    <x-form::form :method="$article ? 'PUT' : 'POST'"
+          :action="$article ? route('news.article.update', $article) : route('news.article.store')"
           :bind="$article"
           enctype="multipart/form-data">
         <div class="d-flex">
@@ -50,7 +50,7 @@
                                    data-kebabcase
                                    required/>
                     <x-form::select name="category_ids"
-                                    :options="App\Models\News\NewsCategory::pluck('name', 'id')->toArray()"
+                                    :options="App\Models\News\NewsCategory::pluck('title', 'id')->sortBy('title')->toArray()"
                                     multiple
                                     required/>
                 </x-admin.forms.card>
@@ -66,6 +66,7 @@
             <div class="col-xl-6 mb-3">
                 <x-admin.forms.card title="{{ __('Publication') }}">
                     <x-form::input name="published_at"
+                                   prepend="<i class='far fa-calendar-alt'></i>"
                                    :value="$article?->published_at->toW3cString() ?: now()->toW3cString()"
                                    :caption="__('You can set a future publication date: this article will not be published until this date is reached.')"
                                    data-datetime-picker

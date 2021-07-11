@@ -16,10 +16,8 @@
         @endif
     </h1>
     <hr>
-    <x-form::form method="{{ $slide ? 'PUT' : 'POST' }}"
-                  action="{{ $slide
-                    ? route('brick.carousel.slide.update', $slide)
-                    : route('brick.carousel.slide.store', ['brick' => $brick, 'admin_panel_url' => request()->admin_panel_url]) }}"
+    <x-form::form :method="$slide ? 'PUT' : 'POST'"
+                  :action="$slide ? route('brick.carousel.slide.update', $slide) : route('brick.carousel.slide.store', ['brick' => $brick, 'admin_panel_url' => request()->admin_panel_url])"
                   :bind="$slide"
                   enctype="multipart/form-data">
         <div class="d-flex">

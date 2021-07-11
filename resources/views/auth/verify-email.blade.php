@@ -27,7 +27,7 @@
     <p>
         {{ __('If you didn\'t receive the email, we will gladly send you another.') }}
     </p>
-    <x-form::form method="POST" action="{{ route('verification.send') }}">
+    <x-form::form method="POST" :action="route('verification.send')">
         {{ submit()->prepend('<i class="fas fa-paper-plane fa-fw"></i>')->label(__('Resend Verification Email')) }}
     </x-form::form>
 @endsection

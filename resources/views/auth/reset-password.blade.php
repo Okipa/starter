@@ -14,7 +14,7 @@
         {{ __('Define new password') }}
     </h1>
     <x-common.forms.notice class="mt-3"/>
-    <x-form::form method="POST" action="{{ route('password.update') }}">
+    <x-form::form method="POST" :action="route('password.update')">
         <input type="hidden" name="token" value="{{ $request->route('token') }}">
         <x-form::input type="email" name="email" autofocus autocomplete="username" required/>
         <x-form::input type="password" autocomplete="new-password" data-password-strength-meter required/>

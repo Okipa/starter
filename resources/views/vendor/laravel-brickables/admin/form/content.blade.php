@@ -1,6 +1,6 @@
 @yield('prepend')
-<x-form::form method="{{ $brick ? 'PUT' : 'POST' }}"
-              action="{{ $brick ? $brickable->getUpdateRoute($brick) : $brickable->getStoreRoute() }}"
+<x-form::form :method="$brick ? 'PUT' : 'POST'"
+              :action="$brick ? $brickable->getUpdateRoute($brick) : $brickable->getStoreRoute()"
               enctype="multipart/form-data">
     <input type="hidden" name="model_id" value="{{ $model->id }}">
     <input type="hidden" name="model_type" value="{{ get_class($model) }}">

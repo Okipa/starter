@@ -9,8 +9,8 @@
         @endif
     </h1>
     <hr>
-    <x-form::form method="{{ $user ? 'PUT' : 'POST' }}"
-          action="{{ $user ? route('user.update', $user) : route('user.store') }}"
+    <x-form::form :method="$user ? 'PUT' : 'POST'"
+          :action="$user ? route('user.update', $user) : route('user.store')"
           :bind="$user"
           enctype="multipart/form-data">
         <div class="d-flex">

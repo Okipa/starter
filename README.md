@@ -7,6 +7,8 @@
 <!-- * Remove every `:locales` attributes on blade views -->
 <!-- * Replace uses of `currentRouteIs` by `Route::is` -->
 <!-- * Replace uses of `translatedData` by `data_get` -->
+<!-- * Replace uses of `UniqueTranslationRule` by `Unique` -->
+<!-- * Remove multilingual handling in factories -->
 
 # Web app prebuilt base on Laravel 8, PHP 8.0 and MySQL 8.0
 

@@ -9,20 +9,24 @@
         @endif
     </h1>
     <hr>
-    <x-form::form method="{{ $page ? 'PUT' : 'POST' }}"
-          action="{{ $page ? route('page.update', $page) : route('page.store') }}"
+    <x-form::form :method="$page ? 'PUT' : 'POST'"
+          :action="$page ? route('page.update', $page) : route('page.store')"
           :bind="$page"
           enctype="multipart/form-data">
         <div class="d-flex">
-            {{ buttonBack()->route('pages.index')->containerClasses(['me-3']) }}
-            @if($page){{ submitUpdate() }}@else{{ submitCreate() }}@endif
-            @if(optional($page)->active)
-                {{ buttonLink()->route('page.show', [$page->slug])
-                    ->prepend('<i class="fas fa-external-link-square-alt fa-fw"></i>')
-                    ->label(__('Display'))
-                    ->componentClasses(['btn-success'])
-                    ->componentHtmlAttributes(['target' => '_blank'])
-                    ->containerClasses(['ms-3']) }}
+            <x-form::button.link class="btn-secondary me-3" :href="route('pages.index')">
+                <i class="fas fa-undo fa-fw"></i>
+                {{ __('Back') }}
+            </x-form::button.link>
+            <x-form::button.submit>
+                <i class="fas fa-save fa-fw"></i>
+                {{ __('Save') }}
+            </x-form::button.submit>
+            @if($page?->active)
+                <x-form::button.link class="btn-success ms-3" :href="route('page.show', $page)" target="_blank">
+                    <i class="fas fa-external-link-square-alt fa-fw"></i>
+                    {{ __('Display') }}
+                </x-form::button.link>
             @endif
         </div>
         <x-common.forms.notice class="mt-3"/>
@@ -46,7 +50,7 @@
             </div>
             <div class="col-xl-6 mb-3">
                 <x-admin.forms.card title="{{ __('Publication') }}">
-                    {{ inputSwitch()->name('active')->model($page) }}
+                    <x-form::toggle-switch name="active"/>
                 </x-admin.forms.card>
             </div>
         </div>

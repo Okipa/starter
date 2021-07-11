@@ -2,6 +2,7 @@
 
 namespace App\Tables;
 
+use App\Http\Requests\News\NewsArticlesIndexRequest;
 use App\Models\News\NewsArticle;
 use App\Models\News\NewsCategory;
 use App\View\Components\Admin\Media\Thumb;
@@ -12,6 +13,11 @@ use Okipa\LaravelTable\Table;
 
 class NewsArticlesTable extends AbstractTable
 {
+    public function __construct(protected NewsArticlesIndexRequest $request)
+    {
+        //
+    }
+
     /**
      * Configure the table itself.
      *
@@ -27,7 +33,15 @@ class NewsArticlesTable extends AbstractTable
                 'edit' => ['name' => 'news.article.edit'],
                 'destroy' => ['name' => 'news.article.destroy'],
             ])
-            ->query(fn(Builder $query) => $query->with(['media', 'categories']))
+            ->query(function (Builder $query) {
+                $query->with(['media', 'categories']);
+                if ($this->request->has('category_id')) {
+                    $query->whereHas(
+                        'categories',
+                        fn(Builder $categories) => $categories->where('id', $this->request->category_id)
+                    );
+                }
+            })
             ->destroyConfirmationHtmlAttributes(function (NewsArticle $article) {
                 return [
                     'data-confirm' => __('crud.parent.destroy_confirm', [

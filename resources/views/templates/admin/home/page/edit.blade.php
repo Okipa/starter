@@ -5,7 +5,7 @@
         {{ __('breadcrumbs.orphan.edit', ['entity' => __('Home'), 'detail' => __('Page')]) }}
     </h1>
     <hr>
-    <x-form::form method="PUT" action="{{ route('home.page.update') }}" enctype="multipart/form-data">
+    <x-form::form method="PUT" :action="route('home.page.update')" enctype="multipart/form-data">
         <div class="d-flex">
             <x-form::button.submit>
                 <i class="fas fa-save fa-fw"></i>

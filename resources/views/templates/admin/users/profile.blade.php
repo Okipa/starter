@@ -28,7 +28,7 @@
                     {{ __('Update your account\'s profile and contact information.') }}
                 </p>
                 <x-form::form method="PUT"
-                              action="{{ route('user-profile-information.update') }}"
+                              :action="route('user-profile-information.update')"
                               :bind="$user"
                               errorBag="updateProfileInformation"
                               enctype="multipart/form-data">
@@ -54,7 +54,7 @@
                     <p>
                         {{ __('Ensure your account is using a long, random password to stay secure.') }}
                     </p>
-                    <x-form::form method="PUT" action="{{ route('user-password.update') }}">
+                    <x-form::form method="PUT" :action="route('user-password.update')">
                         <x-form::input type="password" name="current_password" autocomplete="current-password" required/>
                         <x-form::input type="password" name="new_password" autocomplete="new-password" data-password-strength-meter required/>
                         <x-form::input type="password" name="new_password_confirmation" autocomplete="new-password" required/>
@@ -100,13 +100,13 @@
                             <pre class="bg-light p-3 small">@foreach ($user->recoveryCodes() as $code)<div>{{ $code }}</div>@endforeach</pre>
                         </div>
                         <div class="d-flex mt-3">
-                            <x-form::form method="POST" action="{{ route('two-factor.recovery-codes') }}">
+                            <x-form::form method="POST" :action="route('two-factor.recovery-codes')">
                                 <x-form::button.submit class="btn-secondary" data-confirm="{{ __('Are you sure you want to regenerate recovery codes?') }}">
                                     <i class="fas fa-redo fa-fw"></i>
                                     {{ __('Regenerate Recovery Codes') }}
                                 </x-form::button.submit>
                             </x-form::form>
-                            <x-form::form class="ms-3" method="DELETE" action="{{ route('two-factor.disable') }}">
+                            <x-form::form class="ms-3" method="DELETE" :action="route('two-factor.disable')">
                                 <x-form::button.submit class="btn-danger" data-confirm="{{ __('Are you sure you want to disable two factor authentication?') }}">
                                     <i class="fas fa-ban fa-fw"></i>
                                     {{ __('Disable') }}
@@ -114,7 +114,7 @@
                             </x-form::form>
                         </div>
                     @else
-                        <x-form::form method="POST" action="{{ route('two-factor.enable') }}">
+                        <x-form::form method="POST" :action="route('two-factor.enable')">
                             <x-form::button.submit class="btn-success" data-confirm="{{ __('Are you sure you want to enable two factor authentication?') }}">
                                 <i class="fas fa-check fa-fw"></i>
                                 {{ __('Enable') }}
@@ -133,7 +133,7 @@
                 <p>
                     {{ __('Once your account is deleted, all of its resources and data will be permanently deleted. Before deleting your account, please download any data or information that you wish to retain.') }}
                 </p>
-                <x-form::form method="POST" action="{{ route('profile.deleteAccount') }}" errorBag="deleteAccount">
+                <x-form::form method="POST" :action="route('profile.deleteAccount')" errorBag="deleteAccount">
                     <x-form::input type="password" name="password" autocomplete="current-password" required/>
                     <x-form::button.submit class="btn-danger" data-confirm="{{ __('Are you sure you want to delete your account?') }}">
                         <i class="fas fa-trash fa-fw"></i>

@@ -5,15 +5,16 @@
         {{ __('breadcrumbs.orphan.edit', ['entity' => __('Contact'), 'detail' => __('Page')]) }}
     </h1>
     <hr>
-    <x-form::form method="PUT" action="{{ route('contact.page.update') }}" enctype="multipart/form-data">
+    <x-form::form method="PUT" :action="route('contact.page.update')" enctype="multipart/form-data">
         <div class="d-flex">
-            {{ submitUpdate() }}
-            {{ buttonLink()->route('contact.page.show')
-                ->prepend('<i class="fas fa-external-link-square-alt fa-fw"></i>')
-                ->label(__('Display'))
-                ->componentClasses(['btn-success'])
-                ->componentHtmlAttributes(['target' => '_blank'])
-                ->containerClasses(['ms-3']) }}
+            <x-form::button.submit>
+                <i class="fas fa-save fa-fw"></i>
+                {{ __('Save') }}
+            </x-form::button.submit>
+            <x-form::button.link class="btn-success ms-3" :href="route('contact.page.show')" target="_blank">
+                <i class="fas fa-external-link-square-alt fa-fw"></i>
+                {{ __('Display') }}
+            </x-form::button.link>
         </div>
         <x-common.forms.notice class="mt-3"/>
         <div class="row mb-n3" data-masonry>

@@ -1,5 +1,4 @@
 @php
-    // ToDo: replace `currentRouteIs` by `Route::is` if your app is not multilingual
     $cookieCategoriesActive = currentRouteIs('cookie.categories.index')
         || currentRouteIs('cookie.category.create')
         || currentRouteIs('cookie.category.edit');

@@ -5,7 +5,7 @@
         {{ __('breadcrumbs.orphan.index', ['entity' => __('Settings')]) }}
     </h1>
     <hr>
-    <x-form::form method="PUT" action="{{ route('settings.update') }}" :bind="$settings" enctype="multipart/form-data">
+    <x-form::form method="PUT" :action="route('settings.update')" :bind="$settings" enctype="multipart/form-data">
         <x-form::button.submit>
             <i class="fas fa-save fa-fw"></i>
             {{ __('Save') }}

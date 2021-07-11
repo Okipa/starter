@@ -1,4 +1,3 @@
-import bsCustomFileInput from 'bs-custom-file-input';
 import EasyMdeEditor from '../vendor/EasyMdeEditor';
 import MasonryGrid from '../vendor/MasonryGrid';
 import Html5Sortable from '../vendor/Html5Sortable';
@@ -18,7 +17,6 @@ import SnakeCaseInputValue from '../utils/SnakeCaseInputValue';
 require('./common');
 
 // Vendor
-bsCustomFileInput.init();
 EasyMdeEditor.init();
 MasonryGrid.init();
 Html5Sortable.init();

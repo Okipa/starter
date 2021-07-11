@@ -9,12 +9,18 @@
         @endif
     </h1>
     <hr>
-    <x-form::form method="{{ $category ? 'PUT' : 'POST' }}"
-                  action="{{ $category ? route('libraryMedia.category.update', $category) : route('libraryMedia.category.store') }}"
+    <x-form::form :method="$category ? 'PUT' : 'POST'"
+                  :action="$category ? route('libraryMedia.category.update', $category) : route('libraryMedia.category.store')"
                   :bind="$category">
         <div class="d-flex">
-            {{ buttonBack()->route('libraryMedia.categories.index')->containerClasses(['me-3']) }}
-            @if($category){{ submitUpdate() }}@else{{ submitCreate() }}@endif
+            <x-form::button.link class="btn-secondary me-3" :href="route('libraryMedia.categories.index')">
+                <i class="fas fa-undo fa-fw"></i>
+                {{ __('Back') }}
+            </x-form::button.link>
+            <x-form::button.submit>
+                <i class="fas fa-save fa-fw"></i>
+                {{ __('Save') }}
+            </x-form::button.submit>
         </div>
         <x-common.forms.notice class="mt-3"/>
         <div class="row mb-n3" data-masonry>
