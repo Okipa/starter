@@ -11,6 +11,18 @@ jobs:
 
     runs-on: ubuntu-latest
 
+    services:
+      mysql:
+        image: mysql:8.0
+        env:
+          MYSQL_DATABASE: testing
+          MYSQL_USER: testing
+          MYSQL_PASSWORD: secret
+          MYSQL_ROOT_PASSWORD: secret
+        ports:
+          - 3306
+        options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
+
     strategy:
       fail-fast: true
       matrix:
@@ -25,22 +37,28 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
+      - name: Verify MySQL connection
+        run: |
+          mysql --version
+          sudo apt-get install -y mysql-client
+          mysql --host 127.0.0.1 --port ${{ job.services.mysql.ports['3306'] }} -uuser -psecret -e "SHOW DATABASES"
+
       - name: Cache dependencies
         uses: actions/cache@v2
         with:
           path: ~/.composer/cache/files
           key: dependencies-laravel-${{ matrix.laravel }}-php-${{ matrix.php }}-composer-${{ hashFiles('composer.json') }}
 
-      - name: Setup PHP
-        uses: shivammathur/setup-php@v2
-        with:
-          php-version: ${{ matrix.php }}
-          extensions: curl, json, mbstring, zip, sqlite, pdo_sqlite
-          coverage: pcov
+#      - name: Setup PHP
+#        uses: shivammathur/setup-php@v2
+#        with:
+#          php-version: ${{ matrix.php }}
+#          extensions: curl, json, mbstring, zip, sqlite, pdo_sqlite
+#          coverage: pcov
 
       - name: Install dependencies
         run: |
-          composer update --prefer-dist --no-interaction
+          composer install -q --no-ansi --no-interaction --no-scripts --no-suggest --no-progress --prefer-dist
 
       - name: Code analysis
         if: matrix.php == '8.0' && matrix.laravel == '8.*'
@@ -49,7 +67,11 @@ jobs:
           vendor/bin/phpstan analyse
 
       - name: PHPUnit + Code coverage
-        if: matrix.php == '8.0' && matrix.laravel == '8.*'
-        run: |
-          mkdir -p build/logs
-          php artisan test --parallel --coverage-text
+          env:
+            MYSQL_DATABASE: testing
+            DB_USERNAME: testing
+            DB_PASSWORD: secret
+            DB_PORT: ${{ job.services.mysql.ports[3306] }}
+          run: |
+            mkdir -p build/logs
+            php artisan test --parallel --coverage-text
