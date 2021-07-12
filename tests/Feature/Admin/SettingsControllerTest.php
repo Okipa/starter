@@ -82,7 +82,7 @@ class SettingsControllerTest extends TestCase
                 'twitter_url' => 'https://twitter.com',
                 'instagram_url' => 'https://www.instagram.com',
                 'youtube_url' => 'https://www.youtube.com',
-                'matomo_url' => 'Matomo URL test',
+                'matomo_url' => 'https://www.matomo.org',
                 'matomo_id_site' => 'Matomo ID site test',
             ])
             ->assertSessionHasNoErrors()
@@ -99,7 +99,7 @@ class SettingsControllerTest extends TestCase
             'twitter_url' => 'https://twitter.com',
             'instagram_url' => 'https://www.instagram.com',
             'youtube_url' => 'https://www.youtube.com',
-            'matomo_url' => 'Matomo URL test',
+            'matomo_url' => 'https://www.matomo.org',
             'matomo_id_site' => 'Matomo ID site test',
         ]);
         // Settings logo is updated.

@@ -96,13 +96,12 @@
             "@php artisan ide-helper:model --dir=app/Models --nowrite",
             "@php artisan ide-helper:meta"
         ],
-        "test": [
-            "composer update --dry-run roave/security-advisories",
-            "vendor/bin/phpcbf",
-            "vendor/bin/phpcs",
-            "vendor/bin/phpstan analyse --memory-limit=2G",
-            "@php artisan test --parallel --colors --no-coverage"
-        ]
+        "security": "composer update --dry-run roave/security-advisories",
+        "phpcs": ["vendor/bin/phpcbf", "vendor/bin/phpcs"],
+        "phpmd": "vendor/bin/phpmd app,config,database,routes,tests text phpmd.xml",
+        "phpstan": "vendor/bin/phpstan analyse --memory-limit=2G",
+        "phpunit" : "@php artisan test --parallel --colors --no-coverage",
+        "test": ["@security", "@phpcs", "@phpstan", "@phpunit"]
     },
     "extra": {
         "laravel": {

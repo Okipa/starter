@@ -106,9 +106,7 @@
                     </div>
                     @if($fullPostalAddress = settings()->full_postal_address)
                         <div class="card-footer">
-                            <a id="display-map-link"
-                               class="h5"
-                               href="">
+                            <a id="display-map-link" class="h5" href="">
                                 <i class="fas fa-search-location fa-fw"></i>
                                 {{ __('See on the map') }}
                             </a>

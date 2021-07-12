@@ -10,6 +10,9 @@
 * Updated `.editorconfig` to follow Laravel standard => https://github.com/laravel/laravel/releases/tag/v8.5.21
 * Updated `timezone` and `url` validation => https://github.com/laravel/laravel/releases/tag/v8.5.21
 * Updated Sail `Dockerfile` to use Ubuntu 21.04 and to report fixes => https://github.com/laravel/sail/releases/tag/v1.8.4
+* Updated composer JSON scripts to allow developers to launch single test instruction rather than the whole test suit every time
+* Temporarily removed phpmd from test suit as it is not compatible with PHP 8 yet
+* Fixed tests
 
 ## [1.0.1](https://github.com/ACID-Solutions/starter/compare/1.0.0...1.0.1)
 
