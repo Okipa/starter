@@ -4,8 +4,12 @@
 
 2021-07-12
 
+* Simplified side-menu on admin interface: multiple-levels-tabs with only one submenu have been transformed into single-level-tabs
 * Changed Google Analytics tracking system by Matomo tracking by default
 * Changed Google Map on contact page by Open Street Map
+* Updated `.editorconfig` to follow Laravel standard => https://github.com/laravel/laravel/releases/tag/v8.5.21
+* Updated `timezone` and `url` validation => https://github.com/laravel/laravel/releases/tag/v8.5.21
+* Updated Sail `Dockerfile` to use Ubuntu 21.04 + fixes reporting => https://github.com/laravel/sail/releases/tag/v1.8.4
 
 ## [1.0.1](https://github.com/ACID-Solutions/starter/compare/1.0.0...1.0.1)
 

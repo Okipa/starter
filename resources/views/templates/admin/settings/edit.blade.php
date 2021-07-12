@@ -55,7 +55,7 @@
                 </x-admin.forms.card>
             </div>
             <div class="col-xl-6 mb-3">
-                <x-admin.forms.card title="{{ __('Tracking and property') }}">
+                <x-admin.forms.card title="{{ __('Tracking') }}">
                     {{ inputUrl()->name('matomo_url')->model($settings)->prepend('<i class="fas fa-chart-line"></i>') }}
                     {{ inputText()->name('matomo_id_site')->model($settings)->prepend('<i class="fas fa-chart-line"></i>') }}
                 </x-admin.forms.card>
