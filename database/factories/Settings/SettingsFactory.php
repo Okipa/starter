@@ -21,7 +21,8 @@ class SettingsFactory extends Factory
             'twitter_url' => $this->faker->unique()->url,
             'instagram_url' => $this->faker->unique()->url,
             'youtube_url' => $this->faker->unique()->url,
-            'google_tag_manager_id' => $this->faker->uuid,
+            'matomo_url' => $this->faker->url,
+            'matomo_id_site' => $this->faker->uuid,
         ];
     }
 

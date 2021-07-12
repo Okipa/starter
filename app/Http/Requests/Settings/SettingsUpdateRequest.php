@@ -26,7 +26,8 @@ class SettingsUpdateRequest extends FormRequest
             'twitter_url' => ['nullable', 'string', 'max:255', 'url'],
             'instagram_url' => ['nullable', 'string', 'max:255', 'url'],
             'youtube_url' => ['nullable', 'string', 'max:255', 'url'],
-            'google_tag_manager_id' => ['nullable', 'string', 'max:255'],
+            'matomo_url' => ['nullable', 'url', 'max:255'],
+            'matomo_id_site' => ['nullable', 'string', 'max:255'],
         ];
     }
 }
