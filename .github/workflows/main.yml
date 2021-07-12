@@ -67,11 +67,11 @@ jobs:
           vendor/bin/phpstan analyse
 
       - name: PHPUnit + Code coverage
-          env:
-            MYSQL_DATABASE: testing
-            DB_USERNAME: testing
-            DB_PASSWORD: secret
-            DB_PORT: ${{ job.services.mysql.ports[3306] }}
-          run: |
-            mkdir -p build/logs
-            php artisan test --parallel --coverage-text
+        env:
+          MYSQL_DATABASE: testing
+          DB_USERNAME: testing
+          DB_PASSWORD: secret
+          DB_PORT: ${{ job.services.mysql.ports[3306] }}
+        run: |
+          mkdir -p build/logs
+          php artisan test --parallel --coverage-text
