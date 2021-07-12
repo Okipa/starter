@@ -16,8 +16,6 @@ jobs:
         image: mysql:8.0
         env:
           MYSQL_DATABASE: testing
-          MYSQL_USER: testing
-          MYSQL_PASSWORD: secret
           MYSQL_ROOT_PASSWORD: secret
         ports:
           - 33306:3306
@@ -49,17 +47,17 @@ jobs:
           composer install -q --no-ansi --no-interaction --no-scripts --no-suggest --no-progress --prefer-dist
 
       - name: Code analysis
-        if: matrix.php == '8.0' && matrix.laravel == '8.*'
         run: |
           vendor/bin/phpcs
           vendor/bin/phpstan analyse
 
       - name: PHPUnit + Code coverage
         env:
-          MYSQL_DATABASE: testing
-          DB_USERNAME: testing
-          DB_PASSWORD: secret
+          DB_CONNECTION: mysql
+          DB_DATABASE: testing
           DB_PORT: 33306
+          DB_USER: root
+          DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
         run: |
           mkdir -p build/logs
           php artisan test --parallel --coverage-text
