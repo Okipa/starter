@@ -24,6 +24,7 @@
         "jquery-ui-sortable": "^1.0.0",
         "klaro": "^0.7.15",
         "laravel-mix": "^6.0.6",
+        "leaflet": "^1.7.1",
         "lodash": "^4.17.19",
         "masonry-layout": "^4.2.2",
         "popper.js": "^1.12",
@@ -32,7 +33,5 @@
         "sass-loader": "8.*",
         "zxcvbn": "^4.4.2"
     },
-    "dependencies": {
-        "leaflet": "^1.7.1"
-    }
+    "dependencies": {}
 }
