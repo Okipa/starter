@@ -35,13 +35,6 @@ jobs:
           path: ~/.composer/cache/files
           key: dependencies-laravel-${{ matrix.laravel }}-php-${{ matrix.php }}-composer-${{ hashFiles('composer.json') }}
 
-#      - name: Setup PHP
-#        uses: shivammathur/setup-php@v2
-#        with:
-#          php-version: ${{ matrix.php }}
-#          extensions: curl, json, mbstring, zip, sqlite, pdo_sqlite
-#          coverage: pcov
-
       - name: Install dependencies
         run: |
           composer install -q --no-ansi --no-interaction --no-scripts --no-suggest --no-progress --prefer-dist
@@ -57,6 +50,6 @@ jobs:
           DB_DATABASE: testing
           DB_PORT: 33306
           DB_USER: root
-          DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
+          DB_PASSWORD: secret
         run: |
           vendor/phpunit/phpunit/phpunit
