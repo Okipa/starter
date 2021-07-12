@@ -59,5 +59,4 @@ jobs:
           DB_USER: root
           DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
         run: |
-          mkdir -p build/logs
-          php artisan test --parallel --coverage-text
+          vendor/phpunit/phpunit/phpunit
