@@ -23,6 +23,10 @@ parameters:
         - '#Call to an undefined method Illuminate\\Database\\Eloquent\\Factories\\Factory::withTitleBrick\(\)#'
         - '#Call to an undefined method Illuminate\\Database\\Eloquent\\Factories\\Factory::twoFactorAuthenticationActivated\(\)#'
         - '#Call to an undefined method Spatie\\Image\\Manipulations::withResponsiveImages\(\)#'
+        - '#Access to an undefined property Illuminate\\Database\\Eloquent\\Collection|Illuminate\\Database\\Eloquent\\Model#'
+        - '#Parameter \#1 \$value of static method Illuminate\\Support\\Str::limit\(\) expects string, array given#'
+        - '#Property App\\Models\\Cookies\\CookieCategory::\$title \(array\) does not accept string#'
+        - '#Property App\\Models\\News\\NewsCategory::\$name \(array\) does not accept string#'
 
     excludePaths:
         - ./*/*/FileToBeExcluded.php

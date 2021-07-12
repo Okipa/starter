@@ -22,9 +22,16 @@ class ContactPageController extends Controller
         /** @var \App\Models\PageContents\PageContent $pageContent */
         $pageContent = PageContent::where('unique_key', 'contact_page_content')->sole();
         $pageContent->displaySeoMeta();
+        share([
+            'app_name' => config('app.name'),
+            'map_marker' => settings()->getFirstMediaUrl('logo_squared', 'nav_admin'),
+            'postal_address' => settings()->full_postal_address,
+            'postal_address_not_found' => __('The current postal address could not been found on the map.')
+        ]);
         $css = mix('/css/templates/front/contact/page/show.css');
+        $js = mix('/js/templates/front/contact/page/show.js');
 
-        return view('templates.front.contact.page.show', compact('pageContent', 'css'));
+        return view('templates.front.contact.page.show', compact('pageContent', 'css', 'js'));
     }
 
     /**

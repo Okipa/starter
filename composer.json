@@ -40,7 +40,7 @@
         "spatie/pdf-to-image": "^2.1"
     },
     "require-dev": {
-        "roave/security-advisories": "dev-master",
+        "roave/security-advisories": "dev-latest",
         "barryvdh/laravel-ide-helper": "^2.0",
         "beyondcode/laravel-dump-server": "^1.7",
         "brianium/paratest": "^6.2",
@@ -96,14 +96,12 @@
             "@php artisan ide-helper:model --dir=app/Models --nowrite",
             "@php artisan ide-helper:meta"
         ],
-        "test": [
-            "composer update --dry-run roave/security-advisories",
-            "vendor/bin/phpcbf",
-            "vendor/bin/phpcs",
-            "vendor/bin/phpmd app,config,database,routes,tests text phpmd.xml",
-            "vendor/bin/phpstan analyse --memory-limit=2G",
-            "@php artisan test --parallel --colors --no-coverage"
-        ]
+        "security": "composer update --dry-run roave/security-advisories",
+        "phpcs": ["vendor/bin/phpcbf", "vendor/bin/phpcs"],
+        "phpmd": "vendor/bin/phpmd app,config,database,routes,tests text phpmd.xml",
+        "phpstan": "vendor/bin/phpstan analyse --memory-limit=2G",
+        "phpunit" : "@php artisan test --parallel --colors --no-coverage",
+        "test": ["@security", "@phpcs", "@phpstan", "@phpunit"]
     },
     "extra": {
         "laravel": {

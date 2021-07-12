@@ -1,4 +1,5 @@
 <!-- ToDo: Search every `ToDo:` occurrence in starter and customize what needs to be -->
+<!-- ToDo: Remove .github directory once the project has been cloned -->
 <!-- ToDo: Remove `spatie/laravel-translatable` package if your app is not multilingual -->
 <!-- ToDo: Remove `codezero/laravel-localized-routes` package if your app is not multilingual -->
 <!-- ToDo: Remove `codezero/laravel-unique-translation` package if your app is not multilingual -->

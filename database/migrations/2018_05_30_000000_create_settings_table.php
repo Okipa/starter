@@ -19,7 +19,8 @@ class CreateSettingsTable extends Migration
             $table->string('twitter_url')->nullable();
             $table->string('instagram_url')->nullable();
             $table->string('youtube_url')->nullable();
-            $table->string('google_tag_manager_id')->nullable();
+            $table->string('matomo_url')->nullable();
+            $table->string('matomo_id_site')->nullable();
             $table->timestamps();
         });
     }
