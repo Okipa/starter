@@ -20,28 +20,16 @@ jobs:
           MYSQL_PASSWORD: secret
           MYSQL_ROOT_PASSWORD: secret
         ports:
-          - 3306
-        options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
-
-    strategy:
-      fail-fast: true
-      matrix:
-        php: [ '8.0' ]
-        laravel: [ '8.*' ]
-        include:
-          - laravel: '8.*'
-
-    name: P${{ matrix.php }} - L${{ matrix.laravel }}
+          - 33306:3306
+        options: >-
+          --health-cmd="mysqladmin ping"
+          --health-interval=10s
+          --health-timeout=5s
+          --health-retries=3
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-
-      - name: Verify MySQL connection
-        run: |
-          mysql --version
-          sudo apt-get install -y mysql-client
-          mysql --host 127.0.0.1 --port ${{ job.services.mysql.ports['3306'] }} -uuser -psecret -e "SHOW DATABASES"
 
       - name: Cache dependencies
         uses: actions/cache@v2
@@ -71,7 +59,7 @@ jobs:
           MYSQL_DATABASE: testing
           DB_USERNAME: testing
           DB_PASSWORD: secret
-          DB_PORT: ${{ job.services.mysql.ports[3306] }}
+          DB_PORT: 33306
         run: |
           mkdir -p build/logs
           php artisan test --parallel --coverage-text
