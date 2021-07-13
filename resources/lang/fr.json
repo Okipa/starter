@@ -38,7 +38,7 @@
     "Contact": "Contact",
     "Security": "Sécurité",
     "SEO": "Référencement",
-    "Tracking and property": "Suivi et propriété",
+    "Tracking": "Suivi",
     "Publication": "Publication",
     "Media": "Média",
     "Information": "Informations",
@@ -284,6 +284,7 @@
     "Style:": "Style :",
     "Alignment:": "Alignement :",
     "Background color:": "Couleur de fond :",
+    "The current postal address could not been found on the map.": "L'adresse postale actuelle n'a pas été trouvée sur la carte."
     "Invert order:": "Inversement ordre :",
     "Home Page": "Page Accueil",
     "Contact Page": "Page Contact"

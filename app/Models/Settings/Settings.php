@@ -30,7 +30,8 @@ class Settings extends Model implements HasMedia
         'twitter_url',
         'instagram_url',
         'youtube_url',
-        'google_tag_manager_id',
+        'matomo_url',
+        'matomo_id_site',
     ];
 
     /** @SuppressWarnings(PHPMD.UnusedFormalParameter) */

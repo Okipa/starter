@@ -1,3 +1,5 @@
+import {get} from 'lodash';
+
 // For more information: https://github.com/sweetalert2/sweetalert2
 
 const baseConfig = Swal.mixin({
@@ -29,17 +31,26 @@ const toastConfig = baseConfig.mixin({
  * @return Object
  */
 const formatArgumentsFromEvent = (args) => {
-    return {
-        ...args,
-        ...{
-            willOpen: () => args.willOpen ? setTimeout(args.willOpen, 0) : null,
-            didOpen: () => args.didOpen ? setTimeout(args.didOpen, 0) : null,
-            didRender: () => args.didRender ? setTimeout(args.didRender, 0) : null,
-            willClose: () => args.willClose ? setTimeout(args.willClose, 0) : null,
-            didClose: () => args.didClose ? setTimeout(args.didClose, 0) : null,
-            didDestroy: () => args.didDestroy ? setTimeout(args.didDestroy, 0) : null
-        }
-    };
+    if (get(args, 'willOpen')) {
+        args.willOpen = setTimeout(args.willOpen, 0);
+    }
+    if (get(args, 'didOpen')) {
+        args.didOpen = setTimeout(args.didOpen, 0);
+    }
+    if (get(args, 'didRender')) {
+        args.didRender = setTimeout(args.didRender, 0);
+    }
+    if (get(args, 'willClose')) {
+        args.willClose = setTimeout(args.willClose, 0);
+    }
+    if (get(args, 'didClose')) {
+        args.didClose = setTimeout(args.didClose, 0);
+    }
+    if (get(args, 'didDestroy')) {
+        args.didDestroy = setTimeout(args.didDestroy, 0);
+    }
+
+    return args;
 };
 
 export default class SweetAlert {

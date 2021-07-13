@@ -28,7 +28,7 @@ class ContactPageControllerTest extends TestCase
     {
         Settings::factory()->withMedia()->create();
         $authUser = User::factory()->withMedia()->create();
-        $contactPage = PageContent::factory()->contact()->withSeoMeta()->create();
+        $contactPage = PageContent::factory()->contact()->withSeoMeta(image: 'dummy')->create();
         // ToDo: convert in monolingual if your app is not multilingual.
         // Translated SEO data
         $seoData = [];

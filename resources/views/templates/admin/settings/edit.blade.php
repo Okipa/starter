@@ -40,7 +40,8 @@
             </div>
             <div class="col-xl-6 mb-3">
                 <x-admin.forms.card title="{{ __('Tracking and property') }}">
-                    <x-form::input name="google_tag_manager_id"/>
+                    <x-form::input type="url" name="matomo_url"/>
+                    <x-form::input name="matomo_id_site"/>
                 </x-admin.forms.card>
             </div>
         </div>

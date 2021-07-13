@@ -99,7 +99,7 @@ class NewsArticle extends Model implements HasMedia, Feedable
 
         return FeedItem::create()
             ->id((string) $this->id)
-            ->title($this->title)
+            ->title($this->getTranslation('title', app()->getLocale()))
             ->summary(Str::limit(strip_tags((new Parsedown())->text($this->description))))
             ->link(route('news.article.show', [$this]))
             ->authorName(config('app.name'))

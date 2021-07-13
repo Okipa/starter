@@ -56,7 +56,8 @@ class SettingsControllerTest extends TestCase
                 $settings->twitter_url,
                 $settings->instagram_url,
                 $settings->youtube_url,
-                $settings->google_tag_manager_id,
+                $settings->matomo_url,
+                $settings->matomo_id_site,
             ], false);
     }
 
@@ -81,7 +82,8 @@ class SettingsControllerTest extends TestCase
                 'twitter_url' => 'https://twitter.com',
                 'instagram_url' => 'https://www.instagram.com',
                 'youtube_url' => 'https://www.youtube.com',
-                'google_tag_manager_id' => 'GTM test',
+                'matomo_url' => 'https://www.matomo.org',
+                'matomo_id_site' => 'Matomo ID site test',
             ])
             ->assertSessionHasNoErrors()
             ->assertSessionHas('toast_success', __('crud.name.updated', ['name' => __('Settings')]))
@@ -97,7 +99,8 @@ class SettingsControllerTest extends TestCase
             'twitter_url' => 'https://twitter.com',
             'instagram_url' => 'https://www.instagram.com',
             'youtube_url' => 'https://www.youtube.com',
-            'google_tag_manager_id' => 'GTM test',
+            'matomo_url' => 'https://www.matomo.org',
+            'matomo_id_site' => 'Matomo ID site test',
         ]);
         // Settings logo is updated.
         $this->assertDatabaseHas(app(Media::class)->getTable(), [

@@ -73,8 +73,7 @@ class ContactPageControllerTest extends TestCase
                 $settings->phone_number,
                 $settings->email,
                 $settings->full_postal_address,
-                'href="https://www.google.com/maps/embed/v1/place?key=' . config('services.google.key') . '&q='
-                . str_replace([' ', ','], '+', $settings->full_postal_address) . '"',
+                '<a id="display-map-link" class="h5" href="">',
             ], false);
     }
 

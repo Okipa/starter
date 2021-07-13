@@ -21,7 +21,7 @@ mix
     .js('resources/js/templates/admin/library-media/index.js', 'public/js/templates/admin/library-media')
     .js('resources/js/templates/admin/library-media/edit.js', 'public/js/templates/admin/library-media')
     // Front
-    //
+    .js('resources/js/templates/front/contact/page/show.js', 'public/js/templates/front/contact/page')
     // Brickables
     .js('resources/js/brickables/carousel.js', 'public/js/brickables')
     // Base
