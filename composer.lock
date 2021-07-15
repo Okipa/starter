@@ -3928,12 +3928,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Okipa/laravel-form-components.git",
-                "reference": "e00515d6063d49c6418727aa78b6d0cf960d2bde"
+                "reference": "3fafadd5dcc2783755d71efbc86968268b732a1c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Okipa/laravel-form-components/zipball/e00515d6063d49c6418727aa78b6d0cf960d2bde",
-                "reference": "e00515d6063d49c6418727aa78b6d0cf960d2bde",
+                "url": "https://api.github.com/repos/Okipa/laravel-form-components/zipball/3fafadd5dcc2783755d71efbc86968268b732a1c",
+                "reference": "3fafadd5dcc2783755d71efbc86968268b732a1c",
                 "shasum": ""
             },
             "require": {
@@ -4006,7 +4006,7 @@
                     "type": "ko_fi"
                 }
             ],
-            "time": "2021-07-15T20:06:50+00:00"
+            "time": "2021-07-15T20:52:54+00:00"
         },
         {
             "name": "okipa/laravel-html-helper",

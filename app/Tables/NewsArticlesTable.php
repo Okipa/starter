@@ -70,10 +70,10 @@ class NewsArticlesTable extends AbstractTable
         $table->column()
             ->title(__('Categories'))
             ->value(fn(NewsArticle $article) => $article->categories->map(function (NewsCategory $category) {
-                $category->name = Str::limit($category->name, 25);
+                $category->title = Str::limit($category->title, 25);
 
                 return $category;
-            })->implode('name', ', '));
+            })->implode('title', ', '));
         $table->column()->title(__('Display'))->html(fn(NewsArticle $article) => view(
             'components.admin.table.display',
             ['url' => route('news.article.show', [$article]), 'active' => $article->active]
