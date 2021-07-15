@@ -5,8 +5,8 @@
         @bind($brick->data)
             <div class="col-xl-6 mb-3">
                 <x-admin.forms.card title="{{ __('Content') }}">
-                        <x-form::textarea name="text_left" :locales="supportedLocaleKeys()" data-editor required/>
-                        <x-form::textarea name="text_right" :locales="supportedLocaleKeys()" data-editor required/>
+                    <x-form::textarea name="text_left" :locales="supportedLocaleKeys()" data-editor required/>
+                    <x-form::textarea name="text_right" :locales="supportedLocaleKeys()" data-editor required/>
                 </x-admin.forms.card>
             </div>
         @endbind

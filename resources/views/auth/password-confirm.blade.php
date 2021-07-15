@@ -28,7 +28,7 @@
                 {{ __('Confirm password') }}
             </x-form::button.submit>
         </div>
-        <x-form::button.link class="btn-secondary" href="{{ url()->previous() }}">
+        <x-form::button.link class="btn-secondary" :href="url()->previous()">
             <i class="fas fa-ban fa-fw"></i>
             {{ __('Cancel') }}
         </x-form::button.link>

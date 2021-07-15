@@ -14,7 +14,7 @@
           :bind="$user"
           enctype="multipart/form-data">
         <div class="d-flex">
-            <x-form::button.link class="btn-secondary me-3" href="{{ route('users.index') }}">
+            <x-form::button.link class="btn-secondary me-3" :href="route('users.index'">
                 <i class="fas fa-undo fa-fw"></i>
                 {{ __('Back') }}
             </x-form::button.link>

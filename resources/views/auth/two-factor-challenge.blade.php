@@ -32,10 +32,12 @@
         @else
             <x-form::input name="code" autofocus autocomplete="one-time-code" required/>
         @endif
-        {{ submit()->prepend('<i class="fas fa-sign-in-alt fa-fw"></i>')
-            ->label(__('Log in'))
-            ->componentClasses(['btn-primary', 'mb-3'])
-            ->containerClasses(['d-grid']) }}
+        <div class="d-grid mb-3">
+            <x-form::button.submit>
+                <i class="fas fa-sign-in-alt fa-fw"></i>
+                {{ __('Log in') }}
+            </x-form::button.submit>
+        </div>
         <div class="d-flex mb-3">
             @if(request()->recovery)
                 <a href="{{ route(Request::route()->getName()) }}" title="{{ __('Use an authentication code') }}">
@@ -49,6 +51,9 @@
                 </a>
             @endif
         </div>
-        {{ buttonBack()->route('home.page.show') }}
+        <x-form::button.link :href="route('home.page.show')">
+            <i class="fas fa-undo fa-fw"></i>
+            {{ __('Back') }}
+        </x-form::button.link>
     </x-form::form>
 @endsection

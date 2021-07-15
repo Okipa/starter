@@ -19,7 +19,10 @@
                 <p class="h5">
                     {{ __('Service currently unavailable.') }}
                 </p>
-                {{ buttonBack()->route('home.page.show')->label(__('Retry'))->containerClasses(['mt-5']) }}
+                <x-form::button.link class="mt-5" :href="route('home.page.show')">
+                    <i class="fas fa-undo fa-fw"></i>
+                    {{ __('Back to home page') }}
+                </x-form::button.link>
             </div>
         </div>
     </div>

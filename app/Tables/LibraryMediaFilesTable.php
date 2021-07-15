@@ -54,7 +54,7 @@ class LibraryMediaFilesTable extends AbstractTable
                     '=',
                     'library_media_files.category_id'
                 );
-                $query->where('model_type', 'App\Models\LibraryMedia\LibraryMediaFile');
+                $query->where('model_type', \App\Models\LibraryMedia\LibraryMediaFile::class);
                 if ($this->request->has('category_id')) {
                     $query->where('library_media_categories.id', $this->request->category_id);
                 }

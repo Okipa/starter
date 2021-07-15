@@ -1,4 +1,4 @@
-@if (session('status') === 'verification-link-sent')
+@if(session('status') === 'verification-link-sent')
     @php
         alert()->html(__('Success'), __('A new verification link has been sent to the email address you provided during registration.'), 'success')->showConfirmButton()
     @endphp
@@ -28,6 +28,9 @@
         {{ __('If you didn\'t receive the email, we will gladly send you another.') }}
     </p>
     <x-form::form method="POST" :action="route('verification.send')">
-        {{ submit()->prepend('<i class="fas fa-paper-plane fa-fw"></i>')->label(__('Resend Verification Email')) }}
+        <x-form::button.submit>
+            <i class="fas fa-paper-plane fa-fw"></i>
+            {{ __('Resend Verification Email') }}
+        </x-form::button.submit>
     </x-form::form>
 @endsection

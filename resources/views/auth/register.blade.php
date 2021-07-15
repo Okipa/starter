@@ -26,7 +26,7 @@
                 {{ __('Create account') }}
             </x-form::button.submit>
         </div>
-        <x-form::button.link class="btn-secondary" href="{{ route('login') }}">
+        <x-form::button.link class="btn-secondary" :href="route('login')">
             <i class="fas fa-ban fa-fw"></i>
             {{ __('Cancel') }}
         </x-form::button.link>

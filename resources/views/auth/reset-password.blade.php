@@ -24,7 +24,7 @@
                 {{ __('Save new password') }}
             </x-form::button.submit>
         </div>
-        <x-form::button.link class="btn-secondary" href="{{ route('login') }}">
+        <x-form::button.link class="btn-secondary" :href="route('login')">
             <i class="fas fa-undo fa-fw"></i>
             {{ __('Back') }}
         </x-form::button.link>

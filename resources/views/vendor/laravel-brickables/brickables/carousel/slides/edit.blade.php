@@ -21,7 +21,7 @@
                   :bind="$slide"
                   enctype="multipart/form-data">
         <div class="d-flex">
-            <x-form::button.link class="btn-secondary me-3" href="{{ route('brick.edit', ['brick' => $brick, 'admin_panel_url' => request()->admin_panel_url]) }}">
+            <x-form::button.link class="btn-secondary me-3" :href="route('brick.edit', ['brick' => $brick, 'admin_panel_url' => request()->admin_panel_url])">
                 <i class="fas fa-undo fa-fw"></i>
                 {{ __('Back') }}
             </x-form::button.link>

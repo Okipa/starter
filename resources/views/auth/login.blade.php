@@ -47,7 +47,7 @@
                 @endif
             </div>
         @endif
-        <x-form::button.link class="btn-secondary" href="{{ route('home.page.show') }}">
+        <x-form::button.link class="btn-secondary" :href="route('home.page.show')">
             <i class="fas fa-undo fa-fw"></i>
             {{ __('Back') }}
         </x-form::button.link>

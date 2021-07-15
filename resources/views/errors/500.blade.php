@@ -36,7 +36,10 @@
                         });
                     </script>
                 @endif
-                {{ buttonBack()->route('home.page.show')->label(__('Back to home page'))->containerClasses(['mt-5']) }}
+                <x-form::button.link class="mt-5" :href="route('home.page.show')">
+                    <i class="fas fa-undo fa-fw"></i>
+                    {{ __('Back to home page') }}
+                </x-form::button.link>
             </div>
         </div>
     </div>

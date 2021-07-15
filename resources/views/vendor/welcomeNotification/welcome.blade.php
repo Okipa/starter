@@ -17,14 +17,17 @@
         <input type="hidden" name="email" value="{{ $user->email }}"/>
         <x-common.forms.notice class="mt-3"/>
         <p>{{ __('Welcome on :app ! To be able to login to your new account please define a secured password with the fields bellow.', ['app' => config('app.name')]) }}</p>
-        {{ inputPassword()->name('password')
-            ->componentHtmlAttributes(['required', 'autofocus', 'autocomplete' => 'new-password'])
-            ->containerHtmlAttributes(['data-password-strength-meter']) }}
-        {{ inputPassword()->name('password_confirmation')
-            ->componentHtmlAttributes(['required', 'autocomplete' => 'new-password']) }}
-        {{ submitValidate()->label(__('Save new password'))
-            ->componentClasses(['btn-primary', 'mb-3'])
-            ->containerClasses(['d-grid']) }}
-        {{ buttonCancel()->route('home.page.show') }}
+        <x-form::input type="password" name="password" autofocus autocomplete="new-password" data-password-strength-meter required/>
+        <x-form::input type="password" name="password_confirmation" autocomplete="new-password" required/>
+        <div class="d-grid mb-3">
+            <x-form::button.submit>
+                <i class="fas fa-check fa-fw"></i>
+                {{ __('Save new password') }}
+            </x-form::button.submit>
+        </div>
+        <x-form::button.link class="btn-secondary" :href="route('home.page.show')">
+            <i class="fas fa-ban fa-fw"></i>
+            {{ __('Cancel') }}
+        </x-form::button.link>
     </x-form::form>
 @endsection
