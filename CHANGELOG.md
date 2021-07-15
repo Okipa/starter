@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.0.3](https://github.com/ACID-Solutions/starter/compare/1.0.2...1.0.3)
+
+2021-07-15
+
+* Added `RateLimiter` facade => https://github.com/laravel/laravel/releases/tag/v8.5.22
+
 ## [1.0.2](https://github.com/ACID-Solutions/starter/compare/1.0.1...1.0.2)
 
 2021-07-12
