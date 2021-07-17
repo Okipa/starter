@@ -79,7 +79,7 @@ class CookieCategoriesControllerTest extends TestCase
                 csrf_field(),
                 'href="' . route('cookie.categories.index') . '"',
                 __('Back'),
-                __('Create'),
+                __('Save'),
             ], false);
     }
 
@@ -150,7 +150,7 @@ class CookieCategoriesControllerTest extends TestCase
                 method_field('PUT'),
                 'href="' . route('cookie.categories.index') . '"',
                 __('Back'),
-                __('Update'),
+                __('Save'),
                 // Cookie category data
                 $cookieCategory->unique_key,
                 // ToDo: convert in monolingual if your app is not multilingual.

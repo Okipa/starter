@@ -43,10 +43,10 @@ class SettingsControllerTest extends TestCase
                 'novalidate>',
                 csrf_field(),
                 method_field('PUT'),
-                __('Update'),
+                __('Save'),
                 // Settings data
+                $settings->getFirstMediaUrl('logo_squared'),
                 $settings->getFirstMediaUrl('logo_squared', 'thumb'),
-                $settings->getFirstMedia('logo_squared')->file_name,
                 $settings->email,
                 $settings->phone_number,
                 $settings->address,

@@ -49,12 +49,12 @@ class ContactPageControllerTest extends TestCase
             'novalidate>',
             csrf_field(),
             method_field('PUT'),
-            __('Update'),
+            __('Save'),
             'href="' . route('contact.page.show') . '"',
             __('Display'),
             // Non-translated SEO data
+            $contactPage->getFirstMediaUrl('seo'),
             $contactPage->getFirstMediaUrl('seo', 'thumb'),
-            $contactPage->getFirstMedia('seo')->file_name,
         ], $seoData), false);
     }
 

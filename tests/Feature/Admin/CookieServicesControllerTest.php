@@ -122,7 +122,7 @@ class CookieServicesControllerTest extends TestCase
                 csrf_field(),
                 'href="' . route('cookie.services.index') . '"',
                 __('Back'),
-                __('Create'),
+                __('Save'),
             ], false);
     }
 
@@ -219,7 +219,7 @@ class CookieServicesControllerTest extends TestCase
                     method_field('PUT'),
                     'href="' . route('cookie.services.index') . '"',
                     __('Back'),
-                    __('Update'),
+                    __('Save'),
                     // Cookie service data
                     '<option value="' . $cookieCategory->id . '" selected="selected">',
                     $cookieService->unique_key,
@@ -227,10 +227,13 @@ class CookieServicesControllerTest extends TestCase
                 $localizedTitles,
                 $localizedDescriptions,
                 [
-                    'name="required" checked="checked"',
-                    'name="enabled_by_default" checked="checked"',
+                    'name="required"',
+                    'checked="checked"',
+                    'name="enabled_by_default"',
+                    'checked="checked"',
                     e(json_encode($cookieService->cookies, JSON_PRETTY_PRINT | JSON_THROW_ON_ERROR)),
-                    'name="active" checked="checked"',
+                    'name="active"',
+                    'checked="checked"'
                 ]
             ), false);
     }

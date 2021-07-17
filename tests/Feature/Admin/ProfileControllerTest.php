@@ -42,20 +42,20 @@ class ProfileControllerTest extends TestCase
                 'novalidate>',
                 csrf_field(),
                 method_field('PUT'),
+                $authUser->getFirstMediaUrl('profile_pictures'),
                 $authUser->getFirstMediaUrl('profile_pictures', 'thumb'),
-                $authUser->getFirstMedia('profile_pictures')->file_name,
                 $authUser->last_name,
                 $authUser->first_name,
                 $authUser->phone_number,
                 $authUser->email,
-                __('Update'),
+                __('Save'),
                 // Password form
                 'method="POST"',
                 'action="' . route('user-password.update') . '"',
                 'novalidate>',
                 csrf_field(),
                 method_field('PUT'),
-                __('Update'),
+                __('Save'),
                 // 2FA activation form
                 'method="POST"',
                 'action="' . route('two-factor.enable') . '"',
@@ -94,7 +94,7 @@ class ProfileControllerTest extends TestCase
     }
 
     /** @test */
-    public function it_can_update_user_profile(): void
+    public function Ait_can_update_user_profile(): void
     {
         Settings::factory()->create();
         $authUser = User::factory()->create();

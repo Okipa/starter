@@ -49,7 +49,7 @@ class TitleTest extends TestCase
                 csrf_field(),
                 'href="' . url('/') . '"',
                 __('Back'),
-                __('Create'),
+                __('Save'),
             ], false);
     }
 
@@ -108,30 +108,35 @@ class TitleTest extends TestCase
         }
         $this->actingAs($authUser)->get(route('brick.edit', ['brick' => $editedBrick, 'admin_panel_url' => url('/')]))
             ->assertOk()
-            ->assertSeeInOrder(array_merge([
-                // Heading
-                '<i class="fas fa-th-large fa-fw"></i>',
-                e(__('breadcrumbs.parent.edit', [
-                    'parent' => $pageContent->getReadableClassName(),
-                    'entity' => __('Content bricks'),
-                    'detail' => $editedBrick->brickable->getLabel(),
-                ])),
-                // Form and actions
-                'method="POST"',
-                'action="' . route('brick.update', $editedBrick) . '"',
-                'enctype="multipart/form-data"',
-                'novalidate>',
-                csrf_field(),
-                method_field('PUT'),
-                'href="' . url('/') . '"',
-                __('Back'),
-                __('Update'),
-                // Brick data
-                'name="type"',
-                '<option value="' . $editedBrick->data['type'] . '" selected="selected">',
-                'name="style"',
-                '<option value="' . $editedBrick->data['style'] . '" selected="selected">',
-            ], $localizedTitles), false);
+            ->assertSeeInOrder(array_merge(
+                [
+                    // Heading
+                    '<i class="fas fa-th-large fa-fw"></i>',
+                    e(__('breadcrumbs.parent.edit', [
+                        'parent' => $pageContent->getReadableClassName(),
+                        'entity' => __('Content bricks'),
+                        'detail' => $editedBrick->brickable->getLabel(),
+                    ])),
+                    // Form and actions
+                    'method="POST"',
+                    'action="' . route('brick.update', $editedBrick) . '"',
+                    'enctype="multipart/form-data"',
+                    'novalidate>',
+                    csrf_field(),
+                    method_field('PUT'),
+                    'href="' . url('/') . '"',
+                    __('Back'),
+                    __('Save'),
+                    // Brick data
+                ],
+                $localizedTitles,
+                [
+                    'name="type"',
+                    '<option value="' . $editedBrick->data['type'] . '" selected="selected">',
+                    'name="style"',
+                    '<option value="' . $editedBrick->data['style'] . '" selected="selected">',
+                ]
+            ), false);
     }
 
     /** @test */
