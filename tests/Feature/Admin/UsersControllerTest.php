@@ -85,7 +85,7 @@ class UsersControllerTest extends TestCase
                 csrf_field(),
                 'href="' . route('users.index') . '"',
                 __('Back'),
-                __('Create'),
+                __('Save'),
             ], false);
     }
 
@@ -203,10 +203,10 @@ class UsersControllerTest extends TestCase
                 method_field('PUT'),
                 'href="' . route('users.index') . '"',
                 __('Back'),
-                __('Update'),
+                __('Save'),
                 // User data
+                $editedUser->getFirstMediaUrl('profile_pictures'),
                 $editedUser->getFirstMediaUrl('profile_pictures', 'thumb'),
-                $editedUser->getFirstMedia('profile_pictures')->file_name,
                 $editedUser->last_name,
                 $editedUser->first_name,
                 $editedUser->phone_number,

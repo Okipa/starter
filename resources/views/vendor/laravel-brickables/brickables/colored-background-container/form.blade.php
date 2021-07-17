@@ -5,7 +5,7 @@
 @section('form_body')
     <x-common.forms.notice class="mt-3"/>
     <div class="row mb-n3" data-masonry>
-        @bind($brick->data)
+        @bind($brick?->data)
             <div class="col-xl-6 mb-3">
                 <x-admin.forms.card title="{{ __('Configuration') }}">
                     <x-form::select name="background_color"
